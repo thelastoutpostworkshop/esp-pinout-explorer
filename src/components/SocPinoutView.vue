@@ -5,29 +5,47 @@
         <h1>ESPSocsExplorer</h1>
         <div class="soc-view__subtitle">
           <v-chip class="pin-chip" color="primary" size="small" variant="flat">{{ selectedSoc.name }}</v-chip>
-          <v-chip class="pin-chip" color="secondary" size="small" variant="tonal">{{ selectedSoc.packageName }}</v-chip>
+          <v-chip class="pin-chip" color="secondary" size="small" variant="tonal">
+            {{ selectedPackage.packageName }}
+          </v-chip>
         </div>
       </div>
 
-      <v-select
-        :model-value="store.selectedSocId"
-        class="soc-view__select"
-        density="comfortable"
-        hide-details
-        item-title="name"
-        item-value="id"
-        label="SoC"
-        :items="store.socs"
-        variant="outlined"
-        @update:model-value="store.selectSoc"
-      />
+      <div class="soc-view__selectors">
+        <v-select
+          :model-value="store.selectedSocId"
+          class="soc-view__select"
+          density="comfortable"
+          hide-details
+          item-title="name"
+          item-value="id"
+          label="SoC"
+          :items="store.socs"
+          variant="outlined"
+          @update:model-value="store.selectSoc"
+        />
+
+        <v-select
+          v-if="store.packageOptions.length > 1"
+          :model-value="selectedPackage.id"
+          class="soc-view__select"
+          density="comfortable"
+          hide-details
+          item-title="name"
+          item-value="id"
+          label="Package"
+          :items="store.packageOptions"
+          variant="outlined"
+          @update:model-value="store.selectPackage"
+        />
+      </div>
     </header>
 
     <section class="soc-view__tools">
       <PinSearch :model-value="store.searchQuery" @update:model-value="store.setSearchQuery" />
       <div class="soc-view__count">
         <Cpu :size="18" aria-hidden="true" />
-        <span>{{ store.filteredPins.length }} / {{ selectedSoc.pins.length }} pins</span>
+        <span>{{ store.filteredPins.length }} / {{ store.selectedPins.length }} pins</span>
       </div>
     </section>
 
@@ -35,6 +53,7 @@
       <ChipSvg
         :filtered-pin-ids="store.filteredPinIds"
         :has-filter="Boolean(store.searchQuery.trim())"
+        :pins="store.selectedPins"
         :selected-pin-id="store.selectedPinId"
         :soc="selectedSoc"
         @pin-click="store.selectPin"
@@ -55,6 +74,7 @@ import { useSocStore } from '@/stores/socStore';
 
 const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
+const selectedPackage = computed(() => store.selectedPackage);
 </script>
 
 <style scoped>
@@ -88,8 +108,15 @@ const selectedSoc = computed(() => store.selectedSoc);
   margin-top: 12px;
 }
 
+.soc-view__selectors {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
 .soc-view__select {
-  width: min(280px, 38vw);
+  width: min(280px, 30vw);
 }
 
 .soc-view__tools {
@@ -134,6 +161,12 @@ const selectedSoc = computed(() => store.selectedSoc);
   }
 
   .soc-view__select {
+    width: 100%;
+  }
+
+  .soc-view__selectors {
+    display: grid;
+    justify-content: stretch;
     width: 100%;
   }
 

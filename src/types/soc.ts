@@ -43,12 +43,21 @@ export interface SocSource {
   sections: string[];
 }
 
+export interface SocPackageVariant {
+  id: string;
+  name: string;
+  packageName: string;
+  pins: SocPin[];
+}
+
 export interface SocDefinition {
   id: string;
   name: string;
   family: string;
+  defaultPackageId?: string;
   packageName: string;
   description: string;
   source: SocSource;
   pins: SocPin[];
+  packageVariants?: SocPackageVariant[];
 }

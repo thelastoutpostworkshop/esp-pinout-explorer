@@ -126,7 +126,8 @@
           <span>
             Source:
             <a :href="source.url" rel="noreferrer" target="_blank">{{ source.title }} {{ source.version }}</a>.
-            Sections: pin layout, pin overview, IO MUX, RTC, analog, restrictions, flash/PSRAM, boot.
+            Sections: package layout, pin overview, IO MUX, low-power/RTC/analog functions, restrictions, memory
+            mapping, boot.
           </span>
         </div>
       </v-card-text>

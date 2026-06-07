@@ -91,6 +91,7 @@ import type { PinSide, SocDefinition, SocPin } from '@/types/soc';
 
 const props = defineProps<{
   soc: SocDefinition;
+  pins: SocPin[];
   selectedPinId: string | null;
   filteredPinIds: Set<string>;
   hasFilter: boolean;
@@ -100,7 +101,7 @@ const emit = defineEmits<{
   'pin-click': [pinId: string];
 }>();
 
-const pins = computed(() => props.soc.pins);
+const pins = computed(() => props.pins);
 
 interface PointText {
   x: number;
@@ -130,7 +131,7 @@ const sideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>(() => ({
 function sideMaxOrder(side: Exclude<PinSide, 'center'>) {
   return Math.max(
     1,
-    ...props.soc.pins.filter((pin) => pin.position.side === side).map((pin) => pin.position.order),
+    ...props.pins.filter((pin) => pin.position.side === side).map((pin) => pin.position.order),
   );
 }
 
