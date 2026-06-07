@@ -1,11 +1,11 @@
 <template>
   <div
     class="chip-shell"
-    :class="{ 'chip-shell--animated': playIntroAnimation }"
+    :class="{ 'chip-shell--animated': playIntroAnimation, 'chip-shell--compact-labels': compactLayout }"
     role="img"
     :aria-label="`${soc.name} ${packageName} pinout, ${filteredPinCount} of ${totalPinCount} pins shown`"
   >
-    <svg class="chip-svg" viewBox="0 -60 960 920" xmlns="http://www.w3.org/2000/svg">
+    <svg class="chip-svg" :viewBox="svgViewBox" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="chipBody" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0" stop-color="#26343d" />
@@ -138,7 +138,9 @@ const emit = defineEmits<{
 
 const pins = computed(() => props.pins);
 const playIntroAnimation = ref(false);
+const compactLayout = ref(false);
 let introAnimationFrame = 0;
+let compactMediaQuery: MediaQueryList | null = null;
 
 interface PointText {
   x: number;
@@ -157,6 +159,8 @@ const verticalStart = 128;
 const verticalEnd = 552;
 const horizontalStart = 230;
 const horizontalEnd = 730;
+
+const svgViewBox = computed(() => (compactLayout.value ? '150 44 660 650' : '0 -60 960 920'));
 
 const sideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>(() => ({
   left: sideMaxOrder('left'),
@@ -188,7 +192,7 @@ function pinGeometry(pin: SocPin): Geometry {
     return {
       rect: { x: 196, y: y - 12, width: 34, height: 24, rx: 3 },
       number: { x: 213, y },
-      label: { x: 176, y, anchor: 'end' },
+      label: compactLayout.value ? { x: 238, y, anchor: 'start' } : { x: 176, y, anchor: 'end' },
     };
   }
 
@@ -197,7 +201,9 @@ function pinGeometry(pin: SocPin): Geometry {
     return {
       rect: { x: x - 12, y: 610, width: 24, height: 34, rx: 3 },
       number: { x, y: 627, transform: `rotate(90 ${x} 627)` },
-      label: { x, y: 674, transform: `rotate(90 ${x} 674)`, anchor: 'start' },
+      label: compactLayout.value
+        ? { x, y: 600, transform: `rotate(90 ${x} 600)`, anchor: 'end' }
+        : { x, y: 674, transform: `rotate(90 ${x} 674)`, anchor: 'start' },
     };
   }
 
@@ -206,7 +212,7 @@ function pinGeometry(pin: SocPin): Geometry {
     return {
       rect: { x: 730, y: y - 12, width: 34, height: 24, rx: 3 },
       number: { x: 747, y },
-      label: { x: 784, y, anchor: 'start' },
+      label: compactLayout.value ? { x: 722, y, anchor: 'end' } : { x: 784, y, anchor: 'start' },
     };
   }
 
@@ -215,7 +221,9 @@ function pinGeometry(pin: SocPin): Geometry {
     return {
       rect: { x: x - 12, y: 76, width: 24, height: 34, rx: 3 },
       number: { x, y: 93, transform: `rotate(-90 ${x} 93)` },
-      label: { x, y: 56, transform: `rotate(-90 ${x} 56)`, anchor: 'start' },
+      label: compactLayout.value
+        ? { x, y: 120, transform: `rotate(-90 ${x} 120)`, anchor: 'end' }
+        : { x, y: 56, transform: `rotate(-90 ${x} 56)`, anchor: 'start' },
     };
   }
 
@@ -276,13 +284,24 @@ function replayIntroAnimation() {
 
 onMounted(replayIntroAnimation);
 
+onMounted(() => {
+  compactMediaQuery = window.matchMedia('(max-width: 760px)');
+  compactLayout.value = compactMediaQuery.matches;
+  compactMediaQuery.addEventListener('change', onCompactMediaQueryChange);
+});
+
 watch(() => [props.soc.id, props.packageName, props.totalPinCount], replayIntroAnimation);
 
 onBeforeUnmount(() => {
   if (typeof window !== 'undefined') {
     window.cancelAnimationFrame(introAnimationFrame);
   }
+  compactMediaQuery?.removeEventListener('change', onCompactMediaQueryChange);
 });
+
+function onCompactMediaQueryChange(event: MediaQueryListEvent) {
+  compactLayout.value = event.matches;
+}
 </script>
 
 <style scoped>
@@ -498,10 +517,21 @@ onBeforeUnmount(() => {
   pointer-events: none;
 }
 
+.chip-shell--compact-labels .pin-label {
+  fill: #dbeafe;
+  font-size: 10px;
+  font-weight: 850;
+}
+
 .pin-node--selected .pin-label {
   fill: #1d4ed8;
   font-size: 16px;
   font-weight: 900;
+}
+
+.chip-shell--compact-labels .pin-node--selected .pin-label {
+  fill: #ffffff;
+  font-size: 11px;
 }
 
 @keyframes selected-pin-pop {
@@ -697,11 +727,13 @@ onBeforeUnmount(() => {
 
 @media (max-width: 760px) {
   .chip-svg {
-    min-height: 380px;
+    width: min(100%, 560px);
+    min-height: 0;
+    max-height: calc(100vh - 92px);
   }
 
   .pin-label {
-    font-size: 12px;
+    font-size: 10px;
   }
 }
 </style>
