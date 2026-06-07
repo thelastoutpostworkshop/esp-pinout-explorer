@@ -89,8 +89,6 @@ const legendItems = [
   { label: 'Power', className: 'legend-item__swatch--power' },
   { label: 'Ground', className: 'legend-item__swatch--ground' },
   { label: 'Warning', className: 'legend-item__swatch--warning' },
-  { label: 'Search match', className: 'legend-item__swatch--matched' },
-  { label: 'Filtered out', className: 'legend-item__swatch--dimmed' },
   { label: 'Selected', className: 'legend-item__swatch--selected' },
 ] as const;
 </script>
@@ -213,17 +211,6 @@ const legendItems = [
   background: #f8fafc;
   border-color: #b45309;
   border-width: 2.4px;
-}
-
-.legend-item__swatch--matched {
-  background: #ccfbf1;
-  border-color: #0f766e;
-  border-width: 2.4px;
-}
-
-.legend-item__swatch--dimmed {
-  background: #e0f2fe;
-  opacity: 0.28;
 }
 
 .legend-item__swatch--selected {
