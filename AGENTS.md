@@ -39,6 +39,65 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
 - Add `warnings` for strapping, boot, USB, flash/PSRAM, JTAG, UART0, reset, voltage, power, or known boot restrictions.
 - Add `keywords` for search terms that users reasonably expect, such as `boot`, `strap`, `adc`, `touch`, `usb`, `spi`, `uart`, `jtag`, `flash`, `psram`, and package-specific function aliases.
 
+## Adding A New SoC
+
+1. Confirm the official Espressif source.
+   - Use the latest official datasheet or official product documentation.
+   - Record the datasheet title, version, URL, and source sections in the SoC `source` object.
+   - If the public datasheet is missing or unclear, do not guess. Mark the SoC as blocked or leave it in `todo.md`.
+2. Create or update the SoC data file.
+   - Prefer `src/data/socs/<soc-id>.ts`.
+   - Define all package pins from the datasheet package top-view/pin tables.
+   - Include exposed center pads as `side: 'center'` when present.
+   - Preserve official pin names and alternate-function spelling.
+3. Populate pin metadata.
+   - Set package `number`, `name`, `type`, `gpio`, `position`, `mainFunctions`, `ioMux`, `rtc`, `analog`, `matrixSignals`, `notes`, `warnings`, and `keywords` where applicable.
+   - Include strapping, boot, USB, flash/PSRAM, JTAG, UART0, reset, voltage, power-domain, and memory-related warnings.
+   - Add maker-friendly notes when a pin is physically present but risky, reserved, or dedicated.
+4. Register the SoC.
+   - Add the new definition to the central SoC list used by `socStore`.
+   - Make sure SoC/package selectors still work and default to the intended package.
+5. Update the function dictionary.
+   - Add exact or pattern descriptions in `src/data/functionDescriptions.ts` for new unclear function labels.
+   - Check the drawer for labels that appear as plain abbreviations and add descriptions for them.
+6. Update docs.
+   - Add the SoC/package to `README.md` current SoCs when implemented.
+   - Mark the corresponding item complete in `todo.md`.
+7. Verify.
+   - Run `npm run build`.
+   - Open the app locally and verify selector behavior, pin count, clickable pins, drawer details, search, warnings, tooltips, and mobile layout.
+
+## Adding A New Package For An Existing SoC
+
+1. Confirm the package-specific official source.
+   - Use the datasheet package section for that exact package, not another package with the same SoC name.
+   - Confirm package size, pin count, exposed pad, omitted pins, and package-specific warnings.
+2. Add a package variant.
+   - Use `packageVariants` in the existing SoC data file.
+   - Give the variant a stable `id`, user-facing `name`, `packageName`, and complete `pins` array.
+   - Keep the existing default package unchanged unless the product direction explicitly changes.
+3. Map the package top-view layout.
+   - Assign `side` and `order` from the datasheet top-view package drawing.
+   - Use `side: 'center'` for exposed ground pads.
+   - Verify pin order clockwise/counterclockwise against the datasheet before coding all pins.
+4. Reconcile package differences.
+   - Do not blindly copy the larger package pin list.
+   - Remove pins that are not exposed in the smaller package.
+   - Add package-specific flash/PSRAM, strapping, boot, power, USB, JTAG, and reserved-pin notes.
+5. Check package selector behavior.
+   - Multiple packages should show the package selector in `SocPinoutView.vue`.
+   - Switching packages should clear or update selected-pin state safely through `socStore`.
+   - Pin count and package label must match the selected package.
+6. Verify the SVG layout.
+   - Check that all pins fit, labels are readable, center pads render correctly, and selected-pin animation does not obscure adjacent pins badly.
+   - Test desktop and mobile widths, especially packages with many pins.
+7. Update docs and TODO.
+   - Add the package to `README.md`.
+   - Mark the package complete in `todo.md`.
+8. Run verification.
+   - Run `npm run build`.
+   - In the local app, test package switching, search, selected-pin drawer, warnings, and function tooltips for the new package.
+
 ## Function Description Dictionary
 
 `src/data/functionDescriptions.ts` explains labels that appear in `Main Functions`.
