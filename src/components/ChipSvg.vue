@@ -61,11 +61,11 @@
       </text>
 
       <g
-        v-for="(pin, index) in pins"
+        v-for="pin in pins"
         :key="pin.id"
         class="pin-node"
         :class="pinClasses(pin)"
-        :style="pinEntranceStyle(index, pin)"
+        :style="pinEntranceStyle(pin)"
         tabindex="0"
         role="button"
         :aria-label="pinLabel(pin)"
@@ -197,7 +197,7 @@ function pinGeometry(pin: SocPin): Geometry {
     return {
       rect: { x: x - 12, y: 610, width: 24, height: 34, rx: 3 },
       number: { x, y: 627, transform: `rotate(90 ${x} 627)` },
-      label: { x, y: 700, transform: `rotate(90 ${x} 700)`, anchor: 'start' },
+      label: { x, y: 674, transform: `rotate(90 ${x} 674)`, anchor: 'start' },
     };
   }
 
@@ -238,20 +238,20 @@ function pinClasses(pin: SocPin) {
   };
 }
 
-function pinEntranceStyle(index: number, pin: SocPin) {
-  const offsets: Record<PinSide, { x: string; y: string }> = {
-    left: { x: '-34px', y: '0' },
-    right: { x: '34px', y: '0' },
-    top: { x: '0', y: '-34px' },
-    bottom: { x: '0', y: '34px' },
-    center: { x: '0', y: '22px' },
+function pinEntranceStyle(pin: SocPin) {
+  const sideEffects: Record<PinSide, { delay: number; x: string; y: string }> = {
+    top: { delay: 540, x: '0', y: '-42px' },
+    right: { delay: 680, x: '42px', y: '0' },
+    bottom: { delay: 820, x: '0', y: '42px' },
+    left: { delay: 960, x: '-42px', y: '0' },
+    center: { delay: 820, x: '0', y: '26px' },
   };
-  const offset = offsets[pin.position.side];
+  const effect = sideEffects[pin.position.side];
 
   return {
-    '--pin-enter-delay': `${260 + index * 22}ms`,
-    '--pin-enter-x': offset.x,
-    '--pin-enter-y': offset.y,
+    '--pin-enter-delay': `${effect.delay}ms`,
+    '--pin-enter-x': effect.x,
+    '--pin-enter-y': effect.y,
   };
 }
 
@@ -416,7 +416,7 @@ onBeforeUnmount(() => {
 }
 
 .chip-shell--animated .pin-node {
-  animation: pin-enter 560ms var(--pin-enter-delay) cubic-bezier(0.16, 1.35, 0.26, 1) both;
+  animation: pin-edge-enter 620ms var(--pin-enter-delay) cubic-bezier(0.16, 1.05, 0.26, 1) both;
 }
 
 .pin-node rect {
@@ -661,20 +661,15 @@ onBeforeUnmount(() => {
   }
 }
 
-@keyframes pin-enter {
+@keyframes pin-edge-enter {
   0% {
     opacity: 0;
-    transform: translate(var(--pin-enter-x), var(--pin-enter-y)) scale(0.2);
+    transform: translate(var(--pin-enter-x), var(--pin-enter-y)) scale(0.78);
   }
 
-  58% {
+  68% {
     opacity: 1;
-    transform: translate(0, 0) scale(1.24);
-  }
-
-  76% {
-    opacity: 1;
-    transform: translate(0, 0) scale(0.94);
+    transform: translate(0, 0) scale(1.06);
   }
 
   100% {
