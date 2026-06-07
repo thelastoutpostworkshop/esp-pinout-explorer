@@ -1,7 +1,7 @@
 <template>
   <v-container class="soc-view" fluid>
     <header class="soc-view__header">
-      <div>
+      <div class="soc-view__identity">
         <h1>ESPSocsExplorer</h1>
         <div class="soc-view__subtitle">
           <v-chip class="pin-chip" color="primary" size="small" variant="flat">{{ selectedSoc.name }}</v-chip>
@@ -15,7 +15,7 @@
         <v-select
           :model-value="store.selectedSocId"
           class="soc-view__select"
-          density="comfortable"
+          density="compact"
           hide-details
           item-title="name"
           item-value="id"
@@ -29,7 +29,7 @@
           v-if="store.packageOptions.length > 1"
           :model-value="selectedPackage.id"
           class="soc-view__select"
-          density="comfortable"
+          density="compact"
           hide-details
           item-title="name"
           item-value="id"
@@ -97,47 +97,58 @@ const legendItems = [
   box-sizing: border-box;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  gap: 20px;
+  gap: 14px;
   min-width: 0;
   max-width: 100vw;
   min-height: 100vh;
   overflow-x: hidden;
-  padding: clamp(16px, 3vw, 34px);
+  padding: clamp(14px, 2.2vw, 24px);
 }
 
 .soc-view__header {
+  display: grid;
+  grid-template-columns: minmax(0, 680px);
+  justify-content: start;
+  gap: 10px;
+  min-width: 0;
+}
+
+.soc-view__identity {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
   min-width: 0;
 }
 
 .soc-view__header h1 {
   margin: 0;
   color: #102027;
-  font-size: clamp(2rem, 4.2vw, 3.6rem);
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
   font-weight: 900;
   letter-spacing: 0;
-  line-height: 1;
+  line-height: 0.96;
 }
 
 .soc-view__subtitle {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-top: 12px;
 }
 
 .soc-view__selectors {
   display: flex;
   align-items: flex-start;
-  justify-content: flex-end;
-  gap: 12px;
+  justify-content: flex-start;
+  gap: 10px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .soc-view__select {
-  width: min(280px, 30vw);
+  flex: 0 1 min(270px, calc(50vw - 22px));
+  max-width: 270px;
+  width: min(270px, calc(50vw - 22px));
 }
 
 .soc-view__tools {
@@ -231,16 +242,12 @@ const legendItems = [
 }
 
 @media (max-width: 820px) {
-  .soc-view__header,
   .soc-view__tools {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  .soc-view__header {
-    display: grid;
-  }
-
   .soc-view__select {
+    max-width: none;
     width: 100%;
   }
 
