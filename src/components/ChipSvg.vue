@@ -273,7 +273,9 @@ function pinLabel(pin: SocPin) {
 }
 
 .pin-node--warning rect {
-  stroke: #b45309;
+  filter: drop-shadow(0 0 1px rgba(66, 32, 6, 0.95)) drop-shadow(0 0 4px rgba(250, 204, 21, 0.85));
+  stroke: #facc15;
+  stroke-width: 3.6;
 }
 
 .pin-node--matched rect {

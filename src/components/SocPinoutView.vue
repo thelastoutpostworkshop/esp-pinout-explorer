@@ -208,8 +208,11 @@ const legendItems = [
 
 .legend-item__swatch--warning {
   background: #f8fafc;
-  border-color: #b45309;
-  border-width: 2.4px;
+  border-color: #facc15;
+  border-width: 3px;
+  box-shadow:
+    0 0 0 1px rgba(66, 32, 6, 0.55),
+    0 0 5px rgba(250, 204, 21, 0.75);
 }
 
 .soc-view__stage {
