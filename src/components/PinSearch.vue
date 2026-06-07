@@ -1,7 +1,7 @@
 <template>
   <div class="pin-search">
     <v-text-field
-      :model-value="modelValue"
+      :model-value="displayValue"
       class="pin-search__field"
       color="primary"
       density="comfortable"
@@ -34,14 +34,14 @@
       <div class="pin-search__chips" aria-label="Pin filters">
         <v-chip
           v-for="filter in quickFilters"
-          :key="filter"
+          :key="filter.label"
           class="pin-chip"
-          :color="activeFilter === filter ? 'primary' : 'secondary'"
-          :variant="activeFilter === filter ? 'flat' : 'tonal'"
+          :color="activeFilter === filter.query ? 'primary' : 'secondary'"
+          :variant="activeFilter === filter.query ? 'flat' : 'tonal'"
           size="small"
           @click="toggleFilter(filter)"
         >
-          {{ filter }}
+          {{ filter.label }}
         </v-chip>
       </div>
     </div>
@@ -60,19 +60,45 @@ const emit = defineEmits<{
   'update:modelValue': [value: string];
 }>();
 
-const quickFilters = ['ADC', 'Touch', 'SPI', 'I2C', 'USB', 'JTAG', 'SDIO', 'LP', 'Strapping'];
+interface QuickFilter {
+  label: string;
+  query: string;
+}
+
+const quickFilters: QuickFilter[] = [
+  { label: 'GPIO', query: 'type:io' },
+  { label: 'Analog', query: 'type:analog' },
+  { label: 'Power', query: 'type:power' },
+  { label: 'Ground', query: 'type:ground' },
+  { label: 'ADC', query: 'ADC' },
+  { label: 'Touch', query: 'Touch' },
+  { label: 'SPI', query: 'SPI' },
+  { label: 'I2C', query: 'I2C' },
+  { label: 'UART', query: 'UART' },
+  { label: 'USB', query: 'USB' },
+  { label: 'JTAG', query: 'JTAG' },
+  { label: 'SDIO', query: 'SDIO' },
+  { label: 'LP', query: 'LP' },
+  { label: 'Boot', query: 'Boot' },
+  { label: 'Strapping', query: 'Strapping' },
+  { label: 'Flash/PSRAM', query: 'Flash PSRAM' },
+];
 
 const activeFilter = computed(() => {
   const normalized = props.modelValue.trim().toLowerCase();
-  return quickFilters.find((filter) => filter.toLowerCase() === normalized) ?? '';
+  return quickFilters.find((filter) => filter.query.toLowerCase() === normalized)?.query ?? '';
+});
+
+const displayValue = computed(() => {
+  return quickFilters.find((filter) => filter.query === props.modelValue)?.label ?? props.modelValue;
 });
 
 function emitSearch(value: string | number | null) {
   emit('update:modelValue', String(value ?? ''));
 }
 
-function toggleFilter(filter: string) {
-  emit('update:modelValue', activeFilter.value === filter ? '' : filter);
+function toggleFilter(filter: QuickFilter) {
+  emit('update:modelValue', activeFilter.value === filter.query ? '' : filter.query);
 }
 </script>
 

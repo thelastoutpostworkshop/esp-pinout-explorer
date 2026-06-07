@@ -8,10 +8,12 @@ function normalize(value: string) {
 }
 
 function pinSearchText(pin: SocPin) {
+  const typeSearchText = pin.type === 'io' ? 'type:io gpio' : `type:${pin.type}`;
   return normalize(
     [
       pin.number,
       pin.name,
+      typeSearchText,
       pin.gpio !== undefined ? `GPIO${pin.gpio}` : '',
       ...(pin.mainFunctions ?? []),
       ...(pin.ioMux ?? []),
