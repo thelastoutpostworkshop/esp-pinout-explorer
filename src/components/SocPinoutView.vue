@@ -49,6 +49,13 @@
       </div>
     </section>
 
+    <section class="soc-view__legend" aria-label="Pin color legend">
+      <div v-for="item in legendItems" :key="item.label" class="legend-item">
+        <span class="legend-item__swatch" :class="item.className" aria-hidden="true"></span>
+        <span>{{ item.label }}</span>
+      </div>
+    </section>
+
     <section class="soc-view__stage">
       <ChipSvg
         :filtered-pin-ids="store.filteredPinIds"
@@ -75,13 +82,29 @@ import { useSocStore } from '@/stores/socStore';
 const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
 const selectedPackage = computed(() => store.selectedPackage);
+
+const legendItems = [
+  { label: 'GPIO', className: 'legend-item__swatch--io' },
+  { label: 'Analog', className: 'legend-item__swatch--analog' },
+  { label: 'Power', className: 'legend-item__swatch--power' },
+  { label: 'Ground', className: 'legend-item__swatch--ground' },
+  { label: 'Warning', className: 'legend-item__swatch--warning' },
+  { label: 'Search match', className: 'legend-item__swatch--matched' },
+  { label: 'Filtered out', className: 'legend-item__swatch--dimmed' },
+  { label: 'Selected', className: 'legend-item__swatch--selected' },
+] as const;
 </script>
 
 <style scoped>
 .soc-view {
+  box-sizing: border-box;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);
   gap: 20px;
+  min-width: 0;
+  max-width: 100vw;
   min-height: 100vh;
+  overflow-x: hidden;
   padding: clamp(16px, 3vw, 34px);
 }
 
@@ -90,6 +113,7 @@ const selectedPackage = computed(() => store.selectedPackage);
   align-items: flex-start;
   justify-content: space-between;
   gap: 20px;
+  min-width: 0;
 }
 
 .soc-view__header h1 {
@@ -124,6 +148,7 @@ const selectedPackage = computed(() => store.selectedPackage);
   grid-template-columns: minmax(260px, 680px) max-content;
   align-items: end;
   gap: 16px;
+  min-width: 0;
 }
 
 .soc-view__count {
@@ -136,9 +161,81 @@ const selectedPackage = computed(() => store.selectedPackage);
   white-space: nowrap;
 }
 
+.soc-view__legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 14px;
+  min-width: 0;
+  max-width: 100%;
+  color: #334155;
+  font-size: 0.88rem;
+  font-weight: 750;
+}
+
+.legend-item {
+  display: inline-flex;
+  flex: 0 1 auto;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  min-height: 24px;
+  white-space: nowrap;
+}
+
+.legend-item__swatch {
+  display: inline-block;
+  width: 18px;
+  height: 14px;
+  border: 1.6px solid #334155;
+  border-radius: 3px;
+  background: #f8fafc;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+}
+
+.legend-item__swatch--io {
+  background: #e0f2fe;
+}
+
+.legend-item__swatch--analog {
+  background: #dcfce7;
+}
+
+.legend-item__swatch--power {
+  background: #fef3c7;
+}
+
+.legend-item__swatch--ground {
+  background: #e2e8f0;
+}
+
+.legend-item__swatch--warning {
+  background: #f8fafc;
+  border-color: #b45309;
+  border-width: 2.4px;
+}
+
+.legend-item__swatch--matched {
+  background: #ccfbf1;
+  border-color: #0f766e;
+  border-width: 2.4px;
+}
+
+.legend-item__swatch--dimmed {
+  background: #e0f2fe;
+  opacity: 0.28;
+}
+
+.legend-item__swatch--selected {
+  background: #f97316;
+  border-color: #7c2d12;
+  border-width: 2.8px;
+}
+
 .soc-view__stage {
   display: grid;
   place-items: center;
+  min-width: 0;
   min-height: 0;
   border: 1px solid #d9e2e7;
   border-radius: 8px;
@@ -153,7 +250,7 @@ const selectedPackage = computed(() => store.selectedPackage);
 @media (max-width: 820px) {
   .soc-view__header,
   .soc-view__tools {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .soc-view__header {
@@ -176,6 +273,14 @@ const selectedPackage = computed(() => store.selectedPackage);
 
   .soc-view__count {
     justify-self: start;
+  }
+
+  .soc-view__legend {
+    gap: 8px 10px;
+  }
+
+  .legend-item {
+    flex-basis: calc(50% - 5px);
   }
 }
 </style>

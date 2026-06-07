@@ -75,12 +75,20 @@ function toggleFilter(filter: string) {
 .pin-search {
   display: grid;
   gap: 12px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.pin-search__field {
+  min-width: 0;
 }
 
 .pin-search__chips {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .pin-search__field :deep(.v-field) {
