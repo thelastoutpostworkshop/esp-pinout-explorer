@@ -33,7 +33,7 @@
       <div class="pin-search__filters-title">Filter pins</div>
       <div class="pin-search__chips" aria-label="Pin filters">
         <v-chip
-          v-for="filter in quickFilters"
+          v-for="filter in visibleQuickFilters"
           :key="filter.label"
           class="pin-chip"
           :color="activeFilter === filter.query ? 'primary' : 'secondary'"
@@ -49,8 +49,9 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, watch } from 'vue';
 import { Search, X } from '@lucide/vue';
+import { useSocStore } from '@/stores/socStore';
 
 const props = defineProps<{
   modelValue: string;
@@ -59,6 +60,8 @@ const props = defineProps<{
 const emit = defineEmits<{
   'update:modelValue': [value: string];
 }>();
+
+const store = useSocStore();
 
 interface QuickFilter {
   label: string;
@@ -89,9 +92,21 @@ const activeFilter = computed(() => {
   return quickFilters.find((filter) => filter.query.toLowerCase() === normalized)?.query ?? '';
 });
 
+const visibleQuickFilters = computed(() => quickFilters.filter((filter) => store.countPinsForQuery(filter.query) > 0));
+
 const displayValue = computed(() => {
   return quickFilters.find((filter) => filter.query === props.modelValue)?.label ?? props.modelValue;
 });
+
+watch(
+  [visibleQuickFilters, activeFilter],
+  ([filters, active]) => {
+    if (active && !filters.some((filter) => filter.query === active)) {
+      emit('update:modelValue', '');
+    }
+  },
+  { immediate: true },
+);
 
 function emitSearch(value: string | number | null) {
   emit('update:modelValue', String(value ?? ''));

@@ -29,6 +29,19 @@ function pinSearchText(pin: SocPin) {
   );
 }
 
+function filterPinsByQuery(pins: SocPin[], search: string) {
+  const query = normalize(search.trim());
+  if (!query) {
+    return pins;
+  }
+
+  const tokens = query.split(/\s+/).filter(Boolean);
+  return pins.filter((pin) => {
+    const text = pinSearchText(pin);
+    return tokens.every((token) => text.includes(token));
+  });
+}
+
 export const useSocStore = defineStore('soc', () => {
   const selectedSocId = ref('esp32s3');
   const selectedPackageId = ref<string | null>(null);
@@ -50,18 +63,7 @@ export const useSocStore = defineStore('soc', () => {
 
   const selectedPin = computed(() => selectedPins.value.find((pin) => pin.id === selectedPinId.value) ?? null);
 
-  const filteredPins = computed(() => {
-    const query = normalize(searchQuery.value.trim());
-    if (!query) {
-      return selectedPins.value;
-    }
-
-    const tokens = query.split(/\s+/).filter(Boolean);
-    return selectedPins.value.filter((pin) => {
-      const text = pinSearchText(pin);
-      return tokens.every((token) => text.includes(token));
-    });
-  });
+  const filteredPins = computed(() => filterPinsByQuery(selectedPins.value, searchQuery.value));
 
   const filteredPinIds = computed(() => new Set(filteredPins.value.map((pin) => pin.id)));
 
@@ -94,6 +96,10 @@ export const useSocStore = defineStore('soc', () => {
     searchQuery.value = query;
   }
 
+  function countPinsForQuery(query: string) {
+    return filterPinsByQuery(selectedPins.value, query).length;
+  }
+
   return {
     socs,
     selectedSocId,
@@ -112,6 +118,7 @@ export const useSocStore = defineStore('soc', () => {
     selectPin,
     clearSelectedPin,
     setSearchQuery,
+    countPinsForQuery,
   };
 });
 
