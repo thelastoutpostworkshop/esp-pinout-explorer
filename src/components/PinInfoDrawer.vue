@@ -2,6 +2,7 @@
   <v-navigation-drawer
     :model-value="Boolean(pin)"
     location="right"
+    :scrim="false"
     temporary
     width="420"
     @update:model-value="onDrawerUpdate"
