@@ -80,7 +80,13 @@
         </section>
 
         <section v-if="pin.matrixSignals?.length" class="pin-info__section">
-          <h2>GPIO Matrix</h2>
+          <div class="pin-info__section-heading">
+            <h2>GPIO Matrix</h2>
+            <InfoTooltip
+              label="What is GPIO Matrix?"
+              text="GPIO Matrix lets ESP32-series chips route many peripheral signals, such as UART, I2C, SPI, PWM, and RMT, to flexible GPIO pins in software. Check pin warnings before choosing a pin."
+            />
+          </div>
           <div class="pin-info__chips">
             <v-chip
               v-for="item in pin.matrixSignals"
@@ -138,6 +144,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { AlertTriangle, BookOpen, X } from '@lucide/vue';
+import InfoTooltip from '@/components/InfoTooltip.vue';
 import type { PinWarning, SocPin, SocSource } from '@/types/soc';
 
 const props = defineProps<{
@@ -251,6 +258,13 @@ function onDrawerUpdate(value: boolean) {
   font-weight: 800;
   letter-spacing: 0;
   text-transform: uppercase;
+}
+
+.pin-info__section-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  justify-self: start;
 }
 
 .pin-info__chips {
