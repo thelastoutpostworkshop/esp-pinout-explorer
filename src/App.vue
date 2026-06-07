@@ -1,11 +1,9 @@
 <template>
   <v-app>
-    <v-main>
-      <SocPinoutView />
-    </v-main>
+    <AppShell />
   </v-app>
 </template>
 
 <script setup lang="ts">
-import SocPinoutView from '@/components/SocPinoutView.vue';
+import AppShell from '@/components/AppShell.vue';
 </script>

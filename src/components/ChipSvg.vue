@@ -218,7 +218,7 @@ function pinLabel(pin: SocPin) {
 .chip-svg {
   width: min(100%, 980px);
   height: auto;
-  max-height: calc(100vh - 220px);
+  max-height: calc(100vh - 96px);
   min-height: 440px;
 }
 

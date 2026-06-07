@@ -27,7 +27,9 @@ npm run build
 
 ## Structure
 
-- `src/components/SocPinoutView.vue` - page composition for the explorer
+- `src/components/AppShell.vue` - compact app bar, responsive sidebar layout, and mobile control drawer
+- `src/components/ExplorerSidebar.vue` - SoC/package selectors, search, pin count, and legend
+- `src/components/SocPinoutView.vue` - pinout stage and selected-pin drawer
 - `src/components/ChipSvg.vue` - data-driven clickable SVG package drawing
 - `src/components/PinInfoDrawer.vue` - selected pin details and warnings
 - `src/components/PinSearch.vue` - search and quick filters

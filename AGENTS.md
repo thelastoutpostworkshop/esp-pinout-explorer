@@ -21,8 +21,10 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
 - `src/data/socs/esp32c6.ts`: ESP32-C6 pin metadata and package variants.
 - `src/types/soc.ts`: shared SoC and pin types.
 - `src/stores/socStore.ts`: selected SoC, selected package, selected pin, and search/filter state.
+- `src/components/AppShell.vue`: compact app bar, desktop sidebar layout, mobile control drawer, and main app frame.
+- `src/components/ExplorerSidebar.vue`: SoC/package selectors, selected SoC/package chips, search, pin count, and legend.
 - `src/components/ChipSvg.vue`: data-driven clickable SVG chip drawing.
-- `src/components/SocPinoutView.vue`: page layout, SoC/package selectors, pin legend, and stage.
+- `src/components/SocPinoutView.vue`: focused pinout stage and right-side selected-pin drawer.
 - `src/components/PinInfoDrawer.vue`: selected-pin details, function chips, warnings, notes, and source link.
 - `src/components/InfoTooltip.vue`: reusable info icon popover for technical section headings.
 - `src/components/FunctionChip.vue`: reusable function chip with optional popover description.
@@ -114,6 +116,7 @@ When adding or editing SoC data:
 ## UI Behavior Rules
 
 - `ChipSvg.vue` must remain SVG-based and data-driven. Do not replace the pinout with static screenshots.
+- Keep SoC/package controls in `ExplorerSidebar.vue`, not in the main pinout stage. The right-side pin drawer should not cover primary controls.
 - Pin colors are category cues:
   - GPIO: blue fill.
   - Analog: green fill.
