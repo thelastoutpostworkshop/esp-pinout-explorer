@@ -468,7 +468,7 @@ onBeforeUnmount(() => {
 }
 
 .pin-node--dimmed {
-  opacity: 0.28;
+  opacity: 0.28 !important;
 }
 
 .pin-node:hover rect,
