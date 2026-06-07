@@ -89,7 +89,6 @@ const legendItems = [
   { label: 'Power', className: 'legend-item__swatch--power' },
   { label: 'Ground', className: 'legend-item__swatch--ground' },
   { label: 'Warning', className: 'legend-item__swatch--warning' },
-  { label: 'Selected', className: 'legend-item__swatch--selected' },
 ] as const;
 </script>
 
@@ -211,12 +210,6 @@ const legendItems = [
   background: #f8fafc;
   border-color: #b45309;
   border-width: 2.4px;
-}
-
-.legend-item__swatch--selected {
-  background: #f97316;
-  border-color: #7c2d12;
-  border-width: 2.8px;
 }
 
 .soc-view__stage {

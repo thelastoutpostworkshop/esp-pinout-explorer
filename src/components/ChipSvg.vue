@@ -239,6 +239,8 @@ function pinLabel(pin: SocPin) {
 .pin-node {
   cursor: pointer;
   outline: none;
+  transform-box: fill-box;
+  transform-origin: center;
   transition:
     opacity 150ms ease,
     transform 150ms ease;
@@ -281,9 +283,14 @@ function pinLabel(pin: SocPin) {
 }
 
 .pin-node--selected rect {
-  fill: #f97316;
-  stroke: #7c2d12;
+  fill: #2563eb;
+  stroke: #1e3a8a;
   stroke-width: 3.2;
+}
+
+.pin-node--selected {
+  animation: selected-pin-pop 420ms cubic-bezier(0.2, 1.35, 0.35, 1);
+  transform: scale(1.22);
 }
 
 .pin-node--dimmed {
@@ -303,12 +310,37 @@ function pinLabel(pin: SocPin) {
   pointer-events: none;
 }
 
+.pin-node--selected .pin-number {
+  fill: #ffffff;
+  font-size: 14px;
+}
+
 .pin-label {
   fill: #1f2937;
   font-size: 13px;
   font-weight: 600;
   letter-spacing: 0;
   pointer-events: none;
+}
+
+.pin-node--selected .pin-label {
+  fill: #1d4ed8;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+@keyframes selected-pin-pop {
+  0% {
+    transform: scale(1);
+  }
+
+  58% {
+    transform: scale(1.38);
+  }
+
+  100% {
+    transform: scale(1.22);
+  }
 }
 
 @media (max-width: 760px) {
