@@ -89,15 +89,6 @@
         >
           {{ pin.boardLabel ?? pin.name }}
         </text>
-        <text
-          class="board-pin__number"
-          :x="pinGeometry(pin).number.x"
-          :y="pinGeometry(pin).number.y"
-          :text-anchor="pinGeometry(pin).number.anchor"
-          dominant-baseline="middle"
-        >
-          {{ pin.displayNumber }}
-        </text>
       </g>
     </svg>
   </div>
@@ -141,7 +132,6 @@ interface Geometry {
   rect: { x: number; y: number; width: number; height: number; rx: number };
   hole: { x: number; y: number };
   label: PointText;
-  number: PointText;
 }
 
 const pinStartY = 112;
@@ -176,7 +166,6 @@ function pinGeometry(pin: SocPin): Geometry {
       rect: { x: 658, y: y - 12, width: 76, height: 24, rx: 5 },
       hole: { x: 748, y },
       label: { x: 696, y },
-      number: { x: 746, y: y - 17, anchor: 'end' },
     };
   }
 
@@ -184,7 +173,6 @@ function pinGeometry(pin: SocPin): Geometry {
     rect: { x: 206, y: y - 12, width: 76, height: 24, rx: 5 },
     hole: { x: 192, y },
     label: { x: 244, y },
-    number: { x: 194, y: y - 17, anchor: 'start' },
   };
 }
 
@@ -435,13 +423,6 @@ onBeforeUnmount(() => {
   font-size: 14px;
 }
 
-.board-pin__number {
-  fill: #dbeafe;
-  font-size: 9px;
-  font-weight: 850;
-  pointer-events: none;
-}
-
 @keyframes board-scene-enter {
   0% {
     opacity: 0;
@@ -558,8 +539,5 @@ onBeforeUnmount(() => {
     max-height: calc(100vh - 92px);
   }
 
-  .board-pin__number {
-    display: none;
-  }
 }
 </style>
