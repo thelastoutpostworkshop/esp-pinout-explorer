@@ -55,7 +55,7 @@ const emit = defineEmits<{
   'update:modelValue': [value: string];
 }>();
 
-const quickFilters = ['ADC', 'Touch', 'SPI', 'I2C', 'USB', 'JTAG', 'Strapping'];
+const quickFilters = ['ADC', 'Touch', 'SPI', 'I2C', 'USB', 'JTAG', 'SDIO', 'LP', 'Strapping'];
 
 const activeFilter = computed(() => {
   const normalized = props.modelValue.trim().toLowerCase();

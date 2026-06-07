@@ -86,7 +86,8 @@
 </template>
 
 <script setup lang="ts">
-import type { SocDefinition, SocPin } from '@/types/soc';
+import { computed } from 'vue';
+import type { PinSide, SocDefinition, SocPin } from '@/types/soc';
 
 const props = defineProps<{
   soc: SocDefinition;
@@ -99,7 +100,7 @@ const emit = defineEmits<{
   'pin-click': [pinId: string];
 }>();
 
-const pins = props.soc.pins;
+const pins = computed(() => props.soc.pins);
 
 interface PointText {
   x: number;
@@ -114,14 +115,38 @@ interface Geometry {
   label: PointText;
 }
 
-const edgeStart = 128;
-const edgeStep = 31.6;
+const verticalStart = 128;
+const verticalEnd = 552;
+const horizontalStart = 230;
+const horizontalEnd = 730;
+
+const sideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>(() => ({
+  left: sideMaxOrder('left'),
+  bottom: sideMaxOrder('bottom'),
+  right: sideMaxOrder('right'),
+  top: sideMaxOrder('top'),
+}));
+
+function sideMaxOrder(side: Exclude<PinSide, 'center'>) {
+  return Math.max(
+    1,
+    ...props.soc.pins.filter((pin) => pin.position.side === side).map((pin) => pin.position.order),
+  );
+}
+
+function sideCoordinate(side: Exclude<PinSide, 'center'>, order: number) {
+  const start = side === 'left' || side === 'right' ? verticalStart : horizontalStart;
+  const end = side === 'left' || side === 'right' ? verticalEnd : horizontalEnd;
+  const count = sideOrders.value[side];
+  if (count <= 1) {
+    return (start + end) / 2;
+  }
+  return start + ((order - 1) * (end - start)) / (count - 1);
+}
 
 function pinGeometry(pin: SocPin): Geometry {
-  const orderIndex = pin.position.order - 1;
-
   if (pin.position.side === 'left') {
-    const y = edgeStart + orderIndex * edgeStep;
+    const y = sideCoordinate('left', pin.position.order);
     return {
       rect: { x: 196, y: y - 12, width: 34, height: 24, rx: 3 },
       number: { x: 213, y },
@@ -130,7 +155,7 @@ function pinGeometry(pin: SocPin): Geometry {
   }
 
   if (pin.position.side === 'bottom') {
-    const x = edgeStart + orderIndex * edgeStep + 102;
+    const x = sideCoordinate('bottom', pin.position.order);
     return {
       rect: { x: x - 12, y: 610, width: 24, height: 34, rx: 3 },
       number: { x, y: 627, transform: `rotate(90 ${x} 627)` },
@@ -139,7 +164,7 @@ function pinGeometry(pin: SocPin): Geometry {
   }
 
   if (pin.position.side === 'right') {
-    const y = edgeStart + orderIndex * edgeStep;
+    const y = sideCoordinate('right', pin.position.order);
     return {
       rect: { x: 730, y: y - 12, width: 34, height: 24, rx: 3 },
       number: { x: 747, y },
@@ -148,7 +173,7 @@ function pinGeometry(pin: SocPin): Geometry {
   }
 
   if (pin.position.side === 'top') {
-    const x = edgeStart + orderIndex * edgeStep + 102;
+    const x = sideCoordinate('top', pin.position.order);
     return {
       rect: { x: x - 12, y: 76, width: 24, height: 34, rx: 3 },
       number: { x, y: 93, transform: `rotate(-90 ${x} 93)` },
