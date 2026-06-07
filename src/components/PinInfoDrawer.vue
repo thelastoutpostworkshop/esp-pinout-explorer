@@ -30,18 +30,23 @@
         </div>
 
         <section class="pin-info__section">
-          <h2>Main Functions</h2>
+          <div class="pin-info__section-heading">
+            <h2>Main Functions</h2>
+            <InfoTooltip
+              label="What are main functions?"
+              text="Main functions are the primary official functions shown for this package pin, including GPIO, fixed peripheral signals, analog or low-power functions, memory signals, clocks, boot controls, and power-related roles."
+            />
+          </div>
           <div class="pin-info__chips">
-            <v-chip
+            <FunctionChip
               v-for="item in pin.mainFunctions"
               :key="item"
-              class="pin-chip"
               color="primary"
+              :description="getFunctionDescription(item)"
+              :label="item"
               size="small"
               variant="tonal"
-            >
-              {{ item }}
-            </v-chip>
+            />
           </div>
         </section>
 
@@ -150,7 +155,9 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { AlertTriangle, BookOpen, X } from '@lucide/vue';
+import FunctionChip from '@/components/FunctionChip.vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
+import { getFunctionDescription } from '@/data/functionDescriptions';
 import type { PinWarning, SocPin, SocSource } from '@/types/soc';
 
 const props = defineProps<{
