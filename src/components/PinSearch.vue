@@ -6,8 +6,10 @@
       color="primary"
       density="comfortable"
       hide-details
-      label="Search"
-      placeholder="GPIO, ADC, SPI, I2C, USB"
+      label="Search pins"
+      persistent-placeholder
+      placeholder="Pin, GPIO, function, warning"
+      variant="outlined"
       @update:model-value="emitSearch"
     >
       <template #prepend-inner>
