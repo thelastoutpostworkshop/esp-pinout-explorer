@@ -160,7 +160,7 @@ const verticalEnd = 552;
 const horizontalStart = 230;
 const horizontalEnd = 730;
 
-const svgViewBox = computed(() => (compactLayout.value ? '150 44 660 650' : '0 -60 960 920'));
+const svgViewBox = computed(() => (compactLayout.value ? '166 48 628 628' : '0 -60 960 920'));
 
 const sideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>(() => ({
   left: sideMaxOrder('left'),
@@ -192,7 +192,7 @@ function pinGeometry(pin: SocPin): Geometry {
     return {
       rect: { x: 196, y: y - 12, width: 34, height: 24, rx: 3 },
       number: { x: 213, y },
-      label: compactLayout.value ? { x: 238, y, anchor: 'start' } : { x: 176, y, anchor: 'end' },
+      label: compactLayout.value ? { x: 236, y, anchor: 'start' } : { x: 176, y, anchor: 'end' },
     };
   }
 
@@ -202,7 +202,7 @@ function pinGeometry(pin: SocPin): Geometry {
       rect: { x: x - 12, y: 610, width: 24, height: 34, rx: 3 },
       number: { x, y: 627, transform: `rotate(90 ${x} 627)` },
       label: compactLayout.value
-        ? { x, y: 600, transform: `rotate(90 ${x} 600)`, anchor: 'end' }
+        ? { x, y: 594, transform: `rotate(90 ${x} 594)`, anchor: 'end' }
         : { x, y: 674, transform: `rotate(90 ${x} 674)`, anchor: 'start' },
     };
   }
@@ -212,7 +212,7 @@ function pinGeometry(pin: SocPin): Geometry {
     return {
       rect: { x: 730, y: y - 12, width: 34, height: 24, rx: 3 },
       number: { x: 747, y },
-      label: compactLayout.value ? { x: 722, y, anchor: 'end' } : { x: 784, y, anchor: 'start' },
+      label: compactLayout.value ? { x: 724, y, anchor: 'end' } : { x: 784, y, anchor: 'start' },
     };
   }
 
@@ -222,7 +222,7 @@ function pinGeometry(pin: SocPin): Geometry {
       rect: { x: x - 12, y: 76, width: 24, height: 34, rx: 3 },
       number: { x, y: 93, transform: `rotate(-90 ${x} 93)` },
       label: compactLayout.value
-        ? { x, y: 120, transform: `rotate(-90 ${x} 120)`, anchor: 'end' }
+        ? { x, y: 126, transform: `rotate(-90 ${x} 126)`, anchor: 'end' }
         : { x, y: 56, transform: `rotate(-90 ${x} 56)`, anchor: 'start' },
     };
   }
@@ -384,6 +384,10 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   opacity: 1;
 }
 
+.chip-shell--compact-labels .chip-orientation-dot {
+  display: none;
+}
+
 .chip-shell--animated .chip-orientation-dot {
   animation: chip-dot-enter 560ms 560ms cubic-bezier(0.18, 1.55, 0.34, 1) both;
 }
@@ -519,7 +523,7 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
 
 .chip-shell--compact-labels .pin-label {
   fill: #dbeafe;
-  font-size: 10px;
+  font-size: 8.5px;
   font-weight: 850;
 }
 
@@ -531,7 +535,7 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
 
 .chip-shell--compact-labels .pin-node--selected .pin-label {
   fill: #ffffff;
-  font-size: 11px;
+  font-size: 9.5px;
 }
 
 @keyframes selected-pin-pop {
@@ -733,7 +737,7 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   }
 
   .pin-label {
-    font-size: 10px;
+    font-size: 8.5px;
   }
 }
 </style>
