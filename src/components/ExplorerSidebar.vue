@@ -67,7 +67,7 @@ const legendItems = [
   { label: 'Analog', className: 'legend-item__swatch--analog' },
   { label: 'Power', className: 'legend-item__swatch--power' },
   { label: 'Ground', className: 'legend-item__swatch--ground' },
-  { label: 'Warning', className: 'legend-item__swatch--warning' },
+  { label: 'Maker warning', className: 'legend-item__swatch--warning' },
 ] as const;
 
 function selectSoc(socId: string) {

@@ -52,7 +52,7 @@ export function getFunctionDescription(name: string): string | null {
   }
 
   if (/^GPIO\d+$/.test(normalized)) {
-    return `${normalized} is a general-purpose digital I/O signal. Check this pin's warnings before using it for a project.`;
+    return `${normalized} is a general-purpose digital I/O signal. Check this pin's maker warnings and board design notes before using it for a project.`;
   }
 
   if (/^RTC_GPIO\d+$/.test(normalized)) {

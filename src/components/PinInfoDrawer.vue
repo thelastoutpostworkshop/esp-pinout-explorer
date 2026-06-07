@@ -123,11 +123,17 @@
           </div>
         </section>
 
-        <section v-if="pin.warnings?.length" class="pin-info__section">
-          <h2>Warnings</h2>
+        <section v-if="makerWarningLabels.length" class="pin-info__section">
+          <div class="pin-info__section-heading">
+            <h2>Maker Warnings</h2>
+            <InfoTooltip
+              label="What are maker warnings?"
+              text="Maker warnings are the pin cautions most likely to affect ordinary development-board projects, such as boot, flashing, USB, reset, voltage, UART0, or reserved memory pins."
+            />
+          </div>
           <div class="pin-info__chips">
             <v-chip
-              v-for="item in warningLabels"
+              v-for="item in makerWarningLabels"
               :key="item"
               class="pin-chip"
               color="warning"
@@ -135,6 +141,29 @@
               variant="flat"
             >
               <AlertTriangle :size="14" aria-hidden="true" />
+              {{ item }}
+            </v-chip>
+          </div>
+        </section>
+
+        <section v-if="boardDesignWarningLabels.length" class="pin-info__section">
+          <div class="pin-info__section-heading">
+            <h2>Board Design Notes</h2>
+            <InfoTooltip
+              label="What are board design notes?"
+              text="Board design notes are lower-priority datasheet cautions that matter mainly when designing custom hardware or connecting sensitive external circuits. They stay searchable, but do not add a yellow pin border."
+            />
+          </div>
+          <div class="pin-info__chips">
+            <v-chip
+              v-for="item in boardDesignWarningLabels"
+              :key="item"
+              class="pin-chip"
+              color="secondary"
+              size="small"
+              variant="tonal"
+            >
+              <Info :size="14" aria-hidden="true" />
               {{ item }}
             </v-chip>
           </div>
@@ -165,11 +194,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AlertTriangle, BookOpen, X } from '@lucide/vue';
+import { AlertTriangle, BookOpen, Info, X } from '@lucide/vue';
 import FunctionChip from '@/components/FunctionChip.vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import { getFunctionDescription } from '@/data/functionDescriptions';
-import type { PinWarning, SocPin, SocSource } from '@/types/soc';
+import { getBoardDesignWarnings, getMakerWarnings, getWarningLabel } from '@/data/pinWarnings';
+import type { SocPin, SocSource } from '@/types/soc';
 
 const props = defineProps<{
   pin: SocPin | null;
@@ -180,19 +210,6 @@ const emit = defineEmits<{
   close: [];
 }>();
 
-const warningText: Record<PinWarning, string> = {
-  strapping: 'Strapping',
-  boot: 'Boot',
-  usb: 'USB',
-  'flash-psram': 'Flash/PSRAM',
-  jtag: 'JTAG',
-  uart0: 'UART0',
-  glitch: 'Power-up glitch',
-  power: 'Power',
-  reset: 'Reset',
-  voltage: 'Voltage',
-};
-
 const typeLabel = computed(() => {
   if (!props.pin) {
     return '';
@@ -200,7 +217,9 @@ const typeLabel = computed(() => {
   return props.pin.type === 'io' ? 'I/O' : props.pin.type[0].toUpperCase() + props.pin.type.slice(1);
 });
 
-const warningLabels = computed(() => props.pin?.warnings?.map((warning) => warningText[warning]) ?? []);
+const makerWarningLabels = computed(() => getMakerWarnings(props.pin?.warnings).map(getWarningLabel));
+
+const boardDesignWarningLabels = computed(() => getBoardDesignWarnings(props.pin?.warnings).map(getWarningLabel));
 
 function onDrawerUpdate(value: boolean) {
   if (!value) {

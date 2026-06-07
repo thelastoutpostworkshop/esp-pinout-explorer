@@ -118,6 +118,7 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import { hasMakerWarning } from '@/data/pinWarnings';
 import type { PinSide, SocDefinition, SocPin } from '@/types/soc';
 
 const props = defineProps<{
@@ -233,7 +234,7 @@ function pinClasses(pin: SocPin) {
     'pin-node--dimmed': props.hasFilter && !matched,
     'pin-node--matched': props.hasFilter && matched,
     [`pin-node--${pin.type}`]: true,
-    'pin-node--warning': Boolean(pin.warnings?.length),
+    'pin-node--warning': hasMakerWarning(pin),
   };
 }
 

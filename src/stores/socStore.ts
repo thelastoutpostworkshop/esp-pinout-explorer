@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
+import { getBoardDesignWarnings, hasMakerWarning } from '@/data/pinWarnings';
 import { socs } from '@/data/socs';
 import type { SocDefinition, SocPackageVariant, SocPin } from '@/types/soc';
 
@@ -21,6 +22,9 @@ function pinSearchText(pin: SocPin) {
       ...(pin.analog ?? []),
       ...(pin.matrixSignals ?? []),
       ...(pin.notes ?? []),
+      pin.warnings?.length ? 'warning' : '',
+      hasMakerWarning(pin) ? 'maker warning' : '',
+      getBoardDesignWarnings(pin.warnings).length ? 'board design note advanced warning' : '',
       ...(pin.warnings ?? []),
       ...(pin.keywords ?? []),
     ]

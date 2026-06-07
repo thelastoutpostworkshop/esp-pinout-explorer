@@ -31,8 +31,9 @@ npm run build
 - `src/components/ExplorerSidebar.vue` - SoC/package selectors, search, pin count, and legend
 - `src/components/SocPinoutView.vue` - pinout stage and selected-pin drawer
 - `src/components/ChipSvg.vue` - data-driven clickable SVG package drawing
-- `src/components/PinInfoDrawer.vue` - selected pin details and warnings
+- `src/components/PinInfoDrawer.vue` - selected pin details, maker warnings, and board design notes
 - `src/components/PinSearch.vue` - search and quick filters
+- `src/data/pinWarnings.ts` - warning presentation rules
 - `src/data/socs/esp32s3.ts` - ESP32-S3 pin metadata
 - `src/data/socs/esp32c6.ts` - ESP32-C6 pin and package metadata
 - `src/stores/socStore.ts` - Pinia selected SoC, selected pin, and search state

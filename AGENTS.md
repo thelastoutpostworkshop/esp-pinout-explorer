@@ -29,6 +29,7 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
 - `src/components/InfoTooltip.vue`: reusable info icon popover for technical section headings.
 - `src/components/FunctionChip.vue`: reusable function chip with optional popover description.
 - `src/data/functionDescriptions.ts`: dictionary and pattern matcher for explaining non-obvious function names.
+- `src/data/pinWarnings.ts`: presentation rules that split official warning categories into maker warnings and board design notes.
 
 ## Pin Data Rules
 
@@ -38,7 +39,8 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
 - Keep `source` metadata current: title, datasheet version, URL, and relevant sections.
 - Every package pin should have a stable `id`, package `number`, `name`, `type`, `position`, and `mainFunctions`.
 - Set `gpio` only when the package pin exposes a GPIO number.
-- Add `warnings` for strapping, boot, USB, flash/PSRAM, JTAG, UART0, reset, voltage, power, or known boot restrictions.
+- Add `warnings` for official cautions such as strapping, boot, USB, flash/PSRAM, JTAG, UART0, reset, voltage, power, glitch, or known boot restrictions.
+- Do not omit official warnings just because they are low priority for makers. `src/data/pinWarnings.ts` decides which warnings get yellow maker-warning treatment versus calmer board-design-note treatment.
 - Add `keywords` for search terms that users reasonably expect, such as `boot`, `strap`, `adc`, `touch`, `usb`, `spi`, `uart`, `jtag`, `flash`, `psram`, and package-specific function aliases.
 
 ## Adding A New SoC
@@ -122,8 +124,9 @@ When adding or editing SoC data:
   - Analog: green fill.
   - Power: red fill.
   - Ground: light gray fill.
-  - Warning: bright yellow border with a subtle glow.
+  - Maker warning: bright yellow border with a subtle glow.
   - Selected: blue selected treatment with a scale/pop animation.
+- The chip should only show the yellow warning border for maker warnings from `src/data/pinWarnings.ts`. Board design notes should stay visible in the drawer and searchable, but should not flood the package view with warning borders.
 - Keep the legend focused on persistent pin categories and warning state. Do not add transient search/selected states back to the legend unless the UX changes.
 - Search should highlight matched pins and dim unmatched pins. It should search pin name, GPIO, main functions, IO MUX, analog, RTC, matrix signals, notes, warnings, and keywords through the store.
 - Technical terms in the drawer should use `InfoTooltip.vue` rather than permanent explanatory paragraphs when the explanation is optional.
