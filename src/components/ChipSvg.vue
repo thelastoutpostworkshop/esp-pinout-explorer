@@ -263,7 +263,7 @@ function pinLabel(pin: SocPin) {
 }
 
 .pin-node--power rect {
-  fill: #fef3c7;
+  fill: #f87171;
 }
 
 .pin-node--ground rect {

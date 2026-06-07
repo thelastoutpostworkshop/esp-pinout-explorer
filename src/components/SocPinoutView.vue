@@ -200,7 +200,7 @@ const legendItems = [
 }
 
 .legend-item__swatch--power {
-  background: #fef3c7;
+  background: #f87171;
 }
 
 .legend-item__swatch--ground {
