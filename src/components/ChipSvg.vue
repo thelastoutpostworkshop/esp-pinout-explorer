@@ -257,11 +257,11 @@ function pinLabel(pin: SocPin) {
 }
 
 .pin-node--io rect {
-  fill: #e0f2fe;
+  fill: #93c5fd;
 }
 
 .pin-node--analog rect {
-  fill: #dcfce7;
+  fill: #86efac;
 }
 
 .pin-node--power rect {

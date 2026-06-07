@@ -191,11 +191,11 @@ const legendItems = [
 }
 
 .legend-item__swatch--io {
-  background: #e0f2fe;
+  background: #93c5fd;
 }
 
 .legend-item__swatch--analog {
-  background: #dcfce7;
+  background: #86efac;
 }
 
 .legend-item__swatch--power {
