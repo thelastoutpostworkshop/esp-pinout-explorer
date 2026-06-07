@@ -39,7 +39,7 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
 - Keep `source` metadata current: title, datasheet version, URL, and relevant sections.
 - Every package pin should have a stable `id`, package `number`, `name`, `type`, `position`, and `mainFunctions`.
 - Set `gpio` only when the package pin exposes a GPIO number.
-- Add `warnings` for official cautions such as strapping, boot, USB, flash/PSRAM, JTAG, UART0, reset, voltage, power, glitch, or known boot restrictions.
+- Add `warnings` for official cautions such as strapping, boot, USB, flash, PSRAM, JTAG, UART0, reset, voltage, power, glitch, or known boot restrictions.
 - Do not omit official warnings just because they are low priority for makers. `src/data/pinWarnings.ts` decides which warnings get yellow maker-warning treatment versus calmer board-design-note treatment.
 - Add `keywords` for search terms that users reasonably expect, such as `boot`, `strap`, `adc`, `touch`, `usb`, `spi`, `uart`, `jtag`, `flash`, `psram`, and package-specific function aliases.
 
@@ -56,7 +56,7 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
    - Preserve official pin names and alternate-function spelling.
 3. Populate pin metadata.
    - Set package `number`, `name`, `type`, `gpio`, `position`, `mainFunctions`, `ioMux`, `rtc`, `analog`, `matrixSignals`, `notes`, `warnings`, and `keywords` where applicable.
-   - Include strapping, boot, USB, flash/PSRAM, JTAG, UART0, reset, voltage, power-domain, and memory-related warnings.
+   - Include strapping, boot, USB, flash, PSRAM, JTAG, UART0, reset, voltage, power-domain, and memory-related warnings.
    - Add maker-friendly notes when a pin is physically present but risky, reserved, or dedicated.
 4. Register the SoC.
    - Add the new definition to the central SoC list used by `socStore`.
@@ -87,7 +87,7 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
 4. Reconcile package differences.
    - Do not blindly copy the larger package pin list.
    - Remove pins that are not exposed in the smaller package.
-   - Add package-specific flash/PSRAM, strapping, boot, power, USB, JTAG, and reserved-pin notes.
+   - Add package-specific flash, PSRAM, strapping, boot, power, USB, JTAG, and reserved-pin notes.
 5. Check package selector behavior.
    - Multiple packages should show the package selector in `SocPinoutView.vue`.
    - Switching packages should clear or update selected-pin state safely through `socStore`.

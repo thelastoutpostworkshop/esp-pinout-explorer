@@ -128,7 +128,7 @@
             <h2>Maker Warnings</h2>
             <InfoTooltip
               label="What are maker warnings?"
-              text="Maker warnings are the pin cautions most likely to affect ordinary development-board projects, such as boot, flashing, USB, reset, voltage, UART0, or reserved memory pins."
+              text="Maker warnings are the pin cautions most likely to affect ordinary development-board projects, such as boot, flashing, USB, reset, voltage, UART0, or optional PSRAM-related pins."
             />
           </div>
           <div class="pin-info__chips">

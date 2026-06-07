@@ -20,9 +20,13 @@ const warningInfo: Record<PinWarning, PinWarningInfo> = {
     audience: 'maker',
     label: 'USB',
   },
-  'flash-psram': {
+  psram: {
     audience: 'maker',
-    label: 'Flash/PSRAM',
+    label: 'PSRAM',
+  },
+  flash: {
+    audience: 'board-design',
+    label: 'Flash memory',
   },
   uart0: {
     audience: 'maker',

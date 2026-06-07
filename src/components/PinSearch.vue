@@ -84,7 +84,7 @@ const quickFilters: QuickFilter[] = [
   { label: 'LP', query: 'LP' },
   { label: 'Boot', query: 'Boot' },
   { label: 'Strapping', query: 'Strapping' },
-  { label: 'Flash/PSRAM', query: 'Flash PSRAM' },
+  { label: 'PSRAM', query: 'PSRAM' },
 ];
 
 const activeFilter = computed(() => {
