@@ -46,7 +46,13 @@
         </section>
 
         <section v-if="pin.ioMux?.length" class="pin-info__section">
-          <h2>IO MUX</h2>
+          <div class="pin-info__section-heading">
+            <h2>IO MUX</h2>
+            <InfoTooltip
+              label="What is IO MUX?"
+              text="IO MUX functions are fixed hardware alternate functions available directly on this physical pin. They are less flexible than GPIO Matrix routing, but are often preferred for high-speed or timing-sensitive signals."
+            />
+          </div>
           <div class="pin-info__chips">
             <v-chip v-for="item in pin.ioMux" :key="item" class="pin-chip" color="info" size="small" variant="tonal">
               {{ item }}
