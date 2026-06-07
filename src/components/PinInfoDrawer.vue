@@ -60,34 +60,45 @@
             />
           </div>
           <div class="pin-info__chips">
-            <v-chip v-for="item in pin.ioMux" :key="item" class="pin-chip" color="info" size="small" variant="tonal">
-              {{ item }}
-            </v-chip>
+            <FunctionChip
+              v-for="item in pin.ioMux"
+              :key="item"
+              color="info"
+              :description="getFunctionDescription(item)"
+              :label="item"
+              size="small"
+              variant="tonal"
+            />
           </div>
         </section>
 
         <section v-if="pin.analog?.length" class="pin-info__section">
           <h2>Analog</h2>
           <div class="pin-info__chips">
-            <v-chip
+            <FunctionChip
               v-for="item in pin.analog"
               :key="item"
-              class="pin-chip"
               color="success"
+              :description="getFunctionDescription(item)"
+              :label="item"
               size="small"
               variant="tonal"
-            >
-              {{ item }}
-            </v-chip>
+            />
           </div>
         </section>
 
         <section v-if="pin.rtc?.length" class="pin-info__section">
           <h2>RTC</h2>
           <div class="pin-info__chips">
-            <v-chip v-for="item in pin.rtc" :key="item" class="pin-chip" color="secondary" size="small" variant="tonal">
-              {{ item }}
-            </v-chip>
+            <FunctionChip
+              v-for="item in pin.rtc"
+              :key="item"
+              color="secondary"
+              :description="getFunctionDescription(item)"
+              :label="item"
+              size="small"
+              variant="tonal"
+            />
           </div>
         </section>
 
@@ -100,16 +111,15 @@
             />
           </div>
           <div class="pin-info__chips">
-            <v-chip
+            <FunctionChip
               v-for="item in pin.matrixSignals"
               :key="item"
-              class="pin-chip"
               color="secondary"
+              :description="getFunctionDescription(item)"
+              :label="item"
               size="x-small"
               variant="outlined"
-            >
-              {{ item }}
-            </v-chip>
+            />
           </div>
         </section>
 

@@ -45,11 +45,11 @@ const phraseDescriptions: Array<[RegExp, string]> = [
 ];
 
 export function getFunctionDescription(name: string): string | null {
-  if (exactDescriptions[name]) {
-    return exactDescriptions[name];
-  }
-
   const normalized = name.trim();
+
+  if (exactDescriptions[normalized]) {
+    return exactDescriptions[normalized];
+  }
 
   if (/^GPIO\d+$/.test(normalized)) {
     return `${normalized} is a general-purpose digital I/O signal. Check this pin's warnings before using it for a project.`;
@@ -91,6 +91,10 @@ export function getFunctionDescription(name: string): string | null {
   }
 
   if (/^SAR I2C (SDA|SCL)\d$/.test(normalized)) {
+    return `${normalized} is an internal SAR ADC control-bus signal, not the usual application I2C peripheral.`;
+  }
+
+  if (/^sar_i2c_(sda|scl)_\d$/i.test(normalized)) {
     return `${normalized} is an internal SAR ADC control-bus signal, not the usual application I2C peripheral.`;
   }
 
