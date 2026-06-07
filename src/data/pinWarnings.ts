@@ -32,6 +32,10 @@ const warningInfo: Record<PinWarning, PinWarningInfo> = {
     audience: 'maker',
     label: 'UART0',
   },
+  onboard: {
+    audience: 'maker',
+    label: 'Board hardware',
+  },
   reset: {
     audience: 'maker',
     label: 'Reset',

@@ -10,7 +10,7 @@
     <v-card v-if="pin" class="pin-info" flat>
       <v-card-title class="pin-info__title">
         <div>
-          <div class="pin-info__eyebrow">Pin {{ pin.number }}</div>
+          <div class="pin-info__eyebrow">Pin {{ pinDisplayNumber }}</div>
           <div class="pin-info__name">{{ pin.name }}</div>
         </div>
         <v-btn aria-label="Close pin details" icon variant="text" @click="emit('close')">
@@ -20,13 +20,9 @@
 
       <v-card-text class="pin-info__content">
         <div class="pin-info__summary">
-          <div class="pin-info__stat">
-            <span>GPIO</span>
-            <strong>{{ pin.gpio !== undefined ? `GPIO${pin.gpio}` : 'None' }}</strong>
-          </div>
-          <div class="pin-info__stat">
-            <span>Type</span>
-            <strong>{{ typeLabel }}</strong>
+          <div v-for="item in summaryItems" :key="item.label" class="pin-info__stat">
+            <span>{{ item.label }}</span>
+            <strong>{{ item.value }}</strong>
           </div>
         </div>
 
@@ -183,8 +179,7 @@
           <span>
             Source:
             <a :href="source.url" rel="noreferrer" target="_blank">{{ source.title }} {{ source.version }}</a>.
-            Sections: package layout, pin overview, IO MUX, low-power/RTC/analog functions, restrictions, memory
-            mapping, boot.
+            Sections: {{ sourceSections }}.
           </span>
         </div>
       </v-card-text>
@@ -217,9 +212,26 @@ const typeLabel = computed(() => {
   return props.pin.type === 'io' ? 'I/O' : props.pin.type[0].toUpperCase() + props.pin.type.slice(1);
 });
 
+const pinDisplayNumber = computed(() => props.pin?.displayNumber ?? props.pin?.number ?? '');
+
+const summaryItems = computed(() => {
+  if (!props.pin) {
+    return [];
+  }
+
+  return [
+    props.pin.boardHeader ? { label: 'Header', value: props.pin.boardHeader } : null,
+    props.pin.boardLabel ? { label: 'Board Label', value: props.pin.boardLabel } : null,
+    { label: 'GPIO', value: props.pin.gpio !== undefined ? `GPIO${props.pin.gpio}` : 'None' },
+    { label: 'Type', value: typeLabel.value },
+  ].filter((item): item is { label: string; value: string } => Boolean(item));
+});
+
 const makerWarningLabels = computed(() => getMakerWarnings(props.pin?.warnings).map(getWarningLabel));
 
 const boardDesignWarningLabels = computed(() => getBoardDesignWarnings(props.pin?.warnings).map(getWarningLabel));
+
+const sourceSections = computed(() => props.source.sections.join(', '));
 
 function onDrawerUpdate(value: boolean) {
   if (!value) {

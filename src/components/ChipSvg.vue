@@ -468,6 +468,10 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   fill: #e2e8f0;
 }
 
+.pin-node--control rect {
+  fill: #fbbf24;
+}
+
 .pin-node--warning rect {
   filter: drop-shadow(0 0 1px rgba(66, 32, 6, 0.95)) drop-shadow(0 0 4px rgba(250, 204, 21, 0.85));
   stroke: #facc15;

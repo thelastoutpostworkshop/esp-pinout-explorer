@@ -73,6 +73,7 @@ const quickFilters: QuickFilter[] = [
   { label: 'Analog', query: 'type:analog' },
   { label: 'Power', query: 'type:power' },
   { label: 'Ground', query: 'type:ground' },
+  { label: 'Control', query: 'type:control' },
   { label: 'ADC', query: 'ADC' },
   { label: 'Touch', query: 'Touch' },
   { label: 'SPI', query: 'SPI' },
@@ -85,6 +86,7 @@ const quickFilters: QuickFilter[] = [
   { label: 'Boot', query: 'Boot' },
   { label: 'Strapping', query: 'Strapping' },
   { label: 'PSRAM', query: 'PSRAM' },
+  { label: 'RGB LED', query: 'RGB LED' },
 ];
 
 const activeFilter = computed(() => {

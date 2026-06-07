@@ -15,6 +15,7 @@ Source baseline:
 
 - [x] ESP32-S3
   - [x] QFN56, 7 x 7 mm
+  - [x] ESP32-S3-DevKitC-1 v1.1 board profile
 - [x] ESP32-C6
   - [x] QFN40, 5 x 5 mm
   - [x] QFN32, 5 x 5 mm

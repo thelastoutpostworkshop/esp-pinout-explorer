@@ -2,6 +2,20 @@
   <section class="soc-view" aria-label="SoC pinout">
     <section class="soc-view__stage">
       <ChipSvg
+        v-if="selectedPackage.kind !== 'board'"
+        :key="`${store.selectedSocId}-${selectedPackage.id}`"
+        :filtered-pin-ids="store.filteredPinIds"
+        :filtered-pin-count="store.filteredPins.length"
+        :has-filter="Boolean(store.searchQuery.trim())"
+        :package-name="selectedPackage.packageName"
+        :pins="store.selectedPins"
+        :selected-pin-id="store.selectedPinId"
+        :soc="selectedSoc"
+        :total-pin-count="store.selectedPins.length"
+        @pin-click="store.selectPin"
+      />
+      <BoardSvg
+        v-else
         :key="`${store.selectedSocId}-${selectedPackage.id}`"
         :filtered-pin-ids="store.filteredPinIds"
         :filtered-pin-count="store.filteredPins.length"
@@ -15,12 +29,13 @@
       />
     </section>
 
-    <PinInfoDrawer :pin="store.selectedPin" :source="selectedSoc.source" @close="store.clearSelectedPin" />
+    <PinInfoDrawer :pin="store.selectedPin" :source="selectedPackage.source ?? selectedSoc.source" @close="store.clearSelectedPin" />
   </section>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import BoardSvg from '@/components/BoardSvg.vue';
 import ChipSvg from '@/components/ChipSvg.vue';
 import PinInfoDrawer from '@/components/PinInfoDrawer.vue';
 import { useSocStore } from '@/stores/socStore';

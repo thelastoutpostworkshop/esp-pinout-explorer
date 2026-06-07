@@ -1,10 +1,10 @@
 # ESPSocsExplorer Agent Notes
 
-This app is a Vue 3 + TypeScript + Vite pin explorer for Espressif SoCs. It uses Vuetify 4 for UI, Pinia for state, and data-driven SVG components for clickable chip packages.
+This app is a Vue 3 + TypeScript + Vite pin explorer for Espressif SoCs and development boards. It uses Vuetify 4 for UI, Pinia for state, and data-driven SVG components for clickable chip packages and board headers.
 
 ## Core Principle
 
-Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO numbers, alternate functions, warnings, and package variants must come from official Espressif datasheets or official Espressif product documentation. Do not infer pinout data from board schematics, random tables, blogs, or screenshots.
+Accuracy matters more than UI flourish. Raw SoC package data must come from official Espressif datasheets. Board profiles must come from official Espressif board user guides, official schematics, or official board documentation. Do not infer pinout data from random tables, blogs, product listings, or screenshots.
 
 ## Current Scope
 
@@ -12,6 +12,8 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
   - ESP32-S3 QFN56
   - ESP32-C6 QFN40
   - ESP32-C6 QFN32
+- Implemented board profiles:
+  - ESP32-S3-DevKitC-1 v1.1
 - Future work is tracked in `todo.md`.
 - The README documents install, dev, build, and top-level structure.
 
@@ -22,8 +24,9 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
 - `src/types/soc.ts`: shared SoC and pin types.
 - `src/stores/socStore.ts`: selected SoC, selected package, selected pin, and search/filter state.
 - `src/components/AppShell.vue`: compact app bar, desktop sidebar layout, mobile control drawer, and main app frame.
-- `src/components/ExplorerSidebar.vue`: SoC/package selectors, selected SoC/package chips, search, pin count, and legend.
+- `src/components/ExplorerSidebar.vue`: SoC/profile selectors, selected SoC/profile chips, search, pin count, and legend.
 - `src/components/ChipSvg.vue`: data-driven clickable SVG chip drawing.
+- `src/components/BoardSvg.vue`: data-driven clickable SVG development-board header drawing.
 - `src/components/SocPinoutView.vue`: focused pinout stage and right-side selected-pin drawer.
 - `src/components/PinInfoDrawer.vue`: selected-pin details, function chips, warnings, notes, and source link.
 - `src/components/InfoTooltip.vue`: reusable info icon popover for technical section headings.
@@ -43,6 +46,39 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
 - Do not omit official warnings just because they are low priority for makers. `src/data/pinWarnings.ts` decides which warnings get yellow maker-warning treatment versus calmer board-design-note treatment.
 - Add `keywords` for search terms that users reasonably expect, such as `boot`, `strap`, `adc`, `touch`, `usb`, `spi`, `uart`, `jtag`, `flash`, `psram`, and package-specific function aliases.
 
+## Board Profile Rules
+
+- Use `boardProfiles` on the related `SocDefinition`.
+- Set `kind: 'board'`, a stable `id`, a concise `name`, and a maker-facing `packageName`.
+- Use official board header identifiers in `displayNumber`, for example `J1-4`.
+- Preserve the board silkscreen/header label in `boardLabel`, for example `TX`, `3V3`, or `14`.
+- Set `boardHeader` to the official header block name, for example `J1` or `J3`.
+- For GPIO header pins, copy or derive SoC-level GPIO metadata from the raw SoC package pin so drawer sections, search, warnings, and tooltips stay consistent.
+- Add board-specific maker warnings for pins connected to on-board hardware, boot/reset buttons, USB, UART bridges, LEDs, or module memory constraints.
+- Keep board-only power and ground pins as real clickable pins. They should have clear notes and search keywords even when there is no GPIO.
+- Board profiles should use `BoardSvg.vue`; raw package profiles should use `ChipSvg.vue`.
+- If a board has hardware revisions, encode the revision in the profile name and source metadata, for example `DevKitC-1 v1.1`.
+
+## Adding A New Board Profile
+
+1. Confirm the official board source.
+   - Prefer the official Espressif board user guide and its Header Block tables.
+   - Use official schematics only to clarify board connections that are not explicit in the user guide.
+   - Record source title, version, URL, and relevant sections.
+2. Encode the board headers.
+   - Create one `SocPin` per header pin, including power, ground, reset, boot, and no-GPIO pins.
+   - Use `displayNumber`, `boardHeader`, and `boardLabel` for board identity.
+   - Use `position.side` and `position.order` to place the pin in `BoardSvg.vue`.
+3. Reconcile board constraints.
+   - Mark pins used by on-board LEDs, USB, UART bridges, boot/reset buttons, or module memory as maker warnings when they affect normal project use.
+   - If a pin is physically present on a header but unavailable for some module variants, keep it in the board profile and add a clear warning/note.
+4. Register the board profile.
+   - Add it to `boardProfiles` on the matching SoC.
+   - Set `defaultProfileId` when the board profile should be the first view for that SoC.
+5. Verify.
+   - Run `npm run build`.
+   - Open the app locally when practical and test profile selection, search filters, warning borders, selected-pin drawer, and mobile layout.
+
 ## Adding A New SoC
 
 1. Confirm the official Espressif source.
@@ -60,12 +96,12 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
    - Add maker-friendly notes when a pin is physically present but risky, reserved, or dedicated.
 4. Register the SoC.
    - Add the new definition to the central SoC list used by `socStore`.
-   - Make sure SoC/package selectors still work and default to the intended package.
+   - Make sure SoC/profile selectors still work and default to the intended package or board profile.
 5. Update the function dictionary.
    - Add exact or pattern descriptions in `src/data/functionDescriptions.ts` for new unclear function labels.
    - Check the drawer for labels that appear as plain abbreviations and add descriptions for them.
 6. Update docs.
-   - Add the SoC/package to `README.md` current SoCs when implemented.
+   - Add the SoC/package or board profile to `README.md` current profiles when implemented.
    - Mark the corresponding item complete in `todo.md`.
 7. Verify.
    - Run `npm run build`.
@@ -88,9 +124,9 @@ Accuracy matters more than UI flourish. Pin names, package pin numbers, GPIO num
    - Do not blindly copy the larger package pin list.
    - Remove pins that are not exposed in the smaller package.
    - Add package-specific flash, PSRAM, strapping, boot, power, USB, JTAG, and reserved-pin notes.
-5. Check package selector behavior.
-   - Multiple packages should show the package selector in `SocPinoutView.vue`.
-   - Switching packages should clear or update selected-pin state safely through `socStore`.
+5. Check profile selector behavior.
+   - Multiple packages or board profiles should show the profile selector in `ExplorerSidebar.vue`.
+   - Switching profiles should clear or update selected-pin state safely through `socStore`.
    - Pin count and package label must match the selected package.
 6. Verify the SVG layout.
    - Check that all pins fit, labels are readable, center pads render correctly, and selected-pin animation does not obscure adjacent pins badly.
@@ -117,8 +153,8 @@ When adding or editing SoC data:
 
 ## UI Behavior Rules
 
-- `ChipSvg.vue` must remain SVG-based and data-driven. Do not replace the pinout with static screenshots.
-- Keep SoC/package controls in `ExplorerSidebar.vue`, not in the main pinout stage. The right-side pin drawer should not cover primary controls.
+- `ChipSvg.vue` and `BoardSvg.vue` must remain SVG-based and data-driven. Do not replace pinouts with static screenshots.
+- Keep SoC/profile controls in `ExplorerSidebar.vue`, not in the main pinout stage. The right-side pin drawer should not cover primary controls.
 - Pin colors are category cues:
   - GPIO: blue fill.
   - Analog: green fill.
@@ -142,7 +178,7 @@ When adding or editing SoC data:
 
 - Run `npm run build` after code or data changes.
 - For visual/UI changes, also verify the local app at `http://127.0.0.1:5173` when practical.
-- Check selected-pin drawer behavior after changing chip interactions, function chips, tooltips, package selection, or store state.
+- Check selected-pin drawer behavior after changing chip/board interactions, function chips, tooltips, profile selection, or store state.
 - Do not commit generated `dist/`, `node_modules/`, or `.codex/` artifacts.
 
 ## Style Notes

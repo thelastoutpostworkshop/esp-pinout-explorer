@@ -1,4 +1,4 @@
-import type { PinPosition, PinType, PinWarning, SocDefinition, SocPin } from '@/types/soc';
+import type { PinPosition, PinType, PinWarning, SocDefinition, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const source = {
   title: 'ESP32-S3 Series Datasheet',
@@ -93,6 +93,8 @@ export const esp32s3: SocDefinition = {
   id: 'esp32s3',
   name: 'ESP32-S3',
   family: 'ESP32',
+  defaultPackageId: 'esp32s3-qfn56',
+  defaultProfileId: 'esp32s3-devkitc-1-v1-1',
   packageName: 'QFN56 (7 x 7 mm), top view',
   description: 'ESP32-S3 Wi-Fi + Bluetooth LE SoC pinout MVP.',
   source,
@@ -545,3 +547,486 @@ export const esp32s3: SocDefinition = {
     }),
   ],
 };
+
+const devkitC1V11Source: SocSource = {
+  title: 'ESP32-S3-DevKitC-1 User Guide',
+  version: 'v1.1',
+  url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html',
+  sections: [
+    'Description of Components',
+    'Ordering Information',
+    'Header Block J1',
+    'Header Block J3',
+    'Pin Layout',
+    'Hardware Revision Details',
+  ],
+};
+
+interface BoardHeaderPinInput {
+  header: 'J1' | 'J3';
+  number: number;
+  label: string;
+  type: PinType;
+  gpio?: number;
+  mainFunctions: string[];
+  notes?: string[];
+  warnings?: PinWarning[];
+  keywords?: string[];
+}
+
+function uniqueValues<T>(values: T[]): T[] {
+  return [...new Set(values)];
+}
+
+function findQfnPinByGpio(gpio: number | undefined) {
+  if (gpio === undefined) {
+    return undefined;
+  }
+
+  return esp32s3.pins.find((candidate) => candidate.gpio === gpio);
+}
+
+function boardPin(input: BoardHeaderPinInput): SocPin {
+  const sourcePin = findQfnPinByGpio(input.gpio);
+  const displayNumber = `${input.header}-${input.number}`;
+  const gpioLabel = input.gpio !== undefined ? `GPIO${input.gpio}` : '';
+  const name = input.gpio !== undefined && input.label !== 'TX' && input.label !== 'RX' ? gpioLabel : input.label;
+
+  return {
+    id: `esp32s3-devkitc1-v11-${input.header.toLowerCase()}-${input.number}`,
+    number: input.number,
+    displayNumber,
+    name,
+    type: input.type,
+    gpio: input.gpio,
+    boardHeader: input.header,
+    boardLabel: input.label,
+    position: { side: input.header === 'J1' ? 'left' : 'right', order: input.number },
+    mainFunctions: input.mainFunctions,
+    ioMux: sourcePin?.ioMux,
+    rtc: sourcePin?.rtc,
+    analog: sourcePin?.analog,
+    matrixSignals: sourcePin?.matrixSignals,
+    notes: uniqueValues([
+      `${displayNumber} board header pin, silkscreen label ${input.label}.`,
+      ...(input.notes ?? []),
+      ...(sourcePin?.notes ?? []),
+    ]),
+    warnings: uniqueValues([...(input.warnings ?? []), ...(sourcePin?.warnings ?? [])]),
+    keywords: uniqueValues([
+      'board',
+      'devkit',
+      'devkitc',
+      'devkitc-1',
+      'header',
+      input.header,
+      displayNumber,
+      input.label,
+      gpioLabel,
+      ...(input.keywords ?? []),
+      ...(sourcePin?.keywords ?? []),
+    ].filter(Boolean)),
+  };
+}
+
+const devkitUnavailableOnOctalMemory =
+  'On ESP32-S3-DevKitC-1 boards with octal SPI flash/PSRAM memory, this GPIO is used internally for memory communication and is not available for external use.';
+
+const esp32s3DevKitC1V11Profile: SocPackageVariant = {
+  id: 'esp32s3-devkitc-1-v1-1',
+  name: 'DevKitC-1 v1.1',
+  packageName: 'ESP32-S3-DevKitC-1 v1.1 board headers',
+  kind: 'board',
+  source: devkitC1V11Source,
+  pins: [
+    boardPin({
+      header: 'J1',
+      number: 1,
+      label: '3V3',
+      type: 'power',
+      mainFunctions: ['3.3 V power supply'],
+      notes: ['3.3 V power rail from the DevKitC-1 regulator.'],
+      warnings: warnings('power'),
+      keywords: ['3v3', '3.3v', 'power', 'supply'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 2,
+      label: '3V3',
+      type: 'power',
+      mainFunctions: ['3.3 V power supply'],
+      notes: ['3.3 V power rail from the DevKitC-1 regulator.'],
+      warnings: warnings('power'),
+      keywords: ['3v3', '3.3v', 'power', 'supply'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 3,
+      label: 'RST',
+      type: 'control',
+      mainFunctions: ['EN', 'Reset'],
+      notes: ['Connected to the ESP32-S3 enable/reset signal and the board Reset button.'],
+      warnings: warnings('reset'),
+      keywords: ['rst', 'reset', 'en', 'enable', 'chip pu'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 4,
+      label: '4',
+      type: 'io',
+      gpio: 4,
+      mainFunctions: ['RTC_GPIO4', 'GPIO4', 'TOUCH4', 'ADC1_CH3'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 5,
+      label: '5',
+      type: 'io',
+      gpio: 5,
+      mainFunctions: ['RTC_GPIO5', 'GPIO5', 'TOUCH5', 'ADC1_CH4'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 6,
+      label: '6',
+      type: 'io',
+      gpio: 6,
+      mainFunctions: ['RTC_GPIO6', 'GPIO6', 'TOUCH6', 'ADC1_CH5'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 7,
+      label: '7',
+      type: 'io',
+      gpio: 7,
+      mainFunctions: ['RTC_GPIO7', 'GPIO7', 'TOUCH7', 'ADC1_CH6'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 8,
+      label: '15',
+      type: 'io',
+      gpio: 15,
+      mainFunctions: ['RTC_GPIO15', 'GPIO15', 'U0RTS', 'ADC2_CH4', 'XTAL_32K_P'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 9,
+      label: '16',
+      type: 'io',
+      gpio: 16,
+      mainFunctions: ['RTC_GPIO16', 'GPIO16', 'U0CTS', 'ADC2_CH5', 'XTAL_32K_N'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 10,
+      label: '17',
+      type: 'io',
+      gpio: 17,
+      mainFunctions: ['RTC_GPIO17', 'GPIO17', 'U1TXD', 'ADC2_CH6'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 11,
+      label: '18',
+      type: 'io',
+      gpio: 18,
+      mainFunctions: ['RTC_GPIO18', 'GPIO18', 'U1RXD', 'ADC2_CH7', 'CLK_OUT3'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 12,
+      label: '8',
+      type: 'io',
+      gpio: 8,
+      mainFunctions: ['RTC_GPIO8', 'GPIO8', 'TOUCH8', 'ADC1_CH7', 'SUBSPICS1'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 13,
+      label: '3',
+      type: 'io',
+      gpio: 3,
+      mainFunctions: ['RTC_GPIO3', 'GPIO3', 'TOUCH3', 'ADC1_CH2'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 14,
+      label: '46',
+      type: 'io',
+      gpio: 46,
+      mainFunctions: ['GPIO46'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 15,
+      label: '9',
+      type: 'io',
+      gpio: 9,
+      mainFunctions: ['RTC_GPIO9', 'GPIO9', 'TOUCH9', 'ADC1_CH8', 'FSPIHD', 'SUBSPIHD'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 16,
+      label: '10',
+      type: 'io',
+      gpio: 10,
+      mainFunctions: ['RTC_GPIO10', 'GPIO10', 'TOUCH10', 'ADC1_CH9', 'FSPICS0', 'FSPIIO4', 'SUBSPICS0'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 17,
+      label: '11',
+      type: 'io',
+      gpio: 11,
+      mainFunctions: ['RTC_GPIO11', 'GPIO11', 'TOUCH11', 'ADC2_CH0', 'FSPID', 'FSPIIO5', 'SUBSPID'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 18,
+      label: '12',
+      type: 'io',
+      gpio: 12,
+      mainFunctions: ['RTC_GPIO12', 'GPIO12', 'TOUCH12', 'ADC2_CH1', 'FSPICLK', 'FSPIIO6', 'SUBSPICLK'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 19,
+      label: '13',
+      type: 'io',
+      gpio: 13,
+      mainFunctions: ['RTC_GPIO13', 'GPIO13', 'TOUCH13', 'ADC2_CH2', 'FSPIQ', 'FSPIIO7', 'SUBSPIQ'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 20,
+      label: '14',
+      type: 'io',
+      gpio: 14,
+      mainFunctions: ['RTC_GPIO14', 'GPIO14', 'TOUCH14', 'ADC2_CH3', 'FSPIWP', 'FSPIDQS', 'SUBSPIWP'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 21,
+      label: '5V',
+      type: 'power',
+      mainFunctions: ['5 V power supply'],
+      notes: ['5 V board power rail. The official guide lists USB ports, 5V/G pins, or 3V3/G pins as mutually exclusive power options.'],
+      warnings: warnings('power'),
+      keywords: ['5v', 'power', 'supply', 'usb'],
+    }),
+    boardPin({
+      header: 'J1',
+      number: 22,
+      label: 'G',
+      type: 'ground',
+      mainFunctions: ['Ground'],
+      notes: ['Ground reference pin.'],
+      keywords: ['ground', 'gnd'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 1,
+      label: 'G',
+      type: 'ground',
+      mainFunctions: ['Ground'],
+      notes: ['Ground reference pin.'],
+      keywords: ['ground', 'gnd'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 2,
+      label: 'TX',
+      type: 'io',
+      gpio: 43,
+      mainFunctions: ['U0TXD', 'GPIO43', 'CLK_OUT1'],
+      notes: ['Connected to the on-board USB-to-UART bridge as the default serial transmit signal.'],
+      warnings: warnings('uart0'),
+      keywords: ['tx', 'serial', 'uart', 'uart0', 'usb uart'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 3,
+      label: 'RX',
+      type: 'io',
+      gpio: 44,
+      mainFunctions: ['U0RXD', 'GPIO44', 'CLK_OUT2'],
+      notes: ['Connected to the on-board USB-to-UART bridge as the default serial receive signal.'],
+      warnings: warnings('uart0'),
+      keywords: ['rx', 'serial', 'uart', 'uart0', 'usb uart'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 4,
+      label: '1',
+      type: 'io',
+      gpio: 1,
+      mainFunctions: ['RTC_GPIO1', 'GPIO1', 'TOUCH1', 'ADC1_CH0'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 5,
+      label: '2',
+      type: 'io',
+      gpio: 2,
+      mainFunctions: ['RTC_GPIO2', 'GPIO2', 'TOUCH2', 'ADC1_CH1'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 6,
+      label: '42',
+      type: 'io',
+      gpio: 42,
+      mainFunctions: ['MTMS', 'GPIO42'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 7,
+      label: '41',
+      type: 'io',
+      gpio: 41,
+      mainFunctions: ['MTDI', 'GPIO41', 'CLK_OUT1'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 8,
+      label: '40',
+      type: 'io',
+      gpio: 40,
+      mainFunctions: ['MTDO', 'GPIO40', 'CLK_OUT2'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 9,
+      label: '39',
+      type: 'io',
+      gpio: 39,
+      mainFunctions: ['MTCK', 'GPIO39', 'CLK_OUT3', 'SUBSPICS1'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 10,
+      label: '38',
+      type: 'io',
+      gpio: 38,
+      mainFunctions: ['GPIO38', 'FSPIWP', 'SUBSPIWP', 'RGB LED'],
+      notes: ['Connected to the addressable RGB LED on ESP32-S3-DevKitC-1 v1.1.'],
+      warnings: warnings('onboard'),
+      keywords: ['rgb', 'led', 'neopixel', 'addressable led', 'onboard led'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 11,
+      label: '37',
+      type: 'io',
+      gpio: 37,
+      mainFunctions: ['SPIDQS', 'GPIO37', 'FSPIQ', 'SUBSPIQ'],
+      notes: [devkitUnavailableOnOctalMemory],
+      warnings: warnings('psram'),
+      keywords: ['octal', 'psram', 'memory', 'unavailable'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 12,
+      label: '36',
+      type: 'io',
+      gpio: 36,
+      mainFunctions: ['SPIIO7', 'GPIO36', 'FSPICLK', 'SUBSPICLK'],
+      notes: [devkitUnavailableOnOctalMemory],
+      warnings: warnings('psram'),
+      keywords: ['octal', 'psram', 'memory', 'unavailable'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 13,
+      label: '35',
+      type: 'io',
+      gpio: 35,
+      mainFunctions: ['SPIIO6', 'GPIO35', 'FSPID', 'SUBSPID'],
+      notes: [devkitUnavailableOnOctalMemory],
+      warnings: warnings('psram'),
+      keywords: ['octal', 'psram', 'memory', 'unavailable'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 14,
+      label: '0',
+      type: 'io',
+      gpio: 0,
+      mainFunctions: ['RTC_GPIO0', 'GPIO0'],
+      notes: ['Connected to the board Boot button. Holding Boot and pressing Reset enters firmware download mode.'],
+      warnings: warnings('strapping', 'boot'),
+      keywords: ['boot button', 'download button'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 15,
+      label: '45',
+      type: 'io',
+      gpio: 45,
+      mainFunctions: ['GPIO45'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 16,
+      label: '48',
+      type: 'io',
+      gpio: 48,
+      mainFunctions: ['GPIO48', 'SPICLK_N', 'SUBSPICLK_N_DIFF'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 17,
+      label: '47',
+      type: 'io',
+      gpio: 47,
+      mainFunctions: ['GPIO47', 'SPICLK_P', 'SUBSPICLK_P_DIFF'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 18,
+      label: '21',
+      type: 'io',
+      gpio: 21,
+      mainFunctions: ['RTC_GPIO21', 'GPIO21'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 19,
+      label: '20',
+      type: 'io',
+      gpio: 20,
+      mainFunctions: ['RTC_GPIO20', 'GPIO20', 'U1CTS', 'ADC2_CH9', 'CLK_OUT1', 'USB_D+'],
+      notes: ['Also routed to the native ESP32-S3 USB port on the DevKitC-1 board.'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 20,
+      label: '19',
+      type: 'io',
+      gpio: 19,
+      mainFunctions: ['RTC_GPIO19', 'GPIO19', 'U1RTS', 'ADC2_CH8', 'CLK_OUT2', 'USB_D-'],
+      notes: ['Also routed to the native ESP32-S3 USB port on the DevKitC-1 board.'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 21,
+      label: 'G',
+      type: 'ground',
+      mainFunctions: ['Ground'],
+      notes: ['Ground reference pin.'],
+      keywords: ['ground', 'gnd'],
+    }),
+    boardPin({
+      header: 'J3',
+      number: 22,
+      label: 'G',
+      type: 'ground',
+      mainFunctions: ['Ground'],
+      notes: ['Ground reference pin.'],
+      keywords: ['ground', 'gnd'],
+    }),
+  ],
+};
+
+esp32s3.boardProfiles = [esp32s3DevKitC1V11Profile];

@@ -1,6 +1,8 @@
-export type PinType = 'io' | 'analog' | 'power' | 'ground';
+export type PinType = 'io' | 'analog' | 'power' | 'ground' | 'control';
 
 export type PinSide = 'left' | 'bottom' | 'right' | 'top' | 'center';
+
+export type PinProfileKind = 'package' | 'board';
 
 export type PinWarning =
   | 'strapping'
@@ -10,6 +12,7 @@ export type PinWarning =
   | 'psram'
   | 'jtag'
   | 'uart0'
+  | 'onboard'
   | 'glitch'
   | 'power'
   | 'reset'
@@ -23,9 +26,12 @@ export interface PinPosition {
 export interface SocPin {
   id: string;
   number: number;
+  displayNumber?: string;
   name: string;
   type: PinType;
   gpio?: number;
+  boardHeader?: string;
+  boardLabel?: string;
   position: PinPosition;
   mainFunctions: string[];
   ioMux?: string[];
@@ -48,6 +54,8 @@ export interface SocPackageVariant {
   id: string;
   name: string;
   packageName: string;
+  kind?: PinProfileKind;
+  source?: SocSource;
   pins: SocPin[];
 }
 
@@ -56,9 +64,11 @@ export interface SocDefinition {
   name: string;
   family: string;
   defaultPackageId?: string;
+  defaultProfileId?: string;
   packageName: string;
   description: string;
   source: SocSource;
   pins: SocPin[];
   packageVariants?: SocPackageVariant[];
+  boardProfiles?: SocPackageVariant[];
 }

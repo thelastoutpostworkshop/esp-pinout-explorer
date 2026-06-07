@@ -3,6 +3,7 @@
     <section class="explorer-sidebar__section">
       <div class="explorer-sidebar__chips">
         <v-chip class="pin-chip" color="primary" size="small" variant="flat">{{ selectedSoc.name }}</v-chip>
+        <v-chip class="pin-chip" color="secondary" size="small" variant="tonal">{{ selectedPackage.name }}</v-chip>
       </div>
 
       <v-select
@@ -26,7 +27,7 @@
         hide-details
         item-title="name"
         item-value="id"
-        label="Package"
+        label="Profile"
         :items="store.packageOptions"
         variant="outlined"
         @update:model-value="selectPackage"
@@ -67,6 +68,7 @@ const legendItems = [
   { label: 'Analog', className: 'legend-item__swatch--analog' },
   { label: 'Power', className: 'legend-item__swatch--power' },
   { label: 'Ground', className: 'legend-item__swatch--ground' },
+  { label: 'Control', className: 'legend-item__swatch--control' },
   { label: 'Maker warning', className: 'legend-item__swatch--warning' },
 ] as const;
 
@@ -155,6 +157,10 @@ function selectPackage(packageId: string) {
 
 .legend-item__swatch--ground {
   background: #e2e8f0;
+}
+
+.legend-item__swatch--control {
+  background: #fbbf24;
 }
 
 .legend-item__swatch--warning {

@@ -1,6 +1,7 @@
 const exactDescriptions: Record<string, string> = {
   ANT: 'Antenna RF input/output pin. This is a dedicated RF analog connection, not a general GPIO.',
   CHIP_PU: 'Chip power-up and reset-enable input. Pulling this low resets or disables the chip.',
+  EN: 'Enable/reset signal for the ESP32-S3 module. Pulling it low resets or disables the chip.',
   FSPICLK: 'Fast SPI clock signal. Often used for flash, PSRAM, or high-speed SPI connections.',
   FSPICS0: 'Fast SPI chip-select 0 signal. Commonly used as a chip-select line for SPI memory or peripherals.',
   FSPICS1: 'Fast SPI chip-select 1 signal. Commonly used as an extra chip-select line for SPI memory or peripherals.',
@@ -17,6 +18,8 @@ const exactDescriptions: Record<string, string> = {
   MTDI: 'JTAG test data input signal. Also used by some boot/debug configurations on supported chips.',
   MTDO: 'JTAG test data output signal. Also used by some boot/debug configurations on supported chips.',
   MTMS: 'JTAG test mode select signal. Also used by some boot/debug configurations on supported chips.',
+  Reset: 'Board reset function connected to the module enable/reset signal.',
+  'RGB LED': 'Addressable RGB LED on the development board. Using this GPIO can also affect the on-board LED.',
   SPICLK: 'SPI flash/PSRAM clock signal. Usually reserved when external flash or PSRAM uses this package pin.',
   SPICS0: 'SPI flash chip-select 0 signal. Usually reserved for external flash on many ESP32 packages.',
   SPICS1: 'SPI chip-select 1 signal. Often related to external PSRAM or an additional SPI memory device.',
@@ -31,6 +34,9 @@ const exactDescriptions: Record<string, string> = {
 };
 
 const phraseDescriptions: Array<[RegExp, string]> = [
+  [/^3\.3 V power supply$/i, '3.3 V board power rail. Use according to the board guide power-supply options.'],
+  [/^5 V power supply$/i, '5 V board power rail. Use according to the board guide power-supply options.'],
+  [/^ground$/i, 'Ground reference pin for the board.'],
   [/^3\.3 V .*power input$/i, 'Power-supply input pin for the named chip domain. Connect according to the datasheet power requirements.'],
   [/^analog power input$/i, 'Analog-domain power-supply input pin. This is not a GPIO.'],
   [/^exposed ground pad$/i, 'Exposed thermal/electrical ground pad. It should be connected to ground according to the package guidance.'],

@@ -13,7 +13,10 @@ function pinSearchText(pin: SocPin) {
   return normalize(
     [
       pin.number,
+      pin.displayNumber ?? '',
       pin.name,
+      pin.boardHeader ?? '',
+      pin.boardLabel ?? '',
       typeSearchText,
       pin.gpio !== undefined ? `GPIO${pin.gpio}` : '',
       ...(pin.mainFunctions ?? []),
@@ -59,7 +62,7 @@ export const useSocStore = defineStore('soc', () => {
   const selectedPackage = computed(() => {
     return (
       packageOptions.value.find((packageOption) => packageOption.id === selectedPackageId.value) ??
-      packageOptions.value[0]
+      defaultProfileForSoc(selectedSoc.value)
     );
   });
 
@@ -75,7 +78,7 @@ export const useSocStore = defineStore('soc', () => {
     const soc = socs.find((candidate) => candidate.id === socId);
     if (soc) {
       selectedSocId.value = socId;
-      selectedPackageId.value = buildPackageOptions(soc)[0].id;
+      selectedPackageId.value = defaultProfileForSoc(soc).id;
       selectedPinId.value = null;
       searchQuery.value = '';
     }
@@ -132,8 +135,15 @@ function buildPackageOptions(soc: SocDefinition): SocPackageVariant[] {
       id: soc.defaultPackageId ?? 'default',
       name: soc.packageName.split(' ')[0],
       packageName: soc.packageName,
+      kind: 'package',
       pins: soc.pins,
     },
     ...(soc.packageVariants ?? []),
+    ...(soc.boardProfiles ?? []),
   ];
+}
+
+function defaultProfileForSoc(soc: SocDefinition): SocPackageVariant {
+  const options = buildPackageOptions(soc);
+  return options.find((option) => option.id === soc.defaultProfileId) ?? options[0];
 }

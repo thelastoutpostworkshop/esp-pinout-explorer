@@ -1,9 +1,10 @@
 # ESPSocsExplorer
 
-Vue 3 + TypeScript + Vite MVP for exploring Espressif SoC pinouts with Vuetify 4 and Pinia.
+Vue 3 + TypeScript + Vite MVP for exploring Espressif SoC and development-board pinouts with Vuetify 4 and Pinia.
 
-Current SoCs:
+Current profiles:
 
+- ESP32-S3-DevKitC-1 v1.1 board headers, based on the official Espressif ESP32-S3-DevKitC-1 User Guide v1.1: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html
 - ESP32-S3 QFN56, based on the official Espressif ESP32-S3 Series Datasheet v2.2: https://documentation.espressif.com/esp32-s3_datasheet_en.pdf
 - ESP32-C6 QFN40 and QFN32, based on the official Espressif ESP32-C6 Series Datasheet v1.5: https://documentation.espressif.com/esp32-c6_datasheet_en.pdf
 
@@ -28,9 +29,10 @@ npm run build
 ## Structure
 
 - `src/components/AppShell.vue` - compact app bar, responsive sidebar layout, and mobile control drawer
-- `src/components/ExplorerSidebar.vue` - SoC/package selectors, search, pin count, and legend
+- `src/components/ExplorerSidebar.vue` - SoC/profile selectors, search, pin count, and legend
 - `src/components/SocPinoutView.vue` - pinout stage and selected-pin drawer
 - `src/components/ChipSvg.vue` - data-driven clickable SVG package drawing
+- `src/components/BoardSvg.vue` - data-driven clickable SVG development-board header drawing
 - `src/components/PinInfoDrawer.vue` - selected pin details, maker warnings, and board design notes
 - `src/components/PinSearch.vue` - search and quick filters
 - `src/data/pinWarnings.ts` - warning presentation rules
@@ -38,4 +40,4 @@ npm run build
 - `src/data/socs/esp32c6.ts` - ESP32-C6 pin and package metadata
 - `src/stores/socStore.ts` - Pinia selected SoC, selected pin, and search state
 
-When a SoC has multiple packages, the app shows a package selector beside the SoC selector.
+When a SoC has multiple packages or board profiles, the app shows a profile selector beside the SoC selector.
