@@ -1,5 +1,10 @@
 <template>
-  <div class="chip-shell" role="img" :aria-label="`${soc.name} ${packageName} pinout, ${filteredPinCount} of ${totalPinCount} pins shown`">
+  <div
+    class="chip-shell"
+    :class="{ 'chip-shell--animated': playIntroAnimation }"
+    role="img"
+    :aria-label="`${soc.name} ${packageName} pinout, ${filteredPinCount} of ${totalPinCount} pins shown`"
+  >
     <svg class="chip-svg" viewBox="0 -60 960 920" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="chipBody" x1="0" x2="1" y1="0" y2="1">
@@ -9,11 +14,33 @@
         <filter id="softShadow" x="-15%" y="-15%" width="130%" height="130%">
           <feDropShadow dx="0" dy="18" flood-color="#0f172a" flood-opacity="0.18" stdDeviation="14" />
         </filter>
+        <linearGradient id="chipSheen" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+          <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.18" />
+          <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+        </linearGradient>
+        <clipPath id="chipBodyClip">
+          <rect x="210" y="90" width="540" height="540" rx="7" />
+        </clipPath>
       </defs>
 
-      <rect x="178" y="58" width="604" height="604" rx="12" fill="#1f2933" filter="url(#softShadow)" />
-      <rect x="210" y="90" width="540" height="540" rx="7" fill="url(#chipBody)" stroke="#334155" stroke-width="2" />
       <rect
+        class="chip-body-shadow"
+        x="178"
+        y="58"
+        width="604"
+        height="604"
+        rx="12"
+        fill="#1f2933"
+        filter="url(#softShadow)"
+      />
+      <rect class="chip-body" x="210" y="90" width="540" height="540" rx="7" fill="url(#chipBody)" stroke="#334155" stroke-width="2" />
+      <g clip-path="url(#chipBodyClip)">
+        <rect class="chip-sheen" x="60" y="70" width="180" height="600" fill="url(#chipSheen)" />
+      </g>
+      <rect class="chip-edge-glow" x="210" y="90" width="540" height="540" rx="7" fill="none" />
+      <rect
+        class="chip-die-outline"
         x="300"
         y="180"
         width="360"
@@ -25,7 +52,7 @@
         stroke-width="2"
         opacity="0.75"
       />
-      <circle cx="254" cy="132" r="14" fill="#0b1117" stroke="#e5e7eb" stroke-width="4" />
+      <circle class="chip-orientation-dot" cx="254" cy="132" r="14" fill="#0b1117" stroke="#e5e7eb" stroke-width="4" />
 
       <text x="480" y="316" class="brand" text-anchor="middle">ESPRESSIF</text>
       <text x="480" y="396" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
@@ -34,10 +61,11 @@
       </text>
 
       <g
-        v-for="pin in pins"
+        v-for="(pin, index) in pins"
         :key="pin.id"
         class="pin-node"
         :class="pinClasses(pin)"
+        :style="pinEntranceStyle(index, pin)"
         tabindex="0"
         role="button"
         :aria-label="pinLabel(pin)"
@@ -89,7 +117,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import type { PinSide, SocDefinition, SocPin } from '@/types/soc';
 
 const props = defineProps<{
@@ -108,6 +136,8 @@ const emit = defineEmits<{
 }>();
 
 const pins = computed(() => props.pins);
+const playIntroAnimation = ref(false);
+let introAnimationFrame = 0;
 
 interface PointText {
   x: number;
@@ -207,10 +237,51 @@ function pinClasses(pin: SocPin) {
   };
 }
 
+function pinEntranceStyle(index: number, pin: SocPin) {
+  const offsets: Record<PinSide, { x: string; y: string }> = {
+    left: { x: '-34px', y: '0' },
+    right: { x: '34px', y: '0' },
+    top: { x: '0', y: '-34px' },
+    bottom: { x: '0', y: '34px' },
+    center: { x: '0', y: '22px' },
+  };
+  const offset = offsets[pin.position.side];
+
+  return {
+    '--pin-enter-delay': `${260 + index * 22}ms`,
+    '--pin-enter-x': offset.x,
+    '--pin-enter-y': offset.y,
+  };
+}
+
 function pinLabel(pin: SocPin) {
   const gpio = pin.gpio !== undefined ? `, GPIO${pin.gpio}` : '';
   return `Pin ${pin.number}, ${pin.name}${gpio}`;
 }
+
+function replayIntroAnimation() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+
+  playIntroAnimation.value = false;
+  window.cancelAnimationFrame(introAnimationFrame);
+  introAnimationFrame = window.requestAnimationFrame(() => {
+    introAnimationFrame = window.requestAnimationFrame(() => {
+      playIntroAnimation.value = true;
+    });
+  });
+}
+
+onMounted(replayIntroAnimation);
+
+watch(() => [props.soc.id, props.packageName, props.totalPinCount], replayIntroAnimation);
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.cancelAnimationFrame(introAnimationFrame);
+  }
+});
 </script>
 
 <style scoped>
@@ -226,6 +297,75 @@ function pinLabel(pin: SocPin) {
   height: auto;
   max-height: calc(100vh - 96px);
   min-height: 440px;
+  transform-origin: center;
+}
+
+.chip-shell--animated .chip-svg {
+  animation: chip-scene-enter 900ms cubic-bezier(0.16, 0.95, 0.22, 1) both;
+}
+
+.chip-body-shadow,
+.chip-body,
+.chip-edge-glow,
+.chip-die-outline,
+.chip-orientation-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.chip-body-shadow {
+  opacity: 1;
+}
+
+.chip-shell--animated .chip-body-shadow {
+  animation: chip-body-enter 900ms 80ms cubic-bezier(0.16, 0.95, 0.22, 1) both;
+}
+
+.chip-body {
+  opacity: 1;
+}
+
+.chip-shell--animated .chip-body {
+  animation: chip-core-enter 940ms 130ms cubic-bezier(0.16, 0.95, 0.22, 1) both;
+}
+
+.chip-sheen {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.chip-shell--animated .chip-sheen {
+  animation:
+    chip-sheen-sweep 1300ms 560ms ease-out both,
+    chip-sheen-idle 6200ms 2400ms ease-in-out infinite;
+}
+
+.chip-edge-glow {
+  opacity: 0;
+  stroke: #67e8f9;
+  stroke-width: 2.6;
+  filter: drop-shadow(0 0 7px rgba(103, 232, 249, 0.8));
+}
+
+.chip-shell--animated .chip-edge-glow {
+  animation: chip-edge-pulse 1250ms 260ms ease-out both;
+}
+
+.chip-die-outline {
+  opacity: 0.75;
+}
+
+.chip-shell--animated .chip-die-outline {
+  animation: chip-outline-enter 800ms 360ms ease-out both;
+}
+
+.chip-orientation-dot {
+  opacity: 1;
+}
+
+.chip-shell--animated .chip-orientation-dot {
+  animation: chip-dot-enter 560ms 560ms cubic-bezier(0.18, 1.55, 0.34, 1) both;
 }
 
 .brand {
@@ -235,11 +375,19 @@ function pinLabel(pin: SocPin) {
   letter-spacing: 0;
 }
 
+.chip-shell--animated .brand {
+  animation: chip-text-enter 620ms 520ms ease-out both;
+}
+
 .chip-name {
   fill: #ffffff;
   font-size: 40px;
   font-weight: 800;
   letter-spacing: 0;
+}
+
+.chip-shell--animated .chip-name {
+  animation: chip-text-enter 620ms 650ms ease-out both;
 }
 
 .chip-details {
@@ -249,7 +397,14 @@ function pinLabel(pin: SocPin) {
   letter-spacing: 0;
 }
 
+.chip-shell--animated .chip-details {
+  animation: chip-text-enter 620ms 780ms ease-out both;
+}
+
 .pin-node {
+  --pin-enter-delay: 220ms;
+  --pin-enter-x: 0;
+  --pin-enter-y: 0;
   cursor: pointer;
   outline: none;
   transform-box: fill-box;
@@ -257,6 +412,10 @@ function pinLabel(pin: SocPin) {
   transition:
     opacity 150ms ease,
     transform 150ms ease;
+}
+
+.chip-shell--animated .pin-node {
+  animation: pin-enter 560ms var(--pin-enter-delay) cubic-bezier(0.16, 1.35, 0.26, 1) both;
 }
 
 .pin-node rect {
@@ -355,6 +514,188 @@ function pinLabel(pin: SocPin) {
 
   100% {
     transform: scale(1.22);
+  }
+}
+
+@keyframes chip-scene-enter {
+  0% {
+    opacity: 0;
+    filter: blur(3px);
+    transform: translateY(24px) scale(0.9);
+  }
+
+  58% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(-4px) scale(1.018);
+  }
+
+  100% {
+    opacity: 1;
+    filter: blur(0);
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes chip-body-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(28px) scale(0.88);
+  }
+
+  68% {
+    opacity: 1;
+    transform: translateY(-5px) scale(1.025);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes chip-core-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.82);
+  }
+
+  72% {
+    opacity: 1;
+    transform: scale(1.018);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes chip-sheen-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-240px) skewX(-16deg);
+  }
+
+  30% {
+    opacity: 0.95;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(840px) skewX(-16deg);
+  }
+}
+
+@keyframes chip-sheen-idle {
+  0%,
+  72%,
+  100% {
+    opacity: 0;
+    transform: translateX(-240px) skewX(-16deg);
+  }
+
+  82% {
+    opacity: 0.62;
+  }
+
+  94% {
+    opacity: 0;
+    transform: translateX(840px) skewX(-16deg);
+  }
+}
+
+@keyframes chip-edge-pulse {
+  0% {
+    opacity: 0;
+    stroke-width: 2;
+    transform: scale(0.96);
+  }
+
+  34% {
+    opacity: 0.95;
+    stroke-width: 3.4;
+  }
+
+  100% {
+    opacity: 0;
+    stroke-width: 1.8;
+    transform: scale(1.035);
+  }
+}
+
+@keyframes chip-outline-enter {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 42;
+  }
+
+  100% {
+    opacity: 0.75;
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes chip-dot-enter {
+  0% {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes chip-text-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pin-enter {
+  0% {
+    opacity: 0;
+    transform: translate(var(--pin-enter-x), var(--pin-enter-y)) scale(0.2);
+  }
+
+  58% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1.24);
+  }
+
+  76% {
+    opacity: 1;
+    transform: translate(0, 0) scale(0.94);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chip-svg,
+  .chip-body-shadow,
+  .chip-body,
+  .chip-sheen,
+  .chip-edge-glow,
+  .chip-die-outline,
+  .chip-orientation-dot,
+  .brand,
+  .chip-name,
+  .chip-details,
+  .pin-node,
+  .pin-node--selected {
+    animation: none;
   }
 }
 

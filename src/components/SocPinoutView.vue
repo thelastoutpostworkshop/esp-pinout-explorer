@@ -2,6 +2,7 @@
   <section class="soc-view" aria-label="SoC pinout">
     <section class="soc-view__stage">
       <ChipSvg
+        :key="`${store.selectedSocId}-${selectedPackage.id}`"
         :filtered-pin-ids="store.filteredPinIds"
         :filtered-pin-count="store.filteredPins.length"
         :has-filter="Boolean(store.searchQuery.trim())"
