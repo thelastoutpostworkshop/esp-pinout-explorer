@@ -3,10 +3,13 @@
     <section class="soc-view__stage">
       <ChipSvg
         :filtered-pin-ids="store.filteredPinIds"
+        :filtered-pin-count="store.filteredPins.length"
         :has-filter="Boolean(store.searchQuery.trim())"
+        :package-name="selectedPackage.packageName"
         :pins="store.selectedPins"
         :selected-pin-id="store.selectedPinId"
         :soc="selectedSoc"
+        :total-pin-count="store.selectedPins.length"
         @pin-click="store.selectPin"
       />
     </section>
@@ -23,6 +26,7 @@ import { useSocStore } from '@/stores/socStore';
 
 const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
+const selectedPackage = computed(() => store.selectedPackage);
 </script>
 
 <style scoped>

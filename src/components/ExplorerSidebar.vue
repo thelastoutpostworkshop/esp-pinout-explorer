@@ -3,9 +3,6 @@
     <section class="explorer-sidebar__section">
       <div class="explorer-sidebar__chips">
         <v-chip class="pin-chip" color="primary" size="small" variant="flat">{{ selectedSoc.name }}</v-chip>
-        <v-chip class="pin-chip" color="secondary" size="small" variant="tonal">
-          {{ selectedPackage.packageName }}
-        </v-chip>
       </div>
 
       <v-select
@@ -38,10 +35,6 @@
 
     <section class="explorer-sidebar__section">
       <PinSearch :model-value="store.searchQuery" @update:model-value="store.setSearchQuery" />
-      <div class="explorer-sidebar__count">
-        <Cpu :size="18" aria-hidden="true" />
-        <span>{{ store.filteredPins.length }} / {{ store.selectedPins.length }} pins</span>
-      </div>
     </section>
 
     <section class="explorer-sidebar__section" aria-label="Pin color legend">
@@ -58,7 +51,6 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { Cpu } from '@lucide/vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
 
@@ -125,15 +117,6 @@ function selectPackage(packageId: string) {
 
 .explorer-sidebar__select {
   min-width: 0;
-}
-
-.explorer-sidebar__count {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 32px;
-  color: #334155;
-  font-weight: 850;
 }
 
 .legend-item {

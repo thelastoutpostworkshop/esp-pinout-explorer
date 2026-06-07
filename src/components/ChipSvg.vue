@@ -1,5 +1,5 @@
 <template>
-  <div class="chip-shell" role="img" :aria-label="`${soc.name} package pinout`">
+  <div class="chip-shell" role="img" :aria-label="`${soc.name} ${packageName} pinout, ${filteredPinCount} of ${totalPinCount} pins shown`">
     <svg class="chip-svg" viewBox="0 -60 960 920" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="chipBody" x1="0" x2="1" y1="0" y2="1">
@@ -29,6 +29,9 @@
 
       <text x="480" y="316" class="brand" text-anchor="middle">ESPRESSIF</text>
       <text x="480" y="396" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
+      <text x="480" y="438" class="chip-details" text-anchor="middle">
+        {{ packageName }} | {{ filteredPinCount }} / {{ totalPinCount }} pins
+      </text>
 
       <g
         v-for="pin in pins"
@@ -91,9 +94,12 @@ import type { PinSide, SocDefinition, SocPin } from '@/types/soc';
 
 const props = defineProps<{
   soc: SocDefinition;
+  packageName: string;
   pins: SocPin[];
   selectedPinId: string | null;
   filteredPinIds: Set<string>;
+  filteredPinCount: number;
+  totalPinCount: number;
   hasFilter: boolean;
 }>();
 
@@ -233,6 +239,13 @@ function pinLabel(pin: SocPin) {
   fill: #ffffff;
   font-size: 40px;
   font-weight: 800;
+  letter-spacing: 0;
+}
+
+.chip-details {
+  fill: #cbd5e1;
+  font-size: 14px;
+  font-weight: 750;
   letter-spacing: 0;
 }
 
