@@ -27,18 +27,21 @@
       </template>
     </v-text-field>
 
-    <div class="pin-search__chips" aria-label="Pin filters">
-      <v-chip
-        v-for="filter in quickFilters"
-        :key="filter"
-        class="pin-chip"
-        :color="activeFilter === filter ? 'primary' : 'secondary'"
-        :variant="activeFilter === filter ? 'flat' : 'tonal'"
-        size="small"
-        @click="toggleFilter(filter)"
-      >
-        {{ filter }}
-      </v-chip>
+    <div class="pin-search__filters">
+      <div class="pin-search__filters-title">Filter pins</div>
+      <div class="pin-search__chips" aria-label="Pin filters">
+        <v-chip
+          v-for="filter in quickFilters"
+          :key="filter"
+          class="pin-chip"
+          :color="activeFilter === filter ? 'primary' : 'secondary'"
+          :variant="activeFilter === filter ? 'flat' : 'tonal'"
+          size="small"
+          @click="toggleFilter(filter)"
+        >
+          {{ filter }}
+        </v-chip>
+      </div>
     </div>
   </div>
 </template>
@@ -81,6 +84,19 @@ function toggleFilter(filter: string) {
 
 .pin-search__field {
   min-width: 0;
+}
+
+.pin-search__filters {
+  display: grid;
+  gap: 7px;
+}
+
+.pin-search__filters-title {
+  color: #64748b;
+  font-size: 0.76rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .pin-search__chips {
