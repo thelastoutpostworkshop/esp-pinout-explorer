@@ -36,6 +36,7 @@
           v-for="filter in visibleQuickFilters"
           :key="filter.label"
           class="pin-chip"
+          :class="{ 'pin-search__chip--safe': filter.query === safeUseQuery }"
           :color="activeFilter === filter.query ? 'primary' : 'secondary'"
           :variant="activeFilter === filter.query ? 'flat' : 'tonal'"
           size="small"
@@ -68,7 +69,10 @@ interface QuickFilter {
   query: string;
 }
 
+const safeUseQuery = 'safe use';
+
 const quickFilters: QuickFilter[] = [
+  { label: 'Safe use', query: safeUseQuery },
   { label: 'GPIO', query: 'type:io' },
   { label: 'Analog', query: 'type:analog' },
   { label: 'Power', query: 'type:power' },
@@ -154,5 +158,10 @@ function toggleFilter(filter: QuickFilter) {
 
 .pin-search__field :deep(.v-field) {
   border-radius: 8px;
+}
+
+.pin-search__chip--safe {
+  border: 1px solid rgba(22, 101, 52, 0.26);
+  background: rgba(187, 247, 208, 0.72);
 }
 </style>

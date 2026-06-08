@@ -165,6 +165,7 @@ When adding or editing SoC data:
 - The chip should only show the yellow warning border for maker warnings from `src/data/pinWarnings.ts`. Board design notes should stay visible in the drawer and searchable, but should not flood the package view with warning borders.
 - Keep the legend focused on persistent pin categories and warning state. Do not add transient search/selected states back to the legend unless the UX changes.
 - Search should highlight matched pins and dim unmatched pins. It should search pin name, GPIO, main functions, IO MUX, analog, RTC, matrix signals, notes, warnings, and keywords through the store.
+- The `Safe use` quick filter is for board profiles only. It should include exposed board-header GPIO pins with no maker warnings, and exclude power, ground, reset/control, boot/strapping, UART0, USB, PSRAM-constrained, voltage-sensitive, and on-board hardware pins.
 - Technical terms in the drawer should use `InfoTooltip.vue` rather than permanent explanatory paragraphs when the explanation is optional.
 - Main function labels should use `FunctionChip.vue` so known functions can show contextual help on hover, focus, and tap.
 
