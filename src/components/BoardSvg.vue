@@ -13,16 +13,31 @@
         <filter id="boardShadow" x="-14%" y="-12%" width="128%" height="128%">
           <feDropShadow dx="0" dy="18" flood-color="#0f172a" flood-opacity="0.18" stdDeviation="16" />
         </filter>
+        <pattern id="pcbTexture" width="42" height="42" patternUnits="userSpaceOnUse">
+          <path d="M0 14H42 M14 0V42 M0 34H42 M34 0V42" stroke="#2dd4bf" stroke-opacity="0.14" stroke-width="1" />
+          <circle cx="8" cy="8" r="1.4" fill="#99f6e4" opacity="0.22" />
+          <circle cx="30" cy="24" r="1.2" fill="#99f6e4" opacity="0.16" />
+        </pattern>
+        <clipPath id="boardBodyClip">
+          <rect x="160" y="52" width="620" height="656" rx="22" />
+        </clipPath>
       </defs>
 
       <rect class="board-body" x="160" y="52" width="620" height="656" rx="22" fill="url(#boardBody)" filter="url(#boardShadow)" />
+      <g clip-path="url(#boardBodyClip)">
+        <rect class="board-texture" x="160" y="52" width="620" height="656" fill="url(#pcbTexture)" />
+        <path class="board-trace" d="M276 144H404Q428 144 428 168V194" />
+        <path class="board-trace" d="M664 142H536Q512 142 512 168V194" />
+        <path class="board-trace" d="M300 614H430Q454 614 454 590V496" />
+        <path class="board-trace" d="M640 614H510Q486 614 486 590V496" />
+      </g>
       <rect class="board-inner" x="190" y="86" width="560" height="588" rx="14" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
 
       <g class="board-usb">
         <rect x="392" y="22" width="70" height="40" rx="7" />
         <rect x="478" y="22" width="70" height="40" rx="7" />
-        <text x="427" y="15" text-anchor="middle">UART</text>
-        <text x="513" y="15" text-anchor="middle">USB</text>
+        <text x="427" y="46" text-anchor="middle">UART</text>
+        <text x="513" y="46" text-anchor="middle">USB</text>
       </g>
 
       <text class="header-name" x="232" y="82" text-anchor="middle">J1</text>
@@ -49,12 +64,12 @@
       </g>
 
       <g class="board-component board-component--boot">
-        <circle cx="292" cy="566" r="16" />
-        <text x="292" y="596" text-anchor="middle">BOOT</text>
+        <rect x="326" y="558" width="78" height="30" rx="7" />
+        <text x="365" y="577" text-anchor="middle">BOOT</text>
       </g>
       <g class="board-component board-component--rgb">
-        <circle cx="662" cy="290" r="11" />
-        <text x="662" y="318" text-anchor="middle">RGB</text>
+        <rect x="536" y="558" width="78" height="30" rx="7" />
+        <text x="575" y="577" text-anchor="middle">RGB</text>
       </g>
 
       <g
@@ -71,7 +86,6 @@
         @keydown.space.prevent="emit('pin-click', pin.id)"
       >
         <title>{{ pinLabel(pin) }}</title>
-        <circle class="board-pin__hole" :cx="pinGeometry(pin).hole.x" :cy="pinGeometry(pin).hole.y" r="5.2" />
         <rect
           class="board-pin__pad"
           :x="pinGeometry(pin).rect.x"
@@ -130,7 +144,6 @@ interface PointText {
 
 interface Geometry {
   rect: { x: number; y: number; width: number; height: number; rx: number };
-  hole: { x: number; y: number };
   label: PointText;
 }
 
@@ -164,14 +177,12 @@ function pinGeometry(pin: SocPin): Geometry {
   if (side === 'right') {
     return {
       rect: { x: 658, y: y - 12, width: 76, height: 24, rx: 5 },
-      hole: { x: 748, y },
       label: { x: 696, y },
     };
   }
 
   return {
     rect: { x: 206, y: y - 12, width: 76, height: 24, rx: 5 },
-    hole: { x: 192, y },
     label: { x: 244, y },
   };
 }
@@ -257,6 +268,8 @@ onBeforeUnmount(() => {
 }
 
 .board-body,
+.board-texture,
+.board-trace,
 .board-inner,
 .module,
 .board-usb,
@@ -267,6 +280,23 @@ onBeforeUnmount(() => {
 
 .board-shell--animated .board-body {
   animation: board-body-enter 850ms 80ms cubic-bezier(0.16, 0.95, 0.22, 1) both;
+}
+
+.board-texture {
+  opacity: 0.72;
+}
+
+.board-trace {
+  fill: none;
+  stroke: #5eead4;
+  stroke-linecap: round;
+  stroke-opacity: 0.18;
+  stroke-width: 2;
+}
+
+.board-shell--animated .board-trace,
+.board-shell--animated .board-inner {
+  animation: board-detail-enter 720ms 260ms ease-out both;
 }
 
 .board-shell--animated .module {
@@ -287,21 +317,32 @@ onBeforeUnmount(() => {
 .board-usb text,
 .board-component text,
 .header-name {
-  fill: #334155;
+  fill: #ccfbf1;
   font-size: 13px;
   font-weight: 850;
   letter-spacing: 0;
 }
 
-.board-component circle {
-  fill: #f8fafc;
-  stroke: #0f172a;
+.board-usb text {
+  fill: #334155;
+  font-size: 12px;
+}
+
+.header-name {
+  fill: #99f6e4;
+  opacity: 0.9;
+}
+
+.board-component rect {
+  fill: rgba(15, 23, 42, 0.42);
+  stroke: rgba(153, 246, 228, 0.48);
   stroke-width: 2;
 }
 
-.board-component--rgb circle {
-  fill: #f97316;
-  filter: drop-shadow(0 0 8px rgba(249, 115, 22, 0.75));
+.board-component--rgb rect {
+  fill: rgba(249, 115, 22, 0.4);
+  stroke: rgba(254, 215, 170, 0.75);
+  filter: drop-shadow(0 0 7px rgba(249, 115, 22, 0.55));
 }
 
 .brand {
@@ -350,12 +391,6 @@ onBeforeUnmount(() => {
     fill 150ms ease,
     stroke 150ms ease,
     stroke-width 150ms ease;
-}
-
-.board-pin__hole {
-  fill: #ecfeff;
-  stroke: #0f172a;
-  stroke-width: 1.4;
 }
 
 .board-pin--io .board-pin__pad {
@@ -477,6 +512,16 @@ onBeforeUnmount(() => {
   }
 }
 
+@keyframes board-detail-enter {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes component-enter {
   0% {
     opacity: 0;
@@ -523,6 +568,9 @@ onBeforeUnmount(() => {
 @media (prefers-reduced-motion: reduce) {
   .board-svg,
   .board-body,
+  .board-texture,
+  .board-trace,
+  .board-inner,
   .module,
   .board-usb,
   .board-component,
