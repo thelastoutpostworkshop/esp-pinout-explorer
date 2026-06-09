@@ -1,6 +1,6 @@
 <template>
   <div class="board-shell" :class="{ 'board-shell--animated': playIntroAnimation }" role="img" :aria-label="ariaLabel">
-    <svg class="board-svg" viewBox="0 0 940 760" xmlns="http://www.w3.org/2000/svg">
+    <svg class="board-svg" viewBox="128 8 684 724" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="boardBody" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0" stop-color="#0f766e" />
@@ -250,16 +250,18 @@ onBeforeUnmount(() => {
 <style scoped>
 .board-shell {
   display: flex;
+  align-items: center;
   justify-content: center;
   width: 100%;
+  height: 100%;
+  min-height: 0;
   overflow: hidden;
 }
 
 .board-svg {
-  width: min(100%, 940px);
-  height: auto;
-  max-height: calc(100vh - 96px);
-  min-height: 520px;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
   transform-origin: center;
 }
 
@@ -582,9 +584,9 @@ onBeforeUnmount(() => {
 
 @media (max-width: 760px) {
   .board-svg {
-    width: min(100%, 700px);
+    width: 100%;
+    height: 100%;
     min-height: 0;
-    max-height: calc(100vh - 92px);
   }
 
 }
