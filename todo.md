@@ -17,6 +17,7 @@ Source baseline:
 - [x] ESP32-S3
   - [x] QFN56, 7 x 7 mm
   - [x] ESP32-S3-DevKitC-1 v1.1 board profile
+  - [x] ESP32-S3-DevKitM-1 board profile
 - [x] ESP32-C6
   - [x] QFN40, 5 x 5 mm
   - [x] QFN32, 5 x 5 mm
@@ -33,7 +34,7 @@ Source baseline:
   - [ ] ESP32-S3-LCD-EV-Board v1.5
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-lcd-ev-board/user_guide.html
     - Note: active Espressif board. User guide has GPIO Allocation and I/O Expander GPIO Allocation tables. Treat as a board allocation profile, not a simple maker header, unless official schematics clarify external connector pin identities.
-  - [ ] ESP32-S3-DevKitM-1
+  - [x] ESP32-S3-DevKitM-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html
     - Note: EOL board, but official user guide has J1/J3 Header Block tables and should fit the existing `BoardSvg.vue` model. Useful as a low-risk second header-style board profile.
   - [ ] ESP32-S3-USB-Bridge

@@ -53,6 +53,18 @@ describe('soc store', () => {
     expect(store.selectedPinId).toBeNull();
   });
 
+  it('can select the ESP32-S3 DevKitM-1 board profile', () => {
+    const store = useSocStore();
+
+    store.selectPackage('esp32s3-devkitm-1');
+
+    expect(store.selectedPackage.name).toBe('DevKitM-1');
+    expect(store.selectedPins).toHaveLength(44);
+
+    store.setSearchQuery('J3 RX');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J3-5']);
+  });
+
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {
     const store = useSocStore();
 

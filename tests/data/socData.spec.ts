@@ -22,6 +22,7 @@ const pinWarnings: readonly PinWarning[] = [
 const expectedPinCounts: Record<string, number> = {
   'esp32s3:esp32s3-qfn56': 57,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
+  'esp32s3:esp32s3-devkitm-1': 44,
   'esp32c6:qfn40': 41,
   'esp32c6:qfn32': 33,
 };
