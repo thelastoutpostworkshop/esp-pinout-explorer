@@ -56,6 +56,8 @@ export interface SocPackageVariant {
   packageName: string;
   kind?: PinProfileKind;
   source?: SocSource;
+  moduleNames?: string[];
+  identificationNotes?: string[];
   pins: SocPin[];
 }
 

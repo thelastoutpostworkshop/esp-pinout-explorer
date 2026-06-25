@@ -32,6 +32,14 @@
         variant="outlined"
         @update:model-value="selectPackage"
       />
+
+      <div v-if="moduleDisplay" class="explorer-sidebar__module">
+        <div class="explorer-sidebar__module-heading">
+          <span>Module</span>
+          <InfoTooltip label="Board or module name?" :text="moduleTooltip" />
+        </div>
+        <strong>{{ moduleDisplay }}</strong>
+      </div>
     </section>
 
     <section class="explorer-sidebar__section">
@@ -52,6 +60,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import InfoTooltip from '@/components/InfoTooltip.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
 
@@ -62,6 +71,16 @@ const emit = defineEmits<{
 const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
 const selectedPackage = computed(() => store.selectedPackage);
+const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
+const moduleTooltip = computed(() => {
+  const note = selectedPackage.value.identificationNotes?.[0];
+  return [
+    'The printed metal-can name is the module. The dev-board profile controls header pins, buttons, USB, LEDs, and safe-use warnings.',
+    note,
+  ]
+    .filter(Boolean)
+    .join(' ');
+});
 
 const legendItems = [
   { label: 'GPIO', className: 'legend-item__swatch--io' },
@@ -80,6 +99,10 @@ function selectSoc(socId: string) {
 function selectPackage(packageId: string) {
   store.selectPackage(packageId);
   emit('changed');
+}
+
+function formatModuleNames(moduleNames: string[]) {
+  return moduleNames.map((name, index) => (index === 0 ? name : name.replace(/^ESP32-S3-/, ''))).join(' / ');
 }
 </script>
 
@@ -119,6 +142,36 @@ function selectPackage(packageId: string) {
 
 .explorer-sidebar__select {
   min-width: 0;
+}
+
+.explorer-sidebar__module {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+  padding: 10px 12px;
+  background: #ffffff;
+}
+
+.explorer-sidebar__module-heading {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  justify-self: start;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.explorer-sidebar__module strong {
+  min-width: 0;
+  color: #0f172a;
+  font-size: 0.84rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 .legend-item {

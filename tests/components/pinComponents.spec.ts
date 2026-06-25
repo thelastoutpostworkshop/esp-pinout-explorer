@@ -3,11 +3,13 @@ import { mount, VueWrapper } from '@vue/test-utils';
 import { createPinia, setActivePinia } from 'pinia';
 import BoardSvg from '@/components/BoardSvg.vue';
 import ChipSvg from '@/components/ChipSvg.vue';
+import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
 import PinInfoDrawer from '@/components/PinInfoDrawer.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { hasMakerWarning } from '@/data/pinWarnings';
 import { esp32c6 } from '@/data/socs/esp32c6';
 import { esp32s3 } from '@/data/socs/esp32s3';
+import { useSocStore } from '@/stores/socStore';
 import type { SocPin, SocSource } from '@/types/soc';
 
 describe('ChipSvg', () => {
@@ -112,6 +114,29 @@ describe('PinSearch', () => {
   });
 });
 
+describe('ExplorerSidebar', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+  });
+
+  it('shows module identity for board profiles', async () => {
+    const store = useSocStore();
+    const wrapper = mount(ExplorerSidebar, {
+      global: {
+        stubs: sidebarStubs,
+      },
+    });
+
+    expect(wrapper.text()).toContain('Module');
+    expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
+
+    store.selectPackage('esp32s3-devkitm-1');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.text()).toContain('ESP32-S3-MINI-1 / MINI-1U');
+  });
+});
+
 describe('PinInfoDrawer', () => {
   it('separates maker warnings from board design notes', async () => {
     const wrapper = mount(PinInfoDrawer, {
@@ -187,6 +212,22 @@ const drawerStubs = {
     emits: ['update:modelValue'],
     props: ['modelValue'],
     template: '<aside><slot /></aside>',
+  },
+};
+
+const sidebarStubs = {
+  InfoTooltip: {
+    props: ['label', 'text'],
+    template: '<span :aria-label="label">{{ text }}</span>',
+  },
+  PinSearch: {
+    template: '<div />',
+  },
+  VChip: {
+    template: '<span><slot /></span>',
+  },
+  VSelect: {
+    template: '<label />',
   },
 };
 

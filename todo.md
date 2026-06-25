@@ -115,5 +115,6 @@ Source baseline:
 - Use `packageVariants` for alternate package pinouts under the same SoC.
 - Use `boardProfiles` for official development-board header, connector, or GPIO-allocation views tied to an implemented SoC.
 - Keep source links and datasheet version numbers inside each data file.
+- For board profiles, include module identity metadata when makers may see module markings such as WROOM, MINI, or PICO instead of the dev-kit name.
 - For development boards, prefer official user-guide Header Block, Pin Layout, GPIO Allocation, or schematic sections. Do not infer board profile pins from product photos or third-party pinout images.
 - For newer entries, verify the latest official datasheet immediately before implementation.

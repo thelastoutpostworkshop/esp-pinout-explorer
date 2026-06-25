@@ -33,6 +33,8 @@ interface ProfileEntry {
   kind: 'package' | 'board';
   packageName: string;
   source?: SocSource;
+  moduleNames?: string[];
+  identificationNotes?: string[];
   pins: SocPin[];
 }
 
@@ -58,6 +60,8 @@ function packageProfile(soc: SocDefinition, profile: SocPackageVariant): Profile
     kind: profile.kind ?? 'package',
     packageName: profile.packageName,
     source: profile.source,
+    moduleNames: profile.moduleNames,
+    identificationNotes: profile.identificationNotes,
     pins: profile.pins,
   };
 }
@@ -69,6 +73,8 @@ function boardProfile(soc: SocDefinition, profile: SocPackageVariant): ProfileEn
     kind: 'board',
     packageName: profile.packageName,
     source: profile.source,
+    moduleNames: profile.moduleNames,
+    identificationNotes: profile.identificationNotes,
     pins: profile.pins,
   };
 }
@@ -179,6 +185,15 @@ describe('SoC data invariants', () => {
           }
         }
       }
+    }
+  });
+
+  it('records maker-visible module identity for board profiles', () => {
+    for (const profile of allProfiles().filter((item) => item.kind === 'board')) {
+      expect(profile.moduleNames?.length).toBeGreaterThan(0);
+      expect(profile.moduleNames?.every((name) => name.startsWith('ESP32-S3-'))).toBe(true);
+      expect(profile.identificationNotes?.length).toBeGreaterThan(0);
+      expect(profile.identificationNotes?.every((note) => note.includes('carrier PCB'))).toBe(true);
     }
   });
 });

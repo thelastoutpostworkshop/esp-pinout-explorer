@@ -58,11 +58,15 @@ describe('soc store', () => {
 
     store.selectPackage('esp32s3-devkitm-1');
 
-    expect(store.selectedPackage.name).toBe('DevKitM-1');
+    expect(store.selectedPackage.name).toBe('DevKitM-1 (MINI)');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP32-S3-MINI-1', 'ESP32-S3-MINI-1U']);
     expect(store.selectedPins).toHaveLength(44);
 
     store.setSearchQuery('J3 RX');
     expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J3-5']);
+
+    store.setSearchQuery('mini-1');
+    expect(store.filteredPins).toHaveLength(44);
   });
 
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {
@@ -74,6 +78,9 @@ describe('soc store', () => {
     store.setSearchQuery('GPIO38 RGB');
     expect(store.filteredPins).toHaveLength(1);
     expect(store.filteredPins[0].boardLabel).toBe('38');
+
+    store.setSearchQuery('wroom-1');
+    expect(store.filteredPins).toHaveLength(44);
 
     store.selectSoc('esp32c6');
     store.setSearchQuery('gpio12 usb');

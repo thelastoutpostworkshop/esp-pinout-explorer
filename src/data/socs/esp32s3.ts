@@ -631,6 +631,11 @@ function boardPin(input: BoardHeaderPinInput): SocPin {
       'devkit',
       'devkitc',
       'devkitc-1',
+      'module',
+      'wroom',
+      'wroom-1',
+      'wroom-1u',
+      'wroom-2',
       'header',
       input.header,
       displayNumber,
@@ -674,6 +679,10 @@ function devkitM1BoardPin(input: BoardHeaderPinInput): SocPin {
       'devkit',
       'devkitm',
       'devkitm-1',
+      'module',
+      'mini',
+      'mini-1',
+      'mini-1u',
       'header',
       input.header,
       displayNumber,
@@ -690,10 +699,14 @@ const devkitUnavailableOnOctalMemory =
 
 const esp32s3DevKitC1V11Profile: SocPackageVariant = {
   id: 'esp32s3-devkitc-1-v1-1',
-  name: 'DevKitC-1 v1.1',
+  name: 'DevKitC-1 v1.1 (WROOM)',
   packageName: 'ESP32-S3-DevKitC-1 v1.1 board headers',
   kind: 'board',
   source: devkitC1V11Source,
+  moduleNames: ['ESP32-S3-WROOM-1', 'ESP32-S3-WROOM-1U', 'ESP32-S3-WROOM-2'],
+  identificationNotes: [
+    'The metal shield may show a WROOM module name. Choose this profile by the ESP32-S3-DevKitC-1 carrier PCB and J1/J3 header layout.',
+  ],
   pins: [
     boardPin({
       header: 'J1',
@@ -1087,10 +1100,14 @@ const esp32s3DevKitC1V11Profile: SocPackageVariant = {
 
 const esp32s3DevKitM1Profile: SocPackageVariant = {
   id: 'esp32s3-devkitm-1',
-  name: 'DevKitM-1',
+  name: 'DevKitM-1 (MINI)',
   packageName: 'ESP32-S3-DevKitM-1 board headers',
   kind: 'board',
   source: devkitM1Source,
+  moduleNames: ['ESP32-S3-MINI-1', 'ESP32-S3-MINI-1U'],
+  identificationNotes: [
+    'The metal shield may show a MINI module name. Choose this profile by the ESP32-S3-DevKitM-1 carrier PCB and J1/J3 header layout.',
+  ],
   pins: [
     devkitM1BoardPin({
       header: 'J1',

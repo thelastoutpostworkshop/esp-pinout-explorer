@@ -4,8 +4,8 @@ Vue 3 + TypeScript + Vite MVP for exploring Espressif SoC and development-board 
 
 Current profiles:
 
-- ESP32-S3-DevKitC-1 v1.1 board headers, based on the official Espressif ESP32-S3-DevKitC-1 User Guide v1.1: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html
-- ESP32-S3-DevKitM-1 board headers, based on the official Espressif ESP32-S3-DevKitM-1 User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html
+- ESP32-S3-DevKitC-1 v1.1 board headers with WROOM module identity, based on the official Espressif ESP32-S3-DevKitC-1 User Guide v1.1: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html
+- ESP32-S3-DevKitM-1 board headers with MINI module identity, based on the official Espressif ESP32-S3-DevKitM-1 User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html
 - ESP32-S3 QFN56, based on the official Espressif ESP32-S3 Series Datasheet v2.2: https://documentation.espressif.com/esp32-s3_datasheet_en.pdf
 - ESP32-C6 QFN40 and QFN32, based on the official Espressif ESP32-C6 Series Datasheet v1.5: https://documentation.espressif.com/esp32-c6_datasheet_en.pdf
 
