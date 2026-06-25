@@ -20,6 +20,8 @@ npm install
 npm run dev
 ```
 
+The dev server is pinned to `http://127.0.0.1:5176` so it does not collide with other local Vite apps.
+
 ## Build
 
 ```bash

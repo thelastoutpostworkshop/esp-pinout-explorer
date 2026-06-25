@@ -178,7 +178,7 @@ When adding or editing SoC data:
 ## Verification
 
 - Run `npm run build` after code or data changes.
-- For visual/UI changes, also verify the local app at `http://127.0.0.1:5173` when practical.
+- For visual/UI changes, also verify the local app at `http://127.0.0.1:5176` when practical.
 - Check selected-pin drawer behavior after changing chip/board interactions, function chips, tooltips, profile selection, or store state.
 - Do not commit generated `dist/`, `node_modules/`, or `.codex/` artifacts.
 
