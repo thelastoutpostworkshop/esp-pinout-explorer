@@ -10,6 +10,7 @@ Source baseline:
 - ESP32-C6 datasheet/product entry: https://documentation.espressif.com/esp32-c6_datasheet_en.html
 - ESP32-H2 datasheet/product entry: https://documentation.espressif.com/esp32-h2_datasheet_en.html
 - ESP32-P4 datasheet: https://documentation.espressif.com/esp32-p4_datasheet_en.html
+- ESP32-S3 dev kits documentation index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/index.html
 
 ## Done
 
@@ -24,6 +25,26 @@ Source baseline:
 
 ### ESP32-S Series
 
+- [ ] ESP32-S3 board profiles
+  - [x] ESP32-S3-DevKitC-1 v1.1
+  - [ ] ESP32-S3-USB-OTG
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html
+    - Note: active Espressif board. User guide has Function pin and Extended pin tables, but not a simple J1/J3 header block. Likely needs connector-group layout support beyond the current two-side `BoardSvg.vue`.
+  - [ ] ESP32-S3-LCD-EV-Board v1.5
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-lcd-ev-board/user_guide.html
+    - Note: active Espressif board. User guide has GPIO Allocation and I/O Expander GPIO Allocation tables. Treat as a board allocation profile, not a simple maker header, unless official schematics clarify external connector pin identities.
+  - [ ] ESP32-S3-DevKitM-1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html
+    - Note: EOL board, but official user guide has J1/J3 Header Block tables and should fit the existing `BoardSvg.vue` model. Useful as a low-risk second header-style board profile.
+  - [ ] ESP32-S3-USB-Bridge
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-bridge/user_guide.html
+    - Note: EOL board. Official GPIO Allocation table covers the 12-pin expansion connector and on-board bridge functions; likely needs a compact connector layout rather than the current two-side header drawing.
+  - [ ] ESP-VoCat v1.2
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-vocat/user_guide_v1.2.html
+    - Note: active Espressif board. User guide documents hardware blocks, magnetic connector, LCD, SD card, microphone, and revision pin changes; use official schematic for full pin mapping before implementation.
+  - [ ] ESP-DualKey
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-dualkey/user_guide.html
+    - Note: active Espressif board. User guide identifies major components and HY2.0-4P ports, but detailed pin mapping should come from the official schematic before implementation.
 - [ ] ESP32-S31
   - [ ] QFN, 8 x 8 mm
   - Note: new/early entry; confirm datasheet pin tables before implementation.
@@ -91,5 +112,7 @@ Source baseline:
 
 - Prefer one data file per SoC family unless package pinouts diverge enough to justify separate files.
 - Use `packageVariants` for alternate package pinouts under the same SoC.
+- Use `boardProfiles` for official development-board header, connector, or GPIO-allocation views tied to an implemented SoC.
 - Keep source links and datasheet version numbers inside each data file.
+- For development boards, prefer official user-guide Header Block, Pin Layout, GPIO Allocation, or schematic sections. Do not infer board profile pins from product photos or third-party pinout images.
 - For newer entries, verify the latest official datasheet immediately before implementation.
