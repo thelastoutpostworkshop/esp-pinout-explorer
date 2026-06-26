@@ -18,6 +18,7 @@ Source baseline:
   - [x] QFN56, 7 x 7 mm
   - [x] ESP32-S3-DevKitC-1 v1.1 board profile
   - [x] ESP32-S3-DevKitM-1 board profile
+  - [x] ESP32-S3-USB-OTG connector-group board profile
 - [x] ESP32-C6
   - [x] QFN40, 5 x 5 mm
   - [x] QFN32, 5 x 5 mm
@@ -28,9 +29,9 @@ Source baseline:
 
 - [ ] ESP32-S3 board profiles
   - [x] ESP32-S3-DevKitC-1 v1.1
-  - [ ] ESP32-S3-USB-OTG
+  - [x] ESP32-S3-USB-OTG
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html
-    - Note: active Espressif board. User guide has Function pin and Extended pin tables, but not a simple J1/J3 header block. Likely needs connector-group layout support beyond the current two-side `BoardSvg.vue`.
+    - Note: active Espressif board. Implemented as connector groups from the official Function pin and Extended pin tables instead of fake J1/J3 headers.
   - [ ] ESP32-S3-LCD-EV-Board v1.5
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-lcd-ev-board/user_guide.html
     - Note: active Espressif board. User guide has GPIO Allocation and I/O Expander GPIO Allocation tables. Treat as a board allocation profile, not a simple maker header, unless official schematics clarify external connector pin identities.

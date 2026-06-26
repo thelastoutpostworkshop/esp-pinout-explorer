@@ -84,6 +84,34 @@ describe('BoardSvg', () => {
     await nodes[0].trigger('keydown.enter');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
   });
+
+  it('renders connector-group board profiles without J1/J3 assumptions', async () => {
+    const usbOtgProfile = esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-usb-otg');
+    expect(usbOtgProfile).toBeDefined();
+    const pins = usbOtgProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        boardLayout: usbOtgProfile?.boardLayout,
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: usbOtgProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        soc: esp32s3,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(wrapper.attributes('aria-label')).toContain('32 of 32 connector pins shown');
+    expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+    expect(wrapper.findAll('.connector-board__pin')).toHaveLength(32);
+    expect(wrapper.text()).toContain('USB switch');
+    expect(wrapper.text()).toContain('Extended pins');
+
+    await wrapper.findAll('.connector-board__pin')[0].trigger('click');
+    expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
+  });
 });
 
 describe('PinSearch', () => {

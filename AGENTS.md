@@ -15,6 +15,7 @@ Accuracy matters more than UI flourish. Raw SoC package data must come from offi
 - Implemented board profiles:
   - ESP32-S3-DevKitC-1 v1.1
   - ESP32-S3-DevKitM-1
+  - ESP32-S3-USB-OTG
 - Future work is tracked in `todo.md`.
 - The README documents install, dev, build, and top-level structure.
 
@@ -52,6 +53,7 @@ Accuracy matters more than UI flourish. Raw SoC package data must come from offi
 - Use `boardProfiles` on the related `SocDefinition`.
 - Set `kind: 'board'`, a stable `id`, a concise `name`, and a maker-facing `packageName`.
 - Add `moduleNames` and `identificationNotes` when the visible module marking differs from the dev-board profile name.
+- Use `boardLayout: 'connector-groups'` and `boardGroup` for official board pin tables that are grouped by function or connector instead of J1/J3-style side headers.
 - Use official board header identifiers in `displayNumber`, for example `J1-4`.
 - Preserve the board silkscreen/header label in `boardLabel`, for example `TX`, `3V3`, or `14`.
 - Set `boardHeader` to the official header block name, for example `J1` or `J3`.

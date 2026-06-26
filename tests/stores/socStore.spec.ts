@@ -69,6 +69,26 @@ describe('soc store', () => {
     expect(store.filteredPins).toHaveLength(44);
   });
 
+  it('can select the ESP32-S3 USB-OTG connector-group profile', () => {
+    const store = useSocStore();
+
+    store.selectPackage('esp32s3-usb-otg');
+
+    expect(store.selectedPackage.name).toBe('USB-OTG (MINI)');
+    expect(store.selectedPackage.boardLayout).toBe('connector-groups');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP32-S3-MINI-1-N8']);
+    expect(store.selectedPins).toHaveLength(32);
+
+    store.setSearchQuery('usb switch');
+    expect(store.filteredPins.map((pin) => pin.boardLabel)).toEqual(['USB_SEL', 'USB_D-', 'USB_D+']);
+
+    store.setSearchQuery('gpio48 free_3');
+    expect(store.filteredPins.map((pin) => pin.boardLabel)).toEqual(['FREE_3']);
+
+    store.setSearchQuery('mini-1-n8');
+    expect(store.filteredPins).toHaveLength(32);
+  });
+
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {
     const store = useSocStore();
 

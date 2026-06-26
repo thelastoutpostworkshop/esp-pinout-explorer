@@ -18,6 +18,7 @@ function pinSearchText(pin: SocPin) {
       pin.name,
       pin.boardHeader ?? '',
       pin.boardLabel ?? '',
+      pin.boardGroup ?? '',
       typeSearchText,
       pin.gpio !== undefined ? `GPIO${pin.gpio}` : '',
       ...(pin.mainFunctions ?? []),

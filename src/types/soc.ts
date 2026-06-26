@@ -4,6 +4,8 @@ export type PinSide = 'left' | 'bottom' | 'right' | 'top' | 'center';
 
 export type PinProfileKind = 'package' | 'board';
 
+export type BoardLayout = 'dual-header' | 'connector-groups';
+
 export type PinWarning =
   | 'strapping'
   | 'boot'
@@ -32,6 +34,7 @@ export interface SocPin {
   gpio?: number;
   boardHeader?: string;
   boardLabel?: string;
+  boardGroup?: string;
   position: PinPosition;
   mainFunctions: string[];
   ioMux?: string[];
@@ -55,6 +58,7 @@ export interface SocPackageVariant {
   name: string;
   packageName: string;
   kind?: PinProfileKind;
+  boardLayout?: BoardLayout;
   source?: SocSource;
   moduleNames?: string[];
   identificationNotes?: string[];

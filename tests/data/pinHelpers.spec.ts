@@ -31,6 +31,9 @@ describe('function descriptions', () => {
     expect(getFunctionDescription(' GPIO10 ')).toContain('general-purpose digital I/O');
     expect(getFunctionDescription('ADC1_CH0')).toContain('analog-to-digital converter');
     expect(getFunctionDescription('USB_D+')).toContain('native USB differential data signal');
+    expect(getFunctionDescription('USB_SEL')).toContain('USB interface switch signal');
+    expect(getFunctionDescription('LCD_SCLK')).toContain('LCD SPI clock signal');
+    expect(getFunctionDescription('FREE_3')).toContain('idle/customizable');
     expect(getFunctionDescription('U0TXD')).toContain('UART transmit data signal');
     expect(getFunctionDescription('FSPIIO7')).toContain('Fast SPI data line');
     expect(getFunctionDescription('NoMatchSignal')).toBeNull();

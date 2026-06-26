@@ -1,6 +1,111 @@
 <template>
   <div class="board-shell" :class="{ 'board-shell--animated': playIntroAnimation }" role="img" :aria-label="ariaLabel">
-    <svg class="board-svg" viewBox="128 8 684 724" xmlns="http://www.w3.org/2000/svg">
+    <svg v-if="isConnectorGroupLayout" class="board-svg connector-board-svg" viewBox="0 0 960 720" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="connectorBoardBody" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#0f766e" />
+          <stop offset="1" stop-color="#064e3b" />
+        </linearGradient>
+        <linearGradient id="connectorModuleBody" x1="0" x2="1" y1="0" y2="1">
+          <stop offset="0" stop-color="#273540" />
+          <stop offset="1" stop-color="#101820" />
+        </linearGradient>
+        <filter id="connectorBoardShadow" x="-14%" y="-12%" width="128%" height="128%">
+          <feDropShadow dx="0" dy="18" flood-color="#0f172a" flood-opacity="0.18" stdDeviation="16" />
+        </filter>
+        <pattern id="connectorPcbTexture" width="42" height="42" patternUnits="userSpaceOnUse">
+          <path d="M0 14H42 M14 0V42 M0 34H42 M34 0V42" stroke="#2dd4bf" stroke-opacity="0.14" stroke-width="1" />
+          <circle cx="8" cy="8" r="1.4" fill="#99f6e4" opacity="0.22" />
+          <circle cx="30" cy="24" r="1.2" fill="#99f6e4" opacity="0.16" />
+        </pattern>
+      </defs>
+
+      <rect class="board-body" x="118" y="72" width="724" height="576" rx="22" fill="url(#connectorBoardBody)" filter="url(#connectorBoardShadow)" />
+      <rect class="board-texture" x="118" y="72" width="724" height="576" rx="22" fill="url(#connectorPcbTexture)" />
+      <rect class="board-inner" x="150" y="108" width="660" height="504" rx="14" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
+
+      <g class="connector-board__usb">
+        <rect x="320" y="30" width="118" height="40" rx="8" />
+        <rect x="522" y="30" width="118" height="40" rx="8" />
+        <text x="379" y="55" text-anchor="middle">USB HOST</text>
+        <text x="581" y="55" text-anchor="middle">USB DEV</text>
+      </g>
+
+      <g class="connector-board__module">
+        <rect x="346" y="250" width="268" height="170" rx="9" fill="url(#connectorModuleBody)" stroke="#475569" stroke-width="2" />
+        <rect
+          x="386"
+          y="286"
+          width="188"
+          height="88"
+          rx="5"
+          fill="none"
+          stroke="#94a3b8"
+          stroke-dasharray="8 8"
+          stroke-width="2"
+          opacity="0.75"
+        />
+        <text x="480" y="316" class="brand" text-anchor="middle">ESPRESSIF</text>
+        <text x="480" y="366" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
+        <text x="480" y="398" class="board-details" text-anchor="middle">{{ packageName }}</text>
+      </g>
+
+      <g class="connector-board__component connector-board__component--lcd">
+        <rect x="660" y="190" width="104" height="44" rx="7" />
+        <text x="712" y="218" text-anchor="middle">LCD</text>
+      </g>
+      <g class="connector-board__component connector-board__component--sd">
+        <rect x="660" y="438" width="104" height="44" rx="7" />
+        <text x="712" y="466" text-anchor="middle">SD</text>
+      </g>
+      <g class="connector-board__component connector-board__component--buttons">
+        <rect x="208" y="278" width="104" height="44" rx="7" />
+        <text x="260" y="306" text-anchor="middle">BUTTONS</text>
+      </g>
+      <g class="connector-board__component connector-board__component--power">
+        <rect x="342" y="526" width="276" height="34" rx="7" />
+        <text x="480" y="548" text-anchor="middle">POWER / EXTENDED</text>
+      </g>
+
+      <g v-for="group in connectorGroupLabels" :key="group.key" class="connector-board__group-label">
+        <text :x="group.x" :y="group.y" :text-anchor="group.anchor">{{ group.label }}</text>
+      </g>
+
+      <g
+        v-for="pin in pins"
+        :key="pin.id"
+        class="board-pin connector-board__pin"
+        :class="pinClasses(pin)"
+        :style="pinEntranceStyle(pin)"
+        tabindex="0"
+        role="button"
+        :aria-label="pinLabel(pin)"
+        @click="emit('pin-click', pin.id)"
+        @keydown.enter.prevent="emit('pin-click', pin.id)"
+        @keydown.space.prevent="emit('pin-click', pin.id)"
+      >
+        <title>{{ pinLabel(pin) }}</title>
+        <rect
+          class="board-pin__pad"
+          :x="connectorPinGeometry(pin).rect.x"
+          :y="connectorPinGeometry(pin).rect.y"
+          :width="connectorPinGeometry(pin).rect.width"
+          :height="connectorPinGeometry(pin).rect.height"
+          :rx="connectorPinGeometry(pin).rect.rx"
+        />
+        <text
+          class="board-pin__label connector-board__pin-label"
+          :x="connectorPinGeometry(pin).label.x"
+          :y="connectorPinGeometry(pin).label.y"
+          text-anchor="middle"
+          dominant-baseline="middle"
+        >
+          {{ pin.boardLabel ?? pin.name }}
+        </text>
+      </g>
+    </svg>
+
+    <svg v-else class="board-svg" viewBox="128 8 684 724" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="boardBody" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0" stop-color="#0f766e" />
@@ -111,7 +216,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { hasMakerWarning } from '@/data/pinWarnings';
-import type { PinSide, SocDefinition, SocPin } from '@/types/soc';
+import type { BoardLayout, PinSide, SocDefinition, SocPin } from '@/types/soc';
 
 const props = defineProps<{
   soc: SocDefinition;
@@ -122,6 +227,7 @@ const props = defineProps<{
   filteredPinCount: number;
   totalPinCount: number;
   hasFilter: boolean;
+  boardLayout?: BoardLayout;
 }>();
 
 const emit = defineEmits<{
@@ -132,8 +238,10 @@ const pins = computed(() => props.pins);
 const playIntroAnimation = ref(false);
 let introAnimationFrame = 0;
 
+const isConnectorGroupLayout = computed(() => props.boardLayout === 'connector-groups');
+const boardPinLabel = computed(() => (isConnectorGroupLayout.value ? 'connector pins' : 'header pins'));
 const ariaLabel = computed(
-  () => `${props.soc.name} ${props.packageName} board profile, ${props.filteredPinCount} of ${props.totalPinCount} header pins shown`,
+  () => `${props.soc.name} ${props.packageName} board profile, ${props.filteredPinCount} of ${props.totalPinCount} ${boardPinLabel.value} shown`,
 );
 
 interface PointText {
@@ -149,6 +257,12 @@ interface Geometry {
 
 const pinStartY = 112;
 const pinEndY = 648;
+const connectorTopStartX = 238;
+const connectorTopEndX = 722;
+const connectorBottomStartX = 172;
+const connectorBottomEndX = 788;
+const connectorSideStartY = 218;
+const connectorSideEndY = 502;
 
 const sideOrders = computed<Record<'left' | 'right', number>>(() => ({
   left: sideMaxOrder('left'),
@@ -169,6 +283,93 @@ function sideCoordinate(side: 'left' | 'right', order: number) {
   }
   return pinStartY + ((order - 1) * (pinEndY - pinStartY)) / (count - 1);
 }
+
+const connectorSideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>(() => ({
+  left: connectorSideMaxOrder('left'),
+  bottom: connectorSideMaxOrder('bottom'),
+  right: connectorSideMaxOrder('right'),
+  top: connectorSideMaxOrder('top'),
+}));
+
+function connectorSideMaxOrder(side: Exclude<PinSide, 'center'>) {
+  return Math.max(
+    1,
+    ...props.pins.filter((pin) => pin.position.side === side).map((pin) => pin.position.order),
+  );
+}
+
+function connectorSideCoordinate(side: Exclude<PinSide, 'center'>, order: number) {
+  const isHorizontal = side === 'top' || side === 'bottom';
+  const start = side === 'top' ? connectorTopStartX : side === 'bottom' ? connectorBottomStartX : connectorSideStartY;
+  const end = side === 'top' ? connectorTopEndX : side === 'bottom' ? connectorBottomEndX : connectorSideEndY;
+  const count = connectorSideOrders.value[side];
+  if (count <= 1) {
+    return (start + end) / 2;
+  }
+  return start + ((order - 1) * (end - start)) / (count - 1);
+}
+
+function connectorPinGeometry(pin: SocPin): Geometry {
+  if (pin.position.side === 'top') {
+    const x = connectorSideCoordinate('top', pin.position.order);
+    return {
+      rect: { x: x - 44, y: 118, width: 88, height: 30, rx: 5 },
+      label: { x, y: 133 },
+    };
+  }
+
+  if (pin.position.side === 'bottom') {
+    const x = connectorSideCoordinate('bottom', pin.position.order);
+    return {
+      rect: { x: x - 44, y: 572, width: 88, height: 30, rx: 5 },
+      label: { x, y: 587 },
+    };
+  }
+
+  if (pin.position.side === 'right') {
+    const y = connectorSideCoordinate('right', pin.position.order);
+    return {
+      rect: { x: 700, y: y - 13, width: 118, height: 28, rx: 5 },
+      label: { x: 759, y },
+    };
+  }
+
+  const y = connectorSideCoordinate('left', pin.position.order);
+  return {
+    rect: { x: 142, y: y - 13, width: 118, height: 28, rx: 5 },
+    label: { x: 201, y },
+  };
+}
+
+const connectorGroupLabels = computed(() => {
+  const groups = new Map<string, SocPin[]>();
+  for (const pin of props.pins) {
+    const group = pin.boardGroup;
+    if (!group) {
+      continue;
+    }
+    groups.set(group, [...(groups.get(group) ?? []), pin]);
+  }
+
+  return [...groups.entries()].map(([label, groupPins]) => {
+    const geometries = groupPins.map((pin) => connectorPinGeometry(pin));
+    const minX = Math.min(...geometries.map((geometry) => geometry.rect.x));
+    const maxX = Math.max(...geometries.map((geometry) => geometry.rect.x + geometry.rect.width));
+    const minY = Math.min(...geometries.map((geometry) => geometry.rect.y));
+    const maxY = Math.max(...geometries.map((geometry) => geometry.rect.y + geometry.rect.height));
+    const side = groupPins[0].position.side;
+
+    if (side === 'top') {
+      return { key: label, label, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' as const };
+    }
+
+    if (side === 'bottom') {
+      return { key: label, label, x: (minX + maxX) / 2, y: maxY + 20, anchor: 'middle' as const };
+    }
+
+    return { key: label, label, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' as const };
+  });
+});
 
 function pinGeometry(pin: SocPin): Geometry {
   const side = pin.position.side === 'right' ? 'right' : 'left';
@@ -265,6 +466,10 @@ onBeforeUnmount(() => {
   transform-origin: center;
 }
 
+.connector-board-svg {
+  width: min(100%, 1040px);
+}
+
 .board-shell--animated .board-svg {
   animation: board-scene-enter 900ms cubic-bezier(0.16, 0.95, 0.22, 1) both;
 }
@@ -316,16 +521,26 @@ onBeforeUnmount(() => {
   stroke-width: 2;
 }
 
+.connector-board__usb rect {
+  fill: #e2e8f0;
+  stroke: #64748b;
+  stroke-width: 2;
+}
+
 .board-usb text,
 .board-component text,
-.header-name {
+.header-name,
+.connector-board__usb text,
+.connector-board__component text,
+.connector-board__group-label text {
   fill: #ccfbf1;
   font-size: 13px;
   font-weight: 850;
   letter-spacing: 0;
 }
 
-.board-usb text {
+.board-usb text,
+.connector-board__usb text {
   fill: #334155;
   font-size: 12px;
 }
@@ -345,6 +560,31 @@ onBeforeUnmount(() => {
   fill: rgba(249, 115, 22, 0.4);
   stroke: rgba(254, 215, 170, 0.75);
   filter: drop-shadow(0 0 7px rgba(249, 115, 22, 0.55));
+}
+
+.connector-board__component rect {
+  fill: rgba(15, 23, 42, 0.42);
+  stroke: rgba(153, 246, 228, 0.48);
+  stroke-width: 2;
+}
+
+.connector-board__component--lcd rect {
+  fill: rgba(37, 99, 235, 0.38);
+}
+
+.connector-board__component--sd rect {
+  fill: rgba(22, 101, 52, 0.44);
+}
+
+.connector-board__component--power rect {
+  fill: rgba(180, 83, 9, 0.42);
+}
+
+.connector-board__group-label text {
+  fill: #ccfbf1;
+  font-size: 12px;
+  opacity: 0.92;
+  text-transform: uppercase;
 }
 
 .brand {
@@ -453,6 +693,10 @@ onBeforeUnmount(() => {
   font-size: 12px;
   font-weight: 900;
   pointer-events: none;
+}
+
+.connector-board__pin-label {
+  font-size: 8.7px;
 }
 
 .board-pin--selected .board-pin__label {

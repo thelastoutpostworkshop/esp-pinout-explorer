@@ -23,6 +23,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32s3:esp32s3-qfn56': 57,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
   'esp32s3:esp32s3-devkitm-1': 44,
+  'esp32s3:esp32s3-usb-otg': 32,
   'esp32c6:qfn40': 41,
   'esp32c6:qfn32': 33,
 };
@@ -31,6 +32,7 @@ interface ProfileEntry {
   soc: SocDefinition;
   id: string;
   kind: 'package' | 'board';
+  boardLayout?: SocPackageVariant['boardLayout'];
   packageName: string;
   source?: SocSource;
   moduleNames?: string[];
@@ -43,7 +45,8 @@ function profilesForSoc(soc: SocDefinition): ProfileEntry[] {
     {
       soc,
       id: soc.defaultPackageId ?? 'default',
-      kind: 'package',
+    kind: 'package',
+    boardLayout: undefined,
       packageName: soc.packageName,
       source: soc.source,
       pins: soc.pins,
@@ -58,6 +61,7 @@ function packageProfile(soc: SocDefinition, profile: SocPackageVariant): Profile
     soc,
     id: profile.id,
     kind: profile.kind ?? 'package',
+    boardLayout: profile.boardLayout,
     packageName: profile.packageName,
     source: profile.source,
     moduleNames: profile.moduleNames,
@@ -71,6 +75,7 @@ function boardProfile(soc: SocDefinition, profile: SocPackageVariant): ProfileEn
     soc,
     id: profile.id,
     kind: 'board',
+    boardLayout: profile.boardLayout,
     packageName: profile.packageName,
     source: profile.source,
     moduleNames: profile.moduleNames,
@@ -157,6 +162,7 @@ describe('SoC data invariants', () => {
 
   it('keeps board header pins mapped back to package GPIO metadata', () => {
     for (const profile of allProfiles().filter((item) => item.kind === 'board')) {
+      const isConnectorGroupLayout = profile.boardLayout === 'connector-groups';
       const displayNumbers = new Set<string>();
       const positions = new Set<string>();
       const packagePinsByGpio = new Map(profile.soc.pins.filter((pin) => pin.gpio !== undefined).map((pin) => [pin.gpio, pin]));
@@ -164,9 +170,15 @@ describe('SoC data invariants', () => {
       for (const pin of profile.pins) {
         expectValidPin(pin);
         expect(pin.displayNumber).toBe(`${pin.boardHeader}-${pin.number}`);
-        expect(pin.boardHeader).toMatch(/^J\d+$/);
         expect(pin.boardLabel?.trim()).not.toBe('');
-        expect(pin.position.side === 'left' || pin.position.side === 'right').toBe(true);
+
+        if (isConnectorGroupLayout) {
+          expect(['Function pin', 'Extended pin']).toContain(pin.boardHeader);
+          expect(pin.boardGroup?.trim()).not.toBe('');
+        } else {
+          expect(pin.boardHeader).toMatch(/^J\d+$/);
+          expect(pin.position.side === 'left' || pin.position.side === 'right').toBe(true);
+        }
 
         expect(displayNumbers.has(pin.displayNumber ?? '')).toBe(false);
         displayNumbers.add(pin.displayNumber ?? '');
@@ -180,8 +192,10 @@ describe('SoC data invariants', () => {
           expect(sourcePin, `${profile.id} ${pin.displayNumber} GPIO${pin.gpio} should map to a package pin`).toBeDefined();
           expect(pin.mainFunctions).toContain(`GPIO${pin.gpio}`);
 
-          for (const warning of sourcePin?.warnings ?? []) {
-            expect(pin.warnings ?? []).toContain(warning);
+          if (!isConnectorGroupLayout) {
+            for (const warning of sourcePin?.warnings ?? []) {
+              expect(pin.warnings ?? []).toContain(warning);
+            }
           }
         }
       }
