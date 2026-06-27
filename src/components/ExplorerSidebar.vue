@@ -36,9 +36,80 @@
       <div v-if="moduleDisplay" class="explorer-sidebar__module">
         <div class="explorer-sidebar__module-heading">
           <span>Module</span>
-          <InfoTooltip label="Board or module name?" :text="moduleTooltip" />
+          <button
+            v-if="moduleVariants.length"
+            class="explorer-sidebar__module-info-button"
+            type="button"
+            aria-label="View module variant details"
+            title="Module variant details"
+            @click="openModuleDetails"
+          >
+            <Info :size="15" aria-hidden="true" />
+          </button>
+          <InfoTooltip v-else label="Board or module name?" :text="moduleTooltip" />
         </div>
         <strong>{{ moduleDisplay }}</strong>
+        <div v-if="moduleTags.length" class="explorer-sidebar__module-tags" aria-label="Module differences">
+          <span v-for="tag in moduleTags" :key="tag">{{ tag }}</span>
+        </div>
+      </div>
+
+      <div
+        v-if="moduleDetailsOpen"
+        class="module-details"
+        role="dialog"
+        aria-label="Module variant details"
+        aria-modal="true"
+        tabindex="-1"
+        @click.self="closeModuleDetails"
+        @keydown.esc="closeModuleDetails"
+      >
+        <section class="module-details__panel">
+          <header class="module-details__header">
+            <div>
+              <h2>Module variants</h2>
+              <p>{{ selectedPackage.name }}</p>
+            </div>
+            <button
+              class="module-details__close"
+              type="button"
+              aria-label="Close module variant details"
+              @click="closeModuleDetails"
+            >
+              <X :size="18" aria-hidden="true" />
+            </button>
+          </header>
+
+          <div class="module-details__table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Module</th>
+                  <th scope="col">Antenna</th>
+                  <th scope="col">Flash</th>
+                  <th scope="col">PSRAM</th>
+                  <th scope="col">Footprint</th>
+                  <th scope="col">Pinout impact</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="variant in moduleVariants" :key="variant.name">
+                  <th scope="row">
+                    <a v-if="variant.source" :href="variant.source.url" rel="noreferrer" target="_blank">
+                      {{ variant.name }}
+                    </a>
+                    <span v-else>{{ variant.name }}</span>
+                  </th>
+                  <td>{{ valueOrDash(variant.antenna) }}</td>
+                  <td>{{ valueOrDash(variant.flash) }}</td>
+                  <td>{{ valueOrDash(variant.psram) }}</td>
+                  <td>{{ valueOrDash(variant.footprint) }}</td>
+                  <td>{{ valueOrDash(variant.pinoutImpact) }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
       </div>
 
       <div class="explorer-sidebar__source-actions">
@@ -132,10 +203,11 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { ExternalLink, Image as ImageIcon, X } from '@lucide/vue';
+import { ExternalLink, Image as ImageIcon, Info, X } from '@lucide/vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
+import type { SocModuleVariant } from '@/types/soc';
 
 const emit = defineEmits<{
   changed: [];
@@ -149,6 +221,9 @@ const sourceLinkTitle = computed(() => `${selectedSource.value.title} ${selected
 const sourceFigures = computed(() => selectedSource.value.figures ?? []);
 const referenceImagesOpen = ref(false);
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
+const moduleVariants = computed(() => selectedPackage.value.moduleVariants ?? []);
+const moduleDetailsOpen = ref(false);
+const moduleTags = computed(() => summarizeModuleVariants(moduleVariants.value));
 const moduleTooltip = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
   return [
@@ -174,20 +249,64 @@ watch(sourceFigures, (figures) => {
   }
 });
 
+watch(moduleVariants, (variants) => {
+  if (!variants.length) {
+    closeModuleDetails();
+  }
+});
+
 function selectSoc(socId: string) {
   store.selectSoc(socId);
   closeReferenceImages();
+  closeModuleDetails();
   emit('changed');
 }
 
 function selectPackage(packageId: string) {
   store.selectPackage(packageId);
   closeReferenceImages();
+  closeModuleDetails();
   emit('changed');
 }
 
 function formatModuleNames(moduleNames: string[]) {
   return moduleNames.map((name, index) => (index === 0 ? name : name.replace(/^ESP32-S3-/, ''))).join(' / ');
+}
+
+function summarizeModuleVariants(variants: SocModuleVariant[]) {
+  const tags: string[] = [];
+  const antennas = uniqueValues(variants.map((variant) => variant.antenna));
+  const flashes = uniqueValues(variants.map((variant) => variant.flash));
+  const psrams = uniqueValues(variants.map((variant) => variant.psram));
+  const impacts = uniqueValues(variants.map((variant) => variant.pinoutImpact));
+
+  if (antennas.length > 1) {
+    tags.push('Antenna variants');
+  } else if (antennas.length === 1) {
+    tags.push(antennas[0]);
+  }
+
+  if (flashes.length > 1 || psrams.length > 1) {
+    tags.push('Memory variants');
+  } else if (flashes.length === 1) {
+    tags.push(flashes[0]);
+  }
+
+  if (impacts.some((impact) => /fixed|internal|unavailable/i.test(impact))) {
+    tags.push('Pinout notes');
+  } else if (impacts.length === 1) {
+    tags.push('Same board headers');
+  }
+
+  return tags.slice(0, 3);
+}
+
+function uniqueValues(values: Array<string | undefined>) {
+  return [...new Set(values.filter((value): value is string => Boolean(value?.trim())))];
+}
+
+function valueOrDash(value: string | undefined) {
+  return value?.trim() || '-';
 }
 
 function openReferenceImages() {
@@ -196,6 +315,14 @@ function openReferenceImages() {
 
 function closeReferenceImages() {
   referenceImagesOpen.value = false;
+}
+
+function openModuleDetails() {
+  moduleDetailsOpen.value = true;
+}
+
+function closeModuleDetails() {
+  moduleDetailsOpen.value = false;
 }
 </script>
 
@@ -265,6 +392,46 @@ function closeReferenceImages() {
   font-size: 0.84rem;
   line-height: 1.3;
   overflow-wrap: anywhere;
+}
+
+.explorer-sidebar__module-info-button {
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  color: #006d77;
+  background: transparent;
+  cursor: pointer;
+}
+
+.explorer-sidebar__module-info-button:hover,
+.explorer-sidebar__module-info-button:focus-visible {
+  color: #004f58;
+  background: #d9f3f0;
+}
+
+.explorer-sidebar__module-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  min-width: 0;
+}
+
+.explorer-sidebar__module-tags span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 22px;
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  padding: 2px 7px;
+  color: #334155;
+  background: #f8fafc;
+  font-size: 0.72rem;
+  font-weight: 750;
+  line-height: 1.2;
 }
 
 .explorer-sidebar__source-actions {
@@ -420,12 +587,140 @@ function closeReferenceImages() {
   line-height: 1.3;
 }
 
+.module-details {
+  position: fixed;
+  inset: 0;
+  z-index: 52;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.module-details__panel {
+  display: grid;
+  gap: 16px;
+  width: min(1040px, 100%);
+  max-height: min(720px, calc(100vh - 48px));
+  overflow: auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+}
+
+.module-details__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.module-details__header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 850;
+  letter-spacing: 0;
+}
+
+.module-details__header p {
+  margin: 3px 0 0;
+  color: #64748b;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.module-details__close {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #334155;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.module-details__close:hover,
+.module-details__close:focus-visible {
+  border-color: #94a3b8;
+  background: #e2e8f0;
+}
+
+.module-details__table-wrap {
+  overflow-x: auto;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+}
+
+.module-details table {
+  width: 100%;
+  min-width: 840px;
+  border-collapse: collapse;
+  color: #334155;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
+.module-details th,
+.module-details td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.module-details thead th {
+  color: #0f172a;
+  background: #f1f5f9;
+  font-size: 0.74rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.module-details tbody th {
+  color: #0f172a;
+  font-weight: 850;
+}
+
+.module-details tbody tr:last-child th,
+.module-details tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.module-details a {
+  color: #006d77;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.module-details a:hover,
+.module-details a:focus-visible {
+  color: #004f58;
+  text-decoration: underline;
+}
+
 @media (max-width: 640px) {
   .reference-images {
     padding: 12px;
   }
 
   .reference-images__panel {
+    max-height: calc(100vh - 24px);
+    padding: 14px;
+  }
+
+  .module-details {
+    padding: 12px;
+  }
+
+  .module-details__panel {
     max-height: calc(100vh - 24px);
     padding: 14px;
   }

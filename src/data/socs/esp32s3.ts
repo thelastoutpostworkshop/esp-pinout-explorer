@@ -1,4 +1,4 @@
-import type { PinPosition, PinType, PinWarning, SocDefinition, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
+import type { PinPosition, PinType, PinWarning, SocDefinition, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
   title: 'ESP32-S3 Series Datasheet',
@@ -21,6 +21,98 @@ const source: SocSource = {
     'Table 3-5 JTAG Signal Source Control',
   ],
 };
+
+const wroom1ModuleSource: SocSource = {
+  title: 'ESP32-S3-WROOM-1/1U Datasheet',
+  version: 'v1.8',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
+  url: 'https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf',
+  sections: ['Module Overview', 'Series Comparison', 'Pin Definitions', 'Module Dimensions'],
+};
+
+const wroom2ModuleSource: SocSource = {
+  title: 'ESP32-S3-WROOM-2 Datasheet',
+  version: 'v1.7',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
+  url: 'https://documentation.espressif.com/esp32-s3-wroom-2_datasheet_en.pdf',
+  sections: ['Module Overview', 'Series Comparison', 'Pin Definitions', 'Module Dimensions'],
+};
+
+const mini1ModuleSource: SocSource = {
+  title: 'ESP32-S3-MINI-1/1U Datasheet',
+  version: 'v1.7',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
+  url: 'https://documentation.espressif.com/esp32-s3-mini-1_mini-1u_datasheet_en.pdf',
+  sections: ['Module Overview', 'Series Comparison', 'Pin Definitions', 'Module Dimensions'],
+};
+
+const sameDevKitHeaders = 'Same dev-kit header profile.';
+
+const devkitCModuleVariants: SocModuleVariant[] = [
+  {
+    name: 'ESP32-S3-WROOM-1-N8R8',
+    antenna: 'PCB antenna',
+    flash: '8 MB Quad SPI flash',
+    psram: '8 MB Octal PSRAM',
+    footprint: '18.0 x 25.5 mm module',
+    pinoutImpact: `${sameDevKitHeaders} GPIO35/GPIO36/GPIO37 are used internally by octal memory.`,
+    source: wroom1ModuleSource,
+  },
+  {
+    name: 'ESP32-S3-WROOM-1U-N8R8',
+    antenna: 'External antenna connector',
+    flash: '8 MB Quad SPI flash',
+    psram: '8 MB Octal PSRAM',
+    footprint: '18.0 x 19.2 mm module',
+    pinoutImpact: `${sameDevKitHeaders} GPIO35/GPIO36/GPIO37 are used internally by octal memory.`,
+    source: wroom1ModuleSource,
+  },
+  {
+    name: 'ESP32-S3-WROOM-2-N32R16V',
+    antenna: 'PCB antenna',
+    flash: '32 MB Octal SPI flash',
+    psram: '16 MB Octal PSRAM',
+    footprint: '18.0 x 25.5 mm module',
+    pinoutImpact: `${sameDevKitHeaders} GPIO35/GPIO36/GPIO37 are used internally by octal memory.`,
+    source: wroom2ModuleSource,
+  },
+];
+
+const devkitMModuleVariants: SocModuleVariant[] = [
+  {
+    name: 'ESP32-S3-MINI-1-N8',
+    antenna: 'PCB antenna',
+    flash: '8 MB SPI flash',
+    psram: 'No PSRAM',
+    footprint: '15.4 x 20.5 mm module',
+    pinoutImpact: sameDevKitHeaders,
+    source: mini1ModuleSource,
+  },
+  {
+    name: 'ESP32-S3-MINI-1U-N8',
+    antenna: 'External antenna connector',
+    flash: '8 MB SPI flash',
+    psram: 'No PSRAM',
+    footprint: '15.4 x 15.4 mm module',
+    pinoutImpact: sameDevKitHeaders,
+    source: mini1ModuleSource,
+  },
+];
+
+const usbOtgModuleVariants: SocModuleVariant[] = [
+  {
+    name: 'ESP32-S3-MINI-1-N8',
+    antenna: 'PCB antenna',
+    flash: '8 MB SPI flash',
+    psram: 'No PSRAM',
+    footprint: '15.4 x 20.5 mm module',
+    pinoutImpact: 'Fixed USB-OTG board profile; connectors and on-board peripherals define the usable pins.',
+    source: mini1ModuleSource,
+  },
+];
 
 const gpioMatrixSignals = [
   'I2C',
@@ -900,6 +992,7 @@ const esp32s3DevKitC1V11Profile: SocPackageVariant = {
   kind: 'board',
   source: devkitC1V11Source,
   moduleNames: ['ESP32-S3-WROOM-1', 'ESP32-S3-WROOM-1U', 'ESP32-S3-WROOM-2'],
+  moduleVariants: devkitCModuleVariants,
   identificationNotes: [
     'The metal shield may show a WROOM module name. Choose this profile by the ESP32-S3-DevKitC-1 carrier PCB and J1/J3 header layout.',
   ],
@@ -1301,6 +1394,7 @@ const esp32s3DevKitM1Profile: SocPackageVariant = {
   kind: 'board',
   source: devkitM1Source,
   moduleNames: ['ESP32-S3-MINI-1', 'ESP32-S3-MINI-1U'],
+  moduleVariants: devkitMModuleVariants,
   identificationNotes: [
     'The metal shield may show a MINI module name. Choose this profile by the ESP32-S3-DevKitM-1 carrier PCB and J1/J3 header layout.',
   ],
@@ -1690,6 +1784,7 @@ const esp32s3UsbOtgProfile: SocPackageVariant = {
   boardLayout: 'connector-groups',
   source: usbOtgSource,
   moduleNames: ['ESP32-S3-MINI-1-N8'],
+  moduleVariants: usbOtgModuleVariants,
   identificationNotes: [
     'The board uses an ESP32-S3-MINI-1-N8 module. Choose this profile by the ESP32-S3-USB-OTG carrier PCB, USB connectors, LCD subboard, and function/extended pin tables.',
   ],

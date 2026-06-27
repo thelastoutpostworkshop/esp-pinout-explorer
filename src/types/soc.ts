@@ -64,6 +64,16 @@ export interface SocSourceFigure {
   sourceSection: string;
 }
 
+export interface SocModuleVariant {
+  name: string;
+  antenna?: string;
+  flash?: string;
+  psram?: string;
+  footprint?: string;
+  pinoutImpact?: string;
+  source?: SocSource;
+}
+
 export interface SocPackageVariant {
   id: string;
   name: string;
@@ -72,6 +82,7 @@ export interface SocPackageVariant {
   boardLayout?: BoardLayout;
   source?: SocSource;
   moduleNames?: string[];
+  moduleVariants?: SocModuleVariant[];
   identificationNotes?: string[];
   pins: SocPin[];
 }

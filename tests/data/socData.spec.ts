@@ -1,6 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import { socs } from '@/data/socs';
-import type { PinSide, PinType, PinWarning, SocDefinition, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
+import type {
+  PinSide,
+  PinType,
+  PinWarning,
+  SocDefinition,
+  SocModuleVariant,
+  SocPackageVariant,
+  SocPin,
+  SocSource,
+} from '@/types/soc';
 
 const pinTypes: readonly PinType[] = ['io', 'analog', 'power', 'ground', 'control'];
 const pinSides: readonly PinSide[] = ['left', 'bottom', 'right', 'top', 'center'];
@@ -52,6 +61,7 @@ interface ProfileEntry {
   packageName: string;
   source?: SocSource;
   moduleNames?: string[];
+  moduleVariants?: SocModuleVariant[];
   identificationNotes?: string[];
   pins: SocPin[];
 }
@@ -81,6 +91,7 @@ function packageProfile(soc: SocDefinition, profile: SocPackageVariant): Profile
     packageName: profile.packageName,
     source: profile.source,
     moduleNames: profile.moduleNames,
+    moduleVariants: profile.moduleVariants,
     identificationNotes: profile.identificationNotes,
     pins: profile.pins,
   };
@@ -95,6 +106,7 @@ function boardProfile(soc: SocDefinition, profile: SocPackageVariant): ProfileEn
     packageName: profile.packageName,
     source: profile.source,
     moduleNames: profile.moduleNames,
+    moduleVariants: profile.moduleVariants,
     identificationNotes: profile.identificationNotes,
     pins: profile.pins,
   };
@@ -242,6 +254,10 @@ describe('SoC data invariants', () => {
     for (const profile of allProfiles().filter((item) => item.kind === 'board')) {
       expect(profile.moduleNames?.length).toBeGreaterThan(0);
       expect(profile.moduleNames?.every((name) => name.startsWith('ESP32-S3-'))).toBe(true);
+      expect(profile.moduleVariants?.length).toBeGreaterThan(0);
+      for (const variant of profile.moduleVariants ?? []) {
+        expectValidModuleVariant(variant);
+      }
       expect(profile.identificationNotes?.length).toBeGreaterThan(0);
       expect(profile.identificationNotes?.every((note) => note.includes('carrier PCB'))).toBe(true);
     }
@@ -275,6 +291,17 @@ function expectValidPin(pin: SocPin) {
   expect((pin.matrixSignals ?? []).every((item) => item.trim().length > 0)).toBe(true);
   expect((pin.notes ?? []).every((item) => item.trim().length > 0)).toBe(true);
   expect((pin.keywords ?? []).every((item) => item.trim().length > 0)).toBe(true);
+}
+
+function expectValidModuleVariant(variant: SocModuleVariant) {
+  expect(variant.name.trim()).not.toBe('');
+  expect(variant.name).toMatch(/^ESP32-S3-/);
+  expect(variant.antenna?.trim()).not.toBe('');
+  expect(variant.flash?.trim()).not.toBe('');
+  expect(variant.psram?.trim()).not.toBe('');
+  expect(variant.footprint?.trim()).not.toBe('');
+  expect(variant.pinoutImpact?.trim()).not.toBe('');
+  expectValidSource(variant.source!);
 }
 
 function range(start: number, end: number) {
