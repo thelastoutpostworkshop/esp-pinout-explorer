@@ -196,8 +196,6 @@ describe('ExplorerSidebar', () => {
 
     expect(wrapper.text()).toContain('Module');
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
-    expect(wrapper.text()).toContain('Antenna variants');
-    expect(wrapper.text()).toContain('Memory variants');
     expect(wrapper.text()).toContain('Official docs');
     expect(wrapper.find('.explorer-sidebar__source').attributes('href')).toBe(esp32s3.boardProfiles?.[0]?.source?.url);
     expect(wrapper.text()).toContain('Reference images');
@@ -229,7 +227,6 @@ describe('ExplorerSidebar', () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.text()).toContain('ESP32-S3-MINI-1 / MINI-1U');
-    expect(wrapper.text()).toContain('Same board headers');
     expect(wrapper.find('.explorer-sidebar__source').attributes('href')).toBe(
       esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-devkitm-1')?.source?.url,
     );

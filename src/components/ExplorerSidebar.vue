@@ -49,9 +49,6 @@
           <InfoTooltip v-else label="Board or module name?" :text="moduleTooltip" />
         </div>
         <strong>{{ moduleDisplay }}</strong>
-        <div v-if="moduleTags.length" class="explorer-sidebar__module-tags" aria-label="Module differences">
-          <span v-for="tag in moduleTags" :key="tag">{{ tag }}</span>
-        </div>
       </div>
 
       <div
@@ -207,7 +204,6 @@ import { ExternalLink, Image as ImageIcon, Info, X } from '@lucide/vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
-import type { SocModuleVariant } from '@/types/soc';
 
 const emit = defineEmits<{
   changed: [];
@@ -223,7 +219,6 @@ const referenceImagesOpen = ref(false);
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
 const moduleVariants = computed(() => selectedPackage.value.moduleVariants ?? []);
 const moduleDetailsOpen = ref(false);
-const moduleTags = computed(() => summarizeModuleVariants(moduleVariants.value));
 const moduleTooltip = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
   return [
@@ -271,38 +266,6 @@ function selectPackage(packageId: string) {
 
 function formatModuleNames(moduleNames: string[]) {
   return moduleNames.map((name, index) => (index === 0 ? name : name.replace(/^ESP32-S3-/, ''))).join(' / ');
-}
-
-function summarizeModuleVariants(variants: SocModuleVariant[]) {
-  const tags: string[] = [];
-  const antennas = uniqueValues(variants.map((variant) => variant.antenna));
-  const flashes = uniqueValues(variants.map((variant) => variant.flash));
-  const psrams = uniqueValues(variants.map((variant) => variant.psram));
-  const impacts = uniqueValues(variants.map((variant) => variant.pinoutImpact));
-
-  if (antennas.length > 1) {
-    tags.push('Antenna variants');
-  } else if (antennas.length === 1) {
-    tags.push(antennas[0]);
-  }
-
-  if (flashes.length > 1 || psrams.length > 1) {
-    tags.push('Memory variants');
-  } else if (flashes.length === 1) {
-    tags.push(flashes[0]);
-  }
-
-  if (impacts.some((impact) => /fixed|internal|unavailable/i.test(impact))) {
-    tags.push('Pinout notes');
-  } else if (impacts.length === 1) {
-    tags.push('Same board headers');
-  }
-
-  return tags.slice(0, 3);
-}
-
-function uniqueValues(values: Array<string | undefined>) {
-  return [...new Set(values.filter((value): value is string => Boolean(value?.trim())))];
 }
 
 function valueOrDash(value: string | undefined) {
@@ -411,27 +374,6 @@ function closeModuleDetails() {
 .explorer-sidebar__module-info-button:focus-visible {
   color: #004f58;
   background: #d9f3f0;
-}
-
-.explorer-sidebar__module-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  min-width: 0;
-}
-
-.explorer-sidebar__module-tags span {
-  display: inline-flex;
-  align-items: center;
-  min-height: 22px;
-  border: 1px solid #cbd5e1;
-  border-radius: 999px;
-  padding: 2px 7px;
-  color: #334155;
-  background: #f8fafc;
-  font-size: 0.72rem;
-  font-weight: 750;
-  line-height: 1.2;
 }
 
 .explorer-sidebar__source-actions {
