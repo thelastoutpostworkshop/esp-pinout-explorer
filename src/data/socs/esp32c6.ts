@@ -1,8 +1,10 @@
-import type { PinPosition, PinType, PinWarning, SocDefinition, SocPin } from '@/types/soc';
+import type { PinPosition, PinType, PinWarning, SocDefinition, SocPin, SocSource } from '@/types/soc';
 
-const source = {
+const source: SocSource = {
   title: 'ESP32-C6 Series Datasheet',
   version: 'v1.5',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
   url: 'https://documentation.espressif.com/esp32-c6_datasheet_en.pdf',
   sections: [
     'Figure 2-1 ESP32-C6 Pin Layout (QFN40, Top View)',

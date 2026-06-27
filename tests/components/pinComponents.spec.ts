@@ -273,6 +273,8 @@ const pinWithMixedWarnings: SocPin = {
 const testSource: SocSource = {
   title: 'Test Datasheet',
   version: 'v1.0',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
   url: 'https://example.com/test.pdf',
   sections: ['Test Section'],
 };

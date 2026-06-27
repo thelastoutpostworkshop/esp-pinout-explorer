@@ -1,8 +1,10 @@
 import type { PinPosition, PinType, PinWarning, SocDefinition, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
-const source = {
+const source: SocSource = {
   title: 'ESP32-S3 Series Datasheet',
   version: 'v2.2',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
   url: 'https://documentation.espressif.com/esp32-s3_datasheet_en.pdf',
   sections: [
     'Figure 2-1 ESP32-S3 Pin Layout (Top View)',
@@ -551,6 +553,8 @@ export const esp32s3: SocDefinition = {
 const devkitC1V11Source: SocSource = {
   title: 'ESP32-S3-DevKitC-1 User Guide',
   version: 'v1.1',
+  publisher: 'Espressif',
+  documentType: 'user-guide',
   url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html',
   sections: [
     'Description of Components',
@@ -565,6 +569,8 @@ const devkitC1V11Source: SocSource = {
 const devkitM1Source: SocSource = {
   title: 'ESP32-S3-DevKitM-1 User Guide',
   version: 'first revision',
+  publisher: 'Espressif',
+  documentType: 'user-guide',
   url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html',
   sections: [
     'Description of Components',
@@ -578,6 +584,8 @@ const devkitM1Source: SocSource = {
 const usbOtgSource: SocSource = {
   title: 'ESP32-S3-USB-OTG User Guide',
   version: 'latest',
+  publisher: 'Espressif',
+  documentType: 'user-guide',
   url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html',
   sections: [
     'Description of Components',

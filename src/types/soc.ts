@@ -49,6 +49,8 @@ export interface SocPin {
 export interface SocSource {
   title: string;
   version: string;
+  publisher: 'Espressif';
+  documentType: 'datasheet' | 'user-guide' | 'schematic' | 'documentation';
   url: string;
   sections: string[];
 }

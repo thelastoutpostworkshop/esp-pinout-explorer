@@ -19,6 +19,15 @@ const pinWarnings: readonly PinWarning[] = [
   'voltage',
 ];
 
+const sourceDocumentTypes: readonly SocSource['documentType'][] = ['datasheet', 'user-guide', 'schematic', 'documentation'];
+
+const officialEspressifHosts = new Set([
+  'docs.espressif.com',
+  'documentation.espressif.com',
+  'www.espressif.com',
+  'dl.espressif.com',
+]);
+
 const expectedPinCounts: Record<string, number> = {
   'esp32s3:esp32s3-qfn56': 57,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
@@ -45,8 +54,8 @@ function profilesForSoc(soc: SocDefinition): ProfileEntry[] {
     {
       soc,
       id: soc.defaultPackageId ?? 'default',
-    kind: 'package',
-    boardLayout: undefined,
+      kind: 'package',
+      boardLayout: undefined,
       packageName: soc.packageName,
       source: soc.source,
       pins: soc.pins,
@@ -91,9 +100,18 @@ function allProfiles() {
 function expectValidSource(source: SocSource) {
   expect(source.title.trim()).not.toBe('');
   expect(source.version.trim()).not.toBe('');
-  expect(source.url).toMatch(/^https:\/\//);
+  expect(source.publisher).toBe('Espressif');
+  expect(sourceDocumentTypes).toContain(source.documentType);
+  expectOfficialEspressifUrl(source.url);
   expect(source.sections.length).toBeGreaterThan(0);
   expect(source.sections.every((section) => section.trim().length > 0)).toBe(true);
+}
+
+function expectOfficialEspressifUrl(url: string) {
+  const parsed = new URL(url);
+
+  expect(parsed.protocol).toBe('https:');
+  expect(officialEspressifHosts.has(parsed.hostname)).toBe(true);
 }
 
 describe('SoC data invariants', () => {
