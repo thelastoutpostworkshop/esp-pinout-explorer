@@ -42,7 +42,11 @@
         </template>
       </v-select>
 
-      <div class="explorer-sidebar__profile-context" :class="`explorer-sidebar__profile-context--${selectedProfileKind}`">
+      <div
+        v-if="selectedProfileKind !== 'board'"
+        class="explorer-sidebar__profile-context"
+        :class="`explorer-sidebar__profile-context--${selectedProfileKind}`"
+      >
         <span>{{ selectedProfileKindLabel }}</span>
         <p>{{ selectedProfileSummary }}</p>
       </div>

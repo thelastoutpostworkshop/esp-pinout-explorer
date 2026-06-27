@@ -200,7 +200,8 @@ describe('ExplorerSidebar', () => {
 
     expect(wrapper.text()).toContain('Module');
     expect(wrapper.text()).toContain('Dev board');
-    expect(wrapper.text()).toContain('Header pins, silkscreen labels, and on-board parts.');
+    expect(wrapper.text()).not.toContain('Header pins, silkscreen labels, and on-board parts.');
+    expect(wrapper.find('.explorer-sidebar__profile-context').exists()).toBe(false);
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
     expect(wrapper.text()).toContain('The printed metal-can name is the module');
     expect(wrapper.text()).toContain('Module variants');
@@ -256,6 +257,7 @@ describe('ExplorerSidebar', () => {
     store.selectPackage('esp32c6-mini-1');
     await wrapper.vm.$nextTick();
 
+    expect(wrapper.find('.explorer-sidebar__profile-context').exists()).toBe(true);
     expect(wrapper.text()).toContain('Module pads for PCB design, not dev-board headers.');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1');
 
