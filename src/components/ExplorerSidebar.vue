@@ -186,12 +186,36 @@
             <figure v-for="figure in sourceFigures" :key="figure.url" class="reference-images__figure">
               <a
                 class="reference-images__image-link"
+                :class="{
+                  'reference-images__image-link--loading': isReferenceImageLoading(figure.url),
+                  'reference-images__image-link--error': hasReferenceImageError(figure.url),
+                }"
                 :href="figure.url"
                 rel="noreferrer"
                 target="_blank"
                 :aria-label="`Open ${figure.title}`"
               >
-                <img :src="figure.url" :alt="figure.alt" loading="lazy" decoding="async" />
+                <span
+                  v-if="isReferenceImageLoading(figure.url)"
+                  class="reference-images__loading"
+                  role="status"
+                  aria-label="Loading reference image"
+                >
+                  <span class="reference-images__spinner" aria-hidden="true"></span>
+                </span>
+                <span v-if="hasReferenceImageError(figure.url)" class="reference-images__error">Image unavailable</span>
+                <img
+                  :src="figure.url"
+                  :alt="figure.alt"
+                  loading="lazy"
+                  decoding="async"
+                  :class="{
+                    'reference-images__image--loading': isReferenceImageLoading(figure.url),
+                    'reference-images__image--error': hasReferenceImageError(figure.url),
+                  }"
+                  @load="markReferenceImageLoaded(figure.url)"
+                  @error="markReferenceImageFailed(figure.url)"
+                />
               </a>
               <figcaption>
                 <strong>{{ figure.title }}</strong>
@@ -250,6 +274,8 @@ const selectedSource = computed(() => selectedPackage.value.source ?? selectedSo
 const sourceLinkTitle = computed(() => `${selectedSource.value.title} ${selectedSource.value.version}`);
 const sourceFigures = computed(() => selectedSource.value.figures ?? []);
 const referenceImagesOpen = ref(false);
+const loadingReferenceImageUrls = ref(new Set<string>());
+const erroredReferenceImageUrls = ref(new Set<string>());
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
 const moduleVariants = computed(() => selectedPackage.value.moduleVariants ?? []);
 const moduleDetailsOpen = ref(false);
@@ -353,11 +379,14 @@ function valueOrDash(value: string | undefined) {
 }
 
 function openReferenceImages() {
+  initializeReferenceImageLoading();
   referenceImagesOpen.value = true;
 }
 
 function closeReferenceImages() {
   referenceImagesOpen.value = false;
+  loadingReferenceImageUrls.value = new Set();
+  erroredReferenceImageUrls.value = new Set();
 }
 
 function openModuleDetails() {
@@ -366,6 +395,30 @@ function openModuleDetails() {
 
 function closeModuleDetails() {
   moduleDetailsOpen.value = false;
+}
+
+function initializeReferenceImageLoading() {
+  loadingReferenceImageUrls.value = new Set(sourceFigures.value.map((figure) => figure.url));
+  erroredReferenceImageUrls.value = new Set();
+}
+
+function isReferenceImageLoading(url: string) {
+  return loadingReferenceImageUrls.value.has(url);
+}
+
+function hasReferenceImageError(url: string) {
+  return erroredReferenceImageUrls.value.has(url);
+}
+
+function markReferenceImageLoaded(url: string) {
+  const loadingUrls = new Set(loadingReferenceImageUrls.value);
+  loadingUrls.delete(url);
+  loadingReferenceImageUrls.value = loadingUrls;
+}
+
+function markReferenceImageFailed(url: string) {
+  markReferenceImageLoaded(url);
+  erroredReferenceImageUrls.value = new Set([...erroredReferenceImageUrls.value, url]);
 }
 </script>
 
@@ -617,10 +670,12 @@ function closeModuleDetails() {
 .reference-images__image-link {
   display: grid;
   place-items: center;
+  position: relative;
   min-height: 180px;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   background: #ffffff;
+  overflow: hidden;
 }
 
 .reference-images__image-link img {
@@ -628,6 +683,44 @@ function closeModuleDetails() {
   width: 100%;
   max-height: 320px;
   object-fit: contain;
+  opacity: 1;
+  transition: opacity 140ms ease;
+}
+
+.reference-images__image--loading,
+.reference-images__image--error {
+  opacity: 0;
+}
+
+.reference-images__loading,
+.reference-images__error {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  background: #ffffff;
+}
+
+.reference-images__spinner {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #dbeafe;
+  border-top-color: #006d77;
+  border-radius: 999px;
+  animation: reference-image-spin 800ms linear infinite;
+}
+
+.reference-images__error {
+  color: #64748b;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+@keyframes reference-image-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .reference-images__figure figcaption {

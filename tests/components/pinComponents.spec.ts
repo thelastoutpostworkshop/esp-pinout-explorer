@@ -230,8 +230,20 @@ describe('ExplorerSidebar', () => {
 
     expect(wrapper.find('[role="dialog"][aria-label="Reference images"]').exists()).toBe(true);
     expect(wrapper.findAll('.reference-images__figure')).toHaveLength(esp32s3.boardProfiles?.[0]?.source?.figures?.length ?? 0);
+    expect(wrapper.findAll('[role="status"][aria-label="Loading reference image"]')).toHaveLength(
+      esp32s3.boardProfiles?.[0]?.source?.figures?.length ?? 0,
+    );
     expect(wrapper.text()).toContain('Pin layout');
-    expect(wrapper.find('.reference-images__figure img').attributes('src')).toBe(esp32s3.boardProfiles?.[0]?.source?.figures?.[0].url);
+    const referenceImages = wrapper.findAll('.reference-images__figure img');
+    expect(referenceImages[0].attributes('src')).toBe(esp32s3.boardProfiles?.[0]?.source?.figures?.[0].url);
+
+    await referenceImages[0].trigger('load');
+    expect(wrapper.findAll('[role="status"][aria-label="Loading reference image"]')).toHaveLength(
+      (esp32s3.boardProfiles?.[0]?.source?.figures?.length ?? 1) - 1,
+    );
+
+    await referenceImages[1].trigger('error');
+    expect(wrapper.text()).toContain('Image unavailable');
 
     await wrapper.find('button[aria-label="Close reference images"]').trigger('click');
     expect(wrapper.find('[role="dialog"][aria-label="Reference images"]').exists()).toBe(false);
