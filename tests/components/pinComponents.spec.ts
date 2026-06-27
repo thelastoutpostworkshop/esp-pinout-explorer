@@ -196,6 +196,8 @@ describe('ExplorerSidebar', () => {
 
     expect(wrapper.text()).toContain('Module');
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
+    expect(wrapper.text()).toContain('The printed metal-can name is the module');
+    expect(wrapper.text()).toContain('Module variants');
     expect(wrapper.text()).toContain('Official docs');
     expect(wrapper.find('.explorer-sidebar__source').attributes('href')).toBe(esp32s3.boardProfiles?.[0]?.source?.url);
     expect(wrapper.text()).toContain('Reference images');

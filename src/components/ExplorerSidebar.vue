@@ -36,19 +36,19 @@
       <div v-if="moduleDisplay" class="explorer-sidebar__module">
         <div class="explorer-sidebar__module-heading">
           <span>Module</span>
-          <button
-            v-if="moduleVariants.length"
-            class="explorer-sidebar__module-info-button"
-            type="button"
-            aria-label="View module variant details"
-            title="Module variant details"
-            @click="openModuleDetails"
-          >
-            <Info :size="15" aria-hidden="true" />
-          </button>
-          <InfoTooltip v-else label="Board or module name?" :text="moduleTooltip" />
+          <InfoTooltip label="Board or module name?" :text="moduleTooltip" />
         </div>
         <strong>{{ moduleDisplay }}</strong>
+        <button
+          v-if="moduleVariants.length"
+          class="explorer-sidebar__module-action"
+          type="button"
+          aria-label="View module variant details"
+          @click="openModuleDetails"
+        >
+          <List :size="14" aria-hidden="true" />
+          <span>Module variants</span>
+        </button>
       </div>
 
       <div
@@ -200,7 +200,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { ExternalLink, Image as ImageIcon, Info, X } from '@lucide/vue';
+import { ExternalLink, Image as ImageIcon, List, X } from '@lucide/vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
@@ -357,25 +357,6 @@ function closeModuleDetails() {
   overflow-wrap: anywhere;
 }
 
-.explorer-sidebar__module-info-button {
-  display: inline-grid;
-  place-items: center;
-  width: 20px;
-  height: 20px;
-  border: 0;
-  border-radius: 999px;
-  padding: 0;
-  color: #006d77;
-  background: transparent;
-  cursor: pointer;
-}
-
-.explorer-sidebar__module-info-button:hover,
-.explorer-sidebar__module-info-button:focus-visible {
-  color: #004f58;
-  background: #d9f3f0;
-}
-
 .explorer-sidebar__source-actions {
   display: flex;
   flex-wrap: wrap;
@@ -384,7 +365,8 @@ function closeModuleDetails() {
 }
 
 .explorer-sidebar__source,
-.explorer-sidebar__figure-button {
+.explorer-sidebar__figure-button,
+.explorer-sidebar__module-action {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -396,7 +378,13 @@ function closeModuleDetails() {
   text-decoration: none;
 }
 
-.explorer-sidebar__figure-button {
+.explorer-sidebar__module-action {
+  justify-self: start;
+  min-height: 24px;
+}
+
+.explorer-sidebar__figure-button,
+.explorer-sidebar__module-action {
   border: 0;
   padding: 0;
   background: transparent;
@@ -407,7 +395,9 @@ function closeModuleDetails() {
 .explorer-sidebar__source:hover,
 .explorer-sidebar__source:focus-visible,
 .explorer-sidebar__figure-button:hover,
-.explorer-sidebar__figure-button:focus-visible {
+.explorer-sidebar__figure-button:focus-visible,
+.explorer-sidebar__module-action:hover,
+.explorer-sidebar__module-action:focus-visible {
   color: #004f58;
   text-decoration: underline;
 }
