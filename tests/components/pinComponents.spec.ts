@@ -112,6 +112,10 @@ describe('BoardSvg', () => {
     expectNoOverlappingRects(
       wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
     );
+    expectNoRectIntersections(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => pinNode.find('.board-pin__pad')),
+      wrapper.findAll('.connector-board__component rect'),
+    );
 
     await wrapper.findAll('.connector-board__pin')[0].trigger('click');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
@@ -364,4 +368,34 @@ function expectNoOverlappingRects(items: { rect: VueWrapper }[]) {
       expect(horizontalOverlap && verticalOverlap).toBe(false);
     }
   }
+}
+
+function expectNoRectIntersections(firstItems: VueWrapper[], secondItems: VueWrapper[]) {
+  const firstRects = firstItems.map(rectAttributes);
+  const secondRects = secondItems.map(rectAttributes);
+
+  for (const first of firstRects) {
+    for (const second of secondRects) {
+      expect(rectsOverlap(first, second)).toBe(false);
+    }
+  }
+}
+
+function rectAttributes(rect: VueWrapper) {
+  return {
+    x: Number(rect.attributes('x')),
+    y: Number(rect.attributes('y')),
+    width: Number(rect.attributes('width')),
+    height: Number(rect.attributes('height')),
+  };
+}
+
+function rectsOverlap(
+  first: { x: number; y: number; width: number; height: number },
+  second: { x: number; y: number; width: number; height: number },
+) {
+  const horizontalOverlap = first.x < second.x + second.width && second.x < first.x + first.width;
+  const verticalOverlap = first.y < second.y + second.height && second.y < first.y + first.height;
+
+  return horizontalOverlap && verticalOverlap;
 }

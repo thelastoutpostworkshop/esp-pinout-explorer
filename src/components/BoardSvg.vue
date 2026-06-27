@@ -51,16 +51,16 @@
       </g>
 
       <g class="connector-board__component connector-board__component--lcd">
-        <rect x="660" y="190" width="104" height="44" rx="7" />
-        <text x="712" y="218" text-anchor="middle">LCD</text>
+        <rect x="624" y="190" width="64" height="44" rx="7" />
+        <text x="656" y="218" text-anchor="middle">LCD</text>
       </g>
       <g class="connector-board__component connector-board__component--sd">
-        <rect x="660" y="438" width="104" height="44" rx="7" />
-        <text x="712" y="466" text-anchor="middle">SD</text>
+        <rect x="624" y="438" width="64" height="44" rx="7" />
+        <text x="656" y="466" text-anchor="middle">SD</text>
       </g>
       <g class="connector-board__component connector-board__component--buttons">
-        <rect x="208" y="278" width="104" height="44" rx="7" />
-        <text x="260" y="306" text-anchor="middle">BUTTONS</text>
+        <rect x="272" y="278" width="66" height="44" rx="7" />
+        <text x="305" y="306" text-anchor="middle">BUTTONS</text>
       </g>
       <g class="connector-board__component connector-board__component--power">
         <rect x="342" y="460" width="276" height="34" rx="7" />
