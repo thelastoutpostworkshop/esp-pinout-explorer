@@ -178,8 +178,7 @@
           <BookOpen :size="16" aria-hidden="true" />
           <span>
             Source:
-            <a :href="source.url" rel="noreferrer" target="_blank">{{ source.title }} {{ source.version }}</a>.
-            Sections: {{ sourceSections }}.
+            <a :href="source.url" rel="noreferrer" target="_blank">{{ source.title }} {{ source.version }}</a>
           </span>
         </div>
       </v-card-text>
@@ -230,8 +229,6 @@ const summaryItems = computed(() => {
 const makerWarningLabels = computed(() => getMakerWarnings(props.pin?.warnings).map(getWarningLabel));
 
 const boardDesignWarningLabels = computed(() => getBoardDesignWarnings(props.pin?.warnings).map(getWarningLabel));
-
-const sourceSections = computed(() => props.source.sections.join(', '));
 
 function onDrawerUpdate(value: boolean) {
   if (!value) {

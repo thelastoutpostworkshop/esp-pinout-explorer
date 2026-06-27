@@ -181,6 +181,9 @@ describe('PinInfoDrawer', () => {
     expect(wrapper.text()).toContain('Boot');
     expect(wrapper.text()).toContain('Board Design Notes');
     expect(wrapper.text()).toContain('Flash memory');
+    expect(wrapper.text()).toContain('Source: Test Datasheet v1.0');
+    expect(wrapper.text()).not.toContain('Sections:');
+    expect(wrapper.find('.pin-info__source a').attributes('href')).toBe(testSource.url);
 
     await wrapper.find('button[aria-label="Close pin details"]').trigger('click');
     expect(wrapper.emitted('close')).toHaveLength(1);
