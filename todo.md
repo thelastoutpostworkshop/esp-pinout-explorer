@@ -3,6 +3,7 @@
 Source baseline:
 
 - Espressif SoCs product table: https://www.espressif.com/en/products/socs
+- Espressif modules product table: https://www.espressif.com/en/products/modules
 - ESP32 datasheet: https://documentation.espressif.com/esp32_datasheet_en.html
 - ESP32-S2 datasheet/product entry: https://documentation.espressif.com/esp32-s2_datasheet_en.html
 - ESP32-S3 datasheet/product entry: https://documentation.espressif.com/esp32-s3_datasheet_en.html
@@ -58,17 +59,67 @@ Source baseline:
 
 ### ESP32-C Series
 
+- [ ] ESP32-C6 module profiles
+  - Source: https://www.espressif.com/en/products/modules
+  - [ ] ESP32-C6-MINI-1
+  - [ ] ESP32-C6-MINI-1U
+  - [ ] ESP32-C6-WROOM-1
+  - [ ] ESP32-C6-WROOM-1U
+  - Note: raw ESP32-C6 QFN40/QFN32 packages are implemented. Module profiles should come from official module datasheets/footprints because MINI and WROOM modules expose different pad counts, dimensions, antenna variants, flash sizes, and dev-kit pairings than the bare chip packages.
 - [ ] ESP32-C61
   - [ ] QFN, 5 x 5 mm
+  - [ ] Official module profiles
+    - Source: https://www.espressif.com/en/products/modules
+    - [ ] ESP32-C61-WROOM-1
+    - [ ] ESP32-C61-WROOM-1U
+    - [ ] ESP32-C61-MINI-1
+    - [ ] ESP32-C61-MINI-1U
+    - Note: new/early module family; verify latest module datasheets and dev-kit user guides before implementation.
 - [ ] ESP32-C5
   - [ ] QFN, 6 x 6 mm
+  - [ ] Official module profiles
+    - Source: https://www.espressif.com/en/products/modules
+    - [ ] ESP32-C5-WROOM-1
+    - [ ] ESP32-C5-WROOM-1U
+    - [ ] ESP32-C5-MINI-1
+    - [ ] ESP32-C5-MINI-1U
+    - Note: verify module datasheets because C5 module variants differ by antenna connector, flash/PSRAM options, exposed pad count, and dimensions.
 - [ ] ESP32-C3
   - [ ] QFN32, 5 x 5 mm
+  - [ ] Official module profiles
+    - Source: https://www.espressif.com/en/products/modules
+    - [ ] ESP32-C3-MINI-1
+    - [ ] ESP32-C3-MINI-1U
+    - [ ] ESP32-C3-WROOM-02
+    - [ ] ESP32-C3-WROOM-02U
+    - Note: module profiles should use official module datasheets/footprints; do not copy the bare ESP32-C3 QFN32 pinout directly.
 - [ ] ESP8685
   - [ ] QFN, 4 x 4 mm
+  - [ ] Official module profiles
+    - Source: https://www.espressif.com/en/products/modules
+    - [ ] ESP8685-WROOM-01
+    - [ ] ESP8685-WROOM-03
+    - [ ] ESP8685-WROOM-04
+    - [ ] ESP8685-WROOM-05
+    - [ ] ESP8685-WROOM-06
+    - [ ] ESP8685-WROOM-07
+    - Note: these modules expose different available GPIO counts and mounting styles. Implement each from official module datasheets/footprints rather than treating ESP8685 as only a smaller ESP32-C3-class QFN package.
   - Note: ESP32-C3-class product with a smaller package and different exposed GPIO count.
 - [ ] ESP8684 / ESP32-C2-class
   - [ ] QFN, 4 x 4 mm
+  - [ ] Official module profiles
+    - Source: https://www.espressif.com/en/products/modules
+    - [ ] ESP8684-MINI-1
+    - [ ] ESP8684-MINI-1U
+    - [ ] ESP8684-WROOM-01C
+    - [ ] ESP8684-WROOM-02C
+    - [ ] ESP8684-WROOM-02UC
+    - [ ] ESP8684-WROOM-03
+    - [ ] ESP8684-WROOM-04C
+    - [ ] ESP8684-WROOM-05
+    - [ ] ESP8684-WROOM-06C
+    - [ ] ESP8684-WROOM-07
+    - Note: ESP8684 module variants include MINI, WROOM, castellated/header-capable, vertical solder, and external-antenna forms. Use official module datasheets/footprints for exact exposed pads and GPIO availability.
 
 ### ESP32-H Series
 
