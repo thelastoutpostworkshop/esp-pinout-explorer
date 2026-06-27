@@ -259,14 +259,14 @@ const pinStartY = 112;
 const pinEndY = 648;
 const connectorTopStartX = 238;
 const connectorTopEndX = 722;
-const connectorBottomStartX = 172;
-const connectorBottomEndX = 788;
-const connectorSideStartY = 218;
-const connectorSideEndY = 502;
+const connectorLeftStartY = 190;
+const connectorLeftEndY = 460;
+const connectorRightStartY = 190;
+const connectorRightEndY = 520;
 const connectorBottomRowStartX = 205;
 const connectorBottomRowEndX = 755;
-const connectorBottomTopRowY = 520;
-const connectorBottomBottomRowY = 602;
+const connectorBottomTopRowY = 560;
+const connectorBottomBottomRowY = 622;
 const connectorBottomPinsPerRow = 6;
 
 const sideOrders = computed<Record<'left' | 'right', number>>(() => ({
@@ -304,9 +304,8 @@ function connectorSideMaxOrder(side: Exclude<PinSide, 'center'>) {
 }
 
 function connectorSideCoordinate(side: Exclude<PinSide, 'center'>, order: number) {
-  const isHorizontal = side === 'top' || side === 'bottom';
-  const start = side === 'top' ? connectorTopStartX : side === 'bottom' ? connectorBottomStartX : connectorSideStartY;
-  const end = side === 'top' ? connectorTopEndX : side === 'bottom' ? connectorBottomEndX : connectorSideEndY;
+  const start = side === 'top' ? connectorTopStartX : side === 'right' ? connectorRightStartY : connectorLeftStartY;
+  const end = side === 'top' ? connectorTopEndX : side === 'right' ? connectorRightEndY : connectorLeftEndY;
   const count = connectorSideOrders.value[side];
   if (count <= 1) {
     return (start + end) / 2;
@@ -339,14 +338,14 @@ function connectorPinGeometry(pin: SocPin): Geometry {
   if (pin.position.side === 'right') {
     const y = connectorSideCoordinate('right', pin.position.order);
     return {
-      rect: { x: 700, y: y - 13, width: 118, height: 28, rx: 5 },
+      rect: { x: 700, y: y - 13, width: 118, height: 26, rx: 5 },
       label: { x: 759, y },
     };
   }
 
   const y = connectorSideCoordinate('left', pin.position.order);
   return {
-    rect: { x: 142, y: y - 13, width: 118, height: 28, rx: 5 },
+    rect: { x: 142, y: y - 13, width: 118, height: 26, rx: 5 },
     label: { x: 201, y },
   };
 }

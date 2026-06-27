@@ -110,9 +110,7 @@ describe('BoardSvg', () => {
     expect(wrapper.text()).toContain('USB switch');
     expect(wrapper.text()).toContain('Extended pins');
     expectNoOverlappingRects(
-      pins
-        .map((pin, index) => ({ pin, rect: wrapper.findAll('.connector-board__pin')[index].find('.board-pin__pad') }))
-        .filter((item) => item.pin.position.side === 'bottom'),
+      wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
     );
 
     await wrapper.findAll('.connector-board__pin')[0].trigger('click');
