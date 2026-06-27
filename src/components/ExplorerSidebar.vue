@@ -14,7 +14,7 @@
         hide-details
         item-title="name"
         item-value="id"
-        label="SoC"
+        label="ESP chip"
         :items="store.socs"
         variant="outlined"
         @update:model-value="selectSoc"
