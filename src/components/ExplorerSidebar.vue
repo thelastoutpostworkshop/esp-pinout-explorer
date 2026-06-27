@@ -53,20 +53,19 @@
 
       <div v-if="moduleDisplay" class="explorer-sidebar__module">
         <div class="explorer-sidebar__module-heading">
-          <span>{{ moduleHeading }}</span>
-          <InfoTooltip label="Board or module name?" :text="moduleTooltip" />
+          <span>Module</span>
+          <button
+            v-if="moduleVariants.length"
+            class="explorer-sidebar__module-action"
+            type="button"
+            aria-label="View module variant details"
+            @click="openModuleDetails"
+          >
+            <List :size="14" aria-hidden="true" />
+            <span>Variants</span>
+          </button>
         </div>
         <strong>{{ moduleDisplay }}</strong>
-        <button
-          v-if="moduleVariants.length"
-          class="explorer-sidebar__module-action"
-          type="button"
-          aria-label="View module variant details"
-          @click="openModuleDetails"
-        >
-          <List :size="14" aria-hidden="true" />
-          <span>Module variants</span>
-        </button>
       </div>
 
       <div
@@ -94,6 +93,10 @@
               <X :size="18" aria-hidden="true" />
             </button>
           </header>
+
+          <div v-if="moduleDetailsIntro" class="module-details__intro">
+            <p>{{ moduleDetailsIntro }}</p>
+          </div>
 
           <div class="module-details__table-wrap">
             <table>
@@ -219,7 +222,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
 import { ExternalLink, Image as ImageIcon, List, X } from '@lucide/vue';
-import InfoTooltip from '@/components/InfoTooltip.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
 import type { PinProfileKind, SocPackageVariant } from '@/types/soc';
@@ -251,8 +253,7 @@ const referenceImagesOpen = ref(false);
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
 const moduleVariants = computed(() => selectedPackage.value.moduleVariants ?? []);
 const moduleDetailsOpen = ref(false);
-const moduleHeading = computed(() => (selectedProfileKind.value === 'board' ? 'Module on board' : 'Module'));
-const moduleTooltip = computed(() => {
+const moduleDetailsIntro = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
   const helpText = {
     board:
@@ -464,10 +465,11 @@ function closeModuleDetails() {
 }
 
 .explorer-sidebar__module-heading {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 3px;
-  justify-self: start;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 0;
   color: #64748b;
   font-size: 0.72rem;
   font-weight: 850;
@@ -505,8 +507,9 @@ function closeModuleDetails() {
 }
 
 .explorer-sidebar__module-action {
-  justify-self: start;
   min-height: 24px;
+  flex: 0 0 auto;
+  text-transform: none;
 }
 
 .explorer-sidebar__figure-button,
@@ -708,6 +711,19 @@ function closeModuleDetails() {
 .module-details__close:focus-visible {
   border-color: #94a3b8;
   background: #e2e8f0;
+}
+
+.module-details__intro {
+  border-left: 3px solid #006d77;
+  padding: 2px 0 2px 12px;
+}
+
+.module-details__intro p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.86rem;
+  font-weight: 700;
+  line-height: 1.45;
 }
 
 .module-details__table-wrap {

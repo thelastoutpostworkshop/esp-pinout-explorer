@@ -203,8 +203,10 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).not.toContain('Header pins, silkscreen labels, and on-board parts.');
     expect(wrapper.find('.explorer-sidebar__profile-context').exists()).toBe(false);
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
-    expect(wrapper.text()).toContain('The printed metal-can name is the module');
-    expect(wrapper.text()).toContain('Module variants');
+    expect(wrapper.text()).not.toContain('The printed metal-can name is the module');
+    expect(wrapper.text()).toContain('Variants');
+    expect(wrapper.find('.explorer-sidebar__module-heading .explorer-sidebar__module-action').exists()).toBe(true);
+    expect(wrapper.text()).not.toContain('Module variants');
     expect(wrapper.text()).toContain('Official docs');
     expect(wrapper.find('.explorer-sidebar__source').attributes('href')).toBe(esp32s3.boardProfiles?.[0]?.source?.url);
     expect(wrapper.text()).toContain('Reference images');
@@ -212,6 +214,8 @@ describe('ExplorerSidebar', () => {
     await wrapper.find('button[aria-label="View module variant details"]').trigger('click');
 
     expect(wrapper.find('[role="dialog"][aria-label="Module variant details"]').exists()).toBe(true);
+    expect(wrapper.text()).toContain('Module variants');
+    expect(wrapper.text()).toContain('The printed metal-can name is the module');
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-2-N32R16V');
     expect(wrapper.text()).toContain('External antenna connector');
     expect(wrapper.text()).toContain('GPIO35/GPIO36/GPIO37 are used internally');
