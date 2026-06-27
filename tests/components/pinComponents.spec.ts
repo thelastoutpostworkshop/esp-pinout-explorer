@@ -299,6 +299,9 @@ describe('PinInfoDrawer', () => {
       },
     });
 
+    expect(wrapper.findAll('.pin-info__stat')).toHaveLength(2);
+    expect(wrapper.text()).toContain('GPIO0');
+    expect(wrapper.text()).toContain('I/O');
     expect(wrapper.text()).toContain('Maker Warnings');
     expect(wrapper.text()).toContain('Boot');
     expect(wrapper.text()).toContain('Board Design Notes');

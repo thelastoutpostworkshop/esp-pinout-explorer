@@ -20,10 +20,10 @@
 
       <v-card-text class="pin-info__content">
         <div class="pin-info__summary">
-          <div v-for="item in summaryItems" :key="item.label" class="pin-info__stat">
+          <dl v-for="item in summaryItems" :key="item.label" class="pin-info__stat">
             <span>{{ item.label }}</span>
             <strong>{{ item.value }}</strong>
-          </div>
+          </dl>
         </div>
 
         <section class="pin-info__section">
@@ -267,35 +267,44 @@ function onDrawerUpdate(value: boolean) {
 
 .pin-info__content {
   display: grid;
-  gap: 18px;
+  gap: 16px;
   padding: 12px 20px 26px;
 }
 
 .pin-info__summary {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding-bottom: 2px;
 }
 
 .pin-info__stat {
-  display: grid;
-  gap: 3px;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  min-width: 0;
+  margin: 0;
   border: 1px solid #dbe3ea;
-  border-radius: 8px;
-  padding: 12px;
+  border-radius: 999px;
+  padding: 5px 9px;
   background: #f8fafc;
 }
 
 .pin-info__stat span {
   color: #64748b;
-  font-size: 0.78rem;
-  font-weight: 700;
+  font-size: 0.66rem;
+  font-weight: 850;
+  line-height: 1;
   text-transform: uppercase;
 }
 
 .pin-info__stat strong {
+  min-width: 0;
   color: #0f172a;
-  font-size: 1.08rem;
+  font-size: 0.82rem;
+  font-weight: 850;
+  line-height: 1.1;
+  overflow-wrap: anywhere;
 }
 
 .pin-info__section {
