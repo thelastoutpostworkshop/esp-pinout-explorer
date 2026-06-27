@@ -40,6 +40,18 @@
         </div>
         <strong>{{ moduleDisplay }}</strong>
       </div>
+
+      <a
+        class="explorer-sidebar__source"
+        :href="selectedSource.url"
+        :aria-label="`Open ${sourceLinkTitle}`"
+        rel="noreferrer"
+        target="_blank"
+        :title="sourceLinkTitle"
+      >
+        <ExternalLink :size="14" aria-hidden="true" />
+        <span>Official docs</span>
+      </a>
     </section>
 
     <section class="explorer-sidebar__section">
@@ -60,6 +72,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
+import { ExternalLink } from '@lucide/vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
@@ -71,6 +84,8 @@ const emit = defineEmits<{
 const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
 const selectedPackage = computed(() => store.selectedPackage);
+const selectedSource = computed(() => selectedPackage.value.source ?? selectedSoc.value.source);
+const sourceLinkTitle = computed(() => `${selectedSource.value.title} ${selectedSource.value.version}`);
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
 const moduleTooltip = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
@@ -172,6 +187,25 @@ function formatModuleNames(moduleNames: string[]) {
   font-size: 0.84rem;
   line-height: 1.3;
   overflow-wrap: anywhere;
+}
+
+.explorer-sidebar__source {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  justify-self: start;
+  min-height: 28px;
+  color: #006d77;
+  font-size: 0.84rem;
+  font-weight: 800;
+  line-height: 1.2;
+  text-decoration: none;
+}
+
+.explorer-sidebar__source:hover,
+.explorer-sidebar__source:focus-visible {
+  color: #004f58;
+  text-decoration: underline;
 }
 
 .legend-item {
