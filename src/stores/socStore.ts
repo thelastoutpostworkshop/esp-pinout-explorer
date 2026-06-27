@@ -5,6 +5,13 @@ import { getBoardDesignWarnings, hasMakerWarning } from '@/data/pinWarnings';
 import { socs } from '@/data/socs';
 import type { SocDefinition, SocPackageVariant, SocPin } from '@/types/soc';
 
+const profileStorageKey = 'espsocsexplorer:selected-profile';
+
+interface PersistedProfileSelection {
+  socId: string;
+  packageId: string;
+}
+
 function normalize(value: string) {
   return value.toLowerCase().replace(/[_/+-]/g, ' ');
 }
@@ -53,8 +60,9 @@ function filterPinsByQuery(pins: SocPin[], search: string) {
 }
 
 export const useSocStore = defineStore('soc', () => {
-  const selectedSocId = ref('esp32s3');
-  const selectedPackageId = ref<string | null>(null);
+  const initialSelection = readInitialSelection();
+  const selectedSocId = ref(initialSelection.socId);
+  const selectedPackageId = ref<string | null>(initialSelection.packageId);
   const selectedPinId = ref<string | null>(null);
   const searchQuery = ref('');
 
@@ -84,6 +92,7 @@ export const useSocStore = defineStore('soc', () => {
       selectedPackageId.value = defaultProfileForSoc(soc).id;
       selectedPinId.value = null;
       searchQuery.value = '';
+      persistSelectedProfile(selectedSocId.value, selectedPackageId.value);
     }
   }
 
@@ -91,6 +100,7 @@ export const useSocStore = defineStore('soc', () => {
     if (packageOptions.value.some((packageOption) => packageOption.id === packageId)) {
       selectedPackageId.value = packageId;
       selectedPinId.value = null;
+      persistSelectedProfile(selectedSocId.value, selectedPackageId.value);
     }
   }
 
@@ -149,4 +159,55 @@ function buildPackageOptions(soc: SocDefinition): SocPackageVariant[] {
 function defaultProfileForSoc(soc: SocDefinition): SocPackageVariant {
   const options = buildPackageOptions(soc);
   return options.find((option) => option.id === soc.defaultProfileId) ?? options[0];
+}
+
+function readInitialSelection(): PersistedProfileSelection {
+  const fallbackSoc = socs[0];
+  const fallbackProfile = defaultProfileForSoc(fallbackSoc);
+  const fallback = { socId: fallbackSoc.id, packageId: fallbackProfile.id };
+  const persisted = readPersistedProfile();
+
+  if (!persisted) {
+    return fallback;
+  }
+
+  const soc = socs.find((candidate) => candidate.id === persisted.socId);
+  if (!soc) {
+    return fallback;
+  }
+
+  const profile = buildPackageOptions(soc).find((candidate) => candidate.id === persisted.packageId);
+  return {
+    socId: soc.id,
+    packageId: profile?.id ?? defaultProfileForSoc(soc).id,
+  };
+}
+
+function readPersistedProfile(): PersistedProfileSelection | null {
+  try {
+    const rawValue = window.localStorage.getItem(profileStorageKey);
+    if (!rawValue) {
+      return null;
+    }
+
+    const parsed = JSON.parse(rawValue) as Partial<PersistedProfileSelection>;
+    if (typeof parsed.socId === 'string' && typeof parsed.packageId === 'string') {
+      return {
+        socId: parsed.socId,
+        packageId: parsed.packageId,
+      };
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+}
+
+function persistSelectedProfile(socId: string, packageId: string) {
+  try {
+    window.localStorage.setItem(profileStorageKey, JSON.stringify({ socId, packageId }));
+  } catch {
+    // Ignore storage failures so the explorer still works in restricted browsing modes.
+  }
 }

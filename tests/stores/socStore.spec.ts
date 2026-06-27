@@ -17,6 +17,38 @@ describe('soc store', () => {
     expect(store.selectedPins).toHaveLength(44);
   });
 
+  it('persists selected SoC and profile across store instances', () => {
+    const store = useSocStore();
+
+    store.selectPackage('esp32s3-usb-otg');
+
+    setActivePinia(createPinia());
+    const restoredStore = useSocStore();
+
+    expect(restoredStore.selectedSocId).toBe('esp32s3');
+    expect(restoredStore.selectedPackage.id).toBe('esp32s3-usb-otg');
+
+    restoredStore.selectSoc('esp32c6');
+
+    setActivePinia(createPinia());
+    const c6Store = useSocStore();
+
+    expect(c6Store.selectedSocId).toBe('esp32c6');
+    expect(c6Store.selectedPackage.id).toBe('qfn40');
+  });
+
+  it('falls back to valid defaults for stale persisted profile data', () => {
+    window.localStorage.setItem(
+      'espsocsexplorer:selected-profile',
+      JSON.stringify({ socId: 'esp32s3', packageId: 'missing-profile' }),
+    );
+
+    const store = useSocStore();
+
+    expect(store.selectedSocId).toBe('esp32s3');
+    expect(store.selectedPackage.id).toBe('esp32s3-devkitc-1-v1-1');
+  });
+
   it('resets selected profile state when the selected SoC changes', () => {
     const store = useSocStore();
 

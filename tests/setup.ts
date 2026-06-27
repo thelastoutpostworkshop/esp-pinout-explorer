@@ -1,7 +1,11 @@
 import { config } from '@vue/test-utils';
-import { vi } from 'vitest';
+import { beforeEach, vi } from 'vitest';
 
 config.global.renderStubDefaultSlot = true;
+
+beforeEach(() => {
+  window.localStorage.clear();
+});
 
 class ResizeObserverMock {
   observe() {}
