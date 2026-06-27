@@ -6,6 +6,7 @@ import ChipSvg from '@/components/ChipSvg.vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
 import PinInfoDrawer from '@/components/PinInfoDrawer.vue';
 import PinSearch from '@/components/PinSearch.vue';
+import SocPinoutView from '@/components/SocPinoutView.vue';
 import { hasMakerWarning } from '@/data/pinWarnings';
 import { esp32c6 } from '@/data/socs/esp32c6';
 import { esp32s3 } from '@/data/socs/esp32s3';
@@ -108,9 +109,37 @@ describe('BoardSvg', () => {
     expect(wrapper.findAll('.connector-board__pin')).toHaveLength(32);
     expect(wrapper.text()).toContain('USB switch');
     expect(wrapper.text()).toContain('Extended pins');
+    expectNoOverlappingRects(
+      pins
+        .map((pin, index) => ({ pin, rect: wrapper.findAll('.connector-board__pin')[index].find('.board-pin__pad') }))
+        .filter((item) => item.pin.position.side === 'bottom'),
+    );
 
     await wrapper.findAll('.connector-board__pin')[0].trigger('click');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
+  });
+});
+
+describe('SocPinoutView', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+  });
+
+  it('passes connector-group layout through to USB-OTG board rendering', () => {
+    const store = useSocStore();
+    store.selectPackage('esp32s3-usb-otg');
+
+    const wrapper = mount(SocPinoutView, {
+      global: {
+        stubs: {
+          PinInfoDrawer: { template: '<aside />' },
+        },
+      },
+    });
+
+    expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+    expect(wrapper.find('.header-name').exists()).toBe(false);
+    expect(wrapper.text()).not.toContain('3 / 32 header pins');
   });
 });
 
@@ -319,4 +348,22 @@ function findButton(wrapper: VueWrapper, label: string) {
   const button = wrapper.findAll('button').find((candidate) => candidate.text().trim() === label);
   expect(button, `Expected to find button "${label}"`).toBeDefined();
   return button!;
+}
+
+function expectNoOverlappingRects(items: { rect: VueWrapper }[]) {
+  const rects = items.map((item) => ({
+    x: Number(item.rect.attributes('x')),
+    y: Number(item.rect.attributes('y')),
+    width: Number(item.rect.attributes('width')),
+    height: Number(item.rect.attributes('height')),
+  }));
+
+  for (const [index, first] of rects.entries()) {
+    for (const second of rects.slice(index + 1)) {
+      const horizontalOverlap = first.x < second.x + second.width && second.x < first.x + first.width;
+      const verticalOverlap = first.y < second.y + second.height && second.y < first.y + first.height;
+
+      expect(horizontalOverlap && verticalOverlap).toBe(false);
+    }
+  }
 }

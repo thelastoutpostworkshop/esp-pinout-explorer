@@ -63,8 +63,8 @@
         <text x="260" y="306" text-anchor="middle">BUTTONS</text>
       </g>
       <g class="connector-board__component connector-board__component--power">
-        <rect x="342" y="526" width="276" height="34" rx="7" />
-        <text x="480" y="548" text-anchor="middle">POWER / EXTENDED</text>
+        <rect x="342" y="460" width="276" height="34" rx="7" />
+        <text x="480" y="482" text-anchor="middle">POWER / EXTENDED</text>
       </g>
 
       <g v-for="group in connectorGroupLabels" :key="group.key" class="connector-board__group-label">
@@ -263,6 +263,11 @@ const connectorBottomStartX = 172;
 const connectorBottomEndX = 788;
 const connectorSideStartY = 218;
 const connectorSideEndY = 502;
+const connectorBottomRowStartX = 205;
+const connectorBottomRowEndX = 755;
+const connectorBottomTopRowY = 520;
+const connectorBottomBottomRowY = 602;
+const connectorBottomPinsPerRow = 6;
 
 const sideOrders = computed<Record<'left' | 'right', number>>(() => ({
   left: sideMaxOrder('left'),
@@ -319,10 +324,15 @@ function connectorPinGeometry(pin: SocPin): Geometry {
   }
 
   if (pin.position.side === 'bottom') {
-    const x = connectorSideCoordinate('bottom', pin.position.order);
+    const rowOrder = ((pin.position.order - 1) % connectorBottomPinsPerRow) + 1;
+    const rowIndex = Math.floor((pin.position.order - 1) / connectorBottomPinsPerRow);
+    const x =
+      connectorBottomRowStartX +
+      ((rowOrder - 1) * (connectorBottomRowEndX - connectorBottomRowStartX)) / (connectorBottomPinsPerRow - 1);
+    const y = rowIndex === 0 ? connectorBottomTopRowY : connectorBottomBottomRowY;
     return {
-      rect: { x: x - 44, y: 572, width: 88, height: 30, rx: 5 },
-      label: { x, y: 587 },
+      rect: { x: x - 52, y: y - 14, width: 104, height: 28, rx: 5 },
+      label: { x, y },
     };
   }
 
