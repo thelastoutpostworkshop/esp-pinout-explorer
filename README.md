@@ -1,6 +1,8 @@
-# ESPSocsExplorer
+# ESP Pinout Explorer
 
-Vue 3 + TypeScript + Vite MVP for exploring Espressif SoC and development-board pinouts with Vuetify 4 and Pinia.
+Your atlas for ESP chips, modules, and boards.
+
+Vue 3 + TypeScript + Vite MVP for exploring Espressif SoC, module, and development-board pinouts with Vuetify 4 and Pinia.
 
 Current profiles:
 

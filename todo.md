@@ -1,4 +1,4 @@
-# ESPSocsExplorer SoC Package TODO
+# ESP Pinout Explorer Package TODO
 
 Source baseline:
 

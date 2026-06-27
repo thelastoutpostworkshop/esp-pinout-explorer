@@ -1,4 +1,4 @@
-# ESPSocsExplorer Agent Notes
+# ESP Pinout Explorer Agent Notes
 
 This app is a Vue 3 + TypeScript + Vite pin explorer for Espressif SoCs and development boards. It uses Vuetify 4 for UI, Pinia for state, and data-driven SVG components for clickable chip packages and board headers.
 

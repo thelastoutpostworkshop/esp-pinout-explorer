@@ -5,7 +5,8 @@ import { getBoardDesignWarnings, hasMakerWarning } from '@/data/pinWarnings';
 import { socs } from '@/data/socs';
 import type { SocDefinition, SocPackageVariant, SocPin } from '@/types/soc';
 
-const profileStorageKey = 'espsocsexplorer:selected-profile';
+const profileStorageKey = 'esp-pinout-explorer:selected-profile';
+const legacyProfileStorageKey = 'espsocsexplorer:selected-profile';
 
 interface PersistedProfileSelection {
   socId: string;
@@ -185,7 +186,7 @@ function readInitialSelection(): PersistedProfileSelection {
 
 function readPersistedProfile(): PersistedProfileSelection | null {
   try {
-    const rawValue = window.localStorage.getItem(profileStorageKey);
+    const rawValue = window.localStorage.getItem(profileStorageKey) ?? window.localStorage.getItem(legacyProfileStorageKey);
     if (!rawValue) {
       return null;
     }
@@ -207,6 +208,7 @@ function readPersistedProfile(): PersistedProfileSelection | null {
 function persistSelectedProfile(socId: string, packageId: string) {
   try {
     window.localStorage.setItem(profileStorageKey, JSON.stringify({ socId, packageId }));
+    window.localStorage.removeItem(legacyProfileStorageKey);
   } catch {
     // Ignore storage failures so the explorer still works in restricted browsing modes.
   }

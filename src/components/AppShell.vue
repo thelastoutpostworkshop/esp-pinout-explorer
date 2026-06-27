@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar class="app-shell__bar" density="compact" elevation="0" height="52">
+  <v-app-bar class="app-shell__bar" density="compact" elevation="0" height="56">
     <v-btn
       aria-label="Open explorer controls"
       class="app-shell__menu"
@@ -10,7 +10,10 @@
     >
       <Menu :size="22" aria-hidden="true" />
     </v-btn>
-    <v-app-bar-title class="app-shell__title">ESPSocsExplorer</v-app-bar-title>
+    <v-app-bar-title class="app-shell__brand">
+      <span class="app-shell__title">ESP Pinout Explorer</span>
+      <span class="app-shell__subtitle">Your atlas for ESP chips, modules, and boards.</span>
+    </v-app-bar-title>
   </v-app-bar>
 
   <v-navigation-drawer
@@ -48,10 +51,32 @@ const mobileDrawerOpen = ref(false);
   background: #f8fafc;
 }
 
+.app-shell__brand {
+  display: grid;
+  min-width: 0;
+  line-height: 1.15;
+}
+
+.app-shell__brand :deep(.v-toolbar-title__placeholder) {
+  display: grid;
+  gap: 2px;
+  overflow: visible;
+  line-height: 1.15;
+}
+
 .app-shell__title {
+  display: block;
   color: #102027;
   font-size: 1.05rem;
   font-weight: 900;
+  letter-spacing: 0;
+}
+
+.app-shell__subtitle {
+  display: block;
+  color: #64748b;
+  font-size: 0.74rem;
+  font-weight: 700;
   letter-spacing: 0;
 }
 
@@ -68,7 +93,7 @@ const mobileDrawerOpen = ref(false);
 .app-shell__layout {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
-  height: calc(100vh - var(--v-layout-top, 52px));
+  height: calc(100vh - var(--v-layout-top, 56px));
   min-height: 0;
 }
 

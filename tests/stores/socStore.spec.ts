@@ -3,6 +3,9 @@ import { createPinia, setActivePinia } from 'pinia';
 import { hasMakerWarning } from '@/data/pinWarnings';
 import { useSocStore } from '@/stores/socStore';
 
+const profileStorageKey = 'esp-pinout-explorer:selected-profile';
+const legacyProfileStorageKey = 'espsocsexplorer:selected-profile';
+
 describe('soc store', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
@@ -22,6 +25,9 @@ describe('soc store', () => {
 
     store.selectPackage('esp32s3-usb-otg');
 
+    expect(window.localStorage.getItem(profileStorageKey)).toContain('esp32s3-usb-otg');
+    expect(window.localStorage.getItem(legacyProfileStorageKey)).toBeNull();
+
     setActivePinia(createPinia());
     const restoredStore = useSocStore();
 
@@ -39,7 +45,7 @@ describe('soc store', () => {
 
   it('falls back to valid defaults for stale persisted profile data', () => {
     window.localStorage.setItem(
-      'espsocsexplorer:selected-profile',
+      profileStorageKey,
       JSON.stringify({ socId: 'esp32s3', packageId: 'missing-profile' }),
     );
 
@@ -47,6 +53,23 @@ describe('soc store', () => {
 
     expect(store.selectedSocId).toBe('esp32s3');
     expect(store.selectedPackage.id).toBe('esp32s3-devkitc-1-v1-1');
+  });
+
+  it('reads legacy persisted profile data after the app rename', () => {
+    window.localStorage.setItem(
+      legacyProfileStorageKey,
+      JSON.stringify({ socId: 'esp32s3', packageId: 'esp32s3-devkitm-1' }),
+    );
+
+    const store = useSocStore();
+
+    expect(store.selectedSocId).toBe('esp32s3');
+    expect(store.selectedPackage.id).toBe('esp32s3-devkitm-1');
+
+    store.selectPackage('esp32s3-usb-otg');
+
+    expect(window.localStorage.getItem(profileStorageKey)).toContain('esp32s3-usb-otg');
+    expect(window.localStorage.getItem(legacyProfileStorageKey)).toBeNull();
   });
 
   it('resets selected profile state when the selected SoC changes', () => {
