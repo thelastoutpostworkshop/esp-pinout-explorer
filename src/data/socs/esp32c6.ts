@@ -1,4 +1,4 @@
-import type { PinPosition, PinType, PinWarning, SocDefinition, SocPin, SocSource } from '@/types/soc';
+import type { PinPosition, PinType, PinWarning, SocDefinition, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
   title: 'ESP32-C6 Series Datasheet',
@@ -24,6 +24,23 @@ const source: SocSource = {
     'Table 3-4 SDIO Input Sampling Edge/Output Driving Edge Control',
     'Table 3-5 UART0 ROM Message Printing Control',
     'Table 3-7 JTAG Signal Source Control',
+  ],
+};
+
+const mini1Source: SocSource = {
+  title: 'ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet',
+  version: 'v1.5',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
+  url: 'https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf',
+  sections: [
+    'Table 1-1 ESP32-C6-MINI-1 (ANT) Series Comparison',
+    'Figure 3-1 Pin Layout (Top View)',
+    'Table 3-1 Pin Definitions',
+    'Chapter 4 Boot Configurations',
+    'Figure 8-1 ESP32-C6-MINI-1 Schematics',
+    'Figure 10-1 ESP32-C6-MINI-1 Physical Dimensions',
+    'Figure 11-1 ESP32-C6-MINI-1 Recommended PCB Land Pattern',
   ],
 };
 
@@ -646,3 +663,174 @@ export const esp32c6: SocDefinition = {
     }),
   ],
 };
+
+const mini1ModuleKeywords = [
+  'module',
+  'mini',
+  'mini-1',
+  'esp32-c6-mini-1',
+  'esp32c6 mini',
+  'pcb antenna',
+  'castellated pad',
+];
+
+function uniqueValues<T>(values: T[]): T[] {
+  return [...new Set(values)];
+}
+
+function mini1Id(number: number) {
+  return `esp32c6-mini-1-pin-${number}`;
+}
+
+function findC6PinByGpio(gpio: number) {
+  return esp32c6.pins.find((pin) => pin.gpio === gpio);
+}
+
+function mini1Pin(
+  number: number,
+  name: string,
+  type: PinType,
+  position: PinPosition,
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position'>> = {},
+): SocPin {
+  return {
+    id: mini1Id(number),
+    number,
+    name,
+    type,
+    position,
+    mainFunctions: [],
+    ...details,
+    keywords: uniqueValues([...(details.keywords ?? []), ...mini1ModuleKeywords, `pin ${number}`]),
+  };
+}
+
+function mini1IoPin(
+  number: number,
+  name: string,
+  gpio: number,
+  position: PinPosition,
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position' | 'gpio'>> = {},
+): SocPin {
+  const sourcePin = findC6PinByGpio(gpio);
+
+  return mini1Pin(number, name, 'io', position, {
+    gpio,
+    mainFunctions: details.mainFunctions ?? sourcePin?.mainFunctions ?? [`GPIO${gpio}`],
+    ioMux: details.ioMux ?? sourcePin?.ioMux,
+    rtc: details.rtc ?? sourcePin?.rtc,
+    analog: details.analog ?? sourcePin?.analog,
+    matrixSignals: details.matrixSignals ?? sourcePin?.matrixSignals ?? gpioMatrixSignals,
+    notes: uniqueValues([...(sourcePin?.notes ?? []), ...(details.notes ?? [])]),
+    warnings: uniqueValues([...(sourcePin?.warnings ?? []), ...(details.warnings ?? [])]),
+    keywords: uniqueValues([
+      ...(sourcePin?.keywords ?? []),
+      ...(details.keywords ?? []),
+      name.toLowerCase(),
+      `io${gpio}`,
+      `gpio${gpio}`,
+    ]),
+  });
+}
+
+function mini1GroundPin(number: number, position: PinPosition): SocPin {
+  return mini1Pin(number, 'GND', 'ground', position, {
+    mainFunctions: number === 49 ? ['Exposed ground pad'] : ['Ground'],
+    notes:
+      number === 49
+        ? ['Exposed pad connected to ground; soldering it can improve thermal performance.']
+        : ['Module ground pad.'],
+    warnings: warnings('power'),
+    keywords: ['ground', 'gnd', number === 49 ? 'epad' : '', number === 49 ? 'thermal pad' : ''].filter(Boolean),
+  });
+}
+
+function mini1NoConnectPin(number: number, position: PinPosition): SocPin {
+  return mini1Pin(number, 'NC', 'control', position, {
+    mainFunctions: ['No connect'],
+    notes: ['Official module pad is not connected.'],
+    keywords: ['nc', 'no connect', 'not connected'],
+  });
+}
+
+const esp32c6Mini1Pins: SocPin[] = [
+  mini1GroundPin(1, { side: 'left', order: 2 }),
+  mini1GroundPin(2, { side: 'left', order: 3 }),
+  mini1Pin(3, '3V3', 'power', { side: 'left', order: 4 }, {
+    mainFunctions: ['3.3 V module power supply'],
+    notes: ['Module power supply input. Espressif specifies a 3.0 V to 3.6 V operating range.'],
+    warnings: warnings('power'),
+    keywords: ['power', 'supply', '3v3', '3.3v', 'vdd33'],
+  }),
+  mini1NoConnectPin(4, { side: 'left', order: 5 }),
+  mini1IoPin(5, 'IO2', 2, { side: 'left', order: 6 }),
+  mini1IoPin(6, 'IO3', 3, { side: 'left', order: 7 }),
+  mini1NoConnectPin(7, { side: 'left', order: 8 }),
+  mini1Pin(8, 'EN', 'control', { side: 'left', order: 9 }, {
+    mainFunctions: ['Chip enable and reset'],
+    notes: ['High enables the chip; low powers it off or resets it.', 'Do not leave EN floating.'],
+    warnings: warnings('reset'),
+    keywords: ['enable', 'reset', 'chip en', 'chip pu', 'power up'],
+  }),
+  mini1IoPin(9, 'IO4', 4, { side: 'left', order: 10 }),
+  mini1IoPin(10, 'IO5', 5, { side: 'left', order: 11 }),
+  mini1GroundPin(11, { side: 'left', order: 12 }),
+  mini1IoPin(12, 'IO0', 0, { side: 'bottom', order: 1 }),
+  mini1IoPin(13, 'IO1', 1, { side: 'bottom', order: 2 }),
+  mini1GroundPin(14, { side: 'bottom', order: 3 }),
+  mini1IoPin(15, 'IO6', 6, { side: 'bottom', order: 4 }),
+  mini1IoPin(16, 'IO7', 7, { side: 'bottom', order: 5 }),
+  mini1IoPin(17, 'IO12', 12, { side: 'bottom', order: 6 }),
+  mini1IoPin(18, 'IO13', 13, { side: 'bottom', order: 7 }),
+  mini1IoPin(19, 'IO14', 14, { side: 'bottom', order: 8 }),
+  mini1IoPin(20, 'IO15', 15, { side: 'bottom', order: 9 }),
+  mini1NoConnectPin(21, { side: 'bottom', order: 10 }),
+  mini1IoPin(22, 'IO8', 8, { side: 'bottom', order: 11 }),
+  mini1IoPin(23, 'IO9', 9, { side: 'bottom', order: 12 }),
+  mini1IoPin(24, 'IO18', 18, { side: 'bottom', order: 13 }),
+  mini1IoPin(25, 'IO19', 19, { side: 'right', order: 12 }),
+  mini1IoPin(26, 'IO20', 20, { side: 'right', order: 11 }),
+  mini1IoPin(27, 'IO21', 21, { side: 'right', order: 10 }),
+  mini1IoPin(28, 'IO22', 22, { side: 'right', order: 9 }),
+  mini1IoPin(29, 'IO23', 23, { side: 'right', order: 8 }),
+  mini1IoPin(30, 'RXD0', 17, { side: 'right', order: 7 }),
+  mini1IoPin(31, 'TXD0', 16, { side: 'right', order: 6 }),
+  mini1NoConnectPin(32, { side: 'right', order: 5 }),
+  mini1NoConnectPin(33, { side: 'right', order: 4 }),
+  mini1NoConnectPin(34, { side: 'right', order: 3 }),
+  mini1NoConnectPin(35, { side: 'right', order: 2 }),
+  mini1GroundPin(36, { side: 'top', order: 13 }),
+  mini1GroundPin(37, { side: 'top', order: 12 }),
+  mini1GroundPin(38, { side: 'top', order: 11 }),
+  mini1GroundPin(39, { side: 'top', order: 10 }),
+  mini1GroundPin(40, { side: 'top', order: 9 }),
+  mini1GroundPin(41, { side: 'top', order: 8 }),
+  mini1GroundPin(42, { side: 'top', order: 7 }),
+  mini1GroundPin(43, { side: 'top', order: 6 }),
+  mini1GroundPin(44, { side: 'top', order: 5 }),
+  mini1GroundPin(45, { side: 'top', order: 4 }),
+  mini1GroundPin(46, { side: 'top', order: 3 }),
+  mini1GroundPin(47, { side: 'top', order: 2 }),
+  mini1GroundPin(48, { side: 'top', order: 1 }),
+  mini1GroundPin(49, { side: 'center', order: 1 }),
+  mini1GroundPin(50, { side: 'right', order: 1 }),
+  mini1GroundPin(51, { side: 'right', order: 13 }),
+  mini1GroundPin(52, { side: 'left', order: 13 }),
+  mini1GroundPin(53, { side: 'left', order: 1 }),
+];
+
+const esp32c6Mini1Profile: SocPackageVariant = {
+  id: 'esp32c6-mini-1',
+  name: 'MINI-1',
+  packageName: 'ESP32-C6-MINI-1 module, 53 pads, top view',
+  kind: 'package',
+  source: mini1Source,
+  moduleNames: ['ESP32-C6-MINI-1'],
+  identificationNotes: [
+    'This profile is the 53-pad ESP32-C6-MINI-1 module layout, not the bare ESP32-C6 QFN package.',
+    'ESP32-C6-MINI-1 uses the on-board PCB antenna variant; the related MINI-1U uses an external antenna connector.',
+  ],
+  pins: esp32c6Mini1Pins,
+};
+
+esp32c6.packageVariants = [...(esp32c6.packageVariants ?? []), esp32c6Mini1Profile];

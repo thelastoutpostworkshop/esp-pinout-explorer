@@ -51,6 +51,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32s3:esp32s3-usb-otg': 32,
   'esp32c6:qfn40': 41,
   'esp32c6:qfn32': 33,
+  'esp32c6:esp32c6-mini-1': 53,
 };
 
 interface ProfileEntry {

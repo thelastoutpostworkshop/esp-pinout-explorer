@@ -11,6 +11,7 @@ Current profiles:
 - ESP32-S3-USB-OTG connector groups, based on the official Espressif ESP32-S3-USB-OTG User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html
 - ESP32-S3 QFN56, based on the official Espressif ESP32-S3 Series Datasheet v2.2: https://documentation.espressif.com/esp32-s3_datasheet_en.pdf
 - ESP32-C6 QFN40 and QFN32, based on the official Espressif ESP32-C6 Series Datasheet v1.5: https://documentation.espressif.com/esp32-c6_datasheet_en.pdf
+- ESP32-C6-MINI-1 module pads, based on the official Espressif ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet v1.5: https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf
 
 ## Install
 

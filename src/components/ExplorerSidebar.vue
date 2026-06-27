@@ -221,8 +221,13 @@ const moduleVariants = computed(() => selectedPackage.value.moduleVariants ?? []
 const moduleDetailsOpen = ref(false);
 const moduleTooltip = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
+  const helpText =
+    selectedPackage.value.kind === 'board'
+      ? 'The printed metal-can name is the module. The dev-board profile controls header pins, buttons, USB, LEDs, and safe-use warnings.'
+      : 'This profile shows the module pad layout. It can differ from the bare SoC package and from development-board headers.';
+
   return [
-    'The printed metal-can name is the module. The dev-board profile controls header pins, buttons, USB, LEDs, and safe-use warnings.',
+    helpText,
     note,
   ]
     .filter(Boolean)

@@ -61,7 +61,7 @@ Source baseline:
 
 - [ ] ESP32-C6 module profiles
   - Source: https://www.espressif.com/en/products/modules
-  - [ ] ESP32-C6-MINI-1
+  - [x] ESP32-C6-MINI-1
   - [ ] ESP32-C6-MINI-1U
   - [ ] ESP32-C6-WROOM-1
   - [ ] ESP32-C6-WROOM-1U

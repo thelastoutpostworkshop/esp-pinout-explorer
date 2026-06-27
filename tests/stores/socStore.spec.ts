@@ -144,6 +144,23 @@ describe('soc store', () => {
     expect(store.filteredPins).toHaveLength(32);
   });
 
+  it('can select the ESP32-C6-MINI-1 module profile', () => {
+    const store = useSocStore();
+
+    store.selectSoc('esp32c6');
+    store.selectPackage('esp32c6-mini-1');
+
+    expect(store.selectedPackage.name).toBe('MINI-1');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP32-C6-MINI-1']);
+    expect(store.selectedPins).toHaveLength(53);
+
+    store.setSearchQuery('mini-1');
+    expect(store.filteredPins).toHaveLength(53);
+
+    store.setSearchQuery('gpio12 usb');
+    expect(store.filteredPins.map((pin) => pin.name)).toEqual(['IO12', 'IO13']);
+  });
+
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {
     const store = useSocStore();
 
