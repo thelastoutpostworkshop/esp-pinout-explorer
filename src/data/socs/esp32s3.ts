@@ -559,10 +559,41 @@ const devkitC1V11Source: SocSource = {
   sections: [
     'Description of Components',
     'Ordering Information',
+    'Block Diagram',
     'Header Block J1',
     'Header Block J3',
     'Pin Layout',
     'Hardware Revision Details',
+  ],
+  figures: [
+    {
+      title: 'Board overview',
+      kind: 'board-photo',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/esp32-s3-devkitc-1-v1.1-isometric.png',
+      alt: 'ESP32-S3-DevKitC-1 with ESP32-S3-WROOM-1 module',
+      sourceSection: 'Overview',
+    },
+    {
+      title: 'Component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/ESP32-S3-DevKitC-1_v2-annotated-photo.png',
+      alt: 'ESP32-S3-DevKitC-1 front component layout',
+      sourceSection: 'Description of Components',
+    },
+    {
+      title: 'System block diagram',
+      kind: 'block-diagram',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/ESP32-S3-DevKitC-1_v2-SystemBlock.png',
+      alt: 'ESP32-S3-DevKitC-1 system block diagram',
+      sourceSection: 'Block Diagram',
+    },
+    {
+      title: 'Pin layout',
+      kind: 'pin-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/ESP32-S3_DevKitC-1_pinlayout_v1.1.jpg',
+      alt: 'ESP32-S3-DevKitC-1 pin layout',
+      sourceSection: 'Pin Layout',
+    },
   ],
 };
 
@@ -574,10 +605,41 @@ const devkitM1Source: SocSource = {
   url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html',
   sections: [
     'Description of Components',
+    'Block Diagram',
     'Header Block J1',
     'Header Block J3',
     'Pin Layout',
     'Hardware Revision Details',
+  ],
+  figures: [
+    {
+      title: 'Board overview',
+      kind: 'board-photo',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/esp32-s3-devkitm-1-v1-isometric.png',
+      alt: 'ESP32-S3-DevKitM-1 with ESP32-S3-MINI-1 module',
+      sourceSection: 'Overview',
+    },
+    {
+      title: 'Component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/ESP32-S3-DevKitM-1_v1-annotated-photo.png',
+      alt: 'ESP32-S3-DevKitM-1 front component layout',
+      sourceSection: 'Description of Components',
+    },
+    {
+      title: 'System block diagram',
+      kind: 'block-diagram',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/ESP32-S3-DevKitM-1_v1_SystemBlock.png',
+      alt: 'ESP32-S3-DevKitM-1 system block diagram',
+      sourceSection: 'Block Diagram',
+    },
+    {
+      title: 'Pin layout',
+      kind: 'pin-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/ESP32-S3_DevKitM-1_pinlayout.jpg',
+      alt: 'ESP32-S3-DevKitM-1 pin layout',
+      sourceSection: 'Pin Layout',
+    },
   ],
 };
 
@@ -589,6 +651,7 @@ const usbOtgSource: SocSource = {
   url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html',
   sections: [
     'Description of Components',
+    'Block Diagram',
     'Power Supply Options',
     'USB Interface Switch Circuit',
     'LCD Interface',
@@ -596,6 +659,57 @@ const usbOtgSource: SocSource = {
     'Pin Layout - Function pin',
     'Pin Layout - Extended pin',
     'Related Documents',
+  ],
+  figures: [
+    {
+      title: 'Board overview',
+      kind: 'board-photo',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/pic_product_esp32_s3_otg.png',
+      alt: 'ESP32-S3-USB-OTG board overview',
+      sourceSection: 'Overview',
+    },
+    {
+      title: 'Top component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/pic_board_top_lable.png',
+      alt: 'ESP32-S3-USB-OTG top component layout',
+      sourceSection: 'Description of Components',
+    },
+    {
+      title: 'Bottom component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/pic_board_bottom_lable.png',
+      alt: 'ESP32-S3-USB-OTG bottom component layout',
+      sourceSection: 'Description of Components',
+    },
+    {
+      title: 'Block diagram',
+      kind: 'block-diagram',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/sch_function_block.png',
+      alt: 'ESP32-S3-USB-OTG block diagram',
+      sourceSection: 'Block Diagram',
+    },
+    {
+      title: 'USB switch circuit',
+      kind: 'schematic-excerpt',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/sch_usb_switch.png',
+      alt: 'ESP32-S3-USB-OTG USB interface switch circuit',
+      sourceSection: 'USB Interface Switch Circuit',
+    },
+    {
+      title: 'LCD interface circuit',
+      kind: 'schematic-excerpt',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/sch_interface_lcd.png',
+      alt: 'ESP32-S3-USB-OTG LCD interface circuit',
+      sourceSection: 'LCD Interface',
+    },
+    {
+      title: 'SD card interface circuit',
+      kind: 'schematic-excerpt',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/_images/sch_micro_sd_slot.png',
+      alt: 'ESP32-S3-USB-OTG SD card interface circuit',
+      sourceSection: 'SD Card Interface',
+    },
   ],
 };
 

@@ -53,6 +53,15 @@ export interface SocSource {
   documentType: 'datasheet' | 'user-guide' | 'schematic' | 'documentation';
   url: string;
   sections: string[];
+  figures?: SocSourceFigure[];
+}
+
+export interface SocSourceFigure {
+  title: string;
+  kind: 'board-photo' | 'component-layout' | 'pin-layout' | 'block-diagram' | 'schematic-excerpt';
+  url: string;
+  alt: string;
+  sourceSection: string;
 }
 
 export interface SocPackageVariant {

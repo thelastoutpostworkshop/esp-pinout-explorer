@@ -159,6 +159,17 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
     expect(wrapper.text()).toContain('Official docs');
     expect(wrapper.find('.explorer-sidebar__source').attributes('href')).toBe(esp32s3.boardProfiles?.[0]?.source?.url);
+    expect(wrapper.text()).toContain('Reference images');
+
+    await wrapper.find('.explorer-sidebar__figure-button').trigger('click');
+
+    expect(wrapper.find('[role="dialog"][aria-label="Reference images"]').exists()).toBe(true);
+    expect(wrapper.findAll('.reference-images__figure')).toHaveLength(esp32s3.boardProfiles?.[0]?.source?.figures?.length ?? 0);
+    expect(wrapper.text()).toContain('Pin layout');
+    expect(wrapper.find('.reference-images__figure img').attributes('src')).toBe(esp32s3.boardProfiles?.[0]?.source?.figures?.[0].url);
+
+    await wrapper.find('button[aria-label="Close reference images"]').trigger('click');
+    expect(wrapper.find('[role="dialog"][aria-label="Reference images"]').exists()).toBe(false);
 
     store.selectPackage('esp32s3-devkitm-1');
     await wrapper.vm.$nextTick();
@@ -167,6 +178,11 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.find('.explorer-sidebar__source').attributes('href')).toBe(
       esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-devkitm-1')?.source?.url,
     );
+
+    store.selectSoc('esp32c6');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(false);
   });
 });
 

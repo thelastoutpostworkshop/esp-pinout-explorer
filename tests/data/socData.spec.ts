@@ -20,6 +20,13 @@ const pinWarnings: readonly PinWarning[] = [
 ];
 
 const sourceDocumentTypes: readonly SocSource['documentType'][] = ['datasheet', 'user-guide', 'schematic', 'documentation'];
+const sourceFigureKinds: readonly NonNullable<SocSource['figures']>[number]['kind'][] = [
+  'board-photo',
+  'component-layout',
+  'pin-layout',
+  'block-diagram',
+  'schematic-excerpt',
+];
 
 const officialEspressifHosts = new Set([
   'docs.espressif.com',
@@ -105,6 +112,14 @@ function expectValidSource(source: SocSource) {
   expectOfficialEspressifUrl(source.url);
   expect(source.sections.length).toBeGreaterThan(0);
   expect(source.sections.every((section) => section.trim().length > 0)).toBe(true);
+
+  for (const figure of source.figures ?? []) {
+    expect(figure.title.trim()).not.toBe('');
+    expect(sourceFigureKinds).toContain(figure.kind);
+    expectOfficialEspressifUrl(figure.url);
+    expect(figure.alt.trim()).not.toBe('');
+    expect(figure.sourceSection.trim()).not.toBe('');
+  }
 }
 
 function expectOfficialEspressifUrl(url: string) {
@@ -146,6 +161,9 @@ describe('SoC data invariants', () => {
         expect(profile.id.trim()).not.toBe('');
         expect(profile.packageName.trim()).not.toBe('');
         expectValidSource(profile.source ?? soc.source);
+        if (profile.kind === 'board') {
+          expect(profile.source?.figures?.length).toBeGreaterThan(0);
+        }
       }
 
       expect(profileIds.has(soc.defaultPackageId ?? 'default')).toBe(true);

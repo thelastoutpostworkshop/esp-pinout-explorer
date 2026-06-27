@@ -41,17 +41,77 @@
         <strong>{{ moduleDisplay }}</strong>
       </div>
 
-      <a
-        class="explorer-sidebar__source"
-        :href="selectedSource.url"
-        :aria-label="`Open ${sourceLinkTitle}`"
-        rel="noreferrer"
-        target="_blank"
-        :title="sourceLinkTitle"
+      <div class="explorer-sidebar__source-actions">
+        <a
+          class="explorer-sidebar__source"
+          :href="selectedSource.url"
+          :aria-label="`Open ${sourceLinkTitle}`"
+          rel="noreferrer"
+          target="_blank"
+          :title="sourceLinkTitle"
+        >
+          <ExternalLink :size="14" aria-hidden="true" />
+          <span>Official docs</span>
+        </a>
+
+        <button
+          v-if="sourceFigures.length"
+          class="explorer-sidebar__figure-button"
+          type="button"
+          :aria-label="`View reference images from ${sourceLinkTitle}`"
+          :title="sourceLinkTitle"
+          @click="openReferenceImages"
+        >
+          <ImageIcon :size="14" aria-hidden="true" />
+          <span>Reference images</span>
+        </button>
+      </div>
+
+      <div
+        v-if="referenceImagesOpen"
+        class="reference-images"
+        role="dialog"
+        aria-label="Reference images"
+        aria-modal="true"
+        tabindex="-1"
+        @click.self="closeReferenceImages"
+        @keydown.esc="closeReferenceImages"
       >
-        <ExternalLink :size="14" aria-hidden="true" />
-        <span>Official docs</span>
-      </a>
+        <section class="reference-images__panel">
+          <header class="reference-images__header">
+            <div>
+              <h2>Reference images</h2>
+              <p>{{ sourceLinkTitle }}</p>
+            </div>
+            <button
+              class="reference-images__close"
+              type="button"
+              aria-label="Close reference images"
+              @click="closeReferenceImages"
+            >
+              <X :size="18" aria-hidden="true" />
+            </button>
+          </header>
+
+          <div class="reference-images__grid">
+            <figure v-for="figure in sourceFigures" :key="figure.url" class="reference-images__figure">
+              <a
+                class="reference-images__image-link"
+                :href="figure.url"
+                rel="noreferrer"
+                target="_blank"
+                :aria-label="`Open ${figure.title}`"
+              >
+                <img :src="figure.url" :alt="figure.alt" loading="lazy" decoding="async" />
+              </a>
+              <figcaption>
+                <strong>{{ figure.title }}</strong>
+                <span>{{ figure.sourceSection }}</span>
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+      </div>
     </section>
 
     <section class="explorer-sidebar__section">
@@ -71,8 +131,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { ExternalLink } from '@lucide/vue';
+import { computed, ref, watch } from 'vue';
+import { ExternalLink, Image as ImageIcon, X } from '@lucide/vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
@@ -86,6 +146,8 @@ const selectedSoc = computed(() => store.selectedSoc);
 const selectedPackage = computed(() => store.selectedPackage);
 const selectedSource = computed(() => selectedPackage.value.source ?? selectedSoc.value.source);
 const sourceLinkTitle = computed(() => `${selectedSource.value.title} ${selectedSource.value.version}`);
+const sourceFigures = computed(() => selectedSource.value.figures ?? []);
+const referenceImagesOpen = ref(false);
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
 const moduleTooltip = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
@@ -106,18 +168,34 @@ const legendItems = [
   { label: 'Maker warning', className: 'legend-item__swatch--warning' },
 ] as const;
 
+watch(sourceFigures, (figures) => {
+  if (!figures.length) {
+    closeReferenceImages();
+  }
+});
+
 function selectSoc(socId: string) {
   store.selectSoc(socId);
+  closeReferenceImages();
   emit('changed');
 }
 
 function selectPackage(packageId: string) {
   store.selectPackage(packageId);
+  closeReferenceImages();
   emit('changed');
 }
 
 function formatModuleNames(moduleNames: string[]) {
   return moduleNames.map((name, index) => (index === 0 ? name : name.replace(/^ESP32-S3-/, ''))).join(' / ');
+}
+
+function openReferenceImages() {
+  referenceImagesOpen.value = true;
+}
+
+function closeReferenceImages() {
+  referenceImagesOpen.value = false;
 }
 </script>
 
@@ -189,11 +267,18 @@ function formatModuleNames(moduleNames: string[]) {
   overflow-wrap: anywhere;
 }
 
-.explorer-sidebar__source {
+.explorer-sidebar__source-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  min-width: 0;
+}
+
+.explorer-sidebar__source,
+.explorer-sidebar__figure-button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  justify-self: start;
   min-height: 28px;
   color: #006d77;
   font-size: 0.84rem;
@@ -202,10 +287,148 @@ function formatModuleNames(moduleNames: string[]) {
   text-decoration: none;
 }
 
+.explorer-sidebar__figure-button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 .explorer-sidebar__source:hover,
-.explorer-sidebar__source:focus-visible {
+.explorer-sidebar__source:focus-visible,
+.explorer-sidebar__figure-button:hover,
+.explorer-sidebar__figure-button:focus-visible {
   color: #004f58;
   text-decoration: underline;
+}
+
+.reference-images {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(15, 23, 42, 0.55);
+}
+
+.reference-images__panel {
+  display: grid;
+  gap: 18px;
+  width: min(960px, 100%);
+  max-height: min(760px, calc(100vh - 48px));
+  overflow: auto;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+}
+
+.reference-images__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.reference-images__header h2 {
+  margin: 0;
+  color: #0f172a;
+  font-size: 1rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.reference-images__header p {
+  margin: 3px 0 0;
+  color: #64748b;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.reference-images__close {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  color: #334155;
+  background: #f8fafc;
+  cursor: pointer;
+}
+
+.reference-images__close:hover,
+.reference-images__close:focus-visible {
+  border-color: #94a3b8;
+  background: #e2e8f0;
+}
+
+.reference-images__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.reference-images__figure {
+  display: grid;
+  gap: 9px;
+  min-width: 0;
+  margin: 0;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+  padding: 10px;
+  background: #f8fafc;
+}
+
+.reference-images__image-link {
+  display: grid;
+  place-items: center;
+  min-height: 180px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: #ffffff;
+}
+
+.reference-images__image-link img {
+  display: block;
+  width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+}
+
+.reference-images__figure figcaption {
+  display: grid;
+  gap: 3px;
+}
+
+.reference-images__figure strong {
+  color: #0f172a;
+  font-size: 0.88rem;
+  line-height: 1.3;
+}
+
+.reference-images__figure span {
+  color: #64748b;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+@media (max-width: 640px) {
+  .reference-images {
+    padding: 12px;
+  }
+
+  .reference-images__panel {
+    max-height: calc(100vh - 24px);
+    padding: 14px;
+  }
 }
 
 .legend-item {
