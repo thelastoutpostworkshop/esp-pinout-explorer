@@ -26,13 +26,21 @@
         class="explorer-sidebar__select"
         density="compact"
         hide-details
-        item-title="selectTitle"
+        item-title="name"
         item-value="id"
         label="Board / module / package"
         :items="profileSelectItems"
         variant="outlined"
         @update:model-value="selectPackage"
-      />
+      >
+        <template #item="{ props, item }">
+          <v-divider v-if="item.startsGroup && !item.isFirstGroup" class="profile-select__divider" />
+          <v-list-subheader v-if="item.startsGroup" class="profile-select__header">
+            {{ item.groupLabel }}
+          </v-list-subheader>
+          <v-list-item v-bind="props" :title="item.name" />
+        </template>
+      </v-select>
 
       <div class="explorer-sidebar__profile-context" :class="`explorer-sidebar__profile-context--${selectedProfileKind}`">
         <span>{{ selectedProfileKindLabel }}</span>
@@ -222,9 +230,11 @@ const selectedPackage = computed(() => store.selectedPackage);
 const profileSelectItems = computed(() =>
   [...store.packageOptions]
     .sort((first, second) => profileKindRank(profileKind(first)) - profileKindRank(profileKind(second)))
-    .map((profile) => ({
+    .map((profile, index, profiles) => ({
       ...profile,
-      selectTitle: `${profileKindLabel(profileKind(profile))}: ${profile.name}`,
+      groupLabel: profileKindPluralLabel(profileKind(profile)),
+      isFirstGroup: index === 0,
+      startsGroup: index === 0 || profileKind(profiles[index - 1]) !== profileKind(profile),
     })),
 );
 const selectedProfileKind = computed(() => profileKind(selectedPackage.value));
@@ -312,6 +322,14 @@ function profileKindLabel(kind: PinProfileKind) {
   }[kind];
 }
 
+function profileKindPluralLabel(kind: PinProfileKind) {
+  return {
+    board: 'Dev boards',
+    module: 'Modules',
+    package: 'Chip packages',
+  }[kind];
+}
+
 function profileKindSummary(kind: PinProfileKind) {
   return {
     board: 'Header pins, silkscreen labels, and on-board parts.',
@@ -382,6 +400,19 @@ function closeModuleDetails() {
 
 .explorer-sidebar__select {
   min-width: 0;
+}
+
+:deep(.profile-select__divider) {
+  margin: 6px 0;
+}
+
+:deep(.profile-select__header) {
+  min-height: 28px;
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
 }
 
 .explorer-sidebar__profile-context {

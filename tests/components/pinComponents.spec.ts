@@ -242,6 +242,14 @@ describe('ExplorerSidebar', () => {
     store.selectSoc('esp32c6');
     await wrapper.vm.$nextTick();
 
+    expect(wrapper.findAll('.v-list-subheader').map((item) => item.text())).toEqual(['Dev boards', 'Modules', 'Chip packages']);
+    expect(wrapper.text()).toContain('DevKitM-1 (MINI)');
+    expect(wrapper.text()).toContain('MINI-1');
+    expect(wrapper.text()).toContain('MINI-1U');
+    expect(wrapper.text()).toContain('QFN40');
+    expect(wrapper.text()).toContain('QFN32');
+    expect(wrapper.text()).not.toContain('Dev board: DevKitM-1');
+    expect(wrapper.text()).not.toContain('Module: MINI-1');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1 / MINI-1U');
     expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(true);
 
@@ -355,8 +363,28 @@ const sidebarStubs = {
   VChip: {
     template: '<span><slot /></span>',
   },
+  VDivider: {
+    template: '<hr class="v-divider">',
+  },
+  VListItem: {
+    props: ['title'],
+    template: '<div class="v-list-item">{{ title }}<slot /></div>',
+  },
+  VListSubheader: {
+    template: '<div class="v-list-subheader"><slot /></div>',
+  },
   VSelect: {
-    template: '<label />',
+    props: ['items'],
+    template: `
+      <label>
+        <slot
+          v-for="item in items"
+          name="item"
+          :item="item"
+          :props="{ class: 'select-option' }"
+        />
+      </label>
+    `,
   },
 };
 
