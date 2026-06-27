@@ -199,6 +199,8 @@ describe('ExplorerSidebar', () => {
     });
 
     expect(wrapper.text()).toContain('Module');
+    expect(wrapper.text()).toContain('Dev board');
+    expect(wrapper.text()).toContain('Header pins, silkscreen labels, and on-board parts.');
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
     expect(wrapper.text()).toContain('The printed metal-can name is the module');
     expect(wrapper.text()).toContain('Module variants');
@@ -240,6 +242,19 @@ describe('ExplorerSidebar', () => {
     store.selectSoc('esp32c6');
     await wrapper.vm.$nextTick();
 
+    expect(wrapper.text()).toContain('ESP32-C6-MINI-1 / MINI-1U');
+    expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(true);
+
+    store.selectPackage('esp32c6-mini-1');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.text()).toContain('Module pads for PCB design, not dev-board headers.');
+    expect(wrapper.text()).toContain('ESP32-C6-MINI-1');
+
+    store.selectPackage('qfn40');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.text()).toContain('Chip package');
     expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(false);
   });
 });

@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { socs } from '@/data/socs';
 import type {
   PinSide,
+  PinProfileKind,
   PinType,
   PinWarning,
   SocDefinition,
@@ -59,7 +60,7 @@ const expectedPinCounts: Record<string, number> = {
 interface ProfileEntry {
   soc: SocDefinition;
   id: string;
-  kind: 'package' | 'board';
+  kind: PinProfileKind;
   boardLayout?: SocPackageVariant['boardLayout'];
   packageName: string;
   source?: SocSource;
@@ -189,7 +190,7 @@ describe('SoC data invariants', () => {
   });
 
   it('keeps package pins well-formed and position-stable', () => {
-    for (const profile of allProfiles().filter((item) => item.kind === 'package')) {
+    for (const profile of allProfiles().filter((item) => item.kind !== 'board')) {
       const pinIds = new Set<string>();
       const pinNumbers = new Set<number>();
       const positions = new Set<string>();
@@ -220,7 +221,7 @@ describe('SoC data invariants', () => {
         [
           ...profile.soc.pins,
           ...(profile.soc.packageVariants ?? [])
-            .filter((packageProfile) => (packageProfile.kind ?? 'package') === 'package')
+            .filter((packageProfile) => (packageProfile.kind ?? 'package') !== 'board')
             .flatMap((packageProfile) => packageProfile.pins),
         ]
           .filter((pin) => pin.gpio !== undefined)
@@ -272,6 +273,22 @@ describe('SoC data invariants', () => {
       }
       expect(profile.identificationNotes?.length).toBeGreaterThan(0);
       expect(profile.identificationNotes?.every((note) => note.includes('carrier PCB'))).toBe(true);
+    }
+  });
+
+  it('keeps module pad profiles separate from dev-board profiles', () => {
+    const moduleProfiles = allProfiles().filter((item) => item.kind === 'module');
+
+    expect(moduleProfiles.map((profile) => `${profile.soc.id}:${profile.id}`).sort()).toEqual([
+      'esp32c6:esp32c6-mini-1',
+      'esp32c6:esp32c6-mini-1u',
+    ]);
+
+    for (const profile of moduleProfiles) {
+      expect(profile.packageName.toLowerCase()).toContain('module');
+      expect(profile.moduleNames?.length).toBeGreaterThan(0);
+      expect(profile.identificationNotes?.some((note) => note.includes('not the bare'))).toBe(true);
+      expect(profile.boardLayout).toBeUndefined();
     }
   });
 });

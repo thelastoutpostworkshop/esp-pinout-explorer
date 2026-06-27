@@ -40,7 +40,7 @@ describe('soc store', () => {
     const c6Store = useSocStore();
 
     expect(c6Store.selectedSocId).toBe('esp32c6');
-    expect(c6Store.selectedPackage.id).toBe('qfn40');
+    expect(c6Store.selectedPackage.id).toBe('esp32c6-devkitm-1');
   });
 
   it('falls back to valid defaults for stale persisted profile data', () => {
@@ -80,7 +80,8 @@ describe('soc store', () => {
     store.selectSoc('esp32c6');
 
     expect(store.selectedSocId).toBe('esp32c6');
-    expect(store.selectedPackage.id).toBe('qfn40');
+    expect(store.selectedPackage.id).toBe('esp32c6-devkitm-1');
+    expect(store.selectedPackage.kind).toBe('board');
     expect(store.selectedPinId).toBeNull();
     expect(store.searchQuery).toBe('');
   });
@@ -151,6 +152,7 @@ describe('soc store', () => {
     store.selectPackage('esp32c6-mini-1');
 
     expect(store.selectedPackage.name).toBe('MINI-1');
+    expect(store.selectedPackage.kind).toBe('module');
     expect(store.selectedPackage.moduleNames).toEqual(['ESP32-C6-MINI-1']);
     expect(store.selectedPins).toHaveLength(53);
 
@@ -168,6 +170,7 @@ describe('soc store', () => {
     store.selectPackage('esp32c6-mini-1u');
 
     expect(store.selectedPackage.name).toBe('MINI-1U');
+    expect(store.selectedPackage.kind).toBe('module');
     expect(store.selectedPackage.moduleNames).toEqual(['ESP32-C6-MINI-1U']);
     expect(store.selectedPins).toHaveLength(53);
 
@@ -210,6 +213,7 @@ describe('soc store', () => {
     expect(store.filteredPins).toHaveLength(44);
 
     store.selectSoc('esp32c6');
+    store.selectPackage('qfn40');
     store.setSearchQuery('gpio12 usb');
     expect(store.filteredPins.map((pin) => pin.gpio)).toEqual([12, 13]);
 

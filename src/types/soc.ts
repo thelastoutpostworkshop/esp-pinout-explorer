@@ -2,7 +2,7 @@ export type PinType = 'io' | 'analog' | 'power' | 'ground' | 'control';
 
 export type PinSide = 'left' | 'bottom' | 'right' | 'top' | 'center';
 
-export type PinProfileKind = 'package' | 'board';
+export type PinProfileKind = 'package' | 'module' | 'board';
 
 export type BoardLayout = 'dual-header' | 'connector-groups';
 

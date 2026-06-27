@@ -4,6 +4,7 @@
       <div class="explorer-sidebar__chips">
         <v-chip class="pin-chip" color="primary" size="small" variant="flat">{{ selectedSoc.name }}</v-chip>
         <v-chip class="pin-chip" color="secondary" size="small" variant="tonal">{{ selectedPackage.name }}</v-chip>
+        <v-chip class="pin-chip" size="small" variant="tonal">{{ selectedProfileKindLabel }}</v-chip>
       </div>
 
       <v-select
@@ -25,17 +26,22 @@
         class="explorer-sidebar__select"
         density="compact"
         hide-details
-        item-title="name"
+        item-title="selectTitle"
         item-value="id"
-        label="Profile"
-        :items="store.packageOptions"
+        label="Board / module / package"
+        :items="profileSelectItems"
         variant="outlined"
         @update:model-value="selectPackage"
       />
 
+      <div class="explorer-sidebar__profile-context" :class="`explorer-sidebar__profile-context--${selectedProfileKind}`">
+        <span>{{ selectedProfileKindLabel }}</span>
+        <p>{{ selectedProfileSummary }}</p>
+      </div>
+
       <div v-if="moduleDisplay" class="explorer-sidebar__module">
         <div class="explorer-sidebar__module-heading">
-          <span>Module</span>
+          <span>{{ moduleHeading }}</span>
           <InfoTooltip label="Board or module name?" :text="moduleTooltip" />
         </div>
         <strong>{{ moduleDisplay }}</strong>
@@ -204,6 +210,7 @@ import { ExternalLink, Image as ImageIcon, List, X } from '@lucide/vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
+import type { PinProfileKind, SocPackageVariant } from '@/types/soc';
 
 const emit = defineEmits<{
   changed: [];
@@ -212,6 +219,17 @@ const emit = defineEmits<{
 const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
 const selectedPackage = computed(() => store.selectedPackage);
+const profileSelectItems = computed(() =>
+  [...store.packageOptions]
+    .sort((first, second) => profileKindRank(profileKind(first)) - profileKindRank(profileKind(second)))
+    .map((profile) => ({
+      ...profile,
+      selectTitle: `${profileKindLabel(profileKind(profile))}: ${profile.name}`,
+    })),
+);
+const selectedProfileKind = computed(() => profileKind(selectedPackage.value));
+const selectedProfileKindLabel = computed(() => profileKindLabel(selectedProfileKind.value));
+const selectedProfileSummary = computed(() => profileKindSummary(selectedProfileKind.value));
 const selectedSource = computed(() => selectedPackage.value.source ?? selectedSoc.value.source);
 const sourceLinkTitle = computed(() => `${selectedSource.value.title} ${selectedSource.value.version}`);
 const sourceFigures = computed(() => selectedSource.value.figures ?? []);
@@ -219,12 +237,17 @@ const referenceImagesOpen = ref(false);
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
 const moduleVariants = computed(() => selectedPackage.value.moduleVariants ?? []);
 const moduleDetailsOpen = ref(false);
+const moduleHeading = computed(() => (selectedProfileKind.value === 'board' ? 'Module on board' : 'Module'));
 const moduleTooltip = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
-  const helpText =
-    selectedPackage.value.kind === 'board'
-      ? 'The printed metal-can name is the module. The dev-board profile controls header pins, buttons, USB, LEDs, and safe-use warnings.'
-      : 'This profile shows the module pad layout. It can differ from the bare SoC package and from development-board headers.';
+  const helpText = {
+    board:
+      'The printed metal-can name is the module. The dev-board profile controls header pins, buttons, USB, LEDs, and safe-use warnings.',
+    module:
+      'This profile shows module pads for PCB design, not dev-board headers. Use a DevKit profile when you want board headers and on-board hardware.',
+    package:
+      'This profile shows the bare SoC package. It can differ from modules and development-board headers.',
+  }[selectedProfileKind.value];
 
   return [
     helpText,
@@ -269,8 +292,37 @@ function selectPackage(packageId: string) {
   emit('changed');
 }
 
+function profileKind(profile: Pick<SocPackageVariant, 'kind'>): PinProfileKind {
+  return profile.kind ?? 'package';
+}
+
+function profileKindRank(kind: PinProfileKind) {
+  return {
+    board: 0,
+    module: 1,
+    package: 2,
+  }[kind];
+}
+
+function profileKindLabel(kind: PinProfileKind) {
+  return {
+    board: 'Dev board',
+    module: 'Module',
+    package: 'Chip package',
+  }[kind];
+}
+
+function profileKindSummary(kind: PinProfileKind) {
+  return {
+    board: 'Header pins, silkscreen labels, and on-board parts.',
+    module: 'Module pads for PCB design, not dev-board headers.',
+    package: 'Bare SoC package pins from the datasheet.',
+  }[kind];
+}
+
 function formatModuleNames(moduleNames: string[]) {
-  return moduleNames.map((name, index) => (index === 0 ? name : name.replace(/^ESP32-S3-/, ''))).join(' / ');
+  const firstPrefix = moduleNames[0]?.match(/^(ESP32-[A-Z0-9]+-)/)?.[1];
+  return moduleNames.map((name, index) => (index === 0 || !firstPrefix ? name : name.replace(firstPrefix, ''))).join(' / ');
 }
 
 function valueOrDash(value: string | undefined) {
@@ -330,6 +382,40 @@ function closeModuleDetails() {
 
 .explorer-sidebar__select {
   min-width: 0;
+}
+
+.explorer-sidebar__profile-context {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+  padding: 9px 11px;
+  background: #ffffff;
+}
+
+.explorer-sidebar__profile-context span {
+  color: #006d77;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.explorer-sidebar__profile-context p {
+  margin: 0;
+  color: #475569;
+  font-size: 0.8rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.explorer-sidebar__profile-context--module span {
+  color: #7c3aed;
+}
+
+.explorer-sidebar__profile-context--package span {
+  color: #475569;
 }
 
 .explorer-sidebar__module {

@@ -402,6 +402,7 @@ export const esp32c6: SocDefinition = {
   name: 'ESP32-C6',
   family: 'ESP32',
   defaultPackageId: 'qfn40',
+  defaultProfileId: 'esp32c6-devkitm-1',
   packageName: 'QFN40 (5 x 5 mm), top view',
   description: 'ESP32-C6 Wi-Fi 6, Bluetooth LE, and 802.15.4 SoC pinout.',
   source,
@@ -951,7 +952,7 @@ const esp32c6Mini1Profile: SocPackageVariant = {
   id: 'esp32c6-mini-1',
   name: 'MINI-1',
   packageName: 'ESP32-C6-MINI-1 module, 53 pads, top view',
-  kind: 'package',
+  kind: 'module',
   source: mini1Source,
   moduleNames: ['ESP32-C6-MINI-1'],
   identificationNotes: [
@@ -965,7 +966,7 @@ const esp32c6Mini1UProfile: SocPackageVariant = {
   id: 'esp32c6-mini-1u',
   name: 'MINI-1U',
   packageName: 'ESP32-C6-MINI-1U module, 53 pads, top view',
-  kind: 'package',
+  kind: 'module',
   source: mini1Source,
   moduleNames: ['ESP32-C6-MINI-1U'],
   identificationNotes: [
