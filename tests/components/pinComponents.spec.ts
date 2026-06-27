@@ -137,7 +137,11 @@ describe('PinSearch', () => {
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['GPIO38']);
 
     expect(wrapper.text()).toContain('Safe use');
-    await findButton(wrapper, 'Safe use').trigger('click');
+    const safeUseChip = findButton(wrapper, 'Safe use');
+    expect(safeUseChip.find('svg').exists()).toBe(true);
+    expect(safeUseChip.classes()).not.toContain('pin-search__chip--safe');
+
+    await safeUseChip.trigger('click');
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['safe use']);
 
     await wrapper.setProps({ modelValue: 'safe use' });

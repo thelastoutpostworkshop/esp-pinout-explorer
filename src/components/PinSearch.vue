@@ -42,12 +42,12 @@
           v-for="filter in visibleQuickFilters"
           :key="filter.label"
           class="pin-chip"
-          :class="{ 'pin-search__chip--safe': filter.query === safeUseQuery }"
           :color="activeFilter === filter.query ? 'primary' : 'secondary'"
           :variant="activeFilter === filter.query ? 'flat' : 'tonal'"
           size="small"
           @click="toggleFilter(filter)"
         >
+          <ShieldCheck v-if="filter.query === safeUseQuery" class="pin-search__safe-icon" :size="13" aria-hidden="true" />
           {{ filter.label }}
         </v-chip>
       </div>
@@ -57,7 +57,7 @@
 
 <script setup lang="ts">
 import { computed, watch } from 'vue';
-import { Search, X } from '@lucide/vue';
+import { Search, ShieldCheck, X } from '@lucide/vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import { useSocStore } from '@/stores/socStore';
 
@@ -172,8 +172,7 @@ function toggleFilter(filter: QuickFilter) {
   border-radius: 8px;
 }
 
-.pin-search__chip--safe {
-  border: 1px solid rgba(22, 101, 52, 0.26);
-  background: rgba(187, 247, 208, 0.72);
+.pin-search__safe-icon {
+  margin-right: 4px;
 }
 </style>
