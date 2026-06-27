@@ -672,12 +672,14 @@ function closeModuleDetails() {
 
 .legend-item__swatch {
   display: inline-block;
+  position: relative;
   width: 18px;
   height: 14px;
   border: 1.6px solid #334155;
   border-radius: 3px;
   background: #f8fafc;
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
+  overflow: hidden;
 }
 
 .legend-item__swatch--io {
@@ -701,11 +703,18 @@ function closeModuleDetails() {
 }
 
 .legend-item__swatch--warning {
-  background: #f8fafc;
-  border-color: #facc15;
-  border-width: 3px;
-  box-shadow:
-    0 0 0 1px rgba(66, 32, 6, 0.55),
-    0 0 5px rgba(250, 204, 21, 0.75);
+  background: #93c5fd;
+}
+
+.legend-item__swatch--warning::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  width: 10px;
+  height: 10px;
+  background: #facc15;
+  clip-path: polygon(100% 0, 0 0, 100% 100%);
+  filter: drop-shadow(0 0 2px rgba(250, 204, 21, 0.8));
 }
 </style>

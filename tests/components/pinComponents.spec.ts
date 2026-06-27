@@ -36,7 +36,7 @@ describe('ChipSvg', () => {
     expect(wrapper.emitted('pin-click')).toEqual([[esp32s3.pins[0].id], [esp32s3.pins[1].id]]);
   });
 
-  it('uses maker warning borders without promoting board design notes', () => {
+  it('uses maker warning badges without promoting board design notes', () => {
     const wrapper = mount(ChipSvg, {
       props: {
         filteredPinCount: esp32s3.pins.length,
@@ -54,7 +54,9 @@ describe('ChipSvg', () => {
     const boardDesignNoteIndex = esp32s3.pins.findIndex((pin) => pin.warnings?.includes('glitch') && !hasMakerWarning(pin));
 
     expect(nodes[makerWarningIndex].classes()).toContain('pin-node--warning');
+    expect(nodes[makerWarningIndex].find('.pin-node__warning-badge').exists()).toBe(true);
     expect(nodes[boardDesignNoteIndex].classes()).not.toContain('pin-node--warning');
+    expect(nodes[boardDesignNoteIndex].find('.pin-node__warning-badge').exists()).toBe(false);
   });
 });
 
@@ -81,6 +83,8 @@ describe('BoardSvg', () => {
     expect(wrapper.attributes('aria-label')).toContain('1 of 44 header pins shown');
     expect(nodes[0].classes()).toEqual(expect.arrayContaining(['board-pin--selected', 'board-pin--matched']));
     expect(nodes[1].classes()).toContain('board-pin--dimmed');
+    const warningNode = nodes.find((node, index) => hasMakerWarning(pins[index]));
+    expect(warningNode?.find('.board-pin__warning-badge').exists()).toBe(true);
 
     await nodes[0].trigger('keydown.enter');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);

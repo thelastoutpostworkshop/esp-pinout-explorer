@@ -91,6 +91,12 @@
           :rx="pinGeometry(pin).rect.rx"
           stroke-dasharray="7 7"
         />
+        <path
+          v-if="hasWarning(pin)"
+          class="pin-node__warning-badge"
+          :d="warningBadgePath(pinGeometry(pin).rect)"
+          aria-hidden="true"
+        />
         <text
           class="pin-number"
           :x="pinGeometry(pin).number.x"
@@ -242,8 +248,19 @@ function pinClasses(pin: SocPin) {
     'pin-node--dimmed': props.hasFilter && !matched,
     'pin-node--matched': props.hasFilter && matched,
     [`pin-node--${pin.type}`]: true,
-    'pin-node--warning': hasMakerWarning(pin),
+    'pin-node--warning': hasWarning(pin),
   };
+}
+
+function hasWarning(pin: SocPin) {
+  return hasMakerWarning(pin);
+}
+
+function warningBadgePath(rect: Geometry['rect']) {
+  const size = Math.min(11, rect.width * 0.4, rect.height * 0.55);
+  const x = rect.x + rect.width;
+  const y = rect.y;
+  return `M ${x - size} ${y} H ${x - rect.rx} Q ${x} ${y} ${x} ${y + rect.rx} V ${y + size} Z`;
 }
 
 function pinEntranceStyle(pin: SocPin) {
@@ -472,12 +489,6 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   fill: #fbbf24;
 }
 
-.pin-node--warning rect {
-  filter: drop-shadow(0 0 1px rgba(66, 32, 6, 0.95)) drop-shadow(0 0 4px rgba(250, 204, 21, 0.85));
-  stroke: #facc15;
-  stroke-width: 3.6;
-}
-
 .pin-node--matched rect {
   fill: #ccfbf1;
   stroke: #0f766e;
@@ -540,6 +551,15 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
 .chip-shell--compact-labels .pin-node--selected .pin-label {
   fill: #ffffff;
   font-size: 9.5px;
+}
+
+.pin-node__warning-badge {
+  fill: #facc15;
+  stroke: #422006;
+  stroke-linejoin: round;
+  stroke-width: 0.9;
+  filter: drop-shadow(0 0 2px rgba(250, 204, 21, 0.8));
+  pointer-events: none;
 }
 
 @keyframes selected-pin-pop {

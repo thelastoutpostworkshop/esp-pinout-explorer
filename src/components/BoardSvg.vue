@@ -93,6 +93,12 @@
           :height="connectorPinGeometry(pin).rect.height"
           :rx="connectorPinGeometry(pin).rect.rx"
         />
+        <path
+          v-if="hasWarning(pin)"
+          class="board-pin__warning-badge"
+          :d="warningBadgePath(connectorPinGeometry(pin).rect)"
+          aria-hidden="true"
+        />
         <text
           class="board-pin__label connector-board__pin-label"
           :x="connectorPinGeometry(pin).label.x"
@@ -198,6 +204,12 @@
           :width="pinGeometry(pin).rect.width"
           :height="pinGeometry(pin).rect.height"
           :rx="pinGeometry(pin).rect.rx"
+        />
+        <path
+          v-if="hasWarning(pin)"
+          class="board-pin__warning-badge"
+          :d="warningBadgePath(pinGeometry(pin).rect)"
+          aria-hidden="true"
         />
         <text
           class="board-pin__label"
@@ -405,8 +417,19 @@ function pinClasses(pin: SocPin) {
     'board-pin--dimmed': props.hasFilter && !matched,
     'board-pin--matched': props.hasFilter && matched,
     [`board-pin--${pin.type}`]: true,
-    'board-pin--warning': hasMakerWarning(pin),
+    'board-pin--warning': hasWarning(pin),
   };
+}
+
+function hasWarning(pin: SocPin) {
+  return hasMakerWarning(pin);
+}
+
+function warningBadgePath(rect: Geometry['rect']) {
+  const size = Math.min(11, rect.width * 0.4, rect.height * 0.55);
+  const x = rect.x + rect.width;
+  const y = rect.y;
+  return `M ${x - size} ${y} H ${x - rect.rx} Q ${x} ${y} ${x} ${y + rect.rx} V ${y + size} Z`;
 }
 
 function pinEntranceStyle(pin: SocPin) {
@@ -664,12 +687,6 @@ onBeforeUnmount(() => {
   fill: #fbbf24;
 }
 
-.board-pin--warning .board-pin__pad {
-  filter: drop-shadow(0 0 1px rgba(66, 32, 6, 0.95)) drop-shadow(0 0 5px rgba(250, 204, 21, 0.95));
-  stroke: #facc15;
-  stroke-width: 3.6;
-}
-
 .board-pin--matched .board-pin__pad {
   fill: #ccfbf1;
   stroke: #0f766e;
@@ -706,6 +723,15 @@ onBeforeUnmount(() => {
 
 .connector-board__pin-label {
   font-size: 8.7px;
+}
+
+.board-pin__warning-badge {
+  fill: #facc15;
+  stroke: #422006;
+  stroke-linejoin: round;
+  stroke-width: 0.9;
+  filter: drop-shadow(0 0 2px rgba(250, 204, 21, 0.8));
+  pointer-events: none;
 }
 
 .board-pin--selected .board-pin__label {
