@@ -52,6 +52,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32c6:qfn40': 41,
   'esp32c6:qfn32': 33,
   'esp32c6:esp32c6-mini-1': 53,
+  'esp32c6:esp32c6-devkitm-1': 30,
 };
 
 interface ProfileEntry {
@@ -214,7 +215,16 @@ describe('SoC data invariants', () => {
       const isConnectorGroupLayout = profile.boardLayout === 'connector-groups';
       const displayNumbers = new Set<string>();
       const positions = new Set<string>();
-      const packagePinsByGpio = new Map(profile.soc.pins.filter((pin) => pin.gpio !== undefined).map((pin) => [pin.gpio, pin]));
+      const packagePinsByGpio = new Map(
+        [
+          ...profile.soc.pins,
+          ...(profile.soc.packageVariants ?? [])
+            .filter((packageProfile) => (packageProfile.kind ?? 'package') === 'package')
+            .flatMap((packageProfile) => packageProfile.pins),
+        ]
+          .filter((pin) => pin.gpio !== undefined)
+          .map((pin) => [pin.gpio, pin]),
+      );
 
       for (const pin of profile.pins) {
         expectValidPin(pin);
@@ -254,7 +264,7 @@ describe('SoC data invariants', () => {
   it('records maker-visible module identity for board profiles', () => {
     for (const profile of allProfiles().filter((item) => item.kind === 'board')) {
       expect(profile.moduleNames?.length).toBeGreaterThan(0);
-      expect(profile.moduleNames?.every((name) => name.startsWith('ESP32-S3-'))).toBe(true);
+      expect(profile.moduleNames?.every((name) => name.startsWith('ESP32-'))).toBe(true);
       expect(profile.moduleVariants?.length).toBeGreaterThan(0);
       for (const variant of profile.moduleVariants ?? []) {
         expectValidModuleVariant(variant);
@@ -296,7 +306,7 @@ function expectValidPin(pin: SocPin) {
 
 function expectValidModuleVariant(variant: SocModuleVariant) {
   expect(variant.name.trim()).not.toBe('');
-  expect(variant.name).toMatch(/^ESP32-S3-/);
+  expect(variant.name).toMatch(/^ESP32-/);
   expect(variant.antenna?.trim()).not.toBe('');
   expect(variant.flash?.trim()).not.toBe('');
   expect(variant.psram?.trim()).not.toBe('');

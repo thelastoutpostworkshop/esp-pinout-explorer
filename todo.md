@@ -23,6 +23,8 @@ Source baseline:
 - [x] ESP32-C6
   - [x] QFN40, 5 x 5 mm
   - [x] QFN32, 5 x 5 mm
+  - [x] ESP32-C6-MINI-1 module profile
+  - [x] ESP32-C6-DevKitM-1 board profile
 
 ## To Do
 
@@ -66,6 +68,13 @@ Source baseline:
   - [ ] ESP32-C6-WROOM-1
   - [ ] ESP32-C6-WROOM-1U
   - Note: raw ESP32-C6 QFN40/QFN32 packages are implemented. Module profiles should come from official module datasheets/footprints because MINI and WROOM modules expose different pad counts, dimensions, antenna variants, flash sizes, and dev-kit pairings than the bare chip packages.
+- [ ] ESP32-C6 board profiles
+  - [x] ESP32-C6-DevKitM-1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitm-1/user_guide.html
+    - Note: active Espressif board based on ESP32-C6-MINI-1(U). Implemented from the official J1/J3 Header Block tables.
+  - [ ] ESP32-C6-DevKitC-1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitc-1/user_guide.html
+    - Note: WROOM-based C6 board. Add after the ESP32-C6-WROOM module profiles are implemented.
 - [ ] ESP32-C61
   - [ ] QFN, 5 x 5 mm
   - [ ] Official module profiles

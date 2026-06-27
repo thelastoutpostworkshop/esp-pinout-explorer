@@ -161,6 +161,24 @@ describe('soc store', () => {
     expect(store.filteredPins.map((pin) => pin.name)).toEqual(['IO12', 'IO13']);
   });
 
+  it('can select the ESP32-C6 DevKitM-1 board profile', () => {
+    const store = useSocStore();
+
+    store.selectSoc('esp32c6');
+    store.selectPackage('esp32c6-devkitm-1');
+
+    expect(store.selectedPackage.name).toBe('DevKitM-1 (MINI)');
+    expect(store.selectedPackage.kind).toBe('board');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP32-C6-MINI-1', 'ESP32-C6-MINI-1U']);
+    expect(store.selectedPins).toHaveLength(30);
+
+    store.setSearchQuery('gpio0 dtrn');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J1-7']);
+
+    store.setSearchQuery('rgb led');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J1-9']);
+  });
+
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {
     const store = useSocStore();
 
