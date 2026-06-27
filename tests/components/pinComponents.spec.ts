@@ -129,6 +129,9 @@ describe('PinSearch', () => {
       },
     });
 
+    expect(wrapper.text()).toContain('Quick filters');
+    expect(wrapper.text()).toContain('Use search for exact functions');
+
     await wrapper.find('input').setValue('GPIO38');
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['GPIO38']);
 
@@ -212,6 +215,10 @@ describe('PinInfoDrawer', () => {
 });
 
 const searchStubs = {
+  InfoTooltip: {
+    props: ['label', 'text'],
+    template: '<span :aria-label="label">{{ text }}</span>',
+  },
   VBtn: {
     emits: ['click'],
     template: '<button :aria-label="$attrs[\'aria-label\']" type="button" @click="$emit(\'click\')"><slot /></button>',

@@ -30,8 +30,14 @@
     </v-text-field>
 
     <div class="pin-search__filters">
-      <div class="pin-search__filters-title">Filter pins</div>
-      <div class="pin-search__chips" aria-label="Pin filters">
+      <div class="pin-search__filters-title">
+        <span>Quick filters</span>
+        <InfoTooltip
+          label="What do quick filters include?"
+          text="Quick filters are curated shortcuts for common maker categories. Use search for exact functions such as MTDI, CLK_OUT1, FSPIHD, GPIO numbers, or board labels."
+        />
+      </div>
+      <div class="pin-search__chips" aria-label="Quick pin filters">
         <v-chip
           v-for="filter in visibleQuickFilters"
           :key="filter.label"
@@ -52,6 +58,7 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
 import { Search, X } from '@lucide/vue';
+import InfoTooltip from '@/components/InfoTooltip.vue';
 import { useSocStore } from '@/stores/socStore';
 
 const props = defineProps<{
@@ -141,6 +148,10 @@ function toggleFilter(filter: QuickFilter) {
 }
 
 .pin-search__filters-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  justify-self: start;
   color: #64748b;
   font-size: 0.76rem;
   font-weight: 850;
