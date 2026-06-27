@@ -35,12 +35,17 @@ const mini1Source: SocSource = {
   url: 'https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf',
   sections: [
     'Table 1-1 ESP32-C6-MINI-1 (ANT) Series Comparison',
+    'Table 1-2 ESP32-C6-MINI-1U (CONN) Series Comparison',
     'Figure 3-1 Pin Layout (Top View)',
     'Table 3-1 Pin Definitions',
     'Chapter 4 Boot Configurations',
     'Figure 8-1 ESP32-C6-MINI-1 Schematics',
+    'Figure 8-2 ESP32-C6-MINI-1U Schematics',
     'Figure 10-1 ESP32-C6-MINI-1 Physical Dimensions',
+    'Figure 10-2 ESP32-C6-MINI-1U Physical Dimensions',
+    'Figure 10-3 Dimensions of External Antenna Connector',
     'Figure 11-1 ESP32-C6-MINI-1 Recommended PCB Land Pattern',
+    'Figure 11-2 ESP32-C6-MINI-1U Recommended PCB Land Pattern',
   ],
 };
 
@@ -925,6 +930,23 @@ const esp32c6Mini1Pins: SocPin[] = [
   mini1GroundPin(53, { side: 'left', order: 1 }),
 ];
 
+const esp32c6Mini1UPins: SocPin[] = esp32c6Mini1Pins.map((pin) => ({
+  ...pin,
+  id: pin.id.replace('mini-1', 'mini-1u'),
+  notes: uniqueValues([
+    ...(pin.notes ?? []),
+    'ESP32-C6-MINI-1U uses the same 53-pad module pinout as ESP32-C6-MINI-1.',
+  ]),
+  keywords: uniqueValues([
+    ...(pin.keywords ?? []),
+    'mini-1u',
+    'esp32-c6-mini-1u',
+    'external antenna',
+    'antenna connector',
+    'conn',
+  ]),
+}));
+
 const esp32c6Mini1Profile: SocPackageVariant = {
   id: 'esp32c6-mini-1',
   name: 'MINI-1',
@@ -937,6 +959,20 @@ const esp32c6Mini1Profile: SocPackageVariant = {
     'ESP32-C6-MINI-1 uses the on-board PCB antenna variant; the related MINI-1U uses an external antenna connector.',
   ],
   pins: esp32c6Mini1Pins,
+};
+
+const esp32c6Mini1UProfile: SocPackageVariant = {
+  id: 'esp32c6-mini-1u',
+  name: 'MINI-1U',
+  packageName: 'ESP32-C6-MINI-1U module, 53 pads, top view',
+  kind: 'package',
+  source: mini1Source,
+  moduleNames: ['ESP32-C6-MINI-1U'],
+  identificationNotes: [
+    'This profile is the 53-pad ESP32-C6-MINI-1U module layout, not the bare ESP32-C6 QFN package.',
+    'ESP32-C6-MINI-1U uses an external antenna connector and has no keepout zone; the pad pinout matches ESP32-C6-MINI-1.',
+  ],
+  pins: esp32c6Mini1UPins,
 };
 
 const esp32c6DevKitM1ModuleVariants = [
@@ -1239,5 +1275,5 @@ const esp32c6DevKitM1Profile: SocPackageVariant = {
   ],
 };
 
-esp32c6.packageVariants = [...(esp32c6.packageVariants ?? []), esp32c6Mini1Profile];
+esp32c6.packageVariants = [...(esp32c6.packageVariants ?? []), esp32c6Mini1Profile, esp32c6Mini1UProfile];
 esp32c6.boardProfiles = [esp32c6DevKitM1Profile];

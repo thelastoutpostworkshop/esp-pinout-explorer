@@ -52,6 +52,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32c6:qfn40': 41,
   'esp32c6:qfn32': 33,
   'esp32c6:esp32c6-mini-1': 53,
+  'esp32c6:esp32c6-mini-1u': 53,
   'esp32c6:esp32c6-devkitm-1': 30,
 };
 

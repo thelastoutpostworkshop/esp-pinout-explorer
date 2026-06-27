@@ -161,6 +161,23 @@ describe('soc store', () => {
     expect(store.filteredPins.map((pin) => pin.name)).toEqual(['IO12', 'IO13']);
   });
 
+  it('can select the ESP32-C6-MINI-1U module profile', () => {
+    const store = useSocStore();
+
+    store.selectSoc('esp32c6');
+    store.selectPackage('esp32c6-mini-1u');
+
+    expect(store.selectedPackage.name).toBe('MINI-1U');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP32-C6-MINI-1U']);
+    expect(store.selectedPins).toHaveLength(53);
+
+    store.setSearchQuery('mini-1u external antenna');
+    expect(store.filteredPins).toHaveLength(53);
+
+    store.setSearchQuery('gpio13 usb');
+    expect(store.filteredPins.map((pin) => pin.name)).toEqual(['IO12', 'IO13']);
+  });
+
   it('can select the ESP32-C6 DevKitM-1 board profile', () => {
     const store = useSocStore();
 
