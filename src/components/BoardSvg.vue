@@ -6,6 +6,11 @@
           <stop offset="0" stop-color="#0f766e" />
           <stop offset="1" stop-color="#064e3b" />
         </linearGradient>
+        <linearGradient id="connectorBoardSheen" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+          <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.16" />
+          <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+        </linearGradient>
         <linearGradient id="connectorModuleBody" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0" stop-color="#273540" />
           <stop offset="1" stop-color="#101820" />
@@ -18,10 +23,16 @@
           <circle cx="8" cy="8" r="1.4" fill="#99f6e4" opacity="0.22" />
           <circle cx="30" cy="24" r="1.2" fill="#99f6e4" opacity="0.16" />
         </pattern>
+        <clipPath id="connectorBoardBodyClip">
+          <rect x="118" y="72" width="724" height="576" rx="22" />
+        </clipPath>
       </defs>
 
       <rect class="board-body" x="118" y="72" width="724" height="576" rx="22" fill="url(#connectorBoardBody)" filter="url(#connectorBoardShadow)" />
-      <rect class="board-texture" x="118" y="72" width="724" height="576" rx="22" fill="url(#connectorPcbTexture)" />
+      <g clip-path="url(#connectorBoardBodyClip)">
+        <rect class="board-texture" x="118" y="72" width="724" height="576" rx="22" fill="url(#connectorPcbTexture)" />
+        <rect class="board-sheen" x="-80" y="48" width="180" height="640" fill="url(#connectorBoardSheen)" />
+      </g>
       <rect class="board-inner" x="150" y="108" width="660" height="504" rx="14" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
 
       <g class="connector-board__usb">
@@ -117,6 +128,11 @@
           <stop offset="0" stop-color="#0f766e" />
           <stop offset="1" stop-color="#064e3b" />
         </linearGradient>
+        <linearGradient id="boardSheen" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
+          <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.16" />
+          <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
+        </linearGradient>
         <linearGradient id="moduleBody" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0" stop-color="#273540" />
           <stop offset="1" stop-color="#101820" />
@@ -141,6 +157,7 @@
         <path class="board-trace" d="M664 142H536Q512 142 512 168V194" />
         <path class="board-trace" d="M300 614H430Q454 614 454 590V496" />
         <path class="board-trace" d="M640 614H510Q486 614 486 590V496" />
+        <rect class="board-sheen" x="-40" y="40" width="160" height="690" fill="url(#boardSheen)" />
       </g>
       <rect class="board-inner" x="190" y="86" width="560" height="588" rx="14" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
 
@@ -509,6 +526,7 @@ onBeforeUnmount(() => {
 .board-body,
 .board-texture,
 .board-trace,
+.board-sheen,
 .board-inner,
 .module,
 .board-usb,
@@ -523,6 +541,18 @@ onBeforeUnmount(() => {
 
 .board-texture {
   opacity: 0.72;
+}
+
+.board-sheen {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.board-shell--animated .board-sheen {
+  animation:
+    board-sheen-sweep 1300ms 560ms ease-out both,
+    board-sheen-idle 6200ms 2400ms ease-in-out infinite;
 }
 
 .board-trace {
@@ -803,6 +833,40 @@ onBeforeUnmount(() => {
   }
 }
 
+@keyframes board-sheen-sweep {
+  0% {
+    opacity: 0;
+    transform: translateX(-220px) skewX(-16deg);
+  }
+
+  30% {
+    opacity: 0.85;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(920px) skewX(-16deg);
+  }
+}
+
+@keyframes board-sheen-idle {
+  0%,
+  72%,
+  100% {
+    opacity: 0;
+    transform: translateX(-220px) skewX(-16deg);
+  }
+
+  82% {
+    opacity: 0.52;
+  }
+
+  94% {
+    opacity: 0;
+    transform: translateX(920px) skewX(-16deg);
+  }
+}
+
 @keyframes component-enter {
   0% {
     opacity: 0;
@@ -851,6 +915,7 @@ onBeforeUnmount(() => {
   .board-body,
   .board-texture,
   .board-trace,
+  .board-sheen,
   .board-inner,
   .module,
   .board-usb,

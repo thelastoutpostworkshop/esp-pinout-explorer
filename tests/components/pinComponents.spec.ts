@@ -81,6 +81,7 @@ describe('BoardSvg', () => {
 
     expect(nodes).toHaveLength(pins.length);
     expect(wrapper.attributes('aria-label')).toContain('1 of 44 header pins shown');
+    expect(wrapper.find('.board-sheen').exists()).toBe(true);
     expect(nodes[0].classes()).toEqual(expect.arrayContaining(['board-pin--selected', 'board-pin--matched']));
     expect(nodes[1].classes()).toContain('board-pin--dimmed');
     const warningNode = nodes.find((node, index) => hasMakerWarning(pins[index]));
@@ -110,6 +111,7 @@ describe('BoardSvg', () => {
 
     expect(wrapper.attributes('aria-label')).toContain('32 of 32 connector pins shown');
     expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+    expect(wrapper.find('.board-sheen').exists()).toBe(true);
     expect(wrapper.findAll('.connector-board__pin')).toHaveLength(32);
     expect(wrapper.text()).toContain('USB switch');
     expect(wrapper.text()).toContain('Extended pins');
