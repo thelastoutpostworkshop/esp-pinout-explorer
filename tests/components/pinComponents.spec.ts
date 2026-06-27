@@ -131,6 +131,7 @@ describe('PinSearch', () => {
 
     expect(wrapper.text()).toContain('Quick filters');
     expect(wrapper.text()).toContain('Use search for exact functions');
+    expect(wrapper.text()).toContain('RTC');
 
     await wrapper.find('input').setValue('GPIO38');
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['GPIO38']);

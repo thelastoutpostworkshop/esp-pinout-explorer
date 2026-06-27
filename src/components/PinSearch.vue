@@ -87,6 +87,7 @@ const quickFilters: QuickFilter[] = [
   { label: 'Control', query: 'type:control' },
   { label: 'ADC', query: 'ADC' },
   { label: 'Touch', query: 'Touch' },
+  { label: 'RTC', query: 'RTC' },
   { label: 'SPI', query: 'SPI' },
   { label: 'I2C', query: 'I2C' },
   { label: 'UART', query: 'UART' },
