@@ -1,50 +1,7 @@
 <template>
   <aside class="explorer-sidebar" aria-label="Explorer controls">
-    <section class="explorer-sidebar__section">
-      <v-select
-        :model-value="store.selectedSocId"
-        class="explorer-sidebar__select"
-        density="compact"
-        hide-details
-        item-title="name"
-        item-value="id"
-        label="ESP chip"
-        :items="store.socs"
-        variant="outlined"
-        @update:model-value="selectSoc"
-      />
-
-      <v-select
-        v-if="store.packageOptions.length > 1"
-        :model-value="selectedPackage.id"
-        class="explorer-sidebar__select"
-        density="compact"
-        hide-details
-        item-title="name"
-        item-value="id"
-        label="Board / module / package"
-        :items="profileSelectItems"
-        variant="outlined"
-        @update:model-value="selectPackage"
-      >
-        <template #item="{ props, item }">
-          <v-divider v-if="item.startsGroup && !item.isFirstGroup" class="profile-select__divider" />
-          <v-list-subheader v-if="item.startsGroup" class="profile-select__header">
-            {{ item.groupLabel }}
-          </v-list-subheader>
-          <v-list-item v-bind="props" :title="item.name" />
-        </template>
-      </v-select>
-
-      <button
-        class="explorer-sidebar__profile-info-button"
-        type="button"
-        aria-label="Open profile information"
-        @click="openProfileInfo"
-      >
-        <PanelRightOpen :size="16" aria-hidden="true" />
-        <span>Profile info</span>
-      </button>
+    <section v-if="showProfileControls" class="explorer-sidebar__section">
+      <ProfileNavigator @changed="emit('changed')" />
     </section>
 
     <section class="explorer-sidebar__section">
@@ -64,28 +21,24 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import { PanelRightOpen } from '@lucide/vue';
 import PinSearch from '@/components/PinSearch.vue';
+import ProfileNavigator from '@/components/ProfileNavigator.vue';
 import { useSocStore } from '@/stores/socStore';
-import type { PinProfileKind, SocPackageVariant } from '@/types/soc';
+
+withDefaults(
+  defineProps<{
+    showProfileControls?: boolean;
+  }>(),
+  {
+    showProfileControls: true,
+  },
+);
 
 const emit = defineEmits<{
   changed: [];
 }>();
 
 const store = useSocStore();
-const selectedPackage = computed(() => store.selectedPackage);
-const profileSelectItems = computed(() =>
-  [...store.packageOptions]
-    .sort((first, second) => profileKindRank(profileKind(first)) - profileKindRank(profileKind(second)))
-    .map((profile, index, profiles) => ({
-      ...profile,
-      groupLabel: profileKindPluralLabel(profileKind(profile)),
-      isFirstGroup: index === 0,
-      startsGroup: index === 0 || profileKind(profiles[index - 1]) !== profileKind(profile),
-    })),
-);
 
 const legendItems = [
   { label: 'GPIO', className: 'legend-item__swatch--io' },
@@ -95,41 +48,6 @@ const legendItems = [
   { label: 'Control', className: 'legend-item__swatch--control' },
   { label: 'Maker warning', className: 'legend-item__swatch--warning' },
 ] as const;
-
-function selectSoc(socId: string) {
-  store.selectSoc(socId);
-  emit('changed');
-}
-
-function selectPackage(packageId: string) {
-  store.selectPackage(packageId);
-  emit('changed');
-}
-
-function profileKind(profile: Pick<SocPackageVariant, 'kind'>): PinProfileKind {
-  return profile.kind ?? 'package';
-}
-
-function profileKindRank(kind: PinProfileKind) {
-  return {
-    board: 0,
-    module: 1,
-    package: 2,
-  }[kind];
-}
-
-function profileKindPluralLabel(kind: PinProfileKind) {
-  return {
-    board: 'Dev boards',
-    module: 'Modules',
-    package: 'Chip packages',
-  }[kind];
-}
-
-function openProfileInfo() {
-  store.openProfileInfo();
-  emit('changed');
-}
 </script>
 
 <style scoped>
@@ -163,47 +81,6 @@ function openProfileInfo() {
   flex-wrap: wrap;
   gap: 8px;
   min-width: 0;
-}
-
-.explorer-sidebar__select {
-  min-width: 0;
-}
-
-:deep(.profile-select__divider) {
-  margin: 6px 0;
-}
-
-:deep(.profile-select__header) {
-  min-height: 28px;
-  color: #64748b;
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.explorer-sidebar__profile-info-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  justify-self: start;
-  min-height: 30px;
-  border: 0;
-  padding: 0;
-  color: #006d77;
-  font-size: 0.84rem;
-  font-weight: 800;
-  line-height: 1.2;
-  background: transparent;
-  cursor: pointer;
-  font-family: inherit;
-  text-decoration: none;
-}
-
-.explorer-sidebar__profile-info-button:hover,
-.explorer-sidebar__profile-info-button:focus-visible {
-  color: #004f58;
-  text-decoration: underline;
 }
 
 .legend-item {

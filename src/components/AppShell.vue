@@ -1,5 +1,5 @@
 <template>
-  <v-app-bar class="app-shell__bar" density="compact" elevation="0" height="56">
+  <v-app-bar class="app-shell__bar" density="compact" elevation="0" height="80">
     <v-btn
       aria-label="Open explorer controls"
       class="app-shell__menu"
@@ -10,10 +10,16 @@
     >
       <Menu :size="22" aria-hidden="true" />
     </v-btn>
-    <v-app-bar-title class="app-shell__brand">
-      <span class="app-shell__title">ESP Pinout Explorer</span>
-      <span class="app-shell__subtitle">Your atlas for ESP chips, modules, and boards.</span>
-    </v-app-bar-title>
+    <div class="app-shell__identity" aria-label="ESP Pinout Explorer">
+      <div class="app-shell__logo" aria-hidden="true">
+        <CircuitBoard :size="22" />
+      </div>
+      <v-app-bar-title class="app-shell__brand">
+        <span class="app-shell__title">ESP Pinout Explorer</span>
+        <span class="app-shell__subtitle">Your atlas for ESP chips, modules, and boards.</span>
+      </v-app-bar-title>
+    </div>
+    <ProfileNavigator class="app-shell__navigator" />
   </v-app-bar>
 
   <v-navigation-drawer
@@ -29,7 +35,7 @@
   <v-main class="app-shell__main">
     <div class="app-shell__layout">
       <div class="app-shell__sidebar">
-        <ExplorerSidebar />
+        <ExplorerSidebar :show-profile-controls="false" />
       </div>
       <SocPinoutView />
     </div>
@@ -38,8 +44,9 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { Menu } from '@lucide/vue';
+import { CircuitBoard, Menu } from '@lucide/vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
+import ProfileNavigator from '@/components/ProfileNavigator.vue';
 import SocPinoutView from '@/components/SocPinoutView.vue';
 
 const mobileDrawerOpen = ref(false);
@@ -49,6 +56,33 @@ const mobileDrawerOpen = ref(false);
 .app-shell__bar {
   border-bottom: 1px solid #dbe3ea;
   background: #f8fafc;
+}
+
+.app-shell__bar :deep(.v-toolbar__content) {
+  overflow: visible;
+}
+
+.app-shell__identity {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex: 0 0 auto;
+  min-width: 250px;
+  padding-left: 12px;
+}
+
+.app-shell__logo {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #99f6e4;
+  border-radius: 8px;
+  color: #ffffff;
+  background:
+    linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(14, 116, 144, 0.95)),
+    #0f766e;
+  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.22);
 }
 
 .app-shell__brand {
@@ -80,6 +114,13 @@ const mobileDrawerOpen = ref(false);
   letter-spacing: 0;
 }
 
+.app-shell__navigator {
+  flex: 1 1 auto;
+  max-width: 620px;
+  min-width: 360px;
+  margin-left: clamp(12px, 3vw, 34px);
+}
+
 .app-shell__menu {
   display: none;
 }
@@ -93,7 +134,7 @@ const mobileDrawerOpen = ref(false);
 .app-shell__layout {
   display: grid;
   grid-template-columns: 320px minmax(0, 1fr);
-  height: calc(100vh - var(--v-layout-top, 56px));
+  height: calc(100vh - var(--v-layout-top, 80px));
   min-height: 0;
 }
 
@@ -106,6 +147,28 @@ const mobileDrawerOpen = ref(false);
 @media (max-width: 980px) {
   .app-shell__menu {
     display: inline-flex;
+  }
+
+  .app-shell__identity {
+    min-width: 0;
+    padding-left: 0;
+  }
+
+  .app-shell__logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .app-shell__title {
+    font-size: 0.92rem;
+  }
+
+  .app-shell__subtitle {
+    font-size: 0.66rem;
+  }
+
+  .app-shell__navigator {
+    display: none;
   }
 
   .app-shell__layout {
