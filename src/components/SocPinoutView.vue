@@ -21,6 +21,7 @@
         :filtered-pin-count="store.filteredPins.length"
         :has-filter="Boolean(store.searchQuery.trim())"
         :board-layout="selectedPackage.boardLayout"
+        :board-artwork="selectedPackage.boardArtwork"
         :package-name="selectedPackage.packageName"
         :pins="store.selectedPins"
         :selected-pin-id="store.selectedPinId"

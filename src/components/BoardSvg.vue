@@ -35,7 +35,11 @@
       </g>
       <rect class="board-inner" x="150" y="108" width="660" height="504" rx="14" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
 
-      <g class="connector-board__usb">
+      <g v-if="isUsbBridgeArtwork" class="connector-board__usb">
+        <rect x="421" y="30" width="118" height="40" rx="8" />
+        <text x="480" y="55" text-anchor="middle">USB</text>
+      </g>
+      <g v-else class="connector-board__usb">
         <rect x="320" y="30" width="118" height="40" rx="8" />
         <rect x="522" y="30" width="118" height="40" rx="8" />
         <text x="379" y="55" text-anchor="middle">USB HOST</text>
@@ -61,22 +65,38 @@
         <text x="480" y="398" class="board-details" text-anchor="middle">{{ packageName }}</text>
       </g>
 
-      <g class="connector-board__component connector-board__component--lcd">
-        <rect x="624" y="190" width="64" height="44" rx="7" />
-        <text x="656" y="218" text-anchor="middle">LCD</text>
-      </g>
-      <g class="connector-board__component connector-board__component--sd">
-        <rect x="624" y="438" width="64" height="44" rx="7" />
-        <text x="656" y="466" text-anchor="middle">SD</text>
-      </g>
-      <g class="connector-board__component connector-board__component--buttons">
-        <rect x="272" y="278" width="66" height="44" rx="7" />
-        <text x="305" y="306" text-anchor="middle">BUTTONS</text>
-      </g>
-      <g class="connector-board__component connector-board__component--power">
-        <rect x="342" y="460" width="276" height="34" rx="7" />
-        <text x="480" y="482" text-anchor="middle">POWER / EXTENDED</text>
-      </g>
+      <template v-if="isUsbBridgeArtwork">
+        <g class="connector-board__component connector-board__component--connector">
+          <rect x="616" y="206" width="76" height="44" rx="7" />
+          <text x="654" y="234" text-anchor="middle">TARGET</text>
+        </g>
+        <g class="connector-board__component connector-board__component--buttons">
+          <rect x="270" y="278" width="76" height="44" rx="7" />
+          <text x="308" y="306" text-anchor="middle">BOOT/RST</text>
+        </g>
+        <g class="connector-board__component connector-board__component--led">
+          <rect x="432" y="462" width="96" height="34" rx="7" />
+          <text x="480" y="484" text-anchor="middle">WS2812</text>
+        </g>
+      </template>
+      <template v-else>
+        <g class="connector-board__component connector-board__component--lcd">
+          <rect x="624" y="190" width="64" height="44" rx="7" />
+          <text x="656" y="218" text-anchor="middle">LCD</text>
+        </g>
+        <g class="connector-board__component connector-board__component--sd">
+          <rect x="624" y="438" width="64" height="44" rx="7" />
+          <text x="656" y="466" text-anchor="middle">SD</text>
+        </g>
+        <g class="connector-board__component connector-board__component--buttons">
+          <rect x="272" y="278" width="66" height="44" rx="7" />
+          <text x="305" y="306" text-anchor="middle">BUTTONS</text>
+        </g>
+        <g class="connector-board__component connector-board__component--power">
+          <rect x="342" y="460" width="276" height="34" rx="7" />
+          <text x="480" y="482" text-anchor="middle">POWER / EXTENDED</text>
+        </g>
+      </template>
 
       <g v-for="group in connectorGroupLabels" :key="group.key" class="connector-board__group-label">
         <text :x="group.x" :y="group.y" :text-anchor="group.anchor">{{ group.label }}</text>
@@ -245,7 +265,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import { hasMakerWarning } from '@/data/pinWarnings';
-import type { BoardLayout, PinSide, SocDefinition, SocPin } from '@/types/soc';
+import type { BoardArtwork, BoardLayout, PinSide, SocDefinition, SocPin } from '@/types/soc';
 
 const props = defineProps<{
   soc: SocDefinition;
@@ -257,6 +277,7 @@ const props = defineProps<{
   totalPinCount: number;
   hasFilter: boolean;
   boardLayout?: BoardLayout;
+  boardArtwork?: BoardArtwork;
 }>();
 
 const emit = defineEmits<{
@@ -268,6 +289,7 @@ const playIntroAnimation = ref(false);
 let introAnimationFrame = 0;
 
 const isConnectorGroupLayout = computed(() => props.boardLayout === 'connector-groups');
+const isUsbBridgeArtwork = computed(() => props.boardArtwork === 'usb-bridge');
 const boardPinLabel = computed(() => (isConnectorGroupLayout.value ? 'connector pins' : 'header pins'));
 const ariaLabel = computed(
   () => `${props.soc.name} ${props.packageName} board profile, ${props.filteredPinCount} of ${props.totalPinCount} ${boardPinLabel.value} shown`,
@@ -573,7 +595,9 @@ onBeforeUnmount(() => {
 }
 
 .board-shell--animated .board-usb,
-.board-shell--animated .board-component {
+.board-shell--animated .board-component,
+.board-shell--animated .connector-board__usb,
+.board-shell--animated .connector-board__component {
   animation: component-enter 560ms 520ms ease-out both;
 }
 
@@ -640,6 +664,11 @@ onBeforeUnmount(() => {
 
 .connector-board__component--power rect {
   fill: rgba(180, 83, 9, 0.42);
+}
+
+.connector-board__component--led rect {
+  fill: rgba(180, 83, 9, 0.42);
+  stroke: rgba(254, 215, 170, 0.75);
 }
 
 .connector-board__group-label text {

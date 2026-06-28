@@ -145,6 +145,27 @@ describe('soc store', () => {
     expect(store.filteredPins).toHaveLength(32);
   });
 
+  it('can select the ESP32-S3 USB-Bridge connector-group profile', () => {
+    const store = useSocStore();
+
+    store.selectPackage('esp32s3-usb-bridge');
+
+    expect(store.selectedPackage.name).toBe('USB-Bridge (MINI)');
+    expect(store.selectedPackage.boardLayout).toBe('connector-groups');
+    expect(store.selectedPackage.boardArtwork).toBe('usb-bridge');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP32-S3-MINI-1-N4R2']);
+    expect(store.selectedPins).toHaveLength(14);
+
+    store.setSearchQuery('gpio2 tdo');
+    expect(store.filteredPins.map((pin) => pin.boardLabel)).toEqual(['TDO']);
+
+    store.setSearchQuery('gpio40 bridge rx');
+    expect(store.filteredPins.map((pin) => pin.boardLabel)).toEqual(['RX']);
+
+    store.setSearchQuery('mini-1-n4r2');
+    expect(store.filteredPins).toHaveLength(14);
+  });
+
   it('can select the ESP32-C6-MINI-1 module profile', () => {
     const store = useSocStore();
 

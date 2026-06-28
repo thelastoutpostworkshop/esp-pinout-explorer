@@ -50,6 +50,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
   'esp32s3:esp32s3-devkitm-1': 44,
   'esp32s3:esp32s3-usb-otg': 32,
+  'esp32s3:esp32s3-usb-bridge': 14,
   'esp32c6:qfn40': 41,
   'esp32c6:qfn32': 33,
   'esp32c6:esp32c6-mini-1': 53,
@@ -236,13 +237,14 @@ describe('SoC data invariants', () => {
 
       for (const pin of profile.pins) {
         expectValidPin(pin);
-        expect(pin.displayNumber).toBe(`${pin.boardHeader}-${pin.number}`);
+        expect(pin.displayNumber?.trim()).not.toBe('');
         expect(pin.boardLabel?.trim()).not.toBe('');
 
         if (isConnectorGroupLayout) {
-          expect(['Function pin', 'Extended pin']).toContain(pin.boardHeader);
+          expect(pin.boardHeader?.trim()).not.toBe('');
           expect(pin.boardGroup?.trim()).not.toBe('');
         } else {
+          expect(pin.displayNumber).toBe(`${pin.boardHeader}-${pin.number}`);
           expect(pin.boardHeader).toMatch(/^J\d+$/);
           expect(pin.position.side === 'left' || pin.position.side === 'right').toBe(true);
         }

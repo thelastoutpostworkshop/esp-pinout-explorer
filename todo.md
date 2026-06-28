@@ -42,9 +42,9 @@ Source baseline:
   - [x] Board profile: ESP32-S3-DevKitM-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html
     - Note: EOL board, but official user guide has J1/J3 Header Block tables and should fit the existing `BoardSvg.vue` model. Useful as a low-risk second header-style board profile.
-  - [ ] Board profile: ESP32-S3-USB-Bridge
+  - [x] Board profile: ESP32-S3-USB-Bridge
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-bridge/user_guide.html
-    - Note: EOL board. Official GPIO Allocation table covers the 12-pin expansion connector and on-board bridge functions; likely needs a compact connector layout rather than the current two-side header drawing.
+    - Note: EOL board. Implemented as a compact connector-group GPIO allocation profile from the official GPIO Allocation table, with the ESP32-S3-MINI-1-N4R2 module identity surfaced.
   - [ ] Board profile: ESP-VoCat v1.2
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-vocat/user_guide_v1.2.html
     - Note: active Espressif board. User guide documents hardware blocks, magnetic connector, LCD, SD card, microphone, and revision pin changes; use official schematic for full pin mapping before implementation.

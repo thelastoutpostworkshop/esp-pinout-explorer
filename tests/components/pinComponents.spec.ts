@@ -99,6 +99,7 @@ describe('BoardSvg', () => {
     const pins = usbOtgProfile?.pins ?? [];
     const wrapper = mount(BoardSvg, {
       props: {
+        boardArtwork: usbOtgProfile?.boardArtwork,
         boardLayout: usbOtgProfile?.boardLayout,
         filteredPinCount: pins.length,
         filteredPinIds: new Set(pins.map((pin) => pin.id)),
@@ -117,6 +118,46 @@ describe('BoardSvg', () => {
     expect(wrapper.findAll('.connector-board__pin')).toHaveLength(32);
     expect(wrapper.text()).toContain('USB switch');
     expect(wrapper.text()).toContain('Extended pins');
+    expectNoOverlappingRects(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
+    );
+    expectNoRectIntersections(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => pinNode.find('.board-pin__pad')),
+      wrapper.findAll('.connector-board__component rect'),
+    );
+
+    await wrapper.findAll('.connector-board__pin')[0].trigger('click');
+    expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
+  });
+
+  it('renders the ESP32-S3 USB-Bridge connector profile with bridge artwork', async () => {
+    const usbBridgeProfile = esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-usb-bridge');
+    expect(usbBridgeProfile).toBeDefined();
+    const pins = usbBridgeProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        boardArtwork: usbBridgeProfile?.boardArtwork,
+        boardLayout: usbBridgeProfile?.boardLayout,
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: usbBridgeProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        soc: esp32s3,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(wrapper.attributes('aria-label')).toContain('14 of 14 connector pins shown');
+    expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+    expect(wrapper.findAll('.connector-board__pin')).toHaveLength(14);
+    expect(wrapper.text()).toContain('Target JTAG');
+    expect(wrapper.text()).toContain('Native USB');
+    expect(wrapper.text()).toContain('TARGET');
+    expect(wrapper.text()).toContain('BOOT/RST');
+    expect(wrapper.text()).not.toContain('LCD');
+    expect(wrapper.text()).not.toContain('SD');
     expectNoOverlappingRects(
       wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
     );
