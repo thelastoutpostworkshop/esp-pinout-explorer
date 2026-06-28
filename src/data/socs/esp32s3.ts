@@ -656,6 +656,7 @@ const devkitC1V11Source: SocSource = {
     'Description of Components',
     'Ordering Information',
     'Block Diagram',
+    'Power Supply Options',
     'Header Block J1',
     'Header Block J3',
     'Pin Layout',
@@ -702,6 +703,7 @@ const devkitM1Source: SocSource = {
   sections: [
     'Description of Components',
     'Block Diagram',
+    'Power Supply Options',
     'Header Block J1',
     'Header Block J3',
     'Pin Layout',
@@ -995,6 +997,11 @@ const esp32s3DevKitC1V11Profile: SocPackageVariant = {
   packageName: 'ESP32-S3-DevKitC-1 v1.1 board headers',
   kind: 'board',
   source: devkitC1V11Source,
+  boardSpecs: {
+    power: ['USB ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive.'],
+    programming: ['USB-to-UART bridge for flashing and serial logs; native USB port can be used for USB/JTAG workflows.'],
+    onBoardHardware: ['Boot and Reset buttons, addressable RGB LED on GPIO38, USB-to-UART bridge, native USB port.'],
+  },
   moduleNames: ['ESP32-S3-WROOM-1', 'ESP32-S3-WROOM-1U', 'ESP32-S3-WROOM-2'],
   moduleVariants: devkitCModuleVariants,
   identificationNotes: [
@@ -1397,6 +1404,11 @@ const esp32s3DevKitM1Profile: SocPackageVariant = {
   packageName: 'ESP32-S3-DevKitM-1 board headers',
   kind: 'board',
   source: devkitM1Source,
+  boardSpecs: {
+    power: ['USB ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive.'],
+    programming: ['USB-to-UART bridge for flashing and serial logs; native USB port can be used for USB/JTAG workflows.'],
+    onBoardHardware: ['Boot and Reset buttons, addressable RGB LED on GPIO48, USB-to-UART bridge, native USB port.'],
+  },
   moduleNames: ['ESP32-S3-MINI-1', 'ESP32-S3-MINI-1U'],
   moduleVariants: devkitMModuleVariants,
   identificationNotes: [
@@ -1787,6 +1799,16 @@ const esp32s3UsbOtgProfile: SocPackageVariant = {
   kind: 'board',
   boardLayout: 'connector-groups',
   source: usbOtgSource,
+  boardSpecs: {
+    power: [
+      'Micro-USB powers the motherboard and display.',
+      'USB_DEV or battery mode can supply USB_HOST; battery mode uses BOOST_EN.',
+    ],
+    programming: ['Micro-USB USB-to-UART port is used for flashing, power, and serial communication.'],
+    onBoardHardware: [
+      'USB_HOST, USB_DEV, USB switch, LCD connector, MicroSD slot, battery charger, buttons, and green/yellow LEDs.',
+    ],
+  },
   moduleNames: ['ESP32-S3-MINI-1-N8'],
   moduleVariants: usbOtgModuleVariants,
   identificationNotes: [

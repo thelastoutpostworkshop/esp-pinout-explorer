@@ -83,6 +83,8 @@ const devkitM1Source: SocSource = {
   sections: [
     'Description of Components',
     'Block Diagram',
+    'Power Supply Options',
+    'Current Measurement',
     'Header Block J1',
     'Header Block J3',
     'Pin Layout',
@@ -129,6 +131,8 @@ const devkitC1Source: SocSource = {
   sections: [
     'Description of Components',
     'Block Diagram',
+    'Power Supply Options',
+    'Current Measurement',
     'Header Block J1',
     'Header Block J3',
     'Pin Layout',
@@ -1158,6 +1162,14 @@ const esp32c6DevKitM1Profile: SocPackageVariant = {
   packageName: 'ESP32-C6-DevKitM-1 board headers',
   kind: 'board',
   source: devkitM1Source,
+  boardSpecs: {
+    power: [
+      'USB-C ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive.',
+      'J5 jumper supports module current measurement.',
+    ],
+    programming: ['USB-to-UART bridge for flashing and serial logs; native ESP32-C6 USB port supports USB/JTAG workflows.'],
+    onBoardHardware: ['Boot and Reset buttons, addressable RGB LED on GPIO8, USB-to-UART bridge, native USB port, J5 jumper.'],
+  },
   moduleNames: ['ESP32-C6-MINI-1', 'ESP32-C6-MINI-1U'],
   moduleVariants: esp32c6DevKitM1ModuleVariants,
   identificationNotes: [
@@ -1437,6 +1449,14 @@ const esp32c6DevKitC1Profile: SocPackageVariant = {
   packageName: 'ESP32-C6-DevKitC-1 v1.2 board headers',
   kind: 'board',
   source: devkitC1Source,
+  boardSpecs: {
+    power: [
+      'USB-C ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive.',
+      'J5 jumper supports module current measurement.',
+    ],
+    programming: ['USB-to-UART bridge for flashing and serial logs; native ESP32-C6 USB port supports USB/JTAG workflows.'],
+    onBoardHardware: ['Boot and Reset buttons, addressable RGB LED on GPIO8, USB-to-UART bridge, native USB port, J5 jumper.'],
+  },
   moduleNames: ['ESP32-C6-WROOM-1', 'ESP32-C6-WROOM-1U'],
   moduleVariants: esp32c6DevKitC1ModuleVariants,
   identificationNotes: [

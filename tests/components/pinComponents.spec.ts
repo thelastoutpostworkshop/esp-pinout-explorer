@@ -212,6 +212,14 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('8 MB Quad SPI flash / 32 MB Octal SPI flash');
     expect(wrapper.text()).toContain('PSRAM');
     expect(wrapper.text()).toContain('8 MB Octal PSRAM / 16 MB Octal PSRAM');
+    expect(wrapper.find('.explorer-sidebar__board-specs').exists()).toBe(true);
+    expect(wrapper.text()).toContain('Board');
+    expect(wrapper.text()).toContain('Power');
+    expect(wrapper.text()).toContain('USB ports, 5V/GND headers, or 3V3/GND headers');
+    expect(wrapper.text()).toContain('Program');
+    expect(wrapper.text()).toContain('USB-to-UART bridge for flashing');
+    expect(wrapper.text()).toContain('On-board');
+    expect(wrapper.text()).toContain('addressable RGB LED on GPIO38');
     expect(wrapper.text()).not.toContain('The printed metal-can name is the module');
     expect(wrapper.text()).toContain('Variants');
     expect(wrapper.find('.explorer-sidebar__module-heading .explorer-sidebar__module-action').exists()).toBe(true);
@@ -280,6 +288,7 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1 / MINI-1U');
     expect(wrapper.text()).toContain('4 MB SPI flash in chip package');
     expect(wrapper.text()).toContain('No PSRAM');
+    expect(wrapper.text()).toContain('J5 jumper supports module current measurement');
     expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(true);
 
     store.selectPackage('esp32c6-mini-1');
@@ -290,11 +299,13 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1');
     expect(wrapper.text()).toContain('Details');
     expect(wrapper.text()).toContain('4 MB SPI flash in chip package');
+    expect(wrapper.find('.explorer-sidebar__board-specs').exists()).toBe(false);
 
     store.selectPackage('qfn40');
     await wrapper.vm.$nextTick();
 
     expect(wrapper.text()).toContain('Chip package');
+    expect(wrapper.find('.explorer-sidebar__board-specs').exists()).toBe(false);
     expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(false);
   });
 });

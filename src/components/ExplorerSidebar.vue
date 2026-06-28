@@ -84,6 +84,16 @@
         </dl>
       </div>
 
+      <div v-if="boardSpecItems.length" class="explorer-sidebar__board-specs">
+        <span>Board</span>
+        <dl>
+          <div v-for="item in boardSpecItems" :key="item.label">
+            <dt>{{ item.label }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+        </dl>
+      </div>
+
       <div
         v-if="moduleDetailsOpen"
         class="module-details"
@@ -306,6 +316,19 @@ const moduleMemorySummaryItems = computed(() =>
     { label: 'PSRAM', value: summarizeVariantValues(moduleVariants.value.map((variant) => variant.psram)) },
   ].filter((item) => item.value),
 );
+const boardSpecItems = computed(() => {
+  const specs = selectedPackage.value.boardSpecs;
+
+  if (!specs || selectedProfileKind.value !== 'board') {
+    return [];
+  }
+
+  return [
+    { label: 'Power', value: specs.power.join(' ') },
+    { label: 'Program', value: specs.programming.join(' ') },
+    { label: 'On-board', value: specs.onBoardHardware.join(' ') },
+  ].filter((item) => item.value.trim());
+});
 const moduleDetailsOpen = ref(false);
 const moduleDetailsIntro = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
@@ -548,7 +571,8 @@ function markReferenceImageFailed(url: string) {
   color: #475569;
 }
 
-.explorer-sidebar__chip-specs {
+.explorer-sidebar__chip-specs,
+.explorer-sidebar__board-specs {
   display: grid;
   gap: 6px;
   min-width: 0;
@@ -558,7 +582,8 @@ function markReferenceImageFailed(url: string) {
   background: #ffffff;
 }
 
-.explorer-sidebar__chip-specs > span {
+.explorer-sidebar__chip-specs > span,
+.explorer-sidebar__board-specs > span {
   color: #64748b;
   font-size: 0.72rem;
   font-weight: 850;
@@ -567,6 +592,7 @@ function markReferenceImageFailed(url: string) {
 }
 
 .explorer-sidebar__chip-specs dl,
+.explorer-sidebar__board-specs dl,
 .explorer-sidebar__module-specs {
   display: grid;
   gap: 5px;
@@ -575,15 +601,17 @@ function markReferenceImageFailed(url: string) {
 }
 
 .explorer-sidebar__chip-specs dl > div,
+.explorer-sidebar__board-specs dl > div,
 .explorer-sidebar__module-specs > div {
   display: grid;
-  grid-template-columns: minmax(46px, max-content) minmax(0, 1fr);
+  grid-template-columns: minmax(56px, max-content) minmax(0, 1fr);
   gap: 8px;
   align-items: baseline;
   min-width: 0;
 }
 
 .explorer-sidebar__chip-specs dt,
+.explorer-sidebar__board-specs dt,
 .explorer-sidebar__module-specs dt {
   color: #64748b;
   font-size: 0.72rem;
@@ -593,6 +621,7 @@ function markReferenceImageFailed(url: string) {
 }
 
 .explorer-sidebar__chip-specs dd,
+.explorer-sidebar__board-specs dd,
 .explorer-sidebar__module-specs dd {
   min-width: 0;
   margin: 0;

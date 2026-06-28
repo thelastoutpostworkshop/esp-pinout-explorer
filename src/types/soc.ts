@@ -78,12 +78,19 @@ export interface SocChipSpecs {
   cpu: string;
 }
 
+export interface SocBoardSpecs {
+  power: string[];
+  programming: string[];
+  onBoardHardware: string[];
+}
+
 export interface SocPackageVariant {
   id: string;
   name: string;
   packageName: string;
   kind?: PinProfileKind;
   boardLayout?: BoardLayout;
+  boardSpecs?: SocBoardSpecs;
   source?: SocSource;
   moduleNames?: string[];
   moduleVariants?: SocModuleVariant[];

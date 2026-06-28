@@ -63,6 +63,7 @@ interface ProfileEntry {
   id: string;
   kind: PinProfileKind;
   boardLayout?: SocPackageVariant['boardLayout'];
+  boardSpecs?: SocPackageVariant['boardSpecs'];
   packageName: string;
   source?: SocSource;
   moduleNames?: string[];
@@ -78,6 +79,7 @@ function profilesForSoc(soc: SocDefinition): ProfileEntry[] {
       id: soc.defaultPackageId ?? 'default',
       kind: 'package',
       boardLayout: undefined,
+      boardSpecs: undefined,
       packageName: soc.packageName,
       source: soc.source,
       pins: soc.pins,
@@ -93,6 +95,7 @@ function packageProfile(soc: SocDefinition, profile: SocPackageVariant): Profile
     id: profile.id,
     kind: profile.kind ?? 'package',
     boardLayout: profile.boardLayout,
+    boardSpecs: profile.boardSpecs,
     packageName: profile.packageName,
     source: profile.source,
     moduleNames: profile.moduleNames,
@@ -108,6 +111,7 @@ function boardProfile(soc: SocDefinition, profile: SocPackageVariant): ProfileEn
     id: profile.id,
     kind: 'board',
     boardLayout: profile.boardLayout,
+    boardSpecs: profile.boardSpecs,
     packageName: profile.packageName,
     source: profile.source,
     moduleNames: profile.moduleNames,
@@ -275,6 +279,12 @@ describe('SoC data invariants', () => {
       }
       expect(profile.identificationNotes?.length).toBeGreaterThan(0);
       expect(profile.identificationNotes?.every((note) => note.includes('carrier PCB'))).toBe(true);
+      expect(profile.boardSpecs?.power.length).toBeGreaterThan(0);
+      expect(profile.boardSpecs?.programming.length).toBeGreaterThan(0);
+      expect(profile.boardSpecs?.onBoardHardware.length).toBeGreaterThan(0);
+      expect(profile.boardSpecs?.power.every((item) => item.trim().length > 0)).toBe(true);
+      expect(profile.boardSpecs?.programming.every((item) => item.trim().length > 0)).toBe(true);
+      expect(profile.boardSpecs?.onBoardHardware.every((item) => item.trim().length > 0)).toBe(true);
     }
   });
 
