@@ -37,7 +37,8 @@
       <div class="app-shell__sidebar">
         <ExplorerSidebar :show-profile-controls="false" />
       </div>
-      <SocPinoutView />
+      <MakerToolsPage v-if="store.activeView === 'makerTools'" />
+      <SocPinoutView v-else />
     </div>
   </v-main>
 </template>
@@ -46,10 +47,13 @@
 import { ref } from 'vue';
 import { CircuitBoard, Menu } from '@lucide/vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
+import MakerToolsPage from '@/components/MakerToolsPage.vue';
 import ProfileNavigator from '@/components/ProfileNavigator.vue';
 import SocPinoutView from '@/components/SocPinoutView.vue';
+import { useSocStore } from '@/stores/socStore';
 
 const mobileDrawerOpen = ref(false);
+const store = useSocStore();
 </script>
 
 <style scoped>

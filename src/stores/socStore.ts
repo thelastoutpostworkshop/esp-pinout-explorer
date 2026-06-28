@@ -13,6 +13,8 @@ interface PersistedProfileSelection {
   packageId: string;
 }
 
+type WorkspaceView = 'pinout' | 'makerTools';
+
 function normalize(value: string) {
   return value.toLowerCase().replace(/[_/+-]/g, ' ');
 }
@@ -66,6 +68,7 @@ export const useSocStore = defineStore('soc', () => {
   const selectedPackageId = ref<string | null>(initialSelection.packageId);
   const selectedPinId = ref<string | null>(null);
   const profileInfoOpen = ref(false);
+  const activeView = ref<WorkspaceView>('pinout');
   const searchQuery = ref('');
 
   const selectedSoc = computed(() => socs.find((soc) => soc.id === selectedSocId.value) ?? socs[0]);
@@ -93,6 +96,7 @@ export const useSocStore = defineStore('soc', () => {
       selectedSocId.value = socId;
       selectedPackageId.value = defaultProfileForSoc(soc).id;
       selectedPinId.value = null;
+      activeView.value = 'pinout';
       searchQuery.value = '';
       persistSelectedProfile(selectedSocId.value, selectedPackageId.value);
     }
@@ -102,11 +106,13 @@ export const useSocStore = defineStore('soc', () => {
     if (packageOptions.value.some((packageOption) => packageOption.id === packageId)) {
       selectedPackageId.value = packageId;
       selectedPinId.value = null;
+      activeView.value = 'pinout';
       persistSelectedProfile(selectedSocId.value, selectedPackageId.value);
     }
   }
 
   function selectPin(pinId: string) {
+    activeView.value = 'pinout';
     selectedPinId.value = pinId;
     profileInfoOpen.value = false;
   }
@@ -116,6 +122,7 @@ export const useSocStore = defineStore('soc', () => {
   }
 
   function openProfileInfo() {
+    activeView.value = 'pinout';
     selectedPinId.value = null;
     profileInfoOpen.value = true;
   }
@@ -124,7 +131,18 @@ export const useSocStore = defineStore('soc', () => {
     profileInfoOpen.value = false;
   }
 
+  function showPinout() {
+    activeView.value = 'pinout';
+  }
+
+  function showMakerTools() {
+    selectedPinId.value = null;
+    profileInfoOpen.value = false;
+    activeView.value = 'makerTools';
+  }
+
   function setSearchQuery(query: string) {
+    activeView.value = 'pinout';
     searchQuery.value = query;
   }
 
@@ -143,6 +161,7 @@ export const useSocStore = defineStore('soc', () => {
     selectedPinId,
     selectedPin,
     profileInfoOpen,
+    activeView,
     searchQuery,
     filteredPins,
     filteredPinIds,
@@ -152,6 +171,8 @@ export const useSocStore = defineStore('soc', () => {
     clearSelectedPin,
     openProfileInfo,
     closeProfileInfo,
+    showPinout,
+    showMakerTools,
     setSearchQuery,
     countPinsForQuery,
   };

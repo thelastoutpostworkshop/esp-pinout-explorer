@@ -17,12 +17,15 @@
         </div>
       </div>
     </section>
+
+    <ResourcesSection @changed="emit('changed')" />
   </aside>
 </template>
 
 <script setup lang="ts">
 import PinSearch from '@/components/PinSearch.vue';
 import ProfileNavigator from '@/components/ProfileNavigator.vue';
+import ResourcesSection from '@/components/ResourcesSection.vue';
 import { useSocStore } from '@/stores/socStore';
 
 withDefaults(

@@ -4,6 +4,7 @@ import { createPinia, setActivePinia } from 'pinia';
 import BoardSvg from '@/components/BoardSvg.vue';
 import ChipSvg from '@/components/ChipSvg.vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
+import MakerToolsPage from '@/components/MakerToolsPage.vue';
 import PinInfoDrawer from '@/components/PinInfoDrawer.vue';
 import PinSearch from '@/components/PinSearch.vue';
 import ProfileInfoDrawer from '@/components/ProfileInfoDrawer.vue';
@@ -309,6 +310,49 @@ describe('ExplorerSidebar', () => {
 
     expect(wrapper.text()).toContain('Chip package');
     expect(wrapper.text()).not.toContain('Module pads for PCB design, not dev-board headers.');
+  });
+
+  it('shows resource links and opens maker tools', async () => {
+    const store = useSocStore();
+    const wrapper = mount(ExplorerSidebar, {
+      global: {
+        stubs: sidebarStubs,
+      },
+    });
+
+    expect(wrapper.text()).toContain('Resources');
+    expect(wrapper.find('a[href="https://youtu.be/-nhDKzBxHiI"]').exists()).toBe(true);
+    expect(wrapper.find('a[href="https://buymeacoffee.com/thelastoutpostworkshop"]').exists()).toBe(true);
+    expect(wrapper.find('a[href="https://github.com/thelastoutpostworkshop/ESPSocsExplorer"]').exists()).toBe(true);
+
+    await findButton(wrapper, 'Maker Tools').trigger('click');
+
+    expect(store.activeView).toBe('makerTools');
+    expect(wrapper.emitted('changed')).toHaveLength(1);
+  });
+});
+
+describe('MakerToolsPage', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+  });
+
+  it('renders maker tool cards and can return to the pinout', async () => {
+    const store = useSocStore();
+    store.showMakerTools();
+
+    const wrapper = mount(MakerToolsPage);
+
+    expect(wrapper.text()).toContain('Maker Tools');
+    expect(wrapper.text()).toContain('ESP Board Vault');
+    expect(wrapper.text()).toContain('ESP32 Partition Builder');
+    expect(wrapper.text()).toContain('GPIOViewer');
+    expect(wrapper.findAll('.maker-tools-page__card')).toHaveLength(5);
+    expect(wrapper.findAll('.maker-tools-page__thumbnail img')).toHaveLength(5);
+
+    await findButton(wrapper, 'Back to pinout').trigger('click');
+
+    expect(store.activeView).toBe('pinout');
   });
 });
 
