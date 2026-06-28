@@ -36,214 +36,180 @@
         </template>
       </v-select>
 
-      <div
-        v-if="selectedProfileKind !== 'board'"
-        class="explorer-sidebar__profile-context"
-        :class="`explorer-sidebar__profile-context--${selectedProfileKind}`"
+      <button
+        class="explorer-sidebar__profile-info-button"
+        type="button"
+        aria-label="Open profile information"
+        @click="openProfileInfo"
       >
-        <span>{{ selectedProfileKindLabel }}</span>
-        <p>{{ selectedProfileSummary }}</p>
-      </div>
-
-      <div v-if="chipSpecItems.length" class="explorer-sidebar__chip-specs">
-        <span>Chip</span>
-        <dl>
-          <div v-for="item in chipSpecItems" :key="item.label">
-            <dt>{{ item.label }}</dt>
-            <dd>{{ item.value }}</dd>
-          </div>
-        </dl>
-      </div>
-
-      <div v-if="moduleDisplay" class="explorer-sidebar__module">
-        <div class="explorer-sidebar__module-heading">
-          <span>Module</span>
-          <button
-            v-if="moduleVariants.length"
-            class="explorer-sidebar__module-action"
-            type="button"
-            aria-label="View module variant details"
-            @click="openModuleDetails"
-          >
-            <List :size="14" aria-hidden="true" />
-            <span>{{ moduleDetailsActionLabel }}</span>
-          </button>
-        </div>
-        <strong>{{ moduleDisplay }}</strong>
-        <dl v-if="moduleMemorySummaryItems.length" class="explorer-sidebar__module-specs">
-          <div v-for="item in moduleMemorySummaryItems" :key="item.label">
-            <dt>{{ item.label }}</dt>
-            <dd>{{ item.value }}</dd>
-          </div>
-        </dl>
-      </div>
-
-      <div v-if="boardSpecItems.length" class="explorer-sidebar__board-specs">
-        <span>Board</span>
-        <dl>
-          <div v-for="item in boardSpecItems" :key="item.label">
-            <dt>{{ item.label }}</dt>
-            <dd>{{ item.value }}</dd>
-          </div>
-        </dl>
-      </div>
+        <Info :size="16" aria-hidden="true" />
+        <span>Profile info</span>
+      </button>
 
       <div
-        v-if="moduleDetailsOpen"
-        class="module-details"
+        v-if="profileInfoOpen"
+        class="profile-info"
         role="dialog"
-        aria-label="Module variant details"
+        aria-label="Profile information"
         aria-modal="true"
         tabindex="-1"
-        @click.self="closeModuleDetails"
-        @keydown.esc="closeModuleDetails"
+        @click.self="closeProfileInfo"
+        @keydown.esc="closeProfileInfo"
       >
-        <section class="module-details__panel">
-          <header class="module-details__header">
+        <aside class="profile-info__panel">
+          <header class="profile-info__header">
             <div>
-              <h2>Module variants</h2>
-              <p>{{ selectedPackage.name }}</p>
+              <h2>Profile info</h2>
+              <p>{{ selectedSoc.name }} / {{ selectedPackage.name }}</p>
             </div>
             <button
-              class="module-details__close"
+              class="profile-info__close"
               type="button"
-              aria-label="Close module variant details"
-              @click="closeModuleDetails"
+              aria-label="Close profile information"
+              @click="closeProfileInfo"
             >
               <X :size="18" aria-hidden="true" />
             </button>
           </header>
 
-          <div v-if="moduleDetailsIntro" class="module-details__intro">
-            <p>{{ moduleDetailsIntro }}</p>
-          </div>
+          <section class="profile-info__section">
+            <h3>Profile</h3>
+            <dl class="profile-info__spec-list">
+              <div>
+                <dt>Type</dt>
+                <dd>{{ selectedProfileKindLabel }}</dd>
+              </div>
+              <div>
+                <dt>View</dt>
+                <dd>{{ selectedProfileSummary }}</dd>
+              </div>
+              <div>
+                <dt>Source</dt>
+                <dd>
+                  <a
+                    class="profile-info__source"
+                    :href="selectedSource.url"
+                    :aria-label="`Open ${sourceLinkTitle}`"
+                    rel="noreferrer"
+                    target="_blank"
+                    :title="sourceLinkTitle"
+                  >
+                    <span>Official docs</span>
+                    <ExternalLink :size="14" aria-hidden="true" />
+                  </a>
+                </dd>
+              </div>
+            </dl>
+            <p v-if="profileInfoIntro" class="profile-info__note">{{ profileInfoIntro }}</p>
+          </section>
 
-          <div class="module-details__table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th scope="col">Module</th>
-                  <th scope="col">Antenna</th>
-                  <th scope="col">Flash</th>
-                  <th scope="col">PSRAM</th>
-                  <th scope="col">Footprint</th>
-                  <th scope="col">Pinout impact</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="variant in moduleVariants" :key="variant.name">
-                  <th scope="row">
-                    <a v-if="variant.source" :href="variant.source.url" rel="noreferrer" target="_blank">
-                      {{ variant.name }}
-                    </a>
-                    <span v-else>{{ variant.name }}</span>
-                  </th>
-                  <td>{{ valueOrDash(variant.antenna) }}</td>
-                  <td>{{ valueOrDash(variant.flash) }}</td>
-                  <td>{{ valueOrDash(variant.psram) }}</td>
-                  <td>{{ valueOrDash(variant.footprint) }}</td>
-                  <td>{{ valueOrDash(variant.pinoutImpact) }}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </section>
-      </div>
+          <section v-if="chipSpecItems.length" class="profile-info__section">
+            <h3>Chip</h3>
+            <dl class="profile-info__spec-list">
+              <div v-for="item in chipSpecItems" :key="item.label">
+                <dt>{{ item.label }}</dt>
+                <dd>{{ item.value }}</dd>
+              </div>
+            </dl>
+          </section>
 
-      <div class="explorer-sidebar__source-actions">
-        <a
-          class="explorer-sidebar__source"
-          :href="selectedSource.url"
-          :aria-label="`Open ${sourceLinkTitle}`"
-          rel="noreferrer"
-          target="_blank"
-          :title="sourceLinkTitle"
-        >
-          <ExternalLink :size="14" aria-hidden="true" />
-          <span>Official docs</span>
-        </a>
+          <section v-if="moduleDisplay" class="profile-info__section">
+            <h3>Module</h3>
+            <strong>{{ moduleDisplay }}</strong>
+            <dl v-if="moduleMemorySummaryItems.length" class="profile-info__spec-list">
+              <div v-for="item in moduleMemorySummaryItems" :key="item.label">
+                <dt>{{ item.label }}</dt>
+                <dd>{{ item.value }}</dd>
+              </div>
+            </dl>
 
-        <button
-          v-if="sourceFigures.length"
-          class="explorer-sidebar__figure-button"
-          type="button"
-          :aria-label="`View reference images from ${sourceLinkTitle}`"
-          :title="sourceLinkTitle"
-          @click="openReferenceImages"
-        >
-          <ImageIcon :size="14" aria-hidden="true" />
-          <span>Reference images</span>
-        </button>
-      </div>
-
-      <div
-        v-if="referenceImagesOpen"
-        class="reference-images"
-        role="dialog"
-        aria-label="Reference images"
-        aria-modal="true"
-        tabindex="-1"
-        @click.self="closeReferenceImages"
-        @keydown.esc="closeReferenceImages"
-      >
-        <section class="reference-images__panel">
-          <header class="reference-images__header">
-            <div>
-              <h2>Reference images</h2>
-              <p>{{ sourceLinkTitle }}</p>
+            <div v-if="moduleVariants.length" class="profile-info__table-wrap">
+              <h4>Module variants</h4>
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Module</th>
+                    <th scope="col">Antenna</th>
+                    <th scope="col">Flash</th>
+                    <th scope="col">PSRAM</th>
+                    <th scope="col">Footprint</th>
+                    <th scope="col">Pinout impact</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="variant in moduleVariants" :key="variant.name">
+                    <th scope="row">
+                      <a v-if="variant.source" :href="variant.source.url" rel="noreferrer" target="_blank">
+                        {{ variant.name }}
+                      </a>
+                      <span v-else>{{ variant.name }}</span>
+                    </th>
+                    <td>{{ valueOrDash(variant.antenna) }}</td>
+                    <td>{{ valueOrDash(variant.flash) }}</td>
+                    <td>{{ valueOrDash(variant.psram) }}</td>
+                    <td>{{ valueOrDash(variant.footprint) }}</td>
+                    <td>{{ valueOrDash(variant.pinoutImpact) }}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <button
-              class="reference-images__close"
-              type="button"
-              aria-label="Close reference images"
-              @click="closeReferenceImages"
-            >
-              <X :size="18" aria-hidden="true" />
-            </button>
-          </header>
+          </section>
 
-          <div class="reference-images__grid">
-            <figure v-for="figure in sourceFigures" :key="figure.url" class="reference-images__figure">
-              <a
-                class="reference-images__image-link"
-                :class="{
-                  'reference-images__image-link--loading': isReferenceImageLoading(figure.url),
-                  'reference-images__image-link--error': hasReferenceImageError(figure.url),
-                }"
-                :href="figure.url"
-                rel="noreferrer"
-                target="_blank"
-                :aria-label="`Open ${figure.title}`"
-              >
-                <span
-                  v-if="isReferenceImageLoading(figure.url)"
-                  class="reference-images__loading"
-                  role="status"
-                  aria-label="Loading reference image"
-                >
-                  <span class="reference-images__spinner" aria-hidden="true"></span>
-                </span>
-                <span v-if="hasReferenceImageError(figure.url)" class="reference-images__error">Image unavailable</span>
-                <img
-                  :src="figure.url"
-                  :alt="figure.alt"
-                  loading="lazy"
-                  decoding="async"
+          <section v-if="boardSpecItems.length" class="profile-info__section">
+            <h3>Board</h3>
+            <dl class="profile-info__spec-list">
+              <div v-for="item in boardSpecItems" :key="item.label">
+                <dt>{{ item.label }}</dt>
+                <dd>{{ item.value }}</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section v-if="sourceFigures.length" class="profile-info__section">
+            <h3>Reference images</h3>
+            <div class="profile-info__image-grid">
+              <figure v-for="figure in sourceFigures" :key="figure.url" class="profile-info__figure">
+                <a
+                  class="profile-info__image-link"
                   :class="{
-                    'reference-images__image--loading': isReferenceImageLoading(figure.url),
-                    'reference-images__image--error': hasReferenceImageError(figure.url),
+                    'profile-info__image-link--loading': isReferenceImageLoading(figure.url),
+                    'profile-info__image-link--error': hasReferenceImageError(figure.url),
                   }"
-                  @load="markReferenceImageLoaded(figure.url)"
-                  @error="markReferenceImageFailed(figure.url)"
-                />
-              </a>
-              <figcaption>
-                <strong>{{ figure.title }}</strong>
-                <span>{{ figure.sourceSection }}</span>
-              </figcaption>
-            </figure>
-          </div>
-        </section>
+                  :href="figure.url"
+                  rel="noreferrer"
+                  target="_blank"
+                  :aria-label="`Open ${figure.title}`"
+                >
+                  <span
+                    v-if="isReferenceImageLoading(figure.url)"
+                    class="profile-info__image-loading"
+                    role="status"
+                    aria-label="Loading reference image"
+                  >
+                    <span class="profile-info__spinner" aria-hidden="true"></span>
+                  </span>
+                  <span v-if="hasReferenceImageError(figure.url)" class="profile-info__image-error">Image unavailable</span>
+                  <img
+                    :src="figure.url"
+                    :alt="figure.alt"
+                    loading="lazy"
+                    decoding="async"
+                    :class="{
+                      'profile-info__image--loading': isReferenceImageLoading(figure.url),
+                      'profile-info__image--error': hasReferenceImageError(figure.url),
+                    }"
+                    @load="markReferenceImageLoaded(figure.url)"
+                    @error="markReferenceImageFailed(figure.url)"
+                  />
+                </a>
+                <figcaption>
+                  <strong>{{ figure.title }}</strong>
+                  <span>{{ figure.sourceSection }}</span>
+                </figcaption>
+              </figure>
+            </div>
+          </section>
+        </aside>
       </div>
     </section>
 
@@ -265,7 +231,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { ExternalLink, Image as ImageIcon, List, X } from '@lucide/vue';
+import { ExternalLink, Info, X } from '@lucide/vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
 import type { PinProfileKind, SocPackageVariant } from '@/types/soc';
@@ -298,12 +264,11 @@ const chipSpecItems = computed(() => {
 
   return cpu ? [{ label: 'CPU', value: cpu }] : [];
 });
-const referenceImagesOpen = ref(false);
+const profileInfoOpen = ref(false);
 const loadingReferenceImageUrls = ref(new Set<string>());
 const erroredReferenceImageUrls = ref(new Set<string>());
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
 const moduleVariants = computed(() => selectedPackage.value.moduleVariants ?? []);
-const moduleDetailsActionLabel = computed(() => (moduleVariants.value.length === 1 ? 'Details' : 'Variants'));
 const moduleMemorySummaryItems = computed(() =>
   [
     { label: 'Flash', value: summarizeVariantValues(moduleVariants.value.map((variant) => variant.flash)) },
@@ -323,8 +288,7 @@ const boardSpecItems = computed(() => {
     { label: 'On-board', value: specs.onBoardHardware.join(' ') },
   ].filter((item) => item.value.trim());
 });
-const moduleDetailsOpen = ref(false);
-const moduleDetailsIntro = computed(() => {
+const profileInfoIntro = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
   const helpText = {
     board:
@@ -352,29 +316,19 @@ const legendItems = [
   { label: 'Maker warning', className: 'legend-item__swatch--warning' },
 ] as const;
 
-watch(sourceFigures, (figures) => {
-  if (!figures.length) {
-    closeReferenceImages();
-  }
-});
-
-watch(moduleVariants, (variants) => {
-  if (!variants.length) {
-    closeModuleDetails();
+watch(sourceFigures, () => {
+  if (profileInfoOpen.value) {
+    initializeReferenceImageLoading();
   }
 });
 
 function selectSoc(socId: string) {
   store.selectSoc(socId);
-  closeReferenceImages();
-  closeModuleDetails();
   emit('changed');
 }
 
 function selectPackage(packageId: string) {
   store.selectPackage(packageId);
-  closeReferenceImages();
-  closeModuleDetails();
   emit('changed');
 }
 
@@ -436,23 +390,15 @@ function uniqueValues<T>(values: T[]): T[] {
   return [...new Set(values)];
 }
 
-function openReferenceImages() {
+function openProfileInfo() {
   initializeReferenceImageLoading();
-  referenceImagesOpen.value = true;
+  profileInfoOpen.value = true;
 }
 
-function closeReferenceImages() {
-  referenceImagesOpen.value = false;
+function closeProfileInfo() {
+  profileInfoOpen.value = false;
   loadingReferenceImageUrls.value = new Set();
   erroredReferenceImageUrls.value = new Set();
-}
-
-function openModuleDetails() {
-  moduleDetailsOpen.value = true;
-}
-
-function closeModuleDetails() {
-  moduleDetailsOpen.value = false;
 }
 
 function initializeReferenceImageLoading() {
@@ -530,218 +476,68 @@ function markReferenceImageFailed(url: string) {
   text-transform: uppercase;
 }
 
-.explorer-sidebar__profile-context {
-  display: grid;
-  gap: 3px;
-  min-width: 0;
-  border: 1px solid #dbe3ea;
-  border-radius: 8px;
-  padding: 9px 11px;
-  background: #ffffff;
-}
-
-.explorer-sidebar__profile-context span {
-  color: #006d77;
-  font-size: 0.72rem;
-  font-weight: 900;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.explorer-sidebar__profile-context p {
-  margin: 0;
-  color: #475569;
-  font-size: 0.8rem;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.explorer-sidebar__profile-context--module span {
-  color: #7c3aed;
-}
-
-.explorer-sidebar__profile-context--package span {
-  color: #475569;
-}
-
-.explorer-sidebar__chip-specs,
-.explorer-sidebar__board-specs {
-  display: grid;
-  gap: 6px;
-  min-width: 0;
-  border: 1px solid #dbe3ea;
-  border-radius: 8px;
-  padding: 9px 11px;
-  background: #ffffff;
-}
-
-.explorer-sidebar__chip-specs > span,
-.explorer-sidebar__board-specs > span {
-  color: #64748b;
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.explorer-sidebar__chip-specs dl,
-.explorer-sidebar__board-specs dl,
-.explorer-sidebar__module-specs {
-  display: grid;
-  gap: 5px;
-  min-width: 0;
-  margin: 0;
-}
-
-.explorer-sidebar__chip-specs dl > div,
-.explorer-sidebar__board-specs dl > div,
-.explorer-sidebar__module-specs > div {
-  display: grid;
-  grid-template-columns: minmax(56px, max-content) minmax(0, 1fr);
-  gap: 8px;
-  align-items: baseline;
-  min-width: 0;
-}
-
-.explorer-sidebar__chip-specs dt,
-.explorer-sidebar__board-specs dt,
-.explorer-sidebar__module-specs dt {
-  color: #64748b;
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.explorer-sidebar__chip-specs dd,
-.explorer-sidebar__board-specs dd,
-.explorer-sidebar__module-specs dd {
-  min-width: 0;
-  margin: 0;
-  color: #0f172a;
-  font-size: 0.8rem;
-  font-weight: 750;
-  line-height: 1.3;
-  overflow-wrap: anywhere;
-}
-
-.explorer-sidebar__module {
-  display: grid;
-  gap: 4px;
-  min-width: 0;
-  border: 1px solid #dbe3ea;
-  border-radius: 8px;
-  padding: 10px 12px;
-  background: #ffffff;
-}
-
-.explorer-sidebar__module-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  min-width: 0;
-  color: #64748b;
-  font-size: 0.72rem;
-  font-weight: 850;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.explorer-sidebar__module strong {
-  min-width: 0;
-  color: #0f172a;
-  font-size: 0.84rem;
-  line-height: 1.3;
-  overflow-wrap: anywhere;
-}
-
-.explorer-sidebar__source-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  min-width: 0;
-}
-
-.explorer-sidebar__source,
-.explorer-sidebar__figure-button,
-.explorer-sidebar__module-action {
+.explorer-sidebar__profile-info-button {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  min-height: 28px;
+  justify-self: start;
+  min-height: 30px;
+  border: 0;
+  padding: 0;
   color: #006d77;
   font-size: 0.84rem;
   font-weight: 800;
   line-height: 1.2;
-  text-decoration: none;
-}
-
-.explorer-sidebar__module-action {
-  min-height: 24px;
-  flex: 0 0 auto;
-  text-transform: none;
-}
-
-.explorer-sidebar__figure-button,
-.explorer-sidebar__module-action {
-  border: 0;
-  padding: 0;
   background: transparent;
   cursor: pointer;
   font-family: inherit;
+  text-decoration: none;
 }
 
-.explorer-sidebar__source:hover,
-.explorer-sidebar__source:focus-visible,
-.explorer-sidebar__figure-button:hover,
-.explorer-sidebar__figure-button:focus-visible,
-.explorer-sidebar__module-action:hover,
-.explorer-sidebar__module-action:focus-visible {
+.explorer-sidebar__profile-info-button:hover,
+.explorer-sidebar__profile-info-button:focus-visible {
   color: #004f58;
   text-decoration: underline;
 }
 
-.reference-images {
+.profile-info {
   position: fixed;
   inset: 0;
-  z-index: 50;
+  z-index: 54;
   display: grid;
-  place-items: center;
-  padding: 24px;
+  justify-items: end;
   background: rgba(15, 23, 42, 0.55);
 }
 
-.reference-images__panel {
+.profile-info__panel {
   display: grid;
+  align-content: start;
   gap: 18px;
-  width: min(960px, 100%);
-  max-height: min(760px, calc(100vh - 48px));
+  width: min(560px, 100%);
+  height: 100%;
   overflow: auto;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 18px;
+  border-left: 1px solid #cbd5e1;
+  padding: 20px;
   background: #ffffff;
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
+  box-shadow: -20px 0 60px rgba(15, 23, 42, 0.22);
 }
 
-.reference-images__header {
+.profile-info__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
 }
 
-.reference-images__header h2 {
+.profile-info__header h2 {
   margin: 0;
   color: #0f172a;
-  font-size: 1rem;
+  font-size: 1.04rem;
   font-weight: 850;
   letter-spacing: 0;
-  text-transform: none;
 }
 
-.reference-images__header p {
+.profile-info__header p {
   margin: 3px 0 0;
   color: #64748b;
   font-size: 0.84rem;
@@ -749,7 +545,7 @@ function markReferenceImageFailed(url: string) {
   line-height: 1.35;
 }
 
-.reference-images__close {
+.profile-info__close {
   display: inline-grid;
   flex: 0 0 auto;
   place-items: center;
@@ -762,56 +558,198 @@ function markReferenceImageFailed(url: string) {
   cursor: pointer;
 }
 
-.reference-images__close:hover,
-.reference-images__close:focus-visible {
+.profile-info__close:hover,
+.profile-info__close:focus-visible {
   border-color: #94a3b8;
   background: #e2e8f0;
 }
 
-.reference-images__grid {
+.profile-info__section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
+  gap: 10px;
+  min-width: 0;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
 }
 
-.reference-images__figure {
+.profile-info__section:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.profile-info__section h3 {
+  margin: 0;
+  color: #475569;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.profile-info__section strong {
+  color: #0f172a;
+  font-size: 0.88rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.profile-info__note {
+  margin: 0;
+  color: #475569;
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.profile-info__spec-list {
   display: grid;
-  gap: 9px;
+  gap: 7px;
+  min-width: 0;
+  margin: 0;
+}
+
+.profile-info__spec-list > div {
+  display: grid;
+  grid-template-columns: minmax(70px, max-content) minmax(0, 1fr);
+  gap: 10px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.profile-info__spec-list dt {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.profile-info__spec-list dd {
+  min-width: 0;
+  margin: 0;
+  color: #0f172a;
+  font-size: 0.84rem;
+  font-weight: 750;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.profile-info__source,
+.profile-info__table-wrap a {
+  color: #006d77;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.profile-info__source {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.profile-info__source:hover,
+.profile-info__source:focus-visible,
+.profile-info__table-wrap a:hover,
+.profile-info__table-wrap a:focus-visible {
+  color: #004f58;
+  text-decoration: underline;
+}
+
+.profile-info__table-wrap {
+  overflow-x: auto;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+}
+
+.profile-info__table-wrap h4 {
+  margin: 0;
+  padding: 9px 10px;
+  color: #0f172a;
+  background: #f8fafc;
+  font-size: 0.78rem;
+  font-weight: 850;
+}
+
+.profile-info__table-wrap table {
+  width: 100%;
+  min-width: 720px;
+  border-collapse: collapse;
+  color: #334155;
+  font-size: 0.8rem;
+  line-height: 1.35;
+}
+
+.profile-info__table-wrap th,
+.profile-info__table-wrap td {
+  border-bottom: 1px solid #e2e8f0;
+  padding: 9px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.profile-info__table-wrap thead th {
+  color: #0f172a;
+  background: #f1f5f9;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.profile-info__table-wrap tbody th {
+  color: #0f172a;
+  font-weight: 850;
+}
+
+.profile-info__table-wrap tbody tr:last-child th,
+.profile-info__table-wrap tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.profile-info__image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+}
+
+.profile-info__figure {
+  display: grid;
+  gap: 8px;
   min-width: 0;
   margin: 0;
   border: 1px solid #dbe3ea;
   border-radius: 8px;
-  padding: 10px;
+  padding: 9px;
   background: #f8fafc;
 }
 
-.reference-images__image-link {
+.profile-info__image-link {
   display: grid;
   place-items: center;
   position: relative;
-  min-height: 180px;
+  min-height: 150px;
   border: 1px solid #e2e8f0;
   border-radius: 6px;
   background: #ffffff;
   overflow: hidden;
 }
 
-.reference-images__image-link img {
+.profile-info__image-link img {
   display: block;
   width: 100%;
-  max-height: 320px;
+  max-height: 260px;
   object-fit: contain;
   opacity: 1;
   transition: opacity 140ms ease;
 }
 
-.reference-images__image--loading,
-.reference-images__image--error {
+.profile-info__image--loading,
+.profile-info__image--error {
   opacity: 0;
 }
 
-.reference-images__loading,
-.reference-images__error {
+.profile-info__image-loading,
+.profile-info__image-error {
   position: absolute;
   inset: 0;
   z-index: 1;
@@ -820,194 +758,49 @@ function markReferenceImageFailed(url: string) {
   background: #ffffff;
 }
 
-.reference-images__spinner {
-  width: 30px;
-  height: 30px;
+.profile-info__spinner {
+  width: 28px;
+  height: 28px;
   border: 3px solid #dbeafe;
   border-top-color: #006d77;
   border-radius: 999px;
-  animation: reference-image-spin 800ms linear infinite;
+  animation: profile-info-spin 800ms linear infinite;
 }
 
-.reference-images__error {
+.profile-info__image-error {
   color: #64748b;
   font-size: 0.82rem;
   font-weight: 800;
 }
 
-@keyframes reference-image-spin {
+@keyframes profile-info-spin {
   to {
     transform: rotate(360deg);
   }
 }
 
-.reference-images__figure figcaption {
+.profile-info__figure figcaption {
   display: grid;
   gap: 3px;
 }
 
-.reference-images__figure strong {
+.profile-info__figure strong {
   color: #0f172a;
-  font-size: 0.88rem;
-  line-height: 1.3;
-}
-
-.reference-images__figure span {
-  color: #64748b;
-  font-size: 0.78rem;
-  font-weight: 700;
-  line-height: 1.3;
-}
-
-.module-details {
-  position: fixed;
-  inset: 0;
-  z-index: 52;
-  display: grid;
-  place-items: center;
-  padding: 24px;
-  background: rgba(15, 23, 42, 0.55);
-}
-
-.module-details__panel {
-  display: grid;
-  gap: 16px;
-  width: min(1040px, 100%);
-  max-height: min(720px, calc(100vh - 48px));
-  overflow: auto;
-  border: 1px solid #cbd5e1;
-  border-radius: 8px;
-  padding: 18px;
-  background: #ffffff;
-  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.28);
-}
-
-.module-details__header {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 16px;
-}
-
-.module-details__header h2 {
-  margin: 0;
-  color: #0f172a;
-  font-size: 1rem;
-  font-weight: 850;
-  letter-spacing: 0;
-}
-
-.module-details__header p {
-  margin: 3px 0 0;
-  color: #64748b;
   font-size: 0.84rem;
+  line-height: 1.3;
+}
+
+.profile-info__figure span {
+  color: #64748b;
+  font-size: 0.76rem;
   font-weight: 700;
-  line-height: 1.35;
-}
-
-.module-details__close {
-  display: inline-grid;
-  flex: 0 0 auto;
-  place-items: center;
-  width: 34px;
-  height: 34px;
-  border: 1px solid #cbd5e1;
-  border-radius: 6px;
-  color: #334155;
-  background: #f8fafc;
-  cursor: pointer;
-}
-
-.module-details__close:hover,
-.module-details__close:focus-visible {
-  border-color: #94a3b8;
-  background: #e2e8f0;
-}
-
-.module-details__intro {
-  border-left: 3px solid #006d77;
-  padding: 2px 0 2px 12px;
-}
-
-.module-details__intro p {
-  margin: 0;
-  color: #475569;
-  font-size: 0.86rem;
-  font-weight: 700;
-  line-height: 1.45;
-}
-
-.module-details__table-wrap {
-  overflow-x: auto;
-  border: 1px solid #dbe3ea;
-  border-radius: 8px;
-}
-
-.module-details table {
-  width: 100%;
-  min-width: 840px;
-  border-collapse: collapse;
-  color: #334155;
-  font-size: 0.82rem;
-  line-height: 1.35;
-}
-
-.module-details th,
-.module-details td {
-  border-bottom: 1px solid #e2e8f0;
-  padding: 10px 12px;
-  text-align: left;
-  vertical-align: top;
-}
-
-.module-details thead th {
-  color: #0f172a;
-  background: #f1f5f9;
-  font-size: 0.74rem;
-  font-weight: 850;
-  letter-spacing: 0;
-  text-transform: uppercase;
-}
-
-.module-details tbody th {
-  color: #0f172a;
-  font-weight: 850;
-}
-
-.module-details tbody tr:last-child th,
-.module-details tbody tr:last-child td {
-  border-bottom: 0;
-}
-
-.module-details a {
-  color: #006d77;
-  font-weight: 850;
-  text-decoration: none;
-}
-
-.module-details a:hover,
-.module-details a:focus-visible {
-  color: #004f58;
-  text-decoration: underline;
+  line-height: 1.3;
 }
 
 @media (max-width: 640px) {
-  .reference-images {
-    padding: 12px;
-  }
-
-  .reference-images__panel {
-    max-height: calc(100vh - 24px);
-    padding: 14px;
-  }
-
-  .module-details {
-    padding: 12px;
-  }
-
-  .module-details__panel {
-    max-height: calc(100vh - 24px);
-    padding: 14px;
+  .profile-info__panel {
+    width: 100%;
+    padding: 16px;
   }
 }
 

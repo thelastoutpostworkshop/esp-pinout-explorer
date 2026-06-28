@@ -201,18 +201,28 @@ describe('ExplorerSidebar', () => {
     });
 
     expect(wrapper.find('.explorer-sidebar__chips').exists()).toBe(false);
+    expect(wrapper.find('[role="dialog"][aria-label="Profile information"]').exists()).toBe(false);
+    expect(wrapper.text()).toContain('Profile info');
+    expect(wrapper.text()).not.toContain('Dual-core 32-bit Xtensa LX7');
+    expect(wrapper.text()).not.toContain('USB ports, 5V/GND headers, or 3V3/GND headers');
+
+    await findButton(wrapper, 'Profile info').trigger('click');
+
+    expect(wrapper.find('[role="dialog"][aria-label="Profile information"]').exists()).toBe(true);
+    expect(wrapper.text()).toContain('Profile');
+    expect(wrapper.text()).toContain('Type');
+    expect(wrapper.text()).toContain('Dev board');
+    expect(wrapper.text()).toContain('View');
+    expect(wrapper.text()).toContain('Header pins, silkscreen labels, and on-board parts.');
     expect(wrapper.text()).toContain('Module');
     expect(wrapper.text()).toContain('Chip');
     expect(wrapper.text()).toContain('CPU');
     expect(wrapper.text()).toContain('Dual-core 32-bit Xtensa LX7');
-    expect(wrapper.text()).not.toContain('Header pins, silkscreen labels, and on-board parts.');
-    expect(wrapper.find('.explorer-sidebar__profile-context').exists()).toBe(false);
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
     expect(wrapper.text()).toContain('Flash');
     expect(wrapper.text()).toContain('8 MB Quad SPI flash / 32 MB Octal SPI flash');
     expect(wrapper.text()).toContain('PSRAM');
     expect(wrapper.text()).toContain('8 MB Octal PSRAM / 16 MB Octal PSRAM');
-    expect(wrapper.find('.explorer-sidebar__board-specs').exists()).toBe(true);
     expect(wrapper.text()).toContain('Board');
     expect(wrapper.text()).toContain('Power');
     expect(wrapper.text()).toContain('USB ports, 5V/GND headers, or 3V3/GND headers');
@@ -220,38 +230,24 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('USB-to-UART bridge for flashing');
     expect(wrapper.text()).toContain('On-board');
     expect(wrapper.text()).toContain('addressable RGB LED on GPIO38');
-    expect(wrapper.text()).not.toContain('The printed metal-can name is the module');
-    expect(wrapper.text()).toContain('Variants');
-    expect(wrapper.find('.explorer-sidebar__module-heading .explorer-sidebar__module-action').exists()).toBe(true);
-    expect(wrapper.text()).not.toContain('Module variants');
-    expect(wrapper.text()).toContain('Official docs');
-    expect(wrapper.find('.explorer-sidebar__source').attributes('href')).toBe(esp32s3.boardProfiles?.[0]?.source?.url);
-    expect(wrapper.text()).toContain('Reference images');
-
-    await wrapper.find('button[aria-label="View module variant details"]').trigger('click');
-
-    expect(wrapper.find('[role="dialog"][aria-label="Module variant details"]').exists()).toBe(true);
-    expect(wrapper.text()).toContain('Module variants');
     expect(wrapper.text()).toContain('The printed metal-can name is the module');
+    expect(wrapper.text()).toContain('Module variants');
+    expect(wrapper.text()).toContain('Official docs');
+    expect(wrapper.find('.profile-info__source').attributes('href')).toBe(esp32s3.boardProfiles?.[0]?.source?.url);
+    expect(wrapper.text()).toContain('Reference images');
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-2-N32R16V');
     expect(wrapper.text()).toContain('External antenna connector');
     expect(wrapper.text()).toContain('GPIO35/GPIO36/GPIO37 are used internally');
-    expect(wrapper.find('.module-details a').attributes('href')).toBe(
+    expect(wrapper.find('.profile-info__table-wrap a').attributes('href')).toBe(
       esp32s3.boardProfiles?.[0]?.moduleVariants?.[0].source?.url,
     );
 
-    await wrapper.find('button[aria-label="Close module variant details"]').trigger('click');
-    expect(wrapper.find('[role="dialog"][aria-label="Module variant details"]').exists()).toBe(false);
-
-    await wrapper.find('.explorer-sidebar__figure-button').trigger('click');
-
-    expect(wrapper.find('[role="dialog"][aria-label="Reference images"]').exists()).toBe(true);
-    expect(wrapper.findAll('.reference-images__figure')).toHaveLength(esp32s3.boardProfiles?.[0]?.source?.figures?.length ?? 0);
+    expect(wrapper.findAll('.profile-info__figure')).toHaveLength(esp32s3.boardProfiles?.[0]?.source?.figures?.length ?? 0);
     expect(wrapper.findAll('[role="status"][aria-label="Loading reference image"]')).toHaveLength(
       esp32s3.boardProfiles?.[0]?.source?.figures?.length ?? 0,
     );
     expect(wrapper.text()).toContain('Pin layout');
-    const referenceImages = wrapper.findAll('.reference-images__figure img');
+    const referenceImages = wrapper.findAll('.profile-info__figure img');
     expect(referenceImages[0].attributes('src')).toBe(esp32s3.boardProfiles?.[0]?.source?.figures?.[0].url);
 
     await referenceImages[0].trigger('load');
@@ -262,14 +258,16 @@ describe('ExplorerSidebar', () => {
     await referenceImages[1].trigger('error');
     expect(wrapper.text()).toContain('Image unavailable');
 
-    await wrapper.find('button[aria-label="Close reference images"]').trigger('click');
-    expect(wrapper.find('[role="dialog"][aria-label="Reference images"]').exists()).toBe(false);
+    await wrapper.find('button[aria-label="Close profile information"]').trigger('click');
+    expect(wrapper.find('[role="dialog"][aria-label="Profile information"]').exists()).toBe(false);
 
     store.selectPackage('esp32s3-devkitm-1');
     await wrapper.vm.$nextTick();
 
+    await findButton(wrapper, 'Profile info').trigger('click');
+
     expect(wrapper.text()).toContain('ESP32-S3-MINI-1 / MINI-1U');
-    expect(wrapper.find('.explorer-sidebar__source').attributes('href')).toBe(
+    expect(wrapper.find('.profile-info__source').attributes('href')).toBe(
       esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-devkitm-1')?.source?.url,
     );
 
@@ -289,24 +287,20 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('4 MB SPI flash in chip package');
     expect(wrapper.text()).toContain('No PSRAM');
     expect(wrapper.text()).toContain('J5 jumper supports module current measurement');
-    expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(true);
 
     store.selectPackage('esp32c6-mini-1');
     await wrapper.vm.$nextTick();
 
-    expect(wrapper.find('.explorer-sidebar__profile-context').exists()).toBe(true);
     expect(wrapper.text()).toContain('Module pads for PCB design, not dev-board headers.');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1');
-    expect(wrapper.text()).toContain('Details');
     expect(wrapper.text()).toContain('4 MB SPI flash in chip package');
-    expect(wrapper.find('.explorer-sidebar__board-specs').exists()).toBe(false);
+    expect(wrapper.text()).not.toContain('J5 jumper supports module current measurement');
 
     store.selectPackage('qfn40');
     await wrapper.vm.$nextTick();
 
     expect(wrapper.text()).toContain('Chip package');
-    expect(wrapper.find('.explorer-sidebar__board-specs').exists()).toBe(false);
-    expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(false);
+    expect(wrapper.text()).not.toContain('Module pads for PCB design, not dev-board headers.');
   });
 });
 
