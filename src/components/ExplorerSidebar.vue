@@ -42,7 +42,7 @@
         aria-label="Open profile information"
         @click="openProfileInfo"
       >
-        <Info :size="16" aria-hidden="true" />
+        <PanelRightOpen :size="16" aria-hidden="true" />
         <span>Profile info</span>
       </button>
 
@@ -231,7 +231,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { ExternalLink, Info, X } from '@lucide/vue';
+import { ExternalLink, PanelRightOpen, X } from '@lucide/vue';
 import PinSearch from '@/components/PinSearch.vue';
 import { useSocStore } from '@/stores/socStore';
 import type { PinProfileKind, SocPackageVariant } from '@/types/soc';
