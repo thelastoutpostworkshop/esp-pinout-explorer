@@ -33,6 +33,7 @@ const source: SocSource = {
     'Table 3-4 SDIO Input Sampling Edge/Output Driving Edge Control',
     'Table 3-5 UART0 ROM Message Printing Control',
     'Table 3-7 JTAG Signal Source Control',
+    'Features',
   ],
 };
 
@@ -473,6 +474,9 @@ export const esp32c6: SocDefinition = {
   family: 'ESP32',
   defaultPackageId: 'qfn40',
   defaultProfileId: 'esp32c6-devkitm-1',
+  chipSpecs: {
+    cpu: 'Single-core 32-bit RISC-V HP CPU up to 160 MHz, plus low-power RISC-V core',
+  },
   packageName: 'QFN40 (5 x 5 mm), top view',
   description: 'ESP32-C6 Wi-Fi 6, Bluetooth LE, and 802.15.4 SoC pinout.',
   source,
@@ -1066,6 +1070,26 @@ const esp32c6Mini1UPins: SocPin[] = esp32c6Mini1Pins.map((pin) => ({
   ]),
 }));
 
+const esp32c6Mini1ModuleVariant: SocModuleVariant = {
+  name: 'ESP32-C6-MINI-1',
+  antenna: 'On-board PCB antenna',
+  flash: '4 MB SPI flash in chip package',
+  psram: 'No PSRAM',
+  footprint: '13.2 x 16.6 x 2.4 mm',
+  pinoutImpact: 'Same 53-pad module pinout as MINI-1U; antenna implementation differs.',
+  source: mini1Source,
+};
+
+const esp32c6Mini1UModuleVariant: SocModuleVariant = {
+  name: 'ESP32-C6-MINI-1U',
+  antenna: 'External antenna connector',
+  flash: '4 MB SPI flash in chip package',
+  psram: 'No PSRAM',
+  footprint: '13.2 x 12.5 x 2.4 mm',
+  pinoutImpact: 'Same 53-pad module pinout as MINI-1; antenna connector changes RF layout only.',
+  source: mini1Source,
+};
+
 const esp32c6Mini1Profile: SocPackageVariant = {
   id: 'esp32c6-mini-1',
   name: 'MINI-1',
@@ -1073,6 +1097,7 @@ const esp32c6Mini1Profile: SocPackageVariant = {
   kind: 'module',
   source: mini1Source,
   moduleNames: ['ESP32-C6-MINI-1'],
+  moduleVariants: [esp32c6Mini1ModuleVariant],
   identificationNotes: [
     'This profile is the 53-pad ESP32-C6-MINI-1 module layout, not the bare ESP32-C6 QFN package.',
     'ESP32-C6-MINI-1 uses the on-board PCB antenna variant; the related MINI-1U uses an external antenna connector.',
@@ -1087,6 +1112,7 @@ const esp32c6Mini1UProfile: SocPackageVariant = {
   kind: 'module',
   source: mini1Source,
   moduleNames: ['ESP32-C6-MINI-1U'],
+  moduleVariants: [esp32c6Mini1UModuleVariant],
   identificationNotes: [
     'This profile is the 53-pad ESP32-C6-MINI-1U module layout, not the bare ESP32-C6 QFN package.',
     'ESP32-C6-MINI-1U uses an external antenna connector and has no keepout zone; the pad pinout matches ESP32-C6-MINI-1.',
@@ -1094,24 +1120,14 @@ const esp32c6Mini1UProfile: SocPackageVariant = {
   pins: esp32c6Mini1UPins,
 };
 
-const esp32c6DevKitM1ModuleVariants = [
+const esp32c6DevKitM1ModuleVariants: SocModuleVariant[] = [
   {
-    name: 'ESP32-C6-MINI-1',
-    antenna: 'On-board PCB antenna',
-    flash: '4 MB SPI flash in chip package',
-    psram: 'No PSRAM',
-    footprint: '13.2 x 16.6 x 2.4 mm',
+    ...esp32c6Mini1ModuleVariant,
     pinoutImpact: 'Same DevKitM-1 header pinout; antenna implementation differs from MINI-1U.',
-    source: mini1Source,
   },
   {
-    name: 'ESP32-C6-MINI-1U',
-    antenna: 'External antenna connector',
-    flash: '4 MB SPI flash in chip package',
-    psram: 'No PSRAM',
-    footprint: '13.2 x 12.5 x 2.4 mm',
+    ...esp32c6Mini1UModuleVariant,
     pinoutImpact: 'Same DevKitM-1 header pinout; antenna connector changes RF layout only.',
-    source: mini1Source,
   },
 ];
 

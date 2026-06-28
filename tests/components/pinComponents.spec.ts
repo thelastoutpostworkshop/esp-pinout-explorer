@@ -202,9 +202,16 @@ describe('ExplorerSidebar', () => {
 
     expect(wrapper.text()).toContain('Module');
     expect(wrapper.text()).toContain('Dev board');
+    expect(wrapper.text()).toContain('Chip');
+    expect(wrapper.text()).toContain('CPU');
+    expect(wrapper.text()).toContain('Dual-core 32-bit Xtensa LX7');
     expect(wrapper.text()).not.toContain('Header pins, silkscreen labels, and on-board parts.');
     expect(wrapper.find('.explorer-sidebar__profile-context').exists()).toBe(false);
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
+    expect(wrapper.text()).toContain('Flash');
+    expect(wrapper.text()).toContain('8 MB Quad SPI flash / 32 MB Octal SPI flash');
+    expect(wrapper.text()).toContain('PSRAM');
+    expect(wrapper.text()).toContain('8 MB Octal PSRAM / 16 MB Octal PSRAM');
     expect(wrapper.text()).not.toContain('The printed metal-can name is the module');
     expect(wrapper.text()).toContain('Variants');
     expect(wrapper.find('.explorer-sidebar__module-heading .explorer-sidebar__module-action').exists()).toBe(true);
@@ -262,6 +269,7 @@ describe('ExplorerSidebar', () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.findAll('.v-list-subheader').map((item) => item.text())).toEqual(['Dev boards', 'Modules', 'Chip packages']);
+    expect(wrapper.text()).toContain('Single-core 32-bit RISC-V HP CPU');
     expect(wrapper.text()).toContain('DevKitM-1 (MINI)');
     expect(wrapper.text()).toContain('MINI-1');
     expect(wrapper.text()).toContain('MINI-1U');
@@ -270,6 +278,8 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).not.toContain('Dev board: DevKitM-1');
     expect(wrapper.text()).not.toContain('Module: MINI-1');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1 / MINI-1U');
+    expect(wrapper.text()).toContain('4 MB SPI flash in chip package');
+    expect(wrapper.text()).toContain('No PSRAM');
     expect(wrapper.find('.explorer-sidebar__figure-button').exists()).toBe(true);
 
     store.selectPackage('esp32c6-mini-1');
@@ -278,6 +288,8 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.find('.explorer-sidebar__profile-context').exists()).toBe(true);
     expect(wrapper.text()).toContain('Module pads for PCB design, not dev-board headers.');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1');
+    expect(wrapper.text()).toContain('Details');
+    expect(wrapper.text()).toContain('4 MB SPI flash in chip package');
 
     store.selectPackage('qfn40');
     await wrapper.vm.$nextTick();

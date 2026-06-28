@@ -19,6 +19,7 @@ const source: SocSource = {
     'Table 3-3 Chip Boot Mode Control',
     'Table 3-4 VDD_SPI Voltage Control',
     'Table 3-5 JTAG Signal Source Control',
+    'Features',
   ],
 };
 
@@ -189,6 +190,9 @@ export const esp32s3: SocDefinition = {
   family: 'ESP32',
   defaultPackageId: 'esp32s3-qfn56',
   defaultProfileId: 'esp32s3-devkitc-1-v1-1',
+  chipSpecs: {
+    cpu: 'Dual-core 32-bit Xtensa LX7, up to 240 MHz',
+  },
   packageName: 'QFN56 (7 x 7 mm), top view',
   description: 'ESP32-S3 Wi-Fi + Bluetooth LE SoC pinout MVP.',
   source,

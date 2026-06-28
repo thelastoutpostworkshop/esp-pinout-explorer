@@ -169,6 +169,7 @@ describe('SoC data invariants', () => {
       expect(soc.family.trim()).not.toBe('');
       expect(soc.packageName.trim()).not.toBe('');
       expect(soc.description.trim()).not.toBe('');
+      expect(soc.chipSpecs?.cpu.trim()).not.toBe('');
       expectValidSource(soc.source);
 
       const profileIds = new Set<string>();
@@ -288,6 +289,10 @@ describe('SoC data invariants', () => {
     for (const profile of moduleProfiles) {
       expect(profile.packageName.toLowerCase()).toContain('module');
       expect(profile.moduleNames?.length).toBeGreaterThan(0);
+      expect(profile.moduleVariants?.length).toBeGreaterThan(0);
+      for (const variant of profile.moduleVariants ?? []) {
+        expectValidModuleVariant(variant);
+      }
       expect(profile.identificationNotes?.some((note) => note.includes('not the bare'))).toBe(true);
       expect(profile.boardLayout).toBeUndefined();
     }

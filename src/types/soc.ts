@@ -74,6 +74,10 @@ export interface SocModuleVariant {
   source?: SocSource;
 }
 
+export interface SocChipSpecs {
+  cpu: string;
+}
+
 export interface SocPackageVariant {
   id: string;
   name: string;
@@ -93,6 +97,7 @@ export interface SocDefinition {
   family: string;
   defaultPackageId?: string;
   defaultProfileId?: string;
+  chipSpecs?: SocChipSpecs;
   packageName: string;
   description: string;
   source: SocSource;

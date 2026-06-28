@@ -51,6 +51,16 @@
         <p>{{ selectedProfileSummary }}</p>
       </div>
 
+      <div v-if="chipSpecItems.length" class="explorer-sidebar__chip-specs">
+        <span>Chip</span>
+        <dl>
+          <div v-for="item in chipSpecItems" :key="item.label">
+            <dt>{{ item.label }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+        </dl>
+      </div>
+
       <div v-if="moduleDisplay" class="explorer-sidebar__module">
         <div class="explorer-sidebar__module-heading">
           <span>Module</span>
@@ -62,10 +72,16 @@
             @click="openModuleDetails"
           >
             <List :size="14" aria-hidden="true" />
-            <span>Variants</span>
+            <span>{{ moduleDetailsActionLabel }}</span>
           </button>
         </div>
         <strong>{{ moduleDisplay }}</strong>
+        <dl v-if="moduleMemorySummaryItems.length" class="explorer-sidebar__module-specs">
+          <div v-for="item in moduleMemorySummaryItems" :key="item.label">
+            <dt>{{ item.label }}</dt>
+            <dd>{{ item.value }}</dd>
+          </div>
+        </dl>
       </div>
 
       <div
@@ -273,11 +289,23 @@ const selectedProfileSummary = computed(() => profileKindSummary(selectedProfile
 const selectedSource = computed(() => selectedPackage.value.source ?? selectedSoc.value.source);
 const sourceLinkTitle = computed(() => `${selectedSource.value.title} ${selectedSource.value.version}`);
 const sourceFigures = computed(() => selectedSource.value.figures ?? []);
+const chipSpecItems = computed(() => {
+  const cpu = selectedSoc.value.chipSpecs?.cpu;
+
+  return cpu ? [{ label: 'CPU', value: cpu }] : [];
+});
 const referenceImagesOpen = ref(false);
 const loadingReferenceImageUrls = ref(new Set<string>());
 const erroredReferenceImageUrls = ref(new Set<string>());
 const moduleDisplay = computed(() => formatModuleNames(selectedPackage.value.moduleNames ?? []));
 const moduleVariants = computed(() => selectedPackage.value.moduleVariants ?? []);
+const moduleDetailsActionLabel = computed(() => (moduleVariants.value.length === 1 ? 'Details' : 'Variants'));
+const moduleMemorySummaryItems = computed(() =>
+  [
+    { label: 'Flash', value: summarizeVariantValues(moduleVariants.value.map((variant) => variant.flash)) },
+    { label: 'PSRAM', value: summarizeVariantValues(moduleVariants.value.map((variant) => variant.psram)) },
+  ].filter((item) => item.value),
+);
 const moduleDetailsOpen = ref(false);
 const moduleDetailsIntro = computed(() => {
   const note = selectedPackage.value.identificationNotes?.[0];
@@ -376,6 +404,19 @@ function formatModuleNames(moduleNames: string[]) {
 
 function valueOrDash(value: string | undefined) {
   return value?.trim() || '-';
+}
+
+function summarizeVariantValues(values: Array<string | undefined>) {
+  const cleanValues = values.flatMap((value) => {
+    const trimmedValue = value?.trim();
+    return trimmedValue ? [trimmedValue] : [];
+  });
+
+  return uniqueValues(cleanValues).join(' / ');
+}
+
+function uniqueValues<T>(values: T[]): T[] {
+  return [...new Set(values)];
 }
 
 function openReferenceImages() {
@@ -505,6 +546,61 @@ function markReferenceImageFailed(url: string) {
 
 .explorer-sidebar__profile-context--package span {
   color: #475569;
+}
+
+.explorer-sidebar__chip-specs {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  border: 1px solid #dbe3ea;
+  border-radius: 8px;
+  padding: 9px 11px;
+  background: #ffffff;
+}
+
+.explorer-sidebar__chip-specs > span {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.explorer-sidebar__chip-specs dl,
+.explorer-sidebar__module-specs {
+  display: grid;
+  gap: 5px;
+  min-width: 0;
+  margin: 0;
+}
+
+.explorer-sidebar__chip-specs dl > div,
+.explorer-sidebar__module-specs > div {
+  display: grid;
+  grid-template-columns: minmax(46px, max-content) minmax(0, 1fr);
+  gap: 8px;
+  align-items: baseline;
+  min-width: 0;
+}
+
+.explorer-sidebar__chip-specs dt,
+.explorer-sidebar__module-specs dt {
+  color: #64748b;
+  font-size: 0.72rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.explorer-sidebar__chip-specs dd,
+.explorer-sidebar__module-specs dd {
+  min-width: 0;
+  margin: 0;
+  color: #0f172a;
+  font-size: 0.8rem;
+  font-weight: 750;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
 }
 
 .explorer-sidebar__module {
