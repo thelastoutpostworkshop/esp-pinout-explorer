@@ -344,11 +344,14 @@ describe('MakerToolsPage', () => {
     const wrapper = mount(MakerToolsPage);
 
     expect(wrapper.text()).toContain('Maker Tools');
+    expect(wrapper.text()).toContain('ESPConnect');
     expect(wrapper.text()).toContain('ESP Board Vault');
     expect(wrapper.text()).toContain('ESP32 Partition Builder');
     expect(wrapper.text()).toContain('GPIOViewer');
-    expect(wrapper.findAll('.maker-tools-page__card')).toHaveLength(5);
-    expect(wrapper.findAll('.maker-tools-page__thumbnail img')).toHaveLength(5);
+    expect(wrapper.find('a[href="https://thelastoutpostworkshop.github.io/ESPConnect/"]').exists()).toBe(true);
+    expect(wrapper.find('a[href="https://github.com/thelastoutpostworkshop/ESPConnect"]').exists()).toBe(true);
+    expect(wrapper.findAll('.maker-tools-page__card')).toHaveLength(6);
+    expect(wrapper.findAll('.maker-tools-page__thumbnail img')).toHaveLength(6);
 
     await findButton(wrapper, 'Back to pinout').trigger('click');
 

@@ -90,6 +90,7 @@
 import { ArrowLeft, Coffee, ExternalLink, Play, Wrench } from '@lucide/vue';
 import arduinoMakerWorkshopThumbnail from '@/assets/tool-thumbnails/arduino-maker-workshop.jpg';
 import espBoardVaultThumbnail from '@/assets/tool-thumbnails/esp-board-vault.jpg';
+import espConnectThumbnail from '@/assets/tool-thumbnails/espconnect.jpg';
 import gpioViewerThumbnail from '@/assets/tool-thumbnails/gpio-viewer.jpg';
 import partitionBuilderThumbnail from '@/assets/tool-thumbnails/partition-builder.jpg';
 import videoConversionThumbnail from '@/assets/tool-thumbnails/video-conversion.jpg';
@@ -109,6 +110,17 @@ interface ToolItem {
 const store = useSocStore();
 
 const tools: ToolItem[] = [
+  {
+    title: 'ESPConnect',
+    description:
+      'Browser-based utility for working with ESP devices. Inspect hardware details, manage SPIFFS, FATFS, and LittleFS files, back up flash, and deploy firmware from a modern Chromium browser.',
+    thumbnailSrc: espConnectThumbnail,
+    url: 'https://thelastoutpostworkshop.github.io/ESPConnect/',
+    sourceUrl: 'https://github.com/thelastoutpostworkshop/ESPConnect',
+    sourceLabel: 'thelastoutpostworkshop/ESPConnect',
+    tutorialUrl: 'https://www.youtube.com/watch?v=-nhDKzBxHiI',
+    actionLabel: 'Open tool',
+  },
   {
     title: 'ESP Board Vault',
     description:
