@@ -6,6 +6,7 @@ import ChipSvg from '@/components/ChipSvg.vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
 import PinInfoDrawer from '@/components/PinInfoDrawer.vue';
 import PinSearch from '@/components/PinSearch.vue';
+import ProfileInfoDrawer from '@/components/ProfileInfoDrawer.vue';
 import SocPinoutView from '@/components/SocPinoutView.vue';
 import { hasMakerWarning } from '@/data/pinWarnings';
 import { esp32c6 } from '@/data/socs/esp32c6';
@@ -141,6 +142,7 @@ describe('SocPinoutView', () => {
       global: {
         stubs: {
           PinInfoDrawer: { template: '<aside />' },
+          ProfileInfoDrawer: { template: '<aside />' },
         },
       },
     });
@@ -194,11 +196,17 @@ describe('ExplorerSidebar', () => {
 
   it('shows module identity for board profiles', async () => {
     const store = useSocStore();
-    const wrapper = mount(ExplorerSidebar, {
-      global: {
-        stubs: sidebarStubs,
+    const wrapper = mount(
+      {
+        components: { ExplorerSidebar, ProfileInfoDrawer },
+        template: '<ExplorerSidebar /><ProfileInfoDrawer />',
       },
-    });
+      {
+        global: {
+          stubs: sidebarStubs,
+        },
+      },
+    );
 
     expect(wrapper.find('.explorer-sidebar__chips').exists()).toBe(false);
     expect(wrapper.find('[role="dialog"][aria-label="Profile information"]').exists()).toBe(false);
@@ -403,8 +411,17 @@ const sidebarStubs = {
   VChip: {
     template: '<span><slot /></span>',
   },
+  VCard: {
+    template: '<section><slot /></section>',
+  },
   VDivider: {
     template: '<hr class="v-divider">',
+  },
+  VNavigationDrawer: {
+    emits: ['update:modelValue'],
+    props: ['modelValue'],
+    inheritAttrs: false,
+    template: '<aside v-if="modelValue" v-bind="$attrs" class="v-navigation-drawer v-navigation-drawer--active"><slot /></aside>',
   },
   VListItem: {
     props: ['title'],

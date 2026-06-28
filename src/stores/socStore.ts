@@ -65,6 +65,7 @@ export const useSocStore = defineStore('soc', () => {
   const selectedSocId = ref(initialSelection.socId);
   const selectedPackageId = ref<string | null>(initialSelection.packageId);
   const selectedPinId = ref<string | null>(null);
+  const profileInfoOpen = ref(false);
   const searchQuery = ref('');
 
   const selectedSoc = computed(() => socs.find((soc) => soc.id === selectedSocId.value) ?? socs[0]);
@@ -107,10 +108,20 @@ export const useSocStore = defineStore('soc', () => {
 
   function selectPin(pinId: string) {
     selectedPinId.value = pinId;
+    profileInfoOpen.value = false;
   }
 
   function clearSelectedPin() {
     selectedPinId.value = null;
+  }
+
+  function openProfileInfo() {
+    selectedPinId.value = null;
+    profileInfoOpen.value = true;
+  }
+
+  function closeProfileInfo() {
+    profileInfoOpen.value = false;
   }
 
   function setSearchQuery(query: string) {
@@ -131,6 +142,7 @@ export const useSocStore = defineStore('soc', () => {
     selectedPins,
     selectedPinId,
     selectedPin,
+    profileInfoOpen,
     searchQuery,
     filteredPins,
     filteredPinIds,
@@ -138,6 +150,8 @@ export const useSocStore = defineStore('soc', () => {
     selectPackage,
     selectPin,
     clearSelectedPin,
+    openProfileInfo,
+    closeProfileInfo,
     setSearchQuery,
     countPinsForQuery,
   };

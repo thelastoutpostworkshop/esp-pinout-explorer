@@ -31,6 +31,7 @@
     </section>
 
     <PinInfoDrawer :pin="store.selectedPin" :source="selectedPackage.source ?? selectedSoc.source" @close="store.clearSelectedPin" />
+    <ProfileInfoDrawer />
   </section>
 </template>
 
@@ -39,6 +40,7 @@ import { computed } from 'vue';
 import BoardSvg from '@/components/BoardSvg.vue';
 import ChipSvg from '@/components/ChipSvg.vue';
 import PinInfoDrawer from '@/components/PinInfoDrawer.vue';
+import ProfileInfoDrawer from '@/components/ProfileInfoDrawer.vue';
 import { useSocStore } from '@/stores/socStore';
 
 const store = useSocStore();
