@@ -200,8 +200,8 @@ describe('ExplorerSidebar', () => {
       },
     });
 
+    expect(wrapper.find('.explorer-sidebar__chips').exists()).toBe(false);
     expect(wrapper.text()).toContain('Module');
-    expect(wrapper.text()).toContain('Dev board');
     expect(wrapper.text()).toContain('Chip');
     expect(wrapper.text()).toContain('CPU');
     expect(wrapper.text()).toContain('Dual-core 32-bit Xtensa LX7');

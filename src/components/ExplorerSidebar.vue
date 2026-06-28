@@ -1,12 +1,6 @@
 <template>
   <aside class="explorer-sidebar" aria-label="Explorer controls">
     <section class="explorer-sidebar__section">
-      <div class="explorer-sidebar__chips">
-        <v-chip class="pin-chip" color="primary" size="small" variant="flat">{{ selectedSoc.name }}</v-chip>
-        <v-chip class="pin-chip" color="secondary" size="small" variant="tonal">{{ selectedPackage.name }}</v-chip>
-        <v-chip class="pin-chip" size="small" variant="tonal">{{ selectedProfileKindLabel }}</v-chip>
-      </div>
-
       <v-select
         :model-value="store.selectedSocId"
         class="explorer-sidebar__select"
@@ -512,7 +506,6 @@ function markReferenceImageFailed(url: string) {
   text-transform: uppercase;
 }
 
-.explorer-sidebar__chips,
 .explorer-sidebar__legend {
   display: flex;
   flex-wrap: wrap;
