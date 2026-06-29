@@ -1,4 +1,4 @@
-import { createEsp32DevKitCV4Profile, createEsp32DevKitM1Profile } from '@/data/boards/esp32';
+import { createEsp32BoardProfiles } from '@/data/boards/esp32';
 import type { PinPosition, PinType, PinWarning, SocDefinition, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
@@ -448,8 +448,4 @@ function findQfnPinByGpio(gpio: number | undefined) {
   return esp32.pins.find((candidate) => candidate.gpio === gpio);
 }
 
-const esp32DevKitCV4Profile = createEsp32DevKitCV4Profile(findQfnPinByGpio);
-
-const esp32DevKitM1Profile = createEsp32DevKitM1Profile(findQfnPinByGpio);
-
-esp32.boardProfiles = [esp32DevKitCV4Profile, esp32DevKitM1Profile];
+esp32.boardProfiles = createEsp32BoardProfiles(findQfnPinByGpio);

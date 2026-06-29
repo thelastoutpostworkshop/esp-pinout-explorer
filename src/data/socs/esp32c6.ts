@@ -1,4 +1,4 @@
-import { createEsp32c6DevKitC1Profile, createEsp32c6DevKitM1Profile, mini1Source } from '@/data/boards/esp32c6';
+import { createEsp32c6BoardProfiles, mini1Source } from '@/data/boards/esp32c6';
 import type {
   PinPosition,
   PinType,
@@ -886,9 +886,5 @@ const esp32c6Mini1UProfile: SocPackageVariant = {
   pins: esp32c6Mini1UPins,
 };
 
-const esp32c6DevKitM1Profile = createEsp32c6DevKitM1Profile(findC6PinByGpio);
-
-const esp32c6DevKitC1Profile = createEsp32c6DevKitC1Profile(findC6PinByGpio);
-
 esp32c6.packageVariants = [...(esp32c6.packageVariants ?? []), esp32c6Mini1Profile, esp32c6Mini1UProfile];
-esp32c6.boardProfiles = [esp32c6DevKitM1Profile, esp32c6DevKitC1Profile];
+esp32c6.boardProfiles = createEsp32c6BoardProfiles(findC6PinByGpio);

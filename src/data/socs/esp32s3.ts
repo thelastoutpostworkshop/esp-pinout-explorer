@@ -1,9 +1,4 @@
-import {
-  createEsp32s3DevKitC1V11Profile,
-  createEsp32s3DevKitM1Profile,
-  createEsp32s3UsbBridgeProfile,
-  createEsp32s3UsbOtgProfile,
-} from '@/data/boards/esp32s3';
+import { createEsp32s3BoardProfiles } from '@/data/boards/esp32s3';
 import type { PinPosition, PinType, PinWarning, SocDefinition, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
@@ -572,17 +567,4 @@ function findQfnPinByGpio(gpio: number | undefined) {
   return esp32s3.pins.find((candidate) => candidate.gpio === gpio);
 }
 
-const esp32s3DevKitC1V11Profile = createEsp32s3DevKitC1V11Profile(findQfnPinByGpio);
-
-const esp32s3DevKitM1Profile = createEsp32s3DevKitM1Profile(findQfnPinByGpio);
-
-const esp32s3UsbOtgProfile = createEsp32s3UsbOtgProfile(findQfnPinByGpio);
-
-const esp32s3UsbBridgeProfile = createEsp32s3UsbBridgeProfile(findQfnPinByGpio);
-
-esp32s3.boardProfiles = [
-  esp32s3DevKitC1V11Profile,
-  esp32s3DevKitM1Profile,
-  esp32s3UsbOtgProfile,
-  esp32s3UsbBridgeProfile,
-];
+esp32s3.boardProfiles = createEsp32s3BoardProfiles(findQfnPinByGpio);
