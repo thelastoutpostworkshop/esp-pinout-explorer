@@ -124,6 +124,26 @@ describe('BoardSvg', () => {
     const d3PinIndex = pins.findIndex((pin) => pin.boardLabel === 'D3');
     expect(pins[d3PinIndex].warnings).toEqual(expect.arrayContaining(['flash', 'onboard']));
     expect(wrapper.findAll('.board-pin')[d3PinIndex].find('.board-pin__warning-badge').exists()).toBe(true);
+
+    const functionWrapper = mount(BoardSvg, {
+      props: {
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: boardProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        showMainFunctions: true,
+        soc: esp32,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(functionWrapper.attributes('aria-label')).toContain('main functions shown');
+    expect(functionWrapper.find('svg').attributes('viewBox')).toBe('0 8 940 724');
+    expect(functionWrapper.findAll('.board-function-label')).toHaveLength(pins.length);
+    expect(functionWrapper.text()).toContain('GPIO23');
+    expect(functionWrapper.text()).toContain('ADC1_CH6');
   });
 
   it('renders connector-group board profiles without J1/J3 assumptions', async () => {
@@ -209,7 +229,7 @@ describe('SocPinoutView', () => {
     setActivePinia(createPinia());
   });
 
-  it('passes connector-group layout through to USB-OTG board rendering', () => {
+  it('passes connector-group layout through to USB-OTG board rendering', async () => {
     const store = useSocStore();
     store.selectPackage('esp32s3-usb-otg');
 
@@ -224,7 +244,18 @@ describe('SocPinoutView', () => {
 
     expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
     expect(wrapper.find('.header-name').exists()).toBe(false);
+    expect(wrapper.find('.soc-view__function-toggle').exists()).toBe(true);
+    expect(wrapper.find('.connector-board__pin-label--functions').exists()).toBe(false);
     expect(wrapper.text()).not.toContain('3 / 32 header pins');
+
+    const functionToggle = wrapper.find('button[aria-label="Show main functions on board pins"]');
+    expect(functionToggle.attributes('aria-checked')).toBe('false');
+
+    await functionToggle.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(functionToggle.attributes('aria-checked')).toBe('true');
+    expect(wrapper.find('.connector-board__pin-label--functions').exists()).toBe(true);
   });
 });
 

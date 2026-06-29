@@ -132,17 +132,18 @@
         />
         <text
           class="board-pin__label connector-board__pin-label"
+          :class="{ 'connector-board__pin-label--functions': showMainFunctions }"
           :x="connectorPinGeometry(pin).label.x"
           :y="connectorPinGeometry(pin).label.y"
           text-anchor="middle"
           dominant-baseline="middle"
         >
-          {{ boardPinDisplayLabel(pin) }}
+          {{ connectorPinDisplayLabel(pin) }}
         </text>
       </g>
     </svg>
 
-    <svg v-else class="board-svg" viewBox="128 8 684 724" xmlns="http://www.w3.org/2000/svg">
+    <svg v-else class="board-svg" :viewBox="dualHeaderViewBox" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="boardBody" x1="0" x2="1" y1="0" y2="1">
           <stop offset="0" stop-color="#0f766e" />
@@ -258,6 +259,35 @@
           {{ boardPinDisplayLabel(pin) }}
         </text>
       </g>
+
+      <g v-if="showMainFunctions" class="board-function-labels" aria-hidden="true">
+        <g
+          v-for="pin in functionLabelPins"
+          :key="`${pin.id}-functions`"
+          class="board-function-label"
+          :class="[
+            `board-function-label--${pin.type}`,
+            `board-function-label--${pin.position.side === 'right' ? 'right' : 'left'}`,
+          ]"
+        >
+          <line
+            class="board-function-label__leader"
+            :x1="functionLabelGeometry(pin).line.x1"
+            :x2="functionLabelGeometry(pin).line.x2"
+            :y1="functionLabelGeometry(pin).line.y"
+            :y2="functionLabelGeometry(pin).line.y"
+          />
+          <text
+            class="board-function-label__text"
+            :x="functionLabelGeometry(pin).text.x"
+            :y="functionLabelGeometry(pin).text.y"
+            :text-anchor="functionLabelGeometry(pin).text.anchor"
+            dominant-baseline="middle"
+          >
+            {{ boardPinFunctionLabel(pin, 4) }}
+          </text>
+        </g>
+      </g>
     </svg>
   </div>
 </template>
@@ -278,6 +308,7 @@ const props = defineProps<{
   hasFilter: boolean;
   boardLayout?: BoardLayout;
   boardArtwork?: BoardArtwork;
+  showMainFunctions?: boolean;
 }>();
 
 const emit = defineEmits<{
@@ -290,12 +321,19 @@ let introAnimationFrame = 0;
 
 const isConnectorGroupLayout = computed(() => props.boardLayout === 'connector-groups');
 const isUsbBridgeArtwork = computed(() => props.boardArtwork === 'usb-bridge');
+const showMainFunctions = computed(() => props.showMainFunctions ?? false);
 const boardPinLabel = computed(() => (isConnectorGroupLayout.value ? 'connector pins' : 'header pins'));
+const functionModeLabel = computed(() => (showMainFunctions.value ? ', main functions shown' : ''));
 const ariaLabel = computed(
-  () => `${props.soc.name} ${props.packageName} board profile, ${props.filteredPinCount} of ${props.totalPinCount} ${boardPinLabel.value} shown`,
+  () =>
+    `${props.soc.name} ${props.packageName} board profile, ${props.filteredPinCount} of ${props.totalPinCount} ${boardPinLabel.value} shown${functionModeLabel.value}`,
 );
 const leftHeaderName = computed(() => headerNameForSide('left', 'J1'));
 const rightHeaderName = computed(() => headerNameForSide('right', 'J3'));
+const dualHeaderViewBox = computed(() => (showMainFunctions.value ? '0 8 940 724' : '128 8 684 724'));
+const functionLabelPins = computed(() =>
+  props.pins.filter((pin) => pin.position.side === 'left' || pin.position.side === 'right'),
+);
 
 interface PointText {
   x: number;
@@ -454,6 +492,24 @@ function pinGeometry(pin: SocPin): Geometry {
   };
 }
 
+function functionLabelGeometry(pin: SocPin): { line: { x1: number; x2: number; y: number }; text: PointText } {
+  const geometry = pinGeometry(pin);
+  const side = pin.position.side === 'right' ? 'right' : 'left';
+  const y = geometry.label.y;
+
+  if (side === 'right') {
+    return {
+      line: { x1: geometry.rect.x + geometry.rect.width + 4, x2: 742, y },
+      text: { x: 748, y, anchor: 'start' },
+    };
+  }
+
+  return {
+    line: { x1: 198, x2: geometry.rect.x - 4, y },
+    text: { x: 192, y, anchor: 'end' },
+  };
+}
+
 function pinClasses(pin: SocPin) {
   const selected = pin.id === props.selectedPinId;
   const matched = props.filteredPinIds.has(pin.id);
@@ -509,6 +565,31 @@ function boardPinDisplayLabel(pin: SocPin) {
   }
 
   return label;
+}
+
+function connectorPinDisplayLabel(pin: SocPin) {
+  return showMainFunctions.value ? boardPinFunctionLabel(pin, 2) : boardPinDisplayLabel(pin);
+}
+
+function boardPinFunctionLabel(pin: SocPin, limit: number) {
+  const labels = uniqueValues((pin.mainFunctions.length ? pin.mainFunctions : [boardPinDisplayLabel(pin)]).map(compactFunctionLabel));
+  const visibleLabels = labels.slice(0, limit);
+  const hiddenCount = labels.length - visibleLabels.length;
+
+  return `${visibleLabels.join(' ')}${hiddenCount > 0 ? ` +${hiddenCount}` : ''}`;
+}
+
+function compactFunctionLabel(label: string) {
+  return label
+    .replace(/^3\.3 V power supply$/i, '3V3')
+    .replace(/^5 V power supply$/i, '5V')
+    .replace(/^ground$/i, 'GND')
+    .replace(/^reset$/i, 'RESET')
+    .replace(/\s+power supply$/i, ' PWR');
+}
+
+function uniqueValues<T>(values: T[]): T[] {
+  return [...new Set(values)];
 }
 
 function replayIntroAnimation() {
@@ -803,6 +884,47 @@ onBeforeUnmount(() => {
 
 .connector-board__pin-label {
   font-size: 8.7px;
+}
+
+.connector-board__pin-label--functions {
+  font-size: 7.4px;
+}
+
+.board-function-labels {
+  pointer-events: none;
+}
+
+.board-function-label__leader {
+  stroke: rgba(15, 23, 42, 0.36);
+  stroke-linecap: round;
+  stroke-width: 1.4;
+}
+
+.board-function-label__text {
+  fill: #1d4ed8;
+  stroke: #ffffff;
+  stroke-linejoin: round;
+  stroke-width: 3.4px;
+  paint-order: stroke;
+  font-size: 9.8px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.board-function-label--analog .board-function-label__text {
+  fill: #047857;
+}
+
+.board-function-label--power .board-function-label__text {
+  fill: #b91c1c;
+}
+
+.board-function-label--ground .board-function-label__text {
+  fill: #111827;
+}
+
+.board-function-label--control .board-function-label__text {
+  fill: #92400e;
 }
 
 .board-pin__warning-badge {
