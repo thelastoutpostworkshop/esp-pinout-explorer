@@ -8,7 +8,7 @@ This list tracks architecture work to finish before adding a large batch of deve
   - [x] `ESP32-S3-USB-Bridge` -> `src/data/boards/esp32s3/usbBridge.ts`
   - [x] `ESP32-S3-USB-OTG` -> `src/data/boards/esp32s3/usbOtg.ts`
   - [x] `ESP32-S3-DevKitC-1 v1.1` -> `src/data/boards/esp32s3/devkitC1V11.ts`
-  - [ ] `ESP32-S3-DevKitM-1` -> `src/data/boards/esp32s3/devkitM1.ts`
+  - [x] `ESP32-S3-DevKitM-1` -> `src/data/boards/esp32s3/devkitM1.ts`
   - [ ] `ESP32-DevKitC V4` -> `src/data/boards/esp32/devkitCV4.ts`
   - [ ] `ESP32-DevKitM-1` -> `src/data/boards/esp32/devkitM1.ts`
   - [ ] `ESP32-C6-DevKitM-1` -> `src/data/boards/esp32c6/devkitM1.ts`
