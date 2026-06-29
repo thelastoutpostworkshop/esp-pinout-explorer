@@ -22,7 +22,7 @@ This list tracks architecture work to finish before adding a large batch of deve
 - [x] Standardize board profile factory signatures.
   - Recommended shape: `createBoardProfile(resolveSourcePinByGpio)`.
   - Keep source-pin resolution injected to avoid circular imports.
-- [ ] Document the expected file template for a new board profile.
+- [x] Document the expected file template for a new board profile.
 
 ## Board Data Helpers
 
