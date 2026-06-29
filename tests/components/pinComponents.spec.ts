@@ -140,8 +140,11 @@ describe('BoardSvg', () => {
     });
 
     expect(functionWrapper.attributes('aria-label')).toContain('main functions shown');
-    expect(functionWrapper.find('svg').attributes('viewBox')).toBe('0 8 940 724');
+    expect(functionWrapper.find('svg').attributes('viewBox')).toBe('-100 8 1140 724');
     expect(functionWrapper.findAll('.board-function-label')).toHaveLength(pins.length);
+    expect(functionWrapper.findAll('.board-function-badge').length).toBeGreaterThan(pins.length);
+    expect(functionWrapper.find('.board-function-badge--gpio').exists()).toBe(true);
+    expect(functionWrapper.find('.board-function-badge--analog').exists()).toBe(true);
     expect(functionWrapper.text()).toContain('GPIO23');
     expect(functionWrapper.text()).toContain('ADC1_CH6');
   });

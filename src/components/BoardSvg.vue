@@ -277,15 +277,30 @@
             :y1="functionLabelGeometry(pin).line.y"
             :y2="functionLabelGeometry(pin).line.y"
           />
-          <text
-            class="board-function-label__text"
-            :x="functionLabelGeometry(pin).text.x"
-            :y="functionLabelGeometry(pin).text.y"
-            :text-anchor="functionLabelGeometry(pin).text.anchor"
-            dominant-baseline="middle"
+          <g
+            v-for="badge in functionBadgesForPin(pin)"
+            :key="`${pin.id}-${badge.label}`"
+            class="board-function-badge"
+            :class="`board-function-badge--${badge.tone}`"
           >
-            {{ boardPinFunctionLabel(pin, 4) }}
-          </text>
+            <rect
+              class="board-function-badge__pill"
+              :x="badge.x"
+              :y="badge.y"
+              :width="badge.width"
+              :height="badge.height"
+              :rx="badge.rx"
+            />
+            <text
+              class="board-function-badge__text"
+              :x="badge.textX"
+              :y="badge.textY"
+              text-anchor="middle"
+              dominant-baseline="middle"
+            >
+              {{ badge.label }}
+            </text>
+          </g>
         </g>
       </g>
     </svg>
@@ -330,7 +345,7 @@ const ariaLabel = computed(
 );
 const leftHeaderName = computed(() => headerNameForSide('left', 'J1'));
 const rightHeaderName = computed(() => headerNameForSide('right', 'J3'));
-const dualHeaderViewBox = computed(() => (showMainFunctions.value ? '0 8 940 724' : '128 8 684 724'));
+const dualHeaderViewBox = computed(() => (showMainFunctions.value ? '-100 8 1140 724' : '128 8 684 724'));
 const functionLabelPins = computed(() =>
   props.pins.filter((pin) => pin.position.side === 'left' || pin.position.side === 'right'),
 );
@@ -344,6 +359,18 @@ interface PointText {
 interface Geometry {
   rect: { x: number; y: number; width: number; height: number; rx: number };
   label: PointText;
+}
+
+interface FunctionBadge {
+  label: string;
+  tone: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  rx: number;
+  textX: number;
+  textY: number;
 }
 
 const pinStartY = 112;
@@ -571,12 +598,114 @@ function connectorPinDisplayLabel(pin: SocPin) {
   return showMainFunctions.value ? boardPinFunctionLabel(pin, 2) : boardPinDisplayLabel(pin);
 }
 
+function functionBadgesForPin(pin: SocPin): FunctionBadge[] {
+  const geometry = functionLabelGeometry(pin);
+  const side = pin.position.side === 'right' ? 'right' : 'left';
+  const height = 14;
+  const gap = 3;
+  const rawBadges = boardPinFunctionLabels(pin, 5).map((label) => ({
+    label,
+    tone: functionBadgeTone(label, pin),
+    width: functionBadgeWidth(label),
+  }));
+  const totalWidth = rawBadges.reduce((total, badge) => total + badge.width, 0) + Math.max(0, rawBadges.length - 1) * gap;
+  let x = side === 'right' ? geometry.text.x : geometry.text.x - totalWidth;
+
+  return rawBadges.map((badge) => {
+    const result = {
+      ...badge,
+      x,
+      y: geometry.text.y - height / 2,
+      height,
+      rx: 4,
+      textX: x + badge.width / 2,
+      textY: geometry.text.y + 0.15,
+    };
+    x += badge.width + gap;
+    return result;
+  });
+}
+
 function boardPinFunctionLabel(pin: SocPin, limit: number) {
-  const labels = uniqueValues((pin.mainFunctions.length ? pin.mainFunctions : [boardPinDisplayLabel(pin)]).map(compactFunctionLabel));
+  const labels = functionLabelsForPin(pin);
   const visibleLabels = labels.slice(0, limit);
   const hiddenCount = labels.length - visibleLabels.length;
 
   return `${visibleLabels.join(' ')}${hiddenCount > 0 ? ` +${hiddenCount}` : ''}`;
+}
+
+function boardPinFunctionLabels(pin: SocPin, limit: number) {
+  const labels = functionLabelsForPin(pin);
+  const visibleLabels = labels.slice(0, limit);
+  const hiddenCount = labels.length - visibleLabels.length;
+
+  if (hiddenCount > 0) {
+    return [...visibleLabels, `+${hiddenCount}`];
+  }
+
+  return visibleLabels;
+}
+
+function functionLabelsForPin(pin: SocPin) {
+  return uniqueValues((pin.mainFunctions.length ? pin.mainFunctions : [boardPinDisplayLabel(pin)]).map(compactFunctionLabel));
+}
+
+function functionBadgeWidth(label: string) {
+  return Math.max(24, Math.min(86, label.length * 5.4 + 12));
+}
+
+function functionBadgeTone(label: string, pin: SocPin) {
+  const normalized = label.toUpperCase();
+
+  if (pin.type === 'power' || /^(?:3V3|5V|VDD|VDDA|VBUS)/.test(normalized)) {
+    return 'power';
+  }
+
+  if (pin.type === 'ground' || normalized === 'GND') {
+    return 'ground';
+  }
+
+  if (pin.type === 'control' || /RESET|RST|EN|CHIP_PU/.test(normalized)) {
+    return 'control';
+  }
+
+  if (/^GPIO\d+$/.test(normalized)) {
+    return 'gpio';
+  }
+
+  if (/^ADC/.test(normalized)) {
+    return 'analog';
+  }
+
+  if (/^TOUCH/.test(normalized)) {
+    return 'touch';
+  }
+
+  if (/^RTC/.test(normalized) || /32K/.test(normalized)) {
+    return 'rtc';
+  }
+
+  if (/USB/.test(normalized)) {
+    return 'usb';
+  }
+
+  if (/^U\d|UART|TXD|RXD|RTS|CTS/.test(normalized)) {
+    return 'uart';
+  }
+
+  if (/EMAC/.test(normalized)) {
+    return 'ethernet';
+  }
+
+  if (/SPI|SDIO|SD_|HS\d|FSPI|VSPI|HSPI|CLK|CMD|D\d/.test(normalized)) {
+    return 'spi';
+  }
+
+  if (/BOOT/.test(normalized)) {
+    return 'boot';
+  }
+
+  return 'other';
 }
 
 function compactFunctionLabel(label: string) {
@@ -900,31 +1029,63 @@ onBeforeUnmount(() => {
   stroke-width: 1.4;
 }
 
-.board-function-label__text {
-  fill: #1d4ed8;
-  stroke: #ffffff;
-  stroke-linejoin: round;
-  stroke-width: 3.4px;
-  paint-order: stroke;
-  font-size: 9.8px;
+.board-function-badge__pill {
+  fill: #64748b;
+  stroke: rgba(255, 255, 255, 0.78);
+  stroke-width: 0.65;
+}
+
+.board-function-badge__text {
+  fill: #ffffff;
+  font-size: 8.1px;
   font-weight: 900;
   letter-spacing: 0;
+  pointer-events: none;
 }
 
-.board-function-label--analog .board-function-label__text {
-  fill: #047857;
+.board-function-badge--gpio .board-function-badge__pill {
+  fill: #43b02a;
 }
 
-.board-function-label--power .board-function-label__text {
-  fill: #b91c1c;
+.board-function-badge--analog .board-function-badge__pill {
+  fill: #8e24aa;
 }
 
-.board-function-label--ground .board-function-label__text {
+.board-function-badge--touch .board-function-badge__pill {
+  fill: #f97316;
+}
+
+.board-function-badge--rtc .board-function-badge__pill {
+  fill: #3b82f6;
+}
+
+.board-function-badge--spi .board-function-badge__pill {
+  fill: #d9a70d;
+}
+
+.board-function-badge--uart .board-function-badge__pill {
+  fill: #758195;
+}
+
+.board-function-badge--usb .board-function-badge__pill,
+.board-function-badge--boot .board-function-badge__pill {
+  fill: #e11d48;
+}
+
+.board-function-badge--ethernet .board-function-badge__pill {
+  fill: #ca8a04;
+}
+
+.board-function-badge--power .board-function-badge__pill {
+  fill: #ef4444;
+}
+
+.board-function-badge--ground .board-function-badge__pill {
   fill: #111827;
 }
 
-.board-function-label--control .board-function-label__text {
-  fill: #92400e;
+.board-function-badge--control .board-function-badge__pill {
+  fill: #f59e0b;
 }
 
 .board-pin__warning-badge {
