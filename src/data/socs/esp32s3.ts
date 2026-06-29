@@ -1,3 +1,4 @@
+import { makeBoardPin } from '@/data/boards/helpers';
 import type { PinPosition, PinType, PinWarning, SocDefinition, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
@@ -930,31 +931,22 @@ function findQfnPinByGpio(gpio: number | undefined) {
 function boardPin(input: BoardHeaderPinInput): SocPin {
   const sourcePin = findQfnPinByGpio(input.gpio);
   const displayNumber = `${input.header}-${input.number}`;
-  const gpioLabel = input.gpio !== undefined ? `GPIO${input.gpio}` : '';
-  const name = input.gpio !== undefined && input.label !== 'TX' && input.label !== 'RX' ? gpioLabel : input.label;
 
-  return {
+  return makeBoardPin({
     id: `esp32s3-devkitc1-v11-${input.header.toLowerCase()}-${input.number}`,
     number: input.number,
     displayNumber,
-    name,
+    label: input.label,
     type: input.type,
     gpio: input.gpio,
     boardHeader: input.header,
-    boardLabel: input.label,
     position: { side: input.header === 'J1' ? 'left' : 'right', order: input.number },
     mainFunctions: input.mainFunctions,
-    ioMux: sourcePin?.ioMux,
-    rtc: sourcePin?.rtc,
-    analog: sourcePin?.analog,
-    matrixSignals: sourcePin?.matrixSignals,
-    notes: uniqueValues([
-      `${displayNumber} board header pin, silkscreen label ${input.label}.`,
-      ...(input.notes ?? []),
-      ...(sourcePin?.notes ?? []),
-    ]),
-    warnings: uniqueValues([...(input.warnings ?? []), ...(sourcePin?.warnings ?? [])]),
-    keywords: uniqueValues([
+    sourcePin,
+    note: `${displayNumber} board header pin, silkscreen label ${input.label}.`,
+    notes: input.notes,
+    warnings: input.warnings,
+    baseKeywords: [
       'board',
       'devkit',
       'devkitc',
@@ -965,44 +957,30 @@ function boardPin(input: BoardHeaderPinInput): SocPin {
       'wroom-1u',
       'wroom-2',
       'header',
-      input.header,
-      displayNumber,
-      input.label,
-      gpioLabel,
-      ...(input.keywords ?? []),
-      ...(sourcePin?.keywords ?? []),
-    ].filter(Boolean)),
-  };
+    ],
+    keywords: input.keywords,
+  });
 }
 
 function devkitM1BoardPin(input: BoardHeaderPinInput): SocPin {
   const sourcePin = findQfnPinByGpio(input.gpio);
   const displayNumber = `${input.header}-${input.number}`;
-  const gpioLabel = input.gpio !== undefined ? `GPIO${input.gpio}` : '';
-  const name = input.gpio !== undefined && input.label !== 'TX' && input.label !== 'RX' ? gpioLabel : input.label;
 
-  return {
+  return makeBoardPin({
     id: `esp32s3-devkitm1-${input.header.toLowerCase()}-${input.number}`,
     number: input.number,
     displayNumber,
-    name,
+    label: input.label,
     type: input.type,
     gpio: input.gpio,
     boardHeader: input.header,
-    boardLabel: input.label,
     position: { side: input.header === 'J1' ? 'left' : 'right', order: input.number },
     mainFunctions: input.mainFunctions,
-    ioMux: sourcePin?.ioMux,
-    rtc: sourcePin?.rtc,
-    analog: sourcePin?.analog,
-    matrixSignals: sourcePin?.matrixSignals,
-    notes: uniqueValues([
-      `${displayNumber} board header pin, silkscreen label ${input.label}.`,
-      ...(input.notes ?? []),
-      ...(sourcePin?.notes ?? []),
-    ]),
-    warnings: uniqueValues([...(input.warnings ?? []), ...(sourcePin?.warnings ?? [])]),
-    keywords: uniqueValues([
+    sourcePin,
+    note: `${displayNumber} board header pin, silkscreen label ${input.label}.`,
+    notes: input.notes,
+    warnings: input.warnings,
+    baseKeywords: [
       'board',
       'devkit',
       'devkitm',
@@ -1012,43 +990,34 @@ function devkitM1BoardPin(input: BoardHeaderPinInput): SocPin {
       'mini-1',
       'mini-1u',
       'header',
-      input.header,
-      displayNumber,
-      input.label,
-      gpioLabel,
-      ...(input.keywords ?? []),
-      ...(sourcePin?.keywords ?? []),
-    ].filter(Boolean)),
-  };
+    ],
+    keywords: input.keywords,
+  });
 }
 
 function usbOtgBoardPin(input: ConnectorBoardPinInput): SocPin {
   const sourcePin = findQfnPinByGpio(input.gpio);
   const displayNumber = `${input.header}-${input.number}`;
-  const gpioLabel = `GPIO${input.gpio}`;
 
-  return {
+  return makeBoardPin({
     id: `esp32s3-usb-otg-${input.header.toLowerCase().replace(/\s+/g, '-')}-${input.number}`,
     number: input.number,
     displayNumber,
-    name: gpioLabel,
+    label: input.label,
     type: 'io',
     gpio: input.gpio,
     boardHeader: input.header,
-    boardLabel: input.label,
     boardGroup: input.group,
     position: input.position,
     mainFunctions: input.mainFunctions,
-    ioMux: sourcePin?.ioMux,
-    rtc: sourcePin?.rtc,
-    analog: sourcePin?.analog,
-    matrixSignals: sourcePin?.matrixSignals,
-    notes: uniqueValues([
-      `${displayNumber} on the ESP32-S3-USB-OTG ${input.header} table, label ${input.label}.`,
-      ...(input.notes ?? []),
-    ]),
-    warnings: uniqueValues([...(input.warnings ?? [])]),
-    keywords: uniqueValues([
+    sourcePin,
+    note: `${displayNumber} on the ESP32-S3-USB-OTG ${input.header} table, label ${input.label}.`,
+    notes: input.notes,
+    warnings: input.warnings,
+    inheritSourceNotes: false,
+    inheritSourceWarnings: false,
+    inheritSourceKeywords: false,
+    baseKeywords: [
       'board',
       'usb otg',
       'usb-otg',
@@ -1057,45 +1026,31 @@ function usbOtgBoardPin(input: ConnectorBoardPinInput): SocPin {
       'mini',
       'mini-1',
       'mini-1-n8',
-      input.header,
-      input.group,
-      displayNumber,
-      input.label,
-      gpioLabel,
-      ...(input.keywords ?? []),
-    ].filter(Boolean)),
-  };
+    ],
+    keywords: input.keywords,
+  });
 }
 
 function usbBridgeBoardPin(input: UsbBridgeBoardPinInput): SocPin {
   const sourcePin = findQfnPinByGpio(input.gpio);
   const displayNumber = `GPIO allocation-${input.number}`;
-  const gpioLabel = input.gpio !== undefined ? `GPIO${input.gpio}` : '';
-  const name = input.type === 'io' && input.gpio !== undefined ? gpioLabel : input.label;
 
-  return {
+  return makeBoardPin({
     id: `esp32s3-usb-bridge-gpio-allocation-${input.number}`,
     number: input.number,
     displayNumber,
-    name,
+    label: input.label,
     type: input.type,
     gpio: input.gpio,
     boardHeader: 'GPIO allocation',
-    boardLabel: input.label,
     boardGroup: input.group,
     position: input.position,
     mainFunctions: input.mainFunctions,
-    ioMux: sourcePin?.ioMux,
-    rtc: sourcePin?.rtc,
-    analog: sourcePin?.analog,
-    matrixSignals: sourcePin?.matrixSignals,
-    notes: uniqueValues([
-      `Pin ${input.number} in the official ESP32-S3-USB-Bridge GPIO Allocation table, label ${input.label}.`,
-      ...(input.notes ?? []),
-      ...(sourcePin?.notes ?? []),
-    ]),
-    warnings: uniqueValues([...(input.warnings ?? []), ...(sourcePin?.warnings ?? [])]),
-    keywords: uniqueValues([
+    sourcePin,
+    note: `Pin ${input.number} in the official ESP32-S3-USB-Bridge GPIO Allocation table, label ${input.label}.`,
+    notes: input.notes,
+    warnings: input.warnings,
+    baseKeywords: [
       'board',
       'usb bridge',
       'usb-bridge',
@@ -1107,14 +1062,9 @@ function usbBridgeBoardPin(input: UsbBridgeBoardPinInput): SocPin {
       'mini-1-n4r2',
       'gpio allocation',
       'expansion connector',
-      input.group,
-      displayNumber,
-      input.label,
-      gpioLabel,
-      ...(input.keywords ?? []),
-      ...(sourcePin?.keywords ?? []),
-    ].filter(Boolean)),
-  };
+    ],
+    keywords: input.keywords,
+  });
 }
 
 const devkitUnavailableOnOctalMemory =

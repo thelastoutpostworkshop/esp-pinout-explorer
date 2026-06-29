@@ -1,3 +1,4 @@
+import { boardPinName, makeBoardPin } from '@/data/boards/helpers';
 import type { PinPosition, PinType, PinWarning, SocDefinition, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
@@ -676,31 +677,22 @@ function findQfnPinByGpio(gpio: number | undefined) {
 function devkitCBoardPin(input: BoardHeaderPinInput): SocPin {
   const sourcePin = findQfnPinByGpio(input.gpio);
   const displayNumber = `${input.header}-${input.number}`;
-  const gpioLabel = input.gpio !== undefined ? `GPIO${input.gpio}` : '';
-  const name = input.gpio !== undefined && input.label !== 'TX' && input.label !== 'RX' ? gpioLabel : input.label;
 
-  return {
+  return makeBoardPin({
     id: `esp32-devkitc-v4-${input.header.toLowerCase()}-${input.number}`,
     number: input.number,
     displayNumber,
-    name,
+    label: input.label,
     type: input.type,
     gpio: input.gpio,
     boardHeader: input.header,
-    boardLabel: input.label,
     position: { side: input.header === 'J2' ? 'left' : 'right', order: input.number },
     mainFunctions: input.mainFunctions,
-    ioMux: sourcePin?.ioMux,
-    rtc: sourcePin?.rtc,
-    analog: sourcePin?.analog,
-    matrixSignals: sourcePin?.matrixSignals,
-    notes: uniqueValues([
-      `${displayNumber} board header pin, silkscreen label ${input.label}.`,
-      ...(input.notes ?? []),
-      ...(sourcePin?.notes ?? []),
-    ]),
-    warnings: uniqueValues([...(input.warnings ?? []), ...(sourcePin?.warnings ?? [])]),
-    keywords: uniqueValues([
+    sourcePin,
+    note: `${displayNumber} board header pin, silkscreen label ${input.label}.`,
+    notes: input.notes,
+    warnings: input.warnings,
+    baseKeywords: [
       'board',
       'devkit',
       'devkitc',
@@ -711,22 +703,14 @@ function devkitCBoardPin(input: BoardHeaderPinInput): SocPin {
       'wrover',
       'solo',
       'header',
-      input.header,
-      displayNumber,
-      input.label,
-      gpioLabel,
-      ...(input.keywords ?? []),
-      ...(sourcePin?.keywords ?? []),
-    ].filter(Boolean)),
-  };
+    ],
+    keywords: input.keywords,
+  });
 }
 
 function devkitMBoardPin(input: DevKitMBoardHeaderPinInput): SocPin {
   const sourcePin = findQfnPinByGpio(input.gpio);
   const displayNumber = `${input.header}-${input.number}`;
-  const gpioLabel = input.gpio !== undefined ? `GPIO${input.gpio}` : '';
-  const serialLabel = input.label === 'TX' || input.label === 'RX' || input.label === 'TXD0' || input.label === 'RXD0';
-  const name = input.gpio !== undefined && !serialLabel ? gpioLabel : input.label;
   const moduleExposesBareFlashGpio = input.gpio === 9 || input.gpio === 10;
   const omittedSourceWarnings = uniqueValues([
     ...(input.omitSourceWarnings ?? []),
@@ -740,33 +724,27 @@ function devkitMBoardPin(input: DevKitMBoardHeaderPinInput): SocPin {
     ...(input.omitSourceKeywords ?? []),
     ...(moduleExposesBareFlashGpio ? ['flash', input.gpio === 9 ? 'd2' : 'd3'] : []),
   ]);
-  const sourceWarnings = (sourcePin?.warnings ?? []).filter((warning) => !omittedSourceWarnings.includes(warning));
-  const sourceNotes = (sourcePin?.notes ?? []).filter((note) => !omittedSourceNotes.includes(note));
-  const sourceKeywords = (sourcePin?.keywords ?? []).filter((keyword) => !omittedSourceKeywords.includes(keyword));
   const guideNote = input.guideNumber ? ` Official user-guide pin No. ${input.guideNumber}.` : '';
 
-  return {
+  return makeBoardPin({
     id: `esp32-devkitm1-${input.header.toLowerCase()}-${input.number}`,
     number: input.number,
     displayNumber,
-    name,
+    name: boardPinName(input.label, input.gpio, ['TX', 'RX', 'TXD0', 'RXD0']),
+    label: input.label,
     type: input.type,
     gpio: input.gpio,
     boardHeader: input.header,
-    boardLabel: input.label,
     position: { side: input.header === 'J1' ? 'left' : 'right', order: input.number },
     mainFunctions: input.mainFunctions,
-    ioMux: sourcePin?.ioMux,
-    rtc: sourcePin?.rtc,
-    analog: sourcePin?.analog,
-    matrixSignals: sourcePin?.matrixSignals,
-    notes: uniqueValues([
-      `${displayNumber} board header pin, silkscreen label ${input.label}.${guideNote}`,
-      ...(input.notes ?? []),
-      ...sourceNotes,
-    ]),
-    warnings: uniqueValues([...(input.warnings ?? []), ...sourceWarnings]),
-    keywords: uniqueValues([
+    sourcePin,
+    note: `${displayNumber} board header pin, silkscreen label ${input.label}.${guideNote}`,
+    notes: input.notes,
+    warnings: input.warnings,
+    omitSourceWarnings: omittedSourceWarnings,
+    omitSourceNotes: omittedSourceNotes,
+    omitSourceKeywords: omittedSourceKeywords,
+    baseKeywords: [
       'board',
       'devkit',
       'devkitm',
@@ -777,15 +755,9 @@ function devkitMBoardPin(input: DevKitMBoardHeaderPinInput): SocPin {
       'mini-1',
       'mini-1u',
       'header',
-      input.header,
-      displayNumber,
-      input.guideNumber ? `pin ${input.guideNumber}` : '',
-      input.label,
-      gpioLabel,
-      ...(input.keywords ?? []),
-      ...sourceKeywords,
-    ].filter(Boolean)),
-  };
+    ],
+    keywords: [input.guideNumber ? `pin ${input.guideNumber}` : '', ...(input.keywords ?? [])],
+  });
 }
 
 const esp32DevKitCV4Profile: SocPackageVariant = {

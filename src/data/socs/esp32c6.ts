@@ -1,3 +1,4 @@
+import { makeBoardPin } from '@/data/boards/helpers';
 import type {
   PinPosition,
   PinType,
@@ -831,31 +832,22 @@ interface C6BoardHeaderPinInput {
 function c6DevKitM1BoardPin(input: C6BoardHeaderPinInput): SocPin {
   const sourcePin = input.gpio !== undefined ? findC6PinByGpio(input.gpio) : undefined;
   const displayNumber = `${input.header}-${input.number}`;
-  const gpioLabel = input.gpio !== undefined ? `GPIO${input.gpio}` : '';
-  const name = input.gpio !== undefined && input.label !== 'TX' && input.label !== 'RX' ? gpioLabel : input.label;
 
-  return {
+  return makeBoardPin({
     id: `esp32c6-devkitm1-${input.header.toLowerCase()}-${input.number}`,
     number: input.number,
     displayNumber,
-    name,
+    label: input.label,
     type: input.type,
     gpio: input.gpio,
     boardHeader: input.header,
-    boardLabel: input.label,
     position: { side: input.header === 'J1' ? 'left' : 'right', order: input.number },
     mainFunctions: input.mainFunctions,
-    ioMux: sourcePin?.ioMux,
-    rtc: sourcePin?.rtc,
-    analog: sourcePin?.analog,
-    matrixSignals: sourcePin?.matrixSignals,
-    notes: uniqueValues([
-      `${displayNumber} board header pin, silkscreen label ${input.label}.`,
-      ...(input.notes ?? []),
-      ...(sourcePin?.notes ?? []),
-    ]),
-    warnings: uniqueValues([...(input.warnings ?? []), ...(sourcePin?.warnings ?? [])]),
-    keywords: uniqueValues([
+    sourcePin,
+    note: `${displayNumber} board header pin, silkscreen label ${input.label}.`,
+    notes: input.notes,
+    warnings: input.warnings,
+    baseKeywords: [
       'board',
       'devkit',
       'devkitm',
@@ -866,44 +858,30 @@ function c6DevKitM1BoardPin(input: C6BoardHeaderPinInput): SocPin {
       'mini-1',
       'mini-1u',
       'header',
-      input.header,
-      displayNumber,
-      input.label,
-      gpioLabel,
-      ...(input.keywords ?? []),
-      ...(sourcePin?.keywords ?? []),
-    ].filter(Boolean)),
-  };
+    ],
+    keywords: input.keywords,
+  });
 }
 
 function c6DevKitC1BoardPin(input: C6BoardHeaderPinInput): SocPin {
   const sourcePin = input.gpio !== undefined ? findC6PinByGpio(input.gpio) : undefined;
   const displayNumber = `${input.header}-${input.number}`;
-  const gpioLabel = input.gpio !== undefined ? `GPIO${input.gpio}` : '';
-  const name = input.gpio !== undefined && input.label !== 'TX' && input.label !== 'RX' ? gpioLabel : input.label;
 
-  return {
+  return makeBoardPin({
     id: `esp32c6-devkitc1-${input.header.toLowerCase()}-${input.number}`,
     number: input.number,
     displayNumber,
-    name,
+    label: input.label,
     type: input.type,
     gpio: input.gpio,
     boardHeader: input.header,
-    boardLabel: input.label,
     position: { side: input.header === 'J1' ? 'left' : 'right', order: input.number },
     mainFunctions: input.mainFunctions,
-    ioMux: sourcePin?.ioMux,
-    rtc: sourcePin?.rtc,
-    analog: sourcePin?.analog,
-    matrixSignals: sourcePin?.matrixSignals,
-    notes: uniqueValues([
-      `${displayNumber} board header pin, silkscreen label ${input.label}.`,
-      ...(input.notes ?? []),
-      ...(sourcePin?.notes ?? []),
-    ]),
-    warnings: uniqueValues([...(input.warnings ?? []), ...(sourcePin?.warnings ?? [])]),
-    keywords: uniqueValues([
+    sourcePin,
+    note: `${displayNumber} board header pin, silkscreen label ${input.label}.`,
+    notes: input.notes,
+    warnings: input.warnings,
+    baseKeywords: [
       'board',
       'devkit',
       'devkitc',
@@ -914,14 +892,9 @@ function c6DevKitC1BoardPin(input: C6BoardHeaderPinInput): SocPin {
       'wroom-1',
       'wroom-1u',
       'header',
-      input.header,
-      displayNumber,
-      input.label,
-      gpioLabel,
-      ...(input.keywords ?? []),
-      ...(sourcePin?.keywords ?? []),
-    ].filter(Boolean)),
-  };
+    ],
+    keywords: input.keywords,
+  });
 }
 
 function mini1Pin(
