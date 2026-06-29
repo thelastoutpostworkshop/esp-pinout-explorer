@@ -9,10 +9,10 @@ This list tracks architecture work to finish before adding a large batch of deve
   - [x] `ESP32-S3-USB-OTG` -> `src/data/boards/esp32s3/usbOtg.ts`
   - [x] `ESP32-S3-DevKitC-1 v1.1` -> `src/data/boards/esp32s3/devkitC1V11.ts`
   - [x] `ESP32-S3-DevKitM-1` -> `src/data/boards/esp32s3/devkitM1.ts`
-  - [ ] `ESP32-DevKitC V4` -> `src/data/boards/esp32/devkitCV4.ts`
-  - [ ] `ESP32-DevKitM-1` -> `src/data/boards/esp32/devkitM1.ts`
-  - [ ] `ESP32-C6-DevKitM-1` -> `src/data/boards/esp32c6/devkitM1.ts`
-  - [ ] `ESP32-C6-DevKitC-1` -> `src/data/boards/esp32c6/devkitC1.ts`
+  - [x] `ESP32-DevKitC V4` -> `src/data/boards/esp32/devkitCV4.ts`
+  - [x] `ESP32-DevKitM-1` -> `src/data/boards/esp32/devkitM1.ts`
+  - [x] `ESP32-C6-DevKitM-1` -> `src/data/boards/esp32c6/devkitM1.ts`
+  - [x] `ESP32-C6-DevKitC-1` -> `src/data/boards/esp32c6/devkitC1.ts`
 - [ ] Keep SoC files focused on raw chip/package/module data and profile registration.
 - [ ] Move shared board module sources into family-level board source files.
   - [x] `ESP32-S3-MINI-1/1U` shared source
