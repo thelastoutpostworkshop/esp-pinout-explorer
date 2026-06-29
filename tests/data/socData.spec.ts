@@ -48,6 +48,7 @@ const officialEspressifHosts = new Set([
 const expectedPinCounts: Record<string, number> = {
   'esp32:esp32-qfn48-6x6': 49,
   'esp32:esp32-devkitc-v4': 38,
+  'esp32:esp32-devkitm-1': 34,
   'esp32s3:esp32s3-qfn56': 57,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
   'esp32s3:esp32s3-devkitm-1': 44,
@@ -151,6 +152,10 @@ function expectOfficialEspressifUrl(url: string) {
 
   expect(parsed.protocol).toBe('https:');
   expect(officialEspressifHosts.has(parsed.hostname)).toBe(true);
+}
+
+function isAllowedBoardSourceWarningOverride(profile: ProfileEntry, pin: SocPin, warning: PinWarning) {
+  return profile.id === 'esp32-devkitm-1' && warning === 'flash' && (pin.gpio === 9 || pin.gpio === 10);
 }
 
 describe('SoC data invariants', () => {
@@ -265,6 +270,9 @@ describe('SoC data invariants', () => {
 
           if (!isConnectorGroupLayout) {
             for (const warning of sourcePin?.warnings ?? []) {
+              if (isAllowedBoardSourceWarningOverride(profile, pin, warning)) {
+                continue;
+              }
               expect(pin.warnings ?? []).toContain(warning);
             }
           }

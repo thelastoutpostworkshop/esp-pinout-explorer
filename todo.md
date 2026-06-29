@@ -18,6 +18,7 @@ Source baseline:
 - [x] ESP32
   - [x] Chip package profile: ESP32 QFN48, 6 x 6 mm
   - [x] Board profile: ESP32-DevKitC V4
+  - [x] Board profile: ESP32-DevKitM-1
 - [x] ESP32-S3
   - [x] Chip package profile: QFN56, 7 x 7 mm
   - [x] Board profile: ESP32-S3-DevKitC-1 v1.1
@@ -199,9 +200,9 @@ Source baseline:
   - [x] Board profile: ESP32-DevKitC V4
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html
     - Note: high maker value. Implemented from the official J2/J3 Header Block tables with WROOM/WROVER/SOLO module identity and module-specific GPIO16/GPIO17 warnings.
-  - [ ] Board profile: ESP32-DevKitM-1
+  - [x] Board profile: ESP32-DevKitM-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitm-1/user_guide.html
-    - Note: active Espressif board based on ESP32-MINI-1; likely a clean J1/J3-style header profile.
+    - Note: active Espressif board based on ESP32-MINI-1. Implemented from the official Pin Descriptions table, Pin Layout, and schematic J1/J3 header numbering.
   - [ ] Board profile: ESP32-PICO-DevKitM-2
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-devkitm-2/user_guide.html
     - Note: active Espressif board based on ESP32-PICO-MINI-02/02U. Official Pin Descriptions use J2/J3 header tables.
