@@ -262,13 +262,14 @@
 
       <g v-if="showMainFunctions" class="board-function-labels" aria-hidden="true">
         <g
-          v-for="pin in functionLabelPins"
+          v-for="(pin, pinIndex) in functionLabelPins"
           :key="`${pin.id}-functions`"
           class="board-function-label"
           :class="[
             `board-function-label--${pin.type}`,
             `board-function-label--${pin.position.side === 'right' ? 'right' : 'left'}`,
           ]"
+          :style="functionLabelStyle(pinIndex)"
         >
           <line
             class="board-function-label__leader"
@@ -278,10 +279,11 @@
             :y2="functionLabelGeometry(pin).line.y"
           />
           <g
-            v-for="badge in functionBadgesForPin(pin)"
+            v-for="(badge, badgeIndex) in functionBadgesForPin(pin)"
             :key="`${pin.id}-${badge.label}`"
             class="board-function-badge"
             :class="`board-function-badge--${badge.tone}`"
+            :style="functionBadgeStyle(pinIndex, badgeIndex)"
           >
             <rect
               class="board-function-badge__pill"
@@ -631,6 +633,18 @@ function functionBadgesForPin(pin: SocPin): FunctionBadge[] {
     x += badge.width + gap;
     return result;
   });
+}
+
+function functionLabelStyle(index: number) {
+  return {
+    '--function-label-delay': `${Math.min(index * 12, 180)}ms`,
+  };
+}
+
+function functionBadgeStyle(pinIndex: number, badgeIndex: number) {
+  return {
+    '--function-badge-delay': `${Math.min(pinIndex * 12 + badgeIndex * 24, 260)}ms`,
+  };
 }
 
 function boardPinFunctionLabel(pin: SocPin, limit: number) {
@@ -1057,10 +1071,40 @@ onBeforeUnmount(() => {
   pointer-events: none;
 }
 
+.board-function-label {
+  --function-badge-enter-x: 0;
+  --function-label-delay: 0ms;
+}
+
+.board-function-label--left {
+  --function-badge-enter-x: 8px;
+}
+
+.board-function-label--right {
+  --function-badge-enter-x: -8px;
+}
+
 .board-function-label__leader {
   stroke: rgba(15, 23, 42, 0.36);
   stroke-linecap: round;
   stroke-width: 1.4;
+  transform-box: fill-box;
+  animation: function-leader-enter 220ms var(--function-label-delay) ease-out both;
+}
+
+.board-function-label--left .board-function-label__leader {
+  transform-origin: right center;
+}
+
+.board-function-label--right .board-function-label__leader {
+  transform-origin: left center;
+}
+
+.board-function-badge {
+  --function-badge-delay: 0ms;
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: function-badge-enter 300ms var(--function-badge-delay) cubic-bezier(0.2, 1.18, 0.34, 1) both;
 }
 
 .board-function-badge__pill {
@@ -1246,6 +1290,35 @@ onBeforeUnmount(() => {
   }
 }
 
+@keyframes function-leader-enter {
+  0% {
+    opacity: 0;
+    transform: scaleX(0.22);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes function-badge-enter {
+  0% {
+    opacity: 0;
+    transform: translateX(var(--function-badge-enter-x)) scale(0.88);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateX(0) scale(1.04);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
 @keyframes selected-pin-pop {
   0% {
     transform: scale(1);
@@ -1288,7 +1361,9 @@ onBeforeUnmount(() => {
   .board-usb,
   .board-component,
   .board-pin,
-  .board-pin--selected {
+  .board-pin--selected,
+  .board-function-label__leader,
+  .board-function-badge {
     animation: none;
   }
 }
