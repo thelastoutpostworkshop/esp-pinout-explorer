@@ -598,13 +598,13 @@ function functionLabelGeometry(pin: SocPin): { line: { x1: number; x2: number; y
   if (side === 'right') {
     return {
       line: { x1: geometry.rect.x + geometry.rect.width + 4, x2: 742, y },
-      text: { x: 748, y, anchor: 'start' },
+      text: { x: 770, y, anchor: 'start' },
     };
   }
 
   return {
     line: { x1: 198, x2: geometry.rect.x - 4, y },
-    text: { x: 192, y, anchor: 'end' },
+    text: { x: 170, y, anchor: 'end' },
   };
 }
 
