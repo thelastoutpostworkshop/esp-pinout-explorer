@@ -1179,6 +1179,10 @@ onBeforeUnmount(() => {
   fill: #ffffff;
 }
 
+.board-pin--matched .board-pin__label {
+  fill: #0f172a;
+}
+
 .connector-board__pin-label {
   font-size: 8.7px;
 }
