@@ -13,15 +13,20 @@
       @update:model-value="selectSoc"
     />
 
-    <v-select
+    <v-autocomplete
       v-if="store.packageOptions.length > 1"
       :model-value="selectedPackage.id"
       class="profile-navigator__select profile-navigator__select--profile"
+      auto-select-first="exact"
+      clear-on-select
+      :custom-filter="filterProfileItem"
       density="compact"
       hide-details
       item-title="name"
       item-value="id"
       label="Board / module / package"
+      no-data-text="No matching profiles"
+      placeholder="Search profiles or variants"
       :items="profileSelectItems"
       variant="outlined"
       @update:model-value="selectPackage"
@@ -38,7 +43,7 @@
           :title="item.name"
         />
       </template>
-    </v-select>
+    </v-autocomplete>
 
     <button
       class="profile-navigator__info-button"
@@ -56,7 +61,8 @@
 import { computed } from 'vue';
 import { PanelRightOpen } from '@lucide/vue';
 import { useSocStore } from '@/stores/socStore';
-import type { PinProfileKind, SocPackageVariant } from '@/types/soc';
+import type { PinProfileKind, SocModuleVariant, SocPackageVariant } from '@/types/soc';
+import type { FilterFunction, InternalItem } from 'vuetify';
 
 const emit = defineEmits<{
   changed: [];
@@ -74,6 +80,12 @@ const profileSelectItems = computed(() =>
       startsGroup: index === 0 || profileKind(profiles[index - 1]) !== profileKind(profile),
     })),
 );
+
+type ProfileSelectItem = SocPackageVariant & {
+  groupLabel: string;
+  isFirstGroup: boolean;
+  startsGroup: boolean;
+};
 
 function selectSoc(socId: string) {
   store.selectSoc(socId);
@@ -119,6 +131,57 @@ function profileVariantSummary(profile: SocPackageVariant) {
   }
 
   return `${variantNames.length === 1 ? 'Variant' : 'Variants'}: ${variantNames.join(' / ')}`;
+}
+
+const filterProfileItem: FilterFunction = (_value: string, query: string, item?: InternalItem<ProfileSelectItem>) => {
+  const tokens = normalizeSearchText(query).split(/\s+/).filter(Boolean);
+
+  if (!tokens.length) {
+    return true;
+  }
+
+  const searchText = profileSearchText(item?.raw);
+  return tokens.every((token) => searchText.includes(token));
+};
+
+function profileSearchText(profile: ProfileSelectItem | undefined) {
+  if (!profile) {
+    return '';
+  }
+
+  return normalizeSearchText(
+    [
+      profile.id,
+      profile.name,
+      profile.packageName,
+      profile.groupLabel,
+      profileKind(profile),
+      profile.source?.title,
+      profile.source?.sections.join(' '),
+      ...(profile.moduleNames ?? []),
+      ...(profile.identificationNotes ?? []),
+      ...(profile.moduleVariants ?? []).flatMap(moduleVariantSearchValues),
+    ]
+      .filter(Boolean)
+      .join(' '),
+  );
+}
+
+function moduleVariantSearchValues(variant: SocModuleVariant) {
+  return [
+    variant.name,
+    compactVariantName(variant.name),
+    variant.antenna,
+    variant.flash,
+    variant.psram,
+    variant.footprint,
+    variant.pinoutImpact,
+    variant.source?.title,
+  ];
+}
+
+function normalizeSearchText(value: string) {
+  return value.toLowerCase().replace(/[_/+-]/g, ' ');
 }
 
 function compactVariantName(name: string) {

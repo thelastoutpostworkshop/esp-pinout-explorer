@@ -314,6 +314,21 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('Variant: MINI-1-N4R2');
     expect(wrapper.text()).not.toContain('Dual-core 32-bit Xtensa LX7');
     expect(wrapper.text()).not.toContain('USB ports, 5V/GND headers, or 3V3/GND headers');
+    const profileAutocomplete = wrapper.findComponent({ name: 'VAutocomplete' });
+    const profileItems = profileAutocomplete.props('items') as Array<{ id: string }>;
+    const filterProfile = profileAutocomplete.props('customFilter') as (
+      value: string,
+      query: string,
+      item: { raw: (typeof profileItems)[number] },
+    ) => boolean;
+    const devKitCProfileItem = profileItems.find((item) => item.id === 'esp32s3-devkitc-1-v1-1');
+    const usbBridgeProfileItem = profileItems.find((item) => item.id === 'esp32s3-usb-bridge');
+
+    expect(devKitCProfileItem).toBeDefined();
+    expect(usbBridgeProfileItem).toBeDefined();
+    expect(filterProfile('', 'n32r16v', { raw: devKitCProfileItem! })).toBe(true);
+    expect(filterProfile('', 'mini n4r2', { raw: usbBridgeProfileItem! })).toBe(true);
+    expect(filterProfile('', 'wrover', { raw: usbBridgeProfileItem! })).toBe(false);
 
     await findButton(wrapper, 'Profile info').trigger('click');
 
@@ -578,6 +593,20 @@ const sidebarStubs = {
   },
   VListSubheader: {
     template: '<div class="v-list-subheader"><slot /></div>',
+  },
+  VAutocomplete: {
+    name: 'VAutocomplete',
+    props: ['items', 'customFilter'],
+    template: `
+      <label>
+        <slot
+          v-for="item in items"
+          name="item"
+          :item="item"
+          :props="{ class: 'select-option' }"
+        />
+      </label>
+    `,
   },
   VSelect: {
     props: ['items'],
