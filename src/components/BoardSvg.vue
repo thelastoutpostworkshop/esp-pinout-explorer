@@ -756,7 +756,7 @@ onBeforeUnmount(() => {
 }
 
 .board-pin--ground .board-pin__pad {
-  fill: #e2e8f0;
+  fill: #0f172a;
 }
 
 .board-pin--control .board-pin__pad {
@@ -795,6 +795,10 @@ onBeforeUnmount(() => {
   font-size: 12px;
   font-weight: 900;
   pointer-events: none;
+}
+
+.board-pin--ground .board-pin__label {
+  fill: #ffffff;
 }
 
 .connector-board__pin-label {
