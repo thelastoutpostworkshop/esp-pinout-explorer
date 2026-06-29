@@ -241,6 +241,32 @@ describe('soc store', () => {
     expect(store.filteredPins).toHaveLength(32);
   });
 
+  it('can select the classic ESP32 DevKitC V4 board profile', () => {
+    const store = useSocStore();
+
+    store.selectSoc('esp32');
+
+    expect(store.selectedPackage.id).toBe('esp32-devkitc-v4');
+    expect(store.selectedPackage.kind).toBe('board');
+    expect(store.selectedPackage.moduleNames).toEqual([
+      'ESP32-WROOM-32E',
+      'ESP32-WROOM-32UE',
+      'ESP32-WROVER-E',
+      'ESP32-WROVER-IE',
+      'ESP32-SOLO-1',
+    ]);
+    expect(store.selectedPins).toHaveLength(38);
+
+    store.setSearchQuery('j2 vp input only');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J2-3']);
+
+    store.setSearchQuery('wrover psram');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J3-11', 'J3-12']);
+
+    store.selectPackage('esp32-qfn48-6x6');
+    expect(store.selectedPins).toHaveLength(49);
+  });
+
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {
     const store = useSocStore();
 

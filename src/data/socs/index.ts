@@ -1,8 +1,9 @@
 import type { SocDefinition } from '@/types/soc';
+import { esp32 } from './esp32';
 import { esp32c6 } from './esp32c6';
 import { esp32s3 } from './esp32s3';
 
-export const socs: SocDefinition[] = [esp32s3, esp32c6];
+export const socs: SocDefinition[] = [esp32s3, esp32c6, esp32];
 
 export const futureSocPlaceholders = [
   {

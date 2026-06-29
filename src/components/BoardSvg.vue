@@ -188,8 +188,8 @@
         <text x="513" y="46" text-anchor="middle">USB</text>
       </g>
 
-      <text class="header-name" x="232" y="82" text-anchor="middle">J1</text>
-      <text class="header-name" x="708" y="82" text-anchor="middle">J3</text>
+      <text class="header-name" x="232" y="82" text-anchor="middle">{{ leftHeaderName }}</text>
+      <text class="header-name" x="708" y="82" text-anchor="middle">{{ rightHeaderName }}</text>
 
       <g class="module">
         <rect x="316" y="194" width="308" height="300" rx="9" fill="url(#moduleBody)" stroke="#475569" stroke-width="2" />
@@ -294,6 +294,8 @@ const boardPinLabel = computed(() => (isConnectorGroupLayout.value ? 'connector 
 const ariaLabel = computed(
   () => `${props.soc.name} ${props.packageName} board profile, ${props.filteredPinCount} of ${props.totalPinCount} ${boardPinLabel.value} shown`,
 );
+const leftHeaderName = computed(() => headerNameForSide('left', 'J1'));
+const rightHeaderName = computed(() => headerNameForSide('right', 'J3'));
 
 interface PointText {
   x: number;
@@ -330,6 +332,10 @@ function sideMaxOrder(side: 'left' | 'right') {
     1,
     ...props.pins.filter((pin) => pin.position.side === side).map((pin) => pin.position.order),
   );
+}
+
+function headerNameForSide(side: 'left' | 'right', fallback: string) {
+  return props.pins.find((pin) => pin.position.side === side && pin.boardHeader)?.boardHeader ?? fallback;
 }
 
 function sideCoordinate(side: 'left' | 'right', order: number) {

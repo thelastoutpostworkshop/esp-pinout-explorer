@@ -6,6 +6,8 @@ Vue 3 + TypeScript + Vite MVP for exploring Espressif SoC, module, and developme
 
 Current profiles:
 
+- ESP32-DevKitC V4 board headers with WROOM/WROVER/SOLO module identity, based on the official Espressif ESP32-DevKitC V4 User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html
+- ESP32 QFN48 6 x 6 mm, based on the official Espressif ESP32 Series Datasheet v5.2: https://documentation.espressif.com/esp32_datasheet_en.pdf
 - ESP32-S3-DevKitC-1 v1.1 board headers with WROOM module identity, based on the official Espressif ESP32-S3-DevKitC-1 User Guide v1.1: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html
 - ESP32-S3-DevKitM-1 board headers with MINI module identity, based on the official Espressif ESP32-S3-DevKitM-1 User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html
 - ESP32-S3-USB-OTG connector groups, based on the official Espressif ESP32-S3-USB-OTG User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html
@@ -46,6 +48,7 @@ npm run build
 - `src/components/PinInfoDrawer.vue` - selected pin details, maker warnings, and board design notes
 - `src/components/PinSearch.vue` - search and quick filters
 - `src/data/pinWarnings.ts` - warning presentation rules
+- `src/data/socs/esp32.ts` - Classic ESP32 pin and board metadata
 - `src/data/socs/esp32s3.ts` - ESP32-S3 pin metadata
 - `src/data/socs/esp32c6.ts` - ESP32-C6 pin and package metadata
 - `src/stores/socStore.ts` - Pinia selected SoC, selected pin, and search state

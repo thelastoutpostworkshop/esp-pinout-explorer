@@ -10,6 +10,7 @@ import PinSearch from '@/components/PinSearch.vue';
 import ProfileInfoDrawer from '@/components/ProfileInfoDrawer.vue';
 import SocPinoutView from '@/components/SocPinoutView.vue';
 import { hasMakerWarning } from '@/data/pinWarnings';
+import { esp32 } from '@/data/socs/esp32';
 import { esp32c6 } from '@/data/socs/esp32c6';
 import { esp32s3 } from '@/data/socs/esp32s3';
 import { useSocStore } from '@/stores/socStore';
@@ -91,6 +92,26 @@ describe('BoardSvg', () => {
 
     await nodes[0].trigger('keydown.enter');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
+  });
+
+  it('uses board-specific dual-header labels', () => {
+    const boardProfile = esp32.boardProfiles?.find((profile) => profile.id === 'esp32-devkitc-v4');
+    expect(boardProfile).toBeDefined();
+    const pins = boardProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: boardProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        soc: esp32,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(wrapper.findAll('.header-name').map((item) => item.text())).toEqual(['J2', 'J3']);
   });
 
   it('renders connector-group board profiles without J1/J3 assumptions', async () => {

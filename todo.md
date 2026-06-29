@@ -15,6 +15,9 @@ Source baseline:
 
 ## Done
 
+- [x] ESP32
+  - [x] Chip package profile: ESP32 QFN48, 6 x 6 mm
+  - [x] Board profile: ESP32-DevKitC V4
 - [x] ESP32-S3
   - [x] Chip package profile: QFN56, 7 x 7 mm
   - [x] Board profile: ESP32-S3-DevKitC-1 v1.1
@@ -160,8 +163,9 @@ Source baseline:
   - Source: https://documentation.espressif.com/esp32_datasheet_en.html
   - [ ] Chip package profile: ESP32 QFN48, 5 x 5 mm
     - Covers ESP32-D0WD-V3, ESP32-U4WDH, ESP32-S0WD, ESP32-D0WD, and related QFN 5 x 5 mm variants.
-  - [ ] Chip package profile: ESP32 QFN48, 6 x 6 mm
+  - [x] Chip package profile: ESP32 QFN48, 6 x 6 mm
     - Covers ESP32-D0WDQ6-V3 and ESP32-D0WDQ6 variants.
+    - Note: implemented as the base Classic ESP32 package profile from the ESP32 Series Datasheet v5.2.
   - Note: the ESP32 Series Datasheet v5.2 has separate top-view drawings for QFN 6 x 6 mm and QFN 5 x 5 mm. Treat in-package flash/PSRAM variants as package constraints, not separate maker boards. Flag NRND/EOL variants in profile metadata where applicable.
 - [ ] ESP32-PICO SiP package profiles
   - Source: https://documentation.espressif.com/esp32-pico_series_datasheet_en.pdf
@@ -192,9 +196,9 @@ Source baseline:
   - Note: module profiles should use official module pad definitions and memory tables. Do not copy the bare ESP32 QFN pinout into WROOM/WROVER/MINI/PICO module profiles because module pads, antenna variants, flash/PSRAM, and unavailable flash pins differ.
 - [ ] ESP32 classic board profiles
   - Source index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/index.html
-  - [ ] Board profile: ESP32-DevKitC V4
+  - [x] Board profile: ESP32-DevKitC V4
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html
-    - Note: high maker value. Official guide has header tables and supports multiple module variants; surface the selected module identity like WROOM/WROVER/SOLO where the guide or schematics confirm it.
+    - Note: high maker value. Implemented from the official J2/J3 Header Block tables with WROOM/WROVER/SOLO module identity and module-specific GPIO16/GPIO17 warnings.
   - [ ] Board profile: ESP32-DevKitM-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitm-1/user_guide.html
     - Note: active Espressif board based on ESP32-MINI-1; likely a clean J1/J3-style header profile.
