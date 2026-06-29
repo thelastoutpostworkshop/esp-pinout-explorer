@@ -261,6 +261,7 @@ describe('SocPinoutView', () => {
 
   it('passes connector-group layout through to USB-OTG board rendering', async () => {
     const store = useSocStore();
+    store.selectSoc('esp32s3');
     store.selectPackage('esp32s3-usb-otg');
 
     const wrapper = mount(SocPinoutView, {
@@ -274,18 +275,35 @@ describe('SocPinoutView', () => {
 
     expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
     expect(wrapper.find('.header-name').exists()).toBe(false);
-    expect(wrapper.find('.soc-view__function-toggle').exists()).toBe(true);
+    expect(wrapper.find('.soc-view__function-toggle').exists()).toBe(false);
     expect(wrapper.find('.connector-board__pin-label--functions').exists()).toBe(false);
     expect(wrapper.text()).not.toContain('3 / 32 header pins');
+  });
 
+  it('keeps the functions toggle available for dual-header board profiles', async () => {
+    const store = useSocStore();
+    store.selectSoc('esp32s3');
+    store.selectPackage('esp32s3-devkitc-1-v1-1');
+
+    const wrapper = mount(SocPinoutView, {
+      global: {
+        stubs: {
+          PinInfoDrawer: { template: '<aside />' },
+          ProfileInfoDrawer: { template: '<aside />' },
+        },
+      },
+    });
     const functionToggle = wrapper.find('button[aria-label="Show main functions on board pins"]');
+
+    expect(functionToggle.exists()).toBe(true);
     expect(functionToggle.attributes('aria-checked')).toBe('false');
+    expect(wrapper.find('.board-function-label').exists()).toBe(false);
 
     await functionToggle.trigger('click');
     await wrapper.vm.$nextTick();
 
     expect(functionToggle.attributes('aria-checked')).toBe('true');
-    expect(wrapper.find('.connector-board__pin-label--functions').exists()).toBe(true);
+    expect(wrapper.find('.board-function-label').exists()).toBe(true);
   });
 });
 

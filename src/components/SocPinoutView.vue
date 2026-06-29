@@ -2,8 +2,8 @@
   <section class="soc-view" aria-label="SoC pinout">
     <section class="soc-view__stage">
       <button
-        v-if="selectedPackage.kind === 'board'"
-        :aria-checked="showBoardFunctions"
+        v-if="canShowBoardFunctions"
+        :aria-checked="effectiveShowBoardFunctions"
         aria-label="Show main functions on board pins"
         class="soc-view__function-toggle"
         role="switch"
@@ -37,7 +37,7 @@
         :package-name="selectedPackage.packageName"
         :pins="store.selectedPins"
         :selected-pin-id="store.selectedPinId"
-        :show-main-functions="showBoardFunctions"
+        :show-main-functions="effectiveShowBoardFunctions"
         :soc="selectedSoc"
         :total-pin-count="store.selectedPins.length"
         @pin-click="store.selectPin"
@@ -61,6 +61,10 @@ const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
 const selectedPackage = computed(() => store.selectedPackage);
 const showBoardFunctions = ref(false);
+const canShowBoardFunctions = computed(
+  () => selectedPackage.value.kind === 'board' && selectedPackage.value.boardLayout !== 'connector-groups',
+);
+const effectiveShowBoardFunctions = computed(() => canShowBoardFunctions.value && showBoardFunctions.value);
 
 function toggleBoardFunctions() {
   showBoardFunctions.value = !showBoardFunctions.value;
