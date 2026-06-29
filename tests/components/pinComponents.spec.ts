@@ -141,12 +141,38 @@ describe('BoardSvg', () => {
 
     expect(functionWrapper.attributes('aria-label')).toContain('main functions shown');
     expect(functionWrapper.find('svg').attributes('viewBox')).toBe('-100 8 1140 724');
-    expect(functionWrapper.findAll('.board-function-label')).toHaveLength(pins.length);
-    expect(functionWrapper.findAll('.board-function-badge').length).toBeGreaterThan(pins.length);
+    expect(functionWrapper.findAll('.board-function-label').length).toBeGreaterThan(0);
+    expect(functionWrapper.findAll('.board-function-badge').length).toBeGreaterThan(0);
     expect(functionWrapper.find('.board-function-badge--gpio').exists()).toBe(true);
     expect(functionWrapper.find('.board-function-badge--analog').exists()).toBe(true);
-    expect(functionWrapper.text()).toContain('GPIO23');
-    expect(functionWrapper.text()).toContain('ADC1_CH6');
+    const badgeLabels = functionWrapper.findAll('.board-function-badge__text').map((item) => item.text());
+
+    expect(badgeLabels).not.toContain('GPIO23');
+    expect(badgeLabels).not.toContain('D2');
+    expect(badgeLabels).toEqual(expect.arrayContaining(['GPIO9', 'ADC1_CH6']));
+  });
+
+  it('omits function badges that repeat the visible board pin label', () => {
+    const boardProfile = esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-devkitc-1-v1-1');
+    expect(boardProfile).toBeDefined();
+    const pins = boardProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: boardProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        showMainFunctions: true,
+        soc: esp32s3,
+        totalPinCount: pins.length,
+      },
+    });
+    const badgeLabels = wrapper.findAll('.board-function-badge__text').map((item) => item.text());
+
+    expect(badgeLabels).not.toContain('GPIO42');
+    expect(badgeLabels).toEqual(expect.arrayContaining(['MTMS', 'GPIO43', 'U0TXD']));
   });
 
   it('renders connector-group board profiles without J1/J3 assumptions', async () => {

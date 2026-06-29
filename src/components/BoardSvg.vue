@@ -347,7 +347,9 @@ const leftHeaderName = computed(() => headerNameForSide('left', 'J1'));
 const rightHeaderName = computed(() => headerNameForSide('right', 'J3'));
 const dualHeaderViewBox = computed(() => (showMainFunctions.value ? '-100 8 1140 724' : '128 8 684 724'));
 const functionLabelPins = computed(() =>
-  props.pins.filter((pin) => pin.position.side === 'left' || pin.position.side === 'right'),
+  props.pins.filter(
+    (pin) => (pin.position.side === 'left' || pin.position.side === 'right') && functionLabelsForPin(pin).length > 0,
+  ),
 );
 
 interface PointText {
@@ -595,7 +597,11 @@ function boardPinDisplayLabel(pin: SocPin) {
 }
 
 function connectorPinDisplayLabel(pin: SocPin) {
-  return showMainFunctions.value ? boardPinFunctionLabel(pin, 2) : boardPinDisplayLabel(pin);
+  if (!showMainFunctions.value) {
+    return boardPinDisplayLabel(pin);
+  }
+
+  return boardPinFunctionLabel(pin, 2) || boardPinDisplayLabel(pin);
 }
 
 function functionBadgesForPin(pin: SocPin): FunctionBadge[] {
@@ -647,7 +653,34 @@ function boardPinFunctionLabels(pin: SocPin, limit: number) {
 }
 
 function functionLabelsForPin(pin: SocPin) {
-  return uniqueValues((pin.mainFunctions.length ? pin.mainFunctions : [boardPinDisplayLabel(pin)]).map(compactFunctionLabel));
+  const labels = uniqueValues(
+    (pin.mainFunctions.length ? pin.mainFunctions : [boardPinDisplayLabel(pin)]).map(compactFunctionLabel),
+  );
+
+  return labels.filter((label) => !isRedundantFunctionLabel(pin, label));
+}
+
+function isRedundantFunctionLabel(pin: SocPin, label: string) {
+  const normalizedLabel = normalizeFunctionLabel(label);
+  const normalizedDisplayLabel = normalizeFunctionLabel(boardPinDisplayLabel(pin));
+
+  if (normalizedLabel === normalizedDisplayLabel) {
+    return true;
+  }
+
+  if (pin.gpio === undefined || normalizedLabel !== `GPIO${pin.gpio}`) {
+    return false;
+  }
+
+  return (
+    normalizedDisplayLabel === `${pin.gpio}` ||
+    normalizedDisplayLabel === `IO${pin.gpio}` ||
+    normalizedDisplayLabel === `GPIO${pin.gpio}`
+  );
+}
+
+function normalizeFunctionLabel(label: string) {
+  return label.toUpperCase().replace(/[\s_/-]+/g, '');
 }
 
 function functionBadgeWidth(label: string) {
