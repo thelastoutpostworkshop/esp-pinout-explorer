@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="ESP Pinout Explorer">
+  <defs>
+    <linearGradient id="logo-bg" x1="10" y1="10" x2="54" y2="54" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#0f766e" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#0e7490" stop-opacity="0.95" />
+    </linearGradient>
+  </defs>
+  <rect x="5" y="5" width="54" height="54" rx="14" fill="url(#logo-bg)" />
+  <rect x="5.75" y="5.75" width="52.5" height="52.5" rx="13.25" fill="none" stroke="#99f6e4" stroke-width="1.5" />
+  <g transform="translate(14 14) scale(1.5)" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <rect width="18" height="18" x="3" y="3" rx="2" />
+    <path d="M11 9h4a2 2 0 0 0 2-2V3" />
+    <circle cx="9" cy="9" r="2" />
+    <path d="M7 21v-4a2 2 0 0 1 2-2h4" />
+    <circle cx="15" cy="15" r="2" />
+  </g>
+</svg>
