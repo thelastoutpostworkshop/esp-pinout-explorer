@@ -49,6 +49,7 @@ npm run build
 - `src/components/PinInfoDrawer.vue` - selected pin details, maker warnings, and board design notes
 - `src/components/PinSearch.vue` - search and quick filters
 - `src/data/boards/helpers.ts` - shared board pin builders for metadata inheritance, warnings, notes, and search keywords
+- `src/data/boards/esp32s3/` - extracted ESP32-S3 board profiles and shared board source metadata
 - `src/data/pinWarnings.ts` - warning presentation rules
 - `src/data/socs/esp32.ts` - Classic ESP32 pin and board metadata
 - `src/data/socs/esp32s3.ts` - ESP32-S3 pin metadata
