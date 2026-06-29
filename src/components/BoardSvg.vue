@@ -33,7 +33,7 @@
         <rect class="board-texture" x="118" y="72" width="724" height="576" rx="22" fill="url(#connectorPcbTexture)" />
         <rect class="board-sheen" x="-80" y="48" width="180" height="640" fill="url(#connectorBoardSheen)" />
       </g>
-      <rect class="board-inner" x="150" y="108" width="660" height="504" rx="14" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
+      <rect class="board-inner" x="130" y="100" width="700" height="552" rx="16" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
 
       <g v-if="isUsbBridgeArtwork" class="connector-board__usb">
         <rect x="421" y="30" width="118" height="40" rx="8" />
