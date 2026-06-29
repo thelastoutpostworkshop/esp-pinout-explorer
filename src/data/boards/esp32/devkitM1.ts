@@ -1,8 +1,6 @@
-import { boardPinName, makeBoardPin } from '@/data/boards/helpers';
+import { boardPinName, makeBoardPin, type BoardSourcePinResolver } from '@/data/boards/helpers';
 import { mini1Source } from '@/data/boards/esp32/moduleSources';
 import type { PinType, PinWarning, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
-
-type SourcePinResolver = (gpio: number | undefined) => SocPin | undefined;
 
 const inputOnlyCaution =
   'Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors.';
@@ -104,7 +102,7 @@ interface DevKitMBoardHeaderPinInput {
   omitSourceKeywords?: string[];
 }
 
-function buildDevKitMBoardPin(input: DevKitMBoardHeaderPinInput, resolveSourcePinByGpio: SourcePinResolver): SocPin {
+function buildDevKitMBoardPin(input: DevKitMBoardHeaderPinInput, resolveSourcePinByGpio: BoardSourcePinResolver): SocPin {
   const sourcePin = resolveSourcePinByGpio(input.gpio);
   const displayNumber = `${input.header}-${input.number}`;
   const moduleExposesBareFlashGpio = input.gpio === 9 || input.gpio === 10;
@@ -156,7 +154,7 @@ function buildDevKitMBoardPin(input: DevKitMBoardHeaderPinInput, resolveSourcePi
   });
 }
 
-export function createEsp32DevKitM1Profile(resolveSourcePinByGpio: SourcePinResolver): SocPackageVariant {
+export function createEsp32DevKitM1Profile(resolveSourcePinByGpio: BoardSourcePinResolver): SocPackageVariant {
   const devkitMBoardPin = (input: DevKitMBoardHeaderPinInput) => buildDevKitMBoardPin(input, resolveSourcePinByGpio);
 
   return {

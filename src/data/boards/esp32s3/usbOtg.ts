@@ -1,8 +1,6 @@
-import { makeBoardPin } from '@/data/boards/helpers';
+import { makeBoardPin, type BoardSourcePinResolver } from '@/data/boards/helpers';
 import { esp32s3Mini1ModuleSource } from '@/data/boards/esp32s3/moduleSources';
 import type { PinPosition, PinWarning, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
-
-type SourcePinResolver = (gpio: number | undefined) => SocPin | undefined;
 
 interface UsbOtgBoardPinInput {
   header: 'Function pin' | 'Extended pin';
@@ -99,7 +97,7 @@ const usbOtgModuleVariants: SocModuleVariant[] = [
   },
 ];
 
-export function createEsp32s3UsbOtgProfile(resolveSourcePinByGpio: SourcePinResolver): SocPackageVariant {
+export function createEsp32s3UsbOtgProfile(resolveSourcePinByGpio: BoardSourcePinResolver): SocPackageVariant {
   const pin = (input: UsbOtgBoardPinInput) => usbOtgBoardPin(input, resolveSourcePinByGpio);
 
   return {
@@ -514,7 +512,7 @@ export function createEsp32s3UsbOtgProfile(resolveSourcePinByGpio: SourcePinReso
   };
 }
 
-function usbOtgBoardPin(input: UsbOtgBoardPinInput, resolveSourcePinByGpio: SourcePinResolver): SocPin {
+function usbOtgBoardPin(input: UsbOtgBoardPinInput, resolveSourcePinByGpio: BoardSourcePinResolver): SocPin {
   const sourcePin = resolveSourcePinByGpio(input.gpio);
   const displayNumber = `${input.header}-${input.number}`;
 

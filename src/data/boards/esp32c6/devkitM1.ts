@@ -1,8 +1,6 @@
-import { makeBoardPin } from '@/data/boards/helpers';
+import { makeBoardPin, type BoardSourcePinResolver } from '@/data/boards/helpers';
 import { mini1Source } from '@/data/boards/esp32c6/moduleSources';
 import type { PinType, PinWarning, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
-
-type SourcePinResolver = (gpio: number) => SocPin | undefined;
 
 function warnings(...values: PinWarning[]): PinWarning[] {
   return values;
@@ -68,7 +66,7 @@ interface C6BoardHeaderPinInput {
   keywords?: string[];
 }
 
-function buildC6DevKitM1BoardPin(input: C6BoardHeaderPinInput, resolveSourcePinByGpio: SourcePinResolver): SocPin {
+function buildC6DevKitM1BoardPin(input: C6BoardHeaderPinInput, resolveSourcePinByGpio: BoardSourcePinResolver): SocPin {
   const sourcePin = input.gpio !== undefined ? resolveSourcePinByGpio(input.gpio) : undefined;
   const displayNumber = `${input.header}-${input.number}`;
 
@@ -133,7 +131,7 @@ const esp32c6DevKitM1ModuleVariants: SocModuleVariant[] = [
   },
 ];
 
-export function createEsp32c6DevKitM1Profile(resolveSourcePinByGpio: SourcePinResolver): SocPackageVariant {
+export function createEsp32c6DevKitM1Profile(resolveSourcePinByGpio: BoardSourcePinResolver): SocPackageVariant {
   const c6DevKitM1BoardPin = (input: C6BoardHeaderPinInput) => buildC6DevKitM1BoardPin(input, resolveSourcePinByGpio);
 
   return {

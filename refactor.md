@@ -19,7 +19,7 @@ This list tracks architecture work to finish before adding a large batch of deve
   - [x] ESP32 WROOM/WROVER/SOLO shared sources
   - [x] ESP32-C6 MINI/WROOM shared sources
 - [x] Add a small `createBoardProfiles(...)` registration pattern per SoC family so new board files are imported in one place.
-- [ ] Standardize board profile factory signatures.
+- [x] Standardize board profile factory signatures.
   - Recommended shape: `createBoardProfile(resolveSourcePinByGpio)`.
   - Keep source-pin resolution injected to avoid circular imports.
 - [ ] Document the expected file template for a new board profile.

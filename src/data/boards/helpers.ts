@@ -1,4 +1,8 @@
-import type { PinPosition, PinType, PinWarning, SocPin } from '@/types/soc';
+import type { PinPosition, PinType, PinWarning, SocPackageVariant, SocPin } from '@/types/soc';
+
+export type BoardSourcePinResolver = (gpio: number | undefined) => SocPin | undefined;
+
+export type BoardProfileFactory = (resolveSourcePinByGpio: BoardSourcePinResolver) => SocPackageVariant;
 
 export interface BoardPinInput {
   id: string;

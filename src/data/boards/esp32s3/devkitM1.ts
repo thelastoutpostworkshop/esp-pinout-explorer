@@ -1,8 +1,6 @@
-import { makeBoardPin } from '@/data/boards/helpers';
+import { makeBoardPin, type BoardSourcePinResolver } from '@/data/boards/helpers';
 import { esp32s3Mini1ModuleSource } from '@/data/boards/esp32s3/moduleSources';
 import type { PinType, PinWarning, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
-
-type SourcePinResolver = (gpio: number | undefined) => SocPin | undefined;
 
 const sameDevKitHeaders = 'Same dev-kit header profile.';
 
@@ -90,7 +88,7 @@ function warnings(...values: PinWarning[]): PinWarning[] {
   return values;
 }
 
-function buildDevKitM1BoardPin(input: DevKitM1BoardPinInput, resolveSourcePinByGpio: SourcePinResolver): SocPin {
+function buildDevKitM1BoardPin(input: DevKitM1BoardPinInput, resolveSourcePinByGpio: BoardSourcePinResolver): SocPin {
   const sourcePin = resolveSourcePinByGpio(input.gpio);
   const displayNumber = `${input.header}-${input.number}`;
 
@@ -123,7 +121,7 @@ function buildDevKitM1BoardPin(input: DevKitM1BoardPinInput, resolveSourcePinByG
   });
 }
 
-export function createEsp32s3DevKitM1Profile(resolveSourcePinByGpio: SourcePinResolver): SocPackageVariant {
+export function createEsp32s3DevKitM1Profile(resolveSourcePinByGpio: BoardSourcePinResolver): SocPackageVariant {
   const devkitM1BoardPin = (input: DevKitM1BoardPinInput) => buildDevKitM1BoardPin(input, resolveSourcePinByGpio);
 
   return {

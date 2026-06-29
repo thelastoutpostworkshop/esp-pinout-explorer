@@ -680,7 +680,11 @@ function mini1Id(number: number) {
   return `esp32c6-mini-1-pin-${number}`;
 }
 
-function findC6PinByGpio(gpio: number) {
+function findC6PinByGpio(gpio: number | undefined) {
+  if (gpio === undefined) {
+    return undefined;
+  }
+
   return esp32c6.pins.find((pin) => pin.gpio === gpio) ?? qfn32Pins.find((pin) => pin.gpio === gpio);
 }
 

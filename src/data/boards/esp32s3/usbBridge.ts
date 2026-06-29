@@ -1,8 +1,6 @@
-import { makeBoardPin } from '@/data/boards/helpers';
+import { makeBoardPin, type BoardSourcePinResolver } from '@/data/boards/helpers';
 import { esp32s3Mini1ModuleSource } from '@/data/boards/esp32s3/moduleSources';
 import type { PinPosition, PinType, PinWarning, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
-
-type SourcePinResolver = (gpio: number | undefined) => SocPin | undefined;
 
 interface UsbBridgeBoardPinInput {
   number: number;
@@ -83,7 +81,7 @@ const usbBridgeModuleVariants: SocModuleVariant[] = [
   },
 ];
 
-export function createEsp32s3UsbBridgeProfile(resolveSourcePinByGpio: SourcePinResolver): SocPackageVariant {
+export function createEsp32s3UsbBridgeProfile(resolveSourcePinByGpio: BoardSourcePinResolver): SocPackageVariant {
   return {
     id: 'esp32s3-usb-bridge',
     name: 'USB-Bridge (MINI)',
@@ -325,7 +323,7 @@ export function createEsp32s3UsbBridgeProfile(resolveSourcePinByGpio: SourcePinR
   };
 }
 
-function usbBridgeBoardPin(input: UsbBridgeBoardPinInput, resolveSourcePinByGpio: SourcePinResolver): SocPin {
+function usbBridgeBoardPin(input: UsbBridgeBoardPinInput, resolveSourcePinByGpio: BoardSourcePinResolver): SocPin {
   const sourcePin = resolveSourcePinByGpio(input.gpio);
   const displayNumber = `GPIO allocation-${input.number}`;
 
