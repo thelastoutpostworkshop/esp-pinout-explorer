@@ -3,12 +3,13 @@
     <svg v-if="isConnectorGroupLayout" class="board-svg connector-board-svg" viewBox="0 0 960 720" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="connectorBoardBody" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0" stop-color="#0f766e" />
-          <stop offset="1" stop-color="#064e3b" />
+          <stop offset="0" stop-color="#1f2937" />
+          <stop offset="0.52" stop-color="#111827" />
+          <stop offset="1" stop-color="#070b12" />
         </linearGradient>
         <linearGradient id="connectorBoardSheen" x1="0" x2="1" y1="0" y2="0">
           <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
-          <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.16" />
+          <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.1" />
           <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
         </linearGradient>
         <linearGradient id="connectorModuleBody" x1="0" x2="1" y1="0" y2="1">
@@ -19,10 +20,16 @@
           <feDropShadow dx="0" dy="18" flood-color="#0f172a" flood-opacity="0.18" stdDeviation="16" />
         </filter>
         <pattern id="connectorPcbTexture" width="42" height="42" patternUnits="userSpaceOnUse">
-          <path d="M0 14H42 M14 0V42 M0 34H42 M34 0V42" stroke="#2dd4bf" stroke-opacity="0.14" stroke-width="1" />
-          <circle cx="8" cy="8" r="1.4" fill="#99f6e4" opacity="0.22" />
-          <circle cx="30" cy="24" r="1.2" fill="#99f6e4" opacity="0.16" />
+          <path d="M0 14H42 M14 0V42 M0 34H42 M34 0V42" stroke="#94a3b8" stroke-opacity="0.08" stroke-width="1" />
+          <circle cx="8" cy="8" r="1.35" fill="#cbd5e1" opacity="0.2" />
+          <circle cx="30" cy="24" r="1.15" fill="#d6a84f" opacity="0.22" />
         </pattern>
+        <radialGradient id="connectorPlatedHole" cx="50%" cy="50%" r="58%">
+          <stop offset="0" stop-color="#111827" />
+          <stop offset="0.48" stop-color="#111827" />
+          <stop offset="0.52" stop-color="#e5e7eb" />
+          <stop offset="1" stop-color="#94a3b8" />
+        </radialGradient>
         <clipPath id="connectorBoardBodyClip">
           <rect x="118" y="72" width="724" height="576" rx="22" />
         </clipPath>
@@ -31,9 +38,23 @@
       <rect class="board-body" x="118" y="72" width="724" height="576" rx="22" fill="url(#connectorBoardBody)" filter="url(#connectorBoardShadow)" />
       <g clip-path="url(#connectorBoardBodyClip)">
         <rect class="board-texture" x="118" y="72" width="724" height="576" rx="22" fill="url(#connectorPcbTexture)" />
+        <path class="board-trace board-trace--copper" d="M260 164H396Q420 164 420 188V238" />
+        <path class="board-trace board-trace--copper" d="M700 164H566Q540 164 540 188V238" />
+        <path class="board-trace board-trace--copper" d="M248 536H398Q426 536 426 508V420" />
+        <path class="board-trace board-trace--copper" d="M712 536H562Q534 536 534 508V420" />
         <rect class="board-sheen" x="-80" y="48" width="180" height="640" fill="url(#connectorBoardSheen)" />
       </g>
-      <rect class="board-inner" x="130" y="100" width="700" height="552" rx="16" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
+      <rect class="board-inner" x="130" y="100" width="700" height="552" rx="16" fill="none" stroke="#f8fafc" stroke-opacity="0.32" stroke-width="1.6" />
+      <g class="board-mounting-holes" aria-hidden="true">
+        <circle cx="150" cy="104" r="12" fill="url(#connectorPlatedHole)" />
+        <circle cx="810" cy="104" r="12" fill="url(#connectorPlatedHole)" />
+        <circle cx="150" cy="616" r="12" fill="url(#connectorPlatedHole)" />
+        <circle cx="810" cy="616" r="12" fill="url(#connectorPlatedHole)" />
+      </g>
+      <g class="board-silkscreen" aria-hidden="true">
+        <path d="M154 126H250 M710 126H806 M154 592H250 M710 592H806" />
+        <text x="480" y="116" text-anchor="middle">ESPRESSIF DEV BOARD</text>
+      </g>
 
       <g v-if="isUsbBridgeArtwork" class="connector-board__usb">
         <rect x="421" y="30" width="118" height="40" rx="8" />
@@ -146,12 +167,13 @@
     <svg v-else class="board-svg" :viewBox="dualHeaderViewBox" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="boardBody" x1="0" x2="1" y1="0" y2="1">
-          <stop offset="0" stop-color="#0f766e" />
-          <stop offset="1" stop-color="#064e3b" />
+          <stop offset="0" stop-color="#1f2937" />
+          <stop offset="0.52" stop-color="#111827" />
+          <stop offset="1" stop-color="#070b12" />
         </linearGradient>
         <linearGradient id="boardSheen" x1="0" x2="1" y1="0" y2="0">
           <stop offset="0" stop-color="#ffffff" stop-opacity="0" />
-          <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.16" />
+          <stop offset="0.45" stop-color="#ffffff" stop-opacity="0.1" />
           <stop offset="1" stop-color="#ffffff" stop-opacity="0" />
         </linearGradient>
         <linearGradient id="moduleBody" x1="0" x2="1" y1="0" y2="1">
@@ -162,10 +184,21 @@
           <feDropShadow dx="0" dy="18" flood-color="#0f172a" flood-opacity="0.18" stdDeviation="16" />
         </filter>
         <pattern id="pcbTexture" width="42" height="42" patternUnits="userSpaceOnUse">
-          <path d="M0 14H42 M14 0V42 M0 34H42 M34 0V42" stroke="#2dd4bf" stroke-opacity="0.14" stroke-width="1" />
-          <circle cx="8" cy="8" r="1.4" fill="#99f6e4" opacity="0.22" />
-          <circle cx="30" cy="24" r="1.2" fill="#99f6e4" opacity="0.16" />
+          <path d="M0 14H42 M14 0V42 M0 34H42 M34 0V42" stroke="#94a3b8" stroke-opacity="0.08" stroke-width="1" />
+          <circle cx="8" cy="8" r="1.35" fill="#cbd5e1" opacity="0.2" />
+          <circle cx="30" cy="24" r="1.15" fill="#d6a84f" opacity="0.22" />
         </pattern>
+        <linearGradient id="headerSocketBody" x1="0" x2="1" y1="0" y2="0">
+          <stop offset="0" stop-color="#020617" />
+          <stop offset="0.5" stop-color="#111827" />
+          <stop offset="1" stop-color="#020617" />
+        </linearGradient>
+        <radialGradient id="platedHole" cx="50%" cy="50%" r="58%">
+          <stop offset="0" stop-color="#111827" />
+          <stop offset="0.48" stop-color="#111827" />
+          <stop offset="0.52" stop-color="#e5e7eb" />
+          <stop offset="1" stop-color="#94a3b8" />
+        </radialGradient>
         <clipPath id="boardBodyClip">
           <rect x="160" y="52" width="620" height="656" rx="22" />
         </clipPath>
@@ -174,13 +207,36 @@
       <rect class="board-body" x="160" y="52" width="620" height="656" rx="22" fill="url(#boardBody)" filter="url(#boardShadow)" />
       <g clip-path="url(#boardBodyClip)">
         <rect class="board-texture" x="160" y="52" width="620" height="656" fill="url(#pcbTexture)" />
-        <path class="board-trace" d="M276 144H404Q428 144 428 168V194" />
-        <path class="board-trace" d="M664 142H536Q512 142 512 168V194" />
-        <path class="board-trace" d="M300 614H430Q454 614 454 590V496" />
-        <path class="board-trace" d="M640 614H510Q486 614 486 590V496" />
+        <path class="board-trace board-trace--copper" d="M276 144H404Q428 144 428 168V194" />
+        <path class="board-trace board-trace--copper" d="M664 142H536Q512 142 512 168V194" />
+        <path class="board-trace board-trace--copper" d="M300 614H430Q454 614 454 590V496" />
+        <path class="board-trace board-trace--copper" d="M640 614H510Q486 614 486 590V496" />
+        <path class="board-trace" d="M226 132V648 M714 132V648 M226 132H306 M714 132H634" />
         <rect class="board-sheen" x="-40" y="40" width="160" height="690" fill="url(#boardSheen)" />
       </g>
-      <rect class="board-inner" x="190" y="86" width="560" height="588" rx="14" fill="none" stroke="#34d399" stroke-opacity="0.38" stroke-width="2" />
+      <rect class="board-inner" x="190" y="86" width="560" height="588" rx="14" fill="none" stroke="#f8fafc" stroke-opacity="0.32" stroke-width="1.6" />
+      <g class="board-mounting-holes" aria-hidden="true">
+        <circle cx="186" cy="82" r="12" fill="url(#platedHole)" />
+        <circle cx="754" cy="82" r="12" fill="url(#platedHole)" />
+        <circle cx="186" cy="678" r="12" fill="url(#platedHole)" />
+        <circle cx="754" cy="678" r="12" fill="url(#platedHole)" />
+      </g>
+      <g class="board-header-sockets" aria-hidden="true">
+        <rect class="board-header-socket" x="174" y="98" width="36" height="562" rx="7" fill="url(#headerSocketBody)" />
+        <rect class="board-header-socket" x="730" y="98" width="36" height="562" rx="7" fill="url(#headerSocketBody)" />
+        <circle
+          v-for="pin in dualHeaderPins"
+          :key="`${pin.id}-header-hole`"
+          class="board-header-hole"
+          :cx="headerHoleGeometry(pin).x"
+          :cy="headerHoleGeometry(pin).y"
+          r="5.1"
+        />
+      </g>
+      <g class="board-silkscreen" aria-hidden="true">
+        <path d="M210 100H304 M636 100H730 M210 660H304 M636 660H730" />
+        <text x="470" y="104" text-anchor="middle">ESPRESSIF DEVKIT</text>
+      </g>
 
       <g class="board-usb">
         <rect x="392" y="22" width="70" height="40" rx="7" />
@@ -348,6 +404,9 @@ const ariaLabel = computed(
 const leftHeaderName = computed(() => headerNameForSide('left', 'J1'));
 const rightHeaderName = computed(() => headerNameForSide('right', 'J3'));
 const dualHeaderViewBox = computed(() => (showMainFunctions.value ? '-100 8 1140 724' : '128 8 684 724'));
+const dualHeaderPins = computed(() =>
+  props.pins.filter((pin) => pin.position.side === 'left' || pin.position.side === 'right'),
+);
 const functionLabelPins = computed(() =>
   props.pins.filter(
     (pin) => (pin.position.side === 'left' || pin.position.side === 'right') && functionLabelsForPin(pin).length > 0,
@@ -520,6 +579,14 @@ function pinGeometry(pin: SocPin): Geometry {
   return {
     rect: { x: 206, y: y - 12, width: 76, height: 24, rx: 5 },
     label: { x: 244, y },
+  };
+}
+
+function headerHoleGeometry(pin: SocPin): PointText {
+  const side = pin.position.side === 'right' ? 'right' : 'left';
+  return {
+    x: side === 'right' ? 748 : 192,
+    y: pinGeometry(pin).label.y,
   };
 }
 
@@ -825,6 +892,9 @@ onBeforeUnmount(() => {
 .board-trace,
 .board-sheen,
 .board-inner,
+.board-mounting-holes,
+.board-header-sockets,
+.board-silkscreen,
 .module,
 .board-usb,
 .board-component {
@@ -832,12 +902,17 @@ onBeforeUnmount(() => {
   transform-origin: center;
 }
 
+.board-body {
+  stroke: rgba(226, 232, 240, 0.32);
+  stroke-width: 1.2;
+}
+
 .board-shell--animated .board-body {
   animation: board-body-enter 850ms 80ms cubic-bezier(0.16, 0.95, 0.22, 1) both;
 }
 
 .board-texture {
-  opacity: 0.72;
+  opacity: 0.88;
 }
 
 .board-sheen {
@@ -854,14 +929,59 @@ onBeforeUnmount(() => {
 
 .board-trace {
   fill: none;
-  stroke: #5eead4;
+  stroke: #cbd5e1;
   stroke-linecap: round;
-  stroke-opacity: 0.18;
+  stroke-opacity: 0.14;
+  stroke-width: 1.4;
+}
+
+.board-trace--copper {
+  stroke: #d6a84f;
+  stroke-opacity: 0.28;
   stroke-width: 2;
 }
 
+.board-mounting-holes {
+  filter: drop-shadow(0 1px 1px rgba(2, 6, 23, 0.55));
+}
+
+.board-header-socket {
+  stroke: rgba(226, 232, 240, 0.2);
+  stroke-width: 1.2;
+  filter: drop-shadow(0 1px 2px rgba(2, 6, 23, 0.55));
+}
+
+.board-header-hole {
+  fill: #020617;
+  stroke: #cbd5e1;
+  stroke-width: 1.45;
+}
+
+.board-silkscreen {
+  pointer-events: none;
+}
+
+.board-silkscreen path {
+  fill: none;
+  stroke: #e5e7eb;
+  stroke-linecap: round;
+  stroke-opacity: 0.52;
+  stroke-width: 1.25;
+}
+
+.board-silkscreen text {
+  fill: #e5e7eb;
+  font-size: 9px;
+  font-weight: 850;
+  letter-spacing: 0;
+  opacity: 0.82;
+}
+
 .board-shell--animated .board-trace,
-.board-shell--animated .board-inner {
+.board-shell--animated .board-inner,
+.board-shell--animated .board-mounting-holes,
+.board-shell--animated .board-header-sockets,
+.board-shell--animated .board-silkscreen {
   animation: board-detail-enter 720ms 260ms ease-out both;
 }
 
@@ -894,7 +1014,7 @@ onBeforeUnmount(() => {
 .connector-board__usb text,
 .connector-board__component text,
 .connector-board__group-label text {
-  fill: #ccfbf1;
+  fill: #e5e7eb;
   font-size: 13px;
   font-weight: 850;
   letter-spacing: 0;
@@ -907,13 +1027,13 @@ onBeforeUnmount(() => {
 }
 
 .header-name {
-  fill: #99f6e4;
+  fill: #f8fafc;
   opacity: 0.9;
 }
 
 .board-component rect {
-  fill: rgba(15, 23, 42, 0.42);
-  stroke: rgba(153, 246, 228, 0.48);
+  fill: rgba(15, 23, 42, 0.72);
+  stroke: rgba(226, 232, 240, 0.46);
   stroke-width: 2;
 }
 
@@ -924,8 +1044,8 @@ onBeforeUnmount(() => {
 }
 
 .connector-board__component rect {
-  fill: rgba(15, 23, 42, 0.42);
-  stroke: rgba(153, 246, 228, 0.48);
+  fill: rgba(15, 23, 42, 0.72);
+  stroke: rgba(226, 232, 240, 0.46);
   stroke-width: 2;
 }
 
@@ -934,7 +1054,7 @@ onBeforeUnmount(() => {
 }
 
 .connector-board__component--sd rect {
-  fill: rgba(22, 101, 52, 0.44);
+  fill: rgba(51, 65, 85, 0.82);
 }
 
 .connector-board__component--power rect {
@@ -947,7 +1067,7 @@ onBeforeUnmount(() => {
 }
 
 .connector-board__group-label text {
-  fill: #ccfbf1;
+  fill: #f8fafc;
   font-size: 12px;
   opacity: 0.92;
   text-transform: uppercase;
@@ -1022,8 +1142,8 @@ onBeforeUnmount(() => {
 }
 
 .board-pin--matched .board-pin__pad {
-  fill: #ccfbf1;
-  stroke: #0f766e;
+  fill: #dbeafe;
+  stroke: #2563eb;
   stroke-width: 2.6;
 }
 
@@ -1044,7 +1164,7 @@ onBeforeUnmount(() => {
 
 .board-pin:hover .board-pin__pad,
 .board-pin:focus .board-pin__pad {
-  stroke: #0f766e;
+  stroke: #2563eb;
   stroke-width: 3;
 }
 
@@ -1359,6 +1479,9 @@ onBeforeUnmount(() => {
   .board-trace,
   .board-sheen,
   .board-inner,
+  .board-mounting-holes,
+  .board-header-sockets,
+  .board-silkscreen,
   .module,
   .board-usb,
   .board-component,
