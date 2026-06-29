@@ -56,6 +56,7 @@ Accuracy matters more than UI flourish. Raw SoC package data must come from offi
 - Use `boardLayout: 'connector-groups'` and `boardGroup` for official board pin tables that are grouped by function or connector instead of J1/J3-style side headers.
 - Use official board header identifiers in `displayNumber`, for example `J1-4`.
 - Preserve the board silkscreen/header label in `boardLabel`, for example `TX`, `3V3`, or `14`.
+- Preserve official numeric GPIO-style board labels exactly in `boardLabel`, for example `IO23` or `GPIO23`. `BoardSvg.vue` normalizes these to the short visible label `23` so board drawings stay consistent across profiles, while the drawer and search still expose the official board label.
 - Set `boardHeader` to the official header block name, for example `J1` or `J3`.
 - For GPIO header pins, copy or derive SoC-level GPIO metadata from the raw SoC package pin so drawer sections, search, warnings, and tooltips stay consistent.
 - Add board-specific maker warnings for pins connected to on-board hardware, boot/reset buttons, USB, UART bridges, LEDs, or module memory constraints.

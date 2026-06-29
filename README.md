@@ -54,3 +54,7 @@ npm run build
 - `src/stores/socStore.ts` - Pinia selected SoC, selected pin, and search state
 
 When a SoC has multiple packages or board profiles, the app shows a profile selector beside the SoC selector.
+
+## Board Label Convention
+
+Board profile data preserves official Espressif header and silkscreen labels in `boardLabel`, including labels such as `IO23` or `GPIO23`. `BoardSvg.vue` renders simple numeric GPIO labels as `23` for a consistent maker-facing board view. The official board label remains available in search and in the pin details drawer.

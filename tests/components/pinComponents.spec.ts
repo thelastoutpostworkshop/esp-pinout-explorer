@@ -112,6 +112,14 @@ describe('BoardSvg', () => {
     });
 
     expect(wrapper.findAll('.header-name').map((item) => item.text())).toEqual(['J2', 'J3']);
+    const visiblePinLabels = wrapper.findAll('.board-pin__label').map((item) => item.text());
+
+    expect(visiblePinLabels).toContain('23');
+    expect(visiblePinLabels).toContain('34');
+    expect(visiblePinLabels).not.toContain('IO23');
+    expect(visiblePinLabels).not.toContain('IO34');
+    expect(visiblePinLabels).toContain('VP');
+    expect(visiblePinLabels).toContain('D0');
   });
 
   it('renders connector-group board profiles without J1/J3 assumptions', async () => {

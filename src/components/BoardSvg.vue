@@ -137,7 +137,7 @@
           text-anchor="middle"
           dominant-baseline="middle"
         >
-          {{ pin.boardLabel ?? pin.name }}
+          {{ boardPinDisplayLabel(pin) }}
         </text>
       </g>
     </svg>
@@ -255,7 +255,7 @@
           text-anchor="middle"
           dominant-baseline="middle"
         >
-          {{ pin.boardLabel ?? pin.name }}
+          {{ boardPinDisplayLabel(pin) }}
         </text>
       </g>
     </svg>
@@ -498,6 +498,17 @@ function pinLabel(pin: SocPin) {
   const gpio = pin.gpio !== undefined ? `, GPIO${pin.gpio}` : '';
   const header = pin.displayNumber ? `${pin.displayNumber}, ` : '';
   return `${header}${pin.name}${gpio}`;
+}
+
+function boardPinDisplayLabel(pin: SocPin) {
+  const label = pin.boardLabel ?? pin.name;
+  const numericGpioLabel = label.match(/^(?:GPIO|IO)(\d+)$/i);
+
+  if (numericGpioLabel && pin.gpio === Number(numericGpioLabel[1])) {
+    return numericGpioLabel[1];
+  }
+
+  return label;
 }
 
 function replayIntroAnimation() {
