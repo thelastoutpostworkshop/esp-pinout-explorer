@@ -156,13 +156,66 @@ Source baseline:
 
 ### Classic ESP32 Series
 
-- [ ] ESP32 classic QFN variants
-  - [ ] QFN48, 5 x 5 mm
-  - [ ] QFN48, 6 x 6 mm
-  - Covers ESP32-D0WD, ESP32-D0WD-V3, ESP32-D0WDQ6, ESP32-D0WDQ6-V3, ESP32-S0WD, ESP32-U4WDH, and related flash/PSRAM variants.
-- [ ] ESP32 classic PICO variants
-  - [ ] LGA, 7 x 7 mm
-  - Covers ESP32-PICO-D4, ESP32-PICO-V3, and ESP32-PICO-V3-02 package families.
+- [ ] ESP32 classic chip package profiles
+  - Source: https://documentation.espressif.com/esp32_datasheet_en.html
+  - [ ] Chip package profile: ESP32 QFN48, 5 x 5 mm
+    - Covers ESP32-D0WD-V3, ESP32-U4WDH, ESP32-S0WD, ESP32-D0WD, and related QFN 5 x 5 mm variants.
+  - [ ] Chip package profile: ESP32 QFN48, 6 x 6 mm
+    - Covers ESP32-D0WDQ6-V3 and ESP32-D0WDQ6 variants.
+  - Note: the ESP32 Series Datasheet v5.2 has separate top-view drawings for QFN 6 x 6 mm and QFN 5 x 5 mm. Treat in-package flash/PSRAM variants as package constraints, not separate maker boards. Flag NRND/EOL variants in profile metadata where applicable.
+- [ ] ESP32-PICO SiP package profiles
+  - Source: https://documentation.espressif.com/esp32-pico_series_datasheet_en.pdf
+  - [ ] SiP package profile: ESP32-PICO-D4, LGA 7 x 7 mm
+  - [ ] SiP package profile: ESP32-PICO-V3, LGA 7 x 7 mm
+  - [ ] SiP package profile: ESP32-PICO-V3-02, LGA 7 x 7 mm
+  - Note: PICO is a System-in-Package profile, not a dev board. ESP32-PICO-D4 and ESP32-PICO-V3 are not 1:1 pin-compatible, and ESP32-PICO-V3-02 adds 8 MB flash plus 2 MB PSRAM.
+- [ ] ESP32 classic module profiles
+  - Source: https://www.espressif.com/en/products/modules
+  - [ ] Module profile: ESP32-WROOM-32E
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf
+  - [ ] Module profile: ESP32-WROOM-32UE
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf
+  - [ ] Module profile: ESP32-WROVER-E
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-wrover-e_esp32-wrover-ie_datasheet_en.pdf
+  - [ ] Module profile: ESP32-WROVER-IE
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-wrover-e_esp32-wrover-ie_datasheet_en.pdf
+  - [ ] Module profile: ESP32-MINI-1
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-mini-1_datasheet_en.pdf
+  - [ ] Module profile: ESP32-MINI-1U
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-mini-1_datasheet_en.pdf
+  - [ ] Module profile: ESP32-PICO-MINI-02
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-pico-mini-02_datasheet_en.pdf
+  - [ ] Module profile: ESP32-PICO-MINI-02U
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-pico-mini-02_datasheet_en.pdf
+  - [ ] Module profile: ESP32-SOLO-1
+    - Source: https://documentation.espressif.com/esp32-solo-1_datasheet_en.html
+  - Note: module profiles should use official module pad definitions and memory tables. Do not copy the bare ESP32 QFN pinout into WROOM/WROVER/MINI/PICO module profiles because module pads, antenna variants, flash/PSRAM, and unavailable flash pins differ.
+- [ ] ESP32 classic board profiles
+  - Source index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/index.html
+  - [ ] Board profile: ESP32-DevKitC V4
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html
+    - Note: high maker value. Official guide has header tables and supports multiple module variants; surface the selected module identity like WROOM/WROVER/SOLO where the guide or schematics confirm it.
+  - [ ] Board profile: ESP32-DevKitM-1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitm-1/user_guide.html
+    - Note: active Espressif board based on ESP32-MINI-1; likely a clean J1/J3-style header profile.
+  - [ ] Board profile: ESP32-PICO-DevKitM-2
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-devkitm-2/user_guide.html
+    - Note: active Espressif board based on ESP32-PICO-MINI-02/02U. Official Pin Descriptions use J2/J3 header tables.
+  - [ ] Board profile: ESP32-PICO-KIT-1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit-1/user_guide.html
+    - Note: PICO-D4-based development board. Useful for makers, but check whether the guide provides full header pin tables before implementation.
+  - [ ] Board profile: ESP32-PICO-KIT v4/v4.1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit/user_guide.html
+    - Note: EOL/older PICO-D4 mini board. Add after PICO-KIT-1 if its official guide provides enough header detail.
+  - [ ] Board profile: ESP-WROVER-KIT v4.1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp-wrover-kit/user_guide.html
+    - Note: specialized board with ESP32-WROVER-E, LCD, and microSD. Treat as a GPIO-allocation/peripheral board profile rather than a simple maker header.
+  - [ ] Board profile: ESP32-Ethernet-Kit
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-ethernet-kit/index.html
+    - Note: specialized Ethernet board. Use only official user guide/schematic allocation data; Ethernet PHY pins should be maker warnings.
+  - [ ] Board profile: ESP32-LCDKit
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-lcdkit/index.html
+    - Note: specialized HMI board with ESP32-DevKitC at its core. Lower priority than direct header-style boards.
 
 ### ESP8266 Series
 
