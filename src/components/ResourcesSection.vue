@@ -17,6 +17,16 @@
 
       <button
         class="resources-section__item resources-section__item--button"
+        :class="{ 'resources-section__item--active': store.activeView === 'about' }"
+        type="button"
+        @click="openAbout"
+      >
+        <Compass :size="16" aria-hidden="true" />
+        <span>About</span>
+      </button>
+
+      <button
+        class="resources-section__item resources-section__item--button"
         :class="{ 'resources-section__item--active': store.activeView === 'makerTools' }"
         type="button"
         @click="openMakerTools"
@@ -29,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { Coffee, ExternalLink, LifeBuoy, Play, Wrench } from '@lucide/vue';
+import { Coffee, Compass, ExternalLink, LifeBuoy, Play, Wrench } from '@lucide/vue';
 import { useSocStore } from '@/stores/socStore';
 
 const emit = defineEmits<{
@@ -58,6 +68,11 @@ const resourceLinks = [
 
 function openMakerTools() {
   store.showMakerTools();
+  emit('changed');
+}
+
+function openAbout() {
+  store.showAbout();
   emit('changed');
 }
 </script>

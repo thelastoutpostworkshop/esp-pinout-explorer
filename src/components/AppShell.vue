@@ -41,6 +41,7 @@
         <ExplorerSidebar :show-profile-controls="false" />
       </div>
       <MakerToolsPage v-if="store.activeView === 'makerTools'" />
+      <AboutPage v-else-if="store.activeView === 'about'" />
       <SocPinoutView v-else />
     </div>
   </v-main>
@@ -49,6 +50,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { CircuitBoard, Menu } from '@lucide/vue';
+import AboutPage from '@/components/AboutPage.vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
 import MakerToolsPage from '@/components/MakerToolsPage.vue';
 import ProfileNavigator from '@/components/ProfileNavigator.vue';

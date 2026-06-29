@@ -13,7 +13,7 @@ interface PersistedProfileSelection {
   packageId: string;
 }
 
-type WorkspaceView = 'pinout' | 'makerTools';
+type WorkspaceView = 'pinout' | 'makerTools' | 'about';
 
 function normalize(value: string) {
   return value.toLowerCase().replace(/[_/+-]/g, ' ');
@@ -141,6 +141,12 @@ export const useSocStore = defineStore('soc', () => {
     activeView.value = 'makerTools';
   }
 
+  function showAbout() {
+    selectedPinId.value = null;
+    profileInfoOpen.value = false;
+    activeView.value = 'about';
+  }
+
   function setSearchQuery(query: string) {
     activeView.value = 'pinout';
     searchQuery.value = query;
@@ -173,6 +179,7 @@ export const useSocStore = defineStore('soc', () => {
     closeProfileInfo,
     showPinout,
     showMakerTools,
+    showAbout,
     setSearchQuery,
     countPinsForQuery,
   };
