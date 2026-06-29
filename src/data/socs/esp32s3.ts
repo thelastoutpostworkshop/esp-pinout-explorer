@@ -101,6 +101,9 @@ export const esp32s3: SocDefinition = {
   defaultProfileId: 'esp32s3-devkitc-1-v1-1',
   chipSpecs: {
     cpu: 'Dual-core 32-bit Xtensa LX7, up to 240 MHz',
+    wireless: '2.4 GHz Wi-Fi 802.11 b/g/n and Bluetooth 5 LE.',
+    sram: '512 KB SRAM and 16 KB RTC SRAM.',
+    rom: '384 KB ROM.',
   },
   packageName: 'QFN56 (7 x 7 mm), top view',
   description: 'ESP32-S3 Wi-Fi + Bluetooth LE SoC pinout MVP.',

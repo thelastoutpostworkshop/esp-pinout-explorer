@@ -78,6 +78,9 @@ export interface SocModuleVariant {
 
 export interface SocChipSpecs {
   cpu: string;
+  wireless?: string;
+  sram?: string;
+  rom?: string;
 }
 
 export interface SocBoardSpecs {
@@ -90,6 +93,7 @@ export interface SocPackageVariant {
   id: string;
   name: string;
   packageName: string;
+  description?: string;
   kind?: PinProfileKind;
   boardLayout?: BoardLayout;
   boardArtwork?: BoardArtwork;

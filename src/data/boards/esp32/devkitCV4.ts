@@ -155,6 +155,8 @@ export function createEsp32DevKitCV4Profile(resolveSourcePinByGpio: BoardSourceP
   id: 'esp32-devkitc-v4',
   name: 'DevKitC V4',
   packageName: 'ESP32-DevKitC V4 board headers',
+  description:
+    'Small ESP32-based development board from Espressif. Most I/O pins are broken out to side headers for jumper-wire or breadboard use.',
   kind: 'board',
   source: devkitCV4Source,
   boardSpecs: {

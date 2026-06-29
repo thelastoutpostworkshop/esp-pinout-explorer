@@ -100,6 +100,9 @@ export const esp32: SocDefinition = {
   defaultProfileId: 'esp32-devkitc-v4',
   chipSpecs: {
     cpu: 'Dual-core 32-bit Xtensa LX6 CPU up to 240 MHz; ESP32-SOLO-1 module variants use a single-core LX6 CPU.',
+    wireless: '2.4 GHz Wi-Fi 802.11 b/g/n plus Bluetooth v4.2 BR/EDR and Bluetooth LE.',
+    sram: '520 KB SRAM, including 8 KB RTC FAST SRAM and 8 KB RTC SLOW SRAM.',
+    rom: '448 KB ROM.',
   },
   packageName: 'ESP32 QFN48, 6 x 6 mm',
   description: 'Classic ESP32 Wi-Fi + Bluetooth SoC package.',

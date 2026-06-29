@@ -104,6 +104,8 @@ export function createEsp32s3UsbOtgProfile(resolveSourcePinByGpio: BoardSourcePi
     id: 'esp32s3-usb-otg',
     name: 'USB-OTG (MINI)',
     packageName: 'ESP32-S3-USB-OTG connector groups',
+    description:
+      'ESP32-S3 development board focused on USB host and device applications, with USB, LCD, MicroSD, battery, and control interfaces on board.',
     kind: 'board',
     boardLayout: 'connector-groups',
     boardArtwork: 'usb-otg',

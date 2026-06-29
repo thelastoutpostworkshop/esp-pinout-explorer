@@ -128,6 +128,8 @@ export function createEsp32c6DevKitC1Profile(resolveSourcePinByGpio: BoardSource
   id: 'esp32c6-devkitc-1',
   name: 'DevKitC-1 (WROOM)',
   packageName: 'ESP32-C6-DevKitC-1 v1.2 board headers',
+  description:
+    'Entry-level ESP32-C6-WROOM-1 development board for Wi-Fi, Bluetooth LE, Zigbee, and Thread applications.',
   kind: 'board',
   source: devkitC1Source,
   boardSpecs: {

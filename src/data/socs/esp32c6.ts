@@ -348,6 +348,9 @@ export const esp32c6: SocDefinition = {
   defaultProfileId: 'esp32c6-devkitm-1',
   chipSpecs: {
     cpu: 'Single-core 32-bit RISC-V HP CPU up to 160 MHz, plus low-power RISC-V core',
+    wireless: '2.4 GHz Wi-Fi 6 802.11 b/g/n/ax, Bluetooth 5 LE, and IEEE 802.15.4.',
+    sram: '512 KB HP SRAM and 16 KB LP SRAM.',
+    rom: '320 KB ROM.',
   },
   packageName: 'QFN40 (5 x 5 mm), top view',
   description: 'ESP32-C6 Wi-Fi 6, Bluetooth LE, and 802.15.4 SoC pinout.',

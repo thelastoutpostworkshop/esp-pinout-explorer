@@ -138,6 +138,8 @@ export function createEsp32c6DevKitM1Profile(resolveSourcePinByGpio: BoardSource
   id: 'esp32c6-devkitm-1',
   name: 'DevKitM-1 (MINI)',
   packageName: 'ESP32-C6-DevKitM-1 board headers',
+  description:
+    'Entry-level ESP32-C6-MINI-1 development board for Wi-Fi, Bluetooth LE, Zigbee, and Thread applications.',
   kind: 'board',
   source: devkitM1Source,
   boardSpecs: {

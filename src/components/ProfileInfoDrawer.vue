@@ -184,9 +184,18 @@ const selectedSource = computed(() => selectedPackage.value.source ?? selectedSo
 const sourceLinkTitle = computed(() => `${selectedSource.value.title} ${selectedSource.value.version}`);
 const sourceFigures = computed(() => selectedSource.value.figures ?? []);
 const chipSpecItems = computed(() => {
-  const cpu = selectedSoc.value.chipSpecs?.cpu;
+  const specs = selectedSoc.value.chipSpecs;
 
-  return cpu ? [{ label: 'CPU', value: cpu }] : [];
+  if (!specs) {
+    return [];
+  }
+
+  return [
+    { label: 'Wireless', value: specs.wireless },
+    { label: 'CPU', value: specs.cpu },
+    { label: 'SRAM', value: specs.sram },
+    { label: 'ROM', value: specs.rom },
+  ].filter((item): item is { label: string; value: string } => Boolean(item.value?.trim()));
 });
 const loadingReferenceImageUrls = ref(new Set<string>());
 const erroredReferenceImageUrls = ref(new Set<string>());
@@ -212,6 +221,7 @@ const boardSpecItems = computed(() => {
   ].filter((item) => item.value.trim());
 });
 const profileInfoIntro = computed(() => {
+  const description = selectedPackage.value.description?.trim();
   const note = selectedPackage.value.identificationNotes?.[0];
   const helpText = {
     board:
@@ -223,8 +233,8 @@ const profileInfoIntro = computed(() => {
   }[selectedProfileKind.value];
 
   return [
-    helpText,
-    note,
+    description ?? helpText,
+    description ? undefined : note,
   ]
     .filter(Boolean)
     .join(' ');

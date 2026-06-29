@@ -145,6 +145,8 @@ export function createEsp32s3DevKitC1V11Profile(resolveSourcePinByGpio: BoardSou
     id: 'esp32s3-devkitc-1-v1-1',
     name: 'DevKitC-1 v1.1 (WROOM)',
     packageName: 'ESP32-S3-DevKitC-1 v1.1 board headers',
+    description:
+      'Entry-level ESP32-S3-WROOM development board. Most I/O pins are broken out to side headers for easy interfacing.',
     kind: 'board',
     source: devkitC1V11Source,
     boardSpecs: {

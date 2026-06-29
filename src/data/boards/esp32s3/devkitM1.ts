@@ -128,6 +128,8 @@ export function createEsp32s3DevKitM1Profile(resolveSourcePinByGpio: BoardSource
     id: 'esp32s3-devkitm-1',
     name: 'DevKitM-1 (MINI)',
     packageName: 'ESP32-S3-DevKitM-1 board headers',
+    description:
+      'Entry-level ESP32-S3-MINI-1 development board. Most I/O pins are broken out to side headers for easy interfacing.',
     kind: 'board',
     source: devkitM1Source,
     boardSpecs: {

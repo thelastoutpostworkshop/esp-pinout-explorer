@@ -419,8 +419,17 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('Header pins, silkscreen labels, and on-board parts.');
     expect(wrapper.text()).toContain('Module');
     expect(wrapper.text()).toContain('Chip');
+    expect(wrapper.text()).toContain(
+      'Entry-level ESP32-S3-WROOM development board. Most I/O pins are broken out to side headers for easy interfacing.',
+    );
+    expect(wrapper.text()).toContain('Wireless');
+    expect(wrapper.text()).toContain('2.4 GHz Wi-Fi 802.11 b/g/n and Bluetooth 5 LE.');
     expect(wrapper.text()).toContain('CPU');
     expect(wrapper.text()).toContain('Dual-core 32-bit Xtensa LX7');
+    expect(wrapper.text()).toContain('SRAM');
+    expect(wrapper.text()).toContain('512 KB SRAM and 16 KB RTC SRAM.');
+    expect(wrapper.text()).toContain('ROM');
+    expect(wrapper.text()).toContain('384 KB ROM.');
     expect(wrapper.text()).toContain('ESP32-S3-WROOM-1 / WROOM-1U / WROOM-2');
     expect(wrapper.text()).toContain('Flash');
     expect(wrapper.text()).toContain('8 MB Quad SPI flash / 32 MB Octal SPI flash');
@@ -433,7 +442,6 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('USB-to-UART bridge for flashing');
     expect(wrapper.text()).toContain('On-board');
     expect(wrapper.text()).toContain('addressable RGB LED on GPIO38');
-    expect(wrapper.text()).toContain('The printed metal-can name is the module');
     expect(wrapper.text()).toContain('Module variants');
     expect(wrapper.text()).toContain('Official docs');
     expect(wrapper.find('.profile-info__source').attributes('href')).toBe(esp32s3.boardProfiles?.[0]?.source?.url);

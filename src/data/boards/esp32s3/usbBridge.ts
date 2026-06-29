@@ -86,6 +86,8 @@ export function createEsp32s3UsbBridgeProfile(resolveSourcePinByGpio: BoardSourc
     id: 'esp32s3-usb-bridge',
     name: 'USB-Bridge (MINI)',
     packageName: 'ESP32-S3-USB-Bridge',
+    description:
+      'ESP32-S3 bridge board for connecting a computer to a target chip over USB-to-UART, JTAG, MSC, or wireless bridge workflows.',
     kind: 'board',
     boardLayout: 'connector-groups',
     boardArtwork: 'usb-bridge',
