@@ -606,8 +606,9 @@ function connectorPinDisplayLabel(pin: SocPin) {
 
 function functionBadgesForPin(pin: SocPin): FunctionBadge[] {
   const geometry = functionLabelGeometry(pin);
+  const pinRect = pinGeometry(pin).rect;
   const side = pin.position.side === 'right' ? 'right' : 'left';
-  const height = 14;
+  const height = pinRect.height;
   const gap = 3;
   const rawBadges = boardPinFunctionLabels(pin, 5).map((label) => ({
     label,
@@ -621,9 +622,9 @@ function functionBadgesForPin(pin: SocPin): FunctionBadge[] {
     const result = {
       ...badge,
       x,
-      y: geometry.text.y - height / 2,
+      y: pinRect.y,
       height,
-      rx: 4,
+      rx: pinRect.rx,
       textX: x + badge.width / 2,
       textY: geometry.text.y + 0.15,
     };

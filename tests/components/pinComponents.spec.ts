@@ -145,6 +145,7 @@ describe('BoardSvg', () => {
     expect(functionWrapper.findAll('.board-function-badge').length).toBeGreaterThan(0);
     expect(functionWrapper.find('.board-function-badge--gpio').exists()).toBe(true);
     expect(functionWrapper.find('.board-function-badge--analog').exists()).toBe(true);
+    expect(functionWrapper.find('.board-function-badge__pill').attributes()).toMatchObject({ height: '24', rx: '5' });
     const badgeLabels = functionWrapper.findAll('.board-function-badge__text').map((item) => item.text());
 
     expect(badgeLabels).not.toContain('GPIO23');
