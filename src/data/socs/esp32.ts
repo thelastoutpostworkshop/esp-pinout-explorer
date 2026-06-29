@@ -23,7 +23,6 @@ const source: SocSource = {
   ],
 };
 
-
 const gpioMatrixSignals = [
   'I2C',
   'UART',

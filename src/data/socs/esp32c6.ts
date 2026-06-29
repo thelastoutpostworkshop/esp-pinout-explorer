@@ -38,8 +38,6 @@ const source: SocSource = {
   ],
 };
 
-
-
 const gpioMatrixSignals = [
   'SPI2',
   'UART1',
@@ -891,8 +889,6 @@ const esp32c6Mini1UProfile: SocPackageVariant = {
 const esp32c6DevKitM1Profile = createEsp32c6DevKitM1Profile(findC6PinByGpio);
 
 const esp32c6DevKitC1Profile = createEsp32c6DevKitC1Profile(findC6PinByGpio);
-
-esp32c6.packageVariants
 
 esp32c6.packageVariants = [...(esp32c6.packageVariants ?? []), esp32c6Mini1Profile, esp32c6Mini1UProfile];
 esp32c6.boardProfiles = [esp32c6DevKitM1Profile, esp32c6DevKitC1Profile];

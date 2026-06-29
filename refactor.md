@@ -4,7 +4,7 @@ This list tracks architecture work to finish before adding a large batch of deve
 
 ## Before Adding Many More Boards
 
-- [ ] Extract existing board profile literals into per-board files.
+- [x] Extract existing board profile literals into per-board files.
   - [x] `ESP32-S3-USB-Bridge` -> `src/data/boards/esp32s3/usbBridge.ts`
   - [x] `ESP32-S3-USB-OTG` -> `src/data/boards/esp32s3/usbOtg.ts`
   - [x] `ESP32-S3-DevKitC-1 v1.1` -> `src/data/boards/esp32s3/devkitC1V11.ts`
@@ -13,11 +13,11 @@ This list tracks architecture work to finish before adding a large batch of deve
   - [x] `ESP32-DevKitM-1` -> `src/data/boards/esp32/devkitM1.ts`
   - [x] `ESP32-C6-DevKitM-1` -> `src/data/boards/esp32c6/devkitM1.ts`
   - [x] `ESP32-C6-DevKitC-1` -> `src/data/boards/esp32c6/devkitC1.ts`
-- [ ] Keep SoC files focused on raw chip/package/module data and profile registration.
-- [ ] Move shared board module sources into family-level board source files.
+- [x] Keep SoC files focused on raw chip/package/module data and profile registration.
+- [x] Move shared board module sources into family-level board source files.
   - [x] `ESP32-S3-MINI-1/1U` shared source
-  - [ ] ESP32 WROOM/WROVER/SOLO shared sources
-  - [ ] ESP32-C6 MINI/WROOM shared sources
+  - [x] ESP32 WROOM/WROVER/SOLO shared sources
+  - [x] ESP32-C6 MINI/WROOM shared sources
 - [ ] Add a small `createBoardProfiles(...)` registration pattern per SoC family so new board files are imported in one place.
 - [ ] Standardize board profile factory signatures.
   - Recommended shape: `createBoardProfile(resolveSourcePinByGpio)`.
