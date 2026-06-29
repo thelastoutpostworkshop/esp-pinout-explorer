@@ -253,6 +253,8 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.find('.explorer-sidebar__chips').exists()).toBe(false);
     expect(wrapper.find('[role="dialog"][aria-label="Profile information"]').exists()).toBe(false);
     expect(wrapper.text()).toContain('Profile info');
+    expect(wrapper.text()).toContain('Variants: WROOM-1-N8R8 / WROOM-1U-N8R8 / WROOM-2-N32R16V');
+    expect(wrapper.text()).toContain('Variant: MINI-1-N4R2');
     expect(wrapper.text()).not.toContain('Dual-core 32-bit Xtensa LX7');
     expect(wrapper.text()).not.toContain('USB ports, 5V/GND headers, or 3V3/GND headers');
 
@@ -325,6 +327,8 @@ describe('ExplorerSidebar', () => {
     await wrapper.vm.$nextTick();
 
     expect(wrapper.findAll('.v-list-subheader').map((item) => item.text())).toEqual(['Dev boards', 'Modules', 'Chip packages']);
+    expect(wrapper.text()).toContain('Variants: MINI-1 / MINI-1U');
+    expect(wrapper.text()).toContain('Variants: WROOM-1-N8 / WROOM-1U-N8');
     expect(wrapper.text()).toContain('Single-core 32-bit RISC-V HP CPU');
     expect(wrapper.text()).toContain('DevKitM-1 (MINI)');
     expect(wrapper.text()).toContain('MINI-1');
@@ -512,8 +516,8 @@ const sidebarStubs = {
     template: '<aside v-if="modelValue" v-bind="$attrs" class="v-navigation-drawer v-navigation-drawer--active"><slot /></aside>',
   },
   VListItem: {
-    props: ['title'],
-    template: '<div class="v-list-item">{{ title }}<slot /></div>',
+    props: ['title', 'subtitle'],
+    template: '<div class="v-list-item">{{ title }}<small v-if="subtitle">{{ subtitle }}</small><slot /></div>',
   },
   VListSubheader: {
     template: '<div class="v-list-subheader"><slot /></div>',

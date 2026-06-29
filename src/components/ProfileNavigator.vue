@@ -31,7 +31,12 @@
         <v-list-subheader v-if="item.startsGroup" class="profile-select__header">
           {{ item.groupLabel }}
         </v-list-subheader>
-        <v-list-item v-bind="props" :title="item.name" />
+        <v-list-item
+          v-bind="props"
+          class="profile-select__item"
+          :subtitle="profileVariantSummary(item)"
+          :title="item.name"
+        />
       </template>
     </v-select>
 
@@ -100,6 +105,27 @@ function profileKindPluralLabel(kind: PinProfileKind) {
   }[kind];
 }
 
+function profileVariantSummary(profile: SocPackageVariant) {
+  if (profileKind(profile) !== 'board') {
+    return '';
+  }
+
+  const variantNames = profile.moduleVariants?.length
+    ? profile.moduleVariants.map((variant) => compactVariantName(variant.name))
+    : profile.moduleNames?.map(compactVariantName) ?? [];
+
+  if (!variantNames.length) {
+    return '';
+  }
+
+  return `${variantNames.length === 1 ? 'Variant' : 'Variants'}: ${variantNames.join(' / ')}`;
+}
+
+function compactVariantName(name: string) {
+  const socPrefix = `${store.selectedSoc.name}-`;
+  return name.startsWith(socPrefix) ? name.slice(socPrefix.length) : name;
+}
+
 function openProfileInfo() {
   store.openProfileInfo();
   emit('changed');
@@ -137,6 +163,27 @@ function openProfileInfo() {
   font-weight: 900;
   letter-spacing: 0;
   text-transform: uppercase;
+}
+
+:deep(.profile-select__item) {
+  align-items: start;
+  min-height: 54px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+:deep(.profile-select__item .v-list-item-subtitle) {
+  display: -webkit-box;
+  overflow: hidden;
+  color: #64748b;
+  font-size: 0.76rem;
+  font-weight: 650;
+  letter-spacing: 0;
+  line-height: 1.25;
+  opacity: 1;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .profile-navigator__info-button {
