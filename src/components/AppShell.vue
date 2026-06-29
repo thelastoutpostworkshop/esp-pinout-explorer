@@ -15,7 +15,10 @@
         <CircuitBoard :size="22" />
       </div>
       <v-app-bar-title class="app-shell__brand">
-        <span class="app-shell__title">ESP Pinout Explorer</span>
+        <span class="app-shell__title-row">
+          <span class="app-shell__title">ESP Pinout Explorer</span>
+          <span class="app-shell__version">v{{ appVersion }}</span>
+        </span>
         <span class="app-shell__subtitle">Your atlas for ESP chips, modules, and boards.</span>
       </v-app-bar-title>
     </div>
@@ -51,9 +54,11 @@ import MakerToolsPage from '@/components/MakerToolsPage.vue';
 import ProfileNavigator from '@/components/ProfileNavigator.vue';
 import SocPinoutView from '@/components/SocPinoutView.vue';
 import { useSocStore } from '@/stores/socStore';
+import packageJson from '../../package.json';
 
 const mobileDrawerOpen = ref(false);
 const store = useSocStore();
+const appVersion = packageJson.version;
 </script>
 
 <style scoped>
@@ -102,8 +107,21 @@ const store = useSocStore();
   line-height: 1.15;
 }
 
+.app-shell__title-row {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 7px;
+  min-width: 0;
+}
+
 .app-shell__title {
-  display: block;
+  color: #102027;
+  font-size: 1.05rem;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.app-shell__version {
   color: #102027;
   font-size: 1.05rem;
   font-weight: 900;
@@ -164,6 +182,10 @@ const store = useSocStore();
   }
 
   .app-shell__title {
+    font-size: 0.92rem;
+  }
+
+  .app-shell__version {
     font-size: 0.92rem;
   }
 
