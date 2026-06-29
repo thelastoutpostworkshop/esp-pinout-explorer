@@ -60,6 +60,7 @@ Accuracy matters more than UI flourish. Raw SoC package data must come from offi
 - Set `boardHeader` to the official header block name, for example `J1` or `J3`.
 - For GPIO header pins, copy or derive SoC-level GPIO metadata from the raw SoC package pin so drawer sections, search, warnings, and tooltips stay consistent.
 - Add board-specific maker warnings for pins connected to on-board hardware, boot/reset buttons, USB, UART bridges, LEDs, or module memory constraints.
+- If a board exposes pins used internally for flash or PSRAM, keep the official flash/PSRAM warning and add a maker-visible board warning such as `onboard` or `psram` so the SVG badge and Safe use filter treat the pin as risky.
 - Keep board-only power and ground pins as real clickable pins. They should have clear notes and search keywords even when there is no GPIO.
 - Board profiles should use `BoardSvg.vue`; raw package profiles should use `ChipSvg.vue`.
 - If a board has hardware revisions, encode the revision in the profile name and source metadata, for example `DevKitC-1 v1.1`.

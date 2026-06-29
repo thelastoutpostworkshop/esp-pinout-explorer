@@ -22,6 +22,7 @@ describe('safe use helper', () => {
     expect(isSafeForMakerUse(makePin({ gpio: undefined }))).toBe(false);
     expect(isSafeForMakerUse(makePin({ type: 'power', gpio: undefined, mainFunctions: ['3.3 V power supply'] }))).toBe(false);
     expect(isSafeForMakerUse(makePin({ warnings: ['boot'] }))).toBe(false);
+    expect(isSafeForMakerUse(makePin({ warnings: ['flash'] }))).toBe(false);
     expect(isSafeForMakerUse(makePin({ warnings: ['glitch'] }))).toBe(true);
   });
 });

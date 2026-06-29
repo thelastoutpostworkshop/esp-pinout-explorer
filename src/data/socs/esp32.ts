@@ -787,7 +787,7 @@ const esp32DevKitCV4Profile: SocPackageVariant = {
       gpio: 9,
       mainFunctions: ['GPIO9', 'D2'],
       notes: [flashCaution],
-      warnings: warnings('flash'),
+      warnings: warnings('flash', 'onboard'),
       keywords: ['flash', 'spi', 'd2'],
     }),
     devkitCBoardPin({
@@ -798,7 +798,7 @@ const esp32DevKitCV4Profile: SocPackageVariant = {
       gpio: 10,
       mainFunctions: ['GPIO10', 'D3'],
       notes: [flashCaution],
-      warnings: warnings('flash'),
+      warnings: warnings('flash', 'onboard'),
       keywords: ['flash', 'spi', 'd3'],
     }),
     devkitCBoardPin({
@@ -809,7 +809,7 @@ const esp32DevKitCV4Profile: SocPackageVariant = {
       gpio: 11,
       mainFunctions: ['GPIO11', 'CMD'],
       notes: [flashCaution],
-      warnings: warnings('flash'),
+      warnings: warnings('flash', 'onboard'),
       keywords: ['flash', 'spi', 'cmd'],
     }),
     devkitCBoardPin({
@@ -974,7 +974,7 @@ const esp32DevKitCV4Profile: SocPackageVariant = {
       gpio: 8,
       mainFunctions: ['GPIO8', 'D1'],
       notes: [flashCaution],
-      warnings: warnings('flash'),
+      warnings: warnings('flash', 'onboard'),
       keywords: ['flash', 'spi', 'd1'],
     }),
     devkitCBoardPin({
@@ -985,7 +985,7 @@ const esp32DevKitCV4Profile: SocPackageVariant = {
       gpio: 7,
       mainFunctions: ['GPIO7', 'D0'],
       notes: [flashCaution],
-      warnings: warnings('flash'),
+      warnings: warnings('flash', 'onboard'),
       keywords: ['flash', 'spi', 'd0'],
     }),
     devkitCBoardPin({
@@ -996,7 +996,7 @@ const esp32DevKitCV4Profile: SocPackageVariant = {
       gpio: 6,
       mainFunctions: ['GPIO6', 'CLK'],
       notes: [flashCaution],
-      warnings: warnings('flash'),
+      warnings: warnings('flash', 'onboard'),
       keywords: ['flash', 'spi', 'clock', 'clk'],
     }),
   ],

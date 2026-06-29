@@ -297,6 +297,14 @@ describe('soc store', () => {
     expect(store.filteredPins.every((pin) => pin.boardHeader && pin.type === 'io' && pin.gpio !== undefined)).toBe(true);
     expect(store.filteredPins.every((pin) => !hasMakerWarning(pin))).toBe(true);
 
+    store.selectSoc('esp32');
+    store.setSearchQuery('safe use');
+    expect(store.filteredPins.every((pin) => !pin.warnings?.includes('flash'))).toBe(true);
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).not.toEqual(
+      expect.arrayContaining(['J2-16', 'J2-17', 'J2-18', 'J3-17', 'J3-18', 'J3-19']),
+    );
+
+    store.selectSoc('esp32s3');
     store.selectPackage('esp32s3-qfn56');
     store.setSearchQuery('safe use');
     expect(store.filteredPins).toHaveLength(0);

@@ -120,6 +120,10 @@ describe('BoardSvg', () => {
     expect(visiblePinLabels).not.toContain('IO34');
     expect(visiblePinLabels).toContain('VP');
     expect(visiblePinLabels).toContain('D0');
+
+    const d3PinIndex = pins.findIndex((pin) => pin.boardLabel === 'D3');
+    expect(pins[d3PinIndex].warnings).toEqual(expect.arrayContaining(['flash', 'onboard']));
+    expect(wrapper.findAll('.board-pin')[d3PinIndex].find('.board-pin__warning-badge').exists()).toBe(true);
   });
 
   it('renders connector-group board profiles without J1/J3 assumptions', async () => {
