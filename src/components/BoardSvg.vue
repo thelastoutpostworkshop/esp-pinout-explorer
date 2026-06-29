@@ -699,7 +699,7 @@ function normalizeFunctionLabel(label: string) {
 }
 
 function functionBadgeWidth(label: string) {
-  return Math.max(24, Math.min(86, label.length * 5.4 + 12));
+  return Math.max(24, Math.min(170, label.length * 5.4 + 12));
 }
 
 function functionBadgeTone(label: string, pin: SocPin) {
