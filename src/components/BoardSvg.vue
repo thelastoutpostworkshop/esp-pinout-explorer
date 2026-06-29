@@ -699,7 +699,7 @@ function normalizeFunctionLabel(label: string) {
 }
 
 function functionBadgeWidth(label: string) {
-  return Math.max(24, Math.min(170, label.length * 5.4 + 12));
+  return Math.max(26, Math.min(190, label.length * 5.9 + 14));
 }
 
 function functionBadgeTone(label: string, pin: SocPin) {
@@ -1115,10 +1115,12 @@ onBeforeUnmount(() => {
 
 .board-function-badge__text {
   fill: #ffffff;
-  font-size: 8.1px;
-  font-weight: 900;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8.7px;
+  font-weight: 800;
   letter-spacing: 0;
   pointer-events: none;
+  text-rendering: geometricPrecision;
 }
 
 .board-function-badge--gpio .board-function-badge__pill {
