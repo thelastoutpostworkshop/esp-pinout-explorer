@@ -262,6 +262,30 @@ describe('PinSearch', () => {
     await findButton(wrapper, 'Safe use').trigger('click');
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['']);
   });
+
+  it('shows the input-only quick filter only when the selected profile has input-only pins', async () => {
+    const store = useSocStore();
+    store.selectSoc('esp32');
+
+    const wrapper = mount(PinSearch, {
+      props: {
+        modelValue: '',
+      },
+      global: {
+        stubs: searchStubs,
+      },
+    });
+
+    expect(wrapper.text()).toContain('Input only');
+
+    await findButton(wrapper, 'Input only').trigger('click');
+    expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['input only']);
+
+    store.selectSoc('esp32s3');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.text()).not.toContain('Input only');
+  });
 });
 
 describe('ExplorerSidebar', () => {

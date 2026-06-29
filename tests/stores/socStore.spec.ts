@@ -260,6 +260,9 @@ describe('soc store', () => {
     store.setSearchQuery('j2 vp input only');
     expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J2-3']);
 
+    store.setSearchQuery('input only');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J2-3', 'J2-4', 'J2-5', 'J2-6']);
+
     store.setSearchQuery('wrover psram');
     expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J3-11', 'J3-12']);
 

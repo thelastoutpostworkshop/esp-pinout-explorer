@@ -81,6 +81,7 @@ const safeUseQuery = 'safe use';
 const quickFilters: QuickFilter[] = [
   { label: 'Safe use', query: safeUseQuery },
   { label: 'GPIO', query: 'type:io' },
+  { label: 'Input only', query: 'input only' },
   { label: 'Analog', query: 'type:analog' },
   { label: 'Power', query: 'type:power' },
   { label: 'Ground', query: 'type:ground' },
