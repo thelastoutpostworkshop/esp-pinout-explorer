@@ -10,6 +10,9 @@ Source baseline:
 - ESP32-C3 datasheet/product entry: https://documentation.espressif.com/esp32-c3_datasheet_en.html
 - ESP32-C6 datasheet/product entry: https://documentation.espressif.com/esp32-c6_datasheet_en.html
 - ESP32-H2 datasheet/product entry: https://documentation.espressif.com/esp32-h2_datasheet_en.html
+- ESP32-H SoC product table entries: https://www.espressif.com/en/products/socs
+- ESP32-H module product table entries: https://www.espressif.com/en/products/modules
+- ESP32-H dev kit product table entries: https://www.espressif.com/en/products/devkits
 - ESP32-P4 datasheet: https://documentation.espressif.com/esp32-p4_datasheet_en.html
 - ESP32-S3 dev kits documentation index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/index.html
 
@@ -137,14 +140,63 @@ Source baseline:
 
 ### ESP32-H Series
 
-- [ ] ESP32-H4
-  - [ ] QFN, 6 x 6 mm
-  - Note: new/early entry; confirm datasheet pin tables before implementation.
-- [ ] ESP32-H21
-  - [ ] QFN, 4 x 4 mm
-  - Note: new/early entry; confirm datasheet pin tables before implementation.
-- [ ] ESP32-H2
-  - [ ] QFN32, 4 x 4 mm
+- [ ] ESP32-H4 chip package profiles
+  - Source: https://www.espressif.com/en/products/socs/esp32-h4
+  - [ ] Chip package profile: ESP32-H4 QFN, 6 x 6 mm
+    - Variants: ESP32-H4HR2 / ESP32-H4HF4
+    - Product table: dual-core RISC-V, 40 GPIO, 384 KB SRAM, 128 KB ROM, 4 MB flash / 2 MB PSRAM variant coverage.
+  - Note: new/early entry. Confirm the public datasheet and complete pin tables before implementation; the SoC product page is not enough for raw pinout data.
+- [ ] ESP32-H4 module profiles
+  - Source: https://www.espressif.com/en/products/modules
+  - [ ] Module profile: ESP32-H4-WROOM-1
+    - Product table: ESP32-H4HR2, 18.0 x 25.5 x 3.1 mm, 33 GPIO, 4 MB flash, 2 MB PSRAM, PCB antenna.
+  - Note: implement from the official module datasheet/footprint when publicly available, not only from the product table.
+- [ ] ESP32-H4 board profiles
+  - Source: https://www.espressif.com/en/products/devkits
+  - [ ] Board profile: ESP32-H4-DevKitC-1
+    - Product table: ESP32-H4-WROOM-1 board, 8 MB flash + 2 MB PSRAM, I/O, USB, buttons, LEDs.
+  - Note: the dev-kit product table lists the board, but confirm the official user guide, header tables, pin layout, or schematics before implementation.
+- [ ] ESP32-H21 chip package profiles
+  - Source: https://www.espressif.com/en/products/socs/esp32-h21
+  - [ ] Chip package profile: ESP32-H21 QFN, 4 x 4 mm
+    - Variant: ESP32-H21HF4
+    - Product table: single-core RISC-V, 19 GPIO, 128 KB ROM, 320 KB HP SRAM, 4 KB LP SRAM, 4 MB flash, no PSRAM.
+  - Note: new/early entry. Confirm the public datasheet and complete pin tables before implementation.
+- [ ] ESP32-H21 module profiles
+  - Source: https://www.espressif.com/en/products/modules
+  - [ ] Module profile: ESP32-H21-MINI-1
+    - Product table: ESP32-H21HF4, 13.2 x 16.6 x 2.4 mm, 19 GPIO, 4 MB flash, no PSRAM, PCB antenna.
+  - Note: implement from the official module datasheet/footprint when publicly available.
+- [ ] ESP32-H21 board profiles
+  - Source: https://www.espressif.com/en/products/modules
+  - [ ] Board profile: ESP32-H21-DevKitM-1
+    - Product table: paired with ESP32-H21-MINI-1.
+  - Note: the module product table lists this dev board pairing, but confirm the official user guide, header tables, pin layout, or schematics before implementation.
+- [ ] ESP32-H2 chip package profiles
+  - Source: https://documentation.espressif.com/esp32-h2_datasheet_en.html
+  - [ ] Chip package profile: ESP32-H2 QFN32, 4 x 4 mm
+    - Variants: ESP32-H2FH2S / ESP32-H2FH4S
+    - Datasheet/product table: 19 GPIO, 320 KB SRAM, 128 KB ROM, 4 KB LP memory, 2 MB or 4 MB in-package flash, no PSRAM.
+- [ ] ESP32-H2 module profiles
+  - Source: https://www.espressif.com/en/products/modules
+  - [ ] Module profile: ESP32-H2-MINI-1
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-h2-mini-1_mini-1u_datasheet_en.pdf
+    - Product table: 13.2 x 16.6 x 2.4 mm, 19 GPIO, 1 MB / 2 MB / 4 MB flash options, no PSRAM, PCB antenna.
+  - [ ] Module profile: ESP32-H2-MINI-1U
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-h2-mini-1_mini-1u_datasheet_en.pdf
+    - Product table: 13.2 x 12.5 x 2.4 mm, external antenna connector, 2 MB / 4 MB flash options, no PSRAM.
+  - [ ] Module profile: ESP32-H2-WROOM-02C
+    - Source: https://www.espressif.com/sites/default/files/documentation/esp32-h2-wroom-02c_datasheet_en.pdf
+    - Product table/datasheet: 18.0 x 20.0 x 3.2 mm, 19 GPIOs, 2 MB / 4 MB flash, no PSRAM, PCB antenna.
+  - Note: module profiles should use official module pad definitions and memory tables. Do not copy the bare QFN32 pinout directly.
+- [ ] ESP32-H2 board profiles
+  - Source index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/index.html
+  - [ ] Board profile: ESP32-H2-DevKitM-1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/esp32-h2-devkitm-1/user_guide.html
+    - Note: active Espressif board based on ESP32-H2-MINI-1 or ESP32-H2-MINI-1U. User guide has header block and pin layout data; implement before less-documented H21/H4 boards.
+  - [ ] Board profile: ESP Thread Border Router/Zigbee Gateway
+    - Source: https://docs.espressif.com/projects/esp-thread-br/en/latest/dev-board-guide.html
+    - Note: gateway board combines ESP32-S3 with ESP32-H2 RCP. Treat as a specialized connector/peripheral board profile only if the official guide/schematic provides enough pin allocation detail.
 
 ### ESP32-P Series
 
