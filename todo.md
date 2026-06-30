@@ -14,6 +14,7 @@ Source baseline:
 - ESP32-H module product table entries: https://www.espressif.com/en/products/modules
 - ESP32-H dev kit product table entries: https://www.espressif.com/en/products/devkits
 - ESP32-P4 datasheet: https://documentation.espressif.com/esp32-p4_datasheet_en.html
+- ESP32-P4 dev kits documentation index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/index.html
 - ESP32-S3 dev kits documentation index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/index.html
 
 ## Done
@@ -203,9 +204,30 @@ Source baseline:
 
 ### ESP32-P Series
 
-- [ ] ESP32-P4
-  - [ ] QFN104, 10 x 10 mm
-  - Note: large pinout; implement after the SVG/layout can comfortably handle 100+ package pins.
+- [ ] ESP32-P4 chip package profiles
+  - Source: https://documentation.espressif.com/esp32-p4_datasheet_en.html
+  - [ ] Chip package profile: ESP32-P4 QFN104, 10 x 10 mm
+    - Datasheet/product table: dual-core RISC-V HP CPU, LP RISC-V core, 55 GPIO, USB 2.0 High-Speed, MIPI-CSI/DSI, H.264 encoder, external flash/PSRAM support.
+    - Variants: confirm the current ESP32-P4 part-number table, memory options, NRND/EOL markings, and chip-revision notes directly from the latest datasheet before implementation.
+  - Note: large pinout; implement after `ChipSvg.vue` can comfortably handle 100+ package pins with readable labels and mobile behavior. Pay special attention to ESP32-P4 power domains and voltage-sensitive pins.
+- [ ] ESP32-P4 board profiles
+  - Source index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/index.html
+  - [ ] Board profile: ESP32-P4X-Function-EV-Board
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4x-function-ev-board/user_guide.html
+    - Note: active multimedia development board. User guide says most I/O pins are broken out to pin headers and the board includes an ESP32-C6-MINI-1 wireless module, 7-inch display, MIPI CSI camera, USB, and rich on-board peripherals. Treat as a board profile with header pins plus strong maker warnings for on-board display, camera, USB, SDIO, audio, C6 host link, and power-domain constraints.
+  - [ ] Board profile: ESP32-P4X-EYE
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4x-eye/user_guide.html
+    - Note: active vision board based on ESP32-P4 with ESP32-C6-MINI-1U wireless module, camera, display, microphone, MicroSD, USB 2.0 High-Speed device port, debug port, battery connector, and 2 x 10P female header. Treat as a compact board/peripheral allocation profile, not a generic two-header dev board.
+  - [ ] Board profile: ESP32-P4-Function-EV-Board v1.5.2
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-function-ev-board/user_guide.html
+    - Note: EOL board. Add only after active P4X boards unless a user needs legacy hardware. It is still valuable because the guide documents header breakout and on-board ESP32-C6-MINI-1 connectivity.
+  - [ ] Board profile: ESP32-P4-EYE
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-eye/user_guide.html
+    - Note: EOL vision board. Add after ESP32-P4X-EYE if legacy coverage is needed. Use the official schematic/PCB layout links from the user guide for the camera, display, MicroSD, microphone, rotary encoder, C6 module, and female header mapping.
+  - Note: ESP32-P4 board profiles are peripheral-heavy. Prefer a connector/peripheral allocation layout over forcing every board into the simple dual-header drawing.
+- [ ] ESP32-P4 module profiles
+  - Source: https://www.espressif.com/en/products/modules
+  - Note: no standalone official Espressif ESP32-P4 module profile is currently listed in the module product table. Do not add third-party ESP32-P4 modules or Waveshare/Olimex boards as official profiles unless the project scope expands beyond Espressif official hardware.
 
 ### ESP32-E Series
 
