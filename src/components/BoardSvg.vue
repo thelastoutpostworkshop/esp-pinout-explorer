@@ -51,10 +51,6 @@
         <circle cx="150" cy="616" r="12" fill="url(#connectorPlatedHole)" />
         <circle cx="810" cy="616" r="12" fill="url(#connectorPlatedHole)" />
       </g>
-      <g class="board-silkscreen" aria-hidden="true">
-        <path d="M154 126H250 M710 126H806 M154 592H250 M710 592H806" />
-      </g>
-
       <g v-if="isUsbBridgeArtwork" class="connector-board__usb">
         <rect x="421" y="30" width="118" height="40" rx="8" />
         <text x="480" y="55" text-anchor="middle">USB</text>
@@ -238,10 +234,6 @@
           r="5.1"
         />
       </g>
-      <g class="board-silkscreen" aria-hidden="true">
-        <path d="M210 100H304 M636 100H730 M210 660H304 M636 660H730" />
-      </g>
-
       <g class="board-usb">
         <rect x="392" y="22" width="70" height="40" rx="7" />
         <rect x="478" y="22" width="70" height="40" rx="7" />
