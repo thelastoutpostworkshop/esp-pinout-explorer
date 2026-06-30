@@ -342,7 +342,7 @@ function markReferenceImageFailed(url: string) {
 
 <style scoped>
 .profile-info-drawer {
-  border-left: 1px solid #cbd5e1;
+  border-left: 1px solid var(--app-border);
 }
 
 .profile-info {
@@ -351,7 +351,8 @@ function markReferenceImageFailed(url: string) {
   gap: 18px;
   min-height: 100%;
   padding: 20px;
-  background: #ffffff;
+  color: var(--app-text);
+  background: var(--app-surface-bg);
 }
 
 .profile-info__header {
@@ -363,7 +364,7 @@ function markReferenceImageFailed(url: string) {
 
 .profile-info__header h2 {
   margin: 0;
-  color: #0f172a;
+  color: var(--app-text);
   font-size: 1.04rem;
   font-weight: 850;
   letter-spacing: 0;
@@ -371,7 +372,7 @@ function markReferenceImageFailed(url: string) {
 
 .profile-info__header p {
   margin: 3px 0 0;
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.84rem;
   font-weight: 700;
   line-height: 1.35;
@@ -383,24 +384,24 @@ function markReferenceImageFailed(url: string) {
   place-items: center;
   width: 34px;
   height: 34px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--app-border);
   border-radius: 6px;
-  color: #334155;
-  background: #f8fafc;
+  color: var(--app-text);
+  background: var(--app-surface-muted);
   cursor: pointer;
 }
 
 .profile-info__close:hover,
 .profile-info__close:focus-visible {
-  border-color: #94a3b8;
-  background: #e2e8f0;
+  border-color: var(--app-muted);
+  background: var(--app-hover-bg);
 }
 
 .profile-info__section {
   display: grid;
   gap: 10px;
   min-width: 0;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--app-border);
   padding-bottom: 16px;
 }
 
@@ -411,7 +412,7 @@ function markReferenceImageFailed(url: string) {
 
 .profile-info__section h3 {
   margin: 0;
-  color: #475569;
+  color: var(--app-muted);
   font-size: 0.72rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -419,7 +420,7 @@ function markReferenceImageFailed(url: string) {
 }
 
 .profile-info__section strong {
-  color: #0f172a;
+  color: var(--app-text);
   font-size: 0.88rem;
   line-height: 1.3;
   overflow-wrap: anywhere;
@@ -427,7 +428,7 @@ function markReferenceImageFailed(url: string) {
 
 .profile-info__note {
   margin: 0;
-  color: #475569;
+  color: var(--app-text);
   font-size: 0.84rem;
   font-weight: 700;
   line-height: 1.4;
@@ -449,7 +450,7 @@ function markReferenceImageFailed(url: string) {
 }
 
 .profile-info__spec-list dt {
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.72rem;
   font-weight: 850;
   letter-spacing: 0;
@@ -459,7 +460,7 @@ function markReferenceImageFailed(url: string) {
 .profile-info__spec-list dd {
   min-width: 0;
   margin: 0;
-  color: #0f172a;
+  color: var(--app-text);
   font-size: 0.84rem;
   font-weight: 750;
   line-height: 1.3;
@@ -468,7 +469,7 @@ function markReferenceImageFailed(url: string) {
 
 .profile-info__source,
 .profile-info__table-wrap a {
-  color: #006d77;
+  color: var(--app-link);
   font-weight: 850;
   text-decoration: none;
 }
@@ -483,21 +484,21 @@ function markReferenceImageFailed(url: string) {
 .profile-info__source:focus-visible,
 .profile-info__table-wrap a:hover,
 .profile-info__table-wrap a:focus-visible {
-  color: #004f58;
+  color: var(--app-link-hover);
   text-decoration: underline;
 }
 
 .profile-info__table-wrap {
   overflow-x: auto;
-  border: 1px solid #dbe3ea;
+  border: 1px solid var(--app-border);
   border-radius: 8px;
 }
 
 .profile-info__table-wrap h4 {
   margin: 0;
   padding: 9px 10px;
-  color: #0f172a;
-  background: #f8fafc;
+  color: var(--app-text);
+  background: var(--app-surface-muted);
   font-size: 0.78rem;
   font-weight: 850;
 }
@@ -506,22 +507,22 @@ function markReferenceImageFailed(url: string) {
   width: 100%;
   min-width: 720px;
   border-collapse: collapse;
-  color: #334155;
+  color: var(--app-text);
   font-size: 0.8rem;
   line-height: 1.35;
 }
 
 .profile-info__table-wrap th,
 .profile-info__table-wrap td {
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid var(--app-border);
   padding: 9px 10px;
   text-align: left;
   vertical-align: top;
 }
 
 .profile-info__table-wrap thead th {
-  color: #0f172a;
-  background: #f1f5f9;
+  color: var(--app-text);
+  background: var(--app-surface-subtle);
   font-size: 0.72rem;
   font-weight: 850;
   letter-spacing: 0;
@@ -529,7 +530,7 @@ function markReferenceImageFailed(url: string) {
 }
 
 .profile-info__table-wrap tbody th {
-  color: #0f172a;
+  color: var(--app-text);
   font-weight: 850;
 }
 
@@ -549,10 +550,10 @@ function markReferenceImageFailed(url: string) {
   gap: 8px;
   min-width: 0;
   margin: 0;
-  border: 1px solid #dbe3ea;
+  border: 1px solid var(--app-border);
   border-radius: 8px;
   padding: 9px;
-  background: #f8fafc;
+  background: var(--app-surface-muted);
 }
 
 .profile-info__image-link {
@@ -560,9 +561,9 @@ function markReferenceImageFailed(url: string) {
   place-items: center;
   position: relative;
   min-height: 150px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid var(--app-border);
   border-radius: 6px;
-  background: #ffffff;
+  background: var(--app-surface-bg);
   overflow: hidden;
 }
 
@@ -587,20 +588,20 @@ function markReferenceImageFailed(url: string) {
   z-index: 1;
   display: grid;
   place-items: center;
-  background: #ffffff;
+  background: var(--app-surface-bg);
 }
 
 .profile-info__spinner {
   width: 28px;
   height: 28px;
-  border: 3px solid #dbeafe;
-  border-top-color: #006d77;
+  border: 3px solid var(--app-surface-subtle);
+  border-top-color: var(--app-link);
   border-radius: 999px;
   animation: profile-info-spin 800ms linear infinite;
 }
 
 .profile-info__image-error {
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.82rem;
   font-weight: 800;
 }
@@ -617,13 +618,13 @@ function markReferenceImageFailed(url: string) {
 }
 
 .profile-info__figure strong {
-  color: #0f172a;
+  color: var(--app-text);
   font-size: 0.84rem;
   line-height: 1.3;
 }
 
 .profile-info__figure span {
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.76rem;
   font-weight: 700;
   line-height: 1.3;

@@ -82,13 +82,13 @@ function openAbout() {
   display: grid;
   gap: 9px;
   min-width: 0;
-  border-top: 1px solid #dbe3ea;
+  border-top: 1px solid var(--app-border);
   padding-top: 14px;
 }
 
 .resources-section h2 {
   margin: 0;
-  color: #334155;
+  color: var(--app-muted);
   font-size: 0.82rem;
   font-weight: 850;
   letter-spacing: 0;
@@ -109,7 +109,7 @@ function openAbout() {
   border: 1px solid transparent;
   border-radius: 8px;
   padding: 0 9px;
-  color: #334155;
+  color: var(--app-text);
   background: transparent;
   font-family: inherit;
   font-size: 0.88rem;
@@ -125,15 +125,15 @@ function openAbout() {
 
 .resources-section__item:hover,
 .resources-section__item:focus-visible {
-  border-color: #cbd5e1;
-  background: #ffffff;
-  color: #006d77;
+  border-color: var(--app-border);
+  background: var(--app-hover-bg);
+  color: var(--app-link);
 }
 
 .resources-section__item--active {
-  border-color: #99f6e4;
-  color: #005a64;
-  background: #dffcf7;
+  border-color: var(--app-icon-panel-border);
+  color: var(--app-active-text);
+  background: var(--app-active-bg);
 }
 
 .resources-section__item span {
@@ -144,6 +144,6 @@ function openAbout() {
 }
 
 .resources-section__external {
-  color: #64748b;
+  color: var(--app-muted);
 }
 </style>

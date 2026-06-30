@@ -240,6 +240,8 @@ function onDrawerUpdate(value: boolean) {
 <style scoped>
 .pin-info {
   min-height: 100%;
+  color: var(--app-text);
+  background: var(--app-surface-bg);
 }
 
 .pin-info__title {
@@ -251,14 +253,14 @@ function onDrawerUpdate(value: boolean) {
 }
 
 .pin-info__eyebrow {
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
 }
 
 .pin-info__name {
-  color: #0f172a;
+  color: var(--app-text);
   font-size: clamp(1.45rem, 5vw, 2.2rem);
   font-weight: 800;
   letter-spacing: 0;
@@ -284,14 +286,14 @@ function onDrawerUpdate(value: boolean) {
   gap: 6px;
   min-width: 0;
   margin: 0;
-  border: 1px solid #dbe3ea;
+  border: 1px solid var(--app-border);
   border-radius: 999px;
   padding: 5px 9px;
-  background: #f8fafc;
+  background: var(--app-surface-muted);
 }
 
 .pin-info__stat span {
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.66rem;
   font-weight: 850;
   line-height: 1;
@@ -300,7 +302,7 @@ function onDrawerUpdate(value: boolean) {
 
 .pin-info__stat strong {
   min-width: 0;
-  color: #0f172a;
+  color: var(--app-text);
   font-size: 0.82rem;
   font-weight: 850;
   line-height: 1.1;
@@ -314,7 +316,7 @@ function onDrawerUpdate(value: boolean) {
 
 .pin-info__section h2 {
   margin: 0;
-  color: #334155;
+  color: var(--app-muted);
   font-size: 0.88rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -345,7 +347,7 @@ function onDrawerUpdate(value: boolean) {
   gap: 8px;
   margin: 0;
   padding-left: 18px;
-  color: #334155;
+  color: var(--app-text);
   line-height: 1.45;
 }
 
@@ -353,13 +355,13 @@ function onDrawerUpdate(value: boolean) {
   display: flex;
   align-items: flex-start;
   gap: 8px;
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.82rem;
   line-height: 1.35;
 }
 
 .pin-info__source a {
-  color: #006d77;
+  color: var(--app-link);
   font-weight: 700;
   text-decoration: none;
 }

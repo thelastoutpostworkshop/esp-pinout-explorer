@@ -72,7 +72,7 @@ const legendItems = [
 
 .explorer-sidebar__section h2 {
   margin: 0;
-  color: #334155;
+  color: var(--app-muted);
   font-size: 0.82rem;
   font-weight: 850;
   letter-spacing: 0;
@@ -93,7 +93,7 @@ const legendItems = [
   gap: 6px;
   min-width: 112px;
   min-height: 24px;
-  color: #334155;
+  color: var(--app-text);
   font-size: 0.86rem;
   font-weight: 750;
 }
@@ -103,9 +103,9 @@ const legendItems = [
   position: relative;
   width: 18px;
   height: 14px;
-  border: 1.6px solid #334155;
+  border: 1.6px solid var(--app-muted);
   border-radius: 3px;
-  background: #f8fafc;
+  background: var(--app-surface-muted);
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.12);
   overflow: hidden;
 }

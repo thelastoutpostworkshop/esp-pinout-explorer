@@ -28,6 +28,20 @@ export const vuetify = createVuetify({
           warning: '#b45309',
         },
       },
+      makerDark: {
+        dark: true,
+        colors: {
+          background: '#111827',
+          surface: '#172033',
+          primary: '#5eead4',
+          secondary: '#cbd5e1',
+          accent: '#fbbf24',
+          error: '#f87171',
+          info: '#93c5fd',
+          success: '#34d399',
+          warning: '#facc15',
+        },
+      },
     },
   },
   defaults: {

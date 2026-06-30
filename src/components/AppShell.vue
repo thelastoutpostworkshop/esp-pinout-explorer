@@ -23,6 +23,24 @@
       </v-app-bar-title>
     </div>
     <ProfileNavigator class="app-shell__navigator" />
+    <div class="app-shell__actions">
+      <v-tooltip :text="toggleLabel">
+        <template #activator="{ props }">
+          <v-btn
+            v-bind="props"
+            :aria-label="toggleLabel"
+            class="app-shell__theme-toggle"
+            density="comfortable"
+            icon
+            variant="text"
+            @click="toggleTheme"
+          >
+            <Sun v-if="isDark" :size="21" aria-hidden="true" />
+            <Moon v-else :size="21" aria-hidden="true" />
+          </v-btn>
+        </template>
+      </v-tooltip>
+    </div>
   </v-app-bar>
 
   <v-navigation-drawer
@@ -49,24 +67,27 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { CircuitBoard, Menu } from '@lucide/vue';
+import { CircuitBoard, Menu, Moon, Sun } from '@lucide/vue';
 import AboutPage from '@/components/AboutPage.vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
 import MakerToolsPage from '@/components/MakerToolsPage.vue';
 import ProfileNavigator from '@/components/ProfileNavigator.vue';
 import SocPinoutView from '@/components/SocPinoutView.vue';
+import { useColorMode } from '@/composables/useColorMode';
 import { useSocStore } from '@/stores/socStore';
 import packageJson from '../../package.json';
 
 const mobileDrawerOpen = ref(false);
 const store = useSocStore();
 const appVersion = packageJson.version;
+const { isDark, toggleLabel, toggleTheme } = useColorMode();
 </script>
 
 <style scoped>
 .app-shell__bar {
-  border-bottom: 1px solid #dbe3ea;
-  background: #f8fafc;
+  border-bottom: 1px solid var(--app-border);
+  background: var(--app-bar-bg);
+  color: var(--app-text);
 }
 
 .app-shell__bar :deep(.v-toolbar__content) {
@@ -93,7 +114,8 @@ const appVersion = packageJson.version;
   background:
     linear-gradient(135deg, rgba(15, 118, 110, 0.95), rgba(14, 116, 144, 0.95)),
     #0f766e;
-  box-shadow: 0 6px 16px rgba(15, 118, 110, 0.22);
+  border-color: var(--app-icon-panel-border);
+  box-shadow: 0 6px 16px var(--app-icon-panel-shadow);
 }
 
 .app-shell__brand {
@@ -117,14 +139,14 @@ const appVersion = packageJson.version;
 }
 
 .app-shell__title {
-  color: #102027;
+  color: var(--app-text);
   font-size: 1.05rem;
   font-weight: 900;
   letter-spacing: 0;
 }
 
 .app-shell__version {
-  color: #102027;
+  color: var(--app-text);
   font-size: 1.05rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -132,7 +154,7 @@ const appVersion = packageJson.version;
 
 .app-shell__subtitle {
   display: block;
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0;
@@ -145,12 +167,25 @@ const appVersion = packageJson.version;
   margin-left: clamp(12px, 3vw, 34px);
 }
 
+.app-shell__actions {
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 0 12px 0 8px;
+}
+
+.app-shell__theme-toggle {
+  color: var(--app-muted);
+}
+
 .app-shell__menu {
   display: none;
+  color: var(--app-muted);
 }
 
 .app-shell__main {
-  background: #f6f8f7;
+  background: var(--app-main-bg);
   height: 100vh;
   overflow: hidden;
 }
@@ -164,8 +199,8 @@ const appVersion = packageJson.version;
 
 .app-shell__sidebar {
   min-width: 0;
-  border-right: 1px solid #dbe3ea;
-  background: #f8fafc;
+  border-right: 1px solid var(--app-border);
+  background: var(--app-sidebar-bg);
 }
 
 @media (max-width: 980px) {

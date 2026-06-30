@@ -154,7 +154,7 @@ function toggleFilter(filter: QuickFilter) {
   align-items: center;
   gap: 3px;
   justify-self: start;
-  color: #64748b;
+  color: var(--app-muted);
   font-size: 0.76rem;
   font-weight: 850;
   letter-spacing: 0;
