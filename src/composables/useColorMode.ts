@@ -42,14 +42,14 @@ export function useColorMode() {
   const theme = useTheme();
   const initialTheme = storedTheme();
 
-  theme.global.name.value = initialTheme;
+  theme.change(initialTheme);
   applyDocumentTheme(initialTheme);
 
   const isDark = computed(() => theme.global.name.value === darkThemeName);
   const toggleLabel = computed(() => (isDark.value ? 'Switch to light mode' : 'Switch to dark mode'));
 
   function setTheme(themeName: ColorThemeName) {
-    theme.global.name.value = themeName;
+    theme.change(themeName);
     applyDocumentTheme(themeName);
 
     try {
