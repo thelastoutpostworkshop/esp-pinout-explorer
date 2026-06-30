@@ -1,8 +1,10 @@
 # ESP Pinout Explorer
 
-Your atlas for ESP chips, modules, and boards.
+[![ESP Board Vault banner](https://github.com/thelastoutpostworkshop/images/blob/main/ESP%20Pinout%20Explorer%20banner.png)](https://www.youtube.com/channel/UCnnU_HGvTr8ewpqvHe2llDw)
 
-Vue 3 + TypeScript + Vite MVP for exploring Espressif SoC, module, and development-board pinouts with Vuetify 4 and Pinia.
+<a href="https://www.buymeacoffee.com/thelastoutpostworkshop" target="_blank">
+<img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
+</a>.
 
 Current profiles:
 
