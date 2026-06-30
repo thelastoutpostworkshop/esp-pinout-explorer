@@ -61,7 +61,7 @@
       </g>
 
       <g class="connector-board__module">
-        <rect x="346" y="250" width="268" height="170" rx="9" fill="url(#connectorModuleBody)" stroke="#475569" stroke-width="2" />
+        <rect x="326" y="214" width="308" height="240" rx="9" fill="url(#connectorModuleBody)" stroke="#475569" stroke-width="2" />
         <image
           class="espressif-logo connector-board__module-logo"
           :href="espressifLogoOnDarkUrl"
@@ -83,25 +83,24 @@
           {{ line }}
         </text>
         <text :x="connectorCenterLayout.textX" :y="connectorCenterLayout.detailsY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} pins</text>
-      </g>
-
-      <g
-        class="board-info-button connector-board__info-button"
-        role="button"
-        tabindex="0"
-        aria-label="Open profile information and variants"
-        @click.stop="emit('profile-info-click')"
-        @keydown.enter.prevent="emit('profile-info-click')"
-        @keydown.space.prevent="emit('profile-info-click')"
-      >
-        <title>Profile info &amp; Variants</title>
-        <rect class="board-info-button__rect" x="368" y="426" width="224" height="32" rx="7" />
-        <g class="board-info-button__icon" aria-hidden="true" transform="translate(386 434) scale(0.72)">
-          <rect x="3" y="3" width="18" height="18" rx="2" />
-          <path d="M15 3v18" />
-          <path d="m10 15-3-3 3-3" />
+        <g
+          class="board-info-button connector-board__info-button"
+          role="button"
+          tabindex="0"
+          aria-label="Open profile information and variants"
+          @click.stop="emit('profile-info-click')"
+          @keydown.enter.prevent="emit('profile-info-click')"
+          @keydown.space.prevent="emit('profile-info-click')"
+        >
+          <title>Profile info &amp; Variants</title>
+          <rect class="board-info-button__rect" x="350" y="410" width="260" height="32" rx="7" />
+          <g class="board-info-button__icon" aria-hidden="true" transform="translate(370 418) scale(0.72)">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M15 3v18" />
+            <path d="m10 15-3-3 3-3" />
+          </g>
+          <text class="board-info-button__text" x="496" y="430" text-anchor="middle">Profile info &amp; Variants</text>
         </g>
-        <text class="board-info-button__text" x="505" y="446" text-anchor="middle">Profile info &amp; Variants</text>
       </g>
 
       <g
@@ -422,7 +421,7 @@ const chipCpuLines = computed(() => splitCpuSummary(props.soc.chipSpecs?.cpu ?? 
 const connectorCenterLayout = computed(() =>
   centerContentLayout({
     centerX: 480,
-    centerY: 335,
+    centerY: 310,
     logoWidth: 208,
     logoHeight: 38,
     logoToNameGap: 16,
