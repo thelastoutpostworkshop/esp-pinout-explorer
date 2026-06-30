@@ -51,8 +51,18 @@
         preserveAspectRatio="xMidYMid meet"
       />
       <text x="480" y="396" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
-      <text x="480" y="438" class="chip-details" text-anchor="middle">
-        {{ packageName }} | {{ filteredPinCount }} / {{ totalPinCount }} pins
+      <text
+        v-for="(line, index) in chipCpuLines"
+        :key="line"
+        x="480"
+        :y="432 + index * 18"
+        class="chip-cpu"
+        text-anchor="middle"
+      >
+        {{ line }}
+      </text>
+      <text x="480" :y="chipPinCountY" class="chip-details" text-anchor="middle">
+        {{ filteredPinCount }} / {{ totalPinCount }} pins
       </text>
 
       <g
@@ -163,6 +173,8 @@ const horizontalStart = 230;
 const horizontalEnd = 730;
 
 const svgViewBox = computed(() => (compactLayout.value ? '166 48 628 628' : '0 -60 960 920'));
+const chipCpuLines = computed(() => splitCpuSummary(props.soc.chipSpecs?.cpu ?? 'CPU details unavailable'));
+const chipPinCountY = computed(() => 452 + Math.max(0, chipCpuLines.value.length - 1) * 18);
 
 const sideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>(() => ({
   left: sideMaxOrder('left'),
@@ -246,6 +258,33 @@ function pinClasses(pin: SocPin) {
     [`pin-node--${pin.type}`]: true,
     'pin-node--warning': hasWarning(pin),
   };
+}
+
+function splitCpuSummary(value: string) {
+  const normalized = value.replace(/;.*$/, '').replace(/,\s*plus\s+/i, ', plus ').trim();
+  const maxLineLength = 44;
+
+  if (normalized.length <= maxLineLength) {
+    return [normalized];
+  }
+
+  const breakIndex = normalized.lastIndexOf(',', maxLineLength);
+  if (breakIndex > 20) {
+    return [normalized.slice(0, breakIndex).trim(), normalized.slice(breakIndex + 1).trim()];
+  }
+
+  const words = normalized.split(/\s+/);
+  const lines: string[] = [''];
+  for (const word of words) {
+    const current = lines[lines.length - 1];
+    if (current && `${current} ${word}`.length > maxLineLength && lines.length < 2) {
+      lines.push(word);
+    } else {
+      lines[lines.length - 1] = current ? `${current} ${word}` : word;
+    }
+  }
+
+  return lines.slice(0, 2);
 }
 
 function hasWarning(pin: SocPin) {
@@ -422,8 +461,19 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   letter-spacing: 0;
 }
 
+.chip-cpu {
+  fill: #dbeafe;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 0;
+}
+
 .chip-shell--animated .chip-details {
   animation: chip-text-enter 620ms 780ms ease-out both;
+}
+
+.chip-shell--animated .chip-cpu {
+  animation: chip-text-enter 620ms 720ms ease-out both;
 }
 
 .pin-node {
@@ -723,6 +773,7 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   .chip-orientation-dot,
   .espressif-logo,
   .chip-name,
+  .chip-cpu,
   .chip-details,
   .pin-node,
   .pin-node--selected {

@@ -78,7 +78,17 @@
           preserveAspectRatio="xMidYMid meet"
         />
         <text x="480" y="366" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
-        <text x="480" y="398" class="board-details" text-anchor="middle">{{ packageName }}</text>
+        <text
+          v-for="(line, index) in chipCpuLines"
+          :key="line"
+          x="480"
+          :y="394 + index * 16"
+          class="board-cpu"
+          text-anchor="middle"
+        >
+          {{ line }}
+        </text>
+        <text x="480" :y="connectorPinCountY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} pins</text>
       </g>
 
       <template v-if="isUsbBridgeArtwork">
@@ -254,8 +264,17 @@
           preserveAspectRatio="xMidYMid meet"
         />
         <text x="470" y="374" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
-        <text x="470" y="414" class="board-details" text-anchor="middle">{{ packageName }}</text>
-        <text x="470" y="436" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} header pins</text>
+        <text
+          v-for="(line, index) in chipCpuLines"
+          :key="line"
+          x="470"
+          :y="408 + index * 16"
+          class="board-cpu"
+          text-anchor="middle"
+        >
+          {{ line }}
+        </text>
+        <text x="470" :y="dualHeaderPinCountY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} header pins</text>
       </g>
 
       <g class="board-component board-component--boot">
@@ -395,6 +414,9 @@ const ariaLabel = computed(
 const leftHeaderName = computed(() => headerNameForSide('left', 'J1'));
 const rightHeaderName = computed(() => headerNameForSide('right', 'J3'));
 const dualHeaderViewBox = computed(() => (showMainFunctions.value ? '-100 8 1140 724' : '128 8 684 724'));
+const chipCpuLines = computed(() => splitCpuSummary(props.soc.chipSpecs?.cpu ?? 'CPU details unavailable'));
+const connectorPinCountY = computed(() => 414 + Math.max(0, chipCpuLines.value.length - 1) * 16);
+const dualHeaderPinCountY = computed(() => 428 + Math.max(0, chipCpuLines.value.length - 1) * 16);
 const dualHeaderPins = computed(() =>
   props.pins.filter((pin) => pin.position.side === 'left' || pin.position.side === 'right'),
 );
@@ -455,6 +477,33 @@ function sideMaxOrder(side: 'left' | 'right') {
 
 function headerNameForSide(side: 'left' | 'right', fallback: string) {
   return props.pins.find((pin) => pin.position.side === side && pin.boardHeader)?.boardHeader ?? fallback;
+}
+
+function splitCpuSummary(value: string) {
+  const normalized = value.replace(/;.*$/, '').replace(/,\s*plus\s+/i, ', plus ').trim();
+  const maxLineLength = 42;
+
+  if (normalized.length <= maxLineLength) {
+    return [normalized];
+  }
+
+  const breakIndex = normalized.lastIndexOf(',', maxLineLength);
+  if (breakIndex > 20) {
+    return [normalized.slice(0, breakIndex).trim(), normalized.slice(breakIndex + 1).trim()];
+  }
+
+  const words = normalized.split(/\s+/);
+  const lines: string[] = [''];
+  for (const word of words) {
+    const current = lines[lines.length - 1];
+    if (current && `${current} ${word}`.length > maxLineLength && lines.length < 2) {
+      lines.push(word);
+    } else {
+      lines[lines.length - 1] = current ? `${current} ${word}` : word;
+    }
+  }
+
+  return lines.slice(0, 2);
 }
 
 function sideCoordinate(side: 'left' | 'right', order: number) {
@@ -1078,6 +1127,13 @@ onBeforeUnmount(() => {
 .board-details {
   fill: #cbd5e1;
   font-size: 13px;
+  font-weight: 750;
+  letter-spacing: 0;
+}
+
+.board-cpu {
+  fill: #dbeafe;
+  font-size: 11.5px;
   font-weight: 750;
   letter-spacing: 0;
 }
