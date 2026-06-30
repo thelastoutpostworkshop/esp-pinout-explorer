@@ -252,6 +252,33 @@ describe('BoardSvg', () => {
     await wrapper.findAll('.connector-board__pin')[0].trigger('click');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
   });
+
+  it('keeps dense ESP32-S3 allocation board pins from overlapping', () => {
+    for (const profileId of ['esp32s3-lcd-ev-board-v1-5', 'esp-vocat-v1-2', 'esp-dualkey']) {
+      const profile = esp32s3.boardProfiles?.find((item) => item.id === profileId);
+      expect(profile).toBeDefined();
+      const pins = profile?.pins ?? [];
+      const wrapper = mount(BoardSvg, {
+        props: {
+          boardArtwork: profile?.boardArtwork,
+          boardLayout: profile?.boardLayout,
+          filteredPinCount: pins.length,
+          filteredPinIds: new Set(pins.map((pin) => pin.id)),
+          hasFilter: false,
+          packageName: profile?.packageName ?? '',
+          pins,
+          selectedPinId: null,
+          soc: esp32s3,
+          totalPinCount: pins.length,
+        },
+      });
+
+      expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+      expectNoOverlappingRects(
+        wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
+      );
+    }
+  });
 });
 
 describe('SocPinoutView', () => {

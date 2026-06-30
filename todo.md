@@ -42,26 +42,26 @@ Source baseline:
 
 ### ESP32-S Series
 
-- [ ] ESP32-S3 board profiles
+- [x] ESP32-S3 board profiles
   - [x] Board profile: ESP32-S3-DevKitC-1 v1.1
   - [x] Board profile: ESP32-S3-USB-OTG
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html
     - Note: active Espressif board. Implemented as connector groups from the official Function pin and Extended pin tables instead of fake J1/J3 headers.
-  - [ ] Board profile: ESP32-S3-LCD-EV-Board v1.5
+  - [x] Board profile: ESP32-S3-LCD-EV-Board v1.5
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-lcd-ev-board/user_guide.html
-    - Note: active Espressif board. User guide has GPIO Allocation and I/O Expander GPIO Allocation tables. Treat as a board allocation profile, not a simple maker header, unless official schematics clarify external connector pin identities.
+    - Note: active Espressif board. Implemented as a board allocation profile from the official GPIO Allocation and I/O Expander GPIO Allocation tables.
   - [x] Board profile: ESP32-S3-DevKitM-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html
     - Note: EOL board, but official user guide has J1/J3 Header Block tables and should fit the existing `BoardSvg.vue` model. Useful as a low-risk second header-style board profile.
   - [x] Board profile: ESP32-S3-USB-Bridge
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-bridge/user_guide.html
     - Note: EOL board. Implemented as a compact connector-group GPIO allocation profile from the official GPIO Allocation table, with the ESP32-S3-MINI-1-N4R2 module identity surfaced.
-  - [ ] Board profile: ESP-VoCat v1.2
+  - [x] Board profile: ESP-VoCat v1.2
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-vocat/user_guide_v1.2.html
-    - Note: active Espressif board. User guide documents hardware blocks, magnetic connector, LCD, SD card, microphone, and revision pin changes; use official schematic for full pin mapping before implementation.
-  - [ ] Board profile: ESP-DualKey
+    - Note: active Espressif board. Implemented as a board allocation profile from the official user guide and v1.2 schematic signal mapping.
+  - [x] Board profile: ESP-DualKey
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-dualkey/user_guide.html
-    - Note: active Espressif board. User guide identifies major components and HY2.0-4P ports, but detailed pin mapping should come from the official schematic before implementation.
+    - Note: active Espressif board. Implemented as a board allocation profile from the official user guide and v1.2 schematic signal mapping.
 - [ ] ESP32-S31 chip package profiles
   - [ ] Chip package profile: QFN, 8 x 8 mm
   - Note: new/early entry; confirm datasheet pin tables before implementation.

@@ -51,15 +51,13 @@
         <circle cx="150" cy="616" r="12" fill="url(#connectorPlatedHole)" />
         <circle cx="810" cy="616" r="12" fill="url(#connectorPlatedHole)" />
       </g>
-      <g v-if="isUsbBridgeArtwork" class="connector-board__usb">
-        <rect x="421" y="30" width="118" height="40" rx="8" />
-        <text x="480" y="55" text-anchor="middle">USB</text>
-      </g>
-      <g v-else class="connector-board__usb">
-        <rect x="320" y="30" width="118" height="40" rx="8" />
-        <rect x="522" y="30" width="118" height="40" rx="8" />
-        <text x="379" y="55" text-anchor="middle">USB HOST</text>
-        <text x="581" y="55" text-anchor="middle">USB DEV</text>
+      <g
+        v-for="badge in connectorPortBadges"
+        :key="badge.label"
+        class="connector-board__usb"
+      >
+        <rect :x="badge.x" y="30" :width="badge.width" height="40" rx="8" />
+        <text :x="badge.x + badge.width / 2" y="55" text-anchor="middle">{{ badge.label }}</text>
       </g>
 
       <g class="connector-board__module">
@@ -87,38 +85,15 @@
         <text :x="connectorCenterLayout.textX" :y="connectorCenterLayout.detailsY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} pins</text>
       </g>
 
-      <template v-if="isUsbBridgeArtwork">
-        <g class="connector-board__component connector-board__component--connector">
-          <rect x="616" y="206" width="76" height="44" rx="7" />
-          <text x="654" y="234" text-anchor="middle">TARGET</text>
-        </g>
-        <g class="connector-board__component connector-board__component--buttons">
-          <rect x="270" y="278" width="76" height="44" rx="7" />
-          <text x="308" y="306" text-anchor="middle">BOOT/RST</text>
-        </g>
-        <g class="connector-board__component connector-board__component--led">
-          <rect x="432" y="462" width="96" height="34" rx="7" />
-          <text x="480" y="484" text-anchor="middle">WS2812</text>
-        </g>
-      </template>
-      <template v-else>
-        <g class="connector-board__component connector-board__component--lcd">
-          <rect x="624" y="190" width="64" height="44" rx="7" />
-          <text x="656" y="218" text-anchor="middle">LCD</text>
-        </g>
-        <g class="connector-board__component connector-board__component--sd">
-          <rect x="624" y="438" width="64" height="44" rx="7" />
-          <text x="656" y="466" text-anchor="middle">SD</text>
-        </g>
-        <g class="connector-board__component connector-board__component--buttons">
-          <rect x="272" y="278" width="66" height="44" rx="7" />
-          <text x="305" y="306" text-anchor="middle">BUTTONS</text>
-        </g>
-        <g class="connector-board__component connector-board__component--power">
-          <rect x="342" y="460" width="276" height="34" rx="7" />
-          <text x="480" y="482" text-anchor="middle">POWER / EXTENDED</text>
-        </g>
-      </template>
+      <g
+        v-for="badge in connectorComponentBadges"
+        :key="badge.label"
+        class="connector-board__component"
+        :class="`connector-board__component--${badge.tone}`"
+      >
+        <rect :x="badge.x" :y="badge.y" :width="badge.width" :height="badge.height" rx="7" />
+        <text :x="badge.x + badge.width / 2" :y="badge.y + badge.height / 2 + 6" text-anchor="middle">{{ badge.label }}</text>
+      </g>
 
       <g v-for="group in connectorGroupLabels" :key="group.key" class="connector-board__group-label">
         <text :x="group.x" :y="group.y" :text-anchor="group.anchor">{{ group.label }}</text>
@@ -395,7 +370,6 @@ const playIntroAnimation = ref(false);
 let introAnimationFrame = 0;
 
 const isConnectorGroupLayout = computed(() => props.boardLayout === 'connector-groups');
-const isUsbBridgeArtwork = computed(() => props.boardArtwork === 'usb-bridge');
 const showMainFunctions = computed(() => props.showMainFunctions ?? false);
 const boardPinLabel = computed(() => (isConnectorGroupLayout.value ? 'connector pins' : 'header pins'));
 const functionModeLabel = computed(() => (showMainFunctions.value ? ', main functions shown' : ''));
@@ -423,6 +397,69 @@ const connectorCenterLayout = computed(() =>
     detailsBaseline: 11,
   }),
 );
+const connectorPortBadges = computed(() => {
+  switch (props.boardArtwork) {
+    case 'usb-bridge':
+      return [{ x: 421, width: 118, label: 'USB' }];
+    case 'lcd-ev':
+      return [
+        { x: 320, width: 118, label: 'USB-UART' },
+        { x: 522, width: 118, label: 'USB-USB' },
+      ];
+    case 'vocat':
+      return [
+        { x: 320, width: 118, label: 'USB-C' },
+        { x: 522, width: 118, label: 'MAG' },
+      ];
+    case 'dualkey':
+      return [
+        { x: 320, width: 118, label: 'USB-C' },
+        { x: 522, width: 118, label: 'HY2.0' },
+      ];
+    default:
+      return [
+        { x: 320, width: 118, label: 'USB HOST' },
+        { x: 522, width: 118, label: 'USB DEV' },
+      ];
+  }
+});
+const connectorComponentBadges = computed(() => {
+  switch (props.boardArtwork) {
+    case 'usb-bridge':
+      return [
+        componentBadge(616, 206, 76, 44, 'TARGET', 'connector'),
+        componentBadge(270, 278, 76, 44, 'BOOT/RST', 'buttons'),
+        componentBadge(432, 462, 96, 34, 'WS2812', 'led'),
+      ];
+    case 'lcd-ev':
+      return [
+        componentBadge(624, 190, 74, 44, 'LCD', 'lcd'),
+        componentBadge(624, 438, 74, 44, 'AUDIO', 'sd'),
+        componentBadge(260, 278, 96, 44, 'BOOT/RST', 'buttons'),
+        componentBadge(326, 460, 308, 34, 'POWER / EXPANDER', 'power'),
+      ];
+    case 'vocat':
+      return [
+        componentBadge(624, 190, 74, 44, 'LCD', 'lcd'),
+        componentBadge(624, 438, 74, 44, 'SD', 'sd'),
+        componentBadge(272, 278, 84, 44, 'TOUCH', 'buttons'),
+        componentBadge(342, 460, 276, 34, 'AUDIO / POWER', 'power'),
+      ];
+    case 'dualkey':
+      return [
+        componentBadge(616, 206, 92, 44, 'KEYS', 'buttons'),
+        componentBadge(252, 278, 116, 44, 'MODE', 'connector'),
+        componentBadge(432, 462, 96, 34, 'WS2812', 'led'),
+      ];
+    default:
+      return [
+        componentBadge(624, 190, 64, 44, 'LCD', 'lcd'),
+        componentBadge(624, 438, 64, 44, 'SD', 'sd'),
+        componentBadge(272, 278, 66, 44, 'BUTTONS', 'buttons'),
+        componentBadge(342, 460, 276, 34, 'POWER / EXTENDED', 'power'),
+      ];
+  }
+});
 const dualHeaderCenterLayout = computed(() =>
   centerContentLayout({
     centerX: 470,
@@ -469,6 +506,26 @@ interface FunctionBadge {
   rx: number;
   textX: number;
   textY: number;
+}
+
+interface ConnectorComponentBadge {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  label: string;
+  tone: string;
+}
+
+function componentBadge(
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  label: string,
+  tone: string,
+): ConnectorComponentBadge {
+  return { x, y, width, height, label, tone };
 }
 
 interface CenterContentOptions {
@@ -523,11 +580,12 @@ const connectorLeftStartY = 190;
 const connectorLeftEndY = 460;
 const connectorRightStartY = 190;
 const connectorRightEndY = 520;
-const connectorBottomRowStartX = 205;
-const connectorBottomRowEndX = 755;
-const connectorBottomTopRowY = 560;
-const connectorBottomBottomRowY = 622;
-const connectorBottomPinsPerRow = 6;
+const connectorBottomRowStartX = 210;
+const connectorBottomRowEndX = 750;
+const connectorBottomTopRowY = 550;
+const connectorBottomMiddleRowY = 596;
+const connectorBottomBottomRowY = 636;
+const connectorBottomPinsPerRow = 9;
 
 const sideOrders = computed<Record<'left' | 'right', number>>(() => ({
   left: sideMaxOrder('left'),
@@ -604,11 +662,38 @@ function connectorSideCoordinate(side: Exclude<PinSide, 'center'>, order: number
   return start + ((order - 1) * (end - start)) / (count - 1);
 }
 
+function connectorPadWidth(side: Exclude<PinSide, 'center'>) {
+  const count = connectorSideOrders.value[side];
+
+  if (side === 'top') {
+    if (count >= 11) {
+      return 42;
+    }
+    if (count >= 8) {
+      return 54;
+    }
+    return 88;
+  }
+
+  if (side === 'bottom') {
+    if (count >= 15) {
+      return 58;
+    }
+    if (count >= 8) {
+      return 58;
+    }
+    return 104;
+  }
+
+  return 118;
+}
+
 function connectorPinGeometry(pin: SocPin): Geometry {
   if (pin.position.side === 'top') {
     const x = connectorSideCoordinate('top', pin.position.order);
+    const width = connectorPadWidth('top');
     return {
-      rect: { x: x - 44, y: 118, width: 88, height: 30, rx: 5 },
+      rect: { x: x - width / 2, y: 118, width, height: 30, rx: 5 },
       label: { x, y: 133 },
     };
   }
@@ -616,12 +701,15 @@ function connectorPinGeometry(pin: SocPin): Geometry {
   if (pin.position.side === 'bottom') {
     const rowOrder = ((pin.position.order - 1) % connectorBottomPinsPerRow) + 1;
     const rowIndex = Math.floor((pin.position.order - 1) / connectorBottomPinsPerRow);
+    const rowCount = Math.min(connectorBottomPinsPerRow, connectorSideOrders.value.bottom - rowIndex * connectorBottomPinsPerRow);
+    const startX = rowCount <= 4 ? 260 : connectorBottomRowStartX;
+    const endX = rowCount <= 4 ? 700 : connectorBottomRowEndX;
     const x =
-      connectorBottomRowStartX +
-      ((rowOrder - 1) * (connectorBottomRowEndX - connectorBottomRowStartX)) / (connectorBottomPinsPerRow - 1);
-    const y = rowIndex === 0 ? connectorBottomTopRowY : connectorBottomBottomRowY;
+      rowCount <= 1 ? (startX + endX) / 2 : startX + ((rowOrder - 1) * (endX - startX)) / (rowCount - 1);
+    const y = connectorBottomRowY(rowIndex);
+    const width = connectorPadWidth('bottom');
     return {
-      rect: { x: x - 52, y: y - 14, width: 104, height: 28, rx: 5 },
+      rect: { x: x - width / 2, y: y - 14, width, height: 28, rx: 5 },
       label: { x, y },
     };
   }
@@ -641,6 +729,14 @@ function connectorPinGeometry(pin: SocPin): Geometry {
   };
 }
 
+function connectorBottomRowY(rowIndex: number) {
+  if (connectorSideOrders.value.bottom > connectorBottomPinsPerRow * 2) {
+    return [connectorBottomTopRowY, connectorBottomMiddleRowY, connectorBottomBottomRowY][rowIndex] ?? connectorBottomBottomRowY;
+  }
+
+  return rowIndex === 0 ? connectorBottomTopRowY : connectorBottomBottomRowY;
+}
+
 const connectorGroupLabels = computed(() => {
   const groups = new Map<string, SocPin[]>();
   for (const pin of props.pins) {
@@ -651,25 +747,60 @@ const connectorGroupLabels = computed(() => {
     groups.set(group, [...(groups.get(group) ?? []), pin]);
   }
 
-  return [...groups.entries()].map(([label, groupPins]) => {
+  return [...groups.entries()].flatMap(([label, groupPins]) => {
+    if (groupPins.length < 2 && connectorSideOrders.value[groupPins[0].position.side as Exclude<PinSide, 'center'>] > 8) {
+      return [];
+    }
+
     const geometries = groupPins.map((pin) => connectorPinGeometry(pin));
     const minX = Math.min(...geometries.map((geometry) => geometry.rect.x));
     const maxX = Math.max(...geometries.map((geometry) => geometry.rect.x + geometry.rect.width));
     const minY = Math.min(...geometries.map((geometry) => geometry.rect.y));
     const maxY = Math.max(...geometries.map((geometry) => geometry.rect.y + geometry.rect.height));
     const side = groupPins[0].position.side;
+    const displayLabel = connectorGroupDisplayLabel(label, groupPins.length);
+
+    if (side === 'bottom' && connectorSideOrders.value.bottom > connectorBottomPinsPerRow * 2 && label !== 'I/O expander') {
+      return [];
+    }
 
     if (side === 'top') {
-      return { key: label, label, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' as const };
+      return [{ key: label, label: displayLabel, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' as const }];
     }
 
     if (side === 'bottom') {
-      return { key: label, label, x: (minX + maxX) / 2, y: maxY + 20, anchor: 'middle' as const };
+      return [{ key: label, label: displayLabel, x: (minX + maxX) / 2, y: maxY + 20, anchor: 'middle' as const }];
     }
 
-    return { key: label, label, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' as const };
+    return [{ key: label, label: displayLabel, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' as const }];
   });
 });
+
+function connectorGroupDisplayLabel(label: string, pinCount: number) {
+  if (pinCount < 3) {
+    return shortConnectorGroupLabel(label);
+  }
+
+  return label;
+}
+
+function shortConnectorGroupLabel(label: string) {
+  const labels: Record<string, string> = {
+    'Audio I2S': 'I2S',
+    'Audio power': 'AUDIO',
+    'Boot button': 'BOOT',
+    Control: 'CTRL',
+    'I/O expander': 'EXP',
+    'LCD control': 'LCD CTRL',
+    'LCD QSPI': 'LCD',
+    'Mode switch': 'MODE',
+    'Power monitor': 'PWR MON',
+    'Shared I2C': 'I2C',
+    'Speaker amplifier': 'AMP',
+  };
+
+  return labels[label] ?? label;
+}
 
 function pinGeometry(pin: SocPin): Geometry {
   const side = pin.position.side === 'right' ? 'right' : 'left';
@@ -772,11 +903,51 @@ function boardPinDisplayLabel(pin: SocPin) {
 }
 
 function connectorPinDisplayLabel(pin: SocPin) {
-  if (!showMainFunctions.value) {
-    return boardPinDisplayLabel(pin);
+  const label = showMainFunctions.value ? boardPinFunctionLabel(pin, 2) || boardPinDisplayLabel(pin) : boardPinDisplayLabel(pin);
+
+  if (pin.position.side === 'top' || pin.position.side === 'bottom') {
+    return compactConnectorPinLabel(label, connectorPadWidth(pin.position.side));
   }
 
-  return boardPinFunctionLabel(pin, 2) || boardPinDisplayLabel(pin);
+  if (!showMainFunctions.value) {
+    return label;
+  }
+
+  return compactConnectorPinLabel(label, 118);
+}
+
+function compactConnectorPinLabel(label: string, padWidth: number) {
+  const replacements: Array<[RegExp, string]> = [
+    [/^LCD_DATA(\d+)$/i, 'LCD_D$1'],
+    [/^LCD_SDA(\d+)$/i, 'LCD_S$1'],
+    [/^I2S_CODEC_DSDIN$/i, 'I2S_DIN'],
+    [/^I2S_ADC_SDOUT$/i, 'I2S_DOUT'],
+    [/^I2S_MCLK$/i, 'I2S_MCK'],
+    [/^LCD_RST_CTRL$/i, 'LCD_RST'],
+    [/^CODEC_PWR_CTRL$/i, 'CODEC_PWR'],
+    [/^POWER_CTRL$/i, 'PWR_CTRL'],
+    [/^PWR_2812$/i, 'RGB_PWR'],
+    [/^WS2812_IN$/i, 'WS2812'],
+    [/^UART_RXD0$/i, 'RXD0'],
+    [/^UART_TXD0$/i, 'TXD0'],
+    [/^USB_D-$/i, 'USB_D-'],
+    [/^USB_D\+$/i, 'USB_D+'],
+    [/^No connection$/i, 'NC'],
+    [/^Supply voltage$/i, 'VCC'],
+    [/^Power supply$/i, '3V3'],
+  ];
+
+  let result = label;
+  for (const [pattern, replacement] of replacements) {
+    result = result.replace(pattern, replacement);
+  }
+
+  const maxLength = padWidth <= 45 ? 6 : padWidth <= 60 ? 8 : 12;
+  if (result.length <= maxLength) {
+    return result;
+  }
+
+  return result.replace(/_/g, '').slice(0, maxLength);
 }
 
 function functionBadgesForPin(pin: SocPin): FunctionBadge[] {

@@ -1,12 +1,22 @@
 import type { BoardSourcePinResolver } from '@/data/boards/helpers';
 import { createEsp32s3DevKitC1V11Profile } from '@/data/boards/esp32s3/devkitC1V11';
 import { createEsp32s3DevKitM1Profile } from '@/data/boards/esp32s3/devkitM1';
+import {
+  createEsp32s3DualKeyProfile,
+  createEsp32s3LcdEvBoardV15Profile,
+  createEsp32s3VocatV12Profile,
+} from '@/data/boards/esp32s3/multimediaBoards';
 import { createEsp32s3UsbBridgeProfile } from '@/data/boards/esp32s3/usbBridge';
 import { createEsp32s3UsbOtgProfile } from '@/data/boards/esp32s3/usbOtg';
 import type { SocPackageVariant } from '@/types/soc';
 
 export { createEsp32s3DevKitC1V11Profile } from '@/data/boards/esp32s3/devkitC1V11';
 export { createEsp32s3DevKitM1Profile } from '@/data/boards/esp32s3/devkitM1';
+export {
+  createEsp32s3DualKeyProfile,
+  createEsp32s3LcdEvBoardV15Profile,
+  createEsp32s3VocatV12Profile,
+} from '@/data/boards/esp32s3/multimediaBoards';
 export { createEsp32s3UsbOtgProfile } from '@/data/boards/esp32s3/usbOtg';
 export { createEsp32s3UsbBridgeProfile } from '@/data/boards/esp32s3/usbBridge';
 export {
@@ -21,5 +31,8 @@ export function createEsp32s3BoardProfiles(resolveSourcePinByGpio: BoardSourcePi
     createEsp32s3DevKitM1Profile(resolveSourcePinByGpio),
     createEsp32s3UsbOtgProfile(resolveSourcePinByGpio),
     createEsp32s3UsbBridgeProfile(resolveSourcePinByGpio),
+    createEsp32s3LcdEvBoardV15Profile(resolveSourcePinByGpio),
+    createEsp32s3VocatV12Profile(resolveSourcePinByGpio),
+    createEsp32s3DualKeyProfile(resolveSourcePinByGpio),
   ];
 }
