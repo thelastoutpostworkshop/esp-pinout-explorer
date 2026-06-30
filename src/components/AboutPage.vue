@@ -194,10 +194,11 @@ const fieldNotes = [
   overflow: auto;
   padding: clamp(16px, 2vw, 24px);
   background:
-    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    #f6f8f7;
+    linear-gradient(90deg, var(--app-stage-grid) 1px, transparent 1px),
+    linear-gradient(0deg, var(--app-stage-grid) 1px, transparent 1px),
+    var(--app-main-bg);
   background-size: 28px 28px;
+  color: var(--app-text);
 }
 
 .about-page__hero {
@@ -401,16 +402,16 @@ const fieldNotes = [
 
 .about-page__action--back {
   min-height: 34px;
-  border-color: #cbd5e1;
-  color: #006d77;
-  background: #ffffff;
+  border-color: var(--app-border);
+  color: var(--app-link);
+  background: var(--app-surface-bg);
   font-size: 0.84rem;
 }
 
 .about-page__action--back:hover,
 .about-page__action--back:focus-visible {
-  border-color: #0e7490;
-  background: #ecfeff;
+  border-color: var(--app-link);
+  background: var(--app-hover-bg);
 }
 
 .about-page__stats {
@@ -422,10 +423,10 @@ const fieldNotes = [
 .about-page__stat,
 .about-page__principle,
 .about-page__note {
-  border: 1px solid #dbe3ea;
+  border: 1px solid var(--app-border);
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.92);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  background: color-mix(in srgb, var(--app-surface-bg) 92%, transparent);
+  box-shadow: 0 10px 24px var(--app-card-shadow);
 }
 
 .about-page__stat {
@@ -434,7 +435,7 @@ const fieldNotes = [
 
 .about-page__stat span {
   display: block;
-  color: #0f766e;
+  color: var(--app-link);
   font-size: clamp(1.65rem, 3vw, 2.45rem);
   font-weight: 950;
   line-height: 1;
@@ -442,7 +443,7 @@ const fieldNotes = [
 
 .about-page__stat p {
   margin: 6px 0 0;
-  color: #475569;
+  color: var(--app-muted);
   font-size: 0.9rem;
   font-weight: 800;
   line-height: 1.35;
@@ -462,7 +463,7 @@ const fieldNotes = [
 
 .about-page h2 {
   margin: 0;
-  color: #0f172a;
+  color: var(--app-text);
   font-size: clamp(1.28rem, 2.2vw, 1.85rem);
   font-weight: 950;
   line-height: 1.12;
@@ -486,16 +487,16 @@ const fieldNotes = [
   place-items: center;
   width: 44px;
   height: 44px;
-  border: 1px solid #bae6fd;
+  border: 1px solid color-mix(in srgb, var(--app-info-soft-text) 45%, transparent);
   border-radius: 8px;
-  color: #075985;
-  background: #e0f2fe;
+  color: var(--app-info-soft-text);
+  background: var(--app-info-soft-bg);
 }
 
 .about-page__principle h3,
 .about-page__note h3 {
   margin: 0;
-  color: #0f172a;
+  color: var(--app-text);
   font-size: 0.98rem;
   font-weight: 950;
   line-height: 1.25;
@@ -505,7 +506,7 @@ const fieldNotes = [
 .about-page__field-copy p,
 .about-page__note p {
   margin: 0;
-  color: #475569;
+  color: var(--app-muted);
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.5;
@@ -541,10 +542,10 @@ const fieldNotes = [
   place-items: center;
   width: 36px;
   height: 36px;
-  border: 1px solid #fcd34d;
+  border: 1px solid color-mix(in srgb, var(--app-warning-soft-text) 45%, transparent);
   border-radius: 8px;
-  color: #78350f;
-  background: #fef3c7;
+  color: var(--app-warning-soft-text);
+  background: var(--app-warning-soft-bg);
   font-size: 0.78rem;
   font-weight: 950;
 }

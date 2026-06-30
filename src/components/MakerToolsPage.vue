@@ -186,7 +186,8 @@ const tools: ToolItem[] = [
   height: 100%;
   overflow: auto;
   padding: clamp(16px, 2vw, 24px);
-  background: #f6f8f7;
+  color: var(--app-text);
+  background: var(--app-main-bg);
 }
 
 .maker-tools-page__header {
@@ -198,7 +199,7 @@ const tools: ToolItem[] = [
 
 .maker-tools-page__eyebrow {
   margin: 0 0 3px;
-  color: #006d77;
+  color: var(--app-link);
   font-size: 0.78rem;
   font-weight: 900;
   letter-spacing: 0;
@@ -207,7 +208,7 @@ const tools: ToolItem[] = [
 
 .maker-tools-page h1 {
   margin: 0;
-  color: #0f172a;
+  color: var(--app-text);
   font-size: clamp(1.35rem, 2.4vw, 2rem);
   font-weight: 900;
   letter-spacing: 0;
@@ -216,7 +217,7 @@ const tools: ToolItem[] = [
 .maker-tools-page__subtitle {
   max-width: 720px;
   margin: 6px 0 0;
-  color: #475569;
+  color: var(--app-muted);
   font-size: 0.95rem;
   font-weight: 650;
   line-height: 1.45;
@@ -230,11 +231,11 @@ const tools: ToolItem[] = [
   justify-content: center;
   gap: 7px;
   min-height: 34px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--app-border);
   border-radius: 6px;
   padding: 0 10px;
-  color: #006d77;
-  background: #ffffff;
+  color: var(--app-link);
+  background: var(--app-surface-bg);
   font-family: inherit;
   font-size: 0.84rem;
   font-weight: 850;
@@ -249,8 +250,8 @@ const tools: ToolItem[] = [
 .maker-tools-page__support-action:focus-visible,
 .maker-tools-page__action:hover,
 .maker-tools-page__action:focus-visible {
-  border-color: #0e7490;
-  background: #ecfeff;
+  border-color: var(--app-link);
+  background: var(--app-hover-bg);
 }
 
 .maker-tools-page__support {
@@ -258,12 +259,12 @@ const tools: ToolItem[] = [
   grid-template-columns: 48px minmax(0, 1fr) auto;
   align-items: center;
   gap: 14px;
-  border: 1px solid #cde7e7;
+  border: 1px solid var(--app-border);
   border-radius: 8px;
   padding: 14px;
   background:
     linear-gradient(90deg, rgba(20, 184, 166, 0.1), transparent 72%),
-    #ffffff;
+    var(--app-surface-bg);
 }
 
 .maker-tools-page__support-icon {
@@ -271,22 +272,22 @@ const tools: ToolItem[] = [
   place-items: center;
   width: 48px;
   height: 48px;
-  border: 1px solid #99f6e4;
+  border: 1px solid var(--app-icon-panel-border);
   border-radius: 8px;
-  color: #006d77;
-  background: #dffcf7;
+  color: var(--app-link);
+  background: var(--app-accent-soft-bg);
 }
 
 .maker-tools-page__support h2 {
   margin: 0;
-  color: #0f172a;
+  color: var(--app-text);
   font-size: 0.98rem;
   font-weight: 900;
 }
 
 .maker-tools-page__support p {
   margin: 5px 0 0;
-  color: #475569;
+  color: var(--app-muted);
   font-size: 0.88rem;
   line-height: 1.45;
 }
@@ -308,10 +309,10 @@ const tools: ToolItem[] = [
   grid-template-rows: auto 1fr auto;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid #dbe3ea;
+  border: 1px solid var(--app-border);
   border-radius: 8px;
-  background: #ffffff;
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  background: var(--app-surface-bg);
+  box-shadow: 0 10px 24px var(--app-card-shadow);
 }
 
 .maker-tools-page__thumbnail {
@@ -320,7 +321,7 @@ const tools: ToolItem[] = [
   aspect-ratio: 16 / 9;
   overflow: hidden;
   color: #ffffff;
-  background: #e2e8f0;
+  background: var(--app-surface-subtle);
   opacity: 0;
   transform: translateY(8px) scale(0.985);
   animation: maker-tools-thumbnail-enter 440ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
@@ -392,7 +393,7 @@ const tools: ToolItem[] = [
 
 .maker-tools-page__copy h2 {
   margin: 0;
-  color: #0f172a;
+  color: var(--app-text);
   font-size: 1rem;
   font-weight: 900;
   line-height: 1.3;
@@ -400,13 +401,13 @@ const tools: ToolItem[] = [
 
 .maker-tools-page__copy p {
   margin: 0;
-  color: #475569;
+  color: var(--app-muted);
   font-size: 0.88rem;
   line-height: 1.48;
 }
 
 .maker-tools-page__source {
-  color: #006d77;
+  color: var(--app-link);
   font-size: 0.82rem;
   font-weight: 850;
   overflow-wrap: anywhere;
@@ -423,13 +424,13 @@ const tools: ToolItem[] = [
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px;
-  border-top: 1px solid #e2e8f0;
+  border-top: 1px solid var(--app-border);
   padding: 10px 14px;
-  background: #f8fafc;
+  background: var(--app-surface-muted);
 }
 
 .maker-tools-page__action--muted {
-  color: #475569;
+  color: var(--app-muted);
 }
 
 @keyframes maker-tools-thumbnail-enter {

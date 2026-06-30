@@ -20,6 +20,12 @@
   --app-floating-control-shadow: rgba(15, 23, 42, 0.12);
   --app-switch-track: #cbd5e1;
   --app-switch-knob: #ffffff;
+  --app-card-shadow: rgba(15, 23, 42, 0.06);
+  --app-accent-soft-bg: #dffcf7;
+  --app-info-soft-bg: #e0f2fe;
+  --app-info-soft-text: #075985;
+  --app-warning-soft-bg: #fef3c7;
+  --app-warning-soft-text: #78350f;
   --app-icon-panel-border: #99f6e4;
   --app-icon-panel-shadow: rgba(15, 118, 110, 0.22);
   color: var(--app-text);
@@ -55,6 +61,12 @@
   --app-floating-control-shadow: rgba(0, 0, 0, 0.34);
   --app-switch-track: #334155;
   --app-switch-knob: #e5edf4;
+  --app-card-shadow: rgba(0, 0, 0, 0.24);
+  --app-accent-soft-bg: #123b3f;
+  --app-info-soft-bg: #142b46;
+  --app-info-soft-text: #93c5fd;
+  --app-warning-soft-bg: #3a2b12;
+  --app-warning-soft-text: #facc15;
   --app-icon-panel-border: #2dd4bf;
   --app-icon-panel-shadow: rgba(45, 212, 191, 0.18);
 }
