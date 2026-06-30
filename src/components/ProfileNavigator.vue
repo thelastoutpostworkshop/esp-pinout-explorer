@@ -255,22 +255,27 @@ function openProfileInfo() {
   gap: 6px;
   flex: 0 0 auto;
   min-height: 34px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--app-border);
   border-radius: 6px;
   padding: 0 10px;
-  color: #006d77;
-  background: #ffffff;
+  color: var(--app-link);
+  background: var(--app-surface-bg);
   font-family: inherit;
   font-size: 0.84rem;
   font-weight: 800;
   line-height: 1.2;
   cursor: pointer;
+  transition:
+    background-color 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease;
 }
 
 .profile-navigator__info-button:hover,
 .profile-navigator__info-button:focus-visible {
-  border-color: #0e7490;
-  background: #ecfeff;
+  border-color: var(--app-link);
+  color: var(--app-active-text);
+  background: var(--app-active-bg);
 }
 
 @media (max-width: 980px) {
