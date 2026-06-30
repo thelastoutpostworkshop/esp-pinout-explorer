@@ -87,12 +87,12 @@ function toggleBoardFunctions() {
   place-items: center;
   min-width: 0;
   min-height: 0;
-  border: 1px solid #d9e2e7;
+  border: 1px solid var(--app-stage-border);
   border-radius: 8px;
   background:
-    linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    linear-gradient(0deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px),
-    #ffffff;
+    linear-gradient(90deg, var(--app-stage-grid) 1px, transparent 1px),
+    linear-gradient(0deg, var(--app-stage-grid) 1px, transparent 1px),
+    var(--app-stage-bg);
   background-size: 28px 28px;
   padding: clamp(10px, 2vw, 24px);
 }
@@ -106,12 +106,12 @@ function toggleBoardFunctions() {
   align-items: center;
   gap: 7px;
   min-height: 30px;
-  border: 1px solid #cbd5e1;
+  border: 1px solid var(--app-border);
   border-radius: 999px;
   padding: 3px 9px 3px 6px;
-  color: #334155;
-  background: rgba(255, 255, 255, 0.94);
-  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.12);
+  color: var(--app-text);
+  background: var(--app-floating-control-bg);
+  box-shadow: 0 6px 16px var(--app-floating-control-shadow);
   font-family: inherit;
   font-size: 0.78rem;
   font-weight: 850;
@@ -125,7 +125,7 @@ function toggleBoardFunctions() {
   width: 30px;
   height: 16px;
   border-radius: 999px;
-  background: #cbd5e1;
+  background: var(--app-switch-track);
   box-shadow: inset 0 0 0 1px rgba(51, 65, 85, 0.18);
 }
 
@@ -137,7 +137,7 @@ function toggleBoardFunctions() {
   width: 12px;
   height: 12px;
   border-radius: 999px;
-  background: #ffffff;
+  background: var(--app-switch-knob);
   box-shadow: 0 1px 3px rgba(15, 23, 42, 0.25);
   transition:
     transform 160ms ease,
@@ -145,18 +145,19 @@ function toggleBoardFunctions() {
 }
 
 .soc-view__function-toggle[aria-checked='true'] .soc-view__function-toggle-track {
-  background: #006d77;
+  background: var(--app-link);
 }
 
 .soc-view__function-toggle[aria-checked='true'] .soc-view__function-toggle-track::after {
   transform: translateX(14px);
+  background: var(--app-surface-bg);
 }
 
 .soc-view__function-toggle:focus-visible {
-  border-color: #0e7490;
+  border-color: var(--app-link);
   box-shadow:
     0 0 0 3px rgba(14, 116, 144, 0.16),
-    0 6px 16px rgba(15, 23, 42, 0.12);
+    0 6px 16px var(--app-floating-control-shadow);
 }
 
 </style>
