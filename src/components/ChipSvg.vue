@@ -57,6 +57,11 @@
         x="480"
         :y="432 + index * 18"
         class="chip-cpu"
+        fill="#dbeafe"
+        stroke="rgba(15, 23, 42, 0.72)"
+        stroke-linejoin="round"
+        stroke-width="2.4"
+        paint-order="stroke fill"
         text-anchor="middle"
       >
         {{ line }}
