@@ -270,6 +270,27 @@ describe('soc store', () => {
     expect(store.selectedPins).toHaveLength(49);
   });
 
+  it('can select the ESP32-PICO-DevKitM-2 board profile', () => {
+    const store = useSocStore();
+
+    store.selectSoc('esp32');
+    store.selectPackage('esp32-pico-devkitm-2');
+
+    expect(store.selectedPackage.name).toBe('PICO-DevKitM-2');
+    expect(store.selectedPackage.kind).toBe('board');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP32-PICO-MINI-02', 'ESP32-PICO-MINI-02U']);
+    expect(store.selectedPins).toHaveLength(36);
+
+    store.setSearchQuery('gpio20 pico');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J2-1']);
+
+    store.setSearchQuery('usb to uart');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J2-10', 'J2-11']);
+
+    store.setSearchQuery('mtdi voltage');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J3-10']);
+  });
+
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {
     const store = useSocStore();
 

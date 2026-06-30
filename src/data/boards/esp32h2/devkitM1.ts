@@ -156,7 +156,7 @@ export function createEsp32h2DevKitM1Profile(resolveSourcePinByGpio: BoardSource
     ],
     identificationNotes: [
       'The board is based on ESP32-H2-MINI-1 or ESP32-H2-MINI-1U. Choose this profile by the ESP32-H2-DevKitM-1 carrier PCB and J1/J3 header layout.',
-      'For boards with PW number on or after PW-2024-02-0362, the 32.768 kHz crystal is populated by default.',
+      'For the ESP32-H2-DevKitM-1 carrier PCB with PW number on or after PW-2024-02-0362, the 32.768 kHz crystal is populated by default.',
     ],
     pins: [
       h2DevKitM1BoardPin({

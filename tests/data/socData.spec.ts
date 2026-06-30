@@ -49,6 +49,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32:esp32-qfn48-6x6': 49,
   'esp32:esp32-devkitc-v4': 38,
   'esp32:esp32-devkitm-1': 34,
+  'esp32:esp32-pico-devkitm-2': 36,
   'esp32s3:esp32s3-qfn56': 57,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
   'esp32s3:esp32s3-devkitm-1': 44,
@@ -60,6 +61,8 @@ const expectedPinCounts: Record<string, number> = {
   'esp32c6:esp32c6-mini-1u': 53,
   'esp32c6:esp32c6-devkitm-1': 30,
   'esp32c6:esp32c6-devkitc-1': 32,
+  'esp32h2:esp32h2-qfn32': 33,
+  'esp32h2:esp32h2-devkitm-1': 30,
 };
 
 interface ProfileEntry {
@@ -155,7 +158,15 @@ function expectOfficialEspressifUrl(url: string) {
 }
 
 function isAllowedBoardSourceWarningOverride(profile: ProfileEntry, pin: SocPin, warning: PinWarning) {
-  return profile.id === 'esp32-devkitm-1' && warning === 'flash' && (pin.gpio === 9 || pin.gpio === 10);
+  if (profile.id === 'esp32-devkitm-1' && warning === 'flash' && (pin.gpio === 9 || pin.gpio === 10)) {
+    return true;
+  }
+
+  return profile.id === 'esp32-pico-devkitm-2' && warning === 'flash' && (pin.gpio === 7 || pin.gpio === 8);
+}
+
+function isAllowedModuleOnlyBoardGpio(profile: ProfileEntry, pin: SocPin) {
+  return profile.id === 'esp32-pico-devkitm-2' && pin.gpio === 20;
 }
 
 describe('SoC data invariants', () => {
@@ -265,10 +276,14 @@ describe('SoC data invariants', () => {
 
         if (pin.gpio !== undefined) {
           const sourcePin = packagePinsByGpio.get(pin.gpio);
-          expect(sourcePin, `${profile.id} ${pin.displayNumber} GPIO${pin.gpio} should map to a package pin`).toBeDefined();
+          if (isAllowedModuleOnlyBoardGpio(profile, pin)) {
+            expect(sourcePin).toBeUndefined();
+          } else {
+            expect(sourcePin, `${profile.id} ${pin.displayNumber} GPIO${pin.gpio} should map to a package pin`).toBeDefined();
+          }
           expect(pin.mainFunctions).toContain(`GPIO${pin.gpio}`);
 
-          if (!isConnectorGroupLayout) {
+          if (!isConnectorGroupLayout && sourcePin) {
             for (const warning of sourcePin?.warnings ?? []) {
               if (isAllowedBoardSourceWarningOverride(profile, pin, warning)) {
                 continue;

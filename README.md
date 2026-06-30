@@ -13,6 +13,7 @@ Current profiles:
 | ESP32 | ESP32 QFN48 6 x 6 mm | Chip package | Bare SoC package pinout | [ESP32 Series Datasheet v5.2](https://documentation.espressif.com/esp32_datasheet_en.pdf) |
 | ESP32 | ESP32-DevKitC V4 | Board headers | WROOM/WROVER/SOLO module identity | [ESP32-DevKitC V4 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html) |
 | ESP32 | ESP32-DevKitM-1 | Board headers | MINI module identity | [ESP32-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitm-1/user_guide.html) |
+| ESP32 | ESP32-PICO-DevKitM-2 | Board headers | PICO-MINI module identity | [ESP32-PICO-DevKitM-2 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-devkitm-2/user_guide.html) |
 | ESP32-S3 | ESP32-S3 QFN56 | Chip package | Bare SoC package pinout | [ESP32-S3 Series Datasheet v2.2](https://documentation.espressif.com/esp32-s3_datasheet_en.pdf) |
 | ESP32-S3 | ESP32-S3-DevKitC-1 v1.1 | Board headers | WROOM module identity | [ESP32-S3-DevKitC-1 User Guide v1.1](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html) |
 | ESP32-S3 | ESP32-S3-DevKitM-1 | Board headers | MINI module identity | [ESP32-S3-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html) |

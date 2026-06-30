@@ -43,3 +43,19 @@ export const mini1Source: SocSource = {
     'Physical Dimensions',
   ],
 };
+
+export const picoMini02Source: SocSource = {
+  title: 'ESP32-PICO-MINI-02 & ESP32-PICO-MINI-02U Datasheet',
+  version: 'latest',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
+  url: 'https://www.espressif.com/sites/default/files/documentation/esp32-pico-mini-02_datasheet_en.pdf',
+  sections: [
+    'Module Overview',
+    'Series Comparison',
+    'Pin Layout',
+    'Pin Description',
+    'Module Schematics',
+    'Physical Dimensions',
+  ],
+};
