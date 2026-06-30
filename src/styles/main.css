@@ -21,6 +21,8 @@
   --app-switch-track: #cbd5e1;
   --app-switch-knob: #ffffff;
   --app-card-shadow: rgba(15, 23, 42, 0.06);
+  --app-panel-shadow: 0 18px 44px rgba(15, 23, 42, 0.16), 0 2px 8px rgba(15, 23, 42, 0.08);
+  --app-panel-highlight: rgba(255, 255, 255, 0.82);
   --app-accent-soft-bg: #dffcf7;
   --app-info-soft-bg: #e0f2fe;
   --app-info-soft-text: #075985;
@@ -65,6 +67,8 @@
   --app-switch-track: #334155;
   --app-switch-knob: #e5edf4;
   --app-card-shadow: rgba(0, 0, 0, 0.24);
+  --app-panel-shadow: 0 22px 56px rgba(0, 0, 0, 0.42), 0 2px 10px rgba(0, 0, 0, 0.34);
+  --app-panel-highlight: rgba(255, 255, 255, 0.06);
   --app-accent-soft-bg: #123b3f;
   --app-info-soft-bg: #142b46;
   --app-info-soft-text: #93c5fd;

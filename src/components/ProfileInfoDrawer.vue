@@ -350,9 +350,13 @@ function markReferenceImageFailed(url: string) {
   align-content: start;
   gap: 18px;
   min-height: 100%;
+  border-left: 1px solid var(--app-panel-highlight);
   padding: 20px;
   color: var(--app-text);
   background: var(--app-surface-bg);
+  box-shadow:
+    inset 1px 0 0 var(--app-panel-highlight),
+    var(--app-panel-shadow);
 }
 
 .profile-info__header {

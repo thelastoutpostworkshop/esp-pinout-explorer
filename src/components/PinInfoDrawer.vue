@@ -240,8 +240,12 @@ function onDrawerUpdate(value: boolean) {
 <style scoped>
 .pin-info {
   min-height: 100%;
+  border-left: 1px solid var(--app-panel-highlight);
   color: var(--app-text);
   background: var(--app-surface-bg);
+  box-shadow:
+    inset 1px 0 0 var(--app-panel-highlight),
+    var(--app-panel-shadow);
 }
 
 .pin-info__title {
