@@ -1284,22 +1284,25 @@ onBeforeUnmount(() => {
 }
 
 .board-function-badge--gpio .board-function-badge__text,
+.board-function-badge--analog .board-function-badge__text,
 .board-function-badge--touch .board-function-badge__text,
 .board-function-badge--rtc .board-function-badge__text,
 .board-function-badge--spi .board-function-badge__text,
 .board-function-badge--uart .board-function-badge__text,
 .board-function-badge--ethernet .board-function-badge__text,
+.board-function-badge--power .board-function-badge__text,
+.board-function-badge--ground .board-function-badge__text,
 .board-function-badge--control .board-function-badge__text,
 .board-function-badge--other .board-function-badge__text {
   fill: #0f172a;
 }
 
 .board-function-badge--gpio .board-function-badge__pill {
-  fill: #43b02a;
+  fill: #93c5fd;
 }
 
 .board-function-badge--analog .board-function-badge__pill {
-  fill: #8e24aa;
+  fill: #86efac;
 }
 
 .board-function-badge--touch .board-function-badge__pill {
@@ -1328,15 +1331,15 @@ onBeforeUnmount(() => {
 }
 
 .board-function-badge--power .board-function-badge__pill {
-  fill: #ef4444;
+  fill: #f87171;
 }
 
 .board-function-badge--ground .board-function-badge__pill {
-  fill: #111827;
+  fill: #e2e8f0;
 }
 
 .board-function-badge--control .board-function-badge__pill {
-  fill: #f59e0b;
+  fill: #fbbf24;
 }
 
 .board-pin__warning-badge {
