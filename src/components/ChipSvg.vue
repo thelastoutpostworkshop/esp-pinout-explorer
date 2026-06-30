@@ -54,7 +54,15 @@
       />
       <circle class="chip-orientation-dot" cx="254" cy="132" r="14" fill="#0b1117" stroke="#e5e7eb" stroke-width="4" />
 
-      <text x="480" y="316" class="brand" text-anchor="middle">ESPRESSIF</text>
+      <image
+        class="espressif-logo"
+        :href="espressifLogoOnDarkUrl"
+        x="330"
+        y="274"
+        width="300"
+        height="54"
+        preserveAspectRatio="xMidYMid meet"
+      />
       <text x="480" y="396" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
       <text x="480" y="438" class="chip-details" text-anchor="middle">
         {{ packageName }} | {{ filteredPinCount }} / {{ totalPinCount }} pins
@@ -124,6 +132,7 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import espressifLogoOnDarkUrl from '@/assets/espressif-logo-on-dark.svg';
 import { hasMakerWarning } from '@/data/pinWarnings';
 import type { PinSide, SocDefinition, SocPin } from '@/types/soc';
 
@@ -409,14 +418,11 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   animation: chip-dot-enter 560ms 560ms cubic-bezier(0.18, 1.55, 0.34, 1) both;
 }
 
-.brand {
-  fill: #d7dde3;
-  font-size: 48px;
-  font-weight: 700;
-  letter-spacing: 0;
+.espressif-logo {
+  pointer-events: none;
 }
 
-.chip-shell--animated .brand {
+.chip-shell--animated .espressif-logo {
   animation: chip-text-enter 620ms 520ms ease-out both;
 }
 
@@ -750,7 +756,7 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   .chip-edge-glow,
   .chip-die-outline,
   .chip-orientation-dot,
-  .brand,
+  .espressif-logo,
   .chip-name,
   .chip-details,
   .pin-node,

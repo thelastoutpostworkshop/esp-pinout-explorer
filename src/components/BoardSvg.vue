@@ -53,7 +53,15 @@
       </g>
       <g class="board-silkscreen" aria-hidden="true">
         <path d="M154 126H250 M710 126H806 M154 592H250 M710 592H806" />
-        <text x="480" y="116" text-anchor="middle">ESPRESSIF DEV BOARD</text>
+        <image
+          class="board-silkscreen-logo"
+          :href="espressifLogoOnDarkUrl"
+          x="423"
+          y="102"
+          width="114"
+          height="20"
+          preserveAspectRatio="xMidYMid meet"
+        />
       </g>
 
       <g v-if="isUsbBridgeArtwork" class="connector-board__usb">
@@ -81,7 +89,15 @@
           stroke-width="2"
           opacity="0.75"
         />
-        <text x="480" y="316" class="brand" text-anchor="middle">ESPRESSIF</text>
+        <image
+          class="espressif-logo connector-board__module-logo"
+          :href="espressifLogoOnDarkUrl"
+          x="376"
+          y="288"
+          width="208"
+          height="38"
+          preserveAspectRatio="xMidYMid meet"
+        />
         <text x="480" y="366" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
         <text x="480" y="398" class="board-details" text-anchor="middle">{{ packageName }}</text>
       </g>
@@ -235,7 +251,15 @@
       </g>
       <g class="board-silkscreen" aria-hidden="true">
         <path d="M210 100H304 M636 100H730 M210 660H304 M636 660H730" />
-        <text x="470" y="104" text-anchor="middle">ESPRESSIF DEVKIT</text>
+        <image
+          class="board-silkscreen-logo"
+          :href="espressifLogoOnDarkUrl"
+          x="416"
+          y="91"
+          width="108"
+          height="20"
+          preserveAspectRatio="xMidYMid meet"
+        />
       </g>
 
       <g class="board-usb">
@@ -262,7 +286,15 @@
           stroke-width="2"
           opacity="0.75"
         />
-        <text x="470" y="318" class="brand" text-anchor="middle">ESPRESSIF</text>
+        <image
+          class="espressif-logo"
+          :href="espressifLogoOnDarkUrl"
+          x="350"
+          y="286"
+          width="240"
+          height="44"
+          preserveAspectRatio="xMidYMid meet"
+        />
         <text x="470" y="374" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
         <text x="470" y="414" class="board-details" text-anchor="middle">{{ packageName }}</text>
         <text x="470" y="436" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} header pins</text>
@@ -367,6 +399,7 @@
 
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
+import espressifLogoOnDarkUrl from '@/assets/espressif-logo-on-dark.svg';
 import { hasMakerWarning } from '@/data/pinWarnings';
 import type { BoardArtwork, BoardLayout, PinSide, SocDefinition, SocPin } from '@/types/soc';
 
@@ -1073,11 +1106,9 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
 }
 
-.brand {
-  fill: #d7dde3;
-  font-size: 34px;
-  font-weight: 800;
-  letter-spacing: 0;
+.espressif-logo,
+.board-silkscreen-logo {
+  pointer-events: none;
 }
 
 .chip-name {
