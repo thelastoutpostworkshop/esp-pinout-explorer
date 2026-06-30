@@ -68,7 +68,7 @@
             <span>Visit the workshop</span>
             <ExternalLink :size="13" aria-hidden="true" />
           </a>
-          <button class="about-page__action" type="button" @click="store.showPinout">
+          <button class="about-page__action about-page__action--back" type="button" @click="store.showPinout">
             <ArrowLeft :size="16" aria-hidden="true" />
             <span>Back to pinout</span>
           </button>
@@ -202,7 +202,7 @@ const fieldNotes = [
 
 .about-page__hero {
   position: relative;
-  min-height: clamp(360px, 45vh, 520px);
+  min-height: clamp(450px, 52vh, 560px);
   overflow: hidden;
   border: 1px solid #1f3b4d;
   border-radius: 8px;
@@ -397,6 +397,20 @@ const fieldNotes = [
 .about-page__action--primary:hover,
 .about-page__action--primary:focus-visible {
   background: #ccfbf1;
+}
+
+.about-page__action--back {
+  min-height: 34px;
+  border-color: #cbd5e1;
+  color: #006d77;
+  background: #ffffff;
+  font-size: 0.84rem;
+}
+
+.about-page__action--back:hover,
+.about-page__action--back:focus-visible {
+  border-color: #0e7490;
+  background: #ecfeff;
 }
 
 .about-page__stats {

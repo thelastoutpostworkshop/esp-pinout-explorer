@@ -7,6 +7,7 @@ import type { SocDefinition, SocPackageVariant, SocPin } from '@/types/soc';
 
 const profileStorageKey = 'esp-pinout-explorer:selected-profile';
 const legacyProfileStorageKey = 'espsocsexplorer:selected-profile';
+const visitedStorageKey = 'esp-pinout-explorer:visited';
 
 interface PersistedProfileSelection {
   socId: string;
@@ -64,11 +65,13 @@ function filterPinsByQuery(pins: SocPin[], search: string) {
 
 export const useSocStore = defineStore('soc', () => {
   const initialSelection = readInitialSelection();
+  const initialView = readInitialWorkspaceView();
+  rememberVisit();
   const selectedSocId = ref(initialSelection.socId);
   const selectedPackageId = ref<string | null>(initialSelection.packageId);
   const selectedPinId = ref<string | null>(null);
   const profileInfoOpen = ref(false);
-  const activeView = ref<WorkspaceView>('pinout');
+  const activeView = ref<WorkspaceView>(initialView);
   const searchQuery = ref('');
 
   const selectedSoc = computed(() => socs.find((soc) => soc.id === selectedSocId.value) ?? socs[0]);
@@ -247,9 +250,31 @@ function readPersistedProfile(): PersistedProfileSelection | null {
   return null;
 }
 
+function readInitialWorkspaceView(): WorkspaceView {
+  try {
+    const hasVisited = window.localStorage.getItem(visitedStorageKey) === 'true';
+    const hasPersistedProfile = Boolean(
+      window.localStorage.getItem(profileStorageKey) ?? window.localStorage.getItem(legacyProfileStorageKey),
+    );
+
+    return hasVisited || hasPersistedProfile ? 'pinout' : 'about';
+  } catch {
+    return 'pinout';
+  }
+}
+
+function rememberVisit() {
+  try {
+    window.localStorage.setItem(visitedStorageKey, 'true');
+  } catch {
+    // Ignore storage failures so the explorer still works in restricted browsing modes.
+  }
+}
+
 function persistSelectedProfile(socId: string, packageId: string) {
   try {
     window.localStorage.setItem(profileStorageKey, JSON.stringify({ socId, packageId }));
+    window.localStorage.setItem(visitedStorageKey, 'true');
     window.localStorage.removeItem(legacyProfileStorageKey);
   } catch {
     // Ignore storage failures so the explorer still works in restricted browsing modes.
