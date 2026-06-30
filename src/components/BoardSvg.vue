@@ -53,15 +53,6 @@
       </g>
       <g class="board-silkscreen" aria-hidden="true">
         <path d="M154 126H250 M710 126H806 M154 592H250 M710 592H806" />
-        <image
-          class="board-silkscreen-logo"
-          :href="espressifLogoOnDarkUrl"
-          x="423"
-          y="102"
-          width="114"
-          height="20"
-          preserveAspectRatio="xMidYMid meet"
-        />
       </g>
 
       <g v-if="isUsbBridgeArtwork" class="connector-board__usb">
@@ -77,18 +68,6 @@
 
       <g class="connector-board__module">
         <rect x="346" y="250" width="268" height="170" rx="9" fill="url(#connectorModuleBody)" stroke="#475569" stroke-width="2" />
-        <rect
-          x="386"
-          y="286"
-          width="188"
-          height="88"
-          rx="5"
-          fill="none"
-          stroke="#94a3b8"
-          stroke-dasharray="8 8"
-          stroke-width="2"
-          opacity="0.75"
-        />
         <image
           class="espressif-logo connector-board__module-logo"
           :href="espressifLogoOnDarkUrl"
@@ -251,15 +230,6 @@
       </g>
       <g class="board-silkscreen" aria-hidden="true">
         <path d="M210 100H304 M636 100H730 M210 660H304 M636 660H730" />
-        <image
-          class="board-silkscreen-logo"
-          :href="espressifLogoOnDarkUrl"
-          x="416"
-          y="91"
-          width="108"
-          height="20"
-          preserveAspectRatio="xMidYMid meet"
-        />
       </g>
 
       <g class="board-usb">
@@ -274,18 +244,6 @@
 
       <g class="module">
         <rect x="316" y="194" width="308" height="300" rx="9" fill="url(#moduleBody)" stroke="#475569" stroke-width="2" />
-        <rect
-          x="354"
-          y="238"
-          width="232"
-          height="212"
-          rx="5"
-          fill="none"
-          stroke="#94a3b8"
-          stroke-dasharray="8 8"
-          stroke-width="2"
-          opacity="0.75"
-        />
         <image
           class="espressif-logo"
           :href="espressifLogoOnDarkUrl"
@@ -1106,8 +1064,7 @@ onBeforeUnmount(() => {
   text-transform: uppercase;
 }
 
-.espressif-logo,
-.board-silkscreen-logo {
+.espressif-logo {
   pointer-events: none;
 }
 

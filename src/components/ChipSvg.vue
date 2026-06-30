@@ -39,19 +39,6 @@
         <rect class="chip-sheen" x="60" y="70" width="180" height="600" fill="url(#chipSheen)" />
       </g>
       <rect class="chip-edge-glow" x="210" y="90" width="540" height="540" rx="7" fill="none" />
-      <rect
-        class="chip-die-outline"
-        x="300"
-        y="180"
-        width="360"
-        height="360"
-        rx="4"
-        fill="none"
-        stroke="#9ca3af"
-        stroke-dasharray="8 8"
-        stroke-width="2"
-        opacity="0.75"
-      />
       <circle class="chip-orientation-dot" cx="254" cy="132" r="14" fill="#0b1117" stroke="#e5e7eb" stroke-width="4" />
 
       <image
@@ -353,7 +340,6 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
 .chip-body-shadow,
 .chip-body,
 .chip-edge-glow,
-.chip-die-outline,
 .chip-orientation-dot {
   transform-box: fill-box;
   transform-origin: center;
@@ -396,14 +382,6 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
 
 .chip-shell--animated .chip-edge-glow {
   animation: chip-edge-pulse 1250ms 260ms ease-out both;
-}
-
-.chip-die-outline {
-  opacity: 0.75;
-}
-
-.chip-shell--animated .chip-die-outline {
-  animation: chip-outline-enter 800ms 360ms ease-out both;
 }
 
 .chip-orientation-dot {
@@ -695,18 +673,6 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   }
 }
 
-@keyframes chip-outline-enter {
-  0% {
-    opacity: 0;
-    stroke-dashoffset: 42;
-  }
-
-  100% {
-    opacity: 0.75;
-    stroke-dashoffset: 0;
-  }
-}
-
 @keyframes chip-dot-enter {
   0% {
     opacity: 0;
@@ -754,7 +720,6 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
   .chip-body,
   .chip-sheen,
   .chip-edge-glow,
-  .chip-die-outline,
   .chip-orientation-dot,
   .espressif-logo,
   .chip-name,
