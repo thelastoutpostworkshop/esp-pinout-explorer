@@ -1268,7 +1268,7 @@ onBeforeUnmount(() => {
 }
 
 .board-function-badge__pill {
-  fill: #64748b;
+  fill: #cbd5e1;
   stroke: rgba(255, 255, 255, 0.78);
   stroke-width: 0.65;
 }
@@ -1281,6 +1281,17 @@ onBeforeUnmount(() => {
   letter-spacing: 0;
   pointer-events: none;
   text-rendering: geometricPrecision;
+}
+
+.board-function-badge--gpio .board-function-badge__text,
+.board-function-badge--touch .board-function-badge__text,
+.board-function-badge--rtc .board-function-badge__text,
+.board-function-badge--spi .board-function-badge__text,
+.board-function-badge--uart .board-function-badge__text,
+.board-function-badge--ethernet .board-function-badge__text,
+.board-function-badge--control .board-function-badge__text,
+.board-function-badge--other .board-function-badge__text {
+  fill: #0f172a;
 }
 
 .board-function-badge--gpio .board-function-badge__pill {
