@@ -67,24 +67,24 @@
         <image
           class="espressif-logo connector-board__module-logo"
           :href="espressifLogoOnDarkUrl"
-          x="376"
-          y="288"
-          width="208"
-          height="38"
+          :x="connectorCenterLayout.logoX"
+          :y="connectorCenterLayout.logoY"
+          :width="connectorCenterLayout.logoWidth"
+          :height="connectorCenterLayout.logoHeight"
           preserveAspectRatio="xMidYMid meet"
         />
-        <text x="480" y="366" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
+        <text :x="connectorCenterLayout.textX" :y="connectorCenterLayout.nameY" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
         <text
           v-for="(line, index) in chipCpuLines"
           :key="line"
-          x="480"
-          :y="394 + index * 16"
+          :x="connectorCenterLayout.textX"
+          :y="connectorCenterLayout.cpuY + index * connectorCenterLayout.cpuLineHeight"
           class="board-cpu"
           text-anchor="middle"
         >
           {{ line }}
         </text>
-        <text x="480" :y="connectorPinCountY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} pins</text>
+        <text :x="connectorCenterLayout.textX" :y="connectorCenterLayout.detailsY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} pins</text>
       </g>
 
       <template v-if="isUsbBridgeArtwork">
@@ -249,24 +249,24 @@
         <image
           class="espressif-logo"
           :href="espressifLogoOnDarkUrl"
-          x="350"
-          y="286"
-          width="240"
-          height="44"
+          :x="dualHeaderCenterLayout.logoX"
+          :y="dualHeaderCenterLayout.logoY"
+          :width="dualHeaderCenterLayout.logoWidth"
+          :height="dualHeaderCenterLayout.logoHeight"
           preserveAspectRatio="xMidYMid meet"
         />
-        <text x="470" y="374" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
+        <text :x="dualHeaderCenterLayout.textX" :y="dualHeaderCenterLayout.nameY" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
         <text
           v-for="(line, index) in chipCpuLines"
           :key="line"
-          x="470"
-          :y="408 + index * 16"
+          :x="dualHeaderCenterLayout.textX"
+          :y="dualHeaderCenterLayout.cpuY + index * dualHeaderCenterLayout.cpuLineHeight"
           class="board-cpu"
           text-anchor="middle"
         >
           {{ line }}
         </text>
-        <text x="470" :y="dualHeaderPinCountY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} header pins</text>
+        <text :x="dualHeaderCenterLayout.textX" :y="dualHeaderCenterLayout.detailsY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} header pins</text>
       </g>
 
       <g class="board-component board-component--boot">
@@ -407,8 +407,38 @@ const leftHeaderName = computed(() => headerNameForSide('left', 'J1'));
 const rightHeaderName = computed(() => headerNameForSide('right', 'J3'));
 const dualHeaderViewBox = computed(() => (showMainFunctions.value ? '-100 8 1140 724' : '128 8 684 724'));
 const chipCpuLines = computed(() => splitCpuSummary(props.soc.chipSpecs?.cpu ?? 'CPU details unavailable'));
-const connectorPinCountY = computed(() => 414 + Math.max(0, chipCpuLines.value.length - 1) * 16);
-const dualHeaderPinCountY = computed(() => 428 + Math.max(0, chipCpuLines.value.length - 1) * 16);
+const connectorCenterLayout = computed(() =>
+  centerContentLayout({
+    centerX: 480,
+    centerY: 335,
+    logoWidth: 208,
+    logoHeight: 38,
+    logoToNameGap: 16,
+    nameLineHeight: 34,
+    nameBaseline: 27,
+    nameToCpuGap: 10,
+    cpuLineHeight: 16,
+    cpuBaseline: 10,
+    cpuToDetailsGap: 6,
+    detailsBaseline: 11,
+  }),
+);
+const dualHeaderCenterLayout = computed(() =>
+  centerContentLayout({
+    centerX: 470,
+    centerY: 344,
+    logoWidth: 240,
+    logoHeight: 44,
+    logoToNameGap: 20,
+    nameLineHeight: 34,
+    nameBaseline: 27,
+    nameToCpuGap: 12,
+    cpuLineHeight: 16,
+    cpuBaseline: 10,
+    cpuToDetailsGap: 6,
+    detailsBaseline: 11,
+  }),
+);
 const dualHeaderPins = computed(() =>
   props.pins.filter((pin) => pin.position.side === 'left' || pin.position.side === 'right'),
 );
@@ -439,6 +469,50 @@ interface FunctionBadge {
   rx: number;
   textX: number;
   textY: number;
+}
+
+interface CenterContentOptions {
+  centerX: number;
+  centerY: number;
+  logoWidth: number;
+  logoHeight: number;
+  logoToNameGap: number;
+  nameLineHeight: number;
+  nameBaseline: number;
+  nameToCpuGap: number;
+  cpuLineHeight: number;
+  cpuBaseline: number;
+  cpuToDetailsGap: number;
+  detailsBaseline: number;
+}
+
+function centerContentLayout(options: CenterContentOptions) {
+  const cpuLineCount = Math.max(1, chipCpuLines.value.length);
+  const detailsLineHeight = 16;
+  const stackHeight =
+    options.logoHeight +
+    options.logoToNameGap +
+    options.nameLineHeight +
+    options.nameToCpuGap +
+    cpuLineCount * options.cpuLineHeight +
+    options.cpuToDetailsGap +
+    detailsLineHeight;
+  const top = options.centerY - stackHeight / 2;
+  const nameTop = top + options.logoHeight + options.logoToNameGap;
+  const cpuTop = nameTop + options.nameLineHeight + options.nameToCpuGap;
+  const detailsTop = cpuTop + cpuLineCount * options.cpuLineHeight + options.cpuToDetailsGap;
+
+  return {
+    textX: options.centerX,
+    logoX: options.centerX - options.logoWidth / 2,
+    logoY: top,
+    logoWidth: options.logoWidth,
+    logoHeight: options.logoHeight,
+    nameY: nameTop + options.nameBaseline,
+    cpuY: cpuTop + options.cpuBaseline,
+    cpuLineHeight: options.cpuLineHeight,
+    detailsY: detailsTop + options.detailsBaseline,
+  };
 }
 
 const pinStartY = 112;

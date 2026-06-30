@@ -44,18 +44,18 @@
       <image
         class="espressif-logo"
         :href="espressifLogoOnDarkUrl"
-        x="330"
-        y="274"
-        width="300"
-        height="54"
+        :x="chipCenterLayout.logoX"
+        :y="chipCenterLayout.logoY"
+        :width="chipCenterLayout.logoWidth"
+        :height="chipCenterLayout.logoHeight"
         preserveAspectRatio="xMidYMid meet"
       />
-      <text x="480" y="396" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
+      <text :x="chipCenterLayout.textX" :y="chipCenterLayout.nameY" class="chip-name" text-anchor="middle">{{ soc.name }}</text>
       <text
         v-for="(line, index) in chipCpuLines"
         :key="line"
-        x="480"
-        :y="432 + index * 18"
+        :x="chipCenterLayout.textX"
+        :y="chipCenterLayout.cpuY + index * chipCenterLayout.cpuLineHeight"
         class="chip-cpu"
         fill="#dbeafe"
         stroke="rgba(15, 23, 42, 0.72)"
@@ -66,7 +66,7 @@
       >
         {{ line }}
       </text>
-      <text x="480" :y="chipPinCountY" class="chip-details" text-anchor="middle">
+      <text :x="chipCenterLayout.textX" :y="chipCenterLayout.detailsY" class="chip-details" text-anchor="middle">
         {{ filteredPinCount }} / {{ totalPinCount }} pins
       </text>
 
@@ -179,7 +179,48 @@ const horizontalEnd = 730;
 
 const svgViewBox = computed(() => (compactLayout.value ? '166 48 628 628' : '0 -60 960 920'));
 const chipCpuLines = computed(() => splitCpuSummary(props.soc.chipSpecs?.cpu ?? 'CPU details unavailable'));
-const chipPinCountY = computed(() => 452 + Math.max(0, chipCpuLines.value.length - 1) * 18);
+const chipCenterLayout = computed(() => centerContentLayout());
+
+function centerContentLayout() {
+  const centerX = 480;
+  const centerY = 360;
+  const logoWidth = 300;
+  const logoHeight = 54;
+  const logoToNameGap = 26;
+  const nameLineHeight = 44;
+  const nameBaseline = 34;
+  const nameToCpuGap = 14;
+  const cpuLineHeight = 18;
+  const cpuBaseline = 11;
+  const cpuToDetailsGap = 6;
+  const detailsLineHeight = 16;
+  const detailsBaseline = 12;
+  const cpuLineCount = Math.max(1, chipCpuLines.value.length);
+  const stackHeight =
+    logoHeight +
+    logoToNameGap +
+    nameLineHeight +
+    nameToCpuGap +
+    cpuLineCount * cpuLineHeight +
+    cpuToDetailsGap +
+    detailsLineHeight;
+  const top = centerY - stackHeight / 2;
+  const nameTop = top + logoHeight + logoToNameGap;
+  const cpuTop = nameTop + nameLineHeight + nameToCpuGap;
+  const detailsTop = cpuTop + cpuLineCount * cpuLineHeight + cpuToDetailsGap;
+
+  return {
+    textX: centerX,
+    logoX: centerX - logoWidth / 2,
+    logoY: top,
+    logoWidth,
+    logoHeight,
+    nameY: nameTop + nameBaseline,
+    cpuY: cpuTop + cpuBaseline,
+    cpuLineHeight,
+    detailsY: detailsTop + detailsBaseline,
+  };
+}
 
 const sideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>(() => ({
   left: sideMaxOrder('left'),
