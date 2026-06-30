@@ -41,6 +41,7 @@
         :soc="selectedSoc"
         :total-pin-count="store.selectedPins.length"
         @pin-click="store.selectPin"
+        @profile-info-click="store.openProfileInfo"
       />
     </section>
 

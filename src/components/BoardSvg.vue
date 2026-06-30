@@ -86,6 +86,25 @@
       </g>
 
       <g
+        class="board-info-button connector-board__info-button"
+        role="button"
+        tabindex="0"
+        aria-label="Open profile information and variants"
+        @click.stop="emit('profile-info-click')"
+        @keydown.enter.prevent="emit('profile-info-click')"
+        @keydown.space.prevent="emit('profile-info-click')"
+      >
+        <title>Profile info &amp; Variants</title>
+        <rect class="board-info-button__rect" x="368" y="426" width="224" height="32" rx="7" />
+        <g class="board-info-button__icon" aria-hidden="true" transform="translate(386 434) scale(0.72)">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <path d="M15 3v18" />
+          <path d="m10 15-3-3 3-3" />
+        </g>
+        <text class="board-info-button__text" x="505" y="446" text-anchor="middle">Profile info &amp; Variants</text>
+      </g>
+
+      <g
         v-for="badge in connectorComponentBadges"
         :key="badge.label"
         class="connector-board__component"
@@ -242,6 +261,24 @@
           {{ line }}
         </text>
         <text :x="dualHeaderCenterLayout.textX" :y="dualHeaderCenterLayout.detailsY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} header pins</text>
+        <g
+          class="board-info-button"
+          role="button"
+          tabindex="0"
+          aria-label="Open profile information and variants"
+          @click.stop="emit('profile-info-click')"
+          @keydown.enter.prevent="emit('profile-info-click')"
+          @keydown.space.prevent="emit('profile-info-click')"
+        >
+          <title>Profile info &amp; Variants</title>
+          <rect class="board-info-button__rect" x="350" y="444" width="240" height="32" rx="7" />
+          <g class="board-info-button__icon" aria-hidden="true" transform="translate(371 452) scale(0.72)">
+            <rect x="3" y="3" width="18" height="18" rx="2" />
+            <path d="M15 3v18" />
+            <path d="m10 15-3-3 3-3" />
+          </g>
+          <text class="board-info-button__text" x="480" y="464" text-anchor="middle">Profile info &amp; Variants</text>
+        </g>
       </g>
 
       <g class="board-component board-component--boot">
@@ -363,6 +400,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   'pin-click': [pinId: string];
+  'profile-info-click': [];
 }>();
 
 const pins = computed(() => props.pins);
@@ -1373,6 +1411,54 @@ onBeforeUnmount(() => {
   font-size: 11.5px;
   font-weight: 750;
   letter-spacing: 0;
+}
+
+.board-info-button {
+  cursor: pointer;
+  outline: none;
+}
+
+.board-info-button__rect {
+  fill: rgba(2, 6, 23, 0.42);
+  stroke: rgba(45, 212, 191, 0.55);
+  stroke-width: 1.2;
+  transition:
+    fill 150ms ease,
+    stroke 150ms ease;
+}
+
+.board-info-button__icon {
+  fill: none;
+  stroke: #2dd4bf;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: stroke 150ms ease;
+}
+
+.board-info-button__text {
+  fill: #5eead4;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0;
+  pointer-events: none;
+  transition: fill 150ms ease;
+}
+
+.board-info-button:hover .board-info-button__rect,
+.board-info-button:focus .board-info-button__rect {
+  fill: rgba(20, 184, 166, 0.16);
+  stroke: #2dd4bf;
+}
+
+.board-info-button:hover .board-info-button__icon,
+.board-info-button:focus .board-info-button__icon {
+  stroke: #99f6e4;
+}
+
+.board-info-button:hover .board-info-button__text,
+.board-info-button:focus .board-info-button__text {
+  fill: #ccfbf1;
 }
 
 .board-pin {
