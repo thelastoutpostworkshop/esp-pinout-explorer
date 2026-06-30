@@ -18,6 +18,8 @@ Current profiles:
 - ESP32-C6-MINI-1 and ESP32-C6-MINI-1U module pads, based on the official Espressif ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet v1.5: https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf
 - ESP32-C6-DevKitM-1 board headers with MINI module identity, based on the official Espressif ESP32-C6-DevKitM-1 User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitm-1/user_guide.html
 - ESP32-C6-DevKitC-1 v1.2 board headers with WROOM module identity, based on the official Espressif ESP32-C6-DevKitC-1 User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitc-1/user_guide.html
+- ESP32-H2 QFN32 4 x 4 mm, based on the official Espressif ESP32-H2 Series Datasheet v1.2: https://documentation.espressif.com/esp32-h2_datasheet_en.pdf
+- ESP32-H2-DevKitM-1 board headers with MINI module identity, based on the official Espressif ESP32-H2-DevKitM-1 User Guide: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/esp32-h2-devkitm-1/user_guide.html
 
 ## Contributing
 

@@ -33,6 +33,9 @@ Source baseline:
   - [x] Module profile: ESP32-C6-MINI-1
   - [x] Module profile: ESP32-C6-MINI-1U
   - [x] Board profile: ESP32-C6-DevKitM-1
+- [x] ESP32-H2
+  - [x] Chip package profile: ESP32-H2 QFN32, 4 x 4 mm
+  - [x] Board profile: ESP32-H2-DevKitM-1
 
 ## To Do
 
@@ -172,9 +175,9 @@ Source baseline:
   - [ ] Board profile: ESP32-H21-DevKitM-1
     - Product table: paired with ESP32-H21-MINI-1.
   - Note: the module product table lists this dev board pairing, but confirm the official user guide, header tables, pin layout, or schematics before implementation.
-- [ ] ESP32-H2 chip package profiles
+- [x] ESP32-H2 chip package profiles
   - Source: https://documentation.espressif.com/esp32-h2_datasheet_en.html
-  - [ ] Chip package profile: ESP32-H2 QFN32, 4 x 4 mm
+  - [x] Chip package profile: ESP32-H2 QFN32, 4 x 4 mm
     - Variants: ESP32-H2FH2S / ESP32-H2FH4S
     - Datasheet/product table: 19 GPIO, 320 KB SRAM, 128 KB ROM, 4 KB LP memory, 2 MB or 4 MB in-package flash, no PSRAM.
 - [ ] ESP32-H2 module profiles
@@ -189,11 +192,11 @@ Source baseline:
     - Source: https://www.espressif.com/sites/default/files/documentation/esp32-h2-wroom-02c_datasheet_en.pdf
     - Product table/datasheet: 18.0 x 20.0 x 3.2 mm, 19 GPIOs, 2 MB / 4 MB flash, no PSRAM, PCB antenna.
   - Note: module profiles should use official module pad definitions and memory tables. Do not copy the bare QFN32 pinout directly.
-- [ ] ESP32-H2 board profiles
+- [x] ESP32-H2 board profiles
   - Source index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/index.html
-  - [ ] Board profile: ESP32-H2-DevKitM-1
+  - [x] Board profile: ESP32-H2-DevKitM-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/esp32-h2-devkitm-1/user_guide.html
-    - Note: active Espressif board based on ESP32-H2-MINI-1 or ESP32-H2-MINI-1U. User guide has header block and pin layout data; implement before less-documented H21/H4 boards.
+    - Note: active Espressif board based on ESP32-H2-MINI-1 or ESP32-H2-MINI-1U. Implemented from the official Header Block tables and Pin Layout; standalone MINI module pad profiles remain separate TODO items.
   - [ ] Board profile: ESP Thread Border Router/Zigbee Gateway
     - Source: https://docs.espressif.com/projects/esp-thread-br/en/latest/dev-board-guide.html
     - Note: gateway board combines ESP32-S3 with ESP32-H2 RCP. Treat as a specialized connector/peripheral board profile only if the official guide/schematic provides enough pin allocation detail.

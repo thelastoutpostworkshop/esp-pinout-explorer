@@ -12,6 +12,7 @@ const exactDescriptions: Record<string, string> = {
   BRIDGE_RX: 'UART receive path from the target chip TX pin into the bridge board.',
   BRIDGE_TX: 'UART transmit path from the bridge board to the target chip RX pin.',
   CHIP_PU: 'Chip power-up and reset-enable input. Pulling this low resets or disables the chip.',
+  CHIP_EN: 'Chip enable and reset input. High enables the chip; pulling it low resets or disables it.',
   CLK: 'SPI flash clock signal on classic ESP32 boards. This is normally reserved for the module flash.',
   CMD: 'SPI flash command signal on classic ESP32 boards. This is normally reserved for the module flash.',
   DAC_1: 'Digital-to-analog converter output channel 1.',
@@ -56,6 +57,7 @@ const exactDescriptions: Record<string, string> = {
   MTMS: 'JTAG test mode select signal. Also used by some boot/debug configurations on supported chips.',
   MODULE_BOOT: 'Module boot button signal on the bridge board. Holding it during power-up enters module download mode.',
   'No connect': 'No-connect pad. The official module pin table does not assign an electrical function to it.',
+  'No connection': 'No-connect header pin. The official board table does not assign an electrical function to it.',
   RESET_TO_TARGET: 'Reset signal driven from the bridge board to the externally connected target chip.',
   Reset: 'Board reset function connected to the module enable/reset signal.',
   'RGB LED': 'Addressable RGB LED on the development board. Using this GPIO can also affect the on-board LED.',
@@ -88,8 +90,11 @@ const exactDescriptions: Record<string, string> = {
   XTAL_32K_N: '32 kHz crystal negative input/output. Used for an optional low-power clock crystal.',
   XTAL_32K_P: '32 kHz crystal positive input/output. Used for an optional low-power clock crystal.',
   USB_SEL: 'USB interface switch signal on the development board.',
+  VBAT: 'Battery or backup power-supply input. Follow the board guide power options before connecting it.',
   VDET_1: 'Analog voltage-detection input on classic ESP32. This GPIO is input-only.',
   VDET_2: 'Analog voltage-detection input on classic ESP32. This GPIO is input-only.',
+  ZCD0: 'Zero-cross or voltage-detection analog input channel.',
+  ZCD1: 'Zero-cross or voltage-detection analog input channel.',
 };
 
 const phraseDescriptions: Array<[RegExp, string]> = [
