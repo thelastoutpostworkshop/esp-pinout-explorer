@@ -122,8 +122,26 @@
       <section v-if="sourceFigures.length" class="profile-info__section">
         <h3>Reference images</h3>
         <div class="profile-info__image-grid">
-          <figure v-for="figure in sourceFigures" :key="figure.url" class="profile-info__figure">
+          <figure
+            v-for="figure in sourceFigures"
+            :key="figure.url"
+            class="profile-info__figure"
+            :class="{ 'profile-info__figure--document': isDocumentFigure(figure.url) }"
+          >
             <a
+              v-if="isDocumentFigure(figure.url)"
+              class="profile-info__document-link"
+              :href="figure.url"
+              rel="noreferrer"
+              target="_blank"
+              :aria-label="`Open ${figure.title}`"
+            >
+              <FileText :size="34" aria-hidden="true" />
+              <span>{{ documentFigureLabel(figure.url) }}</span>
+              <ExternalLink :size="14" aria-hidden="true" />
+            </a>
+            <a
+              v-else
               class="profile-info__image-link"
               :class="{
                 'profile-info__image-link--loading': isReferenceImageLoading(figure.url),
@@ -169,7 +187,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { ExternalLink, X } from '@lucide/vue';
+import { ExternalLink, FileText, X } from '@lucide/vue';
 import { useSocStore } from '@/stores/socStore';
 import type { PinProfileKind, SocPackageVariant } from '@/types/soc';
 
@@ -311,7 +329,9 @@ function onDrawerUpdate(value: boolean) {
 }
 
 function initializeReferenceImageLoading() {
-  loadingReferenceImageUrls.value = new Set(sourceFigures.value.map((figure) => figure.url));
+  loadingReferenceImageUrls.value = new Set(
+    sourceFigures.value.filter((figure) => !isDocumentFigure(figure.url)).map((figure) => figure.url),
+  );
   erroredReferenceImageUrls.value = new Set();
 }
 
@@ -337,6 +357,18 @@ function markReferenceImageLoaded(url: string) {
 function markReferenceImageFailed(url: string) {
   markReferenceImageLoaded(url);
   erroredReferenceImageUrls.value = new Set([...erroredReferenceImageUrls.value, url]);
+}
+
+function isDocumentFigure(url: string) {
+  return /\.pdf(?:[?#].*)?$/i.test(url);
+}
+
+function documentFigureLabel(url: string) {
+  if (/\.pdf(?:[?#].*)?$/i.test(url)) {
+    return 'Open PDF';
+  }
+
+  return 'Open document';
 }
 </script>
 
@@ -569,6 +601,29 @@ function markReferenceImageFailed(url: string) {
   border-radius: 6px;
   background: var(--app-surface-bg);
   overflow: hidden;
+}
+
+.profile-info__document-link {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 150px;
+  border: 1px solid var(--app-border);
+  border-radius: 6px;
+  background:
+    linear-gradient(135deg, rgba(45, 212, 191, 0.12), rgba(59, 130, 246, 0.08)),
+    var(--app-surface-bg);
+  color: var(--app-link);
+  font-size: 0.82rem;
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.profile-info__document-link:hover {
+  border-color: rgba(45, 212, 191, 0.58);
+  color: var(--app-link);
 }
 
 .profile-info__image-link img {

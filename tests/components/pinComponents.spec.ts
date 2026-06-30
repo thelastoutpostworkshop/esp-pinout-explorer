@@ -509,6 +509,13 @@ describe('ExplorerSidebar', () => {
       esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-devkitm-1')?.source?.url,
     );
 
+    store.selectPackage('esp-vocat-v1-2');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.profile-info__document-link').exists()).toBe(true);
+    expect(wrapper.find('.profile-info__document-link').attributes('href')).toContain('.pdf');
+    expect(wrapper.text()).toContain('Open PDF');
+
     store.selectSoc('esp32c6');
     await wrapper.vm.$nextTick();
 
