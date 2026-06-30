@@ -26,6 +26,9 @@
   --app-info-soft-text: #075985;
   --app-warning-soft-bg: #fef3c7;
   --app-warning-soft-text: #78350f;
+  --chip-edge-label: #1f2937;
+  --chip-edge-label-halo: rgba(255, 255, 255, 0.72);
+  --chip-selected-edge-label: #1d4ed8;
   --app-icon-panel-border: #99f6e4;
   --app-icon-panel-shadow: rgba(15, 118, 110, 0.22);
   color: var(--app-text);
@@ -67,6 +70,9 @@
   --app-info-soft-text: #93c5fd;
   --app-warning-soft-bg: #3a2b12;
   --app-warning-soft-text: #facc15;
+  --chip-edge-label: #cbd5e1;
+  --chip-edge-label-halo: rgba(11, 18, 32, 0.92);
+  --chip-selected-edge-label: #bfdbfe;
   --app-icon-panel-border: #2dd4bf;
   --app-icon-panel-shadow: rgba(45, 212, 191, 0.18);
 }

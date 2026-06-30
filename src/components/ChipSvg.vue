@@ -529,21 +529,27 @@ function onCompactMediaQueryChange(event: MediaQueryListEvent) {
 }
 
 .pin-label {
-  fill: #1f2937;
+  fill: var(--chip-edge-label);
+  stroke: var(--chip-edge-label-halo);
+  stroke-linejoin: round;
+  stroke-width: 3px;
+  paint-order: stroke fill;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 750;
   letter-spacing: 0;
   pointer-events: none;
 }
 
 .chip-shell--compact-labels .pin-label {
   fill: #dbeafe;
+  stroke: transparent;
+  stroke-width: 0;
   font-size: 8.5px;
   font-weight: 850;
 }
 
 .pin-node--selected .pin-label {
-  fill: #1d4ed8;
+  fill: var(--chip-selected-edge-label);
   font-size: 16px;
   font-weight: 900;
 }
