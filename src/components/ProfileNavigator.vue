@@ -52,7 +52,7 @@
       @click="openProfileInfo"
     >
       <PanelRightOpen :size="16" aria-hidden="true" />
-      <span>Profile info</span>
+      <span>Profile info & Variants</span>
     </button>
   </section>
 </template>
