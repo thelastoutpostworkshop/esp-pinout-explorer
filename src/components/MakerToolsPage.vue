@@ -14,12 +14,12 @@
       </button>
     </header>
 
-    <section class="maker-tools-page__support" aria-label="Support the project">
+    <section class="maker-tools-page__support" aria-label="Support these projects">
       <div class="maker-tools-page__support-icon" aria-hidden="true">
         <Coffee :size="24" />
       </div>
       <div>
-        <h2>Support the project</h2>
+        <h2>Support these projects</h2>
         <p>
           These maker utilities are free to use. If they help at your bench, a coffee supports ongoing development.
         </p>
