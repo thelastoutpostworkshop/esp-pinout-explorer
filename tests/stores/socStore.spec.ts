@@ -304,6 +304,29 @@ describe('soc store', () => {
     expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['J3-10']);
   });
 
+  it('can select the ESP8266EX QFN32 package profile', () => {
+    const store = useSocStore();
+
+    store.selectSoc('esp8266ex');
+
+    expect(store.selectedPackage.id).toBe('esp8266ex-qfn32');
+    expect(store.selectedPackage.kind).toBe('package');
+    expect(store.selectedPins).toHaveLength(33);
+
+    store.setSearchQuery('gpio0 download');
+    expect(store.filteredPins.map((pin) => pin.name)).toEqual(['GPIO0']);
+
+    store.setSearchQuery('external flash sdio');
+    expect(store.filteredPins.map((pin) => pin.name)).toEqual([
+      'SDIO_DATA_2',
+      'SDIO_DATA_3',
+      'SDIO_CMD',
+      'SDIO_CLK',
+      'SDIO_DATA_0',
+      'SDIO_DATA_1',
+    ]);
+  });
+
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {
     const store = useSocStore();
 

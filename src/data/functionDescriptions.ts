@@ -11,8 +11,10 @@ const exactDescriptions: Record<string, string> = {
   BOOT_TO_TARGET: 'Boot/download signal driven from the bridge board to the externally connected target chip.',
   BRIDGE_RX: 'UART receive path from the target chip TX pin into the bridge board.',
   BRIDGE_TX: 'UART transmit path from the bridge board to the target chip RX pin.',
+  'BT clock input': 'Clock signal related to Bluetooth coexistence designs. It is not a general GPIO function.',
   CHIP_PU: 'Chip power-up and reset-enable input. Pulling this low resets or disables the chip.',
   CHIP_EN: 'Chip enable and reset input. High enables the chip; pulling it low resets or disables it.',
+  'Chip enable': 'Chip enable input. High enables normal chip operation; low disables the chip.',
   CLK: 'SPI flash clock signal on classic ESP32 boards. This is normally reserved for the module flash.',
   CMD: 'SPI flash command signal on classic ESP32 boards. This is normally reserved for the module flash.',
   DAC_1: 'Digital-to-analog converter output channel 1.',
@@ -42,6 +44,7 @@ const exactDescriptions: Record<string, string> = {
   FSPIWP: 'Fast SPI write-protect or DQ2 signal, commonly used by quad/octal SPI memory.',
   FSPIDQS: 'Fast SPI data strobe or data-mask signal, commonly used by octal SPI memory.',
   HOST_VOL: 'USB device voltage monitoring signal on the development board.',
+  'Internal 1.1 V RTC power': 'Internal RTC-domain supply or no-connect style pin. Follow the official reference design instead of using it as GPIO.',
   LCD_BL: 'LCD backlight control signal on the development board.',
   LCD_DC: 'LCD data/command select signal on the development board.',
   LCD_EN: 'LCD enable signal on the development board.',
@@ -51,6 +54,7 @@ const exactDescriptions: Record<string, string> = {
   LED_GREEN: 'On-board green LED signal.',
   LED_YELLOW: 'On-board yellow LED signal.',
   LIMIT_EN: 'Current-limiting circuit enable signal on the development board.',
+  LNA: 'Low-noise amplifier RF antenna interface. This is a dedicated RF analog connection, not a general GPIO.',
   MTCK: 'JTAG test clock signal. Also used by some boot/debug configurations on supported chips.',
   MTDI: 'JTAG test data input signal. Also used by some boot/debug configurations on supported chips.',
   MTDO: 'JTAG test data output signal. Also used by some boot/debug configurations on supported chips.',
@@ -58,7 +62,10 @@ const exactDescriptions: Record<string, string> = {
   MODULE_BOOT: 'Module boot button signal on the bridge board. Holding it during power-up enters module download mode.',
   'No connect': 'No-connect pad. The official module pin table does not assign an electrical function to it.',
   'No connection': 'No-connect header pin. The official board table does not assign an electrical function to it.',
+  EXT_RSTB: 'External reset signal. Pulling this signal low resets the chip.',
+  'External reset': 'External reset input. Pulling this signal low resets the chip.',
   RESET_TO_TARGET: 'Reset signal driven from the bridge board to the externally connected target chip.',
+  RES12K: 'Bias/reference pin that must be connected through the datasheet-specified resistor to ground.',
   Reset: 'Board reset function connected to the module enable/reset signal.',
   'RGB LED': 'Addressable RGB LED on the development board. Using this GPIO can also affect the on-board LED.',
   '0VER_CURRENT': 'Current overrun signal on the development board. The official guide labels it with a leading zero.',
@@ -84,11 +91,15 @@ const exactDescriptions: Record<string, string> = {
   TDI: 'JTAG target data-input signal used by the bridge adapter.',
   TDO: 'JTAG target data-output signal used by the bridge adapter.',
   TMS: 'JTAG target mode-select signal used by the bridge adapter.',
+  TOUT: 'ESP8266 analog ADC input. It can measure either external TOUT voltage or the chip supply voltage calibration path, not both at once.',
   WS2812: 'Addressable RGB LED data signal on the development board.',
   XTAL_N: 'Main crystal negative clock input/output. Used with the external crystal oscillator circuit.',
   XTAL_P: 'Main crystal positive clock input/output. Used with the external crystal oscillator circuit.',
+  XTAL_IN: 'Main crystal oscillator input. Used with the external crystal circuit.',
+  XTAL_OUT: 'Main crystal oscillator output. Used with the external crystal circuit.',
   XTAL_32K_N: '32 kHz crystal negative input/output. Used for an optional low-power clock crystal.',
   XTAL_32K_P: '32 kHz crystal positive input/output. Used for an optional low-power clock crystal.',
+  XPD_DCDC: 'ESP8266 deep-sleep wake signal and GPIO16 package pin. It is commonly connected to EXT_RSTB for timed wakeup.',
   USB_SEL: 'USB interface switch signal on the development board.',
   VBAT: 'Battery or backup power-supply input. Follow the board guide power options before connecting it.',
   VDET_1: 'Analog voltage-detection input on classic ESP32. This GPIO is input-only.',
@@ -176,8 +187,32 @@ export function getFunctionDescription(name: string): string | null {
     return `${normalized} is a native USB differential data signal. Keep USB routing and pin restrictions in mind.`;
   }
 
-  if (/^SDIO_(CMD|CLK|DATA\d)$/.test(normalized)) {
+  if (/^SDIO_(CMD|CLK|DATA_?\d)$/.test(normalized)) {
     return `${normalized} is an SDIO interface signal.`;
+  }
+
+  if (/^SPI_(CS\d|CLK|MISO|MOSI)$/.test(normalized)) {
+    return `${normalized} is a general SPI signal. Check flash-memory warnings before reusing SPI pins.`;
+  }
+
+  if (/^HSPI(_CLK|_MISO|_MOSI|_CS|HD|WP)?$/.test(normalized)) {
+    return `${normalized} is an ESP8266 HSPI signal for the secondary SPI interface.`;
+  }
+
+  if (/^I2C_(SDA|SCL)$/.test(normalized)) {
+    return `${normalized} is an I2C ${normalized.endsWith('SDA') ? 'data' : 'clock'} signal.`;
+  }
+
+  if (/^I2S[IO]_(DATA|BCK|WS)$/.test(normalized)) {
+    return `${normalized} is an I2S audio/data interface signal.`;
+  }
+
+  if (/^PWM\d$/.test(normalized)) {
+    return `${normalized} is a pulse-width modulation output signal.`;
+  }
+
+  if (/^IR (TX|Rx)$/.test(normalized)) {
+    return `${normalized} is an infrared remote-control ${normalized.endsWith('TX') ? 'transmit' : 'receive'} signal.`;
   }
 
   if (/^SPIIO\d$/.test(normalized)) {

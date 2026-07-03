@@ -40,6 +40,7 @@ Current profiles:
 | ESP32-S3 | ESP32-S3 QFN56 | Chip package | Bare SoC package pinout | [ESP32-S3 Series Datasheet v2.2](https://documentation.espressif.com/esp32-s3_datasheet_en.pdf) |
 | ESP32-C6 | ESP32-C6 QFN40 and QFN32 | Chip packages | Bare SoC package pinouts | [ESP32-C6 Series Datasheet v1.5](https://documentation.espressif.com/esp32-c6_datasheet_en.pdf) |
 | ESP32-H2 | ESP32-H2 QFN32 4 x 4 mm | Chip package | Bare SoC package pinout | [ESP32-H2 Series Datasheet v1.2](https://documentation.espressif.com/esp32-h2_datasheet_en.pdf) |
+| ESP8266 | ESP8266EX QFN32 5 x 5 mm | Chip package | Bare SoC package pinout | [ESP8266EX Datasheet v7.1](https://documentation.espressif.com/0a-esp8266ex_datasheet_en.pdf) |
 
 ## Contributing
 

@@ -40,6 +40,8 @@ Source baseline:
 - [x] ESP32-H2
   - [x] Chip package profile: ESP32-H2 QFN32, 4 x 4 mm
   - [x] Board profile: ESP32-H2-DevKitM-1
+- [x] ESP8266EX
+  - [x] Chip package profile: ESP8266EX QFN32, 5 x 5 mm
 
 ## To Do
 
@@ -314,11 +316,11 @@ Source baseline:
 
 ### ESP8266 Series
 
-- [ ] ESP8266EX chip package profiles
+- [x] ESP8266EX chip package profiles
   - Source: https://documentation.espressif.com/0a-esp8266ex_datasheet_en.html
-  - [ ] Chip package profile: ESP8266EX QFN32, 5 x 5 mm
+  - [x] Chip package profile: ESP8266EX QFN32, 5 x 5 mm
     - Datasheet: ESP8266EX Datasheet v7.1, NRND, 32-pin QFN package top-view/pin definitions, external SPI flash required, 17 GPIO in the product table.
-    - Note: include boot-mode pins GPIO0/GPIO2/MTDO, UART0 power-up constraints, external flash SDIO/SPI pins, ADC TOUT dual-use caveat, reset/chip-enable pins, RF antenna pin, and power-domain notes.
+    - Note: implemented with boot-mode pins GPIO0/GPIO2/MTDO, UART0 power-up constraints, external flash SDIO/SPI pins, ADC TOUT dual-use caveat, reset/chip-enable pins, RF antenna pin, and power-domain notes.
 - [ ] ESP8285 chip package profiles
   - Source: https://documentation.espressif.com/0a-esp8285_datasheet_en.html
   - [ ] Chip package profile: ESP8285 QFN32, 5 x 5 mm

@@ -66,6 +66,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32c6:esp32c6-devkitc-1': 32,
   'esp32h2:esp32h2-qfn32': 33,
   'esp32h2:esp32h2-devkitm-1': 30,
+  'esp8266ex:esp8266ex-qfn32': 33,
 };
 
 interface ProfileEntry {
