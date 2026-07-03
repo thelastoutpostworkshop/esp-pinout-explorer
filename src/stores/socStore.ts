@@ -11,7 +11,7 @@ const visitedStorageKey = 'esp-pinout-explorer:visited';
 
 interface PersistedProfileSelection {
   socId: string;
-  packageId: string;
+  packageId: string | null;
 }
 
 type WorkspaceView = 'pinout' | 'makerTools' | 'about';
@@ -105,7 +105,15 @@ export const useSocStore = defineStore('soc', () => {
     }
   }
 
-  function selectPackage(packageId: string) {
+  function selectPackage(packageId: string | null) {
+    if (packageId === null) {
+      selectedPackageId.value = null;
+      selectedPinId.value = null;
+      activeView.value = 'pinout';
+      persistSelectedProfile(selectedSocId.value, null);
+      return;
+    }
+
     if (packageOptions.value.some((packageOption) => packageOption.id === packageId)) {
       selectedPackageId.value = packageId;
       selectedPinId.value = null;
@@ -243,6 +251,13 @@ function readInitialSelection(): PersistedProfileSelection {
     return fallback;
   }
 
+  if (persisted.packageId === null) {
+    return {
+      socId: soc.id,
+      packageId: null,
+    };
+  }
+
   const profile = buildPackageOptions(soc).find(
     (candidate) => candidate.id === persisted.packageId && (candidate.kind ?? 'package') !== 'module',
   );
@@ -260,7 +275,10 @@ function readPersistedProfile(): PersistedProfileSelection | null {
     }
 
     const parsed = JSON.parse(rawValue) as Partial<PersistedProfileSelection>;
-    if (typeof parsed.socId === 'string' && typeof parsed.packageId === 'string') {
+    if (
+      typeof parsed.socId === 'string' &&
+      (typeof parsed.packageId === 'string' || parsed.packageId === null)
+    ) {
       return {
         socId: parsed.socId,
         packageId: parsed.packageId,
@@ -294,7 +312,7 @@ function rememberVisit() {
   }
 }
 
-function persistSelectedProfile(socId: string, packageId: string) {
+function persistSelectedProfile(socId: string, packageId: string | null) {
   try {
     window.localStorage.setItem(profileStorageKey, JSON.stringify({ socId, packageId }));
     window.localStorage.setItem(visitedStorageKey, 'true');

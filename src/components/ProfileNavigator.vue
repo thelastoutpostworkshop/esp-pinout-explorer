@@ -15,10 +15,11 @@
 
     <v-autocomplete
       v-if="selectableProfileOptions.length > 1"
-      :model-value="selectedPackage.id"
+      :model-value="store.selectedPackageId"
       class="profile-navigator__select profile-navigator__select--profile"
       auto-select-first="exact"
       clear-on-select
+      clearable
       :custom-filter="filterProfileItem"
       density="compact"
       hide-details
@@ -69,7 +70,6 @@ const emit = defineEmits<{
 }>();
 
 const store = useSocStore();
-const selectedPackage = computed(() => store.selectedPackage);
 const selectableProfileOptions = computed(() =>
   store.packageOptions.filter((profile) => profileKind(profile) !== 'module'),
 );
@@ -95,7 +95,7 @@ function selectSoc(socId: string) {
   emit('changed');
 }
 
-function selectPackage(packageId: string) {
+function selectPackage(packageId: string | null) {
   store.selectPackage(packageId);
   emit('changed');
 }
@@ -211,11 +211,11 @@ function openProfileInfo() {
 }
 
 .profile-navigator__select--chip {
-  flex: 0 1 170px;
+  flex: 0 1 150px;
 }
 
 .profile-navigator__select--profile {
-  flex: 1 1 280px;
+  flex: 1 1 340px;
 }
 
 :deep(.profile-select__divider) {
