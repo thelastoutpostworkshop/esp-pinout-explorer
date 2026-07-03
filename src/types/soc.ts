@@ -98,6 +98,7 @@ export interface SocPackageVariant {
   boardLayout?: BoardLayout;
   boardArtwork?: BoardArtwork;
   boardSpecs?: SocBoardSpecs;
+  chipPackageId?: string;
   source?: SocSource;
   moduleNames?: string[];
   moduleVariants?: SocModuleVariant[];

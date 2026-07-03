@@ -73,6 +73,8 @@ describe('BoardSvg', () => {
         filteredPinCount: 1,
         filteredPinIds: new Set([pins[0].id]),
         hasFilter: true,
+        chipPackageId: esp32s3.defaultPackageId,
+        chipPackageLabel: 'QFN56',
         packageName: boardProfile?.packageName ?? '',
         pins,
         selectedPinId: pins[0].id,
@@ -92,6 +94,38 @@ describe('BoardSvg', () => {
 
     await nodes[0].trigger('keydown.enter');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
+
+    const chipPackageButton = wrapper.find('[role="button"][aria-label="Open QFN56 chip package view"]');
+
+    expect(chipPackageButton.exists()).toBe(true);
+    expect(wrapper.text()).toContain('QFN56');
+    expect(wrapper.text()).not.toContain('Module');
+    await chipPackageButton.trigger('keydown.enter');
+    expect(wrapper.emitted('chip-package-click')).toEqual([[esp32s3.defaultPackageId]]);
+  });
+
+  it('names the chip package action from the selected package option', () => {
+    const boardProfile = esp32c6.boardProfiles?.find((profile) => profile.id === 'esp32c6-devkitc-1');
+    expect(boardProfile).toBeDefined();
+    const pins = boardProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        chipPackageId: esp32c6.defaultPackageId,
+        chipPackageLabel: 'QFN40',
+        packageName: boardProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        soc: esp32c6,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(wrapper.find('[role="button"][aria-label="Open QFN40 chip package view"]').exists()).toBe(true);
+    expect(wrapper.text()).toContain('QFN40');
+    expect(wrapper.text()).not.toContain('Module');
   });
 
   it('uses board-specific dual-header labels', () => {
@@ -332,6 +366,29 @@ describe('SocPinoutView', () => {
     expect(functionToggle.attributes('aria-checked')).toBe('true');
     expect(wrapper.find('.board-function-label').exists()).toBe(true);
   });
+
+  it('opens the raw chip package from a board center-card package action', async () => {
+    const store = useSocStore();
+    store.selectSoc('esp32c6');
+    store.selectPackage('esp32c6-devkitc-1');
+
+    const wrapper = mount(SocPinoutView, {
+      global: {
+        stubs: {
+          PinInfoDrawer: { template: '<aside />' },
+          ProfileInfoDrawer: { template: '<aside />' },
+        },
+      },
+    });
+    const chipPackageButton = wrapper.find('[role="button"][aria-label="Open QFN40 chip package view"]');
+
+    expect(chipPackageButton.exists()).toBe(true);
+    await chipPackageButton.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(store.selectedPackageId).toBe('qfn40');
+    expect(wrapper.find('.chip-svg').exists()).toBe(true);
+  });
 });
 
 describe('PinSearch', () => {
@@ -436,7 +493,7 @@ describe('ExplorerSidebar', () => {
     expect(filterProfile('', 'mini n4r2', { raw: usbBridgeProfileItem! })).toBe(true);
     expect(filterProfile('', 'wrover', { raw: usbBridgeProfileItem! })).toBe(false);
 
-    await findButton(wrapper, 'Profile info').trigger('click');
+    await findButton(wrapper, 'Profile info & Variants').trigger('click');
 
     expect(wrapper.find('[role="dialog"][aria-label="Profile information"]').exists()).toBe(true);
     expect(wrapper.text()).toContain('Profile');
@@ -502,7 +559,7 @@ describe('ExplorerSidebar', () => {
     store.selectPackage('esp32s3-devkitm-1');
     await wrapper.vm.$nextTick();
 
-    await findButton(wrapper, 'Profile info').trigger('click');
+    await findButton(wrapper, 'Profile info & Variants').trigger('click');
 
     expect(wrapper.text()).toContain('ESP32-S3-MINI-1 / MINI-1U');
     expect(wrapper.find('.profile-info__source').attributes('href')).toBe(

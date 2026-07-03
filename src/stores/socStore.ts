@@ -192,7 +192,7 @@ function buildPackageOptions(soc: SocDefinition): SocPackageVariant[] {
   return [
     {
       id: soc.defaultPackageId ?? 'default',
-      name: soc.packageName.split(' ')[0],
+      name: defaultPackageDisplayName(soc),
       packageName: soc.packageName,
       kind: 'package',
       pins: soc.pins,
@@ -205,6 +205,16 @@ function buildPackageOptions(soc: SocDefinition): SocPackageVariant[] {
 function defaultProfileForSoc(soc: SocDefinition): SocPackageVariant {
   const options = buildPackageOptions(soc);
   return options.find((option) => option.id === soc.defaultProfileId) ?? options[0];
+}
+
+function defaultPackageDisplayName(soc: SocDefinition) {
+  const packageMatch = soc.packageName.match(/\b(?:QFN|LGA|BGA|WLCSP)\d+\b/i);
+
+  if (packageMatch) {
+    return packageMatch[0].toUpperCase();
+  }
+
+  return soc.packageName.split(/[,(]/)[0].trim();
 }
 
 function readInitialSelection(): PersistedProfileSelection {

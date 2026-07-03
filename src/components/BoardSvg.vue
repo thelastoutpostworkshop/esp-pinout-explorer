@@ -83,6 +83,45 @@
           {{ line }}
         </text>
         <text :x="connectorCenterLayout.textX" :y="connectorCenterLayout.detailsY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} pins</text>
+        <g class="board-package-actions" aria-label="Related package actions">
+          <g
+            v-for="(action, index) in boardPackageActions"
+            :key="action.key"
+            class="board-package-action"
+            role="button"
+            tabindex="0"
+            :aria-label="action.ariaLabel"
+            @click.stop="activatePackageAction(action)"
+            @keydown.enter.prevent="activatePackageAction(action)"
+            @keydown.space.prevent="activatePackageAction(action)"
+          >
+            <title>{{ action.title }}</title>
+            <rect
+              class="board-package-action__rect"
+              :x="packageActionGeometry(index, 'connector').x"
+              :y="packageActionGeometry(index, 'connector').y"
+              :width="packageActionGeometry(index, 'connector').width"
+              :height="packageActionGeometry(index, 'connector').height"
+              :rx="packageActionGeometry(index, 'connector').rx"
+            />
+            <g
+              class="board-package-action__icon"
+              aria-hidden="true"
+              :transform="`translate(${packageActionGeometry(index, 'connector').iconX} ${packageActionGeometry(index, 'connector').iconY}) scale(0.58)`"
+            >
+              <rect x="5" y="5" width="14" height="14" rx="2" />
+              <path d="M9 2v3 M15 2v3 M9 19v3 M15 19v3 M2 9h3 M2 15h3 M19 9h3 M19 15h3" />
+            </g>
+            <text
+              class="board-package-action__text"
+              :x="packageActionGeometry(index, 'connector').textX"
+              :y="packageActionGeometry(index, 'connector').textY"
+              text-anchor="middle"
+            >
+              {{ action.label }}
+            </text>
+          </g>
+        </g>
         <g
           class="board-info-button connector-board__info-button"
           role="button"
@@ -93,13 +132,13 @@
           @keydown.space.prevent="emit('profile-info-click')"
         >
           <title>Profile info &amp; Variants</title>
-          <rect class="board-info-button__rect" x="350" y="410" width="260" height="32" rx="7" />
-          <g class="board-info-button__icon" aria-hidden="true" transform="translate(370 418) scale(0.72)">
+          <rect class="board-info-button__rect" x="350" y="416" width="260" height="28" rx="7" />
+          <g class="board-info-button__icon" aria-hidden="true" transform="translate(370 421) scale(0.72)">
             <rect x="3" y="3" width="18" height="18" rx="2" />
             <path d="M15 3v18" />
             <path d="m10 15-3-3 3-3" />
           </g>
-          <text class="board-info-button__text" x="496" y="430" text-anchor="middle">Profile info &amp; Variants</text>
+          <text class="board-info-button__text" x="496" y="434" text-anchor="middle">Profile info &amp; Variants</text>
         </g>
       </g>
 
@@ -260,6 +299,45 @@
           {{ line }}
         </text>
         <text :x="dualHeaderCenterLayout.textX" :y="dualHeaderCenterLayout.detailsY" class="board-details" text-anchor="middle">{{ filteredPinCount }} / {{ totalPinCount }} header pins</text>
+        <g class="board-package-actions" aria-label="Related package actions">
+          <g
+            v-for="(action, index) in boardPackageActions"
+            :key="action.key"
+            class="board-package-action"
+            role="button"
+            tabindex="0"
+            :aria-label="action.ariaLabel"
+            @click.stop="activatePackageAction(action)"
+            @keydown.enter.prevent="activatePackageAction(action)"
+            @keydown.space.prevent="activatePackageAction(action)"
+          >
+            <title>{{ action.title }}</title>
+            <rect
+              class="board-package-action__rect"
+              :x="packageActionGeometry(index, 'dual').x"
+              :y="packageActionGeometry(index, 'dual').y"
+              :width="packageActionGeometry(index, 'dual').width"
+              :height="packageActionGeometry(index, 'dual').height"
+              :rx="packageActionGeometry(index, 'dual').rx"
+            />
+            <g
+              class="board-package-action__icon"
+              aria-hidden="true"
+              :transform="`translate(${packageActionGeometry(index, 'dual').iconX} ${packageActionGeometry(index, 'dual').iconY}) scale(0.62)`"
+            >
+              <rect x="5" y="5" width="14" height="14" rx="2" />
+              <path d="M9 2v3 M15 2v3 M9 19v3 M15 19v3 M2 9h3 M2 15h3 M19 9h3 M19 15h3" />
+            </g>
+            <text
+              class="board-package-action__text"
+              :x="packageActionGeometry(index, 'dual').textX"
+              :y="packageActionGeometry(index, 'dual').textY"
+              text-anchor="middle"
+            >
+              {{ action.label }}
+            </text>
+          </g>
+        </g>
         <g
           class="board-info-button"
           role="button"
@@ -270,13 +348,13 @@
           @keydown.space.prevent="emit('profile-info-click')"
         >
           <title>Profile info &amp; Variants</title>
-          <rect class="board-info-button__rect" x="350" y="444" width="240" height="32" rx="7" />
-          <g class="board-info-button__icon" aria-hidden="true" transform="translate(371 452) scale(0.72)">
+          <rect class="board-info-button__rect" x="350" y="452" width="240" height="32" rx="7" />
+          <g class="board-info-button__icon" aria-hidden="true" transform="translate(371 460) scale(0.72)">
             <rect x="3" y="3" width="18" height="18" rx="2" />
             <path d="M15 3v18" />
             <path d="m10 15-3-3 3-3" />
           </g>
-          <text class="board-info-button__text" x="480" y="464" text-anchor="middle">Profile info &amp; Variants</text>
+          <text class="board-info-button__text" x="480" y="472" text-anchor="middle">Profile info &amp; Variants</text>
         </g>
       </g>
 
@@ -385,6 +463,8 @@ import type { BoardArtwork, BoardLayout, PinSide, SocDefinition, SocPin } from '
 
 const props = defineProps<{
   soc: SocDefinition;
+  chipPackageId?: string;
+  chipPackageLabel?: string;
   packageName: string;
   pins: SocPin[];
   selectedPinId: string | null;
@@ -398,6 +478,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
+  'chip-package-click': [packageId: string];
   'pin-click': [pinId: string];
   'profile-info-click': [];
 }>();
@@ -418,10 +499,25 @@ const leftHeaderName = computed(() => headerNameForSide('left', 'J1'));
 const rightHeaderName = computed(() => headerNameForSide('right', 'J3'));
 const dualHeaderViewBox = computed(() => (showMainFunctions.value ? '-100 8 1140 724' : '128 8 684 724'));
 const chipCpuLines = computed(() => splitCpuSummary(props.soc.chipSpecs?.cpu ?? 'CPU details unavailable'));
+const boardPackageActions = computed<BoardPackageAction[]>(() => {
+  if (!props.chipPackageId || !props.chipPackageLabel) {
+    return [];
+  }
+
+  return [
+    {
+      key: 'chip-package',
+      label: props.chipPackageLabel,
+      title: `Open ${props.chipPackageLabel} chip package view`,
+      ariaLabel: `Open ${props.chipPackageLabel} chip package view`,
+      packageId: props.chipPackageId,
+    },
+  ];
+});
 const connectorCenterLayout = computed(() =>
   centerContentLayout({
     centerX: 480,
-    centerY: 310,
+    centerY: 300,
     logoWidth: 208,
     logoHeight: 38,
     logoToNameGap: 16,
@@ -500,7 +596,7 @@ const connectorComponentBadges = computed(() => {
 const dualHeaderCenterLayout = computed(() =>
   centerContentLayout({
     centerX: 470,
-    centerY: 344,
+    centerY: 326,
     logoWidth: 240,
     logoHeight: 44,
     logoToNameGap: 20,
@@ -552,6 +648,14 @@ interface ConnectorComponentBadge {
   height: number;
   label: string;
   tone: string;
+}
+
+interface BoardPackageAction {
+  key: string;
+  label: string;
+  title: string;
+  ariaLabel: string;
+  packageId: string;
 }
 
 function componentBadge(
@@ -607,6 +711,39 @@ function centerContentLayout(options: CenterContentOptions) {
     cpuLineHeight: options.cpuLineHeight,
     detailsY: detailsTop + options.detailsBaseline,
   };
+}
+
+function packageActionGeometry(index: number, layout: 'connector' | 'dual') {
+  const actions = boardPackageActions.value;
+  const height = layout === 'connector' ? 22 : 24;
+  const gap = 8;
+  const centerX = layout === 'connector' ? 480 : 470;
+  const y = layout === 'connector' ? 382 : 416;
+  const widths = actions.map((action) => packageActionWidth(action.label, layout));
+  const totalWidth = widths.reduce((total, width) => total + width, 0) + Math.max(0, widths.length - 1) * gap;
+  const x = centerX - totalWidth / 2 + widths.slice(0, index).reduce((total, width) => total + width + gap, 0);
+
+  return {
+    x,
+    y,
+    width: widths[index] ?? 78,
+    height,
+    rx: layout === 'connector' ? 6 : 7,
+    iconX: x + 11,
+    iconY: y + (layout === 'connector' ? 5 : 5),
+    textX: x + (widths[index] ?? 78) / 2 + 7,
+    textY: y + (layout === 'connector' ? 14.8 : 16.2),
+  };
+}
+
+function packageActionWidth(label: string, layout: 'connector' | 'dual') {
+  const base = layout === 'connector' ? 56 : 60;
+  const width = base + label.length * 6.8;
+  return Math.max(layout === 'connector' ? 78 : 82, Math.min(104, width));
+}
+
+function activatePackageAction(action: BoardPackageAction) {
+  emit('chip-package-click', action.packageId);
 }
 
 const pinStartY = 112;
@@ -1415,6 +1552,54 @@ onBeforeUnmount(() => {
 .board-info-button {
   cursor: pointer;
   outline: none;
+}
+
+.board-package-action {
+  cursor: pointer;
+  outline: none;
+}
+
+.board-package-action__rect {
+  fill: rgba(2, 6, 23, 0.36);
+  stroke: rgba(148, 163, 184, 0.48);
+  stroke-width: 1.1;
+  transition:
+    fill 150ms ease,
+    stroke 150ms ease;
+}
+
+.board-package-action__icon {
+  fill: none;
+  stroke: #67e8f9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: stroke 150ms ease;
+}
+
+.board-package-action__text {
+  fill: #e0f2fe;
+  font-size: 10.5px;
+  font-weight: 900;
+  letter-spacing: 0;
+  pointer-events: none;
+  transition: fill 150ms ease;
+}
+
+.board-package-action:hover .board-package-action__rect,
+.board-package-action:focus .board-package-action__rect {
+  fill: rgba(14, 165, 233, 0.18);
+  stroke: #67e8f9;
+}
+
+.board-package-action:hover .board-package-action__icon,
+.board-package-action:focus .board-package-action__icon {
+  stroke: #bae6fd;
+}
+
+.board-package-action:hover .board-package-action__text,
+.board-package-action:focus .board-package-action__text {
+  fill: #f0f9ff;
 }
 
 .board-info-button__rect {

@@ -34,12 +34,15 @@
         :has-filter="Boolean(store.searchQuery.trim())"
         :board-layout="selectedPackage.boardLayout"
         :board-artwork="selectedPackage.boardArtwork"
+        :chip-package-id="chipPackageOption?.id"
+        :chip-package-label="chipPackageOption?.name"
         :package-name="selectedPackage.packageName"
         :pins="store.selectedPins"
         :selected-pin-id="store.selectedPinId"
         :show-main-functions="effectiveShowBoardFunctions"
         :soc="selectedSoc"
         :total-pin-count="store.selectedPins.length"
+        @chip-package-click="store.selectPackage"
         @pin-click="store.selectPin"
         @profile-info-click="store.openProfileInfo"
       />
@@ -66,6 +69,12 @@ const canShowBoardFunctions = computed(
   () => selectedPackage.value.kind === 'board' && selectedPackage.value.boardLayout !== 'connector-groups',
 );
 const effectiveShowBoardFunctions = computed(() => canShowBoardFunctions.value && showBoardFunctions.value);
+const chipPackageOption = computed(() => {
+  const packageOptions = store.packageOptions.filter((option) => (option.kind ?? 'package') === 'package');
+  const targetPackageId = selectedPackage.value.chipPackageId ?? selectedSoc.value.defaultPackageId ?? 'default';
+
+  return packageOptions.find((option) => option.id === targetPackageId) ?? packageOptions[0] ?? null;
+});
 
 function toggleBoardFunctions() {
   showBoardFunctions.value = !showBoardFunctions.value;
