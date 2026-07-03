@@ -67,6 +67,9 @@ const expectedPinCounts: Record<string, number> = {
   'esp32h2:esp32h2-qfn32': 33,
   'esp32h2:esp32h2-devkitm-1': 30,
   'esp8266ex:esp8266ex-qfn32': 33,
+  'esp8266ex:esp-wroom-02d': 19,
+  'esp8266ex:esp-wroom-02u': 19,
+  'esp8266ex:esp8266-devkitc': 30,
 };
 
 interface ProfileEntry {
@@ -303,7 +306,7 @@ describe('SoC data invariants', () => {
   it('records maker-visible module identity for board profiles', () => {
     for (const profile of allProfiles().filter((item) => item.kind === 'board')) {
       expect(profile.moduleNames?.length).toBeGreaterThan(0);
-      expect(profile.moduleNames?.every((name) => name.startsWith('ESP32-'))).toBe(true);
+      expect(profile.moduleNames?.every((name) => name.startsWith('ESP'))).toBe(true);
       expect(profile.moduleVariants?.length).toBeGreaterThan(0);
       for (const variant of profile.moduleVariants ?? []) {
         expectValidModuleVariant(variant);
@@ -325,6 +328,8 @@ describe('SoC data invariants', () => {
     expect(moduleProfiles.map((profile) => `${profile.soc.id}:${profile.id}`).sort()).toEqual([
       'esp32c6:esp32c6-mini-1',
       'esp32c6:esp32c6-mini-1u',
+      'esp8266ex:esp-wroom-02d',
+      'esp8266ex:esp-wroom-02u',
     ]);
 
     for (const profile of moduleProfiles) {
@@ -337,6 +342,20 @@ describe('SoC data invariants', () => {
       expect(profile.identificationNotes?.some((note) => note.includes('not the bare'))).toBe(true);
       expect(profile.boardLayout).toBeUndefined();
     }
+  });
+
+  it('keeps ESP8266-DevKitC as two dense 15-pin connector rows', () => {
+    const profile = allProfiles().find((item) => item.id === 'esp8266-devkitc');
+    const topPins = profile?.pins.filter((pin) => pin.boardHeader === 'Top header') ?? [];
+    const bottomPins = profile?.pins.filter((pin) => pin.boardHeader === 'Bottom header') ?? [];
+
+    expect(profile?.boardLayout).toBe('connector-groups');
+    expect(topPins).toHaveLength(15);
+    expect(bottomPins).toHaveLength(15);
+    expect(topPins.every((pin) => pin.position.side === 'top')).toBe(true);
+    expect(bottomPins.every((pin) => pin.position.side === 'bottom')).toBe(true);
+    expect(topPins.map((pin) => pin.position.order).sort((a, b) => a - b)).toEqual(range(1, 15));
+    expect(bottomPins.map((pin) => pin.position.order).sort((a, b) => a - b)).toEqual(range(1, 15));
   });
 });
 
@@ -371,7 +390,7 @@ function expectValidPin(pin: SocPin) {
 
 function expectValidModuleVariant(variant: SocModuleVariant) {
   expect(variant.name.trim()).not.toBe('');
-  expect(variant.name).toMatch(/^ESP32-/);
+  expect(variant.name).toMatch(/^ESP/);
   expect(variant.antenna?.trim()).not.toBe('');
   expect(variant.flash?.trim()).not.toBe('');
   expect(variant.psram?.trim()).not.toBe('');

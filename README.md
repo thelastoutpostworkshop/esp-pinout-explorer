@@ -25,12 +25,14 @@ Current profiles:
 | ESP32-C6 | ESP32-C6-DevKitM-1 | Board headers | MINI module identity | [ESP32-C6-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitm-1/user_guide.html) |
 | ESP32-C6 | ESP32-C6-DevKitC-1 v1.2 | Board headers | WROOM module identity | [ESP32-C6-DevKitC-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitc-1/user_guide.html) |
 | ESP32-H2 | ESP32-H2-DevKitM-1 | Board headers | MINI module identity | [ESP32-H2-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/esp32-h2-devkitm-1/user_guide.html) |
+| ESP8266 | ESP8266-DevKitC | I/O connector labels | WROOM-02D/U module identity, USB-UART, Boot/EN, power constraints | [ESP8266-DevKitC Getting Started Guide](https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/get-started-devkitc.html) |
 
 ## Module Pads
 
 | Family | Profile | View | Coverage | Official source |
 | --- | --- | --- | --- | --- |
 | ESP32-C6 | ESP32-C6-MINI-1 and MINI-1U | Module pads | MINI module pad profiles | [ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet v1.5](https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf) |
+| ESP8266 | ESP-WROOM-02D and ESP-WROOM-02U | Module pads | WROOM module pad profiles | [ESP-WROOM-02D & ESP-WROOM-02U Datasheet v2.3](https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf) |
 
 ## Chip Packages
 

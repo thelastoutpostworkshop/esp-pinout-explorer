@@ -42,6 +42,9 @@ Source baseline:
   - [x] Board profile: ESP32-H2-DevKitM-1
 - [x] ESP8266EX
   - [x] Chip package profile: ESP8266EX QFN32, 5 x 5 mm
+  - [x] Module profile: ESP-WROOM-02D
+  - [x] Module profile: ESP-WROOM-02U
+  - [x] Board profile: ESP8266-DevKitC
 
 ## To Do
 
@@ -328,9 +331,9 @@ Source baseline:
     - Note: do not blindly copy ESP8266EX. ESP8285 has embedded flash, so SDIO_CMD, SDIO_CLK, SDIO_DATA_0, and SDIO_DATA_1 are reserved for the embedded flash and should be strong maker warnings.
 - [ ] ESP8266 module profiles
   - Source: https://www.espressif.com/en/products/modules/esp8266
-  - [ ] Module profile: ESP-WROOM-02D
+  - [x] Module profile: ESP-WROOM-02D
     - Source: https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf
-  - [ ] Module profile: ESP-WROOM-02U
+  - [x] Module profile: ESP-WROOM-02U
     - Source: https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf
   - [ ] Module profile: ESP-WROOM-02
     - Source: https://documentation.espressif.com/0c-esp-wroom-02_datasheet_en.pdf
@@ -339,9 +342,9 @@ Source baseline:
   - Note: module profiles should use official module datasheets/footprints. Do not expose the bare ESP8266EX flash pins as general module pads when the module routes them to on-module flash.
 - [ ] ESP8266 board profiles
   - Source: https://www.espressif.com/en/products/socs
-  - [ ] Board profile: ESP8266-DevKitC
+  - [x] Board profile: ESP8266-DevKitC
     - Source: https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/get-started-devkitc.html
-    - Note: official getting-started guide says most I/O pins are broken out to side headers. Confirm whether the guide, official schematic, or hardware resources provide complete header numbering before implementation.
+    - Note: implemented as connector groups from the official functional overview image top/bottom I/O connector labels. The guide identifies the I/O connector labels but does not publish formal J-header numbering.
   - [ ] Board profile: ESP8266-DevKitS
     - Source: https://documentation.espressif.com/ESP8266-DevKitS_user_guide__EN.html
     - Note: legacy/test board. Implement only if the official user guide or reference design package provides enough spring/header allocation data.

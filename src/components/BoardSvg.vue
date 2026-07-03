@@ -549,6 +549,11 @@ const connectorPortBadges = computed(() => {
         { x: 320, width: 118, label: 'USB-C' },
         { x: 522, width: 118, label: 'HY2.0' },
       ];
+    case 'esp8266-devkitc':
+      return [
+        { x: 320, width: 118, label: 'USB-UART' },
+        { x: 522, width: 118, label: 'micro USB' },
+      ];
     default:
       return [
         { x: 320, width: 118, label: 'USB HOST' },
@@ -583,6 +588,12 @@ const connectorComponentBadges = computed(() => {
         componentBadge(616, 206, 92, 44, 'KEYS', 'buttons'),
         componentBadge(252, 278, 116, 44, 'MODE', 'connector'),
         componentBadge(432, 462, 96, 34, 'WS2812', 'led'),
+      ];
+    case 'esp8266-devkitc':
+      return [
+        componentBadge(624, 190, 88, 44, 'BOOT/EN', 'buttons'),
+        componentBadge(248, 278, 92, 44, 'DIAL', 'connector'),
+        componentBadge(352, 460, 256, 34, '5V LDO / HEADERS', 'power'),
       ];
     default:
       return [
@@ -750,6 +761,8 @@ const pinStartY = 112;
 const pinEndY = 648;
 const connectorTopStartX = 238;
 const connectorTopEndX = 722;
+const denseConnectorHeaderStartX = 190;
+const denseConnectorHeaderEndX = 770;
 const connectorLeftStartY = 190;
 const connectorLeftEndY = 460;
 const connectorRightStartY = 190;
@@ -760,6 +773,7 @@ const connectorBottomTopRowY = 550;
 const connectorBottomMiddleRowY = 596;
 const connectorBottomBottomRowY = 636;
 const connectorBottomPinsPerRow = 9;
+const denseConnectorBottomRowY = 612;
 
 const sideOrders = computed<Record<'left' | 'right', number>>(() => ({
   left: sideMaxOrder('left'),
@@ -818,6 +832,7 @@ const connectorSideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>
   right: connectorSideMaxOrder('right'),
   top: connectorSideMaxOrder('top'),
 }));
+const isDenseConnectorHeader = computed(() => props.boardArtwork === 'esp8266-devkitc');
 
 function connectorSideMaxOrder(side: Exclude<PinSide, 'center'>) {
   return Math.max(
@@ -827,8 +842,8 @@ function connectorSideMaxOrder(side: Exclude<PinSide, 'center'>) {
 }
 
 function connectorSideCoordinate(side: Exclude<PinSide, 'center'>, order: number) {
-  const start = side === 'top' ? connectorTopStartX : side === 'right' ? connectorRightStartY : connectorLeftStartY;
-  const end = side === 'top' ? connectorTopEndX : side === 'right' ? connectorRightEndY : connectorLeftEndY;
+  const start = side === 'top' && isDenseConnectorHeader.value ? denseConnectorHeaderStartX : side === 'top' ? connectorTopStartX : side === 'right' ? connectorRightStartY : connectorLeftStartY;
+  const end = side === 'top' && isDenseConnectorHeader.value ? denseConnectorHeaderEndX : side === 'top' ? connectorTopEndX : side === 'right' ? connectorRightEndY : connectorLeftEndY;
   const count = connectorSideOrders.value[side];
   if (count <= 1) {
     return (start + end) / 2;
@@ -838,6 +853,10 @@ function connectorSideCoordinate(side: Exclude<PinSide, 'center'>, order: number
 
 function connectorPadWidth(side: Exclude<PinSide, 'center'>) {
   const count = connectorSideOrders.value[side];
+
+  if (isDenseConnectorHeader.value && (side === 'top' || side === 'bottom')) {
+    return 34;
+  }
 
   if (side === 'top') {
     if (count >= 11) {
@@ -873,6 +892,19 @@ function connectorPinGeometry(pin: SocPin): Geometry {
   }
 
   if (pin.position.side === 'bottom') {
+    if (isDenseConnectorHeader.value) {
+      const count = connectorSideOrders.value.bottom;
+      const x =
+        count <= 1
+          ? (denseConnectorHeaderStartX + denseConnectorHeaderEndX) / 2
+          : denseConnectorHeaderStartX + ((pin.position.order - 1) * (denseConnectorHeaderEndX - denseConnectorHeaderStartX)) / (count - 1);
+      const width = connectorPadWidth('bottom');
+      return {
+        rect: { x: x - width / 2, y: denseConnectorBottomRowY - 14, width, height: 28, rx: 5 },
+        label: { x, y: denseConnectorBottomRowY },
+      };
+    }
+
     const rowOrder = ((pin.position.order - 1) % connectorBottomPinsPerRow) + 1;
     const rowIndex = Math.floor((pin.position.order - 1) / connectorBottomPinsPerRow);
     const rowCount = Math.min(connectorBottomPinsPerRow, connectorSideOrders.value.bottom - rowIndex * connectorBottomPinsPerRow);

@@ -308,6 +308,7 @@ describe('soc store', () => {
     const store = useSocStore();
 
     store.selectSoc('esp8266ex');
+    store.selectPackage('esp8266ex-qfn32');
 
     expect(store.selectedPackage.id).toBe('esp8266ex-qfn32');
     expect(store.selectedPackage.kind).toBe('package');
@@ -325,6 +326,59 @@ describe('soc store', () => {
       'SDIO_DATA_0',
       'SDIO_DATA_1',
     ]);
+  });
+
+  it('can select ESP-WROOM-02D and ESP-WROOM-02U module profiles', () => {
+    const store = useSocStore();
+
+    store.selectSoc('esp8266ex');
+    store.selectPackage('esp-wroom-02d');
+
+    expect(store.selectedPackage.name).toBe('WROOM-02D');
+    expect(store.selectedPackage.kind).toBe('module');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP-WROOM-02D']);
+    expect(store.selectedPins).toHaveLength(19);
+
+    store.setSearchQuery('io15 pull down');
+    expect(store.filteredPins.map((pin) => pin.name)).toEqual(['IO15']);
+
+    store.setSearchQuery('pin 19 thermal');
+    expect(store.filteredPins.map((pin) => pin.number)).toEqual([19]);
+
+    store.selectPackage('esp-wroom-02u');
+
+    expect(store.selectedPackage.name).toBe('WROOM-02U');
+    expect(store.selectedPackage.kind).toBe('module');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP-WROOM-02U']);
+    expect(store.selectedPins).toHaveLength(19);
+
+    store.setSearchQuery('external antenna');
+    expect(store.filteredPins).toHaveLength(19);
+  });
+
+  it('defaults ESP8266EX to the DevKitC board profile', () => {
+    const store = useSocStore();
+
+    store.selectSoc('esp8266ex');
+
+    expect(store.selectedPackage.id).toBe('esp8266-devkitc');
+    expect(store.selectedPackage.kind).toBe('board');
+    expect(store.selectedPackage.boardLayout).toBe('connector-groups');
+    expect(store.selectedPackage.boardArtwork).toBe('esp8266-devkitc');
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP-WROOM-02D', 'ESP-WROOM-02U']);
+    expect(store.selectedPins).toHaveLength(30);
+
+    store.setSearchQuery('boot button');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['Bottom header-11']);
+
+    store.setSearchQuery('flow control');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['Bottom header-8', 'Bottom header-9']);
+
+    store.setSearchQuery('micro usb power');
+    expect(store.filteredPins.map((pin) => pin.displayNumber)).toEqual(['Bottom header-13']);
+
+    store.setSearchQuery('wroom-02u');
+    expect(store.filteredPins).toHaveLength(30);
   });
 
   it('searches board labels, headers, GPIO names, functions, and multi-token matches', () => {

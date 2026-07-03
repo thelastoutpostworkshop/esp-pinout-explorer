@@ -6,7 +6,7 @@ export type PinProfileKind = 'package' | 'module' | 'board';
 
 export type BoardLayout = 'dual-header' | 'connector-groups';
 
-export type BoardArtwork = 'usb-otg' | 'usb-bridge' | 'lcd-ev' | 'vocat' | 'dualkey';
+export type BoardArtwork = 'usb-otg' | 'usb-bridge' | 'lcd-ev' | 'vocat' | 'dualkey' | 'esp8266-devkitc';
 
 export type PinWarning =
   | 'strapping'
