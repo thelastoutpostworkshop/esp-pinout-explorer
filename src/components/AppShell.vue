@@ -162,7 +162,7 @@ const { isDark, toggleLabel, toggleTheme } = useColorMode();
 
 .app-shell__navigator {
   flex: 1 1 auto;
-  max-width: 620px;
+  max-width: 720px;
   min-width: 360px;
   margin-left: clamp(12px, 3vw, 34px);
 }

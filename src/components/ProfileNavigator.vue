@@ -211,11 +211,12 @@ function openProfileInfo() {
 }
 
 .profile-navigator__select--chip {
-  flex: 0 1 150px;
+  flex: 0 1 210px;
+  min-width: 190px;
 }
 
 .profile-navigator__select--profile {
-  flex: 1 1 340px;
+  flex: 1 1 300px;
 }
 
 :deep(.profile-select__divider) {
