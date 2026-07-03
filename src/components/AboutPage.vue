@@ -1,6 +1,11 @@
 <template>
   <section class="about-page" aria-label="About ESP Pinout Explorer">
     <header class="about-page__hero">
+      <button class="about-page__action about-page__action--back about-page__back" type="button" @click="store.showPinout">
+        <ArrowLeft :size="16" aria-hidden="true" />
+        <span>Back to pinout</span>
+      </button>
+
       <svg class="about-page__atlas" viewBox="0 0 1180 480" role="img" aria-label="Animated atlas map of ESP board routes">
         <defs>
           <pattern id="atlasGrid" width="46" height="46" patternUnits="userSpaceOnUse">
@@ -68,10 +73,6 @@
             <span>Visit the workshop</span>
             <ExternalLink :size="13" aria-hidden="true" />
           </a>
-          <button class="about-page__action about-page__action--back" type="button" @click="store.showPinout">
-            <ArrowLeft :size="16" aria-hidden="true" />
-            <span>Back to pinout</span>
-          </button>
         </div>
       </div>
     </header>
@@ -210,6 +211,13 @@ const fieldNotes = [
   color: #ffffff;
   background: #102a43;
   box-shadow: 0 18px 42px rgba(15, 23, 42, 0.18);
+}
+
+.about-page__back {
+  position: absolute;
+  top: clamp(12px, 2vw, 18px);
+  right: clamp(12px, 2vw, 18px);
+  z-index: 2;
 }
 
 .about-page__atlas {
@@ -600,6 +608,11 @@ const fieldNotes = [
     background:
       linear-gradient(90deg, rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.72)),
       linear-gradient(0deg, rgba(15, 23, 42, 0.74), transparent 58%);
+  }
+
+  .about-page__back {
+    top: 12px;
+    right: 12px;
   }
 }
 
