@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed } from 'vue';
 import BoardSvg from '@/components/BoardSvg.vue';
 import ChipSvg from '@/components/ChipSvg.vue';
 import PinInfoDrawer from '@/components/PinInfoDrawer.vue';
@@ -64,11 +64,10 @@ import { useSocStore } from '@/stores/socStore';
 const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
 const selectedPackage = computed(() => store.selectedPackage);
-const showBoardFunctions = ref(false);
 const canShowBoardFunctions = computed(
   () => selectedPackage.value.kind === 'board' && selectedPackage.value.boardLayout !== 'connector-groups',
 );
-const effectiveShowBoardFunctions = computed(() => canShowBoardFunctions.value && showBoardFunctions.value);
+const effectiveShowBoardFunctions = computed(() => canShowBoardFunctions.value && store.showBoardFunctions);
 const chipPackageOption = computed(() => {
   const packageOptions = store.packageOptions.filter((option) => (option.kind ?? 'package') === 'package');
   const targetPackageId = selectedPackage.value.chipPackageId ?? selectedSoc.value.defaultPackageId ?? 'default';
@@ -77,7 +76,7 @@ const chipPackageOption = computed(() => {
 });
 
 function toggleBoardFunctions() {
-  showBoardFunctions.value = !showBoardFunctions.value;
+  store.toggleBoardFunctions();
 }
 </script>
 

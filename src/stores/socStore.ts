@@ -8,6 +8,7 @@ import type { SocDefinition, SocPackageVariant, SocPin } from '@/types/soc';
 const profileStorageKey = 'esp-pinout-explorer:selected-profile';
 const legacyProfileStorageKey = 'espsocsexplorer:selected-profile';
 const visitedStorageKey = 'esp-pinout-explorer:visited';
+const boardFunctionsStorageKey = 'esp-pinout-explorer:show-board-functions';
 
 interface PersistedProfileSelection {
   socId: string;
@@ -66,6 +67,7 @@ function filterPinsByQuery(pins: SocPin[], search: string) {
 export const useSocStore = defineStore('soc', () => {
   const initialSelection = readInitialSelection();
   const initialView = readInitialWorkspaceView();
+  const initialBoardFunctionState = readBoardFunctionsPreference();
   rememberVisit();
   const selectedSocId = ref(initialSelection.socId);
   const selectedPackageId = ref<string | null>(initialSelection.packageId);
@@ -73,6 +75,7 @@ export const useSocStore = defineStore('soc', () => {
   const profileInfoOpen = ref(false);
   const activeView = ref<WorkspaceView>(initialView);
   const searchQuery = ref('');
+  const showBoardFunctions = ref(initialBoardFunctionState);
 
   const selectedSoc = computed(() => socs.find((soc) => soc.id === selectedSocId.value) ?? socs[0]);
 
@@ -120,6 +123,16 @@ export const useSocStore = defineStore('soc', () => {
       activeView.value = 'pinout';
       persistSelectedProfile(selectedSocId.value, selectedPackageId.value);
     }
+  }
+
+  function toggleBoardFunctions() {
+    showBoardFunctions.value = !showBoardFunctions.value;
+    persistBoardFunctionsPreference(showBoardFunctions.value);
+  }
+
+  function setBoardFunctions(value: boolean) {
+    showBoardFunctions.value = value;
+    persistBoardFunctionsPreference(value);
   }
 
   function selectPin(pinId: string) {
@@ -180,10 +193,13 @@ export const useSocStore = defineStore('soc', () => {
     profileInfoOpen,
     activeView,
     searchQuery,
+    showBoardFunctions,
     filteredPins,
     filteredPinIds,
     selectSoc,
     selectPackage,
+    toggleBoardFunctions,
+    setBoardFunctions,
     selectPin,
     clearSelectedPin,
     openProfileInfo,
@@ -307,6 +323,22 @@ function readInitialWorkspaceView(): WorkspaceView {
 function rememberVisit() {
   try {
     window.localStorage.setItem(visitedStorageKey, 'true');
+  } catch {
+    // Ignore storage failures so the explorer still works in restricted browsing modes.
+  }
+}
+
+function readBoardFunctionsPreference() {
+  try {
+    return window.localStorage.getItem(boardFunctionsStorageKey) === 'true';
+  } catch {
+    return false;
+  }
+}
+
+function persistBoardFunctionsPreference(value: boolean) {
+  try {
+    window.localStorage.setItem(boardFunctionsStorageKey, String(value));
   } catch {
     // Ignore storage failures so the explorer still works in restricted browsing modes.
   }
