@@ -14,7 +14,7 @@
     />
 
     <v-autocomplete
-      v-if="store.packageOptions.length > 1"
+      v-if="selectableProfileOptions.length > 1"
       :model-value="selectedPackage.id"
       class="profile-navigator__select profile-navigator__select--profile"
       auto-select-first="exact"
@@ -24,9 +24,9 @@
       hide-details
       item-title="name"
       item-value="id"
-      label="Board / module / package"
+      label="Board / chip package"
       no-data-text="No matching profiles"
-      placeholder="Search profiles or variants"
+      placeholder="Search boards or chip packages"
       :items="profileSelectItems"
       variant="outlined"
       @update:model-value="selectPackage"
@@ -70,8 +70,11 @@ const emit = defineEmits<{
 
 const store = useSocStore();
 const selectedPackage = computed(() => store.selectedPackage);
+const selectableProfileOptions = computed(() =>
+  store.packageOptions.filter((profile) => profileKind(profile) !== 'module'),
+);
 const profileSelectItems = computed(() =>
-  [...store.packageOptions]
+  [...selectableProfileOptions.value]
     .sort((first, second) => profileKindRank(profileKind(first)) - profileKindRank(profileKind(second)))
     .map((profile, index, profiles) => ({
       ...profile,
@@ -104,8 +107,8 @@ function profileKind(profile: Pick<SocPackageVariant, 'kind'>): PinProfileKind {
 function profileKindRank(kind: PinProfileKind) {
   return {
     board: 0,
-    module: 1,
-    package: 2,
+    package: 1,
+    module: 2,
   }[kind];
 }
 

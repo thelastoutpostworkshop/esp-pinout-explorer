@@ -55,6 +55,19 @@ describe('soc store', () => {
     expect(store.selectedPackage.id).toBe('esp32s3-devkitc-1-v1-1');
   });
 
+  it('does not restore module profiles into the maker-facing default view', () => {
+    window.localStorage.setItem(
+      profileStorageKey,
+      JSON.stringify({ socId: 'esp32c6', packageId: 'esp32c6-mini-1' }),
+    );
+
+    const store = useSocStore();
+
+    expect(store.selectedSocId).toBe('esp32c6');
+    expect(store.selectedPackage.id).toBe('esp32c6-devkitm-1');
+    expect(store.selectedPackage.kind).toBe('board');
+  });
+
   it('reads legacy persisted profile data after the app rename', () => {
     window.localStorage.setItem(
       legacyProfileStorageKey,

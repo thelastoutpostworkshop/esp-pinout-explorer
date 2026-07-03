@@ -243,7 +243,9 @@ function readInitialSelection(): PersistedProfileSelection {
     return fallback;
   }
 
-  const profile = buildPackageOptions(soc).find((candidate) => candidate.id === persisted.packageId);
+  const profile = buildPackageOptions(soc).find(
+    (candidate) => candidate.id === persisted.packageId && (candidate.kind ?? 'package') !== 'module',
+  );
   return {
     socId: soc.id,
     packageId: profile?.id ?? defaultProfileForSoc(soc).id,

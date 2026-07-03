@@ -577,7 +577,10 @@ describe('ExplorerSidebar', () => {
     await wrapper.vm.$nextTick();
     const c6ProfileItems = profileAutocomplete.props('items') as Array<{ id: string; name: string }>;
 
-    expect(wrapper.findAll('.v-list-subheader').map((item) => item.text())).toEqual(['Dev boards', 'Modules', 'Chip packages']);
+    expect(wrapper.findAll('.v-list-subheader').map((item) => item.text())).toEqual(['Dev boards', 'Chip packages']);
+    expect(c6ProfileItems.map((item) => item.id)).not.toEqual(
+      expect.arrayContaining(['esp32c6-mini-1', 'esp32c6-mini-1u']),
+    );
     expect(c6ProfileItems.find((item) => item.id === 'qfn40')?.name).toBe('ESP32-C6 QFN40');
     expect(c6ProfileItems.find((item) => item.id === 'qfn32')?.name).toBe('ESP32-C6 QFN32');
     expect(wrapper.text()).toContain('Variants: MINI-1 / MINI-1U');
