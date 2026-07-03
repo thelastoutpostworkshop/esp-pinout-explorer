@@ -16,6 +16,9 @@ Source baseline:
 - ESP32-P4 datasheet: https://documentation.espressif.com/esp32-p4_datasheet_en.html
 - ESP32-P4 dev kits documentation index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/index.html
 - ESP32-S3 dev kits documentation index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/index.html
+- ESP32-E22 product entry: https://www.espressif.com/en/products/socs/esp32-e22
+- ESP8266EX datasheet: https://documentation.espressif.com/0a-esp8266ex_datasheet_en.html
+- ESP8285 datasheet: https://documentation.espressif.com/0a-esp8285_datasheet_en.html
 
 ## Done
 
@@ -231,9 +234,19 @@ Source baseline:
 
 ### ESP32-E Series
 
-- [ ] ESP32-E22
-  - [ ] QFN, 9 x 9 mm
-  - Note: new/early entry; confirm public datasheet status and pin tables before implementation.
+- [ ] ESP32-E22 chip package profiles
+  - Source: https://www.espressif.com/en/products/socs/esp32-e22
+  - [ ] Chip package profile: ESP32-E22 QFN, 9 x 9 mm
+    - Product table: ESP32-E22, dual-core RISC-V connectivity co-processor, 41 GPIO, TCM 1 MB + 192 KB, no embedded flash/PSRAM listed.
+    - Blocked as of 2026-07-03: the official product page/table lists the package and high-level resources, but no public official datasheet with complete pin definitions, package top-view diagram, or package pin tables was found. Do not implement raw pinout data from the product table alone.
+- [ ] ESP32-E22 module profiles
+  - Source: https://www.espressif.com/en/products/modules
+  - [ ] Module profile: ESP32-E22-M2-1
+    - Product table: M.2 2230 wireless communication module with ESP32-E22, tri-band Wi-Fi 6E, dual-mode Bluetooth, and IPEX antenna connector.
+    - Blocked as of 2026-07-03: no public official module datasheet or footprint/pinout document was found. Implement only after official M.2 edge connector, power, antenna, host-interface, and warning details are available.
+- [ ] ESP32-E22 board profiles
+  - Source: https://www.espressif.com/en/products/socs
+  - Note: the official SoC product table lists no development board for ESP32-E22. Leave board profiles blocked until Espressif publishes an official dev-kit user guide, schematic, or board documentation with connector/header allocation.
 
 ### Classic ESP32 Series
 
@@ -301,10 +314,38 @@ Source baseline:
 
 ### ESP8266 Series
 
-- [ ] ESP8266EX
-  - [ ] QFN, 5 x 5 mm
-- [ ] ESP8285
-  - [ ] QFN, 5 x 5 mm
+- [ ] ESP8266EX chip package profiles
+  - Source: https://documentation.espressif.com/0a-esp8266ex_datasheet_en.html
+  - [ ] Chip package profile: ESP8266EX QFN32, 5 x 5 mm
+    - Datasheet: ESP8266EX Datasheet v7.1, NRND, 32-pin QFN package top-view/pin definitions, external SPI flash required, 17 GPIO in the product table.
+    - Note: include boot-mode pins GPIO0/GPIO2/MTDO, UART0 power-up constraints, external flash SDIO/SPI pins, ADC TOUT dual-use caveat, reset/chip-enable pins, RF antenna pin, and power-domain notes.
+- [ ] ESP8285 chip package profiles
+  - Source: https://documentation.espressif.com/0a-esp8285_datasheet_en.html
+  - [ ] Chip package profile: ESP8285 QFN32, 5 x 5 mm
+    - Datasheet: ESP8285 Datasheet v2.7/v2.6 HTML, NRND, related products ESP8285N08 and ESP8285H16, 32-pin QFN package top-view/pin definitions, embedded SPI flash, 17 GPIO in the product table.
+    - Note: do not blindly copy ESP8266EX. ESP8285 has embedded flash, so SDIO_CMD, SDIO_CLK, SDIO_DATA_0, and SDIO_DATA_1 are reserved for the embedded flash and should be strong maker warnings.
+- [ ] ESP8266 module profiles
+  - Source: https://www.espressif.com/en/products/modules/esp8266
+  - [ ] Module profile: ESP-WROOM-02D
+    - Source: https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf
+  - [ ] Module profile: ESP-WROOM-02U
+    - Source: https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf
+  - [ ] Module profile: ESP-WROOM-02
+    - Source: https://documentation.espressif.com/0c-esp-wroom-02_datasheet_en.pdf
+  - [ ] Module profile: ESP-WROOM-S2
+    - Source: https://www.espressif.com/en/products/modules
+  - Note: module profiles should use official module datasheets/footprints. Do not expose the bare ESP8266EX flash pins as general module pads when the module routes them to on-module flash.
+- [ ] ESP8266 board profiles
+  - Source: https://www.espressif.com/en/products/socs
+  - [ ] Board profile: ESP8266-DevKitC
+    - Source: https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/get-started-devkitc.html
+    - Note: official getting-started guide says most I/O pins are broken out to side headers. Confirm whether the guide, official schematic, or hardware resources provide complete header numbering before implementation.
+  - [ ] Board profile: ESP8266-DevKitS
+    - Source: https://documentation.espressif.com/ESP8266-DevKitS_user_guide__EN.html
+    - Note: legacy/test board. Implement only if the official user guide or reference design package provides enough spring/header allocation data.
+  - [ ] Board profile: ESP-Launcher
+    - Source: https://documentation.espressif.com/esp8266_hardware_design_guidelines_en.html
+    - Note: legacy ESP8266 development/evaluation board referenced by official hardware design resources. Treat as lower priority than ESP8266-DevKitC and implement only from official schematic/header documentation.
 
 ## Implementation Notes
 
