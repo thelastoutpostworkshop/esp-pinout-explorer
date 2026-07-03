@@ -54,14 +54,17 @@ withDefaults(
 
 .function-chip__card {
   max-width: min(320px, calc(100vw - 32px));
-  border: 1px solid #dbe3ea;
+  border: 1px solid var(--app-border);
   border-radius: 8px;
+  color: var(--app-text);
+  background: var(--app-surface-bg);
+  box-shadow: var(--app-panel-shadow);
 }
 
 .function-chip__title {
   min-height: auto;
   padding: 12px 14px 0;
-  color: #0f172a;
+  color: inherit;
   font-size: 0.9rem;
   font-weight: 800;
   letter-spacing: 0;
@@ -69,7 +72,7 @@ withDefaults(
 
 .function-chip__text {
   padding: 8px 14px 14px;
-  color: #334155;
+  color: inherit;
   font-size: 0.86rem;
   font-weight: 500;
   line-height: 1.42;

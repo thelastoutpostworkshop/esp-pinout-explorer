@@ -33,17 +33,20 @@ defineProps<{
 
 <style scoped>
 .info-tooltip__button {
-  color: #006d77;
+  color: var(--app-link);
 }
 
 .info-tooltip__card {
   max-width: min(320px, calc(100vw - 32px));
-  border: 1px solid #dbe3ea;
+  border: 1px solid var(--app-border);
   border-radius: 8px;
+  color: var(--app-text);
+  background: var(--app-surface-bg);
+  box-shadow: var(--app-panel-shadow);
 }
 
 .info-tooltip__text {
-  color: #334155;
+  color: inherit;
   font-size: 0.86rem;
   font-weight: 500;
   line-height: 1.42;
