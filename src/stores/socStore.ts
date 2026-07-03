@@ -192,12 +192,12 @@ function buildPackageOptions(soc: SocDefinition): SocPackageVariant[] {
   return [
     {
       id: soc.defaultPackageId ?? 'default',
-      name: defaultPackageDisplayName(soc),
+      name: packageProfileDisplayName(soc, soc.packageName),
       packageName: soc.packageName,
       kind: 'package',
       pins: soc.pins,
     },
-    ...(soc.packageVariants ?? []),
+    ...(soc.packageVariants ?? []).map((profile) => normalizeProfileOption(soc, profile)),
     ...(soc.boardProfiles ?? []),
   ];
 }
@@ -207,14 +207,25 @@ function defaultProfileForSoc(soc: SocDefinition): SocPackageVariant {
   return options.find((option) => option.id === soc.defaultProfileId) ?? options[0];
 }
 
-function defaultPackageDisplayName(soc: SocDefinition) {
-  const packageMatch = soc.packageName.match(/\b(?:QFN|LGA|BGA|WLCSP)\d+\b/i);
-
-  if (packageMatch) {
-    return packageMatch[0].toUpperCase();
+function normalizeProfileOption(soc: SocDefinition, profile: SocPackageVariant): SocPackageVariant {
+  if ((profile.kind ?? 'package') !== 'package') {
+    return profile;
   }
 
-  return soc.packageName.split(/[,(]/)[0].trim();
+  return {
+    ...profile,
+    name: packageProfileDisplayName(soc, profile.packageName),
+  };
+}
+
+function packageProfileDisplayName(soc: SocDefinition, packageName: string) {
+  const packageMatch = packageName.match(/\b(?:QFN|LGA|BGA|WLCSP)\d+\b/i);
+
+  if (packageMatch) {
+    return `${soc.name} ${packageMatch[0].toUpperCase()}`;
+  }
+
+  return `${soc.name} ${packageName.split(/[,(]/)[0].trim()}`;
 }
 
 function readInitialSelection(): PersistedProfileSelection {

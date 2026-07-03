@@ -74,7 +74,7 @@ describe('BoardSvg', () => {
         filteredPinIds: new Set([pins[0].id]),
         hasFilter: true,
         chipPackageId: esp32s3.defaultPackageId,
-        chipPackageLabel: 'QFN56',
+        chipPackageLabel: 'ESP32-S3 QFN56',
         packageName: boardProfile?.packageName ?? '',
         pins,
         selectedPinId: pins[0].id,
@@ -95,10 +95,10 @@ describe('BoardSvg', () => {
     await nodes[0].trigger('keydown.enter');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
 
-    const chipPackageButton = wrapper.find('[role="button"][aria-label="Open QFN56 chip package view"]');
+    const chipPackageButton = wrapper.find('[role="button"][aria-label="Open ESP32-S3 QFN56 chip package view"]');
 
     expect(chipPackageButton.exists()).toBe(true);
-    expect(wrapper.text()).toContain('QFN56');
+    expect(wrapper.text()).toContain('ESP32-S3 QFN56');
     expect(wrapper.text()).not.toContain('Module');
     await chipPackageButton.trigger('keydown.enter');
     expect(wrapper.emitted('chip-package-click')).toEqual([[esp32s3.defaultPackageId]]);
@@ -114,7 +114,7 @@ describe('BoardSvg', () => {
         filteredPinIds: new Set(pins.map((pin) => pin.id)),
         hasFilter: false,
         chipPackageId: esp32c6.defaultPackageId,
-        chipPackageLabel: 'QFN40',
+        chipPackageLabel: 'ESP32-C6 QFN40',
         packageName: boardProfile?.packageName ?? '',
         pins,
         selectedPinId: null,
@@ -123,8 +123,8 @@ describe('BoardSvg', () => {
       },
     });
 
-    expect(wrapper.find('[role="button"][aria-label="Open QFN40 chip package view"]').exists()).toBe(true);
-    expect(wrapper.text()).toContain('QFN40');
+    expect(wrapper.find('[role="button"][aria-label="Open ESP32-C6 QFN40 chip package view"]').exists()).toBe(true);
+    expect(wrapper.text()).toContain('ESP32-C6 QFN40');
     expect(wrapper.text()).not.toContain('Module');
   });
 
@@ -380,7 +380,7 @@ describe('SocPinoutView', () => {
         },
       },
     });
-    const chipPackageButton = wrapper.find('[role="button"][aria-label="Open QFN40 chip package view"]');
+    const chipPackageButton = wrapper.find('[role="button"][aria-label="Open ESP32-C6 QFN40 chip package view"]');
 
     expect(chipPackageButton.exists()).toBe(true);
     await chipPackageButton.trigger('click');
@@ -478,7 +478,7 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).not.toContain('Dual-core 32-bit Xtensa LX7');
     expect(wrapper.text()).not.toContain('USB ports, 5V/GND headers, or 3V3/GND headers');
     const profileAutocomplete = wrapper.findComponent({ name: 'VAutocomplete' });
-    const profileItems = profileAutocomplete.props('items') as Array<{ id: string }>;
+    const profileItems = profileAutocomplete.props('items') as Array<{ id: string; name: string }>;
     const filterProfile = profileAutocomplete.props('customFilter') as (
       value: string,
       query: string,
@@ -575,16 +575,19 @@ describe('ExplorerSidebar', () => {
 
     store.selectSoc('esp32c6');
     await wrapper.vm.$nextTick();
+    const c6ProfileItems = profileAutocomplete.props('items') as Array<{ id: string; name: string }>;
 
     expect(wrapper.findAll('.v-list-subheader').map((item) => item.text())).toEqual(['Dev boards', 'Modules', 'Chip packages']);
+    expect(c6ProfileItems.find((item) => item.id === 'qfn40')?.name).toBe('ESP32-C6 QFN40');
+    expect(c6ProfileItems.find((item) => item.id === 'qfn32')?.name).toBe('ESP32-C6 QFN32');
     expect(wrapper.text()).toContain('Variants: MINI-1 / MINI-1U');
     expect(wrapper.text()).toContain('Variants: WROOM-1-N8 / WROOM-1U-N8');
     expect(wrapper.text()).toContain('Single-core 32-bit RISC-V HP CPU');
     expect(wrapper.text()).toContain('DevKitM-1 (MINI)');
     expect(wrapper.text()).toContain('MINI-1');
     expect(wrapper.text()).toContain('MINI-1U');
-    expect(wrapper.text()).toContain('QFN40');
-    expect(wrapper.text()).toContain('QFN32');
+    expect(wrapper.text()).toContain('ESP32-C6 QFN40');
+    expect(wrapper.text()).toContain('ESP32-C6 QFN32');
     expect(wrapper.text()).not.toContain('Dev board: DevKitM-1');
     expect(wrapper.text()).not.toContain('Module: MINI-1');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1 / MINI-1U');

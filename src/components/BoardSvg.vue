@@ -739,7 +739,7 @@ function packageActionGeometry(index: number, layout: 'connector' | 'dual') {
 function packageActionWidth(label: string, layout: 'connector' | 'dual') {
   const base = layout === 'connector' ? 56 : 60;
   const width = base + label.length * 6.8;
-  return Math.max(layout === 'connector' ? 78 : 82, Math.min(104, width));
+  return Math.max(layout === 'connector' ? 96 : 104, Math.min(190, width));
 }
 
 function activatePackageAction(action: BoardPackageAction) {
