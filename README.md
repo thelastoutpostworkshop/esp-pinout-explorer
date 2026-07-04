@@ -32,6 +32,7 @@ Current profiles:
 | ESP32-H2 | ESP32-H2-DevKitM-1 | Board headers | MINI module identity | [ESP32-H2-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/esp32-h2-devkitm-1/user_guide.html) |
 | ESP8266 | ESP8266-DevKitC | I/O connector labels | WROOM-02D/U module identity, USB-UART, Boot/EN, power constraints | [ESP8266-DevKitC Getting Started Guide](https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/get-started-devkitc.html) |
 | ESP8266 | ESP8266-DevKitS | Board headers | WROOM-02 / WROOM-02D / WROOM-02U module identity, spring-pin carrier, USB-UART, Boot/EN | [ESP8266-DevKitS User Guide](https://documentation.espressif.com/ESP8266-DevKitS_user_guide__EN.pdf) |
+| ESP8266 | ESP-Launcher | Board headers | ESP8266EX reference design, USB-UART bridge, boot/reset, LEDs, infrared remote control, HSPI/SDIO | [ESP8266 Hardware Design Guidelines v2.8](https://documentation.espressif.com/esp8266_hardware_design_guidelines_en.pdf) |
 
 ## Module Pads
 

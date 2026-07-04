@@ -348,9 +348,9 @@ Source baseline:
   - [x] Board profile: ESP8266-DevKitS
     - Source: https://documentation.espressif.com/ESP8266-DevKitS_user_guide__EN.pdf
     - Note: implemented as a dual-header board profile from the official L1-L15 / R1-R15 header block table and the user guide PDF.
-  - [ ] Board profile: ESP-Launcher
-    - Source: https://documentation.espressif.com/esp8266_hardware_design_guidelines_en.html
-    - Note: legacy ESP8266 development/evaluation board referenced by official hardware design resources. Treat as lower priority than ESP8266-DevKitC and implement only from official schematic/header documentation.
+  - [x] Board profile: ESP-Launcher
+    - Source: https://documentation.espressif.com/esp8266_hardware_design_guidelines_en.pdf
+    - Note: legacy ESP8266 development/evaluation board implemented from the official J4/J2 header summary and schematic reference design, with USB-UART, boot/reset, LEDs, infrared remote-control, and flash/flow-control notes.
 
 ## Implementation Notes
 

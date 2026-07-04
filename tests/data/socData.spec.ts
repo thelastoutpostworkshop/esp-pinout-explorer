@@ -76,6 +76,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp8266ex:esp-wroom-02u': 19,
   'esp8266ex:esp8266-devkitc': 30,
   'esp8266ex:esp8266-devkits': 30,
+  'esp8266ex:esp-launcher': 24,
 };
 
 interface ProfileEntry {
@@ -381,6 +382,20 @@ describe('SoC data invariants', () => {
     expect(rightPins.every((pin) => pin.position.side === 'right')).toBe(true);
     expect(leftPins.map((pin) => pin.position.order).sort((a, b) => a - b)).toEqual(range(1, 15));
     expect(rightPins.map((pin) => pin.position.order).sort((a, b) => a - b)).toEqual(range(1, 15));
+  });
+
+  it('keeps ESP-Launcher as two 12-pin side headers', () => {
+    const profile = allProfiles().find((item) => item.id === 'esp-launcher');
+    const leftPins = profile?.pins.filter((pin) => pin.boardHeader === 'J4') ?? [];
+    const rightPins = profile?.pins.filter((pin) => pin.boardHeader === 'J2') ?? [];
+
+    expect(profile?.boardLayout).toBe('dual-header');
+    expect(leftPins).toHaveLength(12);
+    expect(rightPins).toHaveLength(12);
+    expect(leftPins.every((pin) => pin.position.side === 'left')).toBe(true);
+    expect(rightPins.every((pin) => pin.position.side === 'right')).toBe(true);
+    expect(leftPins.map((pin) => pin.position.order).sort((a, b) => a - b)).toEqual(range(1, 12));
+    expect(rightPins.map((pin) => pin.position.order).sort((a, b) => a - b)).toEqual(range(1, 12));
   });
 });
 
