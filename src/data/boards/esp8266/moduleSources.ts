@@ -1,5 +1,24 @@
 import type { SocSource } from '@/types/soc';
 
+export const wroom02Source: SocSource = {
+  title: 'ESP-WROOM-02 Datasheet',
+  version: 'v3.7',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
+  url: 'https://documentation.espressif.com/0c-esp-wroom-02_datasheet_en.pdf',
+  sections: [
+    'Overview',
+    'Pin Description',
+    'Functional Description',
+    'Electrical Characteristics',
+    'Schematics',
+    'Peripheral Schematics',
+    'Dimensions',
+    'Recommended PCB Land Pattern',
+    'Appendix—Learning Resources',
+  ],
+};
+
 export const wroom02DuSource: SocSource = {
   title: 'ESP-WROOM-02D & ESP-WROOM-02U Datasheet',
   version: 'v2.3',

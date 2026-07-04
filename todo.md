@@ -345,9 +345,9 @@ Source baseline:
   - [x] Board profile: ESP8266-DevKitC
     - Source: https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/get-started-devkitc.html
     - Note: implemented as connector groups from the official functional overview image top/bottom I/O connector labels. The guide identifies the I/O connector labels but does not publish formal J-header numbering.
-  - [ ] Board profile: ESP8266-DevKitS
-    - Source: https://documentation.espressif.com/ESP8266-DevKitS_user_guide__EN.html
-    - Note: legacy/test board. Implement only if the official user guide or reference design package provides enough spring/header allocation data.
+  - [x] Board profile: ESP8266-DevKitS
+    - Source: https://documentation.espressif.com/ESP8266-DevKitS_user_guide__EN.pdf
+    - Note: implemented as a dual-header board profile from the official L1-L15 / R1-R15 header block table and the user guide PDF.
   - [ ] Board profile: ESP-Launcher
     - Source: https://documentation.espressif.com/esp8266_hardware_design_guidelines_en.html
     - Note: legacy ESP8266 development/evaluation board referenced by official hardware design resources. Treat as lower priority than ESP8266-DevKitC and implement only from official schematic/header documentation.
