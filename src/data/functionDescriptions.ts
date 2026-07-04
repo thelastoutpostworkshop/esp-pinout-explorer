@@ -113,6 +113,8 @@ const exactDescriptions: Record<string, string> = {
   VDET_2: 'Analog voltage-detection input on classic ESP32. This GPIO is input-only.',
   ZCD0: 'Zero-cross or voltage-detection analog input channel.',
   ZCD1: 'Zero-cross or voltage-detection analog input channel.',
+  '32K_XP': '32.768 kHz crystal oscillator positive pin. Used for an optional low-power timing crystal.',
+  '32K_XN': '32.768 kHz crystal oscillator negative pin. Used for an optional low-power timing crystal.',
 };
 
 const phraseDescriptions: Array<[RegExp, string]> = [
@@ -192,6 +194,10 @@ export function getFunctionDescription(name: string): string | null {
 
   if (/^USB_D[+-]$/.test(normalized)) {
     return `${normalized} is a native USB differential data signal. Keep USB routing and pin restrictions in mind.`;
+  }
+
+  if (/^EMAC_[A-Z0-9_]+$/.test(normalized)) {
+    return 'Ethernet MAC signal used for an external Ethernet PHY. Check the board schematic and PHY wiring before reusing it.';
   }
 
   if (/^SDIO_(CMD|CLK|DATA_?\d)$/.test(normalized)) {

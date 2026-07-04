@@ -301,9 +301,9 @@ Source baseline:
   - [x] Board profile: ESP32-PICO-DevKitM-2
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-devkitm-2/user_guide.html
     - Note: active Espressif board based on ESP32-PICO-MINI-02/02U. Implemented from the official J2/J3 header tables; standalone PICO-MINI module pad profiles remain separate TODO items.
-  - [ ] Board profile: ESP32-PICO-KIT-1
+  - [x] Board profile: ESP32-PICO-KIT-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit-1/user_guide.html
-    - Note: PICO-D4-based development board. Useful for makers, but check whether the guide provides full header pin tables before implementation.
+    - Note: active Espressif board based on ESP32-PICO-V3. Implemented from the official J2/J3 header tables and pin layout; the guide also documents the USB-to-UART bridge, power options, and male-header default assembly.
   - [ ] Board profile: ESP32-PICO-KIT v4/v4.1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit/user_guide.html
     - Note: EOL/older PICO-D4 mini board. Add after PICO-KIT-1 if its official guide provides enough header detail.
