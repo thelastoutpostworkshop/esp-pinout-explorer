@@ -554,6 +554,11 @@ const connectorPortBadges = computed(() => {
         { x: 320, width: 118, label: 'USB-UART' },
         { x: 522, width: 118, label: 'micro USB' },
       ];
+    case 'p4-eye':
+      return [
+        { x: 320, width: 118, label: 'USB 2.0' },
+        { x: 522, width: 118, label: 'DEBUG' },
+      ];
     default:
       return [
         { x: 320, width: 118, label: 'USB HOST' },
@@ -601,6 +606,13 @@ const connectorComponentBadges = computed(() => {
         componentBadge(250, 278, 104, 44, 'BOOT/RST', 'buttons'),
         componentBadge(624, 438, 96, 44, 'LCD/CAM', 'lcd'),
         componentBadge(340, 460, 282, 34, 'USB / ETH / PWR', 'power'),
+      ];
+    case 'p4-eye':
+      return [
+        componentBadge(624, 190, 92, 44, 'CAMERA', 'lcd'),
+        componentBadge(250, 278, 104, 44, 'BOOT/RST', 'buttons'),
+        componentBadge(624, 438, 96, 44, 'LCD', 'lcd'),
+        componentBadge(340, 460, 282, 34, 'USB / SD / PWR', 'power'),
       ];
     default:
       return [

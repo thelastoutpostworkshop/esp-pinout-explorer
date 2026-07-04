@@ -12,6 +12,7 @@ import SocPinoutView from '@/components/SocPinoutView.vue';
 import { hasMakerWarning } from '@/data/pinWarnings';
 import { esp32 } from '@/data/socs/esp32';
 import { esp32c6 } from '@/data/socs/esp32c6';
+import { esp32p4 } from '@/data/socs/esp32p4';
 import { esp32s3 } from '@/data/socs/esp32s3';
 import { useSocStore } from '@/stores/socStore';
 import type { SocPin, SocSource } from '@/types/soc';
@@ -245,6 +246,37 @@ describe('BoardSvg', () => {
 
     await wrapper.findAll('.connector-board__pin')[0].trigger('click');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
+  });
+
+  it('renders the ESP32-P4X-EYE connector-group board with eye artwork', () => {
+    const boardProfile = esp32p4.boardProfiles?.find((profile) => profile.id === 'esp32p4x-eye');
+    expect(boardProfile).toBeDefined();
+    const pins = boardProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        boardArtwork: boardProfile?.boardArtwork,
+        boardLayout: boardProfile?.boardLayout,
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: boardProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        soc: esp32p4,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(wrapper.attributes('aria-label')).toContain('20 of 20 connector pins shown');
+    expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+    expect(wrapper.text()).toContain('USB 2.0');
+    expect(wrapper.text()).toContain('DEBUG');
+    expect(wrapper.text()).toContain('CAMERA');
+    expect(wrapper.text()).toContain('LCD');
+    expect(wrapper.text()).toContain('USB / SD / PWR');
+    expectNoOverlappingRects(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
+    );
   });
 
   it('renders the ESP32-S3 USB-Bridge connector profile with bridge artwork', async () => {
@@ -613,7 +645,7 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).not.toContain('Module pads for PCB design, not dev-board headers.');
   });
 
-  it('shows the board profile selector even when only one board profile exists', async () => {
+  it('shows the board profile selector for ESP32-P4 profiles', async () => {
     const store = useSocStore();
     store.selectSoc('esp32p4');
 
@@ -633,9 +665,11 @@ describe('ExplorerSidebar', () => {
     expect(profileAutocomplete.exists()).toBe(true);
     expect((profileAutocomplete.props('items') as Array<{ id: string }>).map((item) => item.id)).toEqual([
       'esp32p4x-function-ev-board',
+      'esp32p4x-eye',
     ]);
     expect(wrapper.text()).toContain('Dev boards');
     expect(wrapper.text()).toContain('ESP32-P4X-Function-EV-Board');
+    expect(wrapper.text()).toContain('ESP32-P4X-EYE');
   });
 
   it('shows resource links and opens maker tools', async () => {
