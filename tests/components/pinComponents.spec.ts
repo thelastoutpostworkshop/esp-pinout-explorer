@@ -279,6 +279,34 @@ describe('BoardSvg', () => {
     );
   });
 
+  it('renders the ESP32-P4-Function-EV-Board v1.5.2 connector-group board with function artwork', () => {
+    const boardProfile = esp32p4.boardProfiles?.find((profile) => profile.id === 'esp32p4-function-ev-board-v1-5-2');
+    expect(boardProfile).toBeDefined();
+    const pins = boardProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        boardArtwork: boardProfile?.boardArtwork,
+        boardLayout: boardProfile?.boardLayout,
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: boardProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        soc: esp32p4,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(wrapper.attributes('aria-label')).toContain('40 of 40 connector pins shown');
+    expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+    expect(wrapper.findAll('.connector-board__pin')).toHaveLength(40);
+    expect(wrapper.text()).toContain('AUDIO');
+    expect(wrapper.text()).toContain('BOOT/RST');
+    expect(wrapper.text()).toContain('LCD/CAM');
+    expect(wrapper.text()).toContain('USB / ETH / PWR');
+  });
+
   it('renders the ESP32-P4-EYE connector-group board with eye artwork', () => {
     const boardProfile = esp32p4.boardProfiles?.find((profile) => profile.id === 'esp32p4-eye');
     expect(boardProfile).toBeDefined();
@@ -697,11 +725,13 @@ describe('ExplorerSidebar', () => {
     expect((profileAutocomplete.props('items') as Array<{ id: string }>).map((item) => item.id)).toEqual([
       'esp32p4x-function-ev-board',
       'esp32p4x-eye',
+      'esp32p4-function-ev-board-v1-5-2',
       'esp32p4-eye',
     ]);
     expect(wrapper.text()).toContain('Dev boards');
     expect(wrapper.text()).toContain('ESP32-P4X-Function-EV-Board');
     expect(wrapper.text()).toContain('ESP32-P4X-EYE');
+    expect(wrapper.text()).toContain('ESP32-P4-Function-EV-Board v1.5.2');
     expect(wrapper.text()).toContain('ESP32-P4-EYE');
   });
 

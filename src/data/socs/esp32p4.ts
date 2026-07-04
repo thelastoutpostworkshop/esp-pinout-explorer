@@ -31,7 +31,7 @@ export const esp32p4: SocDefinition = {
   },
   packageName: 'QFN104 package placeholder',
   description:
-    'ESP32-P4 board-family with the ESP32-P4X-Function-EV-Board, ESP32-P4X-EYE, and legacy ESP32-P4-EYE profiles implemented from official board documentation.',
+    'ESP32-P4 board-family with the ESP32-P4X-Function-EV-Board, ESP32-P4X-EYE, legacy ESP32-P4-Function-EV-Board v1.5.2, and legacy ESP32-P4-EYE profiles implemented from official board documentation.',
   source,
   pins: [],
   boardProfiles: createEsp32p4BoardProfiles(findP4PinByGpio),

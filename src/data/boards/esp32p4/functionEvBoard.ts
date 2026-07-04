@@ -1,6 +1,14 @@
 import { makeBoardPin, type BoardSourcePinResolver } from '@/data/boards/helpers';
 import { mini1Source as esp32c6Mini1Source } from '@/data/boards/esp32c6/moduleSources';
-import type { PinType, PinWarning, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
+import type {
+  PinType,
+  PinWarning,
+  SocBoardSpecs,
+  SocModuleVariant,
+  SocPackageVariant,
+  SocPin,
+  SocSource,
+} from '@/types/soc';
 
 type FunctionEvBoardRow = 'upper' | 'lower';
 
@@ -64,6 +72,56 @@ const functionEvBoardSource: SocSource = {
   ],
 };
 
+const functionEvBoardV152Source: SocSource = {
+  title: 'ESP32-P4-Function-EV-Board v1.5.2 User Guide',
+  version: 'v1.5.2',
+  publisher: 'Espressif',
+  documentType: 'user-guide',
+  url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-function-ev-board/user_guide.html',
+  sections: [
+    'Getting Started',
+    'Description of Components',
+    'Application Examples',
+    'Start Application Development',
+    'Hardware Reference',
+    'Power Supply Options',
+    'Header Block',
+    'Hardware Revision Details',
+    'Related Documents',
+    'Accessories',
+  ],
+  figures: [
+    {
+      title: 'Board overview',
+      kind: 'board-photo',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/_images/esp32-p4-function-ev-board-isometric_v1.5.2.png',
+      alt: 'ESP32-P4-Function-EV-Board overview',
+      sourceSection: 'Getting Started',
+    },
+    {
+      title: 'Front component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/_images/esp32-p4-function-ev-board-annotated-photo-front_v1.5.2.png',
+      alt: 'ESP32-P4-Function-EV-Board front component layout',
+      sourceSection: 'Description of Components',
+    },
+    {
+      title: 'Back component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/_images/esp32-p4-function-ev-board-annotated-photo-back_v1.5.2.png',
+      alt: 'ESP32-P4-Function-EV-Board back component layout',
+      sourceSection: 'Description of Components',
+    },
+    {
+      title: 'Block diagram',
+      kind: 'block-diagram',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/_images/esp32-p4-function-ev-board-block-diagram_v1.5.2.png',
+      alt: 'ESP32-P4-Function-EV-Board block diagram',
+      sourceSection: 'Hardware Reference',
+    },
+  ],
+};
+
 const esp32c6Mini1ModuleVariant: SocModuleVariant = {
   name: 'ESP32-C6-MINI-1',
   antenna: 'On-board PCB antenna',
@@ -80,13 +138,78 @@ function p4Warnings(...values: PinWarning[]): PinWarning[] {
   return values;
 }
 
-function buildFunctionEvBoardPin(input: FunctionEvBoardPinInput, resolveSourcePinByGpio: BoardSourcePinResolver): SocPin {
+interface FunctionEvBoardProfileConfig {
+  id: string;
+  name: string;
+  description: string;
+  source: SocSource;
+  baseKeywords: string[];
+  identificationNotes: string[];
+}
+
+const functionEvBoardProfileConfig: FunctionEvBoardProfileConfig = {
+  id: 'esp32p4x-function-ev-board',
+  name: 'ESP32-P4X-Function-EV-Board',
+  description:
+    'ESP32-P4 multimedia development board with a J1 header block, LCD and camera accessories, Ethernet, USB, audio, and an ESP32-C6-MINI-1 wireless module.',
+  source: functionEvBoardSource,
+  baseKeywords: [
+    'board',
+    'esp32-p4',
+    'esp32-p4x',
+    'p4x-function-ev-board',
+    'function-ev-board',
+    'function ev board',
+    'carrier pcb',
+    'j1',
+    'header',
+    'esp32-c6-mini-1',
+    'multimedia',
+  ],
+  identificationNotes: [
+    'Choose this profile by the ESP32-P4X-Function-EV-Board carrier PCB, the ESP32-C6-MINI-1 wireless module, the J1 header block, and the LCD/camera accessory layout shown in the official front and assembled-board photos.',
+    'Do not confuse it with the older ESP32-P4-Function-EV-Board v1.5.2; the current board is the P4X revision documented in the latest user guide.',
+  ],
+};
+
+const functionEvBoardV152ProfileConfig: FunctionEvBoardProfileConfig = {
+  id: 'esp32p4-function-ev-board-v1-5-2',
+  name: 'ESP32-P4-Function-EV-Board v1.5.2',
+  description:
+    'ESP32-P4 legacy multimedia development board with a J1 header block, LCD and camera accessories, Ethernet, USB, audio, and an ESP32-C6-MINI-1 wireless module.',
+  source: functionEvBoardV152Source,
+  baseKeywords: [
+    'board',
+    'esp32-p4',
+    'esp32-p4-function-ev-board',
+    'function-ev-board',
+    'function ev board',
+    'carrier pcb',
+    'j1',
+    'header',
+    'legacy',
+    'eol',
+    'v1.5.2',
+    'esp32-c6-mini-1',
+    'multimedia',
+  ],
+  identificationNotes: [
+    'Choose this profile by the ESP32-P4-Function-EV-Board v1.5.2 carrier PCB, the ESP32-C6-MINI-1 wireless module, the J1 header block, and the LCD/camera accessory layout shown in the official board photos.',
+    'This is the legacy EOL reference; the newer ESP32-P4X-Function-EV-Board is documented separately for chip revision v3.x and later.',
+  ],
+};
+
+function buildFunctionEvBoardPin(
+  input: FunctionEvBoardPinInput,
+  resolveSourcePinByGpio: BoardSourcePinResolver,
+  profile: FunctionEvBoardProfileConfig,
+): SocPin {
   const sourcePin = input.gpio !== undefined ? resolveSourcePinByGpio(input.gpio) : undefined;
   const displayNumber = `J1-${input.number}`;
   const boardGroup = input.row === 'upper' ? 'J1 upper row' : 'J1 lower row';
 
   return makeBoardPin({
-    id: `esp32p4x-function-ev-board-j1-${input.number}`,
+    id: `${profile.id}-j1-${input.number}`,
     number: input.number,
     displayNumber,
     label: input.label,
@@ -98,21 +221,10 @@ function buildFunctionEvBoardPin(input: FunctionEvBoardPinInput, resolveSourcePi
     position: { side: input.row === 'upper' ? 'top' : 'bottom', order: input.row === 'upper' ? input.number : input.number - 20 },
     mainFunctions: input.mainFunctions,
     sourcePin,
-    note: `${displayNumber} on the ESP32-P4X-Function-EV-Board J1 header block, silkscreen label ${input.label}.`,
+    note: `${displayNumber} on the ${profile.name} J1 header block, silkscreen label ${input.label}.`,
     notes: input.notes,
     warnings: input.warnings,
-    baseKeywords: [
-      'board',
-      'esp32-p4',
-      'esp32-p4x',
-      'function-ev-board',
-      'function ev board',
-      'carrier pcb',
-      'j1',
-      'header',
-      'esp32-c6-mini-1',
-      'multimedia',
-    ],
+    baseKeywords: profile.baseKeywords,
     keywords: input.keywords,
   });
 }
@@ -213,37 +325,46 @@ const functionEvBoardPins: FunctionEvBoardPinInput[] = [
   },
 ];
 
-export function createEsp32p4FunctionEvBoardProfile(resolveSourcePinByGpio: BoardSourcePinResolver): SocPackageVariant {
+const functionEvBoardSpecs: SocBoardSpecs = {
+  power: [
+    'Power can be supplied through any USB 2.0 Type-C Port, USB Full-speed Port, or USB Serial/JTAG Port, depending on the attached cable and accessory setup.',
+    'The board uses a 5 V to 3.3 V LDO plus a buck converter; the J1 header exposes 3V3 and 5V rails for accessory wiring.',
+  ],
+  programming: [
+    'Use the USB Serial/JTAG Port to flash firmware to the ESP32-P4 chip and perform JTAG debugging.',
+    'Use the ESP32-C6 Module Programming Connector with ESP-Prog or another UART tool when you need to flash the wireless module separately.',
+    'Press Boot while resetting the board to enter firmware download mode.',
+  ],
+  onBoardHardware: [
+    'ESP32-C6-MINI-1 wireless module, ESP32-C6 module programming connector, microphone, ES8311 audio codec, speaker output port, NS4150B audio PA chip, Ethernet PHY IC, RJ45 Ethernet port, USB Full-speed Port, USB Serial/JTAG Port, USB 2.0 Type-C Port, USB 2.0 Type-A Port, power switch, BOOT button, Reset button, 5 V power-on LED, MIPI CSI connector, MIPI DSI connector, SPI flash, MicroSD card slot, and the LCD and camera accessory boards.',
+  ],
+};
+
+function createFunctionEvBoardProfile(
+  profile: FunctionEvBoardProfileConfig,
+  resolveSourcePinByGpio: BoardSourcePinResolver,
+): SocPackageVariant {
   return {
-    id: 'esp32p4x-function-ev-board',
-    name: 'ESP32-P4X-Function-EV-Board',
+    id: profile.id,
+    name: profile.name,
     packageName: 'J1 header block',
-    description:
-      'ESP32-P4 multimedia development board with a J1 header block, LCD and camera accessories, Ethernet, USB, audio, and an ESP32-C6-MINI-1 wireless module.',
+    description: profile.description,
     kind: 'board',
     boardLayout: 'connector-groups',
     boardArtwork: 'p4-function-ev',
-    source: functionEvBoardSource,
-    boardSpecs: {
-      power: [
-        'Power can be supplied through any USB 2.0 Type-C Port, USB Full-speed Port, or USB Serial/JTAG Port, depending on the attached cable and accessory setup.',
-        'The board uses a 5 V to 3.3 V LDO plus a buck converter; the J1 header exposes 3V3 and 5V rails for accessory wiring.',
-      ],
-      programming: [
-        'Use the USB Serial/JTAG Port to flash firmware to the ESP32-P4 chip and perform JTAG debugging.',
-        'Use the ESP32-C6 Module Programming Connector with ESP-Prog or another UART tool when you need to flash the wireless module separately.',
-        'Press Boot while resetting the board to enter firmware download mode.',
-      ],
-      onBoardHardware: [
-        'ESP32-C6-MINI-1 wireless module, ESP32-C6 module programming connector, microphone, ES8311 audio codec, speaker output port, NS4150B audio PA chip, Ethernet PHY IC, RJ45 Ethernet port, USB Full-speed Port, USB Serial/JTAG Port, USB 2.0 Type-C Port, USB 2.0 Type-A Port, power switch, BOOT button, Reset button, 5 V power-on LED, MIPI CSI connector, MIPI DSI connector, SPI flash, MicroSD card slot, and the LCD and camera accessory boards.',
-      ],
-    },
+    source: profile.source,
+    boardSpecs: functionEvBoardSpecs,
     moduleNames: ['ESP32-C6-MINI-1'],
     moduleVariants: esp32p4ModuleVariants,
-    identificationNotes: [
-      'Choose this profile by the ESP32-P4X-Function-EV-Board carrier PCB, the ESP32-C6-MINI-1 wireless module, the J1 header block, and the LCD/camera accessory layout shown in the official front and assembled-board photos.',
-      'Do not confuse it with the older ESP32-P4-Function-EV-Board v1.5.2; the current board is the P4X revision documented in the latest user guide.',
-    ],
-    pins: functionEvBoardPins.map((input) => buildFunctionEvBoardPin(input, resolveSourcePinByGpio)),
+    identificationNotes: profile.identificationNotes,
+    pins: functionEvBoardPins.map((input) => buildFunctionEvBoardPin(input, resolveSourcePinByGpio, profile)),
   };
+}
+
+export function createEsp32p4FunctionEvBoardProfile(resolveSourcePinByGpio: BoardSourcePinResolver): SocPackageVariant {
+  return createFunctionEvBoardProfile(functionEvBoardProfileConfig, resolveSourcePinByGpio);
+}
+
+export function createEsp32p4FunctionEvBoardV152Profile(resolveSourcePinByGpio: BoardSourcePinResolver): SocPackageVariant {
+  return createFunctionEvBoardProfile(functionEvBoardV152ProfileConfig, resolveSourcePinByGpio);
 }

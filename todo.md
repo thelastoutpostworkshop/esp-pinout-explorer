@@ -226,12 +226,12 @@ Source baseline:
   - [x] Board profile: ESP32-P4X-EYE
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4x-eye/user_guide.html
     - Note: active vision board implemented as a connector-group profile from the official female header layout, component descriptions, and board photos. The board includes an ESP32-C6-MINI-1U wireless module, camera, display, microphone, MicroSD, USB 2.0 High-Speed device/debug ports, battery connector, and 2 x 10P female header.
+  - [x] Board profile: ESP32-P4-Function-EV-Board v1.5.2
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-function-ev-board/user_guide.html
+    - Note: EOL multimedia board implemented as a connector-group profile from the official J1 header block tables, component descriptions, and board photos. The board includes an ESP32-C6-MINI-1 wireless module, 7-inch display, MIPI CSI camera, USB, audio, Ethernet, and strong maker warnings for on-board hardware and power-domain constraints.
   - [x] Board profile: ESP32-P4-EYE
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-eye/user_guide.html
     - Note: EOL vision board implemented as a connector-group profile from the official female header layout, component descriptions, and board photos. The board includes an ESP32-C6-MINI-1U wireless module, camera, display, microphone, MicroSD, USB 2.0 High-Speed device/debug ports, battery connector, and 2 x 10P female header.
-  - [ ] Board profile: ESP32-P4-Function-EV-Board v1.5.2
-    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-function-ev-board/user_guide.html
-    - Note: EOL board. Add only after active P4X boards unless a user needs legacy hardware. It is still valuable because the guide documents header breakout and on-board ESP32-C6-MINI-1 connectivity.
   - Note: ESP32-P4 board profiles are peripheral-heavy. Prefer a connector/peripheral allocation layout over forcing every board into the simple dual-header drawing.
 - [ ] ESP32-P4 module profiles
   - Source: https://www.espressif.com/en/products/modules

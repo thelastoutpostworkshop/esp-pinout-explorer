@@ -73,6 +73,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32h2:esp32h2-devkitm-1': 30,
   'esp32p4:default': 0,
   'esp32p4:esp32p4x-function-ev-board': 40,
+  'esp32p4:esp32p4-function-ev-board-v1-5-2': 40,
   'esp32p4:esp32p4x-eye': 20,
   'esp32p4:esp32p4-eye': 20,
   'esp8266ex:esp8266ex-qfn32': 33,
@@ -407,6 +408,20 @@ describe('SoC data invariants', () => {
 
   it('keeps ESP32-P4X-Function-EV-Board as a 40-pin J1 connector-group board', () => {
     const profile = allProfiles().find((item) => item.id === 'esp32p4x-function-ev-board');
+    const upperPins = profile?.pins.filter((pin) => pin.position.side === 'top') ?? [];
+    const lowerPins = profile?.pins.filter((pin) => pin.position.side === 'bottom') ?? [];
+
+    expect(profile?.boardLayout).toBe('connector-groups');
+    expect(upperPins).toHaveLength(20);
+    expect(lowerPins).toHaveLength(20);
+    expect(upperPins.every((pin) => pin.boardHeader === 'J1')).toBe(true);
+    expect(lowerPins.every((pin) => pin.boardHeader === 'J1')).toBe(true);
+    expect(upperPins.map((pin) => pin.number).sort((a, b) => a - b)).toEqual(range(1, 20));
+    expect(lowerPins.map((pin) => pin.number).sort((a, b) => a - b)).toEqual(range(21, 40));
+  });
+
+  it('keeps ESP32-P4-Function-EV-Board v1.5.2 as a 40-pin J1 connector-group board', () => {
+    const profile = allProfiles().find((item) => item.id === 'esp32p4-function-ev-board-v1-5-2');
     const upperPins = profile?.pins.filter((pin) => pin.position.side === 'top') ?? [];
     const lowerPins = profile?.pins.filter((pin) => pin.position.side === 'bottom') ?? [];
 
