@@ -310,9 +310,9 @@ Source baseline:
   - [x] Board profile: ESP-WROVER-KIT v4.1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp-wrover-kit/user_guide.html
     - Note: specialized board with ESP32-WROVER-E, camera, LCD, RGB LED, flash/JTAG jumpers, and shared JP1 allocations. Implemented as a connector-group board profile from the official JP1, JP2, JP4, and U5 tables.
-  - [ ] Board profile: ESP32-Ethernet-Kit
-    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-ethernet-kit/index.html
-    - Note: specialized Ethernet board. Use only official user guide/schematic allocation data; Ethernet PHY pins should be maker warnings.
+  - [x] Board profile: ESP32-Ethernet-Kit v1.2
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-ethernet-kit/user_guide.html
+    - Note: active Espressif board. Implemented as a dual-header board profile from the official GPIO Header 1/2 tables, with Ethernet PHY, FT2232H, and PoE board notes surfaced in board specs.
   - [ ] Board profile: ESP32-LCDKit
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-lcdkit/index.html
     - Note: specialized HMI board with ESP32-DevKitC at its core. Lower priority than direct header-style boards.
