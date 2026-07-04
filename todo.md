@@ -167,7 +167,7 @@ Source baseline:
   - Source: https://www.espressif.com/en/products/devkits
   - [ ] Board profile: ESP32-H4-DevKitC-1
     - Product table: ESP32-H4-WROOM-1 board, 8 MB flash + 2 MB PSRAM, I/O, USB, buttons, LEDs.
-  - Blocked as of 2026-06-29: the dev-kit product table lists the board, but no public official user guide, header tables, pin layout, or schematic source was found. Do not implement from the product table alone.
+  - Blocked as of 2026-07-04: the public dev-kits page lists the board card, but the User Guide field is blank and no public official user guide, header tables, pin layout, or schematic source was found. Do not implement from the product page alone.
 - [ ] ESP32-H21 chip package profiles
   - Source: https://www.espressif.com/en/products/socs/esp32-h21
   - [ ] Chip package profile: ESP32-H21 QFN, 4 x 4 mm
