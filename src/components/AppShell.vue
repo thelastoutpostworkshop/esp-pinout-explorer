@@ -19,7 +19,7 @@
           <span class="app-shell__title">ESP Pinout Explorer</span>
           <span class="app-shell__version">v{{ appVersion }}</span>
         </span>
-        <span class="app-shell__subtitle">Your atlas for ESP chips, modules, and boards.</span>
+        <span class="app-shell__subtitle">Your atlas for ESP boards and chips.</span>
       </v-app-bar-title>
     </div>
     <ProfileNavigator class="app-shell__navigator" />
