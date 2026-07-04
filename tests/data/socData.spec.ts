@@ -74,6 +74,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32p4:default': 0,
   'esp32p4:esp32p4x-function-ev-board': 40,
   'esp32p4:esp32p4x-eye': 20,
+  'esp32p4:esp32p4-eye': 20,
   'esp8266ex:esp8266ex-qfn32': 33,
   'esp8266ex:esp-wroom-02d': 19,
   'esp8266ex:esp-wroom-02u': 19,
@@ -420,6 +421,44 @@ describe('SoC data invariants', () => {
 
   it('keeps ESP32-P4X-EYE as a 20-pin female-header connector-group board', () => {
     const profile = allProfiles().find((item) => item.id === 'esp32p4x-eye');
+    const leftPins = profile?.pins.filter((pin) => pin.position.side === 'left') ?? [];
+    const rightPins = profile?.pins.filter((pin) => pin.position.side === 'right') ?? [];
+
+    expect(profile?.boardLayout).toBe('connector-groups');
+    expect(leftPins).toHaveLength(10);
+    expect(rightPins).toHaveLength(10);
+    expect(leftPins.every((pin) => pin.boardHeader === 'Female Header')).toBe(true);
+    expect(rightPins.every((pin) => pin.boardHeader === 'Female Header')).toBe(true);
+    expect(leftPins.map((pin) => pin.boardLabel)).toEqual([
+      'VCC_5V',
+      'NC',
+      'GPIO10',
+      'GPIO8',
+      'GPIO6',
+      'GND',
+      'GPIO54',
+      'GPIO53',
+      'GPIO51',
+      'GPIO38',
+    ]);
+    expect(rightPins.map((pin) => pin.boardLabel)).toEqual([
+      'GND',
+      'GND',
+      'GPIO34',
+      'GPIO7',
+      'I2C_SDA',
+      'I2C_SCL',
+      'GND',
+      'GPIO52',
+      'GPIO50',
+      'GPIO37',
+    ]);
+    expect(rightPins[4].warnings).toEqual(expect.arrayContaining(['onboard']));
+    expect(rightPins[5].warnings).toEqual(expect.arrayContaining(['onboard']));
+  });
+
+  it('keeps ESP32-P4-EYE as a 20-pin female-header connector-group board', () => {
+    const profile = allProfiles().find((item) => item.id === 'esp32p4-eye');
     const leftPins = profile?.pins.filter((pin) => pin.position.side === 'left') ?? [];
     const rightPins = profile?.pins.filter((pin) => pin.position.side === 'right') ?? [];
 

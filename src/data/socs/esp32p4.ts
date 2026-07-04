@@ -30,7 +30,8 @@ export const esp32p4: SocDefinition = {
     rom: 'Boot ROM and low-power subsystem ROM.',
   },
   packageName: 'QFN104 package placeholder',
-  description: 'ESP32-P4 board-family scaffold with the ESP32-P4X-Function-EV-Board and ESP32-P4X-EYE profiles implemented from official board documentation.',
+  description:
+    'ESP32-P4 board-family with the ESP32-P4X-Function-EV-Board, ESP32-P4X-EYE, and legacy ESP32-P4-EYE profiles implemented from official board documentation.',
   source,
   pins: [],
   boardProfiles: createEsp32p4BoardProfiles(findP4PinByGpio),

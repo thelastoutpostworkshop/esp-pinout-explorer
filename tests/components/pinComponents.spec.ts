@@ -279,6 +279,37 @@ describe('BoardSvg', () => {
     );
   });
 
+  it('renders the ESP32-P4-EYE connector-group board with eye artwork', () => {
+    const boardProfile = esp32p4.boardProfiles?.find((profile) => profile.id === 'esp32p4-eye');
+    expect(boardProfile).toBeDefined();
+    const pins = boardProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        boardArtwork: boardProfile?.boardArtwork,
+        boardLayout: boardProfile?.boardLayout,
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: boardProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        soc: esp32p4,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(wrapper.attributes('aria-label')).toContain('20 of 20 connector pins shown');
+    expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+    expect(wrapper.text()).toContain('USB 2.0');
+    expect(wrapper.text()).toContain('DEBUG');
+    expect(wrapper.text()).toContain('CAMERA');
+    expect(wrapper.text()).toContain('LCD');
+    expect(wrapper.text()).toContain('USB / SD / PWR');
+    expectNoOverlappingRects(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
+    );
+  });
+
   it('renders the ESP32-S3 USB-Bridge connector profile with bridge artwork', async () => {
     const usbBridgeProfile = esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-usb-bridge');
     expect(usbBridgeProfile).toBeDefined();
@@ -666,10 +697,12 @@ describe('ExplorerSidebar', () => {
     expect((profileAutocomplete.props('items') as Array<{ id: string }>).map((item) => item.id)).toEqual([
       'esp32p4x-function-ev-board',
       'esp32p4x-eye',
+      'esp32p4-eye',
     ]);
     expect(wrapper.text()).toContain('Dev boards');
     expect(wrapper.text()).toContain('ESP32-P4X-Function-EV-Board');
     expect(wrapper.text()).toContain('ESP32-P4X-EYE');
+    expect(wrapper.text()).toContain('ESP32-P4-EYE');
   });
 
   it('shows resource links and opens maker tools', async () => {
