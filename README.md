@@ -14,6 +14,7 @@ Current profiles:
 | --- | --- | --- | --- | --- |
 | ESP32 | ESP32-DevKitC V4 | Board headers | WROOM/WROVER/SOLO module identity | [ESP32-DevKitC V4 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html) |
 | ESP32 | ESP32-DevKitM-1 | Board headers | MINI module identity | [ESP32-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitm-1/user_guide.html) |
+| ESP32 | ESP-WROVER-KIT v4.1 | Connector groups | WROVER-E module identity, camera/LCD/RGB/flash/JTAG allocations | [ESP-WROVER-KIT v4.1 Getting Started Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp-wrover-kit/user_guide.html) |
 | ESP32 | ESP32-PICO-KIT v4/v4.1 | Board headers | PICO-D4 module identity, USB-to-UART bridge, dual 20-pad headers | [ESP32-PICO-KIT v4/v4.1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit/user_guide.html) |
 | ESP32 | ESP32-PICO-KIT-1 | Board headers | PICO-V3 module identity, USB-to-UART bridge, dual 18-pin headers | [ESP32-PICO-KIT-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit-1/user_guide.html) |
 | ESP32 | ESP32-PICO-DevKitM-2 | Board headers | PICO-MINI module identity | [ESP32-PICO-DevKitM-2 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-devkitm-2/user_guide.html) |

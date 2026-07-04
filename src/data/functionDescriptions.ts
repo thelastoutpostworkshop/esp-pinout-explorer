@@ -48,11 +48,13 @@ const exactDescriptions: Record<string, string> = {
   HSPICS: 'ESP8266 HSPI chip-select signal for the secondary SPI interface.',
   'Internal 1.1 V RTC power': 'Internal RTC-domain supply or no-connect style pin. Follow the official reference design instead of using it as GPIO.',
   LCD_BL: 'LCD backlight control signal on the development board.',
+  LCD_CS: 'LCD chip-select signal on the development board.',
   LCD_DC: 'LCD data/command select signal on the development board.',
   LCD_EN: 'LCD enable signal on the development board.',
   LCD_RET: 'LCD reset signal on the development board.',
   LCD_SCLK: 'LCD SPI clock signal on the development board.',
   LCD_SDA: 'LCD SPI MOSI/data signal on the development board.',
+  LCD_SDO: 'LCD SPI MISO/data-out signal on the development board.',
   LED_GREEN: 'On-board green LED signal.',
   LED_YELLOW: 'On-board yellow LED signal.',
   LIMIT_EN: 'Current-limiting circuit enable signal on the development board.',
@@ -69,6 +71,7 @@ const exactDescriptions: Record<string, string> = {
   RESET_TO_TARGET: 'Reset signal driven from the bridge board to the externally connected target chip.',
   RES12K: 'Bias/reference pin that must be connected through the datasheet-specified resistor to ground.',
   Reset: 'Board reset function connected to the module enable/reset signal.',
+  TRST_N: 'Active-low JTAG target reset signal.',
   'RGB LED': 'Addressable RGB LED on the development board. Using this GPIO can also affect the on-board LED.',
   '0VER_CURRENT': 'Current overrun signal on the development board. The official guide labels it with a leading zero.',
   SD_D1: 'SD card data 1 signal on the development board.',
@@ -115,6 +118,16 @@ const exactDescriptions: Record<string, string> = {
   ZCD1: 'Zero-cross or voltage-detection analog input channel.',
   '32K_XP': '32.768 kHz crystal oscillator positive pin. Used for an optional low-power timing crystal.',
   '32K_XN': '32.768 kHz crystal oscillator negative pin. Used for an optional low-power timing crystal.',
+  SIO_C: 'Camera SCCB clock signal.',
+  SIO_D: 'Camera SCCB data signal.',
+  CAM_SCCB_CLK: 'Camera SCCB clock signal.',
+  CAM_SCCB_DAT: 'Camera SCCB data signal.',
+  CAM_VSYNC: 'Camera vertical sync signal.',
+  CAM_HREF: 'Camera horizontal reference signal.',
+  CAM_PCLK: 'Camera pixel clock signal.',
+  CAM_XCLK: 'Camera system clock signal.',
+  CAM_RESET: 'Camera reset control signal.',
+  CAM_PWDN: 'Camera power-down control signal.',
 };
 
 const phraseDescriptions: Array<[RegExp, string]> = [
@@ -132,6 +145,7 @@ const phraseDescriptions: Array<[RegExp, string]> = [
   [/^rf .*input\/output$/i, 'Dedicated RF analog input/output connection for the radio path, not a general GPIO.'],
   [/^main crystal .*clock input\/output$/i, 'Main crystal oscillator connection used by the chip clock circuit.'],
   [/^32 kHz crystal/i, 'Optional 32 kHz crystal oscillator connection for low-power timing.'],
+  [/^CAM_D[0-7]$/i, 'Camera pixel data bus bit signal.'],
 ];
 
 export function getFunctionDescription(name: string): string | null {

@@ -307,9 +307,9 @@ Source baseline:
   - [x] Board profile: ESP32-PICO-KIT-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit-1/user_guide.html
     - Note: active Espressif board based on ESP32-PICO-V3. Implemented from the official J2/J3 header tables and pin layout; the guide also documents the USB-to-UART bridge, power options, and male-header default assembly.
-  - [ ] Board profile: ESP-WROVER-KIT v4.1
+  - [x] Board profile: ESP-WROVER-KIT v4.1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp-wrover-kit/user_guide.html
-    - Note: specialized board with ESP32-WROVER-E, LCD, and microSD. Treat as a GPIO-allocation/peripheral board profile rather than a simple maker header.
+    - Note: specialized board with ESP32-WROVER-E, camera, LCD, RGB LED, flash/JTAG jumpers, and shared JP1 allocations. Implemented as a connector-group board profile from the official JP1, JP2, JP4, and U5 tables.
   - [ ] Board profile: ESP32-Ethernet-Kit
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-ethernet-kit/index.html
     - Note: specialized Ethernet board. Use only official user guide/schematic allocation data; Ethernet PHY pins should be maker warnings.
