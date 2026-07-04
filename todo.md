@@ -183,7 +183,7 @@ Source baseline:
   - Source: https://www.espressif.com/en/products/modules
   - [ ] Board profile: ESP32-H21-DevKitM-1
     - Product table: paired with ESP32-H21-MINI-1.
-  - Note: the module product table lists this dev board pairing, but confirm the official user guide, header tables, pin layout, or schematics before implementation.
+  - Blocked as of 2026-07-04: the module product table lists the pairing, but Espressif does not currently publish a public H21 dev-kits board card, user guide, header tables, pin layout, or schematic source. Do not infer the header mapping from ESP32-H2-DevKitM-1.
 - [x] ESP32-H2 chip package profiles
   - Source: https://documentation.espressif.com/esp32-h2_datasheet_en.html
   - [x] Chip package profile: ESP32-H2 QFN32, 4 x 4 mm
