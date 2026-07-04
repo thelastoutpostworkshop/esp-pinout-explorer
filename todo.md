@@ -313,9 +313,9 @@ Source baseline:
   - [x] Board profile: ESP32-Ethernet-Kit v1.2
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-ethernet-kit/user_guide.html
     - Note: active Espressif board. Implemented as a dual-header board profile from the official GPIO Header 1/2 tables, with Ethernet PHY, FT2232H, and PoE board notes surfaced in board specs.
-  - [ ] Board profile: ESP32-LCDKit
+  - [x] Board profile: ESP32-LCDKit
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-lcdkit/index.html
-    - Note: specialized HMI board with ESP32-DevKitC at its core. Lower priority than direct header-style boards.
+    - Note: specialized HMI carrier board with ESP32-DevKitC at its core. Implemented as a connector-group profile from the official DevKitC connection, display connection, and SD-card module schematics.
 
 ### ESP8266 Series
 

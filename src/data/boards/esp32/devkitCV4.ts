@@ -11,7 +11,7 @@ function warnings(...items: PinWarning[]): PinWarning[] {
   return items;
 }
 
-const devkitCV4Source: SocSource = {
+export const devkitCV4Source: SocSource = {
   title: 'ESP32-DevKitC V4 User Guide',
   version: 'latest',
   publisher: 'Espressif',

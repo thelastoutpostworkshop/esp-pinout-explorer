@@ -54,6 +54,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32:esp32-pico-devkitm-2': 36,
   'esp32:esp32-pico-kit-v4': 40,
   'esp32:esp32-pico-kit-1': 36,
+  'esp32:esp32-lcdkit': 63,
   'esp32s3:esp32s3-qfn56': 57,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
   'esp32s3:esp32s3-devkitm-1': 44,
