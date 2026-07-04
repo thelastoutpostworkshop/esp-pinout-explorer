@@ -13,10 +13,11 @@
       @update:model-value="selectSoc"
     />
 
-    <v-select
+    <v-autocomplete
       v-if="selectableProfileOptions.length > 1"
       :model-value="store.selectedPackageId"
       class="profile-navigator__select profile-navigator__select--profile"
+      :custom-filter="filterProfile"
       density="compact"
       hide-details
       item-title="name"
@@ -38,7 +39,7 @@
           :title="item.name"
         />
       </template>
-    </v-select>
+    </v-autocomplete>
 
     <button
       class="profile-navigator__info-button"
@@ -129,6 +130,34 @@ function profileVariantSummary(profile: SocPackageVariant) {
   return `${variantNames.length === 1 ? 'Variant' : 'Variants'}: ${variantNames.join(' / ')}`;
 }
 
+function filterProfile(_value: string, query: string, item?: { raw?: ProfileSelectItem }) {
+  const profile = item?.raw;
+  if (!profile) {
+    return false;
+  }
+
+  const tokens = normalizeSearch(query).split(/\s+/).filter(Boolean);
+  if (!tokens.length) {
+    return true;
+  }
+
+  const searchableText = normalizeSearch(
+    [
+      profile.name,
+      profile.packageName,
+      profile.description,
+      profile.groupLabel,
+      ...(profile.moduleNames ?? []),
+      ...(profile.moduleVariants ?? []).flatMap(moduleVariantSearchValues),
+      ...(profile.identificationNotes ?? []),
+    ]
+      .filter(Boolean)
+      .join(' '),
+  );
+
+  return tokens.every((token) => searchableText.includes(token));
+}
+
 function moduleVariantSearchValues(variant: SocModuleVariant) {
   return [
     variant.name,
@@ -140,6 +169,10 @@ function moduleVariantSearchValues(variant: SocModuleVariant) {
     variant.pinoutImpact,
     variant.source?.title,
   ];
+}
+
+function normalizeSearch(value: string) {
+  return value.toLowerCase().replace(/[_/+-]/g, ' ');
 }
 
 function compactVariantName(name: string) {

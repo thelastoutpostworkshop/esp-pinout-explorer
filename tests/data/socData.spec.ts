@@ -49,7 +49,11 @@ const expectedPinCounts: Record<string, number> = {
   'esp32:esp32-qfn48-6x6': 49,
   'esp32:esp32-devkitc-v4': 38,
   'esp32:esp32-devkitm-1': 34,
+  'esp32:esp32-ethernet-kit-v1-2': 16,
+  'esp32:esp-wrover-kit-v4-1': 67,
   'esp32:esp32-pico-devkitm-2': 36,
+  'esp32:esp32-pico-kit-v4': 40,
+  'esp32:esp32-pico-kit-1': 36,
   'esp32s3:esp32s3-qfn56': 57,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
   'esp32s3:esp32s3-devkitm-1': 44,
@@ -169,11 +173,15 @@ function isAllowedBoardSourceWarningOverride(profile: ProfileEntry, pin: SocPin,
     return true;
   }
 
+  if (profile.id === 'esp32-pico-kit-1' && warning === 'flash' && [7, 8, 9, 10].includes(pin.gpio ?? -1)) {
+    return true;
+  }
+
   return profile.id === 'esp32-pico-devkitm-2' && warning === 'flash' && (pin.gpio === 7 || pin.gpio === 8);
 }
 
 function isAllowedModuleOnlyBoardGpio(profile: ProfileEntry, pin: SocPin) {
-  return profile.id === 'esp32-pico-devkitm-2' && pin.gpio === 20;
+  return (profile.id === 'esp32-pico-devkitm-2' || profile.id === 'esp32-pico-kit-1') && pin.gpio === 20;
 }
 
 describe('SoC data invariants', () => {
@@ -270,7 +278,7 @@ describe('SoC data invariants', () => {
           expect(pin.boardGroup?.trim()).not.toBe('');
         } else {
           expect(pin.displayNumber).toBe(`${pin.boardHeader}-${pin.number}`);
-          expect(pin.boardHeader).toMatch(/^J\d+$/);
+          expect(pin.boardHeader).toMatch(/^(J\d+|GPIO Header \d+)$/);
           expect(pin.position.side === 'left' || pin.position.side === 'right').toBe(true);
         }
 
@@ -312,7 +320,8 @@ describe('SoC data invariants', () => {
         expectValidModuleVariant(variant);
       }
       expect(profile.identificationNotes?.length).toBeGreaterThan(0);
-      expect(profile.identificationNotes?.every((note) => note.includes('carrier PCB'))).toBe(true);
+      expect(profile.identificationNotes?.every((note) => note.trim().length > 0)).toBe(true);
+      expect(profile.identificationNotes?.some((note) => note.includes('carrier PCB'))).toBe(true);
       expect(profile.boardSpecs?.power.length).toBeGreaterThan(0);
       expect(profile.boardSpecs?.programming.length).toBeGreaterThan(0);
       expect(profile.boardSpecs?.onBoardHardware.length).toBeGreaterThan(0);

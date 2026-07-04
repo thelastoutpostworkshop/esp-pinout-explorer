@@ -1,5 +1,6 @@
 import { makeBoardPin, type BoardSourcePinResolver } from '@/data/boards/helpers';
-import type { PinType, PinWarning, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
+import { wroverESource } from '@/data/boards/esp32/moduleSources';
+import type { PinType, PinWarning, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const functionSwitchNote =
   'When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.';
@@ -97,6 +98,18 @@ const ethernetKitSource: SocSource = {
   ],
 };
 
+const ethernetKitModuleVariants: SocModuleVariant[] = [
+  {
+    name: 'ESP32-WROVER-E',
+    antenna: 'PCB antenna',
+    flash: '4 MB / 8 MB / 16 MB SPI flash variants',
+    psram: '64-Mbit PSRAM',
+    footprint: '18.0 x 31.4 mm module',
+    pinoutImpact: 'Same Ethernet-Kit v1.2 header profile. GPIO16 and GPIO17 are reserved by module PSRAM and are unavailable on the stock board.',
+    source: wroverESource,
+  },
+];
+
 interface EthernetKitHeaderPinInput {
   header: 'GPIO Header 1' | 'GPIO Header 2';
   number: number;
@@ -161,6 +174,7 @@ export function createEsp32EthernetKitV12Profile(resolveSourcePinByGpio: BoardSo
       ],
     },
     moduleNames: ['ESP32-WROVER-E'],
+    moduleVariants: ethernetKitModuleVariants,
     identificationNotes: [
       'Choose this profile by the Ethernet board A carrier PCB, the GPIO Header 1 and GPIO Header 2 labels, and the FT2232H / IP101GRI layout.',
       'The board A can operate without the PoE board B installed; the PoE board only adds an alternate power path.',

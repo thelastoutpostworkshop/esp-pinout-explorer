@@ -1,5 +1,6 @@
 import { boardPinName, makeBoardPin, type BoardSourcePinResolver } from '@/data/boards/helpers';
-import type { PinType, PinWarning, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
+import { picoD4Source } from '@/data/boards/esp32/moduleSources';
+import type { PinType, PinWarning, SocModuleVariant, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const inputOnlyCaution =
   'Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors.';
@@ -69,6 +70,18 @@ const picoKit1Source: SocSource = {
     },
   ],
 };
+
+const picoKit1ModuleVariants: SocModuleVariant[] = [
+  {
+    name: 'ESP32-PICO-V3',
+    antenna: 'Board-level antenna matching network on the carrier PCB',
+    flash: '8 MB embedded flash',
+    psram: 'No PSRAM',
+    footprint: '7.0 x 7.0 mm SiP',
+    pinoutImpact: 'Same PICO-KIT-1 header profile. GPIO20 is exposed by ESP32-PICO-V3 and is not present on the bare ESP32 QFN48 profile.',
+    source: picoD4Source,
+  },
+];
 
 interface PicoKit1HeaderPinInput {
   header: 'J2' | 'J3';
@@ -159,6 +172,7 @@ export function createEsp32PicoKit1Profile(resolveSourcePinByGpio: BoardSourcePi
       onBoardHardware: ['Boot button, EN button, 5 V power LED, CP2102N USB-to-UART bridge, and Micro-USB connector.'],
     },
     moduleNames: ['ESP32-PICO-V3'],
+    moduleVariants: picoKit1ModuleVariants,
     identificationNotes: [
       'The board core is ESP32-PICO-V3. Choose this profile by the ESP32-PICO-KIT-1 carrier PCB and J2/J3 header layout.',
       'ESP32-PICO-KIT-1 comes with male headers by default.',

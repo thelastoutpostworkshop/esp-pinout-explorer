@@ -30,6 +30,36 @@ const wroverKitSource: SocSource = {
     'Start Application Development',
     'Related Documents',
   ],
+  figures: [
+    {
+      title: 'Functional block diagram',
+      kind: 'block-diagram',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/_images/esp-wrover-kit-block-diagram.png',
+      alt: 'ESP-WROVER-KIT block diagram',
+      sourceSection: 'Functionality Overview',
+    },
+    {
+      title: 'Front component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/_images/esp-wrover-kit-v4.1-layout-front.png',
+      alt: 'ESP-WROVER-KIT v4.1 front layout',
+      sourceSection: 'Functional Description',
+    },
+    {
+      title: 'Back component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/_images/esp-wrover-kit-v4.1-layout-back.png',
+      alt: 'ESP-WROVER-KIT v4.1 back layout',
+      sourceSection: 'Functional Description',
+    },
+    {
+      title: 'JTAG jumper configuration',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/_images/esp-wrover-kit-v4.1-jp2-jtag.jpg',
+      alt: 'ESP-WROVER-KIT v4.1 JP2 JTAG jumper configuration',
+      sourceSection: 'Setup Options',
+    },
+  ],
 };
 
 const wroverKitModuleVariants: SocModuleVariant[] = [

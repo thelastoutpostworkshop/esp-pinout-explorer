@@ -67,7 +67,7 @@ export function makeBoardPin(input: BoardPinInput): SocPin {
     boardLabel: input.label,
     boardGroup: input.boardGroup,
     position: input.position,
-    mainFunctions: input.mainFunctions,
+    mainFunctions: uniqueValues([boardGpioLabel(input.gpio), ...input.mainFunctions].filter(Boolean)),
     ioMux: input.sourcePin?.ioMux,
     rtc: input.sourcePin?.rtc,
     analog: input.sourcePin?.analog,
