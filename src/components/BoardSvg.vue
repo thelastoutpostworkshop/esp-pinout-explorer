@@ -595,6 +595,13 @@ const connectorComponentBadges = computed(() => {
         componentBadge(248, 278, 92, 44, 'DIAL', 'connector'),
         componentBadge(352, 460, 256, 34, '5V LDO / HEADERS', 'power'),
       ];
+    case 'p4-function-ev':
+      return [
+        componentBadge(624, 190, 92, 44, 'AUDIO', 'sd'),
+        componentBadge(250, 278, 104, 44, 'BOOT/RST', 'buttons'),
+        componentBadge(624, 438, 96, 44, 'LCD/CAM', 'lcd'),
+        componentBadge(340, 460, 282, 34, 'USB / ETH / PWR', 'power'),
+      ];
     default:
       return [
         componentBadge(624, 190, 64, 44, 'LCD', 'lcd'),

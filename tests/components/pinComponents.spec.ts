@@ -613,6 +613,31 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).not.toContain('Module pads for PCB design, not dev-board headers.');
   });
 
+  it('shows the board profile selector even when only one board profile exists', async () => {
+    const store = useSocStore();
+    store.selectSoc('esp32p4');
+
+    const wrapper = mount(
+      {
+        components: { ExplorerSidebar },
+        template: '<ExplorerSidebar />',
+      },
+      {
+        global: {
+          stubs: sidebarStubs,
+        },
+      },
+    );
+
+    const profileAutocomplete = wrapper.findComponent({ name: 'VAutocomplete' });
+    expect(profileAutocomplete.exists()).toBe(true);
+    expect((profileAutocomplete.props('items') as Array<{ id: string }>).map((item) => item.id)).toEqual([
+      'esp32p4x-function-ev-board',
+    ]);
+    expect(wrapper.text()).toContain('Dev boards');
+    expect(wrapper.text()).toContain('ESP32-P4X-Function-EV-Board');
+  });
+
   it('shows resource links and opens maker tools', async () => {
     const store = useSocStore();
     const wrapper = mount(ExplorerSidebar, {

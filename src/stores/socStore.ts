@@ -213,14 +213,19 @@ export const useSocStore = defineStore('soc', () => {
 });
 
 function buildPackageOptions(soc: SocDefinition): SocPackageVariant[] {
+  const defaultPackage: SocPackageVariant | null =
+    soc.pins.length > 0
+      ? {
+          id: soc.defaultPackageId ?? 'default',
+          name: packageProfileDisplayName(soc, soc.packageName),
+          packageName: soc.packageName,
+          kind: 'package',
+          pins: soc.pins,
+        }
+      : null;
+
   return [
-    {
-      id: soc.defaultPackageId ?? 'default',
-      name: packageProfileDisplayName(soc, soc.packageName),
-      packageName: soc.packageName,
-      kind: 'package',
-      pins: soc.pins,
-    },
+    ...(defaultPackage ? [defaultPackage] : []),
     ...(soc.packageVariants ?? []).map((profile) => normalizeProfileOption(soc, profile)),
     ...(soc.boardProfiles ?? []),
   ];

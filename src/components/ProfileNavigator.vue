@@ -14,7 +14,7 @@
     />
 
     <v-autocomplete
-      v-if="selectableProfileOptions.length > 1"
+      v-if="selectableProfileOptions.length > 0"
       :model-value="store.selectedPackageId"
       class="profile-navigator__select profile-navigator__select--profile"
       :custom-filter="filterProfile"

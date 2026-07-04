@@ -220,9 +220,9 @@ Source baseline:
   - Note: large pinout; implement after `ChipSvg.vue` can comfortably handle 100+ package pins with readable labels and mobile behavior. Pay special attention to ESP32-P4 power domains and voltage-sensitive pins.
 - [ ] ESP32-P4 board profiles
   - Source index: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/index.html
-  - [ ] Board profile: ESP32-P4X-Function-EV-Board
+  - [x] Board profile: ESP32-P4X-Function-EV-Board
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4x-function-ev-board/user_guide.html
-    - Note: active multimedia development board. User guide says most I/O pins are broken out to pin headers and the board includes an ESP32-C6-MINI-1 wireless module, 7-inch display, MIPI CSI camera, USB, and rich on-board peripherals. Treat as a board profile with header pins plus strong maker warnings for on-board display, camera, USB, SDIO, audio, C6 host link, and power-domain constraints.
+    - Note: active multimedia development board. Implemented as a connector-group board profile from the official J1 header block tables, component descriptions, and assembled-board/accessory figures. The board includes an ESP32-C6-MINI-1 wireless module, 7-inch display, MIPI CSI camera, USB, audio, Ethernet, and strong maker warnings for on-board hardware and power-domain constraints.
   - [ ] Board profile: ESP32-P4X-EYE
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4x-eye/user_guide.html
     - Note: active vision board based on ESP32-P4 with ESP32-C6-MINI-1U wireless module, camera, display, microphone, MicroSD, USB 2.0 High-Speed device port, debug port, battery connector, and 2 x 10P female header. Treat as a compact board/peripheral allocation profile, not a generic two-header dev board.
