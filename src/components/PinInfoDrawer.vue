@@ -19,6 +19,35 @@
       </v-card-title>
 
       <v-card-text class="pin-info__content">
+        <section
+          v-if="makerDecision"
+          class="pin-info__decision"
+          :class="`pin-info__decision--${makerDecision.tone}`"
+          aria-label="Maker decision summary"
+        >
+          <div class="pin-info__decision-heading">
+            <span class="pin-info__decision-icon" aria-hidden="true">
+              <ShieldCheck v-if="makerDecision.tone === 'good'" :size="18" />
+              <Info v-else-if="makerDecision.tone === 'neutral'" :size="18" />
+              <AlertTriangle v-else :size="18" />
+            </span>
+            <div>
+              <h2>{{ makerDecision.title }}</h2>
+              <p>{{ makerDecision.body }}</p>
+            </div>
+          </div>
+          <ul class="pin-info__decision-reasons">
+            <li
+              v-for="reason in makerDecision.reasons"
+              :key="`${reason.label}-${reason.description}`"
+              :class="`pin-info__decision-reason--${reason.tone}`"
+            >
+              <strong>{{ reason.label }}</strong>
+              <span>{{ reason.description }}</span>
+            </li>
+          </ul>
+        </section>
+
         <div class="pin-info__summary">
           <dl v-for="item in summaryItems" :key="item.label" class="pin-info__stat">
             <span>{{ item.label }}</span>
@@ -188,12 +217,12 @@
 
 <script setup lang="ts">
 import { computed } from 'vue';
-import { AlertTriangle, BookOpen, Info, X } from '@lucide/vue';
+import { AlertTriangle, BookOpen, Info, ShieldCheck, X } from '@lucide/vue';
 import FunctionChip from '@/components/FunctionChip.vue';
 import InfoTooltip from '@/components/InfoTooltip.vue';
 import { getFunctionDescription } from '@/data/functionDescriptions';
 import { getBoardDesignWarnings, getMakerWarnings, getWarningLabel } from '@/data/pinWarnings';
-import type { SocPin, SocSource } from '@/types/soc';
+import type { PinWarning, SocPin, SocSource } from '@/types/soc';
 
 const props = defineProps<{
   pin: SocPin | null;
@@ -203,6 +232,21 @@ const props = defineProps<{
 const emit = defineEmits<{
   close: [];
 }>();
+
+type MakerDecisionTone = 'good' | 'caution' | 'avoid' | 'neutral';
+
+interface MakerDecisionReason {
+  label: string;
+  description: string;
+  tone: MakerDecisionTone;
+}
+
+interface MakerDecision {
+  title: string;
+  body: string;
+  tone: MakerDecisionTone;
+  reasons: MakerDecisionReason[];
+}
 
 const typeLabel = computed(() => {
   if (!props.pin) {
@@ -230,10 +274,171 @@ const makerWarningLabels = computed(() => getMakerWarnings(props.pin?.warnings).
 
 const boardDesignWarningLabels = computed(() => getBoardDesignWarnings(props.pin?.warnings).map(getWarningLabel));
 
+const makerDecision = computed(() => (props.pin ? buildMakerDecision(props.pin) : null));
+
 function onDrawerUpdate(value: boolean) {
   if (!value) {
     emit('close');
   }
+}
+
+function buildMakerDecision(pin: SocPin): MakerDecision {
+  const warnings = pin.warnings ?? [];
+  const makerWarnings = getMakerWarnings(warnings);
+  const boardDesignWarnings = getBoardDesignWarnings(warnings);
+  const reasons = warningReasons(warnings);
+
+  if (pin.type === 'power') {
+    return {
+      title: 'Power only',
+      body: 'Use this as a supply or reference rail, not as a GPIO signal.',
+      tone: 'neutral',
+      reasons: [
+        { label: 'Power rail', description: 'Do not use this pin for digital or analog I/O.', tone: 'neutral' },
+        ...reasons,
+      ],
+    };
+  }
+
+  if (pin.type === 'ground') {
+    return {
+      title: 'Ground reference',
+      body: 'Use this for ground return or reference connections, not as a GPIO signal.',
+      tone: 'neutral',
+      reasons: [
+        { label: 'Ground', description: 'Tie this to circuit ground where needed.', tone: 'neutral' },
+        ...reasons,
+      ],
+    };
+  }
+
+  if (pin.type === 'control') {
+    return {
+      title: 'Board control',
+      body: 'This pin controls board or chip behavior. Avoid using it as normal project I/O.',
+      tone: 'avoid',
+      reasons: [
+        { label: 'Control signal', description: 'Changing this signal can affect reset, boot, or board operation.', tone: 'avoid' },
+        ...reasons,
+      ],
+    };
+  }
+
+  if (pin.gpio === undefined) {
+    return {
+      title: 'Not a GPIO',
+      body: 'Use this only for the named board or package role.',
+      tone: 'neutral',
+      reasons: [
+        { label: 'No GPIO number', description: 'It is not available as software-controlled I/O.', tone: 'neutral' },
+        ...reasons,
+      ],
+    };
+  }
+
+  if (warnings.includes('flash') || warnings.includes('reset')) {
+    return {
+      title: 'Avoid for normal projects',
+      body: 'This pin has a fixed or high-risk role. Pick another GPIO unless you specifically need this signal.',
+      tone: 'avoid',
+      reasons,
+    };
+  }
+
+  if (makerWarnings.length > 0) {
+    return {
+      title: 'Use with caution',
+      body: 'This GPIO can be useful, but its board or boot role can affect ordinary projects.',
+      tone: 'caution',
+      reasons,
+    };
+  }
+
+  if (isInputOnlyPin(pin)) {
+    return {
+      title: 'Input-only GPIO',
+      body: 'Good for sensing signals, but do not use it where output drive is required.',
+      tone: 'caution',
+      reasons: [
+        { label: 'Input only', description: 'Use as an input; choose another GPIO for output, PWM, or bus drive.', tone: 'caution' },
+        ...reasons,
+      ],
+    };
+  }
+
+  if (boardDesignWarnings.length > 0) {
+    return {
+      title: 'Usable with design notes',
+      body: 'No maker-warning categories are present, but check the notes before using this pin in sensitive circuits.',
+      tone: 'neutral',
+      reasons,
+    };
+  }
+
+  return {
+    title: pin.boardHeader ? 'Good general GPIO' : 'GPIO candidate',
+    body: pin.boardHeader
+      ? 'No maker warnings are recorded for this exposed board-header GPIO.'
+      : 'No maker warnings are recorded for this package pin. Check module or board context before wiring.',
+    tone: 'good',
+    reasons: [
+      {
+        label: pin.boardHeader ? 'Board-header GPIO' : 'GPIO',
+        description: pin.boardHeader ? 'Exposed on this selected board profile.' : 'Available as a GPIO on this package profile.',
+        tone: 'good',
+      },
+      { label: 'No maker warnings', description: 'No boot, USB, UART0, reset, PSRAM, voltage, or onboard-hardware warning is recorded.', tone: 'good' },
+    ],
+  };
+}
+
+function warningReasons(warnings: PinWarning[]): MakerDecisionReason[] {
+  return warnings.map((warning) => ({
+    label: getWarningLabel(warning),
+    description: warningDecisionText[warning],
+    tone: warningDecisionTone(warning),
+  }));
+}
+
+function warningDecisionTone(warning: PinWarning): MakerDecisionTone {
+  if (warning === 'flash' || warning === 'reset') {
+    return 'avoid';
+  }
+
+  if (getMakerWarnings([warning]).length > 0) {
+    return 'caution';
+  }
+
+  return 'neutral';
+}
+
+const warningDecisionText: Record<PinWarning, string> = {
+  boot: 'Can affect startup or flashing behavior.',
+  flash: 'Reserved for flash-memory communication on relevant packages or boards.',
+  glitch: 'May change state briefly during power-up or reset.',
+  jtag: 'May be used by debug hardware or fixed debug functions.',
+  onboard: 'Connected to onboard hardware, so external circuits can interfere.',
+  power: 'Has power-domain or supply-role constraints.',
+  psram: 'May be constrained by module PSRAM or memory wiring.',
+  reset: 'Controls reset or chip enable; do not use as normal I/O.',
+  strapping: 'Sampled at reset, so external circuits can change boot mode.',
+  uart0: 'Shared with default serial programming, logs, or USB-UART bridge paths.',
+  usb: 'Shared with native USB signals or board USB routing.',
+  voltage: 'Voltage-sensitive; check the official limits before wiring.',
+};
+
+function isInputOnlyPin(pin: SocPin) {
+  const searchableText = [
+    pin.name,
+    ...pin.mainFunctions,
+    ...(pin.ioMux ?? []),
+    ...(pin.notes ?? []),
+    ...(pin.keywords ?? []),
+  ]
+    .join(' ')
+    .toLowerCase();
+
+  return searchableText.includes('input only') || searchableText.includes('input-only');
 }
 </script>
 
@@ -275,6 +480,122 @@ function onDrawerUpdate(value: boolean) {
   display: grid;
   gap: 16px;
   padding: 12px 20px 26px;
+}
+
+.pin-info__decision {
+  display: grid;
+  gap: 11px;
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  padding: 12px;
+  background: var(--app-surface-muted);
+}
+
+.pin-info__decision--good {
+  border-color: color-mix(in srgb, var(--app-link) 38%, var(--app-border));
+  background: color-mix(in srgb, var(--app-accent-soft-bg) 62%, var(--app-surface-bg));
+}
+
+.pin-info__decision--caution {
+  border-color: color-mix(in srgb, var(--app-warning-soft-text) 52%, var(--app-border));
+  background: color-mix(in srgb, var(--app-warning-soft-bg) 70%, var(--app-surface-bg));
+}
+
+.pin-info__decision--avoid {
+  border-color: rgba(248, 113, 113, 0.78);
+  background: color-mix(in srgb, #f87171 14%, var(--app-surface-bg));
+}
+
+.pin-info__decision--neutral {
+  border-color: color-mix(in srgb, var(--app-info-soft-text) 35%, var(--app-border));
+  background: color-mix(in srgb, var(--app-info-soft-bg) 56%, var(--app-surface-bg));
+}
+
+.pin-info__decision-heading {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 9px;
+  align-items: start;
+}
+
+.pin-info__decision-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  color: var(--app-link);
+  background: var(--app-surface-bg);
+}
+
+.pin-info__decision--caution .pin-info__decision-icon {
+  color: var(--app-warning-soft-text);
+}
+
+.pin-info__decision--avoid .pin-info__decision-icon {
+  color: #b91c1c;
+}
+
+.pin-info__decision-heading h2 {
+  margin: 0;
+  color: var(--app-text);
+  font-size: 1rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+
+.pin-info__decision-heading p {
+  margin: 3px 0 0;
+  color: var(--app-text);
+  font-size: 0.84rem;
+  font-weight: 700;
+  line-height: 1.38;
+}
+
+.pin-info__decision-reasons {
+  display: grid;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pin-info__decision-reasons li {
+  display: grid;
+  gap: 2px;
+  border-left: 3px solid var(--app-border);
+  padding-left: 8px;
+}
+
+.pin-info__decision-reason--good {
+  border-left-color: var(--app-link);
+}
+
+.pin-info__decision-reason--caution {
+  border-left-color: var(--app-warning-soft-text);
+}
+
+.pin-info__decision-reason--avoid {
+  border-left-color: #dc2626;
+}
+
+.pin-info__decision-reason--neutral {
+  border-left-color: var(--app-info-soft-text);
+}
+
+.pin-info__decision-reasons strong {
+  color: var(--app-text);
+  font-size: 0.76rem;
+  font-weight: 900;
+  line-height: 1.2;
+}
+
+.pin-info__decision-reasons span {
+  color: var(--app-muted);
+  font-size: 0.8rem;
+  font-weight: 650;
+  line-height: 1.35;
 }
 
 .pin-info__summary {

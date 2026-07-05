@@ -829,6 +829,9 @@ describe('PinInfoDrawer', () => {
     });
 
     expect(wrapper.findAll('.pin-info__stat')).toHaveLength(2);
+    expect(wrapper.find('.pin-info__decision').text()).toContain('Avoid for normal projects');
+    expect(wrapper.find('.pin-info__decision').text()).toContain('Can affect startup or flashing behavior.');
+    expect(wrapper.find('.pin-info__decision').text()).toContain('Reserved for flash-memory communication');
     expect(wrapper.text()).toContain('GPIO0');
     expect(wrapper.text()).toContain('I/O');
     expect(wrapper.text()).toContain('Maker Warnings');
@@ -841,6 +844,26 @@ describe('PinInfoDrawer', () => {
 
     await wrapper.find('button[aria-label="Close pin details"]').trigger('click');
     expect(wrapper.emitted('close')).toHaveLength(1);
+  });
+
+  it('summarizes clean board header GPIO pins as general-use candidates', () => {
+    const wrapper = mount(PinInfoDrawer, {
+      props: {
+        pin: cleanBoardGpioPin,
+        source: testSource,
+      },
+      global: {
+        stubs: drawerStubs,
+      },
+    });
+
+    const decision = wrapper.find('.pin-info__decision');
+
+    expect(decision.text()).toContain('Good general GPIO');
+    expect(decision.text()).toContain('No maker warnings are recorded for this exposed board-header GPIO.');
+    expect(decision.text()).toContain('Board-header GPIO');
+    expect(decision.text()).toContain('No maker warnings');
+    expect(wrapper.findAll('.pin-info__stat').map((item) => item.text())).toContain('Board Label4');
   });
 });
 
@@ -972,6 +995,19 @@ const pinWithMixedWarnings: SocPin = {
   position: { side: 'left', order: 5 },
   type: 'io',
   warnings: ['boot', 'flash'],
+};
+
+const cleanBoardGpioPin: SocPin = {
+  boardHeader: 'J1',
+  boardLabel: '4',
+  displayNumber: 'J1-4',
+  gpio: 4,
+  id: 'clean-board-gpio',
+  mainFunctions: ['GPIO4'],
+  name: 'GPIO4',
+  number: 4,
+  position: { side: 'left', order: 4 },
+  type: 'io',
 };
 
 const testSource: SocSource = {

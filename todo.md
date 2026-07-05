@@ -54,9 +54,9 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - Current behavior: first-time visitors land on the selected default board pinout.
   - Follow-up option: add a compact dismissible intro or first-run hint that points to exact-board/profile selection.
   - Rationale: makers usually arrive with a board in hand and need to answer "which pin can I use?" before reading project background.
-- [ ] Add a maker decision summary at the top of `PinInfoDrawer.vue`.
-  - Show a short status such as `Good general GPIO`, `Use with caution`, `Avoid for normal projects`, `Power only`, or `Board control`.
-  - Include one-line reasons based on existing warning categories and board notes, such as boot strap, UART0, USB, flash, PSRAM, onboard LED, reset, voltage-sensitive, or no GPIO.
+- [x] Add a maker decision summary at the top of `PinInfoDrawer.vue`.
+  - Shows a short status such as `Good general GPIO`, `Use with caution`, `Avoid for normal projects`, `Power only`, or `Board control`.
+  - Includes one-line reasons based on existing warning categories and board notes, such as boot strap, UART0, USB, flash, PSRAM, onboard LED, reset, voltage-sensitive, or no GPIO.
   - Keep the detailed official functions, notes, warnings, and source link below the summary.
 - [ ] Add a filtered pin candidate list for search and quick filters.
   - When search or a quick filter is active, show a compact list/table of matching pins near the sidebar or as a mobile sheet.
