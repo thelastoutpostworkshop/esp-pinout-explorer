@@ -58,6 +58,10 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - Shows a short status such as `Good general GPIO`, `Use with caution`, `Avoid for normal projects`, `Power only`, or `Board control`.
   - Includes one-line reasons based on existing warning categories and board notes, such as boot strap, UART0, USB, flash, PSRAM, onboard LED, reset, voltage-sensitive, or no GPIO.
   - Keep the detailed official functions, notes, warnings, and source link below the summary.
+- [x] Add a global module marking lookup in `ProfileNavigator.vue`.
+  - Searches known module names and module variants across all implemented SoC families.
+  - Selecting a printed marking switches to the matching SoC and board/module profile.
+  - Keeps board/package selection separate because a module marking does not always identify the carrier board.
 - [ ] Add a filtered pin candidate list for search and quick filters.
   - When search or a quick filter is active, show a compact list/table of matching pins near the sidebar or as a mobile sheet.
   - Include board label, header/display number, GPIO, primary functions, and warning summary.
@@ -75,7 +79,7 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - Prevent stacked temporary drawers from leaving controls, details, and the pinout visually competing on small screens.
   - Keep search, quick filters, and selected-pin details easy to reach with one hand.
 - [ ] Make module pad profiles discoverable from the profile selector.
-  - Current risk: implemented module profiles are documented but hidden from the selector when `kind: 'module'` is filtered out.
+  - Remaining risk: implemented module profiles are findable through the module marking lookup, but direct module profile browsing is still hidden unless the module is selected.
   - Add a profile-type control or grouped selector that exposes `Dev boards`, `Modules`, and `Chip packages`.
   - Make clear that module profiles are PCB/module pads, not development-board headers.
 - [ ] Improve exact-board identification in `ProfileNavigator.vue` and `ProfileInfoDrawer.vue`.

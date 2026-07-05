@@ -56,7 +56,7 @@ describe('soc store', () => {
     expect(store.selectedPackage.id).toBe('esp32s3-devkitc-1-v1-1');
   });
 
-  it('does not restore module profiles into the maker-facing default view', () => {
+  it('restores module profiles selected through module marking lookup', () => {
     window.localStorage.setItem(
       profileStorageKey,
       JSON.stringify({ socId: 'esp32c6', packageId: 'esp32c6-mini-1' }),
@@ -65,8 +65,43 @@ describe('soc store', () => {
     const store = useSocStore();
 
     expect(store.selectedSocId).toBe('esp32c6');
-    expect(store.selectedPackage.id).toBe('esp32c6-devkitm-1');
-    expect(store.selectedPackage.kind).toBe('board');
+    expect(store.selectedPackage.id).toBe('esp32c6-mini-1');
+    expect(store.selectedPackage.kind).toBe('module');
+  });
+
+  it('selects SoC and profile from a printed module marking', () => {
+    const store = useSocStore();
+    const devKitVariant = store.moduleMarkingOptions.find(
+      (option) => option.marking === 'ESP32-S3-WROOM-2-N32R16V' && option.profileId === 'esp32s3-devkitc-1-v1-1',
+    );
+    const c6Module = store.moduleMarkingOptions.find(
+      (option) => option.marking === 'ESP32-C6-MINI-1' && option.profileId === 'esp32c6-mini-1',
+    );
+
+    expect(devKitVariant).toBeDefined();
+    expect(c6Module).toBeDefined();
+    expect(devKitVariant?.subtitle).toBe('ESP32-S3 - Dev board: DevKitC-1 v1.1 (WROOM)');
+    expect(devKitVariant?.compactMarking).toBe('WROOM-2-N32R16V');
+
+    store.selectModuleMarking(devKitVariant!.id);
+
+    expect(store.selectedSocId).toBe('esp32s3');
+    expect(store.selectedPackage.id).toBe('esp32s3-devkitc-1-v1-1');
+    expect(store.selectedModuleMarkingId).toBe(devKitVariant?.id);
+    expect(store.activeView).toBe('pinout');
+    expect(window.localStorage.getItem(profileStorageKey)).toContain('esp32s3-devkitc-1-v1-1');
+
+    store.selectModuleMarking(c6Module!.id);
+
+    expect(store.selectedSocId).toBe('esp32c6');
+    expect(store.selectedPackage.id).toBe('esp32c6-mini-1');
+    expect(store.selectedPackage.kind).toBe('module');
+    expect(store.selectedModuleMarkingId).toBe(c6Module?.id);
+
+    store.selectModuleMarking(null);
+
+    expect(store.selectedPackage.id).toBe('esp32c6-mini-1');
+    expect(store.selectedModuleMarkingId).toBeNull();
   });
 
   it('reads legacy persisted profile data after the app rename', () => {

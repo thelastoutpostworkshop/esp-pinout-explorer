@@ -3,7 +3,7 @@ import { computed, ref } from 'vue';
 import { isSafeForMakerUse } from '@/data/pinSafety';
 import { getBoardDesignWarnings, hasMakerWarning } from '@/data/pinWarnings';
 import { socs } from '@/data/socs';
-import type { SocDefinition, SocPackageVariant, SocPin } from '@/types/soc';
+import type { PinProfileKind, SocDefinition, SocModuleVariant, SocPackageVariant, SocPin } from '@/types/soc';
 
 const profileStorageKey = 'esp-pinout-explorer:selected-profile';
 const legacyProfileStorageKey = 'espsocsexplorer:selected-profile';
@@ -13,6 +13,20 @@ const boardFunctionsStorageKey = 'esp-pinout-explorer:show-board-functions';
 interface PersistedProfileSelection {
   socId: string;
   packageId: string | null;
+}
+
+export interface ModuleMarkingOption {
+  id: string;
+  marking: string;
+  compactMarking: string;
+  socId: string;
+  socName: string;
+  profileId: string;
+  profileName: string;
+  profileKind: PinProfileKind;
+  profileKindLabel: string;
+  subtitle: string;
+  searchText: string;
 }
 
 type WorkspaceView = 'pinout' | 'makerTools' | 'about';
@@ -71,6 +85,7 @@ export const useSocStore = defineStore('soc', () => {
   const selectedSocId = ref(initialSelection.socId);
   const selectedPackageId = ref<string | null>(initialSelection.packageId);
   const selectedPinId = ref<string | null>(null);
+  const selectedModuleMarkingId = ref<string | null>(null);
   const profileInfoOpen = ref(false);
   const activeView = ref<WorkspaceView>('pinout');
   const searchQuery = ref('');
@@ -79,6 +94,8 @@ export const useSocStore = defineStore('soc', () => {
   const selectedSoc = computed(() => socs.find((soc) => soc.id === selectedSocId.value) ?? socs[0]);
 
   const packageOptions = computed(() => buildPackageOptions(selectedSoc.value));
+
+  const moduleMarkingOptions = computed(() => buildModuleMarkingOptions(socs));
 
   const selectedPackage = computed(() => {
     return (
@@ -101,6 +118,7 @@ export const useSocStore = defineStore('soc', () => {
       selectedSocId.value = socId;
       selectedPackageId.value = defaultProfileForSoc(soc).id;
       selectedPinId.value = null;
+      selectedModuleMarkingId.value = null;
       activeView.value = 'pinout';
       searchQuery.value = '';
       persistSelectedProfile(selectedSocId.value, selectedPackageId.value);
@@ -111,6 +129,7 @@ export const useSocStore = defineStore('soc', () => {
     if (packageId === null) {
       selectedPackageId.value = null;
       selectedPinId.value = null;
+      selectedModuleMarkingId.value = null;
       activeView.value = 'pinout';
       persistSelectedProfile(selectedSocId.value, null);
       return;
@@ -119,9 +138,34 @@ export const useSocStore = defineStore('soc', () => {
     if (packageOptions.value.some((packageOption) => packageOption.id === packageId)) {
       selectedPackageId.value = packageId;
       selectedPinId.value = null;
+      selectedModuleMarkingId.value = null;
       activeView.value = 'pinout';
       persistSelectedProfile(selectedSocId.value, selectedPackageId.value);
     }
+  }
+
+  function selectModuleMarking(optionId: string | null) {
+    if (optionId === null) {
+      selectedModuleMarkingId.value = null;
+      return;
+    }
+
+    const option = moduleMarkingOptions.value.find((candidate) => candidate.id === optionId);
+    const soc = option ? socs.find((candidate) => candidate.id === option.socId) : null;
+    const profile = soc ? buildPackageOptions(soc).find((candidate) => candidate.id === option?.profileId) : null;
+
+    if (!option || !soc || !profile) {
+      return;
+    }
+
+    selectedSocId.value = option.socId;
+    selectedPackageId.value = option.profileId;
+    selectedPinId.value = null;
+    selectedModuleMarkingId.value = option.id;
+    profileInfoOpen.value = false;
+    activeView.value = 'pinout';
+    searchQuery.value = '';
+    persistSelectedProfile(selectedSocId.value, selectedPackageId.value);
   }
 
   function toggleBoardFunctions() {
@@ -189,6 +233,8 @@ export const useSocStore = defineStore('soc', () => {
     selectedPins,
     selectedPinId,
     selectedPin,
+    selectedModuleMarkingId,
+    moduleMarkingOptions,
     profileInfoOpen,
     activeView,
     searchQuery,
@@ -197,6 +243,7 @@ export const useSocStore = defineStore('soc', () => {
     filteredPinIds,
     selectSoc,
     selectPackage,
+    selectModuleMarking,
     toggleBoardFunctions,
     setBoardFunctions,
     selectPin,
@@ -230,6 +277,65 @@ function buildPackageOptions(soc: SocDefinition): SocPackageVariant[] {
   ];
 }
 
+function buildModuleMarkingOptions(socDefinitions: SocDefinition[]): ModuleMarkingOption[] {
+  const options: ModuleMarkingOption[] = [];
+  const seenOptionIds = new Set<string>();
+
+  for (const soc of socDefinitions) {
+    for (const profile of buildPackageOptions(soc)) {
+      for (const candidate of profileModuleMarkingCandidates(profile)) {
+        const compactMarking = compactModuleMarking(soc, candidate.marking);
+        const profileKindValue = profileKind(profile);
+        const profileKindName = profileKindLabel(profileKindValue);
+        const id = `${soc.id}:${profile.id}:${slugify(candidate.marking)}`;
+
+        if (seenOptionIds.has(id)) {
+          continue;
+        }
+
+        seenOptionIds.add(id);
+        options.push({
+          id,
+          marking: candidate.marking,
+          compactMarking,
+          socId: soc.id,
+          socName: soc.name,
+          profileId: profile.id,
+          profileName: profile.name,
+          profileKind: profileKindValue,
+          profileKindLabel: profileKindName,
+          subtitle: `${soc.name} - ${profileKindName}: ${profile.name}`,
+          searchText: normalize(
+            [
+              candidate.marking,
+              compactMarking,
+              soc.name,
+              soc.family,
+              profile.name,
+              profile.packageName,
+              profile.description,
+              profileKindName,
+              ...(profile.moduleNames ?? []),
+              ...(profile.identificationNotes ?? []),
+              ...candidate.variants.flatMap(moduleVariantSearchValues),
+            ]
+              .filter(Boolean)
+              .join(' '),
+          ),
+        });
+      }
+    }
+  }
+
+  return options.sort(
+    (first, second) =>
+      first.marking.localeCompare(second.marking) ||
+      first.socName.localeCompare(second.socName) ||
+      first.profileKindLabel.localeCompare(second.profileKindLabel) ||
+      first.profileName.localeCompare(second.profileName),
+  );
+}
+
 function defaultProfileForSoc(soc: SocDefinition): SocPackageVariant {
   const options = buildPackageOptions(soc);
   return options.find((option) => option.id === soc.defaultProfileId) ?? options[0];
@@ -256,6 +362,78 @@ function packageProfileDisplayName(soc: SocDefinition, packageName: string) {
   return `${soc.name} ${packageName.split(/[,(]/)[0].trim()}`;
 }
 
+function profileModuleMarkingCandidates(profile: SocPackageVariant) {
+  const candidates = new Map<string, { marking: string; variants: SocModuleVariant[] }>();
+
+  function addMarking(marking: string | undefined, variant?: SocModuleVariant) {
+    const normalizedMarking = marking?.trim();
+    if (!normalizedMarking) {
+      return;
+    }
+
+    const existing = candidates.get(normalizedMarking);
+    if (existing) {
+      if (variant) {
+        existing.variants.push(variant);
+      }
+      return;
+    }
+
+    candidates.set(normalizedMarking, {
+      marking: normalizedMarking,
+      variants: variant ? [variant] : [],
+    });
+  }
+
+  for (const variant of profile.moduleVariants ?? []) {
+    addMarking(variant.name, variant);
+  }
+
+  for (const moduleName of profile.moduleNames ?? []) {
+    addMarking(moduleName);
+  }
+
+  return [...candidates.values()];
+}
+
+function profileKind(profile: Pick<SocPackageVariant, 'kind'>): PinProfileKind {
+  return profile.kind ?? 'package';
+}
+
+function profileKindLabel(kind: PinProfileKind) {
+  return {
+    board: 'Dev board',
+    module: 'Module pads',
+    package: 'Chip package',
+  }[kind];
+}
+
+function moduleVariantSearchValues(variant: SocModuleVariant) {
+  return [
+    variant.name,
+    variant.antenna,
+    variant.flash,
+    variant.psram,
+    variant.footprint,
+    variant.pinoutImpact,
+    variant.source?.title,
+    variant.source?.version,
+    ...(variant.source?.sections ?? []),
+  ];
+}
+
+function compactModuleMarking(soc: SocDefinition, marking: string) {
+  const socPrefix = `${soc.name}-`;
+  return marking.startsWith(socPrefix) ? marking.slice(socPrefix.length) : marking;
+}
+
+function slugify(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
+
 function readInitialSelection(): PersistedProfileSelection {
   const fallbackSoc = socs[0];
   const fallbackProfile = defaultProfileForSoc(fallbackSoc);
@@ -278,9 +456,7 @@ function readInitialSelection(): PersistedProfileSelection {
     };
   }
 
-  const profile = buildPackageOptions(soc).find(
-    (candidate) => candidate.id === persisted.packageId && (candidate.kind ?? 'package') !== 'module',
-  );
+  const profile = buildPackageOptions(soc).find((candidate) => candidate.id === persisted.packageId);
   return {
     socId: soc.id,
     packageId: profile?.id ?? defaultProfileForSoc(soc).id,

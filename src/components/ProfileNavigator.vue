@@ -22,7 +22,7 @@
       hide-details
       item-title="name"
       item-value="id"
-      label="Board / chip package"
+      label="Board / package profile"
       :items="profileSelectItems"
       variant="outlined"
       @update:model-value="selectPackage"
@@ -41,6 +41,23 @@
       </template>
     </v-autocomplete>
 
+    <v-autocomplete
+      :model-value="store.selectedModuleMarkingId"
+      class="profile-navigator__select profile-navigator__select--module"
+      clearable
+      :custom-filter="filterModuleMarking"
+      density="compact"
+      hide-details
+      :item-props="moduleMarkingItemProps"
+      item-title="marking"
+      item-value="id"
+      label="Module marking"
+      :items="store.moduleMarkingOptions"
+      placeholder="Find printed marking"
+      variant="outlined"
+      @update:model-value="selectModuleMarking"
+    />
+
     <button
       class="profile-navigator__info-button"
       type="button"
@@ -57,6 +74,7 @@
 import { computed } from 'vue';
 import { PanelRightOpen } from '@lucide/vue';
 import { useSocStore } from '@/stores/socStore';
+import type { ModuleMarkingOption } from '@/stores/socStore';
 import type { PinProfileKind, SocModuleVariant, SocPackageVariant } from '@/types/soc';
 
 const emit = defineEmits<{
@@ -65,7 +83,7 @@ const emit = defineEmits<{
 
 const store = useSocStore();
 const selectableProfileOptions = computed(() =>
-  store.packageOptions.filter((profile) => profileKind(profile) !== 'module'),
+  store.packageOptions.filter((profile) => profileKind(profile) !== 'module' || profile.id === store.selectedPackageId),
 );
 const profileSelectItems = computed(() =>
   [...selectableProfileOptions.value]
@@ -91,6 +109,11 @@ function selectSoc(socId: string) {
 
 function selectPackage(packageId: string | null) {
   store.selectPackage(packageId);
+  emit('changed');
+}
+
+function selectModuleMarking(optionId: string | null) {
+  store.selectModuleMarking(optionId);
   emit('changed');
 }
 
@@ -158,6 +181,28 @@ function filterProfile(_value: string, query: string, item?: { raw?: ProfileSele
   return tokens.every((token) => searchableText.includes(token));
 }
 
+function filterModuleMarking(_value: string, query: string, item?: { raw?: ModuleMarkingOption }) {
+  const option = item?.raw;
+  if (!option) {
+    return false;
+  }
+
+  const tokens = normalizeSearch(query).split(/\s+/).filter(Boolean);
+  if (!tokens.length) {
+    return true;
+  }
+
+  return tokens.every((token) => option.searchText.includes(token));
+}
+
+function moduleMarkingItemProps(option: ModuleMarkingOption) {
+  return {
+    subtitle:
+      option.compactMarking !== option.marking ? `${option.compactMarking} - ${option.subtitle}` : option.subtitle,
+    title: option.marking,
+  };
+}
+
 function moduleVariantSearchValues(variant: SocModuleVariant) {
   return [
     variant.name,
@@ -199,12 +244,18 @@ function openProfileInfo() {
 }
 
 .profile-navigator__select--chip {
-  flex: 0 1 210px;
-  min-width: 190px;
+  flex: 0 1 170px;
+  min-width: 150px;
 }
 
 .profile-navigator__select--profile {
-  flex: 1 1 300px;
+  flex: 1 1 240px;
+  min-width: 190px;
+}
+
+.profile-navigator__select--module {
+  flex: 1 1 230px;
+  min-width: 190px;
 }
 
 :deep(.profile-select__divider) {
@@ -277,7 +328,8 @@ function openProfileInfo() {
   }
 
   .profile-navigator__select--chip,
-  .profile-navigator__select--profile {
+  .profile-navigator__select--profile,
+  .profile-navigator__select--module {
     flex-basis: auto;
   }
 

@@ -602,7 +602,10 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('Variant: MINI-1-N4R2');
     expect(wrapper.text()).not.toContain('Dual-core 32-bit Xtensa LX7');
     expect(wrapper.text()).not.toContain('USB ports, 5V/GND headers, or 3V3/GND headers');
-    const profileAutocomplete = wrapper.findComponent({ name: 'VAutocomplete' });
+    const autocompletes = wrapper.findAllComponents({ name: 'VAutocomplete' });
+    expect(autocompletes).toHaveLength(2);
+    const profileAutocomplete = autocompletes[0];
+    const markingAutocomplete = autocompletes[1];
     const profileItems = profileAutocomplete.props('items') as Array<{ id: string; name: string }>;
     const filterProfile = profileAutocomplete.props('customFilter') as (
       value: string,
@@ -617,6 +620,31 @@ describe('ExplorerSidebar', () => {
     expect(filterProfile('', 'n32r16v', { raw: devKitCProfileItem! })).toBe(true);
     expect(filterProfile('', 'mini n4r2', { raw: usbBridgeProfileItem! })).toBe(true);
     expect(filterProfile('', 'wrover', { raw: usbBridgeProfileItem! })).toBe(false);
+    const markingItems = markingAutocomplete.props('items') as Array<{
+      marking: string;
+      profileId: string;
+      searchText: string;
+      subtitle: string;
+    }>;
+    const filterModuleMarking = markingAutocomplete.props('customFilter') as (
+      value: string,
+      query: string,
+      item: { raw: (typeof markingItems)[number] },
+    ) => boolean;
+    const s3WroomVariant = markingItems.find(
+      (item) => item.marking === 'ESP32-S3-WROOM-2-N32R16V' && item.profileId === 'esp32s3-devkitc-1-v1-1',
+    );
+    const c6MiniModule = markingItems.find(
+      (item) => item.marking === 'ESP32-C6-MINI-1' && item.profileId === 'esp32c6-mini-1',
+    );
+
+    expect(s3WroomVariant).toBeDefined();
+    expect(c6MiniModule).toBeDefined();
+    expect(s3WroomVariant?.subtitle).toBe('ESP32-S3 - Dev board: DevKitC-1 v1.1 (WROOM)');
+    expect(c6MiniModule?.subtitle).toBe('ESP32-C6 - Module pads: MINI-1');
+    expect(filterModuleMarking('', 'n32r16v', { raw: s3WroomVariant! })).toBe(true);
+    expect(filterModuleMarking('', 'module pads mini', { raw: c6MiniModule! })).toBe(true);
+    expect(filterModuleMarking('', 'wrover', { raw: s3WroomVariant! })).toBe(false);
 
     await findButton(wrapper, 'Profile info & Variants').trigger('click');
 
@@ -725,7 +753,9 @@ describe('ExplorerSidebar', () => {
 
     store.selectPackage('esp32c6-mini-1');
     await wrapper.vm.$nextTick();
+    const c6ModuleProfileItems = profileAutocomplete.props('items') as Array<{ id: string; name: string }>;
 
+    expect(c6ModuleProfileItems.map((item) => item.id)).toEqual(expect.arrayContaining(['esp32c6-mini-1']));
     expect(wrapper.text()).toContain('Module pads for PCB design, not dev-board headers.');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1');
     expect(wrapper.text()).toContain('4 MB SPI flash in chip package');
