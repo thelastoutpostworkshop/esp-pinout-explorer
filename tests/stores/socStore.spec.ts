@@ -14,6 +14,7 @@ describe('soc store', () => {
   it('defaults to the ESP32-S3 DevKitC board profile', () => {
     const store = useSocStore();
 
+    expect(store.activeView).toBe('pinout');
     expect(store.selectedSocId).toBe('esp32s3');
     expect(store.selectedPackage.id).toBe('esp32s3-devkitc-1-v1-1');
     expect(store.selectedPackage.kind).toBe('board');

@@ -66,14 +66,13 @@ function filterPinsByQuery(pins: SocPin[], search: string) {
 
 export const useSocStore = defineStore('soc', () => {
   const initialSelection = readInitialSelection();
-  const initialView = readInitialWorkspaceView();
   const initialBoardFunctionState = readBoardFunctionsPreference();
   rememberVisit();
   const selectedSocId = ref(initialSelection.socId);
   const selectedPackageId = ref<string | null>(initialSelection.packageId);
   const selectedPinId = ref<string | null>(null);
   const profileInfoOpen = ref(false);
-  const activeView = ref<WorkspaceView>(initialView);
+  const activeView = ref<WorkspaceView>('pinout');
   const searchQuery = ref('');
   const showBoardFunctions = ref(initialBoardFunctionState);
 
@@ -310,19 +309,6 @@ function readPersistedProfile(): PersistedProfileSelection | null {
   }
 
   return null;
-}
-
-function readInitialWorkspaceView(): WorkspaceView {
-  try {
-    const hasVisited = window.localStorage.getItem(visitedStorageKey) === 'true';
-    const hasPersistedProfile = Boolean(
-      window.localStorage.getItem(profileStorageKey) ?? window.localStorage.getItem(legacyProfileStorageKey),
-    );
-
-    return hasVisited || hasPersistedProfile ? 'pinout' : 'about';
-  } catch {
-    return 'pinout';
-  }
 }
 
 function rememberVisit() {

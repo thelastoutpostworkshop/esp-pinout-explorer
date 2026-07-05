@@ -50,9 +50,9 @@ Source baseline:
 
 Priority order is based on maker value: helping someone identify the exact hardware, choose a practical pin, understand risk, and work comfortably on desktop or mobile.
 
-- [ ] Make the pinout the first-run experience.
-  - Current behavior: first-time visitors land on the About page.
-  - Desired behavior: show the selected default board pinout first, with a compact dismissible intro or first-run hint that points to exact-board/profile selection.
+- [x] Make the pinout the first-run experience.
+  - Current behavior: first-time visitors land on the selected default board pinout.
+  - Follow-up option: add a compact dismissible intro or first-run hint that points to exact-board/profile selection.
   - Rationale: makers usually arrive with a board in hand and need to answer "which pin can I use?" before reading project background.
 - [ ] Add a maker decision summary at the top of `PinInfoDrawer.vue`.
   - Show a short status such as `Good general GPIO`, `Use with caution`, `Avoid for normal projects`, `Power only`, or `Board control`.
