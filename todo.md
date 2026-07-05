@@ -103,10 +103,10 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - Maker-warning pins now show a larger badge with a visible `!` marker on chip and board SVGs.
   - Warning pin titles and accessible labels include maker-warning labels such as boot, USB, reset, or board hardware.
   - Board-design-only notes remain searchable and visible in the drawer without adding SVG warning markers.
-- [ ] Reduce first-load bundle weight.
-  - Code-split About, Maker Tools, and possibly board/SoC data by family so the default pinout loads faster.
-  - Keep generated `dist/` artifacts out of commits.
-  - Verify with `npm run build` and review Vite chunk warnings.
+- [x] Reduce first-load bundle weight.
+  - Code-split About, Maker Tools, chip SVG, board SVG, pin info drawer, and profile info drawer so non-visible UI is not parsed in the entry chunk.
+  - Build entry JS dropped from about 792 kB / 207 kB gzip to about 638 kB / 158 kB gzip; optional views and drawers now load as separate chunks.
+  - Remaining build warning: the core entry still exceeds 500 kB because all SoC/profile data is still eager. A deeper follow-up would lazy-load non-default SoC families from a small catalog.
 
 ## To Do
 

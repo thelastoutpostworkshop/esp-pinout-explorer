@@ -48,18 +48,32 @@
       />
     </section>
 
-    <PinInfoDrawer :pin="store.selectedPin" :source="selectedPackage.source ?? selectedSoc.source" @close="store.clearSelectedPin" />
-    <ProfileInfoDrawer />
+    <PinInfoDrawer
+      v-if="store.selectedPin"
+      :pin="store.selectedPin"
+      :source="selectedPackage.source ?? selectedSoc.source"
+      @close="store.clearSelectedPin"
+    />
+    <ProfileInfoDrawer v-if="store.profileInfoOpen" />
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
-import BoardSvg from '@/components/BoardSvg.vue';
-import ChipSvg from '@/components/ChipSvg.vue';
-import PinInfoDrawer from '@/components/PinInfoDrawer.vue';
-import ProfileInfoDrawer from '@/components/ProfileInfoDrawer.vue';
+import { computed, defineAsyncComponent } from 'vue';
 import { useSocStore } from '@/stores/socStore';
+
+const PinoutLoading = {
+  template: '<div class="soc-view__loading" role="status" aria-label="Loading pinout">Loading pinout</div>',
+};
+
+const BoardSvg = defineAsyncComponent({
+  loader: () => import('@/components/BoardSvg.vue'),
+  loadingComponent: PinoutLoading,
+  delay: 120,
+});
+const ChipSvg = defineAsyncComponent(() => import('@/components/ChipSvg.vue'));
+const PinInfoDrawer = defineAsyncComponent(() => import('@/components/PinInfoDrawer.vue'));
+const ProfileInfoDrawer = defineAsyncComponent(() => import('@/components/ProfileInfoDrawer.vue'));
 
 const store = useSocStore();
 const selectedSoc = computed(() => store.selectedSoc);
@@ -167,6 +181,20 @@ function toggleBoardFunctions() {
   box-shadow:
     0 0 0 3px rgba(14, 116, 144, 0.16),
     0 6px 16px var(--app-floating-control-shadow);
+}
+
+.soc-view__loading {
+  display: inline-grid;
+  place-items: center;
+  min-width: 150px;
+  min-height: 42px;
+  border: 1px solid var(--app-border);
+  border-radius: 8px;
+  padding: 0 14px;
+  color: var(--app-muted);
+  background: var(--app-surface-bg);
+  font-size: 0.86rem;
+  font-weight: 850;
 }
 
 </style>

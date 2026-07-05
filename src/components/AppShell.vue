@@ -66,16 +66,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { defineAsyncComponent, ref, watch } from 'vue';
 import { CircuitBoard, Menu, Moon, Sun } from '@lucide/vue';
-import AboutPage from '@/components/AboutPage.vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
-import MakerToolsPage from '@/components/MakerToolsPage.vue';
 import ProfileNavigator from '@/components/ProfileNavigator.vue';
 import SocPinoutView from '@/components/SocPinoutView.vue';
 import { useColorMode } from '@/composables/useColorMode';
 import { useSocStore } from '@/stores/socStore';
 import packageJson from '../../package.json';
+
+const AboutPage = defineAsyncComponent(() => import('@/components/AboutPage.vue'));
+const MakerToolsPage = defineAsyncComponent(() => import('@/components/MakerToolsPage.vue'));
 
 const mobileDrawerOpen = ref(false);
 const store = useSocStore();

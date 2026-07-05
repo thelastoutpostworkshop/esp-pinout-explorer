@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, it } from 'vitest';
-import { mount, VueWrapper } from '@vue/test-utils';
+import { flushPromises, mount, VueWrapper } from '@vue/test-utils';
 import { createPinia, setActivePinia } from 'pinia';
 import AppShell from '@/components/AppShell.vue';
 import BoardSvg from '@/components/BoardSvg.vue';
@@ -471,6 +471,8 @@ describe('SocPinoutView', () => {
         },
       },
     });
+    await flushPromises();
+    await wrapper.vm.$nextTick();
 
     expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
     expect(wrapper.find('.header-name').exists()).toBe(false);
@@ -492,6 +494,8 @@ describe('SocPinoutView', () => {
         },
       },
     });
+    await flushPromises();
+    await wrapper.vm.$nextTick();
     const functionToggle = wrapper.find('button[aria-label="Show main functions on board pins"]');
 
     expect(functionToggle.exists()).toBe(true);
@@ -518,6 +522,8 @@ describe('SocPinoutView', () => {
         },
       },
     });
+    await flushPromises();
+    await wrapper.vm.$nextTick();
     const chipPackageButton = wrapper.find('[role="button"][aria-label="Open ESP32-C6 QFN40 chip package view"]');
 
     expect(chipPackageButton.exists()).toBe(true);
@@ -525,6 +531,8 @@ describe('SocPinoutView', () => {
     await wrapper.vm.$nextTick();
 
     expect(store.selectedPackageId).toBe('qfn40');
+    await flushPromises();
+    await wrapper.vm.$nextTick();
     expect(wrapper.find('.chip-svg').exists()).toBe(true);
   });
 });
