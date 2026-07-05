@@ -76,17 +76,17 @@
           </div>
         </section>
 
-        <section v-if="pin.ioMux?.length" class="pin-info__section">
+        <section v-if="nativeFixedFunctions.length" class="pin-info__section pin-info__section--native-functions">
           <div class="pin-info__section-heading">
-            <h2>IO MUX</h2>
+            <h2>Native Fixed Functions</h2>
             <InfoTooltip
-              label="What is IO MUX?"
-              text="IO MUX functions are fixed hardware alternate functions available directly on this physical pin. They are less flexible than GPIO Matrix routing, but are often preferred for high-speed or timing-sensitive signals."
+              label="What are native fixed functions?"
+              text="Native fixed functions are IO MUX signals available directly on this physical pin. This section only shows fixed functions that are not already listed in Main Functions."
             />
           </div>
           <div class="pin-info__chips">
             <FunctionChip
-              v-for="item in pin.ioMux"
+              v-for="item in nativeFixedFunctions"
               :key="item"
               color="info"
               :description="getFunctionDescription(item)"
@@ -276,6 +276,15 @@ const boardDesignWarningLabels = computed(() => getBoardDesignWarnings(props.pin
 
 const makerDecision = computed(() => (props.pin ? buildMakerDecision(props.pin) : null));
 
+const nativeFixedFunctions = computed(() => {
+  if (!props.pin?.ioMux?.length) {
+    return [];
+  }
+
+  const mainFunctionKeys = new Set(props.pin.mainFunctions.map(normalizeFunctionKey));
+  return props.pin.ioMux.filter((item) => !mainFunctionKeys.has(normalizeFunctionKey(item)));
+});
+
 function onDrawerUpdate(value: boolean) {
   if (!value) {
     emit('close');
@@ -439,6 +448,10 @@ function isInputOnlyPin(pin: SocPin) {
     .toLowerCase();
 
   return searchableText.includes('input only') || searchableText.includes('input-only');
+}
+
+function normalizeFunctionKey(value: string) {
+  return value.toUpperCase().replace(/[\s_]+/g, '');
 }
 </script>
 

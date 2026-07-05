@@ -1075,6 +1075,48 @@ describe('PinInfoDrawer', () => {
     expect(decision.text()).toContain('No maker warnings');
     expect(wrapper.findAll('.pin-info__stat').map((item) => item.text())).toContain('Board Label4');
   });
+
+  it('shows only extra native fixed functions after main functions', () => {
+    const wrapper = mount(PinInfoDrawer, {
+      props: {
+        pin: {
+          ...cleanBoardGpioPin,
+          ioMux: ['MTMS', 'GPIO4', 'FSPICLK'],
+          mainFunctions: ['GPIO4', 'MTMS'],
+        },
+        source: testSource,
+      },
+      global: {
+        stubs: drawerStubs,
+      },
+    });
+    const nativeSection = wrapper.find('.pin-info__section--native-functions');
+
+    expect(wrapper.text()).toContain('Main Functions');
+    expect(wrapper.text()).toContain('Native Fixed Functions');
+    expect(nativeSection.text()).toContain('FSPICLK');
+    expect(nativeSection.text()).not.toContain('GPIO4');
+    expect(nativeSection.text()).not.toContain('MTMS');
+  });
+
+  it('hides native fixed functions when they only repeat main functions', () => {
+    const wrapper = mount(PinInfoDrawer, {
+      props: {
+        pin: {
+          ...cleanBoardGpioPin,
+          ioMux: ['GPIO4'],
+          mainFunctions: ['GPIO4'],
+        },
+        source: testSource,
+      },
+      global: {
+        stubs: drawerStubs,
+      },
+    });
+
+    expect(wrapper.find('.pin-info__section--native-functions').exists()).toBe(false);
+    expect(wrapper.text()).not.toContain('Native Fixed Functions');
+  });
 });
 
 const searchStubs = {
