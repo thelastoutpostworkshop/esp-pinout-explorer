@@ -621,10 +621,16 @@ describe('ExplorerSidebar', () => {
     expect(filterProfile('', 'mini n4r2', { raw: usbBridgeProfileItem! })).toBe(true);
     expect(filterProfile('', 'wrover', { raw: usbBridgeProfileItem! })).toBe(false);
     const markingItems = markingAutocomplete.props('items') as Array<{
+      chipGroupLabel: string;
+      duplicateProfileLabel: string;
+      profileGroupLabel: string;
+      isFirstChipGroup: boolean;
       marking: string;
       markingSearchText: string;
       profileId: string;
       searchText: string;
+      startsChipGroup: boolean;
+      startsProfileGroup: boolean;
       subtitle: string;
     }>;
     const filterModuleMarking = markingAutocomplete.props('customFilter') as (
@@ -644,19 +650,53 @@ describe('ExplorerSidebar', () => {
     const espWroom02 = markingItems.find(
       (item) => item.marking === 'ESP-WROOM-02' && item.profileId === 'esp8266-devkits',
     );
+    const esp32Wroom32e = markingItems.find(
+      (item) => item.marking === 'ESP32-WROOM-32E' && item.profileId === 'esp32-devkitc-v4',
+    );
+    const esp32WroverE = markingItems.find(
+      (item) => item.marking === 'ESP32-WROVER-E' && item.profileId === 'esp32-devkitc-v4',
+    );
+    const esp32WroverIe = markingItems.find(
+      (item) => item.marking === 'ESP32-WROVER-IE' && item.profileId === 'esp32-devkitc-v4',
+    );
+    const esp32WroverEProfiles = markingItems
+      .filter((item) => item.chipGroupLabel === 'ESP32' && item.profileGroupLabel === 'Dev boards' && item.marking === 'ESP32-WROVER-E')
+      .map((item) => item.duplicateProfileLabel)
+      .sort();
 
     expect(s3WroomVariant).toBeDefined();
     expect(c6MiniModule).toBeDefined();
     expect(c6Wroom1).toBeDefined();
     expect(espWroom02).toBeDefined();
-    expect(s3WroomVariant?.subtitle).toBe('ESP32-S3 - Dev board: DevKitC-1 v1.1 (WROOM)');
-    expect(c6MiniModule?.subtitle).toBe('ESP32-C6 - Module pads: MINI-1');
+    expect(esp32Wroom32e).toBeDefined();
+    expect(esp32WroverE).toBeDefined();
+    expect(esp32WroverIe).toBeDefined();
+    expect(esp32WroverEProfiles).toEqual(['DevKitC V4', 'ESP32-Ethernet-Kit v1.2', 'WROVER-KIT v4.1']);
+    expect(markingItems.filter((item) => item.startsChipGroup).map((item) => item.chipGroupLabel)).toEqual(
+      expect.arrayContaining(['ESP32-C6', 'ESP32-S3', 'ESP8266EX']),
+    );
+    expect(markingItems.find((item) => item.chipGroupLabel === 'ESP32-C6')?.isFirstChipGroup).toBe(false);
+    expect(
+      markingItems
+        .filter((item) => item.chipGroupLabel === 'ESP32-C6' && item.startsProfileGroup)
+        .map((item) => item.profileGroupLabel),
+    ).toEqual(['Dev boards', 'Module pads']);
+    expect(c6Wroom1?.chipGroupLabel).toBe('ESP32-C6');
+    expect(c6Wroom1?.profileGroupLabel).toBe('Dev boards');
+    expect(c6Wroom1?.duplicateProfileLabel).toBe('');
+    expect(c6MiniModule?.profileGroupLabel).toBe('Module pads');
+    expect(s3WroomVariant?.chipGroupLabel).toBe('ESP32-S3');
+    expect(espWroom02?.chipGroupLabel).toBe('ESP8266EX');
+    expect(wrapper.findAll('.module-marking-select__item small')).toHaveLength(0);
     expect(filterModuleMarking('', 'n32r16v', { raw: s3WroomVariant! })).toBe(true);
     expect(filterModuleMarking('', 'module pads mini', { raw: c6MiniModule! })).toBe(true);
     expect(filterModuleMarking('', 'wroom-1', { raw: c6Wroom1! })).toBe(true);
     expect(filterModuleMarking('', 'wroom-1', { raw: s3WroomVariant! })).toBe(false);
     expect(filterModuleMarking('', 'wroom-1', { raw: espWroom02! })).toBe(false);
     expect(filterModuleMarking('', 'wroom-02', { raw: espWroom02! })).toBe(true);
+    expect(filterModuleMarking('', 'wrover-e', { raw: esp32WroverE! })).toBe(true);
+    expect(filterModuleMarking('', 'wrover-e', { raw: esp32Wroom32e! })).toBe(false);
+    expect(filterModuleMarking('', 'wrover-e', { raw: esp32WroverIe! })).toBe(false);
     expect(filterModuleMarking('', 'wrover', { raw: s3WroomVariant! })).toBe(false);
 
     await findButton(wrapper, 'Profile info & Variants').trigger('click');
@@ -743,7 +783,10 @@ describe('ExplorerSidebar', () => {
     await wrapper.vm.$nextTick();
     const c6ProfileItems = profileAutocomplete.props('items') as Array<{ id: string; name: string }>;
 
-    expect(wrapper.findAll('.v-list-subheader').map((item) => item.text())).toEqual(['Dev boards', 'Chip packages']);
+    expect(wrapper.findAll('.profile-select__header').map((item) => item.text())).toEqual([
+      'Dev boards',
+      'Chip packages',
+    ]);
     expect(c6ProfileItems.map((item) => item.id)).not.toEqual(
       expect.arrayContaining(['esp32c6-mini-1', 'esp32c6-mini-1u']),
     );
@@ -757,8 +800,10 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('MINI-1U');
     expect(wrapper.text()).toContain('ESP32-C6 QFN40');
     expect(wrapper.text()).toContain('ESP32-C6 QFN32');
-    expect(wrapper.text()).not.toContain('Dev board: DevKitM-1');
-    expect(wrapper.text()).not.toContain('Module: MINI-1');
+    const c6ProfileInfoText = wrapper.find('[role="dialog"][aria-label="Profile information"]').text();
+
+    expect(c6ProfileInfoText).not.toContain('Dev board: DevKitM-1');
+    expect(c6ProfileInfoText).not.toContain('Module: MINI-1');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1 / MINI-1U');
     expect(wrapper.text()).toContain('4 MB SPI flash in chip package');
     expect(wrapper.text()).toContain('No PSRAM');

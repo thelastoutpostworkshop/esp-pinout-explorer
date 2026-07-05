@@ -43,6 +43,7 @@
 
     <v-autocomplete
       :model-value="store.selectedModuleMarkingId"
+      v-model:search="moduleMarkingSearch"
       class="profile-navigator__select profile-navigator__select--module"
       clearable
       :custom-filter="filterModuleMarking"
@@ -52,11 +53,41 @@
       item-title="marking"
       item-value="id"
       label="Module marking"
-      :items="store.moduleMarkingOptions"
+      :items="moduleMarkingSelectItems"
       placeholder="Find printed marking"
       variant="outlined"
       @update:model-value="selectModuleMarking"
-    />
+    >
+      <template #item="{ props, item }">
+        <v-divider
+          v-if="moduleMarkingSlotItem(item).startsChipGroup && !moduleMarkingSlotItem(item).isFirstChipGroup"
+          class="module-marking-select__chip-divider"
+        />
+        <v-list-subheader
+          v-if="moduleMarkingSlotItem(item).startsChipGroup"
+          class="module-marking-select__chip-header"
+        >
+          {{ moduleMarkingSlotItem(item).chipGroupLabel }}
+        </v-list-subheader>
+        <v-list-subheader
+          v-if="moduleMarkingSlotItem(item).startsProfileGroup"
+          class="module-marking-select__profile-header"
+        >
+          {{ moduleMarkingSlotItem(item).profileGroupLabel }}
+        </v-list-subheader>
+        <v-list-item
+          v-bind="moduleMarkingListItemProps(props)"
+          class="module-marking-select__item"
+        >
+          <span class="module-marking-select__row">
+            <span class="module-marking-select__marking">{{ moduleMarkingSlotItem(item).marking }}</span>
+            <span v-if="moduleMarkingSlotItem(item).duplicateProfileLabel" class="module-marking-select__profile-tag">
+              {{ moduleMarkingSlotItem(item).duplicateProfileLabel }}
+            </span>
+          </span>
+        </v-list-item>
+      </template>
+    </v-autocomplete>
 
     <button
       class="profile-navigator__info-button"
@@ -71,7 +102,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import { PanelRightOpen } from '@lucide/vue';
 import { useSocStore } from '@/stores/socStore';
 import type { ModuleMarkingOption } from '@/stores/socStore';
@@ -82,6 +113,7 @@ const emit = defineEmits<{
 }>();
 
 const store = useSocStore();
+const moduleMarkingSearch = ref('');
 const selectableProfileOptions = computed(() =>
   store.packageOptions.filter((profile) => profileKind(profile) !== 'module' || profile.id === store.selectedPackageId),
 );
@@ -95,11 +127,56 @@ const profileSelectItems = computed(() =>
       startsGroup: index === 0 || profileKind(profiles[index - 1]) !== profileKind(profile),
     })),
 );
+const sortedModuleMarkingOptions = computed(() =>
+  [...store.moduleMarkingOptions]
+    .sort(
+      (first, second) =>
+        first.socName.localeCompare(second.socName) ||
+        moduleMarkingKindRank(first.profileKind) - moduleMarkingKindRank(second.profileKind) ||
+        first.marking.localeCompare(second.marking) ||
+        first.profileName.localeCompare(second.profileName),
+    )
+);
+const moduleMarkingSelectItems = computed(() =>
+  groupModuleMarkingOptions(
+    sortedModuleMarkingOptions.value.filter((option) => moduleMarkingMatchesQuery(option, moduleMarkingSearch.value)),
+  ),
+);
+
+function groupModuleMarkingOptions(options: ModuleMarkingOption[]): ModuleMarkingSelectItem[] {
+  const duplicateCounts = options.reduce((counts, option) => {
+    const key = moduleMarkingDuplicateKey(option);
+    counts.set(key, (counts.get(key) ?? 0) + 1);
+    return counts;
+  }, new Map<string, number>());
+
+  return options.map((option, index) => ({
+      ...option,
+      chipGroupLabel: option.socName,
+      profileGroupLabel: moduleMarkingKindGroupLabel(option.profileKind),
+      duplicateProfileLabel: (duplicateCounts.get(moduleMarkingDuplicateKey(option)) ?? 0) > 1 ? option.profileName : '',
+      isFirstChipGroup: index === 0,
+      startsChipGroup: index === 0 || options[index - 1].socName !== option.socName,
+      startsProfileGroup:
+        index === 0 || options[index - 1].socName !== option.socName || options[index - 1].profileKind !== option.profileKind,
+    }));
+}
 
 type ProfileSelectItem = SocPackageVariant & {
   groupLabel: string;
   isFirstGroup: boolean;
   startsGroup: boolean;
+};
+type ModuleMarkingSelectItem = ModuleMarkingOption & {
+  chipGroupLabel: string;
+  duplicateProfileLabel: string;
+  profileGroupLabel: string;
+  isFirstChipGroup: boolean;
+  startsChipGroup: boolean;
+  startsProfileGroup: boolean;
+};
+type VuetifySlotItem<T> = T & {
+  raw?: T;
 };
 
 function selectSoc(socId: string) {
@@ -133,6 +210,22 @@ function profileKindPluralLabel(kind: PinProfileKind) {
   return {
     board: 'Dev boards',
     module: 'Modules',
+    package: 'Chip packages',
+  }[kind];
+}
+
+function moduleMarkingKindRank(kind: PinProfileKind) {
+  return {
+    board: 0,
+    module: 1,
+    package: 2,
+  }[kind];
+}
+
+function moduleMarkingKindGroupLabel(kind: PinProfileKind) {
+  return {
+    board: 'Dev boards',
+    module: 'Module pads',
     package: 'Chip packages',
   }[kind];
 }
@@ -187,21 +280,36 @@ function filterModuleMarking(_value: string, query: string, item?: { raw?: Modul
     return false;
   }
 
+  return moduleMarkingMatchesQuery(option, query);
+}
+
+function moduleMarkingMatchesQuery(option: ModuleMarkingOption, query: string) {
   const tokens = normalizeSearch(query).split(/\s+/).filter(Boolean);
   if (!tokens.length) {
     return true;
   }
 
-  const searchableText = tokens.some(tokenHasDigit) ? option.markingSearchText : option.searchText;
+  const searchableText = shouldSearchExactMarking(query, tokens) ? option.markingSearchText : option.searchText;
   return tokens.every((token) => searchTextMatchesToken(searchableText, token));
 }
 
 function moduleMarkingItemProps(option: ModuleMarkingOption) {
   return {
-    subtitle:
-      option.compactMarking !== option.marking ? `${option.compactMarking} - ${option.subtitle}` : option.subtitle,
     title: option.marking,
   };
+}
+
+function moduleMarkingSlotItem(item: VuetifySlotItem<ModuleMarkingSelectItem>): ModuleMarkingSelectItem {
+  return item.raw ?? item;
+}
+
+function moduleMarkingListItemProps(props: Record<string, unknown>) {
+  const { title: _title, subtitle: _subtitle, ...listItemProps } = props;
+  return listItemProps;
+}
+
+function moduleMarkingDuplicateKey(option: Pick<ModuleMarkingOption, 'marking' | 'profileKind' | 'socName'>) {
+  return `${option.socName}|${option.profileKind}|${option.marking}`;
 }
 
 function moduleVariantSearchValues(variant: SocModuleVariant) {
@@ -222,6 +330,10 @@ function normalizeSearch(value: string) {
 }
 
 function searchTextMatchesToken(text: string, token: string) {
+  if (token.length === 1) {
+    return text.split(/\s+/).some((candidate) => candidate === token);
+  }
+
   if (!tokenHasDigit(token)) {
     return text.includes(token);
   }
@@ -243,6 +355,10 @@ function digitTokenMatches(candidate: string, token: string) {
 
 function tokenHasDigit(token: string) {
   return /\d/.test(token);
+}
+
+function shouldSearchExactMarking(query: string, tokens: string[]) {
+  return /[_/+-]/.test(query) || tokens.some((token) => tokenHasDigit(token) || token.length === 1);
 }
 
 function compactVariantName(name: string) {
@@ -315,6 +431,92 @@ function openProfileInfo() {
   white-space: normal;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+:global(.module-marking-select__chip-divider) {
+  margin: 8px 0 4px;
+}
+
+:global(.module-marking-select__chip-header) {
+  min-height: 34px;
+  border-top: 1px solid color-mix(in srgb, var(--app-link) 26%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--app-link) 20%, transparent);
+  background: color-mix(in srgb, var(--app-active-bg) 82%, var(--app-surface-bg));
+}
+
+:global(.module-marking-select__chip-header .v-list-subheader__text) {
+  color: var(--app-active-text);
+  font-size: 0.86rem;
+  font-weight: 950;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+:global(.module-marking-select__profile-header) {
+  min-height: 24px;
+  background: color-mix(in srgb, var(--app-surface-muted) 88%, transparent);
+}
+
+:global(.module-marking-select__profile-header .v-list-subheader__text) {
+  color: var(--app-muted);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+:global(.module-marking-select__item.v-list-item) {
+  align-items: center;
+  min-height: 38px !important;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+:global(.module-marking-select__item .v-list-item-title) {
+  overflow: hidden;
+  font-size: 0.92rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:global(.module-marking-select__row) {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  width: 100%;
+}
+
+:global(.module-marking-select__marking) {
+  overflow: hidden;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-size: 0.92rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+:global(.module-marking-select__profile-tag) {
+  overflow: hidden;
+  flex: 0 1 auto;
+  max-width: 46%;
+  border: 1px solid color-mix(in srgb, var(--app-border) 86%, transparent);
+  border-radius: 999px;
+  padding: 2px 7px;
+  color: var(--app-muted);
+  background: color-mix(in srgb, var(--app-surface-muted) 84%, transparent);
+  font-size: 0.68rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .profile-navigator__info-button {
