@@ -318,6 +318,13 @@ describe('BoardSvg', () => {
     expect(wrapper.text()).toContain('BOOT/RST');
     expect(wrapper.text()).toContain('LCD/CAM');
     expect(wrapper.text()).toContain('USB / ETH / PWR');
+    expectNoOverlappingRects(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
+    );
+    expectNoRectIntersections(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => pinNode.find('.board-pin__pad')),
+      wrapper.findAll('.connector-board__component rect'),
+    );
   });
 
   it('renders the ESP32-P4-EYE connector-group board with eye artwork', () => {

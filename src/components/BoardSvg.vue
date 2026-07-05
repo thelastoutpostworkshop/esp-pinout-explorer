@@ -56,8 +56,8 @@
         :key="badge.label"
         class="connector-board__usb"
       >
-        <rect :x="badge.x" y="30" :width="badge.width" height="40" rx="8" />
-        <text :x="badge.x + badge.width / 2" y="55" text-anchor="middle">{{ badge.label }}</text>
+        <rect :x="badge.x" :y="badge.y" :width="badge.width" :height="badge.height" rx="8" />
+        <text :x="badge.x + badge.width / 2" :y="badge.textY" text-anchor="middle">{{ badge.label }}</text>
       </g>
 
       <g class="connector-board__module">
@@ -558,44 +558,44 @@ const connectorPortBadges = computed(() => {
   switch (props.boardArtwork) {
     case 'thread-br':
       return [
-        { x: 320, width: 118, label: 'USB1' },
-        { x: 522, width: 118, label: 'USB2' },
+        portBadge(320, 118, 'USB1'),
+        portBadge(522, 118, 'USB2'),
       ];
     case 'usb-bridge':
-      return [{ x: 421, width: 118, label: 'USB' }];
+      return [portBadge(421, 118, 'USB')];
     case 'lcd-ev':
       return [
-        { x: 320, width: 118, label: 'USB-UART' },
-        { x: 522, width: 118, label: 'USB-USB' },
+        portBadge(320, 118, 'USB-UART'),
+        portBadge(522, 118, 'USB-USB'),
       ];
     case 'vocat':
       return [
-        { x: 320, width: 118, label: 'USB-C' },
-        { x: 522, width: 118, label: 'MAG' },
+        portBadge(320, 118, 'USB-C'),
+        portBadge(522, 118, 'MAG'),
       ];
     case 'dualkey':
       return [
-        { x: 320, width: 118, label: 'USB-C' },
-        { x: 522, width: 118, label: 'HY2.0' },
+        portBadge(320, 118, 'USB-C'),
+        portBadge(522, 118, 'HY2.0'),
       ];
     case 'esp8266-devkitc':
       return [
-        { x: 320, width: 118, label: 'USB-UART' },
-        { x: 522, width: 118, label: 'micro USB' },
+        portBadge(320, 118, 'USB-UART'),
+        portBadge(522, 118, 'micro USB'),
       ];
     case 'p4-eye':
       return [
-        { x: 320, width: 118, label: 'USB 2.0' },
-        { x: 522, width: 118, label: 'DEBUG' },
+        portBadge(320, 118, 'USB 2.0'),
+        portBadge(522, 118, 'DEBUG'),
       ];
     default:
       return [
-        { x: 320, width: 118, label: 'USB HOST' },
-        { x: 522, width: 118, label: 'USB DEV' },
+        portBadge(320, 118, 'USB HOST'),
+        portBadge(522, 118, 'USB DEV'),
       ];
   }
 });
-const connectorComponentBadges = computed(() => {
+const rawConnectorComponentBadges = computed<ConnectorComponentBadge[]>(() => {
   switch (props.boardArtwork) {
     case 'thread-br':
       return [
@@ -659,6 +659,7 @@ const connectorComponentBadges = computed(() => {
       ];
   }
 });
+const connectorComponentBadges = computed(() => placeConnectorComponentBadges(rawConnectorComponentBadges.value));
 const dualHeaderCenterLayout = computed(() =>
   centerContentLayout({
     centerX: 470,
@@ -690,8 +691,15 @@ interface PointText {
   anchor?: 'start' | 'middle' | 'end';
 }
 
+interface LayoutRect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
 interface Geometry {
-  rect: { x: number; y: number; width: number; height: number; rx: number };
+  rect: LayoutRect & { rx: number };
   label: PointText;
 }
 
@@ -716,6 +724,19 @@ interface ConnectorComponentBadge {
   tone: string;
 }
 
+interface ConnectorPortBadge extends LayoutRect {
+  label: string;
+  textY: number;
+}
+
+interface ConnectorGroupLabel {
+  key: string;
+  label: string;
+  x: number;
+  y: number;
+  anchor: 'start' | 'middle' | 'end';
+}
+
 interface BoardPackageAction {
   key: string;
   label: string;
@@ -733,6 +754,10 @@ function componentBadge(
   tone: string,
 ): ConnectorComponentBadge {
   return { x, y, width, height, label, tone };
+}
+
+function portBadge(x: number, width: number, label: string): ConnectorPortBadge {
+  return { x, y: 30, width, height: 40, label, textY: 55 };
 }
 
 interface CenterContentOptions {
@@ -818,6 +843,7 @@ const connectorTopStartX = 238;
 const connectorTopEndX = 722;
 const denseConnectorHeaderStartX = 190;
 const denseConnectorHeaderEndX = 770;
+const connectorHorizontalMinGap = 6;
 const connectorLeftStartY = 190;
 const connectorLeftEndY = 460;
 const connectorRightStartY = 190;
@@ -828,7 +854,6 @@ const connectorBottomTopRowY = 550;
 const connectorBottomMiddleRowY = 596;
 const connectorBottomBottomRowY = 636;
 const connectorBottomPinsPerRow = 9;
-const denseConnectorBottomRowY = 612;
 const threadBrConnectorStartY = 152;
 const threadBrConnectorEndY = 612;
 
@@ -890,12 +915,28 @@ const connectorSideOrders = computed<Record<Exclude<PinSide, 'center'>, number>>
   right: connectorSideMaxOrder('right'),
   top: connectorSideMaxOrder('top'),
 }));
+const connectorSideOrderIndexes = computed<Record<Exclude<PinSide, 'center'>, Map<number, number>>>(() => ({
+  left: connectorSideOrderIndexMap('left'),
+  bottom: connectorSideOrderIndexMap('bottom'),
+  right: connectorSideOrderIndexMap('right'),
+  top: connectorSideOrderIndexMap('top'),
+}));
 const isDenseConnectorHeader = computed(() => props.boardArtwork === 'esp8266-devkitc');
 
 function connectorSideMaxOrder(side: Exclude<PinSide, 'center'>) {
   return Math.max(
     1,
     ...props.pins.filter((pin) => pin.position.side === side).map((pin) => pin.position.order),
+  );
+}
+
+function connectorSideOrderIndexMap(side: Exclude<PinSide, 'center'>) {
+  return new Map(
+    [...new Set(props.pins
+      .filter((pin) => pin.position.side === side)
+      .map((pin) => pin.position.order))]
+      .sort((first, second) => first - second)
+      .map((order, index) => [order, index]),
   );
 }
 
@@ -937,6 +978,9 @@ function connectorPadWidth(side: Exclude<PinSide, 'center'>) {
   }
 
   if (side === 'top') {
+    if (count >= 16) {
+      return 40;
+    }
     if (count >= 11) {
       return 42;
     }
@@ -948,7 +992,7 @@ function connectorPadWidth(side: Exclude<PinSide, 'center'>) {
 
   if (side === 'bottom') {
     if (count >= 15) {
-      return 58;
+      return 52;
     }
     if (count >= 8) {
       return 58;
@@ -959,38 +1003,91 @@ function connectorPadWidth(side: Exclude<PinSide, 'center'>) {
   return 118;
 }
 
+function connectorHorizontalLayout(side: 'top' | 'bottom') {
+  const count = connectorSideOrders.value[side];
+  const padWidth = connectorPadWidth(side);
+  const dense = isDenseConnectorHeader.value || count >= 13;
+  const start = dense
+    ? denseConnectorHeaderStartX
+    : side === 'top'
+      ? connectorTopStartX
+      : connectorBottomRowStartX;
+  const end = dense
+    ? denseConnectorHeaderEndX
+    : side === 'top'
+      ? connectorTopEndX
+      : connectorBottomRowEndX;
+  const span = end - start;
+  const spanLimitedPinsPerRow = Math.max(1, Math.floor((span + connectorHorizontalMinGap) / (padWidth + connectorHorizontalMinGap)));
+  const pinsPerRow = dense
+    ? Math.min(count, spanLimitedPinsPerRow)
+    : side === 'bottom' && count > connectorBottomPinsPerRow
+      ? connectorBottomPinsPerRow
+      : count;
+
+  return {
+    count,
+    end,
+    padWidth,
+    pinsPerRow,
+    start,
+  };
+}
+
+function connectorHorizontalPinPosition(side: 'top' | 'bottom', order: number) {
+  const layout = connectorHorizontalLayout(side);
+  const index = connectorSideOrderIndexes.value[side].get(order) ?? Math.max(0, order - 1);
+  const rowIndex = Math.floor(index / layout.pinsPerRow);
+  const rowOrder = index % layout.pinsPerRow;
+  const rowCount = Math.min(layout.pinsPerRow, layout.count - rowIndex * layout.pinsPerRow);
+  const start = side === 'bottom' && rowCount <= 4 ? 260 : layout.start;
+  const end = side === 'bottom' && rowCount <= 4 ? 700 : layout.end;
+  const x = rowCount <= 1 ? (start + end) / 2 : start + (rowOrder * (end - start)) / (rowCount - 1);
+
+  return {
+    x,
+    y: connectorHorizontalRowY(side, rowIndex, Math.ceil(layout.count / layout.pinsPerRow)),
+  };
+}
+
+function connectorHorizontalRowY(side: 'top' | 'bottom', rowIndex: number, rowCount: number) {
+  if (side === 'top') {
+    const startY = rowCount >= 3 ? 106 : 118;
+    return startY + rowIndex * 40;
+  }
+
+  if (rowCount <= 1) {
+    return connectorBottomTopRowY;
+  }
+
+  if (rowCount === 2) {
+    return [connectorBottomTopRowY, connectorBottomMiddleRowY][rowIndex] ?? connectorBottomMiddleRowY;
+  }
+
+  return [connectorBottomTopRowY, connectorBottomMiddleRowY, connectorBottomBottomRowY][rowIndex] ?? connectorBottomBottomRowY;
+}
+
 function connectorPinGeometry(pin: SocPin): Geometry {
   if (pin.position.side === 'top') {
-    const x = connectorSideCoordinate('top', pin.position.order);
+    const { x, y } = connectorHorizontalPinPosition('top', pin.position.order);
     const width = connectorPadWidth('top');
     return {
-      rect: { x: x - width / 2, y: 118, width, height: 30, rx: 5 },
-      label: { x, y: 133 },
+      rect: { x: x - width / 2, y: y - 15, width, height: 30, rx: 5 },
+      label: { x, y },
     };
   }
 
   if (pin.position.side === 'bottom') {
     if (isDenseConnectorHeader.value) {
-      const count = connectorSideOrders.value.bottom;
-      const x =
-        count <= 1
-          ? (denseConnectorHeaderStartX + denseConnectorHeaderEndX) / 2
-          : denseConnectorHeaderStartX + ((pin.position.order - 1) * (denseConnectorHeaderEndX - denseConnectorHeaderStartX)) / (count - 1);
+      const { x, y } = connectorHorizontalPinPosition('bottom', pin.position.order);
       const width = connectorPadWidth('bottom');
       return {
-        rect: { x: x - width / 2, y: denseConnectorBottomRowY - 14, width, height: 28, rx: 5 },
-        label: { x, y: denseConnectorBottomRowY },
+        rect: { x: x - width / 2, y: y - 14, width, height: 28, rx: 5 },
+        label: { x, y },
       };
     }
 
-    const rowOrder = ((pin.position.order - 1) % connectorBottomPinsPerRow) + 1;
-    const rowIndex = Math.floor((pin.position.order - 1) / connectorBottomPinsPerRow);
-    const rowCount = Math.min(connectorBottomPinsPerRow, connectorSideOrders.value.bottom - rowIndex * connectorBottomPinsPerRow);
-    const startX = rowCount <= 4 ? 260 : connectorBottomRowStartX;
-    const endX = rowCount <= 4 ? 700 : connectorBottomRowEndX;
-    const x =
-      rowCount <= 1 ? (startX + endX) / 2 : startX + ((rowOrder - 1) * (endX - startX)) / (rowCount - 1);
-    const y = connectorBottomRowY(rowIndex);
+    const { x, y } = connectorHorizontalPinPosition('bottom', pin.position.order);
     const width = connectorPadWidth('bottom');
     return {
       rect: { x: x - width / 2, y: y - 14, width, height: 28, rx: 5 },
@@ -1013,15 +1110,96 @@ function connectorPinGeometry(pin: SocPin): Geometry {
   };
 }
 
-function connectorBottomRowY(rowIndex: number) {
-  if (connectorSideOrders.value.bottom > connectorBottomPinsPerRow * 2) {
-    return [connectorBottomTopRowY, connectorBottomMiddleRowY, connectorBottomBottomRowY][rowIndex] ?? connectorBottomBottomRowY;
+function placeConnectorComponentBadges(badges: ConnectorComponentBadge[]) {
+  const reservedBoxes = connectorComponentReservedBoxes();
+  const placedBadges: ConnectorComponentBadge[] = [];
+
+  for (const badge of badges) {
+    const placement = connectorComponentBadgeCandidates(badge).find((candidate) =>
+      !reservedBoxes.some((reservedBox) => rectsOverlap(expandRect(candidate, 3), reservedBox)),
+    );
+
+    if (!placement) {
+      continue;
+    }
+
+    placedBadges.push(placement);
+    reservedBoxes.push(expandRect(placement, 5));
   }
 
-  return rowIndex === 0 ? connectorBottomTopRowY : connectorBottomBottomRowY;
+  return placedBadges;
 }
 
-const connectorGroupLabels = computed(() => {
+function connectorComponentReservedBoxes() {
+  return [
+    ...props.pins.map((pin) => expandRect(connectorPinGeometry(pin).rect, 5)),
+    expandRect({ x: 326, y: 214, width: 308, height: 240 }, 4),
+    expandRect({ x: 350, y: 416, width: 260, height: 28 }, 4),
+    ...boardPackageActions.value.map((_, index) => expandRect(packageActionGeometry(index, 'connector'), 4)),
+    ...connectorPortBadges.value.map((badge) => expandRect(badge, 3)),
+  ];
+}
+
+function connectorComponentBadgeCandidates(badge: ConnectorComponentBadge) {
+  const primarySide = badge.x + badge.width / 2 >= 480 ? 'right' : 'left';
+  const primaryX = connectorComponentLaneX(primarySide, badge.width);
+  const secondaryX = connectorComponentLaneX(primarySide === 'right' ? 'left' : 'right', badge.width);
+  const yOffsets = [0, 14, -14, -52, 52, -104, 104];
+  const candidates = [
+    badge,
+    ...yOffsets.map((offset) => ({ ...badge, x: primaryX, y: badge.y + offset })),
+    ...yOffsets.map((offset) => ({ ...badge, x: secondaryX, y: badge.y + offset })),
+  ].map(constrainConnectorComponentBadge);
+
+  return uniqueRects(candidates);
+}
+
+function connectorComponentLaneX(side: 'left' | 'right', width: number) {
+  return side === 'left' ? 142 : 818 - width;
+}
+
+function constrainConnectorComponentBadge(badge: ConnectorComponentBadge) {
+  const bounds = { x: 136, y: 86, width: 688, height: 558 };
+  return {
+    ...badge,
+    x: clamp(badge.x, bounds.x, bounds.x + bounds.width - badge.width),
+    y: clamp(badge.y, bounds.y, bounds.y + bounds.height - badge.height),
+  };
+}
+
+function expandRect(rect: LayoutRect, padding: number): LayoutRect {
+  return {
+    x: rect.x - padding,
+    y: rect.y - padding,
+    width: rect.width + padding * 2,
+    height: rect.height + padding * 2,
+  };
+}
+
+function uniqueRects<T extends LayoutRect>(rects: T[]) {
+  const seen = new Set<string>();
+  return rects.filter((rect) => {
+    const key = `${Math.round(rect.x)}:${Math.round(rect.y)}:${Math.round(rect.width)}:${Math.round(rect.height)}`;
+    if (seen.has(key)) {
+      return false;
+    }
+    seen.add(key);
+    return true;
+  });
+}
+
+function rectsOverlap(first: LayoutRect, second: LayoutRect) {
+  const horizontalOverlap = first.x < second.x + second.width && second.x < first.x + first.width;
+  const verticalOverlap = first.y < second.y + second.height && second.y < first.y + first.height;
+
+  return horizontalOverlap && verticalOverlap;
+}
+
+function clamp(value: number, min: number, max: number) {
+  return Math.min(Math.max(value, min), max);
+}
+
+const connectorGroupLabels = computed<ConnectorGroupLabel[]>(() => {
   const groups = new Map<string, SocPin[]>();
   for (const pin of props.pins) {
     const group = pin.boardGroup;
@@ -1049,16 +1227,42 @@ const connectorGroupLabels = computed(() => {
     }
 
     if (side === 'top') {
-      return [{ key: label, label: displayLabel, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' as const }];
+      return visibleConnectorGroupLabel({ key: label, label: displayLabel, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' });
     }
 
     if (side === 'bottom') {
-      return [{ key: label, label: displayLabel, x: (minX + maxX) / 2, y: maxY + 20, anchor: 'middle' as const }];
+      return visibleConnectorGroupLabel({ key: label, label: displayLabel, x: (minX + maxX) / 2, y: maxY + 20, anchor: 'middle' });
     }
 
-    return [{ key: label, label: displayLabel, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' as const }];
+    return visibleConnectorGroupLabel({ key: label, label: displayLabel, x: (minX + maxX) / 2, y: minY - 14, anchor: 'middle' });
   });
 });
+
+function visibleConnectorGroupLabel(label: ConnectorGroupLabel) {
+  const labelBox = connectorGroupLabelBox(label);
+  const collides = connectorGroupLabelReservedBoxes().some((reservedBox) => rectsOverlap(labelBox, reservedBox));
+
+  return collides ? [] : [label];
+}
+
+function connectorGroupLabelReservedBoxes() {
+  return [
+    ...props.pins.map((pin) => expandRect(connectorPinGeometry(pin).rect, 3)),
+    ...connectorPortBadges.value.map((badge) => expandRect(badge, 3)),
+    ...connectorComponentBadges.value.map((badge) => expandRect(badge, 3)),
+  ];
+}
+
+function connectorGroupLabelBox(label: ConnectorGroupLabel): LayoutRect {
+  const width = Math.min(180, Math.max(28, label.label.length * 7.2));
+  const x = label.anchor === 'start'
+    ? label.x
+    : label.anchor === 'end'
+      ? label.x - width
+      : label.x - width / 2;
+
+  return { x, y: label.y - 12, width, height: 15 };
+}
 
 function connectorGroupDisplayLabel(label: string, pinCount: number) {
   if (pinCount < 3) {
