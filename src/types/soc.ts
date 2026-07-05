@@ -7,6 +7,7 @@ export type PinProfileKind = 'package' | 'module' | 'board';
 export type BoardLayout = 'dual-header' | 'connector-groups';
 
 export type BoardArtwork =
+  | 'thread-br'
   | 'usb-otg'
   | 'usb-bridge'
   | 'lcd-ev'

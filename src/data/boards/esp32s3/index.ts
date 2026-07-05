@@ -1,6 +1,7 @@
 import type { BoardSourcePinResolver } from '@/data/boards/helpers';
 import { createEsp32s3DevKitC1V11Profile } from '@/data/boards/esp32s3/devkitC1V11';
 import { createEsp32s3DevKitM1Profile } from '@/data/boards/esp32s3/devkitM1';
+import { createEsp32s3ThreadBorderRouterProfile } from '@/data/boards/esp32s3/threadBorderRouter';
 import {
   createEsp32s3DualKeyProfile,
   createEsp32s3LcdEvBoardV15Profile,
@@ -12,6 +13,7 @@ import type { SocPackageVariant } from '@/types/soc';
 
 export { createEsp32s3DevKitC1V11Profile } from '@/data/boards/esp32s3/devkitC1V11';
 export { createEsp32s3DevKitM1Profile } from '@/data/boards/esp32s3/devkitM1';
+export { createEsp32s3ThreadBorderRouterProfile } from '@/data/boards/esp32s3/threadBorderRouter';
 export {
   createEsp32s3DualKeyProfile,
   createEsp32s3LcdEvBoardV15Profile,
@@ -29,6 +31,7 @@ export function createEsp32s3BoardProfiles(resolveSourcePinByGpio: BoardSourcePi
   return [
     createEsp32s3DevKitC1V11Profile(resolveSourcePinByGpio),
     createEsp32s3DevKitM1Profile(resolveSourcePinByGpio),
+    createEsp32s3ThreadBorderRouterProfile(resolveSourcePinByGpio),
     createEsp32s3UsbOtgProfile(resolveSourcePinByGpio),
     createEsp32s3UsbBridgeProfile(resolveSourcePinByGpio),
     createEsp32s3LcdEvBoardV15Profile(resolveSourcePinByGpio),

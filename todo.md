@@ -206,9 +206,9 @@ Source baseline:
   - [x] Board profile: ESP32-H2-DevKitM-1
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/esp32-h2-devkitm-1/user_guide.html
     - Note: active Espressif board based on ESP32-H2-MINI-1 or ESP32-H2-MINI-1U. Implemented from the official Header Block tables and Pin Layout; standalone MINI module pad profiles remain separate TODO items.
-  - [ ] Board profile: ESP Thread Border Router/Zigbee Gateway
-    - Source: https://docs.espressif.com/projects/esp-thread-br/en/latest/dev-board-guide.html
-    - Note: gateway board combines ESP32-S3 with ESP32-H2 RCP. Treat as a specialized connector/peripheral board profile only if the official guide/schematic provides enough pin allocation detail.
+  - [x] Board profile: ESP Thread Border Router/Zigbee Gateway
+    - Source: https://docs.espressif.com/projects/esp-thread-br/en/latest/hardware_platforms.html
+    - Note: implemented as an ESP32-S3 board profile with an ESP32-H2 RCP module, from the official hardware platforms page plus the carrier-board schematic and sub-Ethernet schematic.
 
 ### ESP32-P Series
 

@@ -532,6 +532,11 @@ const connectorCenterLayout = computed(() =>
 );
 const connectorPortBadges = computed(() => {
   switch (props.boardArtwork) {
+    case 'thread-br':
+      return [
+        { x: 320, width: 118, label: 'USB1' },
+        { x: 522, width: 118, label: 'USB2' },
+      ];
     case 'usb-bridge':
       return [{ x: 421, width: 118, label: 'USB' }];
     case 'lcd-ev':
@@ -568,6 +573,13 @@ const connectorPortBadges = computed(() => {
 });
 const connectorComponentBadges = computed(() => {
   switch (props.boardArtwork) {
+    case 'thread-br':
+      return [
+        componentBadge(616, 190, 76, 44, 'H2 RCP', 'connector'),
+        componentBadge(272, 278, 76, 44, 'BOOT/RST', 'buttons'),
+        componentBadge(616, 438, 76, 44, 'S3 HOST', 'connector'),
+        componentBadge(340, 460, 282, 34, 'PWR / UART0', 'power'),
+      ];
     case 'usb-bridge':
       return [
         componentBadge(616, 206, 76, 44, 'TARGET', 'connector'),
@@ -793,11 +805,14 @@ const connectorBottomMiddleRowY = 596;
 const connectorBottomBottomRowY = 636;
 const connectorBottomPinsPerRow = 9;
 const denseConnectorBottomRowY = 612;
+const threadBrConnectorStartY = 152;
+const threadBrConnectorEndY = 612;
 
 const sideOrders = computed<Record<'left' | 'right', number>>(() => ({
   left: sideMaxOrder('left'),
   right: sideMaxOrder('right'),
 }));
+const isThreadBrConnectorBoard = computed(() => props.boardArtwork === 'thread-br');
 
 function sideMaxOrder(side: 'left' | 'right') {
   return Math.max(
@@ -861,8 +876,28 @@ function connectorSideMaxOrder(side: Exclude<PinSide, 'center'>) {
 }
 
 function connectorSideCoordinate(side: Exclude<PinSide, 'center'>, order: number) {
-  const start = side === 'top' && isDenseConnectorHeader.value ? denseConnectorHeaderStartX : side === 'top' ? connectorTopStartX : side === 'right' ? connectorRightStartY : connectorLeftStartY;
-  const end = side === 'top' && isDenseConnectorHeader.value ? denseConnectorHeaderEndX : side === 'top' ? connectorTopEndX : side === 'right' ? connectorRightEndY : connectorLeftEndY;
+  const start = side === 'top'
+    ? isDenseConnectorHeader.value
+      ? denseConnectorHeaderStartX
+      : connectorTopStartX
+    : side === 'right'
+      ? isThreadBrConnectorBoard.value
+        ? threadBrConnectorStartY
+        : connectorRightStartY
+      : isThreadBrConnectorBoard.value
+        ? threadBrConnectorStartY
+        : connectorLeftStartY;
+  const end = side === 'top'
+    ? isDenseConnectorHeader.value
+      ? denseConnectorHeaderEndX
+      : connectorTopEndX
+    : side === 'right'
+      ? isThreadBrConnectorBoard.value
+        ? threadBrConnectorEndY
+        : connectorRightEndY
+      : isThreadBrConnectorBoard.value
+        ? threadBrConnectorEndY
+        : connectorLeftEndY;
   const count = connectorSideOrders.value[side];
   if (count <= 1) {
     return (start + end) / 2;

@@ -378,6 +378,40 @@ describe('BoardSvg', () => {
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
   });
 
+  it('renders the ESP Thread Border Router connector profile with thread artwork', () => {
+    const boardProfile = esp32s3.boardProfiles?.find((profile) => profile.id === 'esp32s3-thread-br-zigbee-gw-v1-2');
+    expect(boardProfile).toBeDefined();
+    const pins = boardProfile?.pins ?? [];
+    const wrapper = mount(BoardSvg, {
+      props: {
+        boardArtwork: boardProfile?.boardArtwork,
+        boardLayout: boardProfile?.boardLayout,
+        filteredPinCount: pins.length,
+        filteredPinIds: new Set(pins.map((pin) => pin.id)),
+        hasFilter: false,
+        packageName: boardProfile?.packageName ?? '',
+        pins,
+        selectedPinId: null,
+        soc: esp32s3,
+        totalPinCount: pins.length,
+      },
+    });
+
+    expect(wrapper.attributes('aria-label')).toContain('34 of 34 connector pins shown');
+    expect(wrapper.find('.connector-board-svg').exists()).toBe(true);
+    expect(wrapper.text()).toContain('USB1');
+    expect(wrapper.text()).toContain('USB2');
+    expect(wrapper.text()).toContain('ESP32-H2');
+    expect(wrapper.text()).toContain('ESP32-S3');
+    expectNoOverlappingRects(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => ({ rect: pinNode.find('.board-pin__pad') })),
+    );
+    expectNoRectIntersections(
+      wrapper.findAll('.connector-board__pin').map((pinNode) => pinNode.find('.board-pin__pad')),
+      wrapper.findAll('.connector-board__component rect'),
+    );
+  });
+
   it('keeps dense ESP32-S3 allocation board pins from overlapping', () => {
     for (const profileId of ['esp32s3-lcd-ev-board-v1-5', 'esp-vocat-v1-2', 'esp-dualkey']) {
       const profile = esp32s3.boardProfiles?.find((item) => item.id === profileId);

@@ -58,6 +58,7 @@ const expectedPinCounts: Record<string, number> = {
   'esp32s3:esp32s3-qfn56': 57,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
   'esp32s3:esp32s3-devkitm-1': 44,
+  'esp32s3:esp32s3-thread-br-zigbee-gw-v1-2': 34,
   'esp32s3:esp32s3-usb-otg': 32,
   'esp32s3:esp32s3-usb-bridge': 14,
   'esp32s3:esp32s3-lcd-ev-board-v1-5': 57,
