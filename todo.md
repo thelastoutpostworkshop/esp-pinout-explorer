@@ -46,6 +46,63 @@ Source baseline:
   - [x] Module profile: ESP-WROOM-02U
   - [x] Board profile: ESP8266-DevKitC
 
+## UX / Maker Workflow TODO
+
+Priority order is based on maker value: helping someone identify the exact hardware, choose a practical pin, understand risk, and work comfortably on desktop or mobile.
+
+- [ ] Make the pinout the first-run experience.
+  - Current behavior: first-time visitors land on the About page.
+  - Desired behavior: show the selected default board pinout first, with a compact dismissible intro or first-run hint that points to exact-board/profile selection.
+  - Rationale: makers usually arrive with a board in hand and need to answer "which pin can I use?" before reading project background.
+- [ ] Add a maker decision summary at the top of `PinInfoDrawer.vue`.
+  - Show a short status such as `Good general GPIO`, `Use with caution`, `Avoid for normal projects`, `Power only`, or `Board control`.
+  - Include one-line reasons based on existing warning categories and board notes, such as boot strap, UART0, USB, flash, PSRAM, onboard LED, reset, voltage-sensitive, or no GPIO.
+  - Keep the detailed official functions, notes, warnings, and source link below the summary.
+- [ ] Add a filtered pin candidate list for search and quick filters.
+  - When search or a quick filter is active, show a compact list/table of matching pins near the sidebar or as a mobile sheet.
+  - Include board label, header/display number, GPIO, primary functions, and warning summary.
+  - Allow clicking a row to select the pin on the SVG and open details.
+  - Rationale: dimming pins on the drawing is useful, but makers also need a scannable shortlist for comparisons.
+- [ ] Redesign the board `Functions` overlay so it does not flood dense boards.
+  - Current risk: showing all function badges can create a wall of labels and overflow the stage on dense profiles.
+  - Prefer one of these modes:
+    - Show function badges only for selected, hovered, focused, or search-matched pins.
+    - Add a function-family selector, for example GPIO, ADC, touch, SPI, UART, USB, JTAG, clock.
+    - Replace always-on badges with a side comparison panel for candidate pins.
+  - Keep the current simple board labels as the default view.
+- [ ] Improve mobile drawer coordination.
+  - Close pin details and profile info when the mobile controls drawer opens, or convert pin details to a mobile full-screen/bottom-sheet workflow.
+  - Prevent stacked temporary drawers from leaving controls, details, and the pinout visually competing on small screens.
+  - Keep search, quick filters, and selected-pin details easy to reach with one hand.
+- [ ] Make module pad profiles discoverable from the profile selector.
+  - Current risk: implemented module profiles are documented but hidden from the selector when `kind: 'module'` is filtered out.
+  - Add a profile-type control or grouped selector that exposes `Dev boards`, `Modules`, and `Chip packages`.
+  - Make clear that module profiles are PCB/module pads, not development-board headers.
+- [ ] Improve exact-board identification in `ProfileNavigator.vue` and `ProfileInfoDrawer.vue`.
+  - Add compact profile type chips such as `Dev board`, `Connector board`, `Module pads`, and `Bare chip`.
+  - Surface the most important identification notes near the selector or in a first-screen profile info summary.
+  - Where official source figures exist, make the board/module reference image easier to find before the long spec table.
+- [ ] Add maker-task quick filters.
+  - Candidate filters: `General GPIO`, `PWM candidates`, `I2C candidates`, `SPI candidates`, `ADC input`, `Avoid boot issues`, `No onboard hardware`, `No USB/UART0`.
+  - Keep existing technical filters for datasheet-oriented users.
+  - Base these filters on structured pin metadata and warning categories instead of fragile label-only matching where practical.
+- [ ] Explain safe-use exclusions.
+  - When `Safe use` is active, make it clear why excluded pins are dimmed.
+  - Options: exclusion reason chips in the candidate list, a `Why excluded?` section in the drawer, or hover/focus hints on dimmed pins.
+  - Keep the definition aligned with `src/data/pinSafety.ts`.
+- [ ] Improve mobile pin selection ergonomics.
+  - Increase SVG hit targets on small screens where possible without changing visual pin geometry.
+  - Consider a tap-to-zoom or focus mode for dense connector-group profiles.
+  - Make selected-pin state visible even when the details drawer covers the board.
+- [ ] Improve warning affordances beyond color.
+  - Do not rely only on a small yellow corner for maker warnings.
+  - Add accessible labels, optional warning icons in candidate rows, and clearer selected-pin warning summaries.
+  - Keep the SVG legend focused on persistent categories.
+- [ ] Reduce first-load bundle weight.
+  - Code-split About, Maker Tools, and possibly board/SoC data by family so the default pinout loads faster.
+  - Keep generated `dist/` artifacts out of commits.
+  - Verify with `npm run build` and review Vite chunk warnings.
+
 ## To Do
 
 ### ESP32-S Series
