@@ -6,6 +6,15 @@
 <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
 </a>
 
+## Local Development
+
+```bash
+npm install
+npm run dev
+```
+
+Open `http://127.0.0.1:5176` on the development computer. To test from an iPhone or another device on the same Wi-Fi, open `http://<your-computer-ip>:5176`, for example `http://192.168.1.25:5176`. On Windows, allow Node.js through Windows Firewall if prompted.
+
 Current profiles:
 
 ## Board Headers And Board Views
