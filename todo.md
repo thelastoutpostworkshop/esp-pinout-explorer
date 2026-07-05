@@ -74,10 +74,11 @@ Priority order is based on maker value: helping someone identify the exact hardw
     - Add a function-family selector, for example GPIO, ADC, touch, SPI, UART, USB, JTAG, clock.
     - Replace always-on badges with a side comparison panel for candidate pins.
   - Keep the current simple board labels as the default view.
-- [ ] Improve mobile drawer coordination.
-  - Close pin details and profile info when the mobile controls drawer opens, or convert pin details to a mobile full-screen/bottom-sheet workflow.
-  - Prevent stacked temporary drawers from leaving controls, details, and the pinout visually competing on small screens.
-  - Keep search, quick filters, and selected-pin details easy to reach with one hand.
+- [x] Improve mobile drawer coordination.
+  - Opening mobile controls closes pin details and profile info.
+  - Opening pin details or profile info closes mobile controls.
+  - Tapping a quick filter from the mobile controls drawer closes the drawer after applying the filter.
+  - Keeps one temporary drawer active at a time on small screens so search, filters, and selected-pin details do not compete.
 - [ ] Make module pad profiles discoverable from the profile selector.
   - Remaining risk: implemented module profiles are findable through the module marking lookup, but direct module profile browsing is still hidden unless the module is selected.
   - Add a profile-type control or grouped selector that exposes `Dev boards`, `Modules`, and `Chip packages`.

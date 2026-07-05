@@ -5,7 +5,11 @@
     </section>
 
     <section class="explorer-sidebar__section">
-      <PinSearch :model-value="store.searchQuery" @update:model-value="store.setSearchQuery" />
+      <PinSearch
+        :model-value="store.searchQuery"
+        @quick-filter="emit('changed')"
+        @update:model-value="store.setSearchQuery"
+      />
     </section>
 
     <section class="explorer-sidebar__section" aria-label="Pin color legend">

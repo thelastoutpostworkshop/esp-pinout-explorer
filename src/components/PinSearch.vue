@@ -66,6 +66,7 @@ const props = defineProps<{
 }>();
 
 const emit = defineEmits<{
+  'quick-filter': [];
   'update:modelValue': [value: string];
 }>();
 
@@ -129,6 +130,7 @@ function emitSearch(value: string | number | null) {
 
 function toggleFilter(filter: QuickFilter) {
   emit('update:modelValue', activeFilter.value === filter.query ? '' : filter.query);
+  emit('quick-filter');
 }
 </script>
 

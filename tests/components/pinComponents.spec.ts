@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it } from 'vitest';
 import { mount, VueWrapper } from '@vue/test-utils';
 import { createPinia, setActivePinia } from 'pinia';
+import AppShell from '@/components/AppShell.vue';
 import BoardSvg from '@/components/BoardSvg.vue';
 import ChipSvg from '@/components/ChipSvg.vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
@@ -14,6 +15,7 @@ import { esp32 } from '@/data/socs/esp32';
 import { esp32c6 } from '@/data/socs/esp32c6';
 import { esp32p4 } from '@/data/socs/esp32p4';
 import { esp32s3 } from '@/data/socs/esp32s3';
+import { vuetify } from '@/plugins/vuetify';
 import { useSocStore } from '@/stores/socStore';
 import type { SocPin, SocSource } from '@/types/soc';
 
@@ -516,6 +518,67 @@ describe('SocPinoutView', () => {
   });
 });
 
+describe('AppShell', () => {
+  beforeEach(() => {
+    setActivePinia(createPinia());
+  });
+
+  it('coordinates the mobile controls drawer with pin and profile detail drawers', async () => {
+    const store = useSocStore();
+    const wrapper = mount(AppShell, {
+      global: {
+        plugins: [vuetify],
+        stubs: appShellStubs,
+      },
+    });
+    const controlsButton = wrapper.find('button[aria-label="Open explorer controls"]');
+
+    expect(controlsButton.exists()).toBe(true);
+
+    store.selectPin(store.selectedPins[0].id);
+    await wrapper.vm.$nextTick();
+
+    await controlsButton.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(store.selectedPinId).toBeNull();
+    expect(store.profileInfoOpen).toBe(false);
+    expect(wrapper.find('.app-shell__mobile-drawer').exists()).toBe(true);
+
+    await wrapper.find('.app-shell-test-sidebar-change').trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.app-shell__mobile-drawer').exists()).toBe(false);
+
+    await controlsButton.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.app-shell__mobile-drawer').exists()).toBe(true);
+
+    store.selectPin(store.selectedPins[0].id);
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.app-shell__mobile-drawer').exists()).toBe(false);
+
+    await controlsButton.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.app-shell__mobile-drawer').exists()).toBe(true);
+
+    store.openProfileInfo();
+    await wrapper.vm.$nextTick();
+
+    expect(wrapper.find('.app-shell__mobile-drawer').exists()).toBe(false);
+
+    store.openProfileInfo();
+    await controlsButton.trigger('click');
+    await wrapper.vm.$nextTick();
+
+    expect(store.profileInfoOpen).toBe(false);
+    expect(wrapper.find('.app-shell__mobile-drawer').exists()).toBe(true);
+  });
+});
+
 describe('PinSearch', () => {
   beforeEach(() => {
     setActivePinia(createPinia());
@@ -537,6 +600,7 @@ describe('PinSearch', () => {
 
     await wrapper.find('input').setValue('GPIO38');
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['GPIO38']);
+    expect(wrapper.emitted('quick-filter')).toBeUndefined();
 
     expect(wrapper.text()).toContain('Safe use');
     const safeUseChip = findButton(wrapper, 'Safe use');
@@ -545,10 +609,12 @@ describe('PinSearch', () => {
 
     await safeUseChip.trigger('click');
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['safe use']);
+    expect(wrapper.emitted('quick-filter')).toHaveLength(1);
 
     await wrapper.setProps({ modelValue: 'safe use' });
     await findButton(wrapper, 'Safe use').trigger('click');
     expect(wrapper.emitted('update:modelValue')?.at(-1)).toEqual(['']);
+    expect(wrapper.emitted('quick-filter')).toHaveLength(2);
   });
 
   it('shows the input-only quick filter only when the selected profile has input-only pins', async () => {
@@ -875,6 +941,28 @@ describe('ExplorerSidebar', () => {
     expect(store.activeView).toBe('makerTools');
     expect(wrapper.emitted('changed')).toHaveLength(1);
   });
+
+  it('emits changed when a quick filter is selected', async () => {
+    const store = useSocStore();
+    const wrapper = mount(ExplorerSidebar, {
+      global: {
+        stubs: {
+          ...sidebarStubs,
+          PinSearch: {
+            emits: ['quick-filter', 'update:modelValue'],
+            props: ['modelValue'],
+            template:
+              '<button type="button" @click="$emit(\'update:modelValue\', \'type:io\'); $emit(\'quick-filter\')">Quick GPIO</button>',
+          },
+        },
+      },
+    });
+
+    await findButton(wrapper, 'Quick GPIO').trigger('click');
+
+    expect(store.searchQuery).toBe('type:io');
+    expect(wrapper.emitted('changed')).toHaveLength(1);
+  });
 });
 
 describe('MakerToolsPage', () => {
@@ -978,6 +1066,50 @@ const searchStubs = {
         <slot name="append-inner" />
       </label>
     `,
+  },
+};
+
+const appShellStubs = {
+  AboutPage: {
+    template: '<main />',
+  },
+  ExplorerSidebar: {
+    emits: ['changed'],
+    props: ['showProfileControls'],
+    template:
+      '<nav><button class="app-shell-test-sidebar-change" type="button" @click="$emit(\'changed\')">Sidebar changed</button></nav>',
+  },
+  MakerToolsPage: {
+    template: '<main />',
+  },
+  ProfileNavigator: {
+    template: '<div />',
+  },
+  SocPinoutView: {
+    template: '<main />',
+  },
+  VAppBar: {
+    template: '<header><slot /></header>',
+  },
+  VAppBarTitle: {
+    template: '<div><slot /></div>',
+  },
+  VBtn: {
+    emits: ['click'],
+    template: '<button :aria-label="$attrs[\'aria-label\']" type="button" @click="$emit(\'click\')"><slot /></button>',
+  },
+  VMain: {
+    template: '<main><slot /></main>',
+  },
+  VNavigationDrawer: {
+    emits: ['update:modelValue'],
+    inheritAttrs: false,
+    props: ['modelValue'],
+    template:
+      '<aside v-if="modelValue" v-bind="$attrs"><button type="button" @click="$emit(\'update:modelValue\', false)">Close drawer</button><slot /></aside>',
+  },
+  VTooltip: {
+    template: '<span><slot name="activator" :props="{}" /></span>',
   },
 };
 

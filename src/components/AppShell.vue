@@ -6,7 +6,7 @@
       density="comfortable"
       icon
       variant="text"
-      @click="mobileDrawerOpen = true"
+      @click="openMobileControls"
     >
       <Menu :size="22" aria-hidden="true" />
     </v-btn>
@@ -50,7 +50,7 @@
     temporary
     width="320"
   >
-    <ExplorerSidebar @changed="mobileDrawerOpen = false" />
+    <ExplorerSidebar @changed="closeMobileControls" />
   </v-navigation-drawer>
 
   <v-main class="app-shell__main">
@@ -66,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { CircuitBoard, Menu, Moon, Sun } from '@lucide/vue';
 import AboutPage from '@/components/AboutPage.vue';
 import ExplorerSidebar from '@/components/ExplorerSidebar.vue';
@@ -81,6 +81,30 @@ const mobileDrawerOpen = ref(false);
 const store = useSocStore();
 const appVersion = packageJson.version;
 const { isDark, toggleLabel, toggleTheme } = useColorMode();
+
+watch(mobileDrawerOpen, (isOpen) => {
+  if (isOpen) {
+    store.clearSelectedPin();
+    store.closeProfileInfo();
+  }
+});
+
+watch(
+  () => [store.selectedPinId, store.profileInfoOpen] as const,
+  ([selectedPinId, profileInfoOpen]) => {
+    if (selectedPinId || profileInfoOpen) {
+      mobileDrawerOpen.value = false;
+    }
+  },
+);
+
+function openMobileControls() {
+  mobileDrawerOpen.value = true;
+}
+
+function closeMobileControls() {
+  mobileDrawerOpen.value = false;
+}
 </script>
 
 <style scoped>
