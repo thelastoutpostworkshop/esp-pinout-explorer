@@ -99,10 +99,10 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - Increase SVG hit targets on small screens where possible without changing visual pin geometry.
   - Consider a tap-to-zoom or focus mode for dense connector-group profiles.
   - Make selected-pin state visible even when the details drawer covers the board.
-- [ ] Improve warning affordances beyond color.
-  - Do not rely only on a small yellow corner for maker warnings.
-  - Add accessible labels, optional warning icons in candidate rows, and clearer selected-pin warning summaries.
-  - Keep the SVG legend focused on persistent categories.
+- [x] Improve warning affordances beyond color.
+  - Maker-warning pins now show a larger badge with a visible `!` marker on chip and board SVGs.
+  - Warning pin titles and accessible labels include maker-warning labels such as boot, USB, reset, or board hardware.
+  - Board-design-only notes remain searchable and visible in the drawer without adding SVG warning markers.
 - [ ] Reduce first-load bundle weight.
   - Code-split About, Maker Tools, and possibly board/SoC data by family so the default pinout loads faster.
   - Keep generated `dist/` artifacts out of commits.

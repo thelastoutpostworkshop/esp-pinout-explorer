@@ -61,8 +61,12 @@ describe('ChipSvg', () => {
 
     expect(nodes[makerWarningIndex].classes()).toContain('pin-node--warning');
     expect(nodes[makerWarningIndex].find('.pin-node__warning-badge').exists()).toBe(true);
+    expect(nodes[makerWarningIndex].find('.pin-node__warning-mark').text()).toBe('!');
+    expect(nodes[makerWarningIndex].attributes('aria-label')).toContain('maker warnings: Strapping, Boot');
     expect(nodes[boardDesignNoteIndex].classes()).not.toContain('pin-node--warning');
     expect(nodes[boardDesignNoteIndex].find('.pin-node__warning-badge').exists()).toBe(false);
+    expect(nodes[boardDesignNoteIndex].find('.pin-node__warning-mark').exists()).toBe(false);
+    expect(nodes[boardDesignNoteIndex].attributes('aria-label')).not.toContain('maker warnings:');
   });
 });
 
@@ -94,6 +98,8 @@ describe('BoardSvg', () => {
     expect(nodes[1].classes()).toContain('board-pin--dimmed');
     const warningNode = nodes.find((node, index) => hasMakerWarning(pins[index]));
     expect(warningNode?.find('.board-pin__warning-badge').exists()).toBe(true);
+    expect(warningNode?.find('.board-pin__warning-mark').text()).toBe('!');
+    expect(warningNode?.attributes('aria-label')).toContain('maker warnings:');
 
     await nodes[0].trigger('keydown.enter');
     expect(wrapper.emitted('pin-click')).toEqual([[pins[0].id]]);
@@ -161,6 +167,11 @@ describe('BoardSvg', () => {
     const d3PinIndex = pins.findIndex((pin) => pin.boardLabel === 'D3');
     expect(pins[d3PinIndex].warnings).toEqual(expect.arrayContaining(['flash', 'onboard']));
     expect(wrapper.findAll('.board-pin')[d3PinIndex].find('.board-pin__warning-badge').exists()).toBe(true);
+    expect(wrapper.findAll('.board-pin')[d3PinIndex].find('.board-pin__warning-mark').text()).toBe('!');
+    expect(wrapper.findAll('.board-pin')[d3PinIndex].attributes('aria-label')).toContain(
+      'maker warnings: Board hardware',
+    );
+    expect(wrapper.findAll('.board-pin')[d3PinIndex].attributes('aria-label')).not.toContain('Flash memory');
 
     const functionWrapper = mount(BoardSvg, {
       props: {

@@ -185,6 +185,18 @@
           aria-hidden="true"
         />
         <text
+          v-if="hasWarning(pin)"
+          class="board-pin__warning-mark"
+          :x="warningMarkGeometry(connectorPinGeometry(pin).rect).x"
+          :y="warningMarkGeometry(connectorPinGeometry(pin).rect).y"
+          :font-size="warningMarkGeometry(connectorPinGeometry(pin).rect).fontSize"
+          aria-hidden="true"
+          text-anchor="middle"
+          dominant-baseline="middle"
+        >
+          !
+        </text>
+        <text
           class="board-pin__label connector-board__pin-label"
           :class="{ 'connector-board__pin-label--functions': showMainFunctions }"
           :x="connectorPinGeometry(pin).label.x"
@@ -396,6 +408,18 @@
           aria-hidden="true"
         />
         <text
+          v-if="hasWarning(pin)"
+          class="board-pin__warning-mark"
+          :x="warningMarkGeometry(pinGeometry(pin).rect).x"
+          :y="warningMarkGeometry(pinGeometry(pin).rect).y"
+          :font-size="warningMarkGeometry(pinGeometry(pin).rect).fontSize"
+          aria-hidden="true"
+          text-anchor="middle"
+          dominant-baseline="middle"
+        >
+          !
+        </text>
+        <text
           class="board-pin__label"
           :x="pinGeometry(pin).label.x"
           :y="pinGeometry(pin).label.y"
@@ -458,7 +482,7 @@
 <script setup lang="ts">
 import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 import espressifLogoOnDarkUrl from '@/assets/espressif-logo-on-dark.svg';
-import { hasMakerWarning } from '@/data/pinWarnings';
+import { getMakerWarnings, getWarningLabel, hasMakerWarning } from '@/data/pinWarnings';
 import type { BoardArtwork, BoardLayout, PinSide, SocDefinition, SocPin } from '@/types/soc';
 
 const props = defineProps<{
@@ -1122,10 +1146,23 @@ function hasWarning(pin: SocPin) {
 }
 
 function warningBadgePath(rect: Geometry['rect']) {
-  const size = Math.min(11, rect.width * 0.4, rect.height * 0.55);
+  const size = warningBadgeSize(rect);
   const x = rect.x + rect.width;
   const y = rect.y;
   return `M ${x - size} ${y} H ${x - rect.rx} Q ${x} ${y} ${x} ${y + rect.rx} V ${y + size} Z`;
+}
+
+function warningBadgeSize(rect: Geometry['rect']) {
+  return Math.min(15, rect.width * 0.54, rect.height * 0.72);
+}
+
+function warningMarkGeometry(rect: Geometry['rect']) {
+  const size = warningBadgeSize(rect);
+  return {
+    x: rect.x + rect.width - size * 0.34,
+    y: rect.y + size * 0.44,
+    fontSize: Math.max(7, Math.min(10, size * 0.82)),
+  };
 }
 
 function pinEntranceStyle(pin: SocPin) {
@@ -1148,7 +1185,13 @@ function pinEntranceStyle(pin: SocPin) {
 function pinLabel(pin: SocPin) {
   const gpio = pin.gpio !== undefined ? `, GPIO${pin.gpio}` : '';
   const header = pin.displayNumber ? `${pin.displayNumber}, ` : '';
-  return `${header}${pin.name}${gpio}`;
+  const warnings = makerWarningLabelText(pin);
+  return `${header}${pin.name}${gpio}${warnings}`;
+}
+
+function makerWarningLabelText(pin: SocPin) {
+  const warningLabels = getMakerWarnings(pin.warnings).map(getWarningLabel);
+  return warningLabels.length ? `, maker warnings: ${warningLabels.join(', ')}` : '';
 }
 
 function boardPinDisplayLabel(pin: SocPin) {
@@ -1949,6 +1992,17 @@ onBeforeUnmount(() => {
   stroke-linejoin: round;
   stroke-width: 0.9;
   filter: drop-shadow(0 0 2px rgba(250, 204, 21, 0.8));
+  pointer-events: none;
+}
+
+.board-pin__warning-mark {
+  fill: #422006;
+  stroke: #fef3c7;
+  stroke-linejoin: round;
+  stroke-width: 0.8;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 950;
+  paint-order: stroke fill;
   pointer-events: none;
 }
 
