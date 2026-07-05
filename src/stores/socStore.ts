@@ -26,6 +26,7 @@ export interface ModuleMarkingOption {
   profileKind: PinProfileKind;
   profileKindLabel: string;
   subtitle: string;
+  markingSearchText: string;
   searchText: string;
 }
 
@@ -287,7 +288,25 @@ function buildModuleMarkingOptions(socDefinitions: SocDefinition[]): ModuleMarki
         const compactMarking = compactModuleMarking(soc, candidate.marking);
         const profileKindValue = profileKind(profile);
         const profileKindName = profileKindLabel(profileKindValue);
+        const subtitle = `${soc.name} - ${profileKindName}: ${profile.name}`;
         const id = `${soc.id}:${profile.id}:${slugify(candidate.marking)}`;
+        const markingSearchText = normalize([candidate.marking, compactMarking].filter(Boolean).join(' '));
+        const identitySearchText = normalize(
+          [
+            markingSearchText,
+            candidate.marking,
+            compactMarking,
+            soc.name,
+            soc.family,
+            profile.name,
+            profile.packageName,
+            profileKindName,
+            subtitle,
+            ...(profile.moduleNames ?? []),
+          ]
+            .filter(Boolean)
+            .join(' '),
+        );
 
         if (seenOptionIds.has(id)) {
           continue;
@@ -304,9 +323,11 @@ function buildModuleMarkingOptions(socDefinitions: SocDefinition[]): ModuleMarki
           profileName: profile.name,
           profileKind: profileKindValue,
           profileKindLabel: profileKindName,
-          subtitle: `${soc.name} - ${profileKindName}: ${profile.name}`,
+          subtitle,
+          markingSearchText,
           searchText: normalize(
             [
+              identitySearchText,
               candidate.marking,
               compactMarking,
               soc.name,

@@ -622,6 +622,7 @@ describe('ExplorerSidebar', () => {
     expect(filterProfile('', 'wrover', { raw: usbBridgeProfileItem! })).toBe(false);
     const markingItems = markingAutocomplete.props('items') as Array<{
       marking: string;
+      markingSearchText: string;
       profileId: string;
       searchText: string;
       subtitle: string;
@@ -637,13 +638,25 @@ describe('ExplorerSidebar', () => {
     const c6MiniModule = markingItems.find(
       (item) => item.marking === 'ESP32-C6-MINI-1' && item.profileId === 'esp32c6-mini-1',
     );
+    const c6Wroom1 = markingItems.find(
+      (item) => item.marking === 'ESP32-C6-WROOM-1' && item.profileId === 'esp32c6-devkitc-1',
+    );
+    const espWroom02 = markingItems.find(
+      (item) => item.marking === 'ESP-WROOM-02' && item.profileId === 'esp8266-devkits',
+    );
 
     expect(s3WroomVariant).toBeDefined();
     expect(c6MiniModule).toBeDefined();
+    expect(c6Wroom1).toBeDefined();
+    expect(espWroom02).toBeDefined();
     expect(s3WroomVariant?.subtitle).toBe('ESP32-S3 - Dev board: DevKitC-1 v1.1 (WROOM)');
     expect(c6MiniModule?.subtitle).toBe('ESP32-C6 - Module pads: MINI-1');
     expect(filterModuleMarking('', 'n32r16v', { raw: s3WroomVariant! })).toBe(true);
     expect(filterModuleMarking('', 'module pads mini', { raw: c6MiniModule! })).toBe(true);
+    expect(filterModuleMarking('', 'wroom-1', { raw: c6Wroom1! })).toBe(true);
+    expect(filterModuleMarking('', 'wroom-1', { raw: s3WroomVariant! })).toBe(false);
+    expect(filterModuleMarking('', 'wroom-1', { raw: espWroom02! })).toBe(false);
+    expect(filterModuleMarking('', 'wroom-02', { raw: espWroom02! })).toBe(true);
     expect(filterModuleMarking('', 'wrover', { raw: s3WroomVariant! })).toBe(false);
 
     await findButton(wrapper, 'Profile info & Variants').trigger('click');

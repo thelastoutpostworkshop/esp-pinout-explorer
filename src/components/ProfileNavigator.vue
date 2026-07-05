@@ -192,7 +192,8 @@ function filterModuleMarking(_value: string, query: string, item?: { raw?: Modul
     return true;
   }
 
-  return tokens.every((token) => option.searchText.includes(token));
+  const searchableText = tokens.some(tokenHasDigit) ? option.markingSearchText : option.searchText;
+  return tokens.every((token) => searchTextMatchesToken(searchableText, token));
 }
 
 function moduleMarkingItemProps(option: ModuleMarkingOption) {
@@ -218,6 +219,30 @@ function moduleVariantSearchValues(variant: SocModuleVariant) {
 
 function normalizeSearch(value: string) {
   return value.toLowerCase().replace(/[_/+-]/g, ' ');
+}
+
+function searchTextMatchesToken(text: string, token: string) {
+  if (!tokenHasDigit(token)) {
+    return text.includes(token);
+  }
+
+  return text.split(/\s+/).some((candidate) => digitTokenMatches(candidate, token));
+}
+
+function digitTokenMatches(candidate: string, token: string) {
+  if (candidate === token) {
+    return true;
+  }
+
+  if (!candidate.startsWith(token)) {
+    return false;
+  }
+
+  return !/^\d+$/.test(token) || !/\d/.test(candidate.charAt(token.length));
+}
+
+function tokenHasDigit(token: string) {
+  return /\d/.test(token);
 }
 
 function compactVariantName(name: string) {
