@@ -79,10 +79,10 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - Opening pin details or profile info closes mobile controls.
   - Tapping a quick filter from the mobile controls drawer closes the drawer after applying the filter.
   - Keeps one temporary drawer active at a time on small screens so search, filters, and selected-pin details do not compete.
-- [ ] Make module pad profiles discoverable from the profile selector.
-  - Remaining risk: implemented module profiles are findable through the module marking lookup, but direct module profile browsing is still hidden unless the module is selected.
-  - Add a profile-type control or grouped selector that exposes `Dev boards`, `Modules`, and `Chip packages`.
-  - Make clear that module profiles are PCB/module pads, not development-board headers.
+- [x] Make module pad profiles discoverable from the profile selector.
+  - The profile selector now exposes implemented `Dev boards`, `Module pads`, and `Chip packages` groups.
+  - Module pad rows are selectable directly and labeled as PCB/module pads, not dev-board headers.
+  - The grouping matches the module marking selector so makers can browse by hardware type without guessing where modules live.
 - [ ] Improve exact-board identification in `ProfileNavigator.vue` and `ProfileInfoDrawer.vue`.
   - Add compact profile type chips such as `Dev board`, `Connector board`, `Module pads`, and `Bare chip`.
   - Surface the most important identification notes near the selector or in a first-screen profile info summary.

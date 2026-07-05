@@ -851,15 +851,22 @@ describe('ExplorerSidebar', () => {
 
     expect(wrapper.findAll('.profile-select__header').map((item) => item.text())).toEqual([
       'Dev boards',
+      'Module pads',
       'Chip packages',
     ]);
-    expect(c6ProfileItems.map((item) => item.id)).not.toEqual(
+    expect(c6ProfileItems.map((item) => item.id)).toEqual(
       expect.arrayContaining(['esp32c6-mini-1', 'esp32c6-mini-1u']),
     );
     expect(c6ProfileItems.find((item) => item.id === 'qfn40')?.name).toBe('ESP32-C6 QFN40');
     expect(c6ProfileItems.find((item) => item.id === 'qfn32')?.name).toBe('ESP32-C6 QFN32');
+    expect(
+      filterProfile('', 'module pads mini', {
+        raw: c6ProfileItems.find((item) => item.id === 'esp32c6-mini-1')!,
+      }),
+    ).toBe(true);
     expect(wrapper.text()).toContain('Variants: MINI-1 / MINI-1U');
     expect(wrapper.text()).toContain('Variants: WROOM-1-N8 / WROOM-1U-N8');
+    expect(wrapper.text()).toContain('PCB/module pads, not dev-board headers.');
     expect(wrapper.text()).toContain('Single-core 32-bit RISC-V HP CPU');
     expect(wrapper.text()).toContain('DevKitM-1 (MINI)');
     expect(wrapper.text()).toContain('MINI-1');
@@ -875,10 +882,11 @@ describe('ExplorerSidebar', () => {
     expect(wrapper.text()).toContain('No PSRAM');
     expect(wrapper.text()).toContain('J5 jumper supports module current measurement');
 
-    store.selectPackage('esp32c6-mini-1');
+    profileAutocomplete.vm.$emit('update:modelValue', 'esp32c6-mini-1');
     await wrapper.vm.$nextTick();
     const c6ModuleProfileItems = profileAutocomplete.props('items') as Array<{ id: string; name: string }>;
 
+    expect(store.selectedPackage.id).toBe('esp32c6-mini-1');
     expect(c6ModuleProfileItems.map((item) => item.id)).toEqual(expect.arrayContaining(['esp32c6-mini-1']));
     expect(wrapper.text()).toContain('Module pads for PCB design, not dev-board headers.');
     expect(wrapper.text()).toContain('ESP32-C6-MINI-1');

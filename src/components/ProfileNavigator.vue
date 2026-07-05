@@ -22,7 +22,7 @@
       hide-details
       item-title="name"
       item-value="id"
-      label="Board / package profile"
+      label="Board / module / chip profile"
       :items="profileSelectItems"
       variant="outlined"
       @update:model-value="selectPackage"
@@ -114,9 +114,7 @@ const emit = defineEmits<{
 
 const store = useSocStore();
 const moduleMarkingSearch = ref('');
-const selectableProfileOptions = computed(() =>
-  store.packageOptions.filter((profile) => profileKind(profile) !== 'module' || profile.id === store.selectedPackageId),
-);
+const selectableProfileOptions = computed(() => store.packageOptions);
 const profileSelectItems = computed(() =>
   [...selectableProfileOptions.value]
     .sort((first, second) => profileKindRank(profileKind(first)) - profileKindRank(profileKind(second)))
@@ -201,15 +199,15 @@ function profileKind(profile: Pick<SocPackageVariant, 'kind'>): PinProfileKind {
 function profileKindRank(kind: PinProfileKind) {
   return {
     board: 0,
-    package: 1,
-    module: 2,
+    module: 1,
+    package: 2,
   }[kind];
 }
 
 function profileKindPluralLabel(kind: PinProfileKind) {
   return {
     board: 'Dev boards',
-    module: 'Modules',
+    module: 'Module pads',
     package: 'Chip packages',
   }[kind];
 }
@@ -231,7 +229,13 @@ function moduleMarkingKindGroupLabel(kind: PinProfileKind) {
 }
 
 function profileVariantSummary(profile: SocPackageVariant) {
-  if (profileKind(profile) !== 'board') {
+  const kind = profileKind(profile);
+
+  if (kind === 'module') {
+    return 'PCB/module pads, not dev-board headers.';
+  }
+
+  if (kind !== 'board') {
     return '';
   }
 
@@ -400,14 +404,20 @@ function openProfileInfo() {
 }
 
 :deep(.profile-select__divider) {
-  margin: 6px 0;
+  margin: 8px 0 4px;
 }
 
 :deep(.profile-select__header) {
-  min-height: 28px;
-  color: #64748b;
-  font-size: 0.72rem;
-  font-weight: 900;
+  min-height: 34px;
+  border-top: 1px solid color-mix(in srgb, var(--app-link) 24%, transparent);
+  border-bottom: 1px solid color-mix(in srgb, var(--app-link) 18%, transparent);
+  background: color-mix(in srgb, var(--app-active-bg) 82%, var(--app-surface-bg));
+}
+
+:deep(.profile-select__header .v-list-subheader__text) {
+  color: var(--app-active-text);
+  font-size: 0.82rem;
+  font-weight: 950;
   letter-spacing: 0;
   text-transform: uppercase;
 }
