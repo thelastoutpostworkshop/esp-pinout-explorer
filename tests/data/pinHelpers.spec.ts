@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { getFunctionDescription } from '@/data/functionDescriptions';
 import { isSafeForMakerUse } from '@/data/pinSafety';
 import { getBoardDesignWarnings, getMakerWarnings, hasMakerWarning } from '@/data/pinWarnings';
+import { socs } from '@/data/socs';
 import type { SocPin } from '@/types/soc';
 
 describe('pin warning helpers', () => {
@@ -38,6 +39,35 @@ describe('function descriptions', () => {
     expect(getFunctionDescription('U0TXD')).toContain('UART transmit data signal');
     expect(getFunctionDescription('FSPIIO7')).toContain('Fast SPI data line');
     expect(getFunctionDescription('NoMatchSignal')).toBeNull();
+  });
+
+  it('describes every current pin function label shown in the drawer', () => {
+    const functionFields = ['mainFunctions', 'ioMux', 'analog', 'rtc', 'matrixSignals'] as const;
+    const labels = new Set<string>();
+
+    for (const soc of socs) {
+      const profiles = [
+        { pins: soc.pins },
+        ...(soc.packageVariants ?? []),
+        ...(soc.boardProfiles ?? []),
+      ];
+
+      for (const profile of profiles) {
+        for (const pin of profile.pins) {
+          for (const field of functionFields) {
+            for (const label of pin[field] ?? []) {
+              labels.add(label);
+            }
+          }
+        }
+      }
+    }
+
+    const missingLabels = [...labels]
+      .filter((label) => !getFunctionDescription(label))
+      .sort((first, second) => first.localeCompare(second, undefined, { numeric: true }));
+
+    expect(missingLabels).toEqual([]);
   });
 });
 
