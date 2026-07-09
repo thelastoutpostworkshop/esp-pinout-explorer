@@ -49,12 +49,11 @@
     </section>
 
     <PinInfoDrawer
-      v-if="store.selectedPin"
       :pin="store.selectedPin"
       :source="selectedPackage.source ?? selectedSoc.source"
       @close="store.clearSelectedPin"
     />
-    <ProfileInfoDrawer v-if="store.profileInfoOpen" />
+    <ProfileInfoDrawer />
   </section>
 </template>
 
