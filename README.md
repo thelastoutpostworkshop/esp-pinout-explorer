@@ -6,95 +6,65 @@
 <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
 </a>
 
-## Local Development
+An interactive, bench-side reference for choosing ESP pins before wires, boot straps, USB signals, and on-board hardware get in the way.
 
-```bash
-npm install
-npm run dev
-```
+[Open the ESP Pinout Explorer](https://thelastoutpostworkshop.github.io/ESPSocsExplorer/)
 
-Open `http://127.0.0.1:5176` on the development computer. To test from an iPhone or another device on the same Wi-Fi, open `http://<your-computer-ip>:5176`, for example `http://192.168.1.25:5176`. On Windows, allow Node.js through Windows Firewall if prompted.
+## What makers can do with it
 
-## GitHub Pages Deployment
+- Match an ESP development board, module, or bare chip package to the view you need.
+- Find GPIO, analog, bus, boot, USB, UART, JTAG, and power-related pins with search and quick filters.
+- See the board header position, silkscreen label, GPIO number, main functions, and documented constraints for a selected pin.
+- Spot practical conflicts such as boot/strapping pins, USB, UART0, flash, PSRAM, reset, voltage, and on-board hardware.
+- Follow a pin or profile back to its official Espressif datasheet, user guide, schematic, or documentation page.
 
-Tagged releases deploy to `https://thelastoutpostworkshop.github.io/ESPSocsExplorer/` through `.github/workflows/deploy-pages.yml`.
+## Start at the bench
 
-One-time repository setup:
+1. Choose the exact **ESP chip** and **Board / module / chip profile**. If the text printed on the module is what you can identify, use **Module marking** to find a matching profile.
+2. Prefer an exact board revision and module variant before choosing a header pin. A GPIO that is usable on a bare chip may be tied to an LED, USB, flash, PSRAM, or a boot circuit on a board.
+3. Search for a GPIO number, board label, function, or caution--for example `GPIO4`, `ADC`, `I2C`, `boot`, `USB`, or `RGB LED`. Search highlights matching pins and dims the rest.
+4. Click a pin. Its detail panel gives a maker decision summary, header and silkscreen identity, functions, warnings, notes, and a link to the official source.
+5. Open **Profile info & Variants** when you need help identifying a board or module, checking variant differences, or finding the profile's source material.
 
-1. Open **Settings > Pages** on GitHub.
-2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
-3. If the `github-pages` environment uses deployment restrictions, allow tags matching `v*.*.*`.
+## Pick the right view
 
-The workflow only accepts a newly created version tag that matches the version in `package.json`. It runs the tests, builds with the repository-specific Pages base path, and deploys the generated `dist/` artifact. Tag deletion or force-updating an existing tag does not deploy.
+| View | Use it when | Keep in mind |
+| --- | --- | --- |
+| **Dev board** | You are wiring a development board or its exposed connectors. | This is the best starting point for most projects: it includes header labels and board-specific hardware conflicts. |
+| **Module pads** | You are designing or wiring around an ESP module PCB. | These are module pads, not development-board headers. |
+| **Chip package** | You are working from a bare SoC datasheet or designing a custom board. | Package pins can differ substantially from module pads and dev-board headers. |
 
-For the first deployment of the current version, commit and push the workflow, then create the matching tag:
+## Read warnings before wiring
 
-```bash
-git tag -a v0.3.0 -m "Release v0.3.0"
-git push origin v0.3.0
-```
+The yellow `!` marker identifies a **maker warning**: a documented caution that is likely to affect normal development-board use, such as boot or strapping behavior, USB, UART0, reset, flash, PSRAM, voltage, or on-board hardware. Less immediate board-design cautions remain visible in the pin details as **Board Design Notes**.
 
-For later patch releases, start from a clean `main` branch. `npm version patch` updates `package.json` and `package-lock.json`, creates the release commit, and creates the matching annotated tag:
+The **Safe use** quick filter is a first-pass shortlist of exposed board-header GPIOs with no recorded maker or flash warning. It is not an approval stamp: still confirm whether a pin is input-only, whether its voltage and pull requirements fit your circuit, and whether the selected peripheral or firmware configuration introduces another constraint.
 
-```bash
-npm test
-npm run build
-npm version patch
-git push origin main --follow-tags
-```
+When a pin looks surprising, use its source link and the profile information before connecting hardware. Do not assume that a similar-looking board, module, or package has the same usable pins.
 
-Use `npm version minor` or `npm version major` when appropriate. If direct pushes to `main` are protected, merge the version change first, then create and push the matching tag from the merged commit.
+## Supported hardware
 
-Current profiles:
+The explorer currently covers these official Espressif board, module, and package views. Board profiles are the recommended starting point when you have a ready-made dev board in hand.
 
-## Board Headers And Board Views
+| Family | Development-board profiles | Module-pad and chip-package views |
+| --- | --- | --- |
+| **ESP32** | ESP32-DevKitC V4; ESP32-DevKitM-1; ESP32-Ethernet-Kit v1.2; ESP32-LCDKit; ESP-WROVER-KIT v4.1; ESP32-PICO-KIT v4/v4.1; ESP32-PICO-KIT-1; ESP32-PICO-DevKitM-2 | ESP32 QFN48, 6 x 6 mm |
+| **ESP32-S3** | ESP32-S3-DevKitC-1 v1.1; ESP32-S3-DevKitM-1; ESP32-S3-USB-OTG; ESP32-S3-USB-Bridge; ESP Thread Border Router / Zigbee Gateway v1.2; ESP32-S3-LCD-EV-Board v1.5; ESP-VoCat v1.2; ESP-DualKey | ESP32-S3 QFN56 |
+| **ESP32-C6** | ESP32-C6-DevKitM-1; ESP32-C6-DevKitC-1 v1.2 | ESP32-C6-MINI-1 and MINI-1U module pads; ESP32-C6 QFN40 and QFN32 |
+| **ESP32-H2** | ESP32-H2-DevKitM-1 | ESP32-H2 QFN32, 4 x 4 mm |
+| **ESP32-P4** | ESP32-P4X-Function-EV-Board; ESP32-P4X-EYE; ESP32-P4-Function-EV-Board v1.5.2; ESP32-P4-EYE | Board allocation views only; a complete bare ESP32-P4 package view is not yet included. |
+| **ESP8266EX** | ESP8266-DevKitC; ESP8266-DevKitS; ESP-Launcher | ESP-WROOM-02D and ESP-WROOM-02U module pads; ESP8266EX QFN32, 5 x 5 mm |
 
-| Family | Profile | View | Coverage | Official source |
-| --- | --- | --- | --- | --- |
-| ESP32 | ESP32-DevKitC V4 | Board headers | WROOM/WROVER/SOLO module identity | [ESP32-DevKitC V4 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitc/user_guide.html) |
-| ESP32 | ESP32-DevKitM-1 | Board headers | MINI module identity | [ESP32-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitm-1/user_guide.html) |
-| ESP32 | ESP32-Ethernet-Kit v1.2 | Board headers | WROVER-E module identity, Ethernet PHY, FT2232H bridge, optional PoE board B | [ESP32-Ethernet-Kit v1.2 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-ethernet-kit/user_guide.html) |
-| ESP32 | ESP32-LCDKit | Connector groups | HMI carrier board around an attached ESP32-DevKitC V4, display/SD-card/DAC modules | [ESP32-LCDKit User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-lcdkit/user_guide.html) |
-| ESP32 | ESP-WROVER-KIT v4.1 | Connector groups | WROVER-E module identity, camera/LCD/RGB/flash/JTAG allocations | [ESP-WROVER-KIT v4.1 Getting Started Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp-wrover-kit/user_guide.html) |
-| ESP32 | ESP32-PICO-KIT v4/v4.1 | Board headers | PICO-D4 module identity, USB-to-UART bridge, dual 20-pad headers | [ESP32-PICO-KIT v4/v4.1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit/user_guide.html) |
-| ESP32 | ESP32-PICO-KIT-1 | Board headers | PICO-V3 module identity, USB-to-UART bridge, dual 18-pin headers | [ESP32-PICO-KIT-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-kit-1/user_guide.html) |
-| ESP32 | ESP32-PICO-DevKitM-2 | Board headers | PICO-MINI module identity | [ESP32-PICO-DevKitM-2 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-pico-devkitm-2/user_guide.html) |
-| ESP32-S3 | ESP32-S3-DevKitC-1 v1.1 | Board headers | WROOM module identity | [ESP32-S3-DevKitC-1 User Guide v1.1](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitc-1/user_guide_v1.1.html) |
-| ESP32-S3 | ESP32-S3-DevKitM-1 | Board headers | MINI module identity | [ESP32-S3-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html) |
-| ESP32-S3 | ESP32-S3-USB-OTG | Connector groups | Board connectors and grouped GPIO allocation | [ESP32-S3-USB-OTG User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html) |
-| ESP32-S3 | ESP32-S3-USB-Bridge | GPIO allocation | MINI module identity | [ESP32-S3-USB-Bridge User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-bridge/user_guide.html) |
-| ESP32-S3 | ESP Thread Border Router / Zigbee Gateway v1.2 | Connector groups | Dual-module carrier board, J4/J5 pin headers, USB1/USB2 connectors, optional sub-board header | [ESP Thread Border Router SDK](https://docs.espressif.com/projects/esp-thread-br/en/latest/hardware_platforms.html) |
-| ESP32-S3 | ESP32-S3-LCD-EV-Board v1.5 | GPIO allocation | WROOM module identity, LCD/audio/expander allocation | [ESP32-S3-LCD-EV-Board v1.5 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-lcd-ev-board/user_guide.html) |
-| ESP32-S3 | ESP-VoCat v1.2 | Board allocation | WROOM module identity, voice/LCD/touch/SD allocation | [ESP-VoCat v1.2 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-vocat/user_guide_v1.2.html) |
-| ESP32-S3 | ESP-DualKey | Board allocation | ESP32-S3FN8, keys/mode switch/RGB/power allocation | [ESP-DualKey User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-dualkey/user_guide.html) |
-| ESP32-C6 | ESP32-C6-DevKitM-1 | Board headers | MINI module identity | [ESP32-C6-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitm-1/user_guide.html) |
-| ESP32-C6 | ESP32-C6-DevKitC-1 v1.2 | Board headers | WROOM module identity | [ESP32-C6-DevKitC-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c6/esp32-c6-devkitc-1/user_guide.html) |
-| ESP32-H2 | ESP32-H2-DevKitM-1 | Board headers | MINI module identity | [ESP32-H2-DevKitM-1 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/esp32-h2-devkitm-1/user_guide.html) |
-| ESP32-P4 | ESP32-P4X-Function-EV-Board | Connector groups | ESP32-C6-MINI-1 wireless module, J1 header block, LCD/camera accessories, audio, USB, Ethernet | [ESP32-P4X-Function-EV-Board User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4x-function-ev-board/user_guide.html) |
-| ESP32-P4 | ESP32-P4X-EYE | Connector groups | ESP32-C6-MINI-1U wireless module, 2 x 10 female header, LCD, camera, MicroSD, USB debug/device, battery connector | [ESP32-P4X-EYE User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4x-eye/user_guide.html) |
-| ESP32-P4 | ESP32-P4-Function-EV-Board v1.5.2 | Connector groups | Legacy multimedia board, ESP32-C6-MINI-1 wireless module, J1 header block, LCD/camera accessories, audio, USB, Ethernet | [ESP32-P4-Function-EV-Board v1.5.2 User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-function-ev-board/user_guide.html) |
-| ESP32-P4 | ESP32-P4-EYE | Connector groups | Legacy vision board, ESP32-C6-MINI-1U wireless module, 2 x 10 female header, LCD, camera, MicroSD, USB debug/device, battery connector | [ESP32-P4-EYE User Guide](https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-eye/user_guide.html) |
-| ESP8266 | ESP8266-DevKitC | I/O connector labels | WROOM-02D/U module identity, USB-UART, Boot/EN, power constraints | [ESP8266-DevKitC Getting Started Guide](https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/get-started-devkitc.html) |
-| ESP8266 | ESP8266-DevKitS | Board headers | WROOM-02 / WROOM-02D / WROOM-02U module identity, spring-pin carrier, USB-UART, Boot/EN | [ESP8266-DevKitS User Guide](https://documentation.espressif.com/ESP8266-DevKitS_user_guide__EN.pdf) |
-| ESP8266 | ESP-Launcher | Board headers | ESP8266EX reference design, USB-UART bridge, boot/reset, LEDs, infrared remote control, HSPI/SDIO | [ESP8266 Hardware Design Guidelines v2.8](https://documentation.espressif.com/esp8266_hardware_design_guidelines_en.pdf) |
+## Data sources and limits
 
-## Module Pads
+Accuracy is more important than coverage. Pin and board data is based on official Espressif datasheets, board user guides, schematics, and documentation. Each profile and selected pin links back to its source.
 
-| Family | Profile | View | Coverage | Official source |
-| --- | --- | --- | --- | --- |
-| ESP32-C6 | ESP32-C6-MINI-1 and MINI-1U | Module pads | MINI module pad profiles | [ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet v1.5](https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf) |
-| ESP8266 | ESP-WROOM-02D and ESP-WROOM-02U | Module pads | WROOM module pad profiles | [ESP-WROOM-02D & ESP-WROOM-02U Datasheet v2.3](https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf) |
+The SVG diagrams are interactive reference maps, not schematics or mechanically exact board layouts. The explorer does not infer a profile from a product photo, third-party pinout graphic, or a related board. If your exact hardware is not listed, check the official documentation rather than treating a close match as interchangeable. Planned coverage is tracked in [todo.md](todo.md).
 
-## Chip Packages
+## Run locally or contribute
 
-| Family | Profile | View | Coverage | Official source |
-| --- | --- | --- | --- | --- |
-| ESP32 | ESP32 QFN48 6 x 6 mm | Chip package | Bare SoC package pinout | [ESP32 Series Datasheet v5.2](https://documentation.espressif.com/esp32_datasheet_en.pdf) |
-| ESP32-S3 | ESP32-S3 QFN56 | Chip package | Bare SoC package pinout | [ESP32-S3 Series Datasheet v2.2](https://documentation.espressif.com/esp32-s3_datasheet_en.pdf) |
-| ESP32-C6 | ESP32-C6 QFN40 and QFN32 | Chip packages | Bare SoC package pinouts | [ESP32-C6 Series Datasheet v1.5](https://documentation.espressif.com/esp32-c6_datasheet_en.pdf) |
-| ESP32-H2 | ESP32-H2 QFN32 4 x 4 mm | Chip package | Bare SoC package pinout | [ESP32-H2 Series Datasheet v1.2](https://documentation.espressif.com/esp32-h2_datasheet_en.pdf) |
-| ESP8266 | ESP8266EX QFN32 5 x 5 mm | Chip package | Bare SoC package pinout | [ESP8266EX Datasheet v7.1](https://documentation.espressif.com/0a-esp8266ex_datasheet_en.pdf) |
+For setup details, the data model, and contribution conventions, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
-## Contributing
+## Support
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for local setup, project structure, and board profile conventions.
+
