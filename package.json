@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "npm run generate:board-api",
     "build": "vue-tsc --noEmit && vite build",
+    "generate:board-api": "node scripts/generate-board-api.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest"

@@ -18,6 +18,22 @@ npm run dev
 npm run build
 ```
 
+## Board-recognition API and permanent links
+
+The deployed explorer publishes a small, versioned static dataset at:
+
+`https://thelastoutpostworkshop.github.io/ESPSocsExplorer/api/v1/boards.json`
+
+The top-level `schema_version` is currently `1`. Consumers must treat this URL and its schema version as the contract; future incompatible changes will use a new versioned path. Generate the checked-in public dataset from the Explorer's board profiles with `npm run generate:board-api`. `npm run build` runs that command first and copies the result into the final site.
+
+An MCP Worker can configure `ESP_PINOUT_DATA_URL` to that JSON URL and `ESP_PINOUT_APP_BASE_URL` to `https://thelastoutpostworkshop.github.io/ESPSocsExplorer`. Board matches return permanent Explorer links such as:
+
+`https://thelastoutpostworkshop.github.io/ESPSocsExplorer/boards/esp32-s3-devkitc-1`
+
+Optional future-oriented parameters are accepted without disrupting the page, for example `?mode=i2c&highlight=GPIO8%2CGPIO9`. GitHub Pages' `404.html` fallback brings direct visits to `/boards/{board-id}` back into the SPA, then restores the clean link in the address bar.
+
+The Explorer remains the source of truth for board and pin data. Recognition fields are intentionally limited to authoritative Espressif-backed project data; an unknown board observation is omitted rather than inferred.
+
 ## Structure
 
 - `src/components/AppShell.vue` - compact app bar, responsive sidebar layout, and mobile control drawer

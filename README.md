@@ -66,5 +66,3 @@ The SVG diagrams are interactive reference maps, not schematics or mechanically 
 For setup details, the data model, and contribution conventions, see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Support
-
-

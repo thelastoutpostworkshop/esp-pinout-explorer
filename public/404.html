@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ESP Pinout Explorer</title>
+    <script>
+      (function () {
+        var path = window.location.pathname;
+        var marker = '/boards/';
+        var index = path.indexOf(marker);
+        var base = index >= 0 ? path.slice(0, index + 1) : path.replace(/[^/]*$/, '');
+        var route = path.slice(base.length) + window.location.search;
+        window.location.replace(base + '?board-route=' + encodeURIComponent(route));
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
