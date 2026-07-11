@@ -40,4 +40,13 @@ describe('public board dataset', () => {
       expect.arrayContaining([expect.objectContaining({ gpio: 'GPIO35', reason: expect.stringContaining('PSRAM') })]),
     );
   });
+
+  it('exports the next official DevKit profiles with their canonical identities', () => {
+    expect(dataset.boards).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'esp32-s3-devkitm-1', name: 'ESP32-S3-DevKitM-1', chip_family: 'ESP32-S3' }),
+      expect.objectContaining({ id: 'esp32-c6-devkitc-1', name: 'ESP32-C6-DevKitC-1', chip_family: 'ESP32-C6' }),
+      expect.objectContaining({ id: 'esp32-c6-devkitm-1', name: 'ESP32-C6-DevKitM-1', chip_family: 'ESP32-C6' }),
+      expect.objectContaining({ id: 'esp32-h2-devkitm-1', name: 'ESP32-H2-DevKitM-1', chip_family: 'ESP32-H2' }),
+    ]));
+  });
 });

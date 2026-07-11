@@ -17,4 +17,12 @@ describe('board deep links', () => {
       highlightGpios: ['GPIO8', 'GPIO9'],
     });
   });
+
+  it('resolves a newly published official DevKit route', () => {
+    expect(resolveBoardDeepLink('/boards/esp32-c6-devkitc-1')).toMatchObject({
+      apiBoardId: 'esp32-c6-devkitc-1',
+      socId: 'esp32c6',
+      profileId: 'esp32c6-devkitc-1',
+    });
+  });
 });

@@ -107,7 +107,7 @@ function createBoardDefinition(
 
   return {
     id: metadata.apiId,
-    name: 'ESP32-S3-DevKitC-1',
+    name: metadata.boardName,
     manufacturer: 'Espressif',
     chip_family: soc.name,
     aliases: metadata.aliases,
