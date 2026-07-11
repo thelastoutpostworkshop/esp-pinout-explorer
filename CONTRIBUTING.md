@@ -12,12 +12,6 @@ npm install
 npm run dev
 ```
 
-The dev server listens on port `5176`.
-
-- On the same computer, open `http://127.0.0.1:5176`.
-- From a phone or tablet on the same Wi-Fi, open `http://<your-computer-ip>:5176`, for example `http://192.168.1.25:5176`.
-- On Windows, allow Node.js through Windows Firewall if prompted. If the phone cannot connect, confirm both devices are on the same network and use `ipconfig` to find the computer's IPv4 address.
-
 ## Build
 
 ```bash
