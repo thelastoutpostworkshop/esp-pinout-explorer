@@ -8,7 +8,7 @@
 
 An interactive, bench-side reference for choosing ESP pins before wires, boot straps, USB signals, and on-board hardware get in the way.
 
-[Open the ESP Pinout Explorer](https://thelastoutpostworkshop.github.io/ESPSocsExplorer/)
+[Open the ESP Pinout Explorer](https://thelastoutpostworkshop.github.io/esp-pinout-explorer/)
 
 ## What makers can do with it
 
