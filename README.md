@@ -15,6 +15,36 @@ npm run dev
 
 Open `http://127.0.0.1:5176` on the development computer. To test from an iPhone or another device on the same Wi-Fi, open `http://<your-computer-ip>:5176`, for example `http://192.168.1.25:5176`. On Windows, allow Node.js through Windows Firewall if prompted.
 
+## GitHub Pages Deployment
+
+Tagged releases deploy to `https://thelastoutpostworkshop.github.io/ESPSocsExplorer/` through `.github/workflows/deploy-pages.yml`.
+
+One-time repository setup:
+
+1. Open **Settings > Pages** on GitHub.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. If the `github-pages` environment uses deployment restrictions, allow tags matching `v*.*.*`.
+
+The workflow only accepts a newly created version tag that matches the version in `package.json`. It runs the tests, builds with the repository-specific Pages base path, and deploys the generated `dist/` artifact. Tag deletion or force-updating an existing tag does not deploy.
+
+For the first deployment of the current version, commit and push the workflow, then create the matching tag:
+
+```bash
+git tag -a v0.3.0 -m "Release v0.3.0"
+git push origin v0.3.0
+```
+
+For later patch releases, start from a clean `main` branch. `npm version patch` updates `package.json` and `package-lock.json`, creates the release commit, and creates the matching annotated tag:
+
+```bash
+npm test
+npm run build
+npm version patch
+git push origin main --follow-tags
+```
+
+Use `npm version minor` or `npm version major` when appropriate. If direct pushes to `main` are protected, merge the version change first, then create and push the matching tag from the merged commit.
+
 Current profiles:
 
 ## Board Headers And Board Views
