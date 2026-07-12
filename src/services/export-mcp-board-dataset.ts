@@ -90,12 +90,7 @@ function createBoardDefinition(
   profile: SocPackageVariant,
 ): BoardDefinition {
   const gpioPins = profile.pins.filter((pin) => pin.gpio !== undefined);
-  const headerPinCounts = Object.values(
-    profile.pins.reduce<Record<string, number>>((counts, pin) => {
-      if (pin.boardHeader) counts[pin.boardHeader] = (counts[pin.boardHeader] ?? 0) + 1;
-      return counts;
-    }, {}),
-  );
+  const headerPinCounts = [profile.pins.filter((pin) => pin.boardHeader).length];
   const cautionPins = gpioPins.flatMap((pin) => {
     const makerWarnings = getMakerWarnings(pin.warnings);
     return makerWarnings.length ? [{ gpio: gpioName(pin), warning: warningText(makerWarnings) }] : [];
@@ -115,7 +110,7 @@ function createBoardDefinition(
     route: `/boards/${metadata.apiId}`,
     recognition: {
       board_markings: metadata.boardMarkings,
-      module_markings: unique([...(profile.moduleNames ?? []), ...(profile.moduleVariants?.map((variant) => variant.name) ?? [])]),
+      module_markings: unique([...(metadata.moduleMarkings ?? []), ...(profile.moduleNames ?? []), ...(profile.moduleVariants?.map((variant) => variant.name) ?? [])]),
       memory_markings: metadata.memoryMarkings,
       visible_features: metadata.visibleFeatures,
       button_labels: metadata.buttonLabels,

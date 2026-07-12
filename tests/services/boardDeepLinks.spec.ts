@@ -25,4 +25,12 @@ describe('board deep links', () => {
       profileId: 'esp32c6-devkitc-1',
     });
   });
+
+  it('resolves the classic DevKitC V4 compatibility profile', () => {
+    expect(resolveBoardDeepLink('/boards/esp32-devkitc-v4')).toMatchObject({
+      apiBoardId: 'esp32-devkitc-v4',
+      socId: 'esp32',
+      profileId: 'esp32-devkitc-v4',
+    });
+  });
 });

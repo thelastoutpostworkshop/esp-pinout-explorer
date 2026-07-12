@@ -8,6 +8,7 @@ export interface BoardRecognitionMetadata {
   boardName: string;
   aliases: string[];
   boardMarkings: string[];
+  moduleMarkings?: string[];
   memoryMarkings: string[];
   visibleFeatures: string[];
   buttonLabels: string[];
@@ -16,6 +17,21 @@ export interface BoardRecognitionMetadata {
 }
 
 export const boardRecognitionMetadata: BoardRecognitionMetadata[] = [
+  {
+    apiId: 'esp32-devkitc-v4',
+    profileId: 'esp32-devkitc-v4',
+    boardName: 'ESP32-DevKitC V4',
+    aliases: ['ESP32-DevKitC V4', 'ESP32 DevKitC V4'],
+    boardMarkings: ['ESP32-DevKitC V4'],
+    // ESP-WROOM-32 is an earlier module marking. It identifies a compatible
+    // 38-pin DevKit-style layout but does not prove an official carrier board.
+    moduleMarkings: ['ESP-WROOM-32'],
+    memoryMarkings: [],
+    visibleFeatures: ['Micro-USB connector', 'Boot button', 'EN button', 'USB-to-UART bridge', 'four mounting holes'],
+    buttonLabels: ['Boot', 'EN'],
+    usbConnectorCount: 1,
+    usbConnectorTypes: ['micro-usb'],
+  },
   {
     apiId: 'esp32-s3-devkitc-1',
     profileId: 'esp32s3-devkitc-1-v1-1',
