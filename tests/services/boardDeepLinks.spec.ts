@@ -65,4 +65,12 @@ describe('board deep links', () => {
       profileId: 'esp32p4x-eye',
     });
   });
+
+  it('resolves the ESP8266-DevKitC profile', () => {
+    expect(resolveBoardDeepLink('/boards/esp8266-devkitc')).toMatchObject({
+      apiBoardId: 'esp8266-devkitc',
+      socId: 'esp8266ex',
+      profileId: 'esp8266-devkitc',
+    });
+  });
 });

@@ -43,6 +43,9 @@ describe('public board dataset', () => {
 
   it('exports the next official DevKit profiles with their canonical identities', () => {
     expect(dataset.boards).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'esp8266-devkitc', name: 'ESP8266-DevKitC', chip_family: 'ESP8266EX' }),
+      expect.objectContaining({ id: 'esp8266-devkits', name: 'ESP8266-DevKitS', chip_family: 'ESP8266EX' }),
+      expect.objectContaining({ id: 'esp-launcher', name: 'ESP-Launcher', chip_family: 'ESP8266EX' }),
       expect.objectContaining({ id: 'esp32p4x-function-ev-board', chip_family: 'ESP32-P4' }),
       expect.objectContaining({ id: 'esp32p4-function-ev-board-v1-5-2', chip_family: 'ESP32-P4' }),
       expect.objectContaining({ id: 'esp32p4x-eye', name: 'ESP32-P4X-EYE', chip_family: 'ESP32-P4' }),
