@@ -175,15 +175,20 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - [ ] Module profile: ESP32-C5-MINI-1
   - [ ] Module profile: ESP32-C5-MINI-1U
   - Note: verify module datasheets because C5 module variants differ by antenna connector, flash/PSRAM options, exposed pad count, and dimensions.
-- [ ] ESP32-C3 chip package profiles
-  - [ ] Chip package profile: QFN32, 5 x 5 mm
-- [ ] ESP32-C3 module profiles
+- [x] ESP32-C3 chip package profiles
+  - [x] Chip package profile: QFN32, 5 x 5 mm, 22 GPIO
+    - Source: https://documentation.espressif.com/esp32-c3_datasheet_en.pdf
+    - Note: covers ESP32-C3, ESP32-C3FH4, ESP32-C3FN4, and ESP32-C3FH8X pin bonding. Pins GPIO12 through GPIO17 are flash-connected and have maker-visible cautions.
+  - [x] Chip package profile: QFN32, 5 x 5 mm, 16 GPIO
+    - Source: https://documentation.espressif.com/esp32-c3_datasheet_en.pdf
+    - Note: ESP32-C3FH4X and ESP32-C3FH4AZ have the same QFN32 footprint, but physical pads 19 through 24 are NC; keep this separate from the 22-GPIO package view.
+- [x] ESP32-C3 module profiles
   - Source: https://www.espressif.com/en/products/modules
-  - [ ] Module profile: ESP32-C3-MINI-1
-  - [ ] Module profile: ESP32-C3-MINI-1U
-  - [ ] Module profile: ESP32-C3-WROOM-02
-  - [ ] Module profile: ESP32-C3-WROOM-02U
-  - Note: module profiles should use official module datasheets/footprints; do not copy the bare ESP32-C3 QFN32 pinout directly.
+  - [x] Module profile: ESP32-C3-MINI-1
+  - [x] Module profile: ESP32-C3-MINI-1U
+  - [x] Module profile: ESP32-C3-WROOM-02
+  - [x] Module profile: ESP32-C3-WROOM-02U
+  - Note: implemented from the official MINI-1/MINI-1U and WROOM-02/WROOM-02U module pad tables. Do not copy the bare ESP32-C3 QFN32 pinout directly; on-module flash and the different module pad maps constrain what is exposed.
 - [ ] ESP8685 chip package profiles
   - [ ] Chip package profile: QFN, 4 x 4 mm
   - Note: ESP32-C3-class product with a smaller chip package and different exposed GPIO count.
