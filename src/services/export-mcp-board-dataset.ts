@@ -1,6 +1,6 @@
 import { boardRecognitionMetadata } from '@/data/mcp-board-recognition';
 import { isSafeForMakerUse } from '@/data/pinSafety';
-import { getMakerWarnings, getWarningLabel } from '@/data/pinWarnings';
+import { getBoardDesignWarnings, getMakerWarnings, getWarningLabel } from '@/data/pinWarnings';
 import { socs } from '@/data/socs';
 import type { PinWarning, SocDefinition, SocPackageVariant, SocPin } from '@/types/soc';
 
@@ -18,6 +18,7 @@ export interface BoardDefinition {
   aliases: string[];
   module_variants: string[];
   route: string;
+  sources: Array<{ title: string; url: string; sections: string[] }>;
   recognition: {
     board_markings: string[];
     module_markings: string[];
@@ -35,6 +36,18 @@ export interface BoardDefinition {
     reserved_or_internal_pins: Array<{ gpio: string; reason: string }>;
     peripheral_notes: Array<{ peripheral: string; summary: string; candidate_pins: string[] }>;
     pin_functions: Array<{ gpio: string; board_label: string | null; functions: string[]; warnings: string[] }>;
+    pin_details: Array<{
+      gpio: string;
+      board_label: string | null;
+      board_header: string | null;
+      main_functions: string[];
+      maker_warnings: string[];
+      board_design_warnings: string[];
+      notes: string[];
+      analog: string[];
+      io_mux: string[];
+      matrix_signals: string[];
+    }>;
     general_warnings: string[];
   };
 }
@@ -96,6 +109,23 @@ function pinFunctions(pins: SocPin[]) {
     }));
 }
 
+function pinDetails(pins: SocPin[]) {
+  return pins
+    .filter((pin) => pin.gpio !== undefined)
+    .map((pin) => ({
+      gpio: gpioName(pin),
+      board_label: pin.boardLabel ?? null,
+      board_header: pin.boardHeader ?? null,
+      main_functions: pin.mainFunctions,
+      maker_warnings: getMakerWarnings(pin.warnings).map(getWarningLabel),
+      board_design_warnings: getBoardDesignWarnings(pin.warnings).map(getWarningLabel),
+      notes: pin.notes ?? [],
+      analog: pin.analog ?? [],
+      io_mux: pin.ioMux ?? [],
+      matrix_signals: pin.matrixSignals ?? [],
+    }));
+}
+
 function createBoardDefinition(
   metadata: (typeof boardRecognitionMetadata)[number],
   soc: SocDefinition,
@@ -120,6 +150,11 @@ function createBoardDefinition(
     aliases: metadata.aliases,
     module_variants: unique([...(profile.moduleNames ?? []), ...(profile.moduleVariants?.map((variant) => variant.name) ?? [])]),
     route: `/boards/${metadata.apiId}`,
+    sources: profile.source ? [{
+      title: profile.source.title,
+      url: profile.source.url,
+      sections: profile.source.sections,
+    }] : [],
     recognition: {
       board_markings: metadata.boardMarkings,
       module_markings: unique([...(metadata.moduleMarkings ?? []), ...(profile.moduleNames ?? []), ...(profile.moduleVariants?.map((variant) => variant.name) ?? [])]),
@@ -137,6 +172,7 @@ function createBoardDefinition(
       reserved_or_internal_pins: reservedPins,
       peripheral_notes: peripheralNotes(gpioPins),
       pin_functions: pinFunctions(gpioPins),
+      pin_details: pinDetails(gpioPins),
       general_warnings: unique([
         'Confirm the exact module variant before using header GPIOs reserved for on-module memory.',
         ...(cautionPins.length ? ['Review each listed caution before wiring a board-header GPIO.'] : []),
