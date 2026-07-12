@@ -57,4 +57,12 @@ describe('board deep links', () => {
       profileId: 'esp32s3-usb-otg',
     });
   });
+
+  it('resolves the P4X-EYE profile', () => {
+    expect(resolveBoardDeepLink('/boards/esp32p4x-eye')).toMatchObject({
+      apiBoardId: 'esp32p4x-eye',
+      socId: 'esp32p4',
+      profileId: 'esp32p4x-eye',
+    });
+  });
 });

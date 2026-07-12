@@ -1,7 +1,449 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T11:50:22.996Z",
+  "generated_at": "2026-07-12T11:53:57.502Z",
   "boards": [
+    {
+      "id": "esp32p4x-function-ev-board",
+      "name": "ESP32-P4X-Function-EV-Board",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-P4",
+      "aliases": [
+        "ESP32-P4X-Function-EV-Board"
+      ],
+      "module_variants": [
+        "ESP32-C6-MINI-1"
+      ],
+      "route": "/boards/esp32p4x-function-ev-board",
+      "recognition": {
+        "board_markings": [
+          "ESP32-P4X-Function-EV-Board"
+        ],
+        "module_markings": [
+          "ESP32-C6-MINI-1"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "RJ45 Ethernet port",
+          "USB Type-C port",
+          "USB Type-A port",
+          "MicroSD slot",
+          "MIPI CSI connector",
+          "MIPI DSI connector",
+          "Boot button",
+          "Reset button"
+        ],
+        "button_labels": [
+          "Boot",
+          "Reset"
+        ],
+        "visible_pin_labels": [
+          "3V3",
+          "5V",
+          "7",
+          "8",
+          "GND",
+          "23",
+          "37",
+          "38",
+          "21",
+          "22",
+          "20",
+          "6",
+          "5",
+          "4",
+          "3",
+          "2",
+          "NC(1)",
+          "NC(0)",
+          "36",
+          "32",
+          "NC",
+          "33",
+          "26",
+          "54",
+          "48",
+          "53",
+          "46",
+          "47",
+          "27",
+          "NC(45)"
+        ],
+        "header_pin_counts": [
+          40
+        ],
+        "usb_connector_count": 4,
+        "usb_connector_types": [
+          "usb-c",
+          "usb-a"
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO7",
+          "GPIO8",
+          "GPIO23",
+          "GPIO37",
+          "GPIO38",
+          "GPIO21",
+          "GPIO22",
+          "GPIO20",
+          "GPIO6",
+          "GPIO5",
+          "GPIO4",
+          "GPIO3",
+          "GPIO2",
+          "GPIO36",
+          "GPIO32",
+          "GPIO33",
+          "GPIO54",
+          "GPIO48",
+          "GPIO53",
+          "GPIO46",
+          "GPIO47"
+        ],
+        "caution_pins": [
+          {
+            "gpio": "GPIO1",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO0",
+            "warning": "Strapping, Boot, Board hardware"
+          },
+          {
+            "gpio": "GPIO26",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO27",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO45",
+            "warning": "Board hardware"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [
+          {
+            "peripheral": "UART0",
+            "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+            "candidate_pins": [
+              "GPIO37",
+              "GPIO38"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp32p4-function-ev-board-v1-5-2",
+      "name": "ESP32-P4-Function-EV-Board v1.5.2",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-P4",
+      "aliases": [
+        "ESP32-P4-Function-EV-Board v1.5.2"
+      ],
+      "module_variants": [
+        "ESP32-C6-MINI-1"
+      ],
+      "route": "/boards/esp32p4-function-ev-board-v1-5-2",
+      "recognition": {
+        "board_markings": [
+          "ESP32-P4-Function-EV-Board"
+        ],
+        "module_markings": [
+          "ESP32-C6-MINI-1"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "RJ45 Ethernet port",
+          "USB Type-C port",
+          "USB Type-A port",
+          "MicroSD slot",
+          "MIPI CSI connector",
+          "MIPI DSI connector",
+          "Boot button",
+          "Reset button"
+        ],
+        "button_labels": [
+          "Boot",
+          "Reset"
+        ],
+        "visible_pin_labels": [
+          "3V3",
+          "5V",
+          "7",
+          "8",
+          "GND",
+          "23",
+          "37",
+          "38",
+          "21",
+          "22",
+          "20",
+          "6",
+          "5",
+          "4",
+          "3",
+          "2",
+          "NC(1)",
+          "NC(0)",
+          "36",
+          "32",
+          "NC",
+          "33",
+          "26",
+          "54",
+          "48",
+          "53",
+          "46",
+          "47",
+          "27",
+          "NC(45)"
+        ],
+        "header_pin_counts": [
+          40
+        ],
+        "usb_connector_count": 4,
+        "usb_connector_types": [
+          "usb-c",
+          "usb-a"
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO7",
+          "GPIO8",
+          "GPIO23",
+          "GPIO37",
+          "GPIO38",
+          "GPIO21",
+          "GPIO22",
+          "GPIO20",
+          "GPIO6",
+          "GPIO5",
+          "GPIO4",
+          "GPIO3",
+          "GPIO2",
+          "GPIO36",
+          "GPIO32",
+          "GPIO33",
+          "GPIO54",
+          "GPIO48",
+          "GPIO53",
+          "GPIO46",
+          "GPIO47"
+        ],
+        "caution_pins": [
+          {
+            "gpio": "GPIO1",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO0",
+            "warning": "Strapping, Boot, Board hardware"
+          },
+          {
+            "gpio": "GPIO26",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO27",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO45",
+            "warning": "Board hardware"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [
+          {
+            "peripheral": "UART0",
+            "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+            "candidate_pins": [
+              "GPIO37",
+              "GPIO38"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp32p4x-eye",
+      "name": "ESP32-P4X-EYE",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-P4",
+      "aliases": [
+        "ESP32-P4X-EYE"
+      ],
+      "module_variants": [
+        "ESP32-C6-MINI-1U"
+      ],
+      "route": "/boards/esp32p4x-eye",
+      "recognition": {
+        "board_markings": [
+          "ESP32-P4X-EYE"
+        ],
+        "module_markings": [
+          "ESP32-C6-MINI-1U"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "1.54-inch LCD",
+          "MIPI CSI camera",
+          "MicroSD card slot",
+          "digital microphone",
+          "rotary encoder",
+          "fill light",
+          "2 x 10 female header",
+          "Boot button",
+          "Reset button"
+        ],
+        "button_labels": [
+          "Boot",
+          "Reset"
+        ],
+        "visible_pin_labels": [
+          "VCC_5V",
+          "NC",
+          "GPIO10",
+          "GPIO8",
+          "GPIO6",
+          "GND",
+          "GPIO54",
+          "GPIO53",
+          "GPIO51",
+          "GPIO38",
+          "GPIO34",
+          "GPIO7",
+          "I2C_SDA",
+          "I2C_SCL",
+          "GPIO52",
+          "GPIO50",
+          "GPIO37"
+        ],
+        "header_pin_counts": [
+          20
+        ],
+        "usb_connector_count": 2,
+        "usb_connector_types": []
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO10",
+          "GPIO8",
+          "GPIO6",
+          "GPIO54",
+          "GPIO53",
+          "GPIO51",
+          "GPIO38",
+          "GPIO34",
+          "GPIO7",
+          "GPIO52",
+          "GPIO50",
+          "GPIO37"
+        ],
+        "caution_pins": [],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory."
+        ]
+      }
+    },
+    {
+      "id": "esp32p4-eye",
+      "name": "ESP32-P4-EYE",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-P4",
+      "aliases": [
+        "ESP32-P4-EYE"
+      ],
+      "module_variants": [
+        "ESP32-C6-MINI-1U"
+      ],
+      "route": "/boards/esp32p4-eye",
+      "recognition": {
+        "board_markings": [
+          "ESP32-P4-EYE"
+        ],
+        "module_markings": [
+          "ESP32-C6-MINI-1U"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "1.54-inch LCD",
+          "MIPI CSI camera",
+          "MicroSD card slot",
+          "digital microphone",
+          "rotary encoder",
+          "fill light",
+          "2 x 10 female header",
+          "Boot button",
+          "Reset button"
+        ],
+        "button_labels": [
+          "Boot",
+          "Reset"
+        ],
+        "visible_pin_labels": [
+          "VCC_5V",
+          "NC",
+          "GPIO10",
+          "GPIO8",
+          "GPIO6",
+          "GND",
+          "GPIO54",
+          "GPIO53",
+          "GPIO51",
+          "GPIO38",
+          "GPIO34",
+          "GPIO7",
+          "I2C_SDA",
+          "I2C_SCL",
+          "GPIO52",
+          "GPIO50",
+          "GPIO37"
+        ],
+        "header_pin_counts": [
+          20
+        ],
+        "usb_connector_count": 2,
+        "usb_connector_types": []
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO10",
+          "GPIO8",
+          "GPIO6",
+          "GPIO54",
+          "GPIO53",
+          "GPIO51",
+          "GPIO38",
+          "GPIO34",
+          "GPIO7",
+          "GPIO52",
+          "GPIO50",
+          "GPIO37"
+        ],
+        "caution_pins": [],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory."
+        ]
+      }
+    },
     {
       "id": "esp32s3-thread-br-zigbee-gw-v1-2",
       "name": "ESP Thread Border Router / Zigbee Gateway v1.2",

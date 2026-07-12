@@ -43,6 +43,10 @@ describe('public board dataset', () => {
 
   it('exports the next official DevKit profiles with their canonical identities', () => {
     expect(dataset.boards).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'esp32p4x-function-ev-board', chip_family: 'ESP32-P4' }),
+      expect.objectContaining({ id: 'esp32p4-function-ev-board-v1-5-2', chip_family: 'ESP32-P4' }),
+      expect.objectContaining({ id: 'esp32p4x-eye', name: 'ESP32-P4X-EYE', chip_family: 'ESP32-P4' }),
+      expect.objectContaining({ id: 'esp32p4-eye', name: 'ESP32-P4-EYE', chip_family: 'ESP32-P4' }),
       expect.objectContaining({ id: 'esp32s3-thread-br-zigbee-gw-v1-2', chip_family: 'ESP32-S3' }),
       expect.objectContaining({ id: 'esp32s3-usb-otg', name: 'ESP32-S3-USB-OTG', chip_family: 'ESP32-S3' }),
       expect.objectContaining({ id: 'esp32s3-usb-bridge', name: 'ESP32-S3-USB-Bridge', chip_family: 'ESP32-S3' }),
