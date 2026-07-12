@@ -7,10 +7,18 @@
     <script>
       (function () {
         var path = window.location.pathname;
-        var marker = '/boards/';
-        var index = path.indexOf(marker);
+        var markers = ['/boards/', '/modules/'];
+        var index = -1;
+        for (var i = 0; i < markers.length; i += 1) {
+          var candidate = path.indexOf(markers[i]);
+          if (candidate >= 0 && (index < 0 || candidate < index)) index = candidate;
+        }
         var base = index >= 0 ? path.slice(0, index + 1) : path.replace(/[^/]*$/, '');
         var route = path.slice(base.length) + window.location.search;
+        if (!/^(boards|modules)\/[a-z0-9-]+\/?(?:\?.*)?$/.test(route)) {
+          window.location.replace(base);
+          return;
+        }
         window.location.replace(base + '?board-route=' + encodeURIComponent(route));
       })();
     </script>
