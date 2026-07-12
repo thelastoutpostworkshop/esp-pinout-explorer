@@ -1,7 +1,1154 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T11:47:45.205Z",
+  "generated_at": "2026-07-12T11:50:22.996Z",
   "boards": [
+    {
+      "id": "esp32s3-thread-br-zigbee-gw-v1-2",
+      "name": "ESP Thread Border Router / Zigbee Gateway v1.2",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-S3",
+      "aliases": [
+        "ESP Thread Border Router",
+        "Zigbee Gateway v1.2"
+      ],
+      "module_variants": [
+        "ESP32-S3-WROOM-1",
+        "ESP32-H2-MINI-1"
+      ],
+      "route": "/boards/esp32s3-thread-br-zigbee-gw-v1-2",
+      "recognition": {
+        "board_markings": [
+          "ESP Thread Border Router",
+          "Zigbee Gateway"
+        ],
+        "module_markings": [
+          "ESP32-S3-WROOM-1",
+          "ESP32-H2-MINI-1"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "ESP32-S3-WROOM-1 module",
+          "ESP32-H2-MINI-1 module",
+          "USB1 and USB2 connectors",
+          "J4 and J5 headers",
+          "Boot button",
+          "Reset button"
+        ],
+        "button_labels": [
+          "Boot",
+          "Reset"
+        ],
+        "visible_pin_labels": [
+          "H2_GPIO13",
+          "H2_TXD0",
+          "H2_GPIO10",
+          "H2_RXD0",
+          "H2_GPIO11",
+          "H2_GPIO14",
+          "GND",
+          "H2_GPIO8",
+          "VCC_5V",
+          "S3_GPIO15",
+          "S3_GPIO16",
+          "S3_GPIO3",
+          "S3_GPIO46",
+          "S3_GPIO9",
+          "S3_GPIO14",
+          "S3_GPIO21",
+          "S3_GPIO47",
+          "S3_GPIO48",
+          "S3_GPIO45",
+          "S3_GPIO35",
+          "S3_GPIO36",
+          "S3_GPIO37",
+          "S3_GPIO38",
+          "S3_GPIO39",
+          "S3_GPIO40",
+          "S3_GPIO41",
+          "S3_GPIO42",
+          "S3_RXD0",
+          "S3_TXD0",
+          "S3_GPIO2",
+          "S3_GPIO1",
+          "VCC_3V3"
+        ],
+        "header_pin_counts": [
+          34
+        ],
+        "usb_connector_count": 2,
+        "usb_connector_types": []
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO15",
+          "GPIO16",
+          "GPIO9",
+          "GPIO14",
+          "GPIO21",
+          "GPIO38",
+          "GPIO39",
+          "GPIO40",
+          "GPIO41",
+          "GPIO42",
+          "GPIO2",
+          "GPIO1"
+        ],
+        "caution_pins": [
+          {
+            "gpio": "GPIO3",
+            "warning": "Strapping"
+          },
+          {
+            "gpio": "GPIO46",
+            "warning": "Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO47",
+            "warning": "Voltage"
+          },
+          {
+            "gpio": "GPIO48",
+            "warning": "Voltage"
+          },
+          {
+            "gpio": "GPIO45",
+            "warning": "Strapping, Voltage"
+          },
+          {
+            "gpio": "GPIO35",
+            "warning": "PSRAM"
+          },
+          {
+            "gpio": "GPIO36",
+            "warning": "PSRAM"
+          },
+          {
+            "gpio": "GPIO37",
+            "warning": "PSRAM"
+          },
+          {
+            "gpio": "GPIO44",
+            "warning": "UART0"
+          },
+          {
+            "gpio": "GPIO43",
+            "warning": "UART0"
+          }
+        ],
+        "reserved_or_internal_pins": [
+          {
+            "gpio": "GPIO35",
+            "reason": "PSRAM"
+          },
+          {
+            "gpio": "GPIO36",
+            "reason": "PSRAM"
+          },
+          {
+            "gpio": "GPIO37",
+            "reason": "PSRAM"
+          }
+        ],
+        "peripheral_notes": [
+          {
+            "peripheral": "UART0",
+            "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+            "candidate_pins": [
+              "GPIO44",
+              "GPIO43"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp32s3-usb-otg",
+      "name": "ESP32-S3-USB-OTG",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-S3",
+      "aliases": [
+        "ESP32-S3-USB-OTG"
+      ],
+      "module_variants": [
+        "ESP32-S3-MINI-1-N8"
+      ],
+      "route": "/boards/esp32s3-usb-otg",
+      "recognition": {
+        "board_markings": [
+          "ESP32-S3-USB-OTG"
+        ],
+        "module_markings": [
+          "ESP32-S3-MINI-1-N8"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "USB_HOST connector",
+          "USB_DEV connector",
+          "Micro-USB connector",
+          "LCD connector",
+          "MicroSD slot",
+          "battery charger"
+        ],
+        "button_labels": [],
+        "visible_pin_labels": [
+          "USB_SEL",
+          "USB_D-",
+          "USB_D+",
+          "LED_GREEN",
+          "LED_YELLOW",
+          "BUTTON_OK",
+          "BUTTON_DW",
+          "BUTTON_UP",
+          "BUTTON_MENU",
+          "LCD_RET",
+          "LCD_EN",
+          "LCD_DC",
+          "LCD_SCLK",
+          "LCD_SDA",
+          "LCD_BL",
+          "SD_SCK",
+          "SD_DO",
+          "SD_D1",
+          "SD_D2",
+          "SD_D3",
+          "HOST_VOL",
+          "BAT_VOL",
+          "LIMIT_EN",
+          "0VER_CURRENT",
+          "DEV_VBUS_EN",
+          "BOOST_EN",
+          "FREE_1",
+          "FREE_2",
+          "FREE_3",
+          "FREE_4",
+          "FREE_5",
+          "FREE_6"
+        ],
+        "header_pin_counts": [
+          32
+        ],
+        "usb_connector_count": 3,
+        "usb_connector_types": [
+          "micro-usb"
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO48",
+          "GPIO26",
+          "GPIO47"
+        ],
+        "caution_pins": [
+          {
+            "gpio": "GPIO18",
+            "warning": "USB, Board hardware"
+          },
+          {
+            "gpio": "GPIO19",
+            "warning": "USB"
+          },
+          {
+            "gpio": "GPIO20",
+            "warning": "USB"
+          },
+          {
+            "gpio": "GPIO15",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO16",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO0",
+            "warning": "Board hardware, Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO11",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO10",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO14",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO8",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO5",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO4",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO6",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO7",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO9",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO36",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO37",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO38",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO33",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO34",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO1",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO17",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO21",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO12",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO13",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO45",
+            "warning": "Strapping, Voltage"
+          },
+          {
+            "gpio": "GPIO46",
+            "warning": "Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Strapping"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [
+          {
+            "peripheral": "Native USB",
+            "summary": "Header pins with documented native USB data functions.",
+            "candidate_pins": [
+              "GPIO19",
+              "GPIO20"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp32s3-usb-bridge",
+      "name": "ESP32-S3-USB-Bridge",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-S3",
+      "aliases": [
+        "ESP32-S3-USB-Bridge"
+      ],
+      "module_variants": [
+        "ESP32-S3-MINI-1-N4R2"
+      ],
+      "route": "/boards/esp32s3-usb-bridge",
+      "recognition": {
+        "board_markings": [
+          "ESP32-S3-USB-Bridge"
+        ],
+        "module_markings": [
+          "ESP32-S3-MINI-1-N4R2"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "USB-to-USB port",
+          "target Boot button",
+          "target Reset button",
+          "module Boot button",
+          "TX/RX indicators",
+          "WS2812 LED"
+        ],
+        "button_labels": [
+          "Boot",
+          "Reset"
+        ],
+        "visible_pin_labels": [
+          "GND",
+          "3V3",
+          "MODULE_BOOT",
+          "TDO",
+          "TDI",
+          "TCK",
+          "TMS",
+          "RESET",
+          "BOOT",
+          "USB_D-",
+          "USB_D+",
+          "RX",
+          "TX",
+          "WS2812"
+        ],
+        "header_pin_counts": [
+          14
+        ],
+        "usb_connector_count": 1,
+        "usb_connector_types": []
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [],
+        "caution_pins": [
+          {
+            "gpio": "GPIO0",
+            "warning": "Board hardware, Boot, Strapping"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Board hardware, Strapping"
+          },
+          {
+            "gpio": "GPIO4",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO5",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO8",
+            "warning": "Board hardware, Reset"
+          },
+          {
+            "gpio": "GPIO9",
+            "warning": "Board hardware, Boot"
+          },
+          {
+            "gpio": "GPIO19",
+            "warning": "Board hardware, USB"
+          },
+          {
+            "gpio": "GPIO20",
+            "warning": "Board hardware, USB"
+          },
+          {
+            "gpio": "GPIO40",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO41",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO42",
+            "warning": "Board hardware"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [
+          {
+            "peripheral": "Native USB",
+            "summary": "Header pins with documented native USB data functions.",
+            "candidate_pins": [
+              "GPIO19",
+              "GPIO20"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp32s3-lcd-ev-board-v1-5",
+      "name": "ESP32-S3-LCD-EV-Board v1.5",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-S3",
+      "aliases": [
+        "ESP32-S3-LCD-EV-Board-MB v1.5"
+      ],
+      "module_variants": [
+        "ESP32-S3-WROOM-1-N16R16V"
+      ],
+      "route": "/boards/esp32s3-lcd-ev-board-v1-5",
+      "recognition": {
+        "board_markings": [
+          "ESP32-S3-LCD-EV-Board-MB"
+        ],
+        "module_markings": [
+          "ESP32-S3-WROOM-1-N16R16V"
+        ],
+        "memory_markings": [
+          "N16R16V"
+        ],
+        "visible_features": [
+          "LCD subboard connectors",
+          "dual microphones",
+          "MicroSD slot",
+          "ES7210 audio ADC",
+          "ES8311 audio codec",
+          "RGB LED"
+        ],
+        "button_labels": [
+          "Boot",
+          "Reset"
+        ],
+        "visible_pin_labels": [
+          "GND",
+          "3V3",
+          "EN",
+          "IO4",
+          "IO5",
+          "IO6",
+          "IO7",
+          "IO15",
+          "IO16",
+          "IO17",
+          "IO18",
+          "IO8",
+          "IO19",
+          "IO20",
+          "IO3",
+          "IO46",
+          "IO9",
+          "IO10",
+          "IO11",
+          "IO12",
+          "IO13",
+          "IO14",
+          "IO21",
+          "IO47",
+          "IO48",
+          "IO45",
+          "IO0",
+          "IO35",
+          "IO36",
+          "IO37",
+          "IO38",
+          "IO39",
+          "IO40",
+          "IO41",
+          "IO42",
+          "RXD0",
+          "TXD0",
+          "IO2",
+          "IO1",
+          "EPAD",
+          "A0",
+          "A1",
+          "A2",
+          "P0",
+          "P1",
+          "P2",
+          "P3",
+          "P4",
+          "P5",
+          "P6",
+          "P7",
+          "INT",
+          "SCL",
+          "SDA",
+          "VCC"
+        ],
+        "header_pin_counts": [
+          57
+        ],
+        "usb_connector_count": 2,
+        "usb_connector_types": []
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [],
+        "caution_pins": [
+          {
+            "gpio": "GPIO4",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO5",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO6",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO7",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO15",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO16",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO17",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO18",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO8",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO19",
+            "warning": "USB"
+          },
+          {
+            "gpio": "GPIO20",
+            "warning": "USB"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Board hardware, Strapping"
+          },
+          {
+            "gpio": "GPIO46",
+            "warning": "Board hardware, Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO9",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO10",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO11",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO12",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO13",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO14",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO21",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO47",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO48",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO45",
+            "warning": "Board hardware, Strapping, Voltage"
+          },
+          {
+            "gpio": "GPIO0",
+            "warning": "Boot, Strapping"
+          },
+          {
+            "gpio": "GPIO35",
+            "warning": "Board hardware, PSRAM"
+          },
+          {
+            "gpio": "GPIO36",
+            "warning": "Board hardware, PSRAM"
+          },
+          {
+            "gpio": "GPIO37",
+            "warning": "Board hardware, PSRAM"
+          },
+          {
+            "gpio": "GPIO38",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO39",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO40",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO41",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO42",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO44",
+            "warning": "UART0"
+          },
+          {
+            "gpio": "GPIO43",
+            "warning": "UART0"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO1",
+            "warning": "Board hardware"
+          }
+        ],
+        "reserved_or_internal_pins": [
+          {
+            "gpio": "GPIO35",
+            "reason": "PSRAM"
+          },
+          {
+            "gpio": "GPIO36",
+            "reason": "PSRAM"
+          },
+          {
+            "gpio": "GPIO37",
+            "reason": "PSRAM"
+          }
+        ],
+        "peripheral_notes": [
+          {
+            "peripheral": "Native USB",
+            "summary": "Header pins with documented native USB data functions.",
+            "candidate_pins": [
+              "GPIO19",
+              "GPIO20"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp-vocat-v1-2",
+      "name": "ESP-VoCat v1.2",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-S3",
+      "aliases": [
+        "ESP-VoCat v1.2"
+      ],
+      "module_variants": [
+        "ESP32-S3-WROOM-1-N16R16VA"
+      ],
+      "route": "/boards/esp-vocat-v1-2",
+      "recognition": {
+        "board_markings": [
+          "ESP-VoCat"
+        ],
+        "module_markings": [
+          "ESP32-S3-WROOM-1-N16R16VA"
+        ],
+        "memory_markings": [
+          "N16R16VA"
+        ],
+        "visible_features": [
+          "circular LCD",
+          "dual microphones",
+          "MicroSD slot",
+          "touch pads",
+          "magnetic connector",
+          "USB-C"
+        ],
+        "button_labels": [],
+        "visible_pin_labels": [
+          "ESP_BOOT",
+          "USB_DN",
+          "USB_DP",
+          "POWER_CTRL",
+          "CODEC_PWR_CTRL",
+          "I2C_SCL",
+          "I2C_SDA",
+          "LCD_SDA0",
+          "LCD_SDA1",
+          "LCD_SDA2",
+          "LCD_SDA3",
+          "LCD_SCL",
+          "LCD_DC",
+          "LCD_BLK",
+          "LCD_CS",
+          "LCD_RST_CTRL",
+          "LCD_TE",
+          "TP_INT",
+          "TOUCH_PAD1",
+          "TOUCH_PAD2",
+          "I2S_MCLK",
+          "I2S_DI",
+          "I2S_WS",
+          "I2S_BCK",
+          "I2S_DO",
+          "PA_CTRL",
+          "SD_DA0",
+          "SD_CLK",
+          "SD_CMD",
+          "IMU_INT1",
+          "U1RXD",
+          "U1TXD"
+        ],
+        "header_pin_counts": [
+          32
+        ],
+        "usb_connector_count": 1,
+        "usb_connector_types": [
+          "usb-c"
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [],
+        "caution_pins": [
+          {
+            "gpio": "GPIO0",
+            "warning": "Boot, Strapping"
+          },
+          {
+            "gpio": "GPIO19",
+            "warning": "USB"
+          },
+          {
+            "gpio": "GPIO20",
+            "warning": "USB"
+          },
+          {
+            "gpio": "GPIO9",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO48",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO1",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO46",
+            "warning": "Board hardware, Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO13",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO11",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO12",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO18",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO45",
+            "warning": "Board hardware, Strapping, Voltage"
+          },
+          {
+            "gpio": "GPIO44",
+            "warning": "Board hardware, UART0"
+          },
+          {
+            "gpio": "GPIO14",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO47",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO8",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO10",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO6",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO7",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO42",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Board hardware, Strapping"
+          },
+          {
+            "gpio": "GPIO39",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO40",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO41",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO15",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO17",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO16",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO38",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO21",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO4",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO5",
+            "warning": "Board hardware"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [
+          {
+            "peripheral": "Native USB",
+            "summary": "Header pins with documented native USB data functions.",
+            "candidate_pins": [
+              "GPIO19",
+              "GPIO20"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp-dualkey",
+      "name": "ESP-DualKey",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-S3",
+      "aliases": [
+        "ESP-DualKey"
+      ],
+      "module_variants": [
+        "ESP32-S3FN8"
+      ],
+      "route": "/boards/esp-dualkey",
+      "recognition": {
+        "board_markings": [
+          "ESP-DualKey"
+        ],
+        "module_markings": [
+          "ESP32-S3FN8"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "two keys",
+          "three-position mode switch",
+          "two WS2812 RGB LEDs",
+          "HY2.0-4P ports",
+          "USB-C"
+        ],
+        "button_labels": [],
+        "visible_pin_labels": [
+          "KEY_1",
+          "KEY_2",
+          "SWITCH_1",
+          "SWITCH_2",
+          "ADC_BAT",
+          "ADC_VBUS",
+          "ADC_CHRG",
+          "WS2812_IN",
+          "PWR_2812",
+          "USB_DN",
+          "USB_DP",
+          "U0RXD",
+          "U0TXD",
+          "GPIO5",
+          "GPIO6",
+          "GPIO47",
+          "GPIO48"
+        ],
+        "header_pin_counts": [
+          17
+        ],
+        "usb_connector_count": 1,
+        "usb_connector_types": [
+          "usb-c"
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [],
+        "caution_pins": [
+          {
+            "gpio": "GPIO0",
+            "warning": "Board hardware, Boot, Strapping"
+          },
+          {
+            "gpio": "GPIO17",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO8",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO7",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO10",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO9",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO21",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO40",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO19",
+            "warning": "USB"
+          },
+          {
+            "gpio": "GPIO20",
+            "warning": "USB"
+          },
+          {
+            "gpio": "GPIO44",
+            "warning": "UART0"
+          },
+          {
+            "gpio": "GPIO43",
+            "warning": "UART0"
+          },
+          {
+            "gpio": "GPIO5",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO6",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO47",
+            "warning": "Board hardware, Voltage"
+          },
+          {
+            "gpio": "GPIO48",
+            "warning": "Board hardware, Voltage"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [
+          {
+            "peripheral": "Native USB",
+            "summary": "Header pins with documented native USB data functions.",
+            "candidate_pins": [
+              "GPIO19",
+              "GPIO20"
+            ]
+          },
+          {
+            "peripheral": "UART0",
+            "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+            "candidate_pins": [
+              "GPIO44",
+              "GPIO43"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
     {
       "id": "esp32-pico-kit-1",
       "name": "ESP32-PICO-KIT-1",

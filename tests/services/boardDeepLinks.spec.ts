@@ -49,4 +49,12 @@ describe('board deep links', () => {
       profileId: 'esp32-ethernet-kit-v1-2',
     });
   });
+
+  it('resolves the USB-OTG profile', () => {
+    expect(resolveBoardDeepLink('/boards/esp32s3-usb-otg')).toMatchObject({
+      apiBoardId: 'esp32s3-usb-otg',
+      socId: 'esp32s3',
+      profileId: 'esp32s3-usb-otg',
+    });
+  });
 });
