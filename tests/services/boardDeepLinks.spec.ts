@@ -33,4 +33,12 @@ describe('board deep links', () => {
       profileId: 'esp32-devkitc-v4',
     });
   });
+
+  it('resolves the classic PICO-DevKitM-2 profile', () => {
+    expect(resolveBoardDeepLink('/boards/esp32-pico-devkitm-2')).toMatchObject({
+      apiBoardId: 'esp32-pico-devkitm-2',
+      socId: 'esp32',
+      profileId: 'esp32-pico-devkitm-2',
+    });
+  });
 });

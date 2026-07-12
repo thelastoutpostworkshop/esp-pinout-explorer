@@ -1,7 +1,502 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T11:30:43.690Z",
+  "generated_at": "2026-07-12T11:43:47.135Z",
   "boards": [
+    {
+      "id": "esp32-devkitm-1",
+      "name": "ESP32-DevKitM-1",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32",
+      "aliases": [
+        "ESP32-DevKitM-1"
+      ],
+      "module_variants": [
+        "ESP32-MINI-1",
+        "ESP32-MINI-1U"
+      ],
+      "route": "/boards/esp32-devkitm-1",
+      "recognition": {
+        "board_markings": [
+          "ESP32-DevKitM-1"
+        ],
+        "module_markings": [
+          "ESP32-MINI-1",
+          "ESP32-MINI-1U"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "Micro-USB connector",
+          "Boot button",
+          "Reset button",
+          "USB-to-UART bridge"
+        ],
+        "button_labels": [
+          "Boot",
+          "Reset"
+        ],
+        "visible_pin_labels": [
+          "GND",
+          "3V3",
+          "IO36",
+          "IO37",
+          "IO38",
+          "IO39",
+          "RST",
+          "IO34",
+          "IO35",
+          "IO32",
+          "IO33",
+          "IO25",
+          "IO26",
+          "IO27",
+          "IO14",
+          "5V",
+          "TX",
+          "RX",
+          "IO21",
+          "IO22",
+          "IO19",
+          "IO23",
+          "IO18",
+          "IO5",
+          "IO10",
+          "IO9",
+          "IO4",
+          "IO0",
+          "IO2",
+          "IO15",
+          "IO13",
+          "IO12"
+        ],
+        "header_pin_counts": [
+          34
+        ],
+        "usb_connector_count": 1,
+        "usb_connector_types": [
+          "micro-usb"
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO36",
+          "GPIO37",
+          "GPIO38",
+          "GPIO39",
+          "GPIO34",
+          "GPIO35",
+          "GPIO32",
+          "GPIO33",
+          "GPIO25",
+          "GPIO26",
+          "GPIO27",
+          "GPIO14",
+          "GPIO21",
+          "GPIO22",
+          "GPIO19",
+          "GPIO23",
+          "GPIO18",
+          "GPIO10",
+          "GPIO9",
+          "GPIO4",
+          "GPIO13"
+        ],
+        "caution_pins": [
+          {
+            "gpio": "GPIO1",
+            "warning": "Board hardware, UART0"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Board hardware, UART0"
+          },
+          {
+            "gpio": "GPIO5",
+            "warning": "Strapping"
+          },
+          {
+            "gpio": "GPIO0",
+            "warning": "Board hardware, Boot, Strapping"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO15",
+            "warning": "Strapping"
+          },
+          {
+            "gpio": "GPIO12",
+            "warning": "Strapping, Voltage"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [
+          {
+            "peripheral": "UART0",
+            "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+            "candidate_pins": [
+              "GPIO1",
+              "GPIO3"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp32-pico-devkitm-2",
+      "name": "ESP32-PICO-DevKitM-2",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32",
+      "aliases": [
+        "ESP32-PICO-DevKitM-2"
+      ],
+      "module_variants": [
+        "ESP32-PICO-MINI-02",
+        "ESP32-PICO-MINI-02U"
+      ],
+      "route": "/boards/esp32-pico-devkitm-2",
+      "recognition": {
+        "board_markings": [
+          "ESP32-PICO-DevKitM-2"
+        ],
+        "module_markings": [
+          "ESP32-PICO-MINI-02",
+          "ESP32-PICO-MINI-02U"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "Micro-USB connector",
+          "Boot button",
+          "EN button",
+          "USB-to-UART bridge"
+        ],
+        "button_labels": [
+          "Boot",
+          "EN"
+        ],
+        "visible_pin_labels": [
+          "IO20",
+          "IO21",
+          "IO22",
+          "IO19",
+          "IO8",
+          "IO7",
+          "IO5",
+          "NC",
+          "RXD0",
+          "TXD0",
+          "IO35",
+          "IO34",
+          "IO38",
+          "IO37",
+          "EN",
+          "GND",
+          "3V3",
+          "FSVP",
+          "FSVN",
+          "IO25",
+          "IO26",
+          "IO32",
+          "IO33",
+          "IO27",
+          "IO14",
+          "IO12",
+          "IO13",
+          "IO15",
+          "IO2",
+          "IO4",
+          "IO0",
+          "5V"
+        ],
+        "header_pin_counts": [
+          36
+        ],
+        "usb_connector_count": 1,
+        "usb_connector_types": [
+          "micro-usb"
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO20",
+          "GPIO21",
+          "GPIO22",
+          "GPIO19",
+          "GPIO8",
+          "GPIO7",
+          "GPIO35",
+          "GPIO34",
+          "GPIO38",
+          "GPIO37",
+          "GPIO36",
+          "GPIO39",
+          "GPIO25",
+          "GPIO26",
+          "GPIO32",
+          "GPIO33",
+          "GPIO27",
+          "GPIO14",
+          "GPIO13",
+          "GPIO4"
+        ],
+        "caution_pins": [
+          {
+            "gpio": "GPIO5",
+            "warning": "Strapping"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Board hardware, UART0"
+          },
+          {
+            "gpio": "GPIO1",
+            "warning": "Board hardware, UART0"
+          },
+          {
+            "gpio": "GPIO12",
+            "warning": "Strapping, Voltage"
+          },
+          {
+            "gpio": "GPIO15",
+            "warning": "Strapping"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO0",
+            "warning": "Board hardware, Boot, Strapping"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [
+          {
+            "peripheral": "UART0",
+            "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+            "candidate_pins": [
+              "GPIO3",
+              "GPIO1"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp32-pico-kit-v4",
+      "name": "ESP32-PICO-KIT v4/v4.1",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32",
+      "aliases": [
+        "ESP32-PICO-KIT v4",
+        "ESP32-PICO-KIT v4.1"
+      ],
+      "module_variants": [
+        "ESP32-PICO-D4"
+      ],
+      "route": "/boards/esp32-pico-kit-v4",
+      "recognition": {
+        "board_markings": [
+          "ESP32-PICO-KIT"
+        ],
+        "module_markings": [
+          "ESP32-PICO-D4"
+        ],
+        "memory_markings": [],
+        "visible_features": [
+          "Micro-USB connector",
+          "Boot button",
+          "EN button",
+          "USB-to-UART bridge",
+          "two 20-pin headers"
+        ],
+        "button_labels": [
+          "Boot",
+          "EN"
+        ],
+        "visible_pin_labels": [
+          "FSD1",
+          "FSD3",
+          "FCLK",
+          "IO21",
+          "IO22",
+          "IO19",
+          "IO23",
+          "IO18",
+          "IO5",
+          "IO10",
+          "IO9",
+          "RXD0",
+          "TXD0",
+          "IO35",
+          "IO34",
+          "IO38",
+          "IO37",
+          "EN",
+          "GND",
+          "3V3",
+          "FCS",
+          "FSD0",
+          "FSD2",
+          "FSVP",
+          "FSVN",
+          "IO25",
+          "IO26",
+          "IO32",
+          "IO33",
+          "IO27",
+          "IO14",
+          "IO12",
+          "IO13",
+          "IO15",
+          "IO2",
+          "IO4",
+          "IO0",
+          "5V"
+        ],
+        "header_pin_counts": [
+          40
+        ],
+        "usb_connector_count": 1,
+        "usb_connector_types": [
+          "micro-usb"
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [
+          "GPIO21",
+          "GPIO22",
+          "GPIO19",
+          "GPIO23",
+          "GPIO18",
+          "GPIO35",
+          "GPIO34",
+          "GPIO38",
+          "GPIO37",
+          "GPIO36",
+          "GPIO39",
+          "GPIO25",
+          "GPIO26",
+          "GPIO32",
+          "GPIO33",
+          "GPIO27",
+          "GPIO14",
+          "GPIO13",
+          "GPIO4"
+        ],
+        "caution_pins": [
+          {
+            "gpio": "GPIO8",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO7",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO6",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO5",
+            "warning": "Strapping"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Board hardware, UART0"
+          },
+          {
+            "gpio": "GPIO1",
+            "warning": "Board hardware, UART0"
+          },
+          {
+            "gpio": "GPIO16",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO17",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO11",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO12",
+            "warning": "Strapping, Voltage"
+          },
+          {
+            "gpio": "GPIO15",
+            "warning": "Strapping"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO0",
+            "warning": "Board hardware, Boot, Strapping"
+          }
+        ],
+        "reserved_or_internal_pins": [
+          {
+            "gpio": "GPIO8",
+            "reason": "Flash memory"
+          },
+          {
+            "gpio": "GPIO7",
+            "reason": "Flash memory"
+          },
+          {
+            "gpio": "GPIO6",
+            "reason": "Flash memory"
+          },
+          {
+            "gpio": "GPIO10",
+            "reason": "Flash memory"
+          },
+          {
+            "gpio": "GPIO9",
+            "reason": "Flash memory"
+          },
+          {
+            "gpio": "GPIO16",
+            "reason": "Flash memory"
+          },
+          {
+            "gpio": "GPIO17",
+            "reason": "Flash memory"
+          },
+          {
+            "gpio": "GPIO11",
+            "reason": "Flash memory"
+          }
+        ],
+        "peripheral_notes": [
+          {
+            "peripheral": "UART0",
+            "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+            "candidate_pins": [
+              "GPIO3",
+              "GPIO1"
+            ]
+          }
+        ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
     {
       "id": "esp32-devkitc-v4",
       "name": "ESP32-DevKitC V4",
