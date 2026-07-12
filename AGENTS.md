@@ -65,6 +65,14 @@ Accuracy matters more than UI flourish. Raw SoC package data must come from offi
 - Board profiles should use `BoardSvg.vue`; raw package profiles should use `ChipSvg.vue`.
 - If a board has hardware revisions, encode the revision in the profile name and source metadata, for example `DevKitC-1 v1.1`.
 
+## Module API Rules
+
+- Module profiles use `kind: 'module'` and represent module pads, not development-board headers.
+- `src/services/export-mcp-module-dataset.ts` exports module-level guidance to `public/api/v1/modules.json`; keep it derived from the authoritative module profile rather than duplicating pin facts in the Worker.
+- Every exported module must include canonical markings, a permanent `/modules/{module-id}` route, source links, GPIO candidates, and documented cautions.
+- Module guidance must state that it cannot identify a carrier board, verify header exposure, or guarantee that an on-board LED, USB bridge, button, or other peripheral is absent.
+- Keep `/modules/{module-id}` deep links working through `src/services/boardDeepLinks.ts` and the GitHub Pages 404 fallback in `src/main.ts`.
+
 ## Adding A New Board Profile
 
 1. Confirm the official board source.
@@ -184,6 +192,7 @@ When adding or editing SoC data:
 ## Verification
 
 - Run `npm run build` after code or data changes.
+- After module API changes, verify `public/api/v1/modules.json` and a representative `/modules/{module-id}` route before publishing.
 - For visual/UI changes, also verify the local app at `http://127.0.0.1:5176` when practical.
 - Check selected-pin drawer behavior after changing chip/board interactions, function chips, tooltips, profile selection, or store state.
 - Do not commit generated `dist/`, `node_modules/`, or `.codex/` artifacts.

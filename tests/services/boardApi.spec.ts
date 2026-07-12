@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createBoardDataset } from '@/services/export-mcp-board-dataset';
+import { createModuleDataset } from '@/services/export-mcp-module-dataset';
 
 describe('public board dataset', () => {
   const dataset = createBoardDataset('2026-01-01T00:00:00.000Z');
@@ -77,5 +78,39 @@ describe('public board dataset', () => {
       recognition: { module_markings: expect.arrayContaining(['ESP-WROOM-32']), header_pin_counts: [38] },
       module_variants: expect.not.arrayContaining(['ESP-WROOM-32']),
     });
+  });
+});
+
+describe('public module dataset', () => {
+  const dataset = createModuleDataset('2026-01-01T00:00:00.000Z');
+  const mini1 = dataset.modules.find((module) => module.id === 'esp32c3-mini-1');
+
+  it('exports ESP32-C3-MINI-1 as module-level guidance', () => {
+    expect(dataset.schema_version).toBe(1);
+    expect(dataset.generated_at).toBe('2026-01-01T00:00:00.000Z');
+    expect(mini1).toMatchObject({
+      id: 'esp32c3-mini-1',
+      name: 'ESP32-C3-MINI-1',
+      chip_family: 'ESP32-C3',
+      module_markings: ['ESP32-C3-MINI-1'],
+      route: '/modules/esp32c3-mini-1',
+    });
+    expect(mini1?.general_purpose_candidates).toContain('GPIO4');
+    expect(mini1?.caution_pins).toEqual(expect.arrayContaining([
+      expect.objectContaining({ gpio: 'GPIO9', warning: expect.stringContaining('Boot') }),
+      expect.objectContaining({ gpio: 'GPIO18', warning: expect.stringContaining('USB') }),
+    ]));
+    expect(mini1?.general_warnings[0]).toContain('Module-level guidance only');
+    expect(mini1?.sources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ url: expect.stringContaining('esp32-c3-mini-1') }),
+    ]));
+  });
+
+  it('exports all implemented ESP32-C3 module profiles', () => {
+    expect(dataset.modules).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'esp32c3-mini-1u', name: 'ESP32-C3-MINI-1U' }),
+      expect.objectContaining({ id: 'esp32c3-wroom-02', name: 'ESP32-C3-WROOM-02' }),
+      expect.objectContaining({ id: 'esp32c3-wroom-02u', name: 'ESP32-C3-WROOM-02U' }),
+    ]));
   });
 });

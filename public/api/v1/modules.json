@@ -1,0 +1,628 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-12T21:24:30.777Z",
+  "modules": [
+    {
+      "id": "esp32c6-mini-1",
+      "name": "ESP32-C6-MINI-1",
+      "chip_family": "ESP32-C6",
+      "module_markings": [
+        "ESP32-C6-MINI-1"
+      ],
+      "route": "/modules/esp32c6-mini-1",
+      "general_purpose_candidates": [
+        "GPIO2",
+        "GPIO3",
+        "GPIO0",
+        "GPIO1",
+        "GPIO6",
+        "GPIO7",
+        "GPIO14",
+        "GPIO18",
+        "GPIO19",
+        "GPIO20",
+        "GPIO21",
+        "GPIO22",
+        "GPIO23"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO4",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "UART0"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO12",
+            "GPIO13"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO17",
+            "GPIO16"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 53-pad ESP32-C6-MINI-1 module layout, not the bare ESP32-C6 QFN package.",
+        "ESP32-C6-MINI-1 uses the on-board PCB antenna variant; the related MINI-1U uses an external antenna connector."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf"
+        }
+      ]
+    },
+    {
+      "id": "esp32c6-mini-1u",
+      "name": "ESP32-C6-MINI-1U",
+      "chip_family": "ESP32-C6",
+      "module_markings": [
+        "ESP32-C6-MINI-1U"
+      ],
+      "route": "/modules/esp32c6-mini-1u",
+      "general_purpose_candidates": [
+        "GPIO2",
+        "GPIO3",
+        "GPIO0",
+        "GPIO1",
+        "GPIO6",
+        "GPIO7",
+        "GPIO14",
+        "GPIO18",
+        "GPIO19",
+        "GPIO20",
+        "GPIO21",
+        "GPIO22",
+        "GPIO23"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO4",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "UART0"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO12",
+            "GPIO13"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO17",
+            "GPIO16"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 53-pad ESP32-C6-MINI-1U module layout, not the bare ESP32-C6 QFN package.",
+        "ESP32-C6-MINI-1U uses an external antenna connector and has no keepout zone; the pad pinout matches ESP32-C6-MINI-1."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf"
+        }
+      ]
+    },
+    {
+      "id": "esp32c3-mini-1",
+      "name": "ESP32-C3-MINI-1",
+      "chip_family": "ESP32-C3",
+      "module_markings": [
+        "ESP32-C3-MINI-1"
+      ],
+      "route": "/modules/esp32c3-mini-1",
+      "general_purpose_candidates": [
+        "GPIO3",
+        "GPIO0",
+        "GPIO1",
+        "GPIO10",
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO18",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "UART0"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO18",
+            "GPIO19"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO20",
+            "GPIO21"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 53-pad ESP32-C3-MINI-1 module layout, not the bare ESP32-C3 QFN package.",
+        "ESP32-C3-MINI-1 uses an on-board PCB antenna; the related MINI-1U uses an external antenna connector with the same pad pinout."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C3-MINI-1 & MINI-1U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c3-mini-1_datasheet_en.pdf"
+        }
+      ]
+    },
+    {
+      "id": "esp32c3-mini-1u",
+      "name": "ESP32-C3-MINI-1U",
+      "chip_family": "ESP32-C3",
+      "module_markings": [
+        "ESP32-C3-MINI-1U"
+      ],
+      "route": "/modules/esp32c3-mini-1u",
+      "general_purpose_candidates": [
+        "GPIO3",
+        "GPIO0",
+        "GPIO1",
+        "GPIO10",
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO18",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "UART0"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO18",
+            "GPIO19"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO20",
+            "GPIO21"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 53-pad ESP32-C3-MINI-1U module layout, not the bare ESP32-C3 QFN package.",
+        "ESP32-C3-MINI-1U uses an external antenna connector and has no PCB-antenna keepout zone; its pad pinout matches ESP32-C3-MINI-1."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C3-MINI-1 & MINI-1U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c3-mini-1_datasheet_en.pdf"
+        }
+      ]
+    },
+    {
+      "id": "esp32c3-wroom-02",
+      "name": "ESP32-C3-WROOM-02",
+      "chip_family": "ESP32-C3",
+      "module_markings": [
+        "ESP32-C3-WROOM-02"
+      ],
+      "route": "/modules/esp32c3-wroom-02",
+      "general_purpose_candidates": [
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7",
+        "GPIO10",
+        "GPIO3",
+        "GPIO1",
+        "GPIO0"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO18",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO18",
+            "GPIO19"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO20",
+            "GPIO21"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 19-pad ESP32-C3-WROOM-02 module layout, not the bare ESP32-C3 QFN package.",
+        "ESP32-C3-WROOM-02 uses an on-board PCB antenna; the related WROOM-02U uses an external antenna connector with the same pad pinout."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C3-WROOM-02 & WROOM-02U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf"
+        }
+      ]
+    },
+    {
+      "id": "esp32c3-wroom-02u",
+      "name": "ESP32-C3-WROOM-02U",
+      "chip_family": "ESP32-C3",
+      "module_markings": [
+        "ESP32-C3-WROOM-02U"
+      ],
+      "route": "/modules/esp32c3-wroom-02u",
+      "general_purpose_candidates": [
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7",
+        "GPIO10",
+        "GPIO3",
+        "GPIO1",
+        "GPIO0"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO18",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO18",
+            "GPIO19"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO20",
+            "GPIO21"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 19-pad ESP32-C3-WROOM-02U module layout, not the bare ESP32-C3 QFN package.",
+        "ESP32-C3-WROOM-02U uses an external antenna connector and has no PCB-antenna keepout zone; its pad pinout matches ESP32-C3-WROOM-02."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C3-WROOM-02 & WROOM-02U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf"
+        }
+      ]
+    },
+    {
+      "id": "esp-wroom-02d",
+      "name": "ESP-WROOM-02D",
+      "chip_family": "ESP8266EX",
+      "module_markings": [
+        "ESP-WROOM-02D"
+      ],
+      "route": "/modules/esp-wroom-02d",
+      "general_purpose_candidates": [
+        "GPIO14",
+        "GPIO12",
+        "GPIO13",
+        "GPIO4",
+        "GPIO5",
+        "GPIO16"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0, Boot"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO3",
+            "GPIO1"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 19-pad ESP-WROOM-02D module layout, not the bare ESP8266EX QFN package.",
+        "ESP-WROOM-02D uses a PCB antenna; the related ESP-WROOM-02U uses an external antenna connector with the same pad pinout."
+      ],
+      "sources": [
+        {
+          "title": "ESP-WROOM-02D & ESP-WROOM-02U Datasheet",
+          "url": "https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf"
+        }
+      ]
+    },
+    {
+      "id": "esp-wroom-02u",
+      "name": "ESP-WROOM-02U",
+      "chip_family": "ESP8266EX",
+      "module_markings": [
+        "ESP-WROOM-02U"
+      ],
+      "route": "/modules/esp-wroom-02u",
+      "general_purpose_candidates": [
+        "GPIO14",
+        "GPIO12",
+        "GPIO13",
+        "GPIO4",
+        "GPIO5",
+        "GPIO16"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0, Boot"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO3",
+            "GPIO1"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 19-pad ESP-WROOM-02U module layout, not the bare ESP8266EX QFN package.",
+        "ESP-WROOM-02U uses an external antenna connector and a shorter module body; the pad pinout matches ESP-WROOM-02D."
+      ],
+      "sources": [
+        {
+          "title": "ESP-WROOM-02D & ESP-WROOM-02U Datasheet",
+          "url": "https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf"
+        }
+      ]
+    }
+  ]
+}

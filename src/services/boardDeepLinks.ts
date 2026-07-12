@@ -9,7 +9,14 @@ export interface BoardDeepLinkTarget {
   highlightGpios: string[];
 }
 
+export interface ModuleDeepLinkTarget {
+  apiModuleId: string;
+  socId: string;
+  profileId: string;
+}
+
 const boardRoutePattern = /^\/boards\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/;
+const moduleRoutePattern = /^\/modules\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/;
 const gpioPattern = /^GPIO(?:[0-9]|[1-9][0-9]{1,2})$/;
 
 export function resolveBoardDeepLink(pathname: string, search = ''): BoardDeepLinkTarget | null {
@@ -33,9 +40,29 @@ export function resolveBoardDeepLink(pathname: string, search = ''): BoardDeepLi
   return { apiBoardId: metadata.apiId, socId: soc.id, profileId: metadata.profileId, mode, highlightGpios: [...new Set(highlightGpios)] };
 }
 
+export function resolveModuleDeepLink(pathname: string): ModuleDeepLinkTarget | null {
+  const match = moduleRoutePattern.exec(pathname);
+  if (!match) return null;
+
+  const soc = socs.find((candidate) => candidate.packageVariants?.some((profile) => profile.id === match[1] && profile.kind === 'module'));
+  if (!soc) return null;
+
+  return { apiModuleId: match[1], socId: soc.id, profileId: match[1] };
+}
+
 /** Apply a valid board route to the existing store without changing normal selection behavior. */
 export function applyBoardDeepLink(
   target: BoardDeepLinkTarget,
+  selectSoc: (socId: string) => void,
+  selectPackage: (profileId: string) => void,
+) {
+  selectSoc(target.socId);
+  selectPackage(target.profileId);
+}
+
+/** Apply a valid module route to the existing store without changing normal selection behavior. */
+export function applyModuleDeepLink(
+  target: ModuleDeepLinkTarget,
   selectSoc: (socId: string) => void,
   selectPackage: (profileId: string) => void,
 ) {

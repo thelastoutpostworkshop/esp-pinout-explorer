@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { resolveBoardDeepLink } from '@/services/boardDeepLinks';
+import { resolveBoardDeepLink, resolveModuleDeepLink } from '@/services/boardDeepLinks';
 
 describe('board deep links', () => {
   it('safely ignores unknown or malformed board routes', () => {
@@ -80,5 +80,19 @@ describe('board deep links', () => {
       socId: 'esp32',
       profileId: 'esp32-lcdkit',
     });
+  });
+});
+
+describe('module deep links', () => {
+  it('resolves an ESP32-C3-MINI-1 module route', () => {
+    expect(resolveModuleDeepLink('/modules/esp32c3-mini-1')).toEqual({
+      apiModuleId: 'esp32c3-mini-1',
+      socId: 'esp32c3',
+      profileId: 'esp32c3-mini-1',
+    });
+  });
+
+  it('rejects unknown module routes', () => {
+    expect(resolveModuleDeepLink('/modules/unknown-module')).toBeNull();
   });
 });
