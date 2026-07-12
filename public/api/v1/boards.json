@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T21:59:05.792Z",
+  "generated_at": "2026-07-12T22:32:42.863Z",
   "boards": [
     {
       "id": "esp32-lcdkit",
@@ -257,6 +257,609 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO36",
+            "board_label": "SENSOR_VP",
+            "functions": [
+              "GPIO36",
+              "ADC1_CH0",
+              "S_VP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "SENSOR_VN",
+            "functions": [
+              "GPIO39",
+              "ADC1_CH3",
+              "S_VN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "IO34",
+            "functions": [
+              "GPIO34",
+              "ADC1_CH6",
+              "RTC_GPIO4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "functions": [
+              "GPIO35",
+              "ADC1_CH7",
+              "RTC_GPIO5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "IO32",
+            "functions": [
+              "GPIO32",
+              "32K_XP",
+              "ADC1_CH4",
+              "TOUCH9",
+              "RTC_GPIO9"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "IO33",
+            "functions": [
+              "GPIO33",
+              "32K_XN",
+              "ADC1_CH5",
+              "TOUCH8",
+              "RTC_GPIO8"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "IO25",
+            "functions": [
+              "GPIO25",
+              "DAC_1",
+              "ADC2_CH8",
+              "RTC_GPIO6",
+              "EMAC_RXD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "IO26",
+            "functions": [
+              "GPIO26",
+              "DAC_2",
+              "ADC2_CH9",
+              "RTC_GPIO7",
+              "EMAC_RXD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "IO27",
+            "functions": [
+              "GPIO27",
+              "ADC2_CH7",
+              "TOUCH7",
+              "RTC_GPIO17",
+              "EMAC_RX_DV"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "functions": [
+              "GPIO14",
+              "ADC2_CH6",
+              "TOUCH6",
+              "RTC_GPIO16",
+              "MTMS",
+              "HSPICLK",
+              "HS2_CLK",
+              "SD_CLK",
+              "EMAC_TXD2"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "functions": [
+              "GPIO12",
+              "ADC2_CH5",
+              "TOUCH5",
+              "RTC_GPIO15",
+              "MTDI",
+              "HSPIQ",
+              "HS2_DATA2",
+              "SD_DATA2",
+              "EMAC_TXD3"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "functions": [
+              "GPIO13",
+              "ADC2_CH4",
+              "TOUCH4",
+              "RTC_GPIO14",
+              "MTCK",
+              "HSPID",
+              "HS2_DATA3",
+              "SD_DATA3",
+              "EMAC_RX_ER"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "SD2",
+            "functions": [
+              "GPIO9",
+              "D2"
+            ],
+            "warnings": [
+              "Flash memory"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "SD3",
+            "functions": [
+              "GPIO10",
+              "D3"
+            ],
+            "warnings": [
+              "Flash memory"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "CMD",
+            "functions": [
+              "GPIO11",
+              "CMD"
+            ],
+            "warnings": [
+              "Flash memory"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "IO23",
+            "functions": [
+              "GPIO23",
+              "VSPID",
+              "HS1_STROBE"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "IO22",
+            "functions": [
+              "GPIO22",
+              "VSPIWP",
+              "U0RTS",
+              "EMAC_TXD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TXD0",
+            "functions": [
+              "GPIO1",
+              "U0TXD",
+              "CLK_OUT3",
+              "EMAC_RXD2"
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RXD0",
+            "functions": [
+              "GPIO3",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "functions": [
+              "GPIO21",
+              "VSPIHD",
+              "EMAC_TX_EN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "IO19",
+            "functions": [
+              "GPIO19",
+              "VSPIQ",
+              "U0CTS",
+              "EMAC_TXD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "IO18",
+            "functions": [
+              "GPIO18",
+              "VSPICLK",
+              "HS1_DATA7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "functions": [
+              "GPIO5",
+              "VSPICS0",
+              "HS1_DATA6",
+              "EMAC_RX_CLK"
+            ],
+            "warnings": [
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "IO16",
+            "functions": [
+              "GPIO16",
+              "HS1_DATA4",
+              "U2RXD",
+              "EMAC_CLK_OUT"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "functions": [
+              "GPIO4",
+              "ADC2_CH0",
+              "TOUCH0",
+              "RTC_GPIO10",
+              "HSPIHD",
+              "HS2_DATA1",
+              "SD_DATA1",
+              "EMAC_TX_ER"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "RTC_GPIO11",
+              "CLK_OUT1",
+              "EMAC_TX_CLK",
+              "Boot"
+            ],
+            "warnings": [
+              "Boot",
+              "Strapping",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "functions": [
+              "GPIO2",
+              "ADC2_CH2",
+              "TOUCH2",
+              "RTC_GPIO12",
+              "HSPIWP",
+              "HS2_DATA0",
+              "SD_DATA0"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "functions": [
+              "GPIO15",
+              "ADC2_CH3",
+              "TOUCH3",
+              "RTC_GPIO13",
+              "MTDO",
+              "HSPICS0",
+              "HS2_CMD",
+              "SD_CMD"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "SD1",
+            "functions": [
+              "GPIO8",
+              "D1"
+            ],
+            "warnings": [
+              "Flash memory"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "SD0",
+            "functions": [
+              "GPIO7",
+              "D0"
+            ],
+            "warnings": [
+              "Flash memory"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "CLK",
+            "functions": [
+              "GPIO6",
+              "CLK"
+            ],
+            "warnings": [
+              "Flash memory"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "CS_1",
+            "functions": [
+              "GPIO5",
+              "LCD_CS"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "RESET_1",
+            "functions": [
+              "GPIO18",
+              "LCD_RET"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "D/C_1",
+            "functions": [
+              "GPIO19",
+              "LCD_DC"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "MOSI_1",
+            "functions": [
+              "GPIO21",
+              "LCD_SDA"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "SCK_1",
+            "functions": [
+              "GPIO22",
+              "LCD_SCLK"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "LED_1",
+            "functions": [
+              "GPIO23",
+              "LCD_BL"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "MISO_1",
+            "functions": [
+              "GPIO27",
+              "LCD_SDO"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "T_CLK_1",
+            "functions": [
+              "GPIO32",
+              "T_CLK"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "T_CS_1",
+            "functions": [
+              "GPIO33",
+              "T_CS"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "T_DIN_1",
+            "functions": [
+              "GPIO21",
+              "T_DIN"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "T_DO_1",
+            "functions": [
+              "GPIO27",
+              "T_DO"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "DAT2",
+            "functions": [
+              "GPIO12",
+              "SD_D2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "CD/DATA3",
+            "functions": [
+              "GPIO13",
+              "SD_D3"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "CMD",
+            "functions": [
+              "GPIO15",
+              "SD_CMD"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "CLK",
+            "functions": [
+              "GPIO14",
+              "SD_CLK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "DATA0",
+            "functions": [
+              "GPIO2",
+              "SD_D0"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "DATA1",
+            "functions": [
+              "GPIO4",
+              "SD_D1"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "CD",
+            "functions": [
+              "GPIO34",
+              "SD_DET"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -369,6 +972,154 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO16",
+            "board_label": "16",
+            "functions": [
+              "GPIO16",
+              "XPD_DCDC",
+              "Deep-sleep wakeup"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TX",
+            "functions": [
+              "GPIO1",
+              "U0TXD",
+              "UART0_TXD"
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RX",
+            "functions": [
+              "GPIO3",
+              "U0RXD",
+              "UART0_RXD"
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4",
+              "PWM3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5",
+              "IR Rx"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "14",
+            "functions": [
+              "GPIO14",
+              "MTMS",
+              "HSPI_CLK",
+              "I2C_SCL",
+              "I2SI_WS",
+              "PWM2",
+              "IR TX"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "12",
+            "functions": [
+              "GPIO12",
+              "MTDI",
+              "HSPI_MISO",
+              "I2SI_DATA",
+              "PWM0"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "13",
+            "functions": [
+              "GPIO13",
+              "MTCK",
+              "HSPI_MOSI",
+              "UART0_CTS",
+              "I2SI_BCK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "15",
+            "functions": [
+              "GPIO15",
+              "MTDO",
+              "HSPICS",
+              "UART0_RTS",
+              "I2SO_BCK",
+              "PWM1"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2",
+              "UART1_TXD",
+              "I2C_SDA",
+              "I2SO_WS"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "0",
+            "functions": [
+              "GPIO0",
+              "SPI_CS2",
+              "Boot mode strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -478,6 +1229,149 @@
               "GPIO1",
               "GPIO3"
             ]
+          }
+        ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO14",
+            "board_label": "14",
+            "functions": [
+              "GPIO14",
+              "HSPI_CLK",
+              "I2C_SCL",
+              "I2SI_WS",
+              "PWM2",
+              "IR TX"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "12",
+            "functions": [
+              "GPIO12",
+              "HSPI_MISO",
+              "I2SI_DATA",
+              "PWM0"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "13",
+            "functions": [
+              "GPIO13",
+              "HSPI_MOSI",
+              "UART0_CTS",
+              "I2SI_BCK"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "15",
+            "functions": [
+              "GPIO15",
+              "MTDO",
+              "HSPICS",
+              "UART0_RTS",
+              "I2SO_BCK",
+              "PWM1"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2",
+              "UART1_TXD",
+              "I2C_SDA",
+              "I2SO_WS"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "0",
+            "functions": [
+              "GPIO0",
+              "SPI_CS2",
+              "Boot mode strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "16",
+            "functions": [
+              "GPIO16",
+              "XPD_DCDC",
+              "Deep-sleep wakeup"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TX",
+            "functions": [
+              "GPIO1",
+              "U0TXD",
+              "UART0_TXD"
+            ],
+            "warnings": [
+              "UART0",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RX",
+            "functions": [
+              "GPIO3",
+              "U0RXD",
+              "UART0_RXD"
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4",
+              "PWM3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5",
+              "IR Rx"
+            ],
+            "warnings": []
           }
         ],
         "general_warnings": [
@@ -655,6 +1549,243 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO14",
+            "board_label": "GPIO14",
+            "functions": [
+              "GPIO14",
+              "MTMS",
+              "HSPI_CLK",
+              "I2C_SCL",
+              "I2SI_WS",
+              "PWM2",
+              "IR TX"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "GPIO12",
+            "functions": [
+              "GPIO12",
+              "MTDI",
+              "HSPI_MISO",
+              "I2SI_DATA",
+              "PWM0"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "GPIO13",
+            "functions": [
+              "GPIO13",
+              "MTCK",
+              "HSPI_MOSI",
+              "UART0_CTS",
+              "I2SI_BCK"
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "GPIO15",
+            "functions": [
+              "GPIO15",
+              "MTDO",
+              "HSPICS",
+              "UART0_RTS",
+              "I2SO_BCK",
+              "PWM1"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "UART0",
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "SD_D2",
+            "functions": [
+              "GPIO9",
+              "SDIO_DATA_2",
+              "SPIHD",
+              "HSPIHD"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "SD_D3",
+            "functions": [
+              "GPIO10",
+              "SDIO_DATA_3",
+              "SPIWP",
+              "HSPIWP"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "SD_CMD",
+            "functions": [
+              "GPIO11",
+              "SDIO_CMD",
+              "SPI_CS0"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "SD_CLK",
+            "functions": [
+              "GPIO6",
+              "SDIO_CLK",
+              "SPI_CLK"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "SD_D0",
+            "functions": [
+              "GPIO7",
+              "SDIO_DATA_0",
+              "SPI_MISO"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "SD_D1",
+            "functions": [
+              "GPIO8",
+              "SDIO_DATA_1",
+              "SPI_MOSI",
+              "U1RXD"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "GPIO16",
+            "functions": [
+              "GPIO16",
+              "XPD_DCDC",
+              "Deep-sleep wakeup"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "GPIO5",
+            "functions": [
+              "GPIO5",
+              "IR Rx"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "GPIO4",
+            "functions": [
+              "GPIO4",
+              "PWM3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "U0TXD",
+            "functions": [
+              "GPIO1",
+              "U0TXD",
+              "UART0_TXD"
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "U0RXD",
+            "functions": [
+              "GPIO3",
+              "U0RXD",
+              "UART0_RXD"
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "GPIO0",
+            "functions": [
+              "GPIO0",
+              "SPI_CS2",
+              "Boot mode strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "GPIO2",
+            "functions": [
+              "GPIO2",
+              "UART1_TXD",
+              "I2C_SDA",
+              "I2SO_WS"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -790,6 +1921,231 @@
             "candidate_pins": [
               "GPIO37",
               "GPIO38"
+            ]
+          }
+        ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO7",
+            "board_label": "7",
+            "functions": [
+              "GPIO7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "functions": [
+              "GPIO8"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "23",
+            "functions": [
+              "GPIO23"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "37",
+            "functions": [
+              "GPIO37",
+              "U0TXD"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "38",
+            "functions": [
+              "GPIO38",
+              "U0RXD"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "21",
+            "functions": [
+              "GPIO21"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "22",
+            "functions": [
+              "GPIO22"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "20",
+            "functions": [
+              "GPIO20"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "6",
+            "functions": [
+              "GPIO6"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "3",
+            "functions": [
+              "GPIO3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "NC(1)",
+            "functions": [
+              "GPIO1"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "NC(0)",
+            "functions": [
+              "GPIO0"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "36",
+            "functions": [
+              "GPIO36"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "32",
+            "functions": [
+              "GPIO32"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "33",
+            "functions": [
+              "GPIO33"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "26",
+            "functions": [
+              "GPIO26"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO54",
+            "board_label": "54",
+            "functions": [
+              "GPIO54"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "48",
+            "functions": [
+              "GPIO48"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO53",
+            "board_label": "53",
+            "functions": [
+              "GPIO53"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "46",
+            "functions": [
+              "GPIO46"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "47",
+            "functions": [
+              "GPIO47"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "27",
+            "functions": [
+              "GPIO27"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "NC(45)",
+            "functions": [
+              "GPIO45"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
             ]
           }
         ],
@@ -931,6 +2287,231 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO7",
+            "board_label": "7",
+            "functions": [
+              "GPIO7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "functions": [
+              "GPIO8"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "23",
+            "functions": [
+              "GPIO23"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "37",
+            "functions": [
+              "GPIO37",
+              "U0TXD"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "38",
+            "functions": [
+              "GPIO38",
+              "U0RXD"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "21",
+            "functions": [
+              "GPIO21"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "22",
+            "functions": [
+              "GPIO22"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "20",
+            "functions": [
+              "GPIO20"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "6",
+            "functions": [
+              "GPIO6"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "3",
+            "functions": [
+              "GPIO3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "NC(1)",
+            "functions": [
+              "GPIO1"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "NC(0)",
+            "functions": [
+              "GPIO0"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "36",
+            "functions": [
+              "GPIO36"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "32",
+            "functions": [
+              "GPIO32"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "33",
+            "functions": [
+              "GPIO33"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "26",
+            "functions": [
+              "GPIO26"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO54",
+            "board_label": "54",
+            "functions": [
+              "GPIO54"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "48",
+            "functions": [
+              "GPIO48"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO53",
+            "board_label": "53",
+            "functions": [
+              "GPIO53"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "46",
+            "functions": [
+              "GPIO46"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "47",
+            "functions": [
+              "GPIO47"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "27",
+            "functions": [
+              "GPIO27"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "NC(45)",
+            "functions": [
+              "GPIO45"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -1015,6 +2596,104 @@
         "caution_pins": [],
         "reserved_or_internal_pins": [],
         "peripheral_notes": [],
+        "pin_functions": [
+          {
+            "gpio": "GPIO10",
+            "board_label": "GPIO10",
+            "functions": [
+              "GPIO10"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "GPIO8",
+            "functions": [
+              "GPIO8"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "GPIO6",
+            "functions": [
+              "GPIO6"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO54",
+            "board_label": "GPIO54",
+            "functions": [
+              "GPIO54"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO53",
+            "board_label": "GPIO53",
+            "functions": [
+              "GPIO53"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO51",
+            "board_label": "GPIO51",
+            "functions": [
+              "GPIO51"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "GPIO38",
+            "functions": [
+              "GPIO38"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "GPIO34",
+            "functions": [
+              "GPIO34"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "GPIO7",
+            "functions": [
+              "GPIO7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO52",
+            "board_label": "GPIO52",
+            "functions": [
+              "GPIO52"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO50",
+            "board_label": "GPIO50",
+            "functions": [
+              "GPIO50"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "GPIO37",
+            "functions": [
+              "GPIO37"
+            ],
+            "warnings": []
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory."
         ]
@@ -1098,6 +2777,104 @@
         "caution_pins": [],
         "reserved_or_internal_pins": [],
         "peripheral_notes": [],
+        "pin_functions": [
+          {
+            "gpio": "GPIO10",
+            "board_label": "GPIO10",
+            "functions": [
+              "GPIO10"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "GPIO8",
+            "functions": [
+              "GPIO8"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "GPIO6",
+            "functions": [
+              "GPIO6"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO54",
+            "board_label": "GPIO54",
+            "functions": [
+              "GPIO54"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO53",
+            "board_label": "GPIO53",
+            "functions": [
+              "GPIO53"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO51",
+            "board_label": "GPIO51",
+            "functions": [
+              "GPIO51"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "GPIO38",
+            "functions": [
+              "GPIO38"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "GPIO34",
+            "functions": [
+              "GPIO34"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "GPIO7",
+            "functions": [
+              "GPIO7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO52",
+            "board_label": "GPIO52",
+            "functions": [
+              "GPIO52"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO50",
+            "board_label": "GPIO50",
+            "functions": [
+              "GPIO50"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "GPIO37",
+            "functions": [
+              "GPIO37"
+            ],
+            "warnings": []
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory."
         ]
@@ -1257,6 +3034,293 @@
             "candidate_pins": [
               "GPIO44",
               "GPIO43"
+            ]
+          }
+        ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO15",
+            "board_label": "S3_GPIO15",
+            "functions": [
+              "GPIO15",
+              "RTC_GPIO15",
+              "32 kHz crystal positive",
+              "ADC2_CH4",
+              "U0RTS"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "S3_GPIO16",
+            "functions": [
+              "GPIO16",
+              "RTC_GPIO16",
+              "32 kHz crystal negative",
+              "ADC2_CH5",
+              "U0CTS"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "S3_GPIO3",
+            "functions": [
+              "GPIO3",
+              "RTC_GPIO3",
+              "TOUCH3",
+              "ADC1_CH2",
+              "SAR I2C SDA1"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "S3_GPIO46",
+            "functions": [
+              "GPIO46",
+              "Boot mode strapping",
+              "ROM message control"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "S3_GPIO9",
+            "functions": [
+              "GPIO9",
+              "RTC_GPIO9",
+              "TOUCH9",
+              "ADC1_CH8",
+              "SUBSPIHD",
+              "FSPIHD"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "S3_GPIO14",
+            "functions": [
+              "GPIO14",
+              "RTC_GPIO14",
+              "TOUCH14",
+              "ADC2_CH3",
+              "FSPIDQS",
+              "SUBSPIWP",
+              "FSPIWP"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "S3_GPIO21",
+            "functions": [
+              "GPIO21",
+              "RTC_GPIO21"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "S3_GPIO47",
+            "functions": [
+              "GPIO47",
+              "SPICLK_P_DIFF",
+              "SUBSPICLK_P_DIFF"
+            ],
+            "warnings": [
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "S3_GPIO48",
+            "functions": [
+              "GPIO48",
+              "SPICLK_N_DIFF",
+              "SUBSPICLK_N_DIFF"
+            ],
+            "warnings": [
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "S3_GPIO45",
+            "functions": [
+              "GPIO45",
+              "VDD_SPI voltage strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "S3_GPIO35",
+            "functions": [
+              "GPIO35",
+              "FSPID",
+              "SUBSPID",
+              "SPIIO6",
+              "Octal SPI DQ6"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "S3_GPIO36",
+            "functions": [
+              "GPIO36",
+              "FSPICLK",
+              "SUBSPICLK",
+              "SPIIO7",
+              "Octal SPI DQ7"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "S3_GPIO37",
+            "functions": [
+              "GPIO37",
+              "FSPIQ",
+              "SUBSPIQ",
+              "SPIDQS",
+              "Octal SPI DQS/DM"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "S3_GPIO38",
+            "functions": [
+              "GPIO38",
+              "FSPIWP",
+              "SUBSPIWP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "S3_GPIO39",
+            "functions": [
+              "GPIO39",
+              "MTCK",
+              "CLK_OUT3",
+              "SUBSPICS1"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "S3_GPIO40",
+            "functions": [
+              "GPIO40",
+              "MTDO",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "S3_GPIO41",
+            "functions": [
+              "GPIO41",
+              "MTDI",
+              "CLK_OUT1"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "S3_GPIO42",
+            "functions": [
+              "GPIO42",
+              "MTMS"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO44",
+            "board_label": "S3_RXD0",
+            "functions": [
+              "GPIO44",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO43",
+            "board_label": "S3_TXD0",
+            "functions": [
+              "GPIO43",
+              "U0TXD",
+              "CLK_OUT1"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "S3_GPIO2",
+            "functions": [
+              "GPIO2",
+              "RTC_GPIO2",
+              "TOUCH2",
+              "ADC1_CH1",
+              "SAR I2C SCL1"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "S3_GPIO1",
+            "functions": [
+              "GPIO1",
+              "RTC_GPIO1",
+              "TOUCH1",
+              "ADC1_CH0",
+              "SAR I2C SDA0"
+            ],
+            "warnings": [
+              "Power-up glitch"
             ]
           }
         ],
@@ -1472,6 +3536,368 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO18",
+            "board_label": "USB_SEL",
+            "functions": [
+              "GPIO18",
+              "USB_SEL"
+            ],
+            "warnings": [
+              "USB",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "USB_D-",
+            "functions": [
+              "GPIO19",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB"
+            ]
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "USB_D+",
+            "functions": [
+              "GPIO20",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "LED_GREEN",
+            "functions": [
+              "GPIO15",
+              "LED_GREEN"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "LED_YELLOW",
+            "functions": [
+              "GPIO16",
+              "LED_YELLOW"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "BUTTON_OK",
+            "functions": [
+              "GPIO0",
+              "BUTTON_OK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "BUTTON_DW",
+            "functions": [
+              "GPIO11",
+              "BUTTON_DW"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "BUTTON_UP",
+            "functions": [
+              "GPIO10",
+              "BUTTON_UP"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "BUTTON_MENU",
+            "functions": [
+              "GPIO14",
+              "BUTTON_MENU"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "LCD_RET",
+            "functions": [
+              "GPIO8",
+              "LCD_RET"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "LCD_EN",
+            "functions": [
+              "GPIO5",
+              "LCD_EN"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "LCD_DC",
+            "functions": [
+              "GPIO4",
+              "LCD_DC"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "LCD_SCLK",
+            "functions": [
+              "GPIO6",
+              "LCD_SCLK"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "LCD_SDA",
+            "functions": [
+              "GPIO7",
+              "LCD_SDA"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "LCD_BL",
+            "functions": [
+              "GPIO9",
+              "LCD_BL"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "SD_SCK",
+            "functions": [
+              "GPIO36",
+              "SD_SCK"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "SD_DO",
+            "functions": [
+              "GPIO37",
+              "SD_DO"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "SD_D1",
+            "functions": [
+              "GPIO38",
+              "SD_D1"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "SD_D2",
+            "functions": [
+              "GPIO33",
+              "SD_D2"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "SD_D3",
+            "functions": [
+              "GPIO34",
+              "SD_D3"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "HOST_VOL",
+            "functions": [
+              "GPIO1",
+              "HOST_VOL",
+              "ADC1_CH0"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "BAT_VOL",
+            "functions": [
+              "GPIO2",
+              "BAT_VOL",
+              "ADC1_CH1"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "LIMIT_EN",
+            "functions": [
+              "GPIO17",
+              "LIMIT_EN"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "0VER_CURRENT",
+            "functions": [
+              "GPIO21",
+              "0VER_CURRENT"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "DEV_VBUS_EN",
+            "functions": [
+              "GPIO12",
+              "DEV_VBUS_EN"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "BOOST_EN",
+            "functions": [
+              "GPIO13",
+              "BOOST_EN"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "FREE_1",
+            "functions": [
+              "GPIO45",
+              "FREE_1"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "FREE_2",
+            "functions": [
+              "GPIO46",
+              "FREE_2"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "FREE_3",
+            "functions": [
+              "GPIO48",
+              "FREE_3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "FREE_4",
+            "functions": [
+              "GPIO26",
+              "FREE_4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "FREE_5",
+            "functions": [
+              "GPIO47",
+              "FREE_5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "FREE_6",
+            "functions": [
+              "GPIO3",
+              "FREE_6"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -1592,6 +4018,162 @@
             "candidate_pins": [
               "GPIO19",
               "GPIO20"
+            ]
+          }
+        ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO0",
+            "board_label": "MODULE_BOOT",
+            "functions": [
+              "GPIO0",
+              "MODULE_BOOT"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "TDO",
+            "functions": [
+              "GPIO2",
+              "TDO"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "TDI",
+            "functions": [
+              "GPIO3",
+              "TDI"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG",
+              "Strapping",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "TCK",
+            "functions": [
+              "GPIO4",
+              "TCK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "TMS",
+            "functions": [
+              "GPIO5",
+              "TMS"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "RESET",
+            "functions": [
+              "GPIO8",
+              "RESET_TO_TARGET"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Reset",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "BOOT",
+            "functions": [
+              "GPIO9",
+              "BOOT_TO_TARGET"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "USB_D-",
+            "functions": [
+              "GPIO19",
+              "USB_D-"
+            ],
+            "warnings": [
+              "Board hardware",
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "USB_D+",
+            "functions": [
+              "GPIO20",
+              "USB_D+"
+            ],
+            "warnings": [
+              "Board hardware",
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "RX",
+            "functions": [
+              "GPIO40",
+              "BRIDGE_RX"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "TX",
+            "functions": [
+              "GPIO41",
+              "BRIDGE_TX"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "WS2812",
+            "functions": [
+              "GPIO42",
+              "WS2812"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
             ]
           }
         ],
@@ -1870,6 +4452,440 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "functions": [
+              "GPIO4",
+              "LED"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "functions": [
+              "GPIO5",
+              "I2S_MCLK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "IO6",
+            "functions": [
+              "GPIO6",
+              "I2S_CODEC_DSDIN"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "IO7",
+            "functions": [
+              "GPIO7",
+              "I2S_LRCK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "functions": [
+              "GPIO15",
+              "I2S_ADC_SDOUT"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "IO16",
+            "functions": [
+              "GPIO16",
+              "I2S_SCLK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "IO17",
+            "functions": [
+              "GPIO17",
+              "LCD_DE"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "IO18",
+            "functions": [
+              "GPIO18",
+              "LCD_DATA7"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "IO8",
+            "functions": [
+              "GPIO8",
+              "LCD_DATA6"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "IO19",
+            "functions": [
+              "GPIO19",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "IO20",
+            "functions": [
+              "GPIO20",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "IO3",
+            "functions": [
+              "GPIO3",
+              "LCD_VSYNC"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "IO46",
+            "functions": [
+              "GPIO46",
+              "LCD_HSYNC"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "IO9",
+            "functions": [
+              "GPIO9",
+              "LCD_PCLK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "IO10",
+            "functions": [
+              "GPIO10",
+              "LCD_DATA0"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "IO11",
+            "functions": [
+              "GPIO11",
+              "LCD_DATA1"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "functions": [
+              "GPIO12",
+              "LCD_DATA2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "functions": [
+              "GPIO13",
+              "LCD_DATA3"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "functions": [
+              "GPIO14",
+              "LCD_DATA4"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "functions": [
+              "GPIO21",
+              "LCD_DATA5"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "IO47",
+            "functions": [
+              "GPIO47",
+              "I2C_SDA"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "IO48",
+            "functions": [
+              "GPIO48",
+              "I2C_SCL"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "IO45",
+            "functions": [
+              "GPIO45",
+              "LCD_DATA8"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "functions": [
+              "GPIO0",
+              "BOOT"
+            ],
+            "warnings": [
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "functions": [
+              "GPIO35",
+              "NC"
+            ],
+            "warnings": [
+              "Board hardware",
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "IO36",
+            "functions": [
+              "GPIO36",
+              "NC"
+            ],
+            "warnings": [
+              "Board hardware",
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "IO37",
+            "functions": [
+              "GPIO37",
+              "NC"
+            ],
+            "warnings": [
+              "Board hardware",
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "IO38",
+            "functions": [
+              "GPIO38",
+              "LCD_DATA9"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "IO39",
+            "functions": [
+              "GPIO39",
+              "LCD_DATA10"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "IO40",
+            "functions": [
+              "GPIO40",
+              "LCD_DATA11"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "IO41",
+            "functions": [
+              "GPIO41",
+              "LCD_DATA12"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "IO42",
+            "functions": [
+              "GPIO42",
+              "LCD_DATA13"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO44",
+            "board_label": "RXD0",
+            "functions": [
+              "GPIO44",
+              "UART_RXD0"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO43",
+            "board_label": "TXD0",
+            "functions": [
+              "GPIO43",
+              "UART_TXD0"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "functions": [
+              "GPIO2",
+              "LCD_DATA14"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "IO1",
+            "functions": [
+              "GPIO1",
+              "LCD_DATA15"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -2092,6 +5108,395 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO0",
+            "board_label": "ESP_BOOT",
+            "functions": [
+              "GPIO0",
+              "ESP_BOOT"
+            ],
+            "warnings": [
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "USB_DN",
+            "functions": [
+              "GPIO19",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "USB_DP",
+            "functions": [
+              "GPIO20",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "POWER_CTRL",
+            "functions": [
+              "GPIO9",
+              "POWER_CTRL"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "CODEC_PWR_CTRL",
+            "functions": [
+              "GPIO48",
+              "CODEC_PWR_CTRL"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "I2C_SCL",
+            "functions": [
+              "GPIO1",
+              "I2C_SCL"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "I2C_SDA",
+            "functions": [
+              "GPIO2",
+              "I2C_SDA"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "LCD_SDA0",
+            "functions": [
+              "GPIO46",
+              "LCD_SDA0"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "LCD_SDA1",
+            "functions": [
+              "GPIO13",
+              "LCD_SDA1"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "LCD_SDA2",
+            "functions": [
+              "GPIO11",
+              "LCD_SDA2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "LCD_SDA3",
+            "functions": [
+              "GPIO12",
+              "LCD_SDA3"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "LCD_SCL",
+            "functions": [
+              "GPIO18",
+              "LCD_SCL"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "LCD_DC",
+            "functions": [
+              "GPIO45",
+              "LCD_DC"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO44",
+            "board_label": "LCD_BLK",
+            "functions": [
+              "GPIO44",
+              "LCD_BLK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "LCD_CS",
+            "functions": [
+              "GPIO14",
+              "LCD_CS"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "LCD_RST_CTRL",
+            "functions": [
+              "GPIO47",
+              "LCD_RST_CTRL"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "LCD_TE",
+            "functions": [
+              "GPIO8",
+              "LCD_TE"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "TP_INT",
+            "functions": [
+              "GPIO10",
+              "TP_INT"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "TOUCH_PAD1",
+            "functions": [
+              "GPIO6",
+              "TOUCH_PAD1"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "TOUCH_PAD2",
+            "functions": [
+              "GPIO7",
+              "TOUCH_PAD2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "I2S_MCLK",
+            "functions": [
+              "GPIO42",
+              "I2S_MCLK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "I2S_DI",
+            "functions": [
+              "GPIO3",
+              "I2S_DI"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "I2S_WS",
+            "functions": [
+              "GPIO39",
+              "I2S_WS"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "I2S_BCK",
+            "functions": [
+              "GPIO40",
+              "I2S_BCK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "I2S_DO",
+            "functions": [
+              "GPIO41",
+              "I2S_DO"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "PA_CTRL",
+            "functions": [
+              "GPIO15",
+              "PA_CTRL"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "SD_DA0",
+            "functions": [
+              "GPIO17",
+              "SD_DA0"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "SD_CLK",
+            "functions": [
+              "GPIO16",
+              "SD_CLK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "SD_CMD",
+            "functions": [
+              "GPIO38",
+              "SD_CMD"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IMU_INT1",
+            "functions": [
+              "GPIO21",
+              "IMU_INT1"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "U1RXD",
+            "functions": [
+              "GPIO4",
+              "U1RXD"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "U1TXD",
+            "functions": [
+              "GPIO5",
+              "U1TXD"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -2244,6 +5649,211 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO0",
+            "board_label": "KEY_1",
+            "functions": [
+              "GPIO0",
+              "KEY_1"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "KEY_2",
+            "functions": [
+              "GPIO17",
+              "KEY_2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "SWITCH_1",
+            "functions": [
+              "GPIO8",
+              "SWITCH_1"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "SWITCH_2",
+            "functions": [
+              "GPIO7",
+              "SWITCH_2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "ADC_BAT",
+            "functions": [
+              "GPIO10",
+              "ADC_BAT"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "ADC_VBUS",
+            "functions": [
+              "GPIO2",
+              "ADC_VBUS"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "ADC_CHRG",
+            "functions": [
+              "GPIO9",
+              "ADC_CHRG"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "WS2812_IN",
+            "functions": [
+              "GPIO21",
+              "WS2812_IN"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "PWR_2812",
+            "functions": [
+              "GPIO40",
+              "PWR_2812"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "USB_DN",
+            "functions": [
+              "GPIO19",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "USB_DP",
+            "functions": [
+              "GPIO20",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO44",
+            "board_label": "U0RXD",
+            "functions": [
+              "GPIO44",
+              "U0RXD"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO43",
+            "board_label": "U0TXD",
+            "functions": [
+              "GPIO43",
+              "U0TXD"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "GPIO5",
+            "functions": [
+              "GPIO5",
+              "UART1_RX"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "GPIO6",
+            "functions": [
+              "GPIO6"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "GPIO47",
+            "functions": [
+              "GPIO47"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "GPIO48",
+            "functions": [
+              "GPIO48"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -2390,6 +6000,379 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO20",
+            "board_label": "IO20",
+            "functions": [
+              "GPIO20"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "functions": [
+              "GPIO21",
+              "VSPIHD",
+              "EMAC_TX_EN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "IO22",
+            "functions": [
+              "GPIO22",
+              "VSPIWP",
+              "U0RTS",
+              "EMAC_TXD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "IO19",
+            "functions": [
+              "GPIO19",
+              "VSPIQ",
+              "U0CTS",
+              "EMAC_TXD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "IO8",
+            "functions": [
+              "GPIO8",
+              "SD_DATA1",
+              "HS1_DATA1",
+              "U2CTS"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "IO7",
+            "functions": [
+              "GPIO7",
+              "SD_DATA0",
+              "HS1_DATA0",
+              "U2RTS"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "functions": [
+              "GPIO5",
+              "VSPICS0",
+              "HS1_DATA6",
+              "EMAC_RX_CLK"
+            ],
+            "warnings": [
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "IO10",
+            "functions": [
+              "GPIO10",
+              "SD_DATA3",
+              "SPIWP",
+              "HS1_DATA3",
+              "U1TXD"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "IO9",
+            "functions": [
+              "GPIO9",
+              "SD_DATA2",
+              "SPIHD",
+              "HS1_DATA2",
+              "U1RXD"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RXD0",
+            "functions": [
+              "GPIO3",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TXD0",
+            "functions": [
+              "GPIO1",
+              "U0TXD",
+              "CLK_OUT3",
+              "EMAC_RXD2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "functions": [
+              "GPIO35",
+              "ADC1_CH7",
+              "RTC_GPIO5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "IO34",
+            "functions": [
+              "GPIO34",
+              "ADC1_CH6",
+              "RTC_GPIO4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "IO38",
+            "functions": [
+              "GPIO38",
+              "ADC1_CH2",
+              "RTC_GPIO2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "IO37",
+            "functions": [
+              "GPIO37",
+              "ADC1_CH1",
+              "RTC_GPIO1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "SENSOR_VP",
+            "functions": [
+              "GPIO36",
+              "ADC1_CH0",
+              "RTC_GPIO0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "SENSOR_VN",
+            "functions": [
+              "GPIO39",
+              "ADC1_CH3",
+              "RTC_GPIO3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "IO25",
+            "functions": [
+              "GPIO25",
+              "DAC_1",
+              "ADC2_CH8",
+              "RTC_GPIO6",
+              "EMAC_RXD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "IO26",
+            "functions": [
+              "GPIO26",
+              "DAC_2",
+              "ADC2_CH9",
+              "RTC_GPIO7",
+              "EMAC_RXD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "IO32",
+            "functions": [
+              "GPIO32",
+              "32K_XP",
+              "ADC1_CH4",
+              "TOUCH9",
+              "RTC_GPIO9"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "IO33",
+            "functions": [
+              "GPIO33",
+              "32K_XN",
+              "ADC1_CH5",
+              "TOUCH8",
+              "RTC_GPIO8"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "IO27",
+            "functions": [
+              "GPIO27",
+              "ADC2_CH7",
+              "TOUCH7",
+              "RTC_GPIO17",
+              "EMAC_RX_DV"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "functions": [
+              "GPIO14",
+              "ADC2_CH6",
+              "TOUCH6",
+              "RTC_GPIO16",
+              "MTMS",
+              "HSPICLK",
+              "HS2_CLK",
+              "SD_CLK",
+              "EMAC_TXD2"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "functions": [
+              "GPIO12",
+              "ADC2_CH5",
+              "TOUCH5",
+              "RTC_GPIO15",
+              "MTDI",
+              "HSPIQ",
+              "HS2_DATA2",
+              "SD_DATA2",
+              "EMAC_TXD3"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "functions": [
+              "GPIO13",
+              "ADC2_CH4",
+              "TOUCH4",
+              "RTC_GPIO14",
+              "MTCK",
+              "HSPID",
+              "HS2_DATA3",
+              "SD_DATA3",
+              "EMAC_RX_ER"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "functions": [
+              "GPIO15",
+              "ADC2_CH3",
+              "TOUCH3",
+              "RTC_GPIO13",
+              "MTDO",
+              "HSPICS0",
+              "HS2_CMD",
+              "SD_CMD",
+              "EMAC_RXD3"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "functions": [
+              "GPIO2",
+              "ADC2_CH2",
+              "TOUCH2",
+              "RTC_GPIO12",
+              "HSPIWP",
+              "HS2_DATA0",
+              "SD_DATA0"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "functions": [
+              "GPIO4",
+              "ADC2_CH0",
+              "TOUCH0",
+              "RTC_GPIO10",
+              "HSPIHD",
+              "HS2_DATA1",
+              "SD_DATA1",
+              "EMAC_TX_ER"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "RTC_GPIO11",
+              "CLK_OUT1",
+              "EMAC_TX_CLK",
+              "Boot"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -2503,6 +6486,184 @@
           }
         ],
         "peripheral_notes": [],
+        "pin_functions": [
+          {
+            "gpio": "GPIO32",
+            "board_label": "GPIO32",
+            "functions": [
+              "GPIO32",
+              "ADC1_CH4",
+              "RTC_GPIO9",
+              "TOUCH9",
+              "32K_XP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "GPIO33",
+            "functions": [
+              "GPIO33",
+              "ADC1_CH5",
+              "RTC_GPIO8",
+              "TOUCH8",
+              "32K_XN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "GPIO34",
+            "functions": [
+              "GPIO34",
+              "ADC1_CH6",
+              "RTC_GPIO4",
+              "VDET_1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "GPIO35",
+            "functions": [
+              "GPIO35",
+              "ADC1_CH7",
+              "RTC_GPIO5",
+              "VDET_2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "GPIO36",
+            "functions": [
+              "GPIO36",
+              "ADC1_CH0",
+              "RTC_GPIO0",
+              "S_VP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "GPIO39",
+            "functions": [
+              "GPIO39",
+              "ADC1_CH3",
+              "RTC_GPIO3",
+              "S_VN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "GPIO17",
+            "functions": [
+              "GPIO17"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "GPIO16",
+            "functions": [
+              "GPIO16"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "GPIO4",
+            "functions": [
+              "GPIO4",
+              "ADC2_CH0",
+              "RTC_GPIO10",
+              "TOUCH0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "GPIO2",
+            "functions": [
+              "GPIO2",
+              "ADC2_CH2",
+              "RTC_GPIO12",
+              "TOUCH2"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "GPIO13",
+            "functions": [
+              "GPIO13",
+              "ADC2_CH4",
+              "RTC_GPIO14",
+              "TOUCH4",
+              "MTCK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "GPIO12",
+            "functions": [
+              "GPIO12",
+              "ADC2_CH5",
+              "RTC_GPIO15",
+              "TOUCH5",
+              "MTDI"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "GPIO15",
+            "functions": [
+              "GPIO15",
+              "ADC2_CH3",
+              "RTC_GPIO13",
+              "TOUCH3",
+              "MTDO"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "GPIO14",
+            "functions": [
+              "GPIO14",
+              "ADC2_CH6",
+              "RTC_GPIO16",
+              "TOUCH6",
+              "MTMS"
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -2846,6 +7007,662 @@
           }
         ],
         "peripheral_notes": [],
+        "pin_functions": [
+          {
+            "gpio": "GPIO32",
+            "board_label": "IO32",
+            "functions": [
+              "GPIO32",
+              "XTAL_32K_P"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "IO33",
+            "functions": [
+              "GPIO33",
+              "XTAL_32K_N"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "functions": [
+              "GPIO12",
+              "MTDI"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "functions": [
+              "GPIO13",
+              "MTCK"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "functions": [
+              "GPIO14",
+              "MTMS"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "IO27",
+            "functions": [
+              "GPIO27",
+              "SIO_C"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "IO26",
+            "functions": [
+              "GPIO26",
+              "SIO_D"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "IO25",
+            "functions": [
+              "GPIO25",
+              "VSYNC"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "functions": [
+              "GPIO35",
+              "CAM_D7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "IO34",
+            "functions": [
+              "GPIO34",
+              "CAM_D6"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "IO39",
+            "functions": [
+              "GPIO39",
+              "CAM_D5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "IO36",
+            "functions": [
+              "GPIO36",
+              "CAM_D4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "IO23",
+            "functions": [
+              "GPIO23",
+              "HREF"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "IO22",
+            "functions": [
+              "GPIO22",
+              "PCLK"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "functions": [
+              "GPIO21",
+              "XCLK",
+              "LCD_DC"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "IO19",
+            "functions": [
+              "GPIO19",
+              "LCD_SCLK"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "IO18",
+            "functions": [
+              "GPIO18",
+              "LCD_RET"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "functions": [
+              "GPIO5",
+              "LCD_BL"
+            ],
+            "warnings": [
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "IO17",
+            "functions": [
+              "GPIO17"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "IO16",
+            "functions": [
+              "GPIO16"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "functions": [
+              "GPIO4",
+              "Blue"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "functions": [
+              "GPIO0",
+              "Red"
+            ],
+            "warnings": [
+              "Boot",
+              "Strapping",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "functions": [
+              "GPIO2",
+              "Green"
+            ],
+            "warnings": [
+              "Strapping",
+              "Board hardware",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "functions": [
+              "GPIO15",
+              "MTDO"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "MTMS",
+            "functions": [
+              "GPIO14",
+              "MTMS",
+              "TMS"
+            ],
+            "warnings": [
+              "JTAG",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "MTDO",
+            "functions": [
+              "GPIO15",
+              "MTDO",
+              "TDO"
+            ],
+            "warnings": [
+              "JTAG",
+              "Board hardware",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "MTDI",
+            "functions": [
+              "GPIO12",
+              "MTDI",
+              "TDI"
+            ],
+            "warnings": [
+              "JTAG",
+              "Board hardware",
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "MTCK",
+            "functions": [
+              "GPIO13",
+              "MTCK",
+              "TCK"
+            ],
+            "warnings": [
+              "JTAG",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "CLK",
+            "functions": [
+              "GPIO6",
+              "CLK"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "SD0",
+            "functions": [
+              "GPIO7",
+              "D0"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "SD1",
+            "functions": [
+              "GPIO8",
+              "D1"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "SD2",
+            "functions": [
+              "GPIO9",
+              "D2"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "SD3",
+            "functions": [
+              "GPIO10",
+              "D3"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "CMD",
+            "functions": [
+              "GPIO11",
+              "CMD"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "Red",
+            "functions": [
+              "GPIO0",
+              "Red"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "Green",
+            "functions": [
+              "GPIO2",
+              "Green"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "Blue",
+            "functions": [
+              "GPIO4",
+              "Blue"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "SIO_C",
+            "functions": [
+              "GPIO27",
+              "CAM_SCCB_CLK"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "SIO_D",
+            "functions": [
+              "GPIO26",
+              "CAM_SCCB_DAT"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "VSYNC",
+            "functions": [
+              "GPIO25",
+              "CAM_VSYNC"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "HREF",
+            "functions": [
+              "GPIO23",
+              "CAM_HREF"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "PCLK",
+            "functions": [
+              "GPIO22",
+              "CAM_PCLK"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "XCLK",
+            "functions": [
+              "GPIO21",
+              "CAM_XCLK"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "D7",
+            "functions": [
+              "GPIO35",
+              "CAM_D7"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "D6",
+            "functions": [
+              "GPIO34",
+              "CAM_D6"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "D5",
+            "functions": [
+              "GPIO39",
+              "CAM_D5"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "D4",
+            "functions": [
+              "GPIO36",
+              "CAM_D4"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "D3",
+            "functions": [
+              "GPIO19",
+              "CAM_D3"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "D2",
+            "functions": [
+              "GPIO18",
+              "CAM_D2"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "D1",
+            "functions": [
+              "GPIO5",
+              "CAM_D1"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "D0",
+            "functions": [
+              "GPIO4",
+              "CAM_D0"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "RESET",
+            "functions": [
+              "GPIO0",
+              "CAM_RESET"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "RESET",
+            "functions": [
+              "GPIO18",
+              "LCD_RET"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "SCL",
+            "functions": [
+              "GPIO19",
+              "LCD_SCLK"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "D/C",
+            "functions": [
+              "GPIO21",
+              "LCD_DC"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "CS",
+            "functions": [
+              "GPIO22",
+              "LCD_CS"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "SDA",
+            "functions": [
+              "GPIO23",
+              "LCD_SDA"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "SDO",
+            "functions": [
+              "GPIO25",
+              "LCD_SDO"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "Backlight",
+            "functions": [
+              "GPIO5",
+              "LCD_BL"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -2991,6 +7808,304 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO36",
+            "board_label": "IO36",
+            "functions": [
+              "GPIO36",
+              "ADC1_CH0",
+              "S_VP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "IO37",
+            "functions": [
+              "GPIO37",
+              "ADC1_CH1",
+              "SENSOR_CAPP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "IO38",
+            "functions": [
+              "GPIO38",
+              "ADC1_CH2",
+              "SENSOR_CAPN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "IO39",
+            "functions": [
+              "GPIO39",
+              "ADC1_CH3",
+              "S_VN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "IO34",
+            "functions": [
+              "GPIO34",
+              "ADC1_CH6",
+              "VDET_1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "functions": [
+              "GPIO35",
+              "ADC1_CH7",
+              "VDET_2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "IO32",
+            "functions": [
+              "GPIO32",
+              "ADC1_CH4",
+              "TOUCH9",
+              "XTAL_32K_P"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "IO33",
+            "functions": [
+              "GPIO33",
+              "ADC1_CH5",
+              "TOUCH8",
+              "XTAL_32K_N"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "IO25",
+            "functions": [
+              "GPIO25",
+              "ADC2_CH8",
+              "DAC_1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "IO26",
+            "functions": [
+              "GPIO26",
+              "ADC2_CH9",
+              "DAC_2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "IO27",
+            "functions": [
+              "GPIO27",
+              "ADC2_CH7",
+              "TOUCH7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "functions": [
+              "GPIO14",
+              "ADC2_CH6",
+              "TOUCH6",
+              "MTMS"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TX",
+            "functions": [
+              "GPIO1",
+              "U0TXD"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RX",
+            "functions": [
+              "GPIO3",
+              "U0RXD"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "functions": [
+              "GPIO21"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "IO22",
+            "functions": [
+              "GPIO22"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "IO19",
+            "functions": [
+              "GPIO19"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "IO23",
+            "functions": [
+              "GPIO23"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "IO18",
+            "functions": [
+              "GPIO18"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "functions": [
+              "GPIO5"
+            ],
+            "warnings": [
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "IO10",
+            "functions": [
+              "GPIO10"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "IO9",
+            "functions": [
+              "GPIO9"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "functions": [
+              "GPIO4",
+              "ADC2_CH0",
+              "TOUCH0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "CLK_OUT1",
+              "Boot"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "functions": [
+              "GPIO2",
+              "ADC2_CH2",
+              "TOUCH2"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "functions": [
+              "GPIO15",
+              "ADC2_CH3",
+              "TOUCH3",
+              "MTDO"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "functions": [
+              "GPIO13",
+              "ADC2_CH4",
+              "TOUCH4",
+              "MTCK"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "functions": [
+              "GPIO12",
+              "ADC2_CH5",
+              "TOUCH5",
+              "MTDI"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -3132,6 +8247,351 @@
             "candidate_pins": [
               "GPIO3",
               "GPIO1"
+            ]
+          }
+        ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO20",
+            "board_label": "IO20",
+            "functions": [
+              "GPIO20"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "functions": [
+              "GPIO21",
+              "VSPIHD",
+              "EMAC_TX_EN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "IO22",
+            "functions": [
+              "GPIO22",
+              "VSPIWP",
+              "U0RTS",
+              "EMAC_TXD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "IO19",
+            "functions": [
+              "GPIO19",
+              "VSPIQ",
+              "U0CTS",
+              "EMAC_TXD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "IO8",
+            "functions": [
+              "GPIO8",
+              "SD_DATA1",
+              "HS1_DATA1",
+              "U2CTS"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "IO7",
+            "functions": [
+              "GPIO7",
+              "SD_DATA0",
+              "HS1_DATA0",
+              "U2RTS"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "functions": [
+              "GPIO5",
+              "VSPICS0",
+              "HS1_DATA6",
+              "EMAC_RX_CLK"
+            ],
+            "warnings": [
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RXD0",
+            "functions": [
+              "GPIO3",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TXD0",
+            "functions": [
+              "GPIO1",
+              "U0TXD",
+              "CLK_OUT3",
+              "EMAC_RXD2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "functions": [
+              "GPIO35",
+              "ADC1_CH7",
+              "RTC_GPIO5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "IO34",
+            "functions": [
+              "GPIO34",
+              "ADC1_CH6",
+              "RTC_GPIO4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "IO38",
+            "functions": [
+              "GPIO38",
+              "ADC1_CH2",
+              "RTC_GPIO2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "IO37",
+            "functions": [
+              "GPIO37",
+              "ADC1_CH1",
+              "RTC_GPIO1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "FSVP",
+            "functions": [
+              "GPIO36",
+              "ADC1_CH0",
+              "RTC_GPIO0",
+              "SENSOR_VP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "FSVN",
+            "functions": [
+              "GPIO39",
+              "ADC1_CH3",
+              "RTC_GPIO3",
+              "SENSOR_VN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "IO25",
+            "functions": [
+              "GPIO25",
+              "DAC_1",
+              "ADC2_CH8",
+              "RTC_GPIO6",
+              "EMAC_RXD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "IO26",
+            "functions": [
+              "GPIO26",
+              "DAC_2",
+              "ADC2_CH9",
+              "RTC_GPIO7",
+              "EMAC_RXD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "IO32",
+            "functions": [
+              "GPIO32",
+              "32K_XP",
+              "ADC1_CH4",
+              "TOUCH9",
+              "RTC_GPIO9"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "IO33",
+            "functions": [
+              "GPIO33",
+              "32K_XN",
+              "ADC1_CH5",
+              "TOUCH8",
+              "RTC_GPIO8"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "IO27",
+            "functions": [
+              "GPIO27",
+              "ADC2_CH7",
+              "TOUCH7",
+              "RTC_GPIO17",
+              "EMAC_RX_DV"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "functions": [
+              "GPIO14",
+              "ADC2_CH6",
+              "TOUCH6",
+              "RTC_GPIO16",
+              "MTMS",
+              "HSPICLK",
+              "HS2_CLK",
+              "SD_CLK"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "functions": [
+              "GPIO12",
+              "ADC2_CH5",
+              "TOUCH5",
+              "RTC_GPIO15",
+              "MTDI",
+              "HSPIQ",
+              "HS2_DATA2",
+              "SD_DATA2"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "functions": [
+              "GPIO13",
+              "ADC2_CH4",
+              "TOUCH4",
+              "RTC_GPIO14",
+              "MTCK",
+              "HSPID",
+              "HS2_DATA3",
+              "SD_DATA3"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "functions": [
+              "GPIO15",
+              "ADC2_CH3",
+              "TOUCH3",
+              "RTC_GPIO13",
+              "MTDO",
+              "HSPICS0",
+              "HS2_CMD",
+              "SD_CMD"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "functions": [
+              "GPIO2",
+              "ADC2_CH2",
+              "TOUCH2",
+              "RTC_GPIO12",
+              "HSPIWP",
+              "HS2_DATA0",
+              "SD_DATA0"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "functions": [
+              "GPIO4",
+              "ADC2_CH0",
+              "TOUCH0",
+              "RTC_GPIO10",
+              "HSPIHD",
+              "HS2_DATA1",
+              "SD_DATA1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "RTC_GPIO11",
+              "CLK_OUT1",
+              "Boot"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
             ]
           }
         ],
@@ -3338,6 +8798,462 @@
             "candidate_pins": [
               "GPIO3",
               "GPIO1"
+            ]
+          }
+        ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO8",
+            "board_label": "FSD1",
+            "functions": [
+              "GPIO8",
+              "SD_DATA1",
+              "SPID",
+              "HS1_DATA1",
+              "U2CTS"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "FSD3",
+            "functions": [
+              "GPIO7",
+              "SD_DATA0",
+              "SPIQ",
+              "HS1_DATA0",
+              "U2RTS"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "FCLK",
+            "functions": [
+              "GPIO6",
+              "SD_CLK",
+              "SPICLK",
+              "HS1_CLK",
+              "U1CTS"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "functions": [
+              "GPIO21",
+              "VSPIHD",
+              "EMAC_TX_EN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "IO22",
+            "functions": [
+              "GPIO22",
+              "VSPIWP",
+              "U0RTS",
+              "EMAC_TXD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "IO19",
+            "functions": [
+              "GPIO19",
+              "VSPIQ",
+              "U0CTS",
+              "EMAC_TXD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "IO23",
+            "functions": [
+              "GPIO23",
+              "VSPID",
+              "HS1_STROBE"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "IO18",
+            "functions": [
+              "GPIO18",
+              "VSPICLK",
+              "HS1_DATA7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "functions": [
+              "GPIO5",
+              "VSPICS0",
+              "HS1_DATA6",
+              "EMAC_RX_CLK"
+            ],
+            "warnings": [
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "IO10",
+            "functions": [
+              "GPIO10",
+              "SD_DATA3",
+              "SPIWP",
+              "HS1_DATA3",
+              "U1TXD"
+            ],
+            "warnings": [
+              "Flash memory"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "IO9",
+            "functions": [
+              "GPIO9",
+              "SD_DATA2",
+              "SPIHD",
+              "HS1_DATA2",
+              "U1RXD"
+            ],
+            "warnings": [
+              "Flash memory"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RXD0",
+            "functions": [
+              "GPIO3",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TXD0",
+            "functions": [
+              "GPIO1",
+              "U0TXD",
+              "CLK_OUT3",
+              "EMAC_RXD2"
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "functions": [
+              "GPIO35",
+              "ADC1_CH7",
+              "RTC_GPIO5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "IO34",
+            "functions": [
+              "GPIO34",
+              "ADC1_CH6",
+              "RTC_GPIO4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "IO38",
+            "functions": [
+              "GPIO38",
+              "ADC1_CH2",
+              "RTC_GPIO2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "IO37",
+            "functions": [
+              "GPIO37",
+              "ADC1_CH1",
+              "RTC_GPIO1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "FCS",
+            "functions": [
+              "GPIO16",
+              "HS1_DATA4",
+              "U2RXD",
+              "EMAC_CLK_OUT"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "FSD0",
+            "functions": [
+              "GPIO17",
+              "HS1_DATA5",
+              "U2TXD",
+              "EMAC_CLK_OUT_180"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "FSD2",
+            "functions": [
+              "GPIO11",
+              "SD_CMD",
+              "SPICS0",
+              "HS1_CMD",
+              "U1RTS"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "FSVP",
+            "functions": [
+              "GPIO36",
+              "ADC1_CH0",
+              "RTC_GPIO0",
+              "SENSOR_VP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "FSVN",
+            "functions": [
+              "GPIO39",
+              "ADC1_CH3",
+              "RTC_GPIO3",
+              "SENSOR_VN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "IO25",
+            "functions": [
+              "GPIO25",
+              "DAC_1",
+              "ADC2_CH8",
+              "RTC_GPIO6",
+              "EMAC_RXD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "IO26",
+            "functions": [
+              "GPIO26",
+              "DAC_2",
+              "ADC2_CH9",
+              "RTC_GPIO7",
+              "EMAC_RXD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "IO32",
+            "functions": [
+              "GPIO32",
+              "32K_XP",
+              "ADC1_CH4",
+              "TOUCH9",
+              "RTC_GPIO9"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "IO33",
+            "functions": [
+              "GPIO33",
+              "32K_XN",
+              "ADC1_CH5",
+              "TOUCH8",
+              "RTC_GPIO8"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "IO27",
+            "functions": [
+              "GPIO27",
+              "ADC2_CH7",
+              "TOUCH7",
+              "RTC_GPIO17",
+              "EMAC_RX_DV"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "functions": [
+              "GPIO14",
+              "ADC2_CH6",
+              "TOUCH6",
+              "RTC_GPIO16",
+              "MTMS",
+              "HSPICLK",
+              "HS2_CLK",
+              "SD_CLK",
+              "EMAC_TXD2"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "functions": [
+              "GPIO12",
+              "ADC2_CH5",
+              "TOUCH5",
+              "RTC_GPIO15",
+              "MTDI",
+              "HSPIQ",
+              "HS2_DATA2",
+              "SD_DATA2",
+              "EMAC_TXD3"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "functions": [
+              "GPIO13",
+              "ADC2_CH4",
+              "TOUCH4",
+              "RTC_GPIO14",
+              "MTCK",
+              "HSPID",
+              "HS2_DATA3",
+              "SD_DATA3",
+              "EMAC_RX_ER"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "functions": [
+              "GPIO15",
+              "ADC2_CH3",
+              "TOUCH3",
+              "RTC_GPIO13",
+              "MTDO",
+              "HSPICS0",
+              "HS2_CMD",
+              "SD_CMD",
+              "EMAC_RXD3"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "functions": [
+              "GPIO2",
+              "ADC2_CH2",
+              "TOUCH2",
+              "RTC_GPIO12",
+              "HSPIWP",
+              "HS2_DATA0",
+              "SD_DATA0"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "functions": [
+              "GPIO4",
+              "ADC2_CH0",
+              "TOUCH0",
+              "RTC_GPIO10",
+              "HSPIHD",
+              "HS2_DATA1",
+              "SD_DATA1",
+              "EMAC_TX_ER"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "RTC_GPIO11",
+              "CLK_OUT1",
+              "EMAC_TX_CLK"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
             ]
           }
         ],
@@ -3560,6 +9476,357 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO36",
+            "board_label": "VP",
+            "functions": [
+              "GPIO36",
+              "ADC1_CH0",
+              "S_VP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "VN",
+            "functions": [
+              "GPIO39",
+              "ADC1_CH3",
+              "S_VN"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "IO34",
+            "functions": [
+              "GPIO34",
+              "ADC1_CH6",
+              "VDET_1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "functions": [
+              "GPIO35",
+              "ADC1_CH7",
+              "VDET_2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "IO32",
+            "functions": [
+              "GPIO32",
+              "ADC1_CH4",
+              "TOUCH9",
+              "XTAL_32K_P"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "IO33",
+            "functions": [
+              "GPIO33",
+              "ADC1_CH5",
+              "TOUCH8",
+              "XTAL_32K_N"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "IO25",
+            "functions": [
+              "GPIO25",
+              "ADC2_CH8",
+              "DAC_1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "IO26",
+            "functions": [
+              "GPIO26",
+              "ADC2_CH9",
+              "DAC_2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "IO27",
+            "functions": [
+              "GPIO27",
+              "ADC2_CH7",
+              "TOUCH7"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "functions": [
+              "GPIO14",
+              "ADC2_CH6",
+              "TOUCH6",
+              "MTMS"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "functions": [
+              "GPIO12",
+              "ADC2_CH5",
+              "TOUCH5",
+              "MTDI"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "functions": [
+              "GPIO13",
+              "ADC2_CH4",
+              "TOUCH4",
+              "MTCK"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "D2",
+            "functions": [
+              "GPIO9",
+              "D2"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "D3",
+            "functions": [
+              "GPIO10",
+              "D3"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "CMD",
+            "functions": [
+              "GPIO11",
+              "CMD"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "IO23",
+            "functions": [
+              "GPIO23"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "IO22",
+            "functions": [
+              "GPIO22"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TX",
+            "functions": [
+              "GPIO1",
+              "U0TXD"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RX",
+            "functions": [
+              "GPIO3",
+              "U0RXD"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "functions": [
+              "GPIO21"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "IO19",
+            "functions": [
+              "GPIO19"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "IO18",
+            "functions": [
+              "GPIO18"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "functions": [
+              "GPIO5"
+            ],
+            "warnings": [
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "IO17",
+            "functions": [
+              "GPIO17"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "IO16",
+            "functions": [
+              "GPIO16"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "functions": [
+              "GPIO4",
+              "ADC2_CH0",
+              "TOUCH0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "Boot"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "functions": [
+              "GPIO2",
+              "ADC2_CH2",
+              "TOUCH2"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "functions": [
+              "GPIO15",
+              "ADC2_CH3",
+              "TOUCH3",
+              "MTDO"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "D1",
+            "functions": [
+              "GPIO8",
+              "D1"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "D0",
+            "functions": [
+              "GPIO7",
+              "D0"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "CLK",
+            "functions": [
+              "GPIO6",
+              "CLK"
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -3768,6 +10035,488 @@
             "candidate_pins": [
               "GPIO43",
               "GPIO44"
+            ]
+          }
+        ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4",
+              "RTC_GPIO4",
+              "TOUCH4",
+              "ADC1_CH3"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5",
+              "RTC_GPIO5",
+              "TOUCH5",
+              "ADC1_CH4"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "6",
+            "functions": [
+              "GPIO6",
+              "RTC_GPIO6",
+              "TOUCH6",
+              "ADC1_CH5"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "7",
+            "functions": [
+              "GPIO7",
+              "RTC_GPIO7",
+              "TOUCH7",
+              "ADC1_CH6"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "15",
+            "functions": [
+              "GPIO15",
+              "RTC_GPIO15",
+              "U0RTS",
+              "ADC2_CH4",
+              "XTAL_32K_P"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "16",
+            "functions": [
+              "GPIO16",
+              "RTC_GPIO16",
+              "U0CTS",
+              "ADC2_CH5",
+              "XTAL_32K_N"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "17",
+            "functions": [
+              "GPIO17",
+              "RTC_GPIO17",
+              "U1TXD",
+              "ADC2_CH6"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "18",
+            "functions": [
+              "GPIO18",
+              "RTC_GPIO18",
+              "U1RXD",
+              "ADC2_CH7",
+              "CLK_OUT3"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "functions": [
+              "GPIO8",
+              "RTC_GPIO8",
+              "TOUCH8",
+              "ADC1_CH7",
+              "SUBSPICS1"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "3",
+            "functions": [
+              "GPIO3",
+              "RTC_GPIO3",
+              "TOUCH3",
+              "ADC1_CH2"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "46",
+            "functions": [
+              "GPIO46"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "9",
+            "functions": [
+              "GPIO9",
+              "RTC_GPIO9",
+              "TOUCH9",
+              "ADC1_CH8",
+              "FSPIHD",
+              "SUBSPIHD"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "10",
+            "functions": [
+              "GPIO10",
+              "RTC_GPIO10",
+              "TOUCH10",
+              "ADC1_CH9",
+              "FSPICS0",
+              "FSPIIO4",
+              "SUBSPICS0"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "11",
+            "functions": [
+              "GPIO11",
+              "RTC_GPIO11",
+              "TOUCH11",
+              "ADC2_CH0",
+              "FSPID",
+              "FSPIIO5",
+              "SUBSPID"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "12",
+            "functions": [
+              "GPIO12",
+              "RTC_GPIO12",
+              "TOUCH12",
+              "ADC2_CH1",
+              "FSPICLK",
+              "FSPIIO6",
+              "SUBSPICLK"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "13",
+            "functions": [
+              "GPIO13",
+              "RTC_GPIO13",
+              "TOUCH13",
+              "ADC2_CH2",
+              "FSPIQ",
+              "FSPIIO7",
+              "SUBSPIQ"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "14",
+            "functions": [
+              "GPIO14",
+              "RTC_GPIO14",
+              "TOUCH14",
+              "ADC2_CH3",
+              "FSPIWP",
+              "FSPIDQS",
+              "SUBSPIWP"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO43",
+            "board_label": "TX",
+            "functions": [
+              "GPIO43",
+              "U0TXD",
+              "CLK_OUT1"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO44",
+            "board_label": "RX",
+            "functions": [
+              "GPIO44",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "1",
+            "functions": [
+              "GPIO1",
+              "RTC_GPIO1",
+              "TOUCH1",
+              "ADC1_CH0"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2",
+              "RTC_GPIO2",
+              "TOUCH2",
+              "ADC1_CH1"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "42",
+            "functions": [
+              "GPIO42",
+              "MTMS"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "41",
+            "functions": [
+              "GPIO41",
+              "MTDI",
+              "CLK_OUT1"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "40",
+            "functions": [
+              "GPIO40",
+              "MTDO",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "39",
+            "functions": [
+              "GPIO39",
+              "MTCK",
+              "CLK_OUT3",
+              "SUBSPICS1"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "38",
+            "functions": [
+              "GPIO38",
+              "FSPIWP",
+              "SUBSPIWP",
+              "RGB LED"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "37",
+            "functions": [
+              "GPIO37",
+              "SPIDQS",
+              "FSPIQ",
+              "SUBSPIQ"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "36",
+            "functions": [
+              "GPIO36",
+              "SPIIO7",
+              "FSPICLK",
+              "SUBSPICLK"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "35",
+            "functions": [
+              "GPIO35",
+              "SPIIO6",
+              "FSPID",
+              "SUBSPID"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "0",
+            "functions": [
+              "GPIO0",
+              "RTC_GPIO0"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "45",
+            "functions": [
+              "GPIO45"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "48",
+            "functions": [
+              "GPIO48",
+              "SPICLK_N",
+              "SUBSPICLK_N_DIFF"
+            ],
+            "warnings": [
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "47",
+            "functions": [
+              "GPIO47",
+              "SPICLK_P",
+              "SUBSPICLK_P_DIFF"
+            ],
+            "warnings": [
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "21",
+            "functions": [
+              "GPIO21",
+              "RTC_GPIO21"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "20",
+            "functions": [
+              "GPIO20",
+              "RTC_GPIO20",
+              "U1CTS",
+              "ADC2_CH9",
+              "CLK_OUT1",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "19",
+            "functions": [
+              "GPIO19",
+              "RTC_GPIO19",
+              "U1RTS",
+              "ADC2_CH8",
+              "CLK_OUT2",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
             ]
           }
         ],
@@ -4001,6 +10750,524 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO0",
+            "board_label": "0",
+            "functions": [
+              "GPIO0",
+              "RTC_GPIO0"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "1",
+            "functions": [
+              "GPIO1",
+              "RTC_GPIO1",
+              "TOUCH1",
+              "ADC1_CH0"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2",
+              "RTC_GPIO2",
+              "TOUCH2",
+              "ADC1_CH1"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "3",
+            "functions": [
+              "GPIO3",
+              "RTC_GPIO3",
+              "TOUCH3",
+              "ADC1_CH2"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4",
+              "RTC_GPIO4",
+              "TOUCH4",
+              "ADC1_CH3"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5",
+              "RTC_GPIO5",
+              "TOUCH5",
+              "ADC1_CH4"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "6",
+            "functions": [
+              "GPIO6",
+              "RTC_GPIO6",
+              "TOUCH6",
+              "ADC1_CH5"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "7",
+            "functions": [
+              "GPIO7",
+              "RTC_GPIO7",
+              "TOUCH7",
+              "ADC1_CH6"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "functions": [
+              "GPIO8",
+              "RTC_GPIO8",
+              "TOUCH8",
+              "ADC1_CH7",
+              "SUBSPICS1"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "9",
+            "functions": [
+              "GPIO9",
+              "RTC_GPIO9",
+              "TOUCH9",
+              "ADC1_CH8",
+              "FSPIHD",
+              "SUBSPIHD"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "10",
+            "functions": [
+              "GPIO10",
+              "RTC_GPIO10",
+              "TOUCH10",
+              "ADC1_CH9",
+              "FSPICS0",
+              "FSPIIO4",
+              "SUBSPICS0"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "11",
+            "functions": [
+              "GPIO11",
+              "RTC_GPIO11",
+              "TOUCH11",
+              "ADC2_CH0",
+              "FSPID",
+              "FSPIIO5",
+              "SUBSPID"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "12",
+            "functions": [
+              "GPIO12",
+              "RTC_GPIO12",
+              "TOUCH12",
+              "ADC2_CH1",
+              "FSPICLK",
+              "FSPIIO6",
+              "SUBSPICLK"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "13",
+            "functions": [
+              "GPIO13",
+              "RTC_GPIO13",
+              "TOUCH13",
+              "ADC2_CH2",
+              "FSPIQ",
+              "FSPIIO7",
+              "SUBSPIQ"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "14",
+            "functions": [
+              "GPIO14",
+              "RTC_GPIO14",
+              "TOUCH14",
+              "ADC2_CH3",
+              "FSPIWP",
+              "FSPIDQS",
+              "SUBSPIWP"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "15",
+            "functions": [
+              "GPIO15",
+              "RTC_GPIO15",
+              "U0RTS",
+              "ADC2_CH4",
+              "XTAL_32K_P"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "16",
+            "functions": [
+              "GPIO16",
+              "RTC_GPIO16",
+              "U0CTS",
+              "ADC2_CH5",
+              "XTAL_32K_N"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "17",
+            "functions": [
+              "GPIO17",
+              "RTC_GPIO17",
+              "U1TXD",
+              "ADC2_CH6"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "18",
+            "functions": [
+              "GPIO18",
+              "RTC_GPIO18",
+              "U1RXD",
+              "ADC2_CH7",
+              "CLK_OUT3"
+            ],
+            "warnings": [
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "46",
+            "functions": [
+              "GPIO46"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "45",
+            "functions": [
+              "GPIO45"
+            ],
+            "warnings": [
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO44",
+            "board_label": "RX",
+            "functions": [
+              "GPIO44",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO43",
+            "board_label": "TX",
+            "functions": [
+              "GPIO43",
+              "U0TXD",
+              "CLK_OUT1"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "42",
+            "functions": [
+              "GPIO42",
+              "MTMS"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "41",
+            "functions": [
+              "GPIO41",
+              "MTDI",
+              "CLK_OUT1"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "40",
+            "functions": [
+              "GPIO40",
+              "MTDO",
+              "CLK_OUT2"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "39",
+            "functions": [
+              "GPIO39",
+              "MTCK",
+              "CLK_OUT3",
+              "SUBSPICS1"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "38",
+            "functions": [
+              "GPIO38",
+              "FSPIWP",
+              "SUBSPIWP"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "37",
+            "functions": [
+              "GPIO37",
+              "SPIDQS",
+              "FSPIQ",
+              "SUBSPIQ"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "36",
+            "functions": [
+              "GPIO36",
+              "SPIIO7",
+              "FSPICLK",
+              "SUBSPICLK"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "35",
+            "functions": [
+              "GPIO35",
+              "SPIIO6",
+              "FSPID",
+              "SUBSPID"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "34",
+            "functions": [
+              "GPIO34",
+              "SPIIO5",
+              "FSPICS0",
+              "SUBSPICS0"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "33",
+            "functions": [
+              "GPIO33",
+              "SPIIO4",
+              "FSPIHD",
+              "SUBSPIHD"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "26",
+            "functions": [
+              "GPIO26",
+              "SPICS1"
+            ],
+            "warnings": [
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "21",
+            "functions": [
+              "GPIO21",
+              "RTC_GPIO21"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "20",
+            "functions": [
+              "GPIO20",
+              "RTC_GPIO20",
+              "U1CTS",
+              "ADC2_CH9",
+              "CLK_OUT1",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "19",
+            "functions": [
+              "GPIO19",
+              "RTC_GPIO19",
+              "U1RTS",
+              "ADC2_CH8",
+              "CLK_OUT2",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "48",
+            "functions": [
+              "GPIO48",
+              "SPICLK_N",
+              "SUBSPICLK_N_DIFF",
+              "RGB LED"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "47",
+            "functions": [
+              "GPIO47",
+              "SPICLK_P",
+              "SUBSPICLK_P_DIFF"
+            ],
+            "warnings": [
+              "Voltage"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -4158,6 +11425,273 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4",
+              "MTMS",
+              "LP_GPIO4",
+              "LP_UART_RXD",
+              "ADC1_CH4",
+              "FSPIHD"
+            ],
+            "warnings": [
+              "JTAG",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5",
+              "MTDI",
+              "LP_GPIO5",
+              "LP_UART_TXD",
+              "ADC1_CH5",
+              "FSPIWP"
+            ],
+            "warnings": [
+              "JTAG",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "6",
+            "functions": [
+              "GPIO6",
+              "MTCK",
+              "LP_GPIO6",
+              "LP_I2C_SDA",
+              "ADC1_CH6",
+              "FSPICLK"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "7",
+            "functions": [
+              "GPIO7",
+              "MTDO",
+              "LP_GPIO7",
+              "LP_I2C_SCL",
+              "FSPID"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "0",
+            "functions": [
+              "GPIO0",
+              "XTAL_32K_P",
+              "LP_GPIO0",
+              "LP_UART_DTRN",
+              "ADC1_CH0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "1",
+            "functions": [
+              "GPIO1",
+              "XTAL_32K_N",
+              "LP_GPIO1",
+              "LP_UART_DSRN",
+              "ADC1_CH1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "functions": [
+              "GPIO8",
+              "RGB LED"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "10",
+            "functions": [
+              "GPIO10"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "11",
+            "functions": [
+              "GPIO11"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2",
+              "LP_GPIO2",
+              "LP_UART_RTSN",
+              "ADC1_CH2",
+              "FSPIQ"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "3",
+            "functions": [
+              "GPIO3",
+              "LP_GPIO3",
+              "LP_UART_CTSN",
+              "ADC1_CH3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "TX",
+            "functions": [
+              "GPIO16",
+              "U0TXD",
+              "FSPICS0"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "RX",
+            "functions": [
+              "GPIO17",
+              "U0RXD",
+              "FSPICS1"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "15",
+            "functions": [
+              "GPIO15",
+              "JTAG signal source strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "23",
+            "functions": [
+              "GPIO23",
+              "SDIO_DATA3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "22",
+            "functions": [
+              "GPIO22",
+              "SDIO_DATA2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "21",
+            "functions": [
+              "GPIO21",
+              "SDIO_DATA1",
+              "FSPICS5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "20",
+            "functions": [
+              "GPIO20",
+              "SDIO_DATA0",
+              "FSPICS4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "19",
+            "functions": [
+              "GPIO19",
+              "SDIO_CLK",
+              "FSPICS3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "18",
+            "functions": [
+              "GPIO18",
+              "SDIO_CMD",
+              "FSPICS2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "9",
+            "functions": [
+              "GPIO9",
+              "Boot mode strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "13",
+            "functions": [
+              "GPIO13",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "12",
+            "functions": [
+              "GPIO12",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -4307,6 +11841,265 @@
             ]
           }
         ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2",
+              "LP_GPIO2",
+              "LP_UART_RTSN",
+              "ADC1_CH2",
+              "FSPIQ"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "3",
+            "functions": [
+              "GPIO3",
+              "LP_GPIO3",
+              "LP_UART_CTSN",
+              "ADC1_CH3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4",
+              "MTMS",
+              "LP_GPIO4",
+              "LP_UART_RXD",
+              "ADC1_CH4",
+              "FSPIHD"
+            ],
+            "warnings": [
+              "JTAG",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5",
+              "MTDI",
+              "LP_GPIO5",
+              "LP_UART_TXD",
+              "ADC1_CH5",
+              "FSPIWP"
+            ],
+            "warnings": [
+              "JTAG",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "0/N",
+            "functions": [
+              "GPIO0",
+              "XTAL_32K_P",
+              "LP_GPIO0",
+              "LP_UART_DTRN",
+              "ADC1_CH0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "1/N",
+            "functions": [
+              "GPIO1",
+              "XTAL_32K_N",
+              "LP_GPIO1",
+              "LP_UART_DSRN",
+              "ADC1_CH1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "functions": [
+              "GPIO8",
+              "RGB LED"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "6",
+            "functions": [
+              "GPIO6",
+              "MTCK",
+              "LP_GPIO6",
+              "LP_I2C_SDA",
+              "ADC1_CH6",
+              "FSPICLK"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "7",
+            "functions": [
+              "GPIO7",
+              "MTDO",
+              "LP_GPIO7",
+              "LP_I2C_SCL",
+              "FSPID"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "14",
+            "functions": [
+              "GPIO14"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "TX",
+            "functions": [
+              "GPIO16",
+              "U0TXD",
+              "FSPICS0"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "RX",
+            "functions": [
+              "GPIO17",
+              "U0RXD",
+              "FSPICS1"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "23",
+            "functions": [
+              "GPIO23",
+              "SDIO_DATA3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "22",
+            "functions": [
+              "GPIO22",
+              "SDIO_DATA2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "21",
+            "functions": [
+              "GPIO21",
+              "SDIO_DATA1",
+              "FSPICS5"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "20",
+            "functions": [
+              "GPIO20",
+              "SDIO_DATA0",
+              "FSPICS4"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "19",
+            "functions": [
+              "GPIO19",
+              "SDIO_CLK",
+              "FSPICS3"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "18",
+            "functions": [
+              "GPIO18",
+              "SDIO_CMD",
+              "FSPICS2"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "15",
+            "functions": [
+              "GPIO15",
+              "JTAG signal source strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "9",
+            "functions": [
+              "GPIO9",
+              "Boot mode strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "13",
+            "functions": [
+              "GPIO13",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "12",
+            "functions": [
+              "GPIO12",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB"
+            ]
+          }
+        ],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
@@ -4449,6 +12242,222 @@
             "candidate_pins": [
               "GPIO24",
               "GPIO23"
+            ]
+          }
+        ],
+        "pin_functions": [
+          {
+            "gpio": "GPIO0",
+            "board_label": "0",
+            "functions": [
+              "GPIO0",
+              "FSPIQ"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "1",
+            "functions": [
+              "GPIO1",
+              "FSPICS0",
+              "ADC1_CH0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "2",
+            "functions": [
+              "GPIO2",
+              "FSPIWP",
+              "ADC1_CH1",
+              "MTMS"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "3",
+            "functions": [
+              "GPIO3",
+              "FSPIHD",
+              "ADC1_CH2",
+              "MTDO"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "13/N",
+            "functions": [
+              "GPIO13",
+              "XTAL_32K_P"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "14/N",
+            "functions": [
+              "GPIO14",
+              "XTAL_32K_N"
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "4",
+            "functions": [
+              "GPIO4",
+              "FSPICLK",
+              "ADC1_CH3",
+              "MTCK"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "5",
+            "functions": [
+              "GPIO5",
+              "FSPID",
+              "ADC1_CH4",
+              "MTDI"
+            ],
+            "warnings": [
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO24",
+            "board_label": "TX",
+            "functions": [
+              "GPIO24",
+              "FSPICS2",
+              "U0TXD"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "RX",
+            "functions": [
+              "GPIO23",
+              "FSPICS1",
+              "U0RXD"
+            ],
+            "warnings": [
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "10",
+            "functions": [
+              "GPIO10",
+              "ZCD0"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "11",
+            "functions": [
+              "GPIO11",
+              "ZCD1"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "25",
+            "functions": [
+              "GPIO25",
+              "FSPICS3",
+              "JTAG signal source strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "12",
+            "functions": [
+              "GPIO12"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "functions": [
+              "GPIO8",
+              "ROM message control",
+              "RGB LED"
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "22",
+            "functions": [
+              "GPIO22"
+            ],
+            "warnings": []
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "9",
+            "functions": [
+              "GPIO9",
+              "Boot mode strapping"
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "27",
+            "functions": [
+              "GPIO27",
+              "FSPICS5",
+              "USB_D+"
+            ],
+            "warnings": [
+              "USB"
+            ]
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "26",
+            "functions": [
+              "GPIO26",
+              "FSPICS4",
+              "USB_D-"
+            ],
+            "warnings": [
+              "USB"
             ]
           }
         ],

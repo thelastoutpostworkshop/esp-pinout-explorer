@@ -34,6 +34,7 @@ export interface BoardDefinition {
     caution_pins: Array<{ gpio: string; warning: string }>;
     reserved_or_internal_pins: Array<{ gpio: string; reason: string }>;
     peripheral_notes: Array<{ peripheral: string; summary: string; candidate_pins: string[] }>;
+    pin_functions: Array<{ gpio: string; board_label: string | null; functions: string[]; warnings: string[] }>;
     general_warnings: string[];
   };
 }
@@ -84,6 +85,17 @@ function warningText(warnings: PinWarning[]) {
   return warnings.map(getWarningLabel).join(', ');
 }
 
+function pinFunctions(pins: SocPin[]) {
+  return pins
+    .filter((pin) => pin.gpio !== undefined)
+    .map((pin) => ({
+      gpio: gpioName(pin),
+      board_label: pin.boardLabel ?? null,
+      functions: pin.mainFunctions,
+      warnings: unique((pin.warnings ?? []).map(getWarningLabel)),
+    }));
+}
+
 function createBoardDefinition(
   metadata: (typeof boardRecognitionMetadata)[number],
   soc: SocDefinition,
@@ -124,6 +136,7 @@ function createBoardDefinition(
       caution_pins: cautionPins,
       reserved_or_internal_pins: reservedPins,
       peripheral_notes: peripheralNotes(gpioPins),
+      pin_functions: pinFunctions(gpioPins),
       general_warnings: unique([
         'Confirm the exact module variant before using header GPIOs reserved for on-module memory.',
         ...(cautionPins.length ? ['Review each listed caution before wiring a board-header GPIO.'] : []),
