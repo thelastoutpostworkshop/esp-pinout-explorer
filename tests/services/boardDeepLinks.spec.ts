@@ -73,4 +73,12 @@ describe('board deep links', () => {
       profileId: 'esp8266-devkitc',
     });
   });
+
+  it('resolves the LCDKit carrier profile', () => {
+    expect(resolveBoardDeepLink('/boards/esp32-lcdkit')).toMatchObject({
+      apiBoardId: 'esp32-lcdkit',
+      socId: 'esp32',
+      profileId: 'esp32-lcdkit',
+    });
+  });
 });

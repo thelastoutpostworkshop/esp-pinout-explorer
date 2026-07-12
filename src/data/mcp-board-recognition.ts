@@ -18,6 +18,18 @@ export interface BoardRecognitionMetadata {
 
 export const boardRecognitionMetadata: BoardRecognitionMetadata[] = [
   {
+    apiId: 'esp32-lcdkit',
+    profileId: 'esp32-lcdkit',
+    boardName: 'ESP32-LCDKit',
+    aliases: ['ESP32-LCDKit'],
+    boardMarkings: ['ESP32-LCDKit'],
+    memoryMarkings: [],
+    visibleFeatures: ['ESP32-DevKitC V4 connection module', 'display connection module', 'SD-card module', 'DAC-audio module', 'USB power-supply management module'],
+    buttonLabels: [],
+    usbConnectorCount: 1,
+    usbConnectorTypes: [],
+  },
+  {
     apiId: 'esp8266-devkitc',
     profileId: 'esp8266-devkitc',
     boardName: 'ESP8266-DevKitC',
