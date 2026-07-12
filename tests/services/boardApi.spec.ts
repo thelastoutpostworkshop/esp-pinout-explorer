@@ -43,6 +43,9 @@ describe('public board dataset', () => {
 
   it('exports the next official DevKit profiles with their canonical identities', () => {
     expect(dataset.boards).toEqual(expect.arrayContaining([
+      expect.objectContaining({ id: 'esp32-pico-kit-1', name: 'ESP32-PICO-KIT-1', chip_family: 'ESP32' }),
+      expect.objectContaining({ id: 'esp32-ethernet-kit-v1-2', name: 'ESP32-Ethernet-Kit v1.2', chip_family: 'ESP32' }),
+      expect.objectContaining({ id: 'esp-wrover-kit-v4-1', name: 'ESP-WROVER-KIT v4.1', chip_family: 'ESP32' }),
       expect.objectContaining({ id: 'esp32-devkitm-1', name: 'ESP32-DevKitM-1', chip_family: 'ESP32' }),
       expect.objectContaining({ id: 'esp32-pico-devkitm-2', name: 'ESP32-PICO-DevKitM-2', chip_family: 'ESP32' }),
       expect.objectContaining({ id: 'esp32-pico-kit-v4', name: 'ESP32-PICO-KIT v4/v4.1', chip_family: 'ESP32' }),

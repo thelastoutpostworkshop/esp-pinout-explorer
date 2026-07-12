@@ -41,4 +41,12 @@ describe('board deep links', () => {
       profileId: 'esp32-pico-devkitm-2',
     });
   });
+
+  it('resolves the Ethernet-Kit profile', () => {
+    expect(resolveBoardDeepLink('/boards/esp32-ethernet-kit-v1-2')).toMatchObject({
+      apiBoardId: 'esp32-ethernet-kit-v1-2',
+      socId: 'esp32',
+      profileId: 'esp32-ethernet-kit-v1-2',
+    });
+  });
 });
