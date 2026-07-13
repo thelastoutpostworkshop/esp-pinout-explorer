@@ -13,6 +13,14 @@ export interface ModuleDefinition {
   name: string;
   chip_family: string;
   module_markings: string[];
+  module_variant_details: Array<{
+    name: string;
+    antenna: string | null;
+    flash: string | null;
+    psram: string | null;
+    footprint: string | null;
+    pinout_impact: string | null;
+  }>;
   route: string;
   general_purpose_candidates: string[];
   caution_pins: Array<{ gpio: string; warning: string }>;
@@ -64,6 +72,14 @@ function createModuleDefinition(chipFamily: string, profile: SocPackageVariant):
     name: markings[0] ?? profile.name,
     chip_family: chipFamily,
     module_markings: markings,
+    module_variant_details: (profile.moduleVariants ?? []).map((variant) => ({
+      name: variant.name,
+      antenna: variant.antenna ?? null,
+      flash: variant.flash ?? null,
+      psram: variant.psram ?? null,
+      footprint: variant.footprint ?? null,
+      pinout_impact: variant.pinoutImpact ?? null,
+    })),
     route: `/modules/${profile.id}`,
     general_purpose_candidates: gpioPins.filter(isGeneralPurposeCandidate).map(gpioName),
     caution_pins: cautionPins,

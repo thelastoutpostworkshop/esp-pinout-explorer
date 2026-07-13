@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T23:48:32.192Z",
+  "generated_at": "2026-07-13T00:06:00.440Z",
   "modules": [
     {
       "id": "esp32c6-mini-1",
@@ -8,6 +8,16 @@
       "chip_family": "ESP32-C6",
       "module_markings": [
         "ESP32-C6-MINI-1"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-C6-MINI-1",
+          "antenna": "On-board PCB antenna",
+          "flash": "4 MB SPI flash in chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 16.6 x 2.4 mm",
+          "pinout_impact": "Same 53-pad module pinout as MINI-1U; antenna implementation differs."
+        }
       ],
       "route": "/modules/esp32c6-mini-1",
       "general_purpose_candidates": [
@@ -101,6 +111,16 @@
       "module_markings": [
         "ESP32-C6-MINI-1U"
       ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-C6-MINI-1U",
+          "antenna": "External antenna connector",
+          "flash": "4 MB SPI flash in chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 12.5 x 2.4 mm",
+          "pinout_impact": "Same 53-pad module pinout as MINI-1; antenna connector changes RF layout only."
+        }
+      ],
       "route": "/modules/esp32c6-mini-1u",
       "general_purpose_candidates": [
         "GPIO2",
@@ -193,6 +213,16 @@
       "module_markings": [
         "ESP32-C3-MINI-1"
       ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-C3-MINI-1",
+          "antenna": "On-board PCB antenna",
+          "flash": "4 MB or 8 MB Quad SPI flash in the chip package, depending on module variant",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 16.6 x 2.4 mm",
+          "pinout_impact": "Same 53-pad module pinout as MINI-1U; antenna implementation and module length differ."
+        }
+      ],
       "route": "/modules/esp32c3-mini-1",
       "general_purpose_candidates": [
         "GPIO3",
@@ -271,6 +301,16 @@
       "chip_family": "ESP32-C3",
       "module_markings": [
         "ESP32-C3-MINI-1U"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-C3-MINI-1U",
+          "antenna": "External antenna connector",
+          "flash": "4 MB Quad SPI flash in the chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 12.5 x 2.4 mm",
+          "pinout_impact": "Same 53-pad module pinout as MINI-1; antenna connector changes the RF layout only."
+        }
       ],
       "route": "/modules/esp32c3-mini-1u",
       "general_purpose_candidates": [
@@ -351,6 +391,16 @@
       "module_markings": [
         "ESP32-C3-WROOM-02"
       ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-C3-WROOM-02",
+          "antenna": "On-board PCB antenna",
+          "flash": "4 MB or 8 MB external Quad SPI flash, depending on module variant",
+          "psram": "No PSRAM",
+          "footprint": "18.0 x 20.0 x 3.2 mm",
+          "pinout_impact": "Same 19-pad module pinout as WROOM-02U; antenna implementation and module length differ."
+        }
+      ],
       "route": "/modules/esp32c3-wroom-02",
       "general_purpose_candidates": [
         "GPIO4",
@@ -429,6 +479,16 @@
       "chip_family": "ESP32-C3",
       "module_markings": [
         "ESP32-C3-WROOM-02U"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-C3-WROOM-02U",
+          "antenna": "External antenna connector",
+          "flash": "4 MB or 8 MB external Quad SPI flash, depending on module variant",
+          "psram": "No PSRAM",
+          "footprint": "18.0 x 14.3 x 3.2 mm",
+          "pinout_impact": "Same 19-pad module pinout as WROOM-02; antenna connector changes the RF layout only."
+        }
       ],
       "route": "/modules/esp32c3-wroom-02u",
       "general_purpose_candidates": [
@@ -509,6 +569,16 @@
       "module_markings": [
         "ESP-WROOM-02D"
       ],
+      "module_variant_details": [
+        {
+          "name": "ESP-WROOM-02D",
+          "antenna": "PCB antenna",
+          "flash": "2 MB / 4 MB / 16 MB SPI flash ordering options",
+          "psram": "No PSRAM",
+          "footprint": "18.0 x 20.0 x 3.2 mm",
+          "pinout_impact": "Same 19-pad module pinout as ESP-WROOM-02U; antenna implementation and module length differ."
+        }
+      ],
       "route": "/modules/esp-wroom-02d",
       "general_purpose_candidates": [
         "GPIO14",
@@ -569,6 +639,16 @@
       "chip_family": "ESP8266EX",
       "module_markings": [
         "ESP-WROOM-02U"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP-WROOM-02U",
+          "antenna": "U.FL/IPEX external antenna connector",
+          "flash": "2 MB / 4 MB / 16 MB SPI flash ordering options",
+          "psram": "No PSRAM",
+          "footprint": "18.0 x 14.3 x 3.2 mm",
+          "pinout_impact": "Same 19-pad module pinout as ESP-WROOM-02D; antenna connector changes RF layout only."
+        }
       ],
       "route": "/modules/esp-wroom-02u",
       "general_purpose_candidates": [
