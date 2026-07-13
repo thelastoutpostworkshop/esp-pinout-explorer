@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-12T22:51:11.865Z",
+  "generated_at": "2026-07-12T23:48:32.192Z",
   "boards": [
     {
       "id": "esp32-lcdkit",
@@ -2831,6 +2831,380 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "The LCDKit board uses a USB power-supply management module and the attached ESP32-DevKitC V4 core board.",
+          "Follow the official power-path notes before connecting external 3.3 V or 5 V sources."
+        ],
+        "programming": [
+          "The attached ESP32-DevKitC V4 board provides flashing and serial debugging through its USB-UART bridge."
+        ],
+        "onboard_hardware": [
+          "ESP32-DevKitC connection module, display connection module, SD-card module, DAC-audio module, and USB power-supply management module."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": []
+        },
+        "buttons": [],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO1",
+            "board_label": "TXD0",
+            "main_functions": [
+              "GPIO1",
+              "U0TXD",
+              "CLK_OUT3",
+              "EMAC_RXD2"
+            ],
+            "notes": [
+              "J2-4 ESP32 DevKitC connection module pin, silkscreen label TXD0.",
+              "Connected to the attached ESP32-DevKitC V4 USB-to-UART bridge.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+              "ROM boot messages print to UART0 by default unless configured otherwise."
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RXD0",
+            "main_functions": [
+              "GPIO3",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "notes": [
+              "J2-5 ESP32 DevKitC connection module pin, silkscreen label RXD0.",
+              "Connected to the attached ESP32-DevKitC V4 USB-to-UART bridge.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging."
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "main_functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "RTC_GPIO11",
+              "CLK_OUT1",
+              "EMAC_TX_CLK",
+              "Boot"
+            ],
+            "notes": [
+              "J2-12 ESP32 DevKitC connection module pin, silkscreen label IO0.",
+              "Connected to the attached ESP32-DevKitC V4 boot button.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Boot",
+              "Strapping",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "CS_1",
+            "main_functions": [
+              "GPIO5",
+              "LCD_CS"
+            ],
+            "notes": [
+              "J5-3 display connection module pin, silkscreen label CS_1.",
+              "Display chip-select signal.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls SDIO slave timing at reset."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "RESET_1",
+            "main_functions": [
+              "GPIO18",
+              "LCD_RET"
+            ],
+            "notes": [
+              "J5-4 display connection module pin, silkscreen label RESET_1.",
+              "Display reset signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "D/C_1",
+            "main_functions": [
+              "GPIO19",
+              "LCD_DC"
+            ],
+            "notes": [
+              "J5-5 display connection module pin, silkscreen label D/C_1.",
+              "Display data/command select signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "MOSI_1",
+            "main_functions": [
+              "GPIO21",
+              "LCD_SDA"
+            ],
+            "notes": [
+              "J5-6 display connection module pin, silkscreen label MOSI_1.",
+              "Display serial data input signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "SCK_1",
+            "main_functions": [
+              "GPIO22",
+              "LCD_SCLK"
+            ],
+            "notes": [
+              "J5-7 display connection module pin, silkscreen label SCK_1.",
+              "Display serial clock signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "LED_1",
+            "main_functions": [
+              "GPIO23",
+              "LCD_BL"
+            ],
+            "notes": [
+              "J5-8 display connection module pin, silkscreen label LED_1.",
+              "Display backlight control signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "MISO_1",
+            "main_functions": [
+              "GPIO27",
+              "LCD_SDO"
+            ],
+            "notes": [
+              "J5-9 display connection module pin, silkscreen label MISO_1.",
+              "Display serial data output signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO32",
+            "board_label": "T_CLK_1",
+            "main_functions": [
+              "GPIO32",
+              "T_CLK"
+            ],
+            "notes": [
+              "J5-10 display connection module pin, silkscreen label T_CLK_1.",
+              "Touch-controller clock signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "T_CS_1",
+            "main_functions": [
+              "GPIO33",
+              "T_CS"
+            ],
+            "notes": [
+              "J5-11 display connection module pin, silkscreen label T_CS_1.",
+              "Touch-controller chip-select signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "T_DIN_1",
+            "main_functions": [
+              "GPIO21",
+              "T_DIN"
+            ],
+            "notes": [
+              "J5-12 display connection module pin, silkscreen label T_DIN_1.",
+              "Touch-controller data-in signal. Shares the display serial data path with MOSI in the module schematic."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "T_DO_1",
+            "main_functions": [
+              "GPIO27",
+              "T_DO"
+            ],
+            "notes": [
+              "J5-13 display connection module pin, silkscreen label T_DO_1.",
+              "Touch-controller data-out signal. Shares the display serial data path with MISO in the module schematic."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "DAT2",
+            "main_functions": [
+              "GPIO12",
+              "SD_D2"
+            ],
+            "notes": [
+              "J4-1 SD-card module pin, silkscreen label DAT2.",
+              "SD card data 2 signal.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "CD/DATA3",
+            "main_functions": [
+              "GPIO13",
+              "SD_D3"
+            ],
+            "notes": [
+              "J4-2 SD-card module pin, silkscreen label CD/DATA3.",
+              "SD card chip-select or data 3 signal.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "CMD",
+            "main_functions": [
+              "GPIO15",
+              "SD_CMD"
+            ],
+            "notes": [
+              "J4-3 SD-card module pin, silkscreen label CMD.",
+              "SD card command signal.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls U0TXD printing and SDIO slave timing at reset.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "CLK",
+            "main_functions": [
+              "GPIO14",
+              "SD_CLK"
+            ],
+            "notes": [
+              "J4-5 SD-card module pin, silkscreen label CLK.",
+              "SD card clock signal.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "DATA0",
+            "main_functions": [
+              "GPIO2",
+              "SD_D0"
+            ],
+            "notes": [
+              "J4-7 SD-card module pin, silkscreen label DATA0.",
+              "SD card data 0 signal.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls boot mode with GPIO0."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "DATA1",
+            "main_functions": [
+              "GPIO4",
+              "SD_D1"
+            ],
+            "notes": [
+              "J4-8 SD-card module pin, silkscreen label DATA1.",
+              "SD card data 1 signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "CD",
+            "main_functions": [
+              "GPIO34",
+              "SD_DET"
+            ],
+            "notes": [
+              "J4-9 SD-card module pin, silkscreen label CD.",
+              "Card-detect signal.",
+              "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          }
+        ]
       }
     },
     {
@@ -3482,6 +3856,134 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Power can come from Micro USB, 5V/GND header pins, or 3V3/GND header pins; the official guide says these options are mutually exclusive.",
+          "The on-board 5V to 3.3V LDO is rated up to 800 mA for the module and user peripherals."
+        ],
+        "programming": [
+          "The USB-UART bridge supports flashing and serial communication through the Micro USB port.",
+          "Hold Boot and press EN to enter firmware download mode; the dial switch selects Auto Download or Flow Control."
+        ],
+        "onboard_hardware": [
+          "ESP-WROOM-02D/U module, 5V to 3.3V LDO, dial switch, USB-UART bridge, Boot button, Micro USB port, EN button, and I/O connector headers."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "EN"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO1",
+            "board_label": "TX",
+            "main_functions": [
+              "GPIO1",
+              "U0TXD",
+              "UART0_TXD"
+            ],
+            "notes": [
+              "Top header-4 on the ESP8266-DevKitC I/O connector, silkscreen label TX.",
+              "Connected to the USB-UART bridge transmit path for flashing and serial logs.",
+              "UART0 is used for flash programming and boot/debug serial output.",
+              "U0TXD should not be pulled externally low during powering-up."
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RX",
+            "main_functions": [
+              "GPIO3",
+              "U0RXD",
+              "UART0_RXD"
+            ],
+            "notes": [
+              "Top header-5 on the ESP8266-DevKitC I/O connector, silkscreen label RX.",
+              "Connected to the USB-UART bridge receive path for flashing and serial logs.",
+              "UART0 is used for flash programming and boot/debug serial output."
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "13",
+            "main_functions": [
+              "GPIO13",
+              "MTCK",
+              "HSPI_MOSI",
+              "UART0_CTS",
+              "I2SI_BCK"
+            ],
+            "notes": [
+              "Bottom header-8 on the ESP8266-DevKitC I/O connector, silkscreen label 13.",
+              "The board dial switch can place the USB-UART bridge in Flow Control mode, involving UART0 CTS.",
+              "Package pin name is MTCK; common maker use is GPIO13 or HSPI MOSI."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "15",
+            "main_functions": [
+              "GPIO15",
+              "MTDO",
+              "HSPICS",
+              "UART0_RTS",
+              "I2SO_BCK",
+              "PWM1"
+            ],
+            "notes": [
+              "Bottom header-9 on the ESP8266-DevKitC I/O connector, silkscreen label 15.",
+              "ESP-WROOM-02D/U requires IO15 to be pulled down for boot.",
+              "The board dial switch can place the USB-UART bridge in Flow Control mode, involving UART0 RTS.",
+              "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+              "Package pin name is MTDO; common maker use is GPIO15 or HSPI chip select."
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "0",
+            "main_functions": [
+              "GPIO0",
+              "SPI_CS2",
+              "Boot mode strapping"
+            ],
+            "notes": [
+              "Bottom header-11 on the ESP8266-DevKitC I/O connector, silkscreen label 0.",
+              "Connected to the Boot button. Holding Boot and pressing EN initiates firmware download mode.",
+              "ESP-WROOM-02D/U uses IO0 low for UART download and floating or pulled up for flash boot.",
+              "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          }
+        ]
       }
     },
     {
@@ -4119,6 +4621,89 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Power can come from the Micro USB port, 5V/GND header pins, or 3V3/GND header pins.",
+          "These three power options are mutually exclusive; the official guide advises using Micro USB as the default supply."
+        ],
+        "programming": [
+          "The USB-to-UART bridge supports flashing and serial communication through the Micro USB port.",
+          "Hold Boot and press EN to enter firmware download mode."
+        ],
+        "onboard_hardware": [
+          "Spring pins for mounting an ESP-WROOM-02/02D/02U module and two 2.54 mm female header rows.",
+          "USB-to-UART bridge, 5V-to-3.3V LDO, Boot button, EN button, Micro USB connector, and power-on LED."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "EN"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO0",
+            "board_label": "0",
+            "main_functions": [
+              "GPIO0",
+              "SPI_CS2",
+              "Boot mode strapping"
+            ],
+            "notes": [
+              "J1-11 board header pin (official table label L11), silkscreen label 0.",
+              "Connected to the Boot button. Holding Boot and pressing EN enters firmware download mode.",
+              "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TX",
+            "main_functions": [
+              "GPIO1",
+              "U0TXD",
+              "UART0_TXD"
+            ],
+            "notes": [
+              "J2-4 board header pin (official table label R4), silkscreen label TX.",
+              "UART0 transmit pin on the board USB-to-UART bridge path.",
+              "UART0 is used for flash programming and boot/debug serial output.",
+              "U0TXD should not be pulled externally low during powering-up."
+            ],
+            "warnings": [
+              "UART0",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RX",
+            "main_functions": [
+              "GPIO3",
+              "U0RXD",
+              "UART0_RXD"
+            ],
+            "notes": [
+              "J2-5 board header pin (official table label R5), silkscreen label RX.",
+              "UART0 receive pin on the board USB-to-UART bridge path.",
+              "UART0 is used for flash programming and boot/debug serial output."
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          }
         ]
       }
     },
@@ -5158,6 +5743,326 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Power comes from the Micro USB / USB-UART section, and the J2 3V3 pin exposes the board 3.3 V rail for external use.",
+          "Follow the hardware design guide before mixing USB power with an external 3.3 V supply."
+        ],
+        "programming": [
+          "The FT232RL USB-UART bridge supports flashing and serial logging through Micro USB.",
+          "Use the J66 boot-mode toggle for UART download versus flash boot, and the J14/J67 jumper path when you need UART flow control."
+        ],
+        "onboard_hardware": [
+          "FT232RL USB-UART bridge, boot-mode select toggle, reset keys, relay/WiFi/link LEDs, infrared remote-control circuit, wake-up jumper, external SPI flash, and UART flow-control jumpers."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO14",
+            "board_label": "GPIO14",
+            "main_functions": [
+              "GPIO14",
+              "MTMS",
+              "HSPI_CLK",
+              "I2C_SCL",
+              "I2SI_WS",
+              "PWM2",
+              "IR TX"
+            ],
+            "notes": [
+              "J4-2 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO14.",
+              "Used by the on-board infrared remote-control circuit.",
+              "Package pin name is MTMS; common maker use is GPIO14 or HSPI clock."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "GPIO12",
+            "main_functions": [
+              "GPIO12",
+              "MTDI",
+              "HSPI_MISO",
+              "I2SI_DATA",
+              "PWM0"
+            ],
+            "notes": [
+              "J4-3 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO12.",
+              "Connected to the on-board link LED.",
+              "Package pin name is MTDI; common maker use is GPIO12 or HSPI MISO."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "GPIO13",
+            "main_functions": [
+              "GPIO13",
+              "MTCK",
+              "HSPI_MOSI",
+              "UART0_CTS",
+              "I2SI_BCK"
+            ],
+            "notes": [
+              "J4-4 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO13.",
+              "Connected to the UART0 CTS flow-control jumper path on the board.",
+              "Package pin name is MTCK; common maker use is GPIO13 or HSPI MOSI."
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "GPIO15",
+            "main_functions": [
+              "GPIO15",
+              "MTDO",
+              "HSPICS",
+              "UART0_RTS",
+              "I2SO_BCK",
+              "PWM1"
+            ],
+            "notes": [
+              "J4-5 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO15.",
+              "Connected to the on-board relay LED and the UART0 RTS flow-control jumper path.",
+              "ESP8266 boot mode uses this pin as a strap input, so keep the documented level when powering up.",
+              "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+              "Package pin name is MTDO; common maker use is GPIO15 or HSPI chip select."
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "UART0",
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "SD_D2",
+            "main_functions": [
+              "GPIO9",
+              "SDIO_DATA_2",
+              "SPIHD",
+              "HSPIHD"
+            ],
+            "notes": [
+              "J4-6 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D2.",
+              "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+              "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+              "Connect to external flash SD_D2 through the datasheet series resistor."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "SD_D3",
+            "main_functions": [
+              "GPIO10",
+              "SDIO_DATA_3",
+              "SPIWP",
+              "HSPIWP"
+            ],
+            "notes": [
+              "J4-7 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D3.",
+              "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+              "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+              "Connect to external flash SD_D3 through the datasheet series resistor."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "SD_CMD",
+            "main_functions": [
+              "GPIO11",
+              "SDIO_CMD",
+              "SPI_CS0"
+            ],
+            "notes": [
+              "J4-8 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_CMD.",
+              "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+              "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+              "Connect to external flash SD_CMD through the datasheet series resistor."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "SD_CLK",
+            "main_functions": [
+              "GPIO6",
+              "SDIO_CLK",
+              "SPI_CLK"
+            ],
+            "notes": [
+              "J4-9 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_CLK.",
+              "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+              "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+              "Connect to external flash SD_CLK through the datasheet series resistor."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "SD_D0",
+            "main_functions": [
+              "GPIO7",
+              "SDIO_DATA_0",
+              "SPI_MISO"
+            ],
+            "notes": [
+              "J4-10 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D0.",
+              "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+              "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+              "Connect to external flash SD_D0 through the datasheet series resistor."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "SD_D1",
+            "main_functions": [
+              "GPIO8",
+              "SDIO_DATA_1",
+              "SPI_MOSI",
+              "U1RXD"
+            ],
+            "notes": [
+              "J4-11 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D1.",
+              "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+              "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+              "Connect to external flash SD_D1 through the datasheet series resistor."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "GPIO16",
+            "main_functions": [
+              "GPIO16",
+              "XPD_DCDC",
+              "Deep-sleep wakeup"
+            ],
+            "notes": [
+              "J2-5 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO16.",
+              "This pin can be jumpered to RST for deep-sleep wake-up on the board.",
+              "Connect XPD_DCDC to EXT_RSTB when GPIO16 is used for deep-sleep wakeup.",
+              "GPIO16 can only be configured with an internal pull-down."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "GPIO5",
+            "main_functions": [
+              "GPIO5",
+              "IR Rx"
+            ],
+            "notes": [
+              "J2-6 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO5.",
+              "Used by the board infrared remote-control circuit."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "U0TXD",
+            "main_functions": [
+              "GPIO1",
+              "U0TXD",
+              "UART0_TXD"
+            ],
+            "notes": [
+              "J2-8 on the ESP-LAUNCHER J4/J2 header block, silkscreen label U0TXD.",
+              "Connected to the FT232RL USB-UART bridge transmit path.",
+              "UART0 is used for flash programming and boot/debug serial output.",
+              "U0TXD should not be pulled externally low during powering-up."
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "U0RXD",
+            "main_functions": [
+              "GPIO3",
+              "U0RXD",
+              "UART0_RXD"
+            ],
+            "notes": [
+              "J2-9 on the ESP-LAUNCHER J4/J2 header block, silkscreen label U0RXD.",
+              "Connected to the FT232RL USB-UART bridge receive path.",
+              "UART0 is used for flash programming and boot/debug serial output."
+            ],
+            "warnings": [
+              "UART0",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "GPIO0",
+            "main_functions": [
+              "GPIO0",
+              "SPI_CS2",
+              "Boot mode strapping"
+            ],
+            "notes": [
+              "J2-11 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO0.",
+              "Connected to the boot-mode toggle and the WiFi LED.",
+              "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          }
+        ]
       }
     },
     {
@@ -5978,6 +6883,107 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Power can be supplied through any USB 2.0 Type-C Port, USB Full-speed Port, or USB Serial/JTAG Port, depending on the attached cable and accessory setup.",
+          "The board uses a 5 V to 3.3 V LDO plus a buck converter; the J1 header exposes 3V3 and 5V rails for accessory wiring."
+        ],
+        "programming": [
+          "Use the USB Serial/JTAG Port to flash firmware to the ESP32-P4 chip and perform JTAG debugging.",
+          "Use the ESP32-C6 Module Programming Connector with ESP-Prog or another UART tool when you need to flash the wireless module separately.",
+          "Press Boot while resetting the board to enter firmware download mode."
+        ],
+        "onboard_hardware": [
+          "ESP32-C6-MINI-1 wireless module, ESP32-C6 module programming connector, microphone, ES8311 audio codec, speaker output port, NS4150B audio PA chip, Ethernet PHY IC, RJ45 Ethernet port, USB Full-speed Port, USB Serial/JTAG Port, USB 2.0 Type-C Port, USB 2.0 Type-A Port, power switch, BOOT button, Reset button, 5 V power-on LED, MIPI CSI connector, MIPI DSI connector, SPI flash, MicroSD card slot, and the LCD and camera accessory boards."
+        ],
+        "usb_connectors": {
+          "count": 4,
+          "types": [
+            "usb-c",
+            "usb-a"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO1",
+            "board_label": "NC(1)",
+            "main_functions": [
+              "GPIO1"
+            ],
+            "notes": [
+              "J1-22 on the ESP32-P4X-Function-EV-Board J1 header block, silkscreen label NC(1).",
+              "GPIO1 can be enabled by disabling the XTAL_32K function; the board guide documents moving R59 to R197."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "NC(0)",
+            "main_functions": [
+              "GPIO0"
+            ],
+            "notes": [
+              "J1-23 on the ESP32-P4X-Function-EV-Board J1 header block, silkscreen label NC(0).",
+              "GPIO0 can be enabled by disabling the XTAL_32K function; the board guide documents moving R61 to R199.",
+              "Keep the boot strap level correct at reset."
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "26",
+            "main_functions": [
+              "GPIO26"
+            ],
+            "notes": [
+              "J1-31 on the ESP32-P4X-Function-EV-Board J1 header block, silkscreen label 26.",
+              "GPIO26 is wired to the LCD adapter board PWM pin in the fully assembled setup."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "27",
+            "main_functions": [
+              "GPIO27"
+            ],
+            "notes": [
+              "J1-38 on the ESP32-P4X-Function-EV-Board J1 header block, silkscreen label 27.",
+              "GPIO27 is wired to the LCD adapter board RST_LCD pin in the fully assembled setup."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "NC(45)",
+            "main_functions": [
+              "GPIO45"
+            ],
+            "notes": [
+              "J1-40 on the ESP32-P4X-Function-EV-Board J1 header block, silkscreen label NC(45).",
+              "GPIO45 can be enabled by disabling the SD_PWRn function; the board guide documents moving R231 to R100."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          }
         ]
       }
     },
@@ -6802,6 +7808,107 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Power can be supplied through any USB 2.0 Type-C Port, USB Full-speed Port, or USB Serial/JTAG Port, depending on the attached cable and accessory setup.",
+          "The board uses a 5 V to 3.3 V LDO plus a buck converter; the J1 header exposes 3V3 and 5V rails for accessory wiring."
+        ],
+        "programming": [
+          "Use the USB Serial/JTAG Port to flash firmware to the ESP32-P4 chip and perform JTAG debugging.",
+          "Use the ESP32-C6 Module Programming Connector with ESP-Prog or another UART tool when you need to flash the wireless module separately.",
+          "Press Boot while resetting the board to enter firmware download mode."
+        ],
+        "onboard_hardware": [
+          "ESP32-C6-MINI-1 wireless module, ESP32-C6 module programming connector, microphone, ES8311 audio codec, speaker output port, NS4150B audio PA chip, Ethernet PHY IC, RJ45 Ethernet port, USB Full-speed Port, USB Serial/JTAG Port, USB 2.0 Type-C Port, USB 2.0 Type-A Port, power switch, BOOT button, Reset button, 5 V power-on LED, MIPI CSI connector, MIPI DSI connector, SPI flash, MicroSD card slot, and the LCD and camera accessory boards."
+        ],
+        "usb_connectors": {
+          "count": 4,
+          "types": [
+            "usb-c",
+            "usb-a"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO1",
+            "board_label": "NC(1)",
+            "main_functions": [
+              "GPIO1"
+            ],
+            "notes": [
+              "J1-22 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(1).",
+              "GPIO1 can be enabled by disabling the XTAL_32K function; the board guide documents moving R59 to R197."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "NC(0)",
+            "main_functions": [
+              "GPIO0"
+            ],
+            "notes": [
+              "J1-23 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(0).",
+              "GPIO0 can be enabled by disabling the XTAL_32K function; the board guide documents moving R61 to R199.",
+              "Keep the boot strap level correct at reset."
+            ],
+            "warnings": [
+              "Strapping",
+              "Boot",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "26",
+            "main_functions": [
+              "GPIO26"
+            ],
+            "notes": [
+              "J1-31 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 26.",
+              "GPIO26 is wired to the LCD adapter board PWM pin in the fully assembled setup."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "27",
+            "main_functions": [
+              "GPIO27"
+            ],
+            "notes": [
+              "J1-38 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 27.",
+              "GPIO27 is wired to the LCD adapter board RST_LCD pin in the fully assembled setup."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "NC(45)",
+            "main_functions": [
+              "GPIO45"
+            ],
+            "notes": [
+              "J1-40 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(45).",
+              "GPIO45 can be enabled by disabling the SD_PWRn function; the board guide documents moving R231 to R100."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          }
+        ]
       }
     },
     {
@@ -7203,6 +8310,28 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Power can be supplied through the USB 2.0 Device Port or USB Debug Port.",
+          "The Battery Connector accepts a 1.25 mm pitch lithium battery plug and can charge while the board is powered over USB."
+        ],
+        "programming": [
+          "Use the USB Debug Port for flashing firmware and USB-Serial-JTAG debugging.",
+          "The ESP32-C6-MINI-1U test points support module programming and testing with jumper wires."
+        ],
+        "onboard_hardware": [
+          "ESP32-C6-MINI-1U wireless module, 1.54-inch LCD, MIPI CSI camera, MicroSD card slot, digital microphone, rotary encoder, fill light, battery connector, USB 2.0 Device Port, USB Debug Port, Boot button, Reset button, and SPI flash."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": []
       }
     },
     {
@@ -7604,6 +8733,29 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Power can be supplied through the USB 2.0 Device Port or USB Debug Port.",
+          "The Battery Connector accepts a 1.25 mm pitch lithium battery plug and can charge while the board is powered over USB."
+        ],
+        "programming": [
+          "Use the USB Debug Port for flashing firmware and USB-Serial-JTAG debugging.",
+          "The ESP32-C6-MINI-1U test points support module programming and testing with jumper wires.",
+          "Press Boot while resetting the board to enter firmware download mode."
+        ],
+        "onboard_hardware": [
+          "ESP32-C6-MINI-1U test points, ESP32-C6-MINI-1U wireless module, 1.54-inch LCD, MIPI CSI camera, MicroSD card slot, digital microphone, rotary encoder, fill light, user-defined buttons, battery connector, USB 2.0 Device Port, USB Debug Port, power switch, Boot button, Reset button, charging indicator, and SPI flash."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": []
       }
     },
     {
@@ -8949,6 +10101,28 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB1 or USB2 can power the board through the onboard 5 V to 3.3 V regulator.",
+          "J4 exposes 5 V and 3.3 V rails for external wiring; use one power path at a time."
+        ],
+        "programming": [
+          "The official build-and-run guide uses UART0 at 460800 baud for the border-router workflow.",
+          "The board combines an ESP32-S3 host with an ESP32-H2 RCP; J4 and J5 expose the board-level UART0 signals for each side."
+        ],
+        "onboard_hardware": [
+          "ESP32-S3-WROOM-1 host module, ESP32-H2-MINI-1 radio co-processor module, USB1 and USB2 connectors, power regulator, boot and reset buttons, optional LEDs, optional sub-board header, and a 32.768 kHz crystal on the H2 side."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": []
       }
     },
     {
@@ -10780,6 +11954,399 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Micro-USB powers the motherboard and display.",
+          "USB_DEV or battery mode can supply USB_HOST; battery mode uses BOOST_EN."
+        ],
+        "programming": [
+          "Micro-USB USB-to-UART port is used for flashing, power, and serial communication."
+        ],
+        "onboard_hardware": [
+          "USB_HOST, USB_DEV, USB switch, LCD connector, MicroSD slot, battery charger, buttons, and green/yellow LEDs."
+        ],
+        "usb_connectors": {
+          "count": 3,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO18",
+            "board_label": "USB_SEL",
+            "main_functions": [
+              "GPIO18",
+              "USB_SEL"
+            ],
+            "notes": [
+              "Function pin-1 on the ESP32-S3-USB-OTG Function pin table, label USB_SEL.",
+              "USB interface switch signal. High enables the USB_HOST interface; low default enables the USB_DEV interface.",
+              "The official guide says USB_SEL is pulled low by default."
+            ],
+            "warnings": [
+              "USB",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "LED_GREEN",
+            "main_functions": [
+              "GPIO15",
+              "LED_GREEN"
+            ],
+            "notes": [
+              "Function pin-4 on the ESP32-S3-USB-OTG Function pin table, label LED_GREEN.",
+              "On-board green LED. The official guide says the LED is lit when this signal is high."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "LED_YELLOW",
+            "main_functions": [
+              "GPIO16",
+              "LED_YELLOW"
+            ],
+            "notes": [
+              "Function pin-5 on the ESP32-S3-USB-OTG Function pin table, label LED_YELLOW.",
+              "On-board yellow LED. The official guide says the LED is lit when this signal is high."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "BUTTON_OK",
+            "main_functions": [
+              "GPIO0",
+              "BUTTON_OK"
+            ],
+            "notes": [
+              "Function pin-6 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_OK.",
+              "OK button. The official guide says this signal is low when pressed."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "BUTTON_DW",
+            "main_functions": [
+              "GPIO11",
+              "BUTTON_DW"
+            ],
+            "notes": [
+              "Function pin-7 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_DW.",
+              "Down button. The official guide says this signal is low when pressed."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "BUTTON_UP",
+            "main_functions": [
+              "GPIO10",
+              "BUTTON_UP"
+            ],
+            "notes": [
+              "Function pin-8 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_UP.",
+              "UP button. The official guide says this signal is low when pressed."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "BUTTON_MENU",
+            "main_functions": [
+              "GPIO14",
+              "BUTTON_MENU"
+            ],
+            "notes": [
+              "Function pin-9 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_MENU.",
+              "MENU button. The official guide says this signal is low when pressed."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "LCD_RET",
+            "main_functions": [
+              "GPIO8",
+              "LCD_RET"
+            ],
+            "notes": [
+              "Function pin-10 on the ESP32-S3-USB-OTG Function pin table, label LCD_RET.",
+              "LCD reset signal. The official guide says low resets the LCD."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "LCD_EN",
+            "main_functions": [
+              "GPIO5",
+              "LCD_EN"
+            ],
+            "notes": [
+              "Function pin-11 on the ESP32-S3-USB-OTG Function pin table, label LCD_EN.",
+              "LCD enable signal. The official guide says low enables the LCD."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "LCD_DC",
+            "main_functions": [
+              "GPIO4",
+              "LCD_DC"
+            ],
+            "notes": [
+              "Function pin-12 on the ESP32-S3-USB-OTG Function pin table, label LCD_DC.",
+              "LCD data/command select signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "LCD_SCLK",
+            "main_functions": [
+              "GPIO6",
+              "LCD_SCLK"
+            ],
+            "notes": [
+              "Function pin-13 on the ESP32-S3-USB-OTG Function pin table, label LCD_SCLK.",
+              "LCD SPI clock signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "LCD_SDA",
+            "main_functions": [
+              "GPIO7",
+              "LCD_SDA"
+            ],
+            "notes": [
+              "Function pin-14 on the ESP32-S3-USB-OTG Function pin table, label LCD_SDA.",
+              "LCD SPI MOSI signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "LCD_BL",
+            "main_functions": [
+              "GPIO9",
+              "LCD_BL"
+            ],
+            "notes": [
+              "Function pin-15 on the ESP32-S3-USB-OTG Function pin table, label LCD_BL.",
+              "LCD backlight control signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "SD_SCK",
+            "main_functions": [
+              "GPIO36",
+              "SD_SCK"
+            ],
+            "notes": [
+              "Function pin-16 on the ESP32-S3-USB-OTG Function pin table, label SD_SCK.",
+              "MicroSD clock signal. The official guide lists SD SPI CLK / SDIO CLK."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "SD_DO",
+            "main_functions": [
+              "GPIO37",
+              "SD_DO"
+            ],
+            "notes": [
+              "Function pin-17 on the ESP32-S3-USB-OTG Function pin table, label SD_DO.",
+              "MicroSD data output. The official guide lists SD SPI MISO / SDIO Data0."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "SD_D1",
+            "main_functions": [
+              "GPIO38",
+              "SD_D1"
+            ],
+            "notes": [
+              "Function pin-18 on the ESP32-S3-USB-OTG Function pin table, label SD_D1.",
+              "MicroSD SDIO Data1 signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO33",
+            "board_label": "SD_D2",
+            "main_functions": [
+              "GPIO33",
+              "SD_D2"
+            ],
+            "notes": [
+              "Function pin-19 on the ESP32-S3-USB-OTG Function pin table, label SD_D2.",
+              "MicroSD SDIO Data2 signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "SD_D3",
+            "main_functions": [
+              "GPIO34",
+              "SD_D3"
+            ],
+            "notes": [
+              "Function pin-20 on the ESP32-S3-USB-OTG Function pin table, label SD_D3.",
+              "MicroSD chip select / Data3. The official guide lists SD SPI CS / SDIO Data3."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "HOST_VOL",
+            "main_functions": [
+              "GPIO1",
+              "HOST_VOL",
+              "ADC1_CH0"
+            ],
+            "notes": [
+              "Function pin-21 on the ESP32-S3-USB-OTG Function pin table, label HOST_VOL.",
+              "USB_DEV voltage monitoring signal, ADC1 channel 0."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "BAT_VOL",
+            "main_functions": [
+              "GPIO2",
+              "BAT_VOL",
+              "ADC1_CH1"
+            ],
+            "notes": [
+              "Function pin-22 on the ESP32-S3-USB-OTG Function pin table, label BAT_VOL.",
+              "Battery voltage monitoring signal, ADC1 channel 1."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "LIMIT_EN",
+            "main_functions": [
+              "GPIO17",
+              "LIMIT_EN"
+            ],
+            "notes": [
+              "Function pin-23 on the ESP32-S3-USB-OTG Function pin table, label LIMIT_EN.",
+              "Current limiting IC enable signal. The official guide says high enables current limiting."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "0VER_CURRENT",
+            "main_functions": [
+              "GPIO21",
+              "0VER_CURRENT"
+            ],
+            "notes": [
+              "Function pin-24 on the ESP32-S3-USB-OTG Function pin table, label 0VER_CURRENT.",
+              "Current overrun signal. The official guide says high level means overrun."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "DEV_VBUS_EN",
+            "main_functions": [
+              "GPIO12",
+              "DEV_VBUS_EN"
+            ],
+            "notes": [
+              "Function pin-25 on the ESP32-S3-USB-OTG Function pin table, label DEV_VBUS_EN.",
+              "Device VBUS power enable signal. The official guide says high enables DEV_VBUS power supply."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "BOOST_EN",
+            "main_functions": [
+              "GPIO13",
+              "BOOST_EN"
+            ],
+            "notes": [
+              "Function pin-26 on the ESP32-S3-USB-OTG Function pin table, label BOOST_EN.",
+              "Boost circuit enable signal. The official guide says high enables the boost circuit."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain"
+            ]
+          }
+        ]
       }
     },
     {
@@ -11583,6 +13150,250 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB-to-USB port powers the board.",
+          "On-board regulator converts USB voltage to 3.3 V for the ESP32-S3-MINI-1 module."
+        ],
+        "programming": [
+          "Default firmware acts as a USB-to-UART bridge, JTAG adapter, MSC storage device, and wireless bridge.",
+          "Avoid holding the module Boot button during power-up unless you intend to enter module download mode."
+        ],
+        "onboard_hardware": [
+          "ESP32-S3-MINI-1-N4R2 module, USB-to-USB port, expansion connector, target Boot/Reset buttons, module Boot button, TX/RX indicators, and WS2812 LED."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO0",
+            "board_label": "MODULE_BOOT",
+            "main_functions": [
+              "GPIO0",
+              "MODULE_BOOT"
+            ],
+            "notes": [
+              "Pin 3 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label MODULE_BOOT.",
+              "Module Boot button signal. Holding the module Boot button while powering the board enters module download mode.",
+              "Strapping pin with default weak pull-up.",
+              "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "TDO",
+            "main_functions": [
+              "GPIO2",
+              "TDO"
+            ],
+            "notes": [
+              "Pin 4 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TDO.",
+              "JTAG TDO signal for test data output to the externally connected target chip.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "TDI",
+            "main_functions": [
+              "GPIO3",
+              "TDI"
+            ],
+            "notes": [
+              "Pin 5 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TDI.",
+              "JTAG TDI signal for test data input from the externally connected target chip.",
+              "Strapping pin for JTAG signal source selection; default is floating.",
+              "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG",
+              "Strapping",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "TCK",
+            "main_functions": [
+              "GPIO4",
+              "TCK"
+            ],
+            "notes": [
+              "Pin 6 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TCK.",
+              "JTAG TCK signal for synchronized test data transfer to the externally connected target chip.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "TMS",
+            "main_functions": [
+              "GPIO5",
+              "TMS"
+            ],
+            "notes": [
+              "Pin 7 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TMS.",
+              "JTAG TMS signal for test mode configuration on the externally connected target chip.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "RESET",
+            "main_functions": [
+              "GPIO8",
+              "RESET_TO_TARGET"
+            ],
+            "notes": [
+              "Pin 8 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label RESET.",
+              "Reset signal connected to the target chip; pressing Reset sets the target chip to low level.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Reset",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "BOOT",
+            "main_functions": [
+              "GPIO9",
+              "BOOT_TO_TARGET"
+            ],
+            "notes": [
+              "Pin 9 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label BOOT.",
+              "Boot signal connected to the target chip; pressing Boot sets the target chip to low level.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "USB_D-",
+            "main_functions": [
+              "GPIO19",
+              "USB_D-"
+            ],
+            "notes": [
+              "Pin 10 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label USB_D-.",
+              "Native USB D- signal used by the bridge board USB workflow.",
+              "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+              "Power-up low-level glitch for about 60 us.",
+              "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+            ],
+            "warnings": [
+              "Board hardware",
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO20",
+            "board_label": "USB_D+",
+            "main_functions": [
+              "GPIO20",
+              "USB_D+"
+            ],
+            "notes": [
+              "Pin 11 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label USB_D+.",
+              "Native USB D+ signal used by the bridge board USB workflow.",
+              "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+              "Power-up pull-down glitch for about 60 us.",
+              "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+            ],
+            "warnings": [
+              "Board hardware",
+              "USB",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "RX",
+            "main_functions": [
+              "GPIO40",
+              "BRIDGE_RX"
+            ],
+            "notes": [
+              "Pin 12 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label RX.",
+              "UART RX bridge signal connected to the UART TX pin of the target chip.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "TX",
+            "main_functions": [
+              "GPIO41",
+              "BRIDGE_TX"
+            ],
+            "notes": [
+              "Pin 13 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TX.",
+              "UART TX bridge signal connected to the UART RX pin of the target chip.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "WS2812",
+            "main_functions": [
+              "GPIO42",
+              "WS2812"
+            ],
+            "notes": [
+              "Pin 14 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label WS2812.",
+              "On-board WS2812 LED control pin that indicates the current state of the development board.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          }
         ]
       }
     },
@@ -13759,6 +15570,538 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB-to-USB or USB-to-UART can power the system; Espressif recommends at least a 5 V / 2 A supply.",
+          "The board separates audio and digital power rails to reduce audio noise."
+        ],
+        "programming": [
+          "Firmware can be uploaded through the USB-to-UART port or the native USB port.",
+          "Download mode is entered with Boot plus Reset, or automatically through DTR/RTS from the USB-to-UART bridge."
+        ],
+        "onboard_hardware": [
+          "LCD subboard connectors, RGB LED, ES7210 audio ADC, ES8311 audio codec, dual microphones, MicroSD slot, USB ports, buttons, and TCA9554 I/O expander."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "main_functions": [
+              "GPIO4",
+              "LED"
+            ],
+            "notes": [
+              "IO4 in the official WROOM pin allocation for LED.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "IO5",
+            "main_functions": [
+              "GPIO5",
+              "I2S_MCLK"
+            ],
+            "notes": [
+              "IO5 in the official WROOM pin allocation for I2S_MCLK.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "IO6",
+            "main_functions": [
+              "GPIO6",
+              "I2S_CODEC_DSDIN"
+            ],
+            "notes": [
+              "IO6 in the official WROOM pin allocation for I2S_CODEC_DSDIN.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "IO7",
+            "main_functions": [
+              "GPIO7",
+              "I2S_LRCK"
+            ],
+            "notes": [
+              "IO7 in the official WROOM pin allocation for I2S_LRCK.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "IO15",
+            "main_functions": [
+              "GPIO15",
+              "I2S_ADC_SDOUT"
+            ],
+            "notes": [
+              "IO15 in the official WROOM pin allocation for I2S_ADC_SDOUT.",
+              "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "IO16",
+            "main_functions": [
+              "GPIO16",
+              "I2S_SCLK"
+            ],
+            "notes": [
+              "IO16 in the official WROOM pin allocation for I2S_SCLK.",
+              "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "IO17",
+            "main_functions": [
+              "GPIO17",
+              "LCD_DE"
+            ],
+            "notes": [
+              "IO17 in the official WROOM pin allocation for LCD_DE.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "IO18",
+            "main_functions": [
+              "GPIO18",
+              "LCD_DATA7"
+            ],
+            "notes": [
+              "IO18 in the official WROOM pin allocation for LCD_DATA7.",
+              "Power-up low-level glitch for about 60 us.",
+              "Power-up high-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "IO8",
+            "main_functions": [
+              "GPIO8",
+              "LCD_DATA6"
+            ],
+            "notes": [
+              "IO8 in the official WROOM pin allocation for LCD_DATA6.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "IO3",
+            "main_functions": [
+              "GPIO3",
+              "LCD_VSYNC"
+            ],
+            "notes": [
+              "IO3 in the official WROOM pin allocation for LCD_VSYNC.",
+              "Strapping pin for JTAG signal source selection; default is floating.",
+              "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "IO46",
+            "main_functions": [
+              "GPIO46",
+              "LCD_HSYNC"
+            ],
+            "notes": [
+              "IO46 in the official WROOM pin allocation for LCD_HSYNC.",
+              "Strapping pin with default weak pull-down.",
+              "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+              "Also participates in ROM message printing control."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "IO9",
+            "main_functions": [
+              "GPIO9",
+              "LCD_PCLK"
+            ],
+            "notes": [
+              "IO9 in the official WROOM pin allocation for LCD_PCLK.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "IO10",
+            "main_functions": [
+              "GPIO10",
+              "LCD_DATA0"
+            ],
+            "notes": [
+              "IO10 in the official WROOM pin allocation for LCD_DATA0.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "IO11",
+            "main_functions": [
+              "GPIO11",
+              "LCD_DATA1"
+            ],
+            "notes": [
+              "IO11 in the official WROOM pin allocation for LCD_DATA1.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "IO12",
+            "main_functions": [
+              "GPIO12",
+              "LCD_DATA2"
+            ],
+            "notes": [
+              "IO12 in the official WROOM pin allocation for LCD_DATA2.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "IO13",
+            "main_functions": [
+              "GPIO13",
+              "LCD_DATA3"
+            ],
+            "notes": [
+              "IO13 in the official WROOM pin allocation for LCD_DATA3.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "IO14",
+            "main_functions": [
+              "GPIO14",
+              "LCD_DATA4"
+            ],
+            "notes": [
+              "IO14 in the official WROOM pin allocation for LCD_DATA4.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "main_functions": [
+              "GPIO21",
+              "LCD_DATA5"
+            ],
+            "notes": [
+              "IO21 in the official WROOM pin allocation for LCD_DATA5."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "IO47",
+            "main_functions": [
+              "GPIO47",
+              "I2C_SDA"
+            ],
+            "notes": [
+              "IO47 in the official WROOM pin allocation for I2C_SDA.",
+              "Differential SPI/SUBSPI positive clock.",
+              "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "IO48",
+            "main_functions": [
+              "GPIO48",
+              "I2C_SCL"
+            ],
+            "notes": [
+              "IO48 in the official WROOM pin allocation for I2C_SCL.",
+              "Differential SPI/SUBSPI negative clock.",
+              "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "IO45",
+            "main_functions": [
+              "GPIO45",
+              "LCD_DATA8"
+            ],
+            "notes": [
+              "IO45 in the official WROOM pin allocation for LCD_DATA8.",
+              "Strapping pin with default weak pull-down.",
+              "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "IO35",
+            "main_functions": [
+              "GPIO35",
+              "NC"
+            ],
+            "notes": [
+              "IO35 in the official WROOM pin allocation for No connection.",
+              "The official GPIO allocation table marks this pin as no connection.",
+              "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+            ],
+            "warnings": [
+              "Board hardware",
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "IO36",
+            "main_functions": [
+              "GPIO36",
+              "NC"
+            ],
+            "notes": [
+              "IO36 in the official WROOM pin allocation for No connection.",
+              "The official GPIO allocation table marks this pin as no connection.",
+              "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+            ],
+            "warnings": [
+              "Board hardware",
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO37",
+            "board_label": "IO37",
+            "main_functions": [
+              "GPIO37",
+              "NC"
+            ],
+            "notes": [
+              "IO37 in the official WROOM pin allocation for No connection.",
+              "The official GPIO allocation table marks this pin as no connection.",
+              "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+            ],
+            "warnings": [
+              "Board hardware",
+              "PSRAM"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "IO38",
+            "main_functions": [
+              "GPIO38",
+              "LCD_DATA9"
+            ],
+            "notes": [
+              "IO38 in the official WROOM pin allocation for LCD_DATA9."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "IO39",
+            "main_functions": [
+              "GPIO39",
+              "LCD_DATA10"
+            ],
+            "notes": [
+              "IO39 in the official WROOM pin allocation for LCD_DATA10.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "IO40",
+            "main_functions": [
+              "GPIO40",
+              "LCD_DATA11"
+            ],
+            "notes": [
+              "IO40 in the official WROOM pin allocation for LCD_DATA11.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "IO41",
+            "main_functions": [
+              "GPIO41",
+              "LCD_DATA12"
+            ],
+            "notes": [
+              "IO41 in the official WROOM pin allocation for LCD_DATA12.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "IO42",
+            "main_functions": [
+              "GPIO42",
+              "LCD_DATA13"
+            ],
+            "notes": [
+              "IO42 in the official WROOM pin allocation for LCD_DATA13.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "main_functions": [
+              "GPIO2",
+              "LCD_DATA14"
+            ],
+            "notes": [
+              "IO2 in the official WROOM pin allocation for LCD_DATA14.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "IO1",
+            "main_functions": [
+              "GPIO1",
+              "LCD_DATA15"
+            ],
+            "notes": [
+              "IO1 in the official WROOM pin allocation for LCD_DATA15.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          }
+        ]
       }
     },
     {
@@ -15679,6 +18022,504 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB-C and the 3.7 V lithium battery path feed the board power system.",
+          "The schematic includes power-control, battery-management, and codec power-control circuits."
+        ],
+        "programming": [
+          "USB-C is used for power, programming download, and debugging. GPIO0 is tied to the boot function."
+        ],
+        "onboard_hardware": [
+          "Circular LCD, dual microphones, ES7210 audio ADC, ES8311 codec, NS4150B amplifier, BMI270 IMU, MicroSD slot, touch pads, green LED, battery gauge, and magnetic connector."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "usb-c"
+          ]
+        },
+        "buttons": [],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO9",
+            "board_label": "POWER_CTRL",
+            "main_functions": [
+              "GPIO9",
+              "POWER_CTRL"
+            ],
+            "notes": [
+              "POWER_CTRL in the official Power allocation for Power.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "CODEC_PWR_CTRL",
+            "main_functions": [
+              "GPIO48",
+              "CODEC_PWR_CTRL"
+            ],
+            "notes": [
+              "CODEC_PWR_CTRL in the official Audio power allocation for Audio power.",
+              "Differential SPI/SUBSPI negative clock.",
+              "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "I2C_SCL",
+            "main_functions": [
+              "GPIO1",
+              "I2C_SCL"
+            ],
+            "notes": [
+              "I2C_SCL in the official Shared I2C allocation for Shared I2C.",
+              "Shared clock for IMU, touch, battery, audio, and expansion I2C paths.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "I2C_SDA",
+            "main_functions": [
+              "GPIO2",
+              "I2C_SDA"
+            ],
+            "notes": [
+              "I2C_SDA in the official Shared I2C allocation for Shared I2C.",
+              "Shared data for IMU, touch, battery, audio, and expansion I2C paths.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO46",
+            "board_label": "LCD_SDA0",
+            "main_functions": [
+              "GPIO46",
+              "LCD_SDA0"
+            ],
+            "notes": [
+              "LCD_SDA0 in the official LCD QSPI allocation for LCD QSPI.",
+              "Strapping pin with default weak pull-down.",
+              "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+              "Also participates in ROM message printing control."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "LCD_SDA1",
+            "main_functions": [
+              "GPIO13",
+              "LCD_SDA1"
+            ],
+            "notes": [
+              "LCD_SDA1 in the official LCD QSPI allocation for LCD QSPI.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "LCD_SDA2",
+            "main_functions": [
+              "GPIO11",
+              "LCD_SDA2"
+            ],
+            "notes": [
+              "LCD_SDA2 in the official LCD QSPI allocation for LCD QSPI.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "LCD_SDA3",
+            "main_functions": [
+              "GPIO12",
+              "LCD_SDA3"
+            ],
+            "notes": [
+              "LCD_SDA3 in the official LCD QSPI allocation for LCD QSPI.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "LCD_SCL",
+            "main_functions": [
+              "GPIO18",
+              "LCD_SCL"
+            ],
+            "notes": [
+              "LCD_SCL in the official LCD QSPI allocation for LCD QSPI.",
+              "Power-up low-level glitch for about 60 us.",
+              "Power-up high-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO45",
+            "board_label": "LCD_DC",
+            "main_functions": [
+              "GPIO45",
+              "LCD_DC"
+            ],
+            "notes": [
+              "LCD_DC in the official LCD control allocation for LCD control.",
+              "Strapping pin with default weak pull-down.",
+              "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO44",
+            "board_label": "LCD_BLK",
+            "main_functions": [
+              "GPIO44",
+              "LCD_BLK"
+            ],
+            "notes": [
+              "LCD_BLK in the official LCD control allocation for LCD control.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "LCD_CS",
+            "main_functions": [
+              "GPIO14",
+              "LCD_CS"
+            ],
+            "notes": [
+              "LCD_CS in the official LCD control allocation for LCD control.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "LCD_RST_CTRL",
+            "main_functions": [
+              "GPIO47",
+              "LCD_RST_CTRL"
+            ],
+            "notes": [
+              "LCD_RST_CTRL in the official LCD control allocation for LCD control.",
+              "Differential SPI/SUBSPI positive clock.",
+              "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "LCD_TE",
+            "main_functions": [
+              "GPIO8",
+              "LCD_TE"
+            ],
+            "notes": [
+              "LCD_TE in the official LCD control allocation for LCD control.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "TP_INT",
+            "main_functions": [
+              "GPIO10",
+              "TP_INT"
+            ],
+            "notes": [
+              "TP_INT in the official Touch allocation for Touch.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "TOUCH_PAD1",
+            "main_functions": [
+              "GPIO6",
+              "TOUCH_PAD1"
+            ],
+            "notes": [
+              "TOUCH_PAD1 in the official Touch allocation for Touch.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "TOUCH_PAD2",
+            "main_functions": [
+              "GPIO7",
+              "TOUCH_PAD2"
+            ],
+            "notes": [
+              "TOUCH_PAD2 in the official Touch allocation for Touch.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO42",
+            "board_label": "I2S_MCLK",
+            "main_functions": [
+              "GPIO42",
+              "I2S_MCLK"
+            ],
+            "notes": [
+              "I2S_MCLK in the official Audio I2S allocation for Audio I2S.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "I2S_DI",
+            "main_functions": [
+              "GPIO3",
+              "I2S_DI"
+            ],
+            "notes": [
+              "I2S_DI in the official Audio I2S allocation for Audio I2S.",
+              "Strapping pin for JTAG signal source selection; default is floating.",
+              "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "JTAG",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "I2S_WS",
+            "main_functions": [
+              "GPIO39",
+              "I2S_WS"
+            ],
+            "notes": [
+              "I2S_WS in the official Audio I2S allocation for Audio I2S.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "I2S_BCK",
+            "main_functions": [
+              "GPIO40",
+              "I2S_BCK"
+            ],
+            "notes": [
+              "I2S_BCK in the official Audio I2S allocation for Audio I2S.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO41",
+            "board_label": "I2S_DO",
+            "main_functions": [
+              "GPIO41",
+              "I2S_DO"
+            ],
+            "notes": [
+              "I2S_DO in the official Audio I2S allocation for Audio I2S.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "PA_CTRL",
+            "main_functions": [
+              "GPIO15",
+              "PA_CTRL"
+            ],
+            "notes": [
+              "PA_CTRL in the official Speaker amplifier allocation for Speaker amplifier.",
+              "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "SD_DA0",
+            "main_functions": [
+              "GPIO17",
+              "SD_DA0"
+            ],
+            "notes": [
+              "SD_DA0 in the official MicroSD allocation for MicroSD.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "SD_CLK",
+            "main_functions": [
+              "GPIO16",
+              "SD_CLK"
+            ],
+            "notes": [
+              "SD_CLK in the official MicroSD allocation for MicroSD.",
+              "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO38",
+            "board_label": "SD_CMD",
+            "main_functions": [
+              "GPIO38",
+              "SD_CMD"
+            ],
+            "notes": [
+              "SD_CMD in the official MicroSD allocation for MicroSD."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "IMU_INT1",
+            "main_functions": [
+              "GPIO21",
+              "IMU_INT1"
+            ],
+            "notes": [
+              "IMU_INT1 in the official IMU allocation for IMU."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "U1RXD",
+            "main_functions": [
+              "GPIO4",
+              "U1RXD"
+            ],
+            "notes": [
+              "U1RXD in the official Magnetic connector allocation for Magnetic connector.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "U1TXD",
+            "main_functions": [
+              "GPIO5",
+              "U1TXD"
+            ],
+            "notes": [
+              "U1TXD in the official Magnetic connector allocation for Magnetic connector.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          }
+        ]
       }
     },
     {
@@ -16727,6 +19568,238 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB-C powers the board and charges the 3.7 V battery through the charging circuit.",
+          "The schematic includes VBUS, battery-voltage, charge-status, boost, and WS2812 power-control paths."
+        ],
+        "programming": [
+          "USB-C is used for power, programming/download, debugging, and battery charging."
+        ],
+        "onboard_hardware": [
+          "Two keys, three-position mode switch, two WS2812 RGB LEDs, battery charger, VBUS monitor, and HY2.0-4P ports."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "usb-c"
+          ]
+        },
+        "buttons": [],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO0",
+            "board_label": "KEY_1",
+            "main_functions": [
+              "GPIO0",
+              "KEY_1"
+            ],
+            "notes": [
+              "KEY_1 in the official Keys allocation for Keys.",
+              "Strapping pin with default weak pull-up.",
+              "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "KEY_2",
+            "main_functions": [
+              "GPIO17",
+              "KEY_2"
+            ],
+            "notes": [
+              "KEY_2 in the official Keys allocation for Keys.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "SWITCH_1",
+            "main_functions": [
+              "GPIO8",
+              "SWITCH_1"
+            ],
+            "notes": [
+              "SWITCH_1 in the official Mode switch allocation for Mode switch.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "SWITCH_2",
+            "main_functions": [
+              "GPIO7",
+              "SWITCH_2"
+            ],
+            "notes": [
+              "SWITCH_2 in the official Mode switch allocation for Mode switch.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "ADC_BAT",
+            "main_functions": [
+              "GPIO10",
+              "ADC_BAT"
+            ],
+            "notes": [
+              "ADC_BAT in the official Power monitor allocation for Power monitor.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "ADC_VBUS",
+            "main_functions": [
+              "GPIO2",
+              "ADC_VBUS"
+            ],
+            "notes": [
+              "ADC_VBUS in the official Power monitor allocation for Power monitor.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "ADC_CHRG",
+            "main_functions": [
+              "GPIO9",
+              "ADC_CHRG"
+            ],
+            "notes": [
+              "ADC_CHRG in the official Power monitor allocation for Power monitor.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "WS2812_IN",
+            "main_functions": [
+              "GPIO21",
+              "WS2812_IN"
+            ],
+            "notes": [
+              "WS2812_IN in the official RGB LEDs allocation for RGB LEDs."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO40",
+            "board_label": "PWR_2812",
+            "main_functions": [
+              "GPIO40",
+              "PWR_2812"
+            ],
+            "notes": [
+              "PWR_2812 in the official RGB LEDs allocation for RGB LEDs.",
+              "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power domain",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "GPIO5",
+            "main_functions": [
+              "GPIO5",
+              "UART1_RX"
+            ],
+            "notes": [
+              "GPIO5 in the official HY2.0 ports allocation for HY2.0 ports.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "GPIO6",
+            "main_functions": [
+              "GPIO6"
+            ],
+            "notes": [
+              "GPIO6 in the official HY2.0 ports allocation for HY2.0 ports.",
+              "Power-up low-level glitch for about 60 us."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Power-up glitch"
+            ]
+          },
+          {
+            "gpio": "GPIO47",
+            "board_label": "GPIO47",
+            "main_functions": [
+              "GPIO47"
+            ],
+            "notes": [
+              "GPIO47 in the official HY2.0 ports allocation for HY2.0 ports.",
+              "Differential SPI/SUBSPI positive clock.",
+              "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO48",
+            "board_label": "GPIO48",
+            "main_functions": [
+              "GPIO48"
+            ],
+            "notes": [
+              "GPIO48 in the official HY2.0 ports allocation for HY2.0 ports.",
+              "Differential SPI/SUBSPI negative clock.",
+              "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          }
         ]
       }
     },
@@ -18416,6 +21489,92 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Micro-USB port, 5V/GND header pins, or 3V3/GND header pins can power the board.",
+          "Use only one power supply option at a time; the official guide warns that multiple sources can damage the board or supply."
+        ],
+        "programming": [
+          "CP2102N USB-to-UART bridge on the Micro-USB port is used for flashing and serial debugging."
+        ],
+        "onboard_hardware": [
+          "Boot button, EN button, 5 V power LED, CP2102N USB-to-UART bridge, and Micro-USB connector."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "EN"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO3",
+            "board_label": "RXD0",
+            "main_functions": [
+              "GPIO3",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "notes": [
+              "J2-10 board header pin, silkscreen label RXD0.",
+              "Connected to the USB-to-UART bridge chip on the board.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TXD0",
+            "main_functions": [
+              "GPIO1",
+              "U0TXD",
+              "CLK_OUT3",
+              "EMAC_RXD2"
+            ],
+            "notes": [
+              "J2-11 board header pin, silkscreen label TXD0.",
+              "Connected to the USB-to-UART bridge chip on the board.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+              "ROM boot messages print to UART0 by default unless configured otherwise."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "main_functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "RTC_GPIO11",
+              "CLK_OUT1",
+              "EMAC_TX_CLK",
+              "Boot"
+            ],
+            "notes": [
+              "J3-15 board header pin, silkscreen label IO0.",
+              "Connected to the board Boot button. Holding Boot and then pressing EN initiates firmware download mode.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          }
+        ]
       }
     },
     {
@@ -19303,6 +22462,118 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB port or 5 V Input can power the Ethernet board A.",
+          "The PoE board B can also supply 5 V to board A; use only one active power path at a time."
+        ],
+        "programming": [
+          "FT2232H USB bridge provides USB-to-serial and USB-to-JTAG access; automatic firmware download is supported."
+        ],
+        "onboard_hardware": [
+          "ESP32-WROVER-E module, IP101GRI Ethernet PHY, RJ45 port, magnetics, and link/activity LEDs.",
+          "FT2232H USB bridge, USB port, power switch, 5 V input, 5V power LED, and DC/DC converter.",
+          "GPIO Header 1, GPIO Header 2, Function Switch, BOOT button, EN button, Tx/Rx LEDs, and optional PoE board B connectors.",
+          "Internal RMII wiring uses GPIO0 for REF_CLK and GPIO5 for PHY Reset_N."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "EN"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO13",
+            "board_label": "GPIO13",
+            "main_functions": [
+              "GPIO13",
+              "ADC2_CH4",
+              "RTC_GPIO14",
+              "TOUCH4",
+              "MTCK"
+            ],
+            "notes": [
+              "GPIO Header 2-5 board header pin, silkscreen label GPIO13.",
+              "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "GPIO12",
+            "main_functions": [
+              "GPIO12",
+              "ADC2_CH5",
+              "RTC_GPIO15",
+              "TOUCH5",
+              "MTDI"
+            ],
+            "notes": [
+              "GPIO Header 2-6 board header pin, silkscreen label GPIO12.",
+              "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Voltage",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "GPIO15",
+            "main_functions": [
+              "GPIO15",
+              "ADC2_CH3",
+              "RTC_GPIO13",
+              "TOUCH3",
+              "MTDO"
+            ],
+            "notes": [
+              "GPIO Header 2-7 board header pin, silkscreen label GPIO15.",
+              "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls U0TXD printing and SDIO slave timing at reset.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "JTAG"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "GPIO14",
+            "main_functions": [
+              "GPIO14",
+              "ADC2_CH6",
+              "RTC_GPIO16",
+              "TOUCH6",
+              "MTMS"
+            ],
+            "notes": [
+              "GPIO Header 2-8 board header pin, silkscreen label GPIO14.",
+              "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "Board hardware",
+              "JTAG"
+            ]
+          }
         ]
       }
     },
@@ -22642,6 +25913,683 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "The board can be powered from USB or the 5V Input connector, with JP7 selecting the source.",
+          "The Power Switch toggles the board on and off."
+        ],
+        "programming": [
+          "FT2232HL provides USB-to-serial on channel B and USB-to-JTAG on channel A.",
+          "JP2 enables the JTAG or UART jumper routing, and JP14 enables RTS/CTS flow control."
+        ],
+        "onboard_hardware": [
+          "LCD screen, microSD card slot, OV7670 camera connector, RGB LED, 32.768 kHz crystal, FT2232HL USB bridge, Boot button, EN button, power selector, power switch, 5V input, 5V power LED, and 0R current-shunt placeholder."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "EN"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO21",
+            "board_label": "IO21",
+            "main_functions": [
+              "GPIO21",
+              "XCLK",
+              "LCD_DC"
+            ],
+            "notes": [
+              "JP1-18 board header pin, silkscreen label IO21.",
+              "Shared with the on-board OV7670 camera connector.",
+              "Shared with the on-board LCD connector.",
+              "Shared with the microSD card detect line. The official guide says removing R167 allows the LCD and SD slot to coexist when card detect is not required."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "IO4",
+            "main_functions": [
+              "GPIO4",
+              "Blue"
+            ],
+            "notes": [
+              "JP1-24 board header pin, silkscreen label IO4.",
+              "Shared with the on-board OV7670 camera connector.",
+              "Shared with the on-board RGB LED.",
+              "Shared with the on-board LCD connector."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "main_functions": [
+              "GPIO0",
+              "Red"
+            ],
+            "notes": [
+              "JP1-25 board header pin, silkscreen label IO0.",
+              "Shared with the on-board RGB LED.",
+              "Connected to the board Boot button. Holding Boot and then pressing EN initiates firmware download mode.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Boot",
+              "Strapping",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "IO2",
+            "main_functions": [
+              "GPIO2",
+              "Green"
+            ],
+            "notes": [
+              "JP1-26 board header pin, silkscreen label IO2.",
+              "Shared with the on-board RGB LED.",
+              "Shared with the microSD card slot.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls boot mode with GPIO0."
+            ],
+            "warnings": [
+              "Strapping",
+              "Board hardware",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "MTMS",
+            "main_functions": [
+              "GPIO14",
+              "MTMS",
+              "TMS"
+            ],
+            "notes": [
+              "JP2-2 JTAG/JP2 pin, silkscreen label MTMS.",
+              "JTAG signal on the ESP32 side of JP2.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "JTAG",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO15",
+            "board_label": "MTDO",
+            "main_functions": [
+              "GPIO15",
+              "MTDO",
+              "TDO"
+            ],
+            "notes": [
+              "JP2-3 JTAG/JP2 pin, silkscreen label MTDO.",
+              "JTAG signal on the ESP32 side of JP2.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls U0TXD printing and SDIO slave timing at reset.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "JTAG",
+              "Board hardware",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO12",
+            "board_label": "MTDI",
+            "main_functions": [
+              "GPIO12",
+              "MTDI",
+              "TDI"
+            ],
+            "notes": [
+              "JP2-4 JTAG/JP2 pin, silkscreen label MTDI.",
+              "JTAG signal on the ESP32 side of JP2.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "JTAG",
+              "Board hardware",
+              "Strapping",
+              "Voltage"
+            ]
+          },
+          {
+            "gpio": "GPIO13",
+            "board_label": "MTCK",
+            "main_functions": [
+              "GPIO13",
+              "MTCK",
+              "TCK"
+            ],
+            "notes": [
+              "JP2-5 JTAG/JP2 pin, silkscreen label MTCK.",
+              "JTAG signal on the ESP32 side of JP2.",
+              "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+            ],
+            "warnings": [
+              "JTAG",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "CLK",
+            "main_functions": [
+              "GPIO6",
+              "CLK"
+            ],
+            "notes": [
+              "JP2-6 SPI Flash/JP2 pin, silkscreen label CLK.",
+              "Used internally for communication with the module flash bus. The official guide exposes these pins for monitoring or advanced usage only.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "SD0",
+            "main_functions": [
+              "GPIO7",
+              "D0"
+            ],
+            "notes": [
+              "JP2-7 SPI Flash/JP2 pin, silkscreen label SD0.",
+              "Used internally for communication with the module flash bus. The official guide exposes these pins for monitoring or advanced usage only.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "SD1",
+            "main_functions": [
+              "GPIO8",
+              "D1"
+            ],
+            "notes": [
+              "JP2-8 SPI Flash/JP2 pin, silkscreen label SD1.",
+              "Used internally for communication with the module flash bus. The official guide exposes these pins for monitoring or advanced usage only.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "SD2",
+            "main_functions": [
+              "GPIO9",
+              "D2"
+            ],
+            "notes": [
+              "JP2-9 SPI Flash/JP2 pin, silkscreen label SD2.",
+              "Used internally for communication with the module flash bus. The official guide exposes these pins for monitoring or advanced usage only.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "SD3",
+            "main_functions": [
+              "GPIO10",
+              "D3"
+            ],
+            "notes": [
+              "JP2-10 SPI Flash/JP2 pin, silkscreen label SD3.",
+              "Used internally for communication with the module flash bus. The official guide exposes these pins for monitoring or advanced usage only.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "CMD",
+            "main_functions": [
+              "GPIO11",
+              "CMD"
+            ],
+            "notes": [
+              "JP2-11 SPI Flash/JP2 pin, silkscreen label CMD.",
+              "Used internally for communication with the module flash bus. The official guide exposes these pins for monitoring or advanced usage only.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "Red",
+            "main_functions": [
+              "GPIO0",
+              "Red"
+            ],
+            "notes": [
+              "RGB-1 RGB LED pin, silkscreen label Red.",
+              "On-board RGB LED red channel.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "Green",
+            "main_functions": [
+              "GPIO2",
+              "Green"
+            ],
+            "notes": [
+              "RGB-2 RGB LED pin, silkscreen label Green.",
+              "On-board RGB LED green channel.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls boot mode with GPIO0."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "Blue",
+            "main_functions": [
+              "GPIO4",
+              "Blue"
+            ],
+            "notes": [
+              "RGB-3 RGB LED pin, silkscreen label Blue.",
+              "On-board RGB LED blue channel."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO27",
+            "board_label": "SIO_C",
+            "main_functions": [
+              "GPIO27",
+              "CAM_SCCB_CLK"
+            ],
+            "notes": [
+              "JP4-3 Camera/JP4 pin, silkscreen label SIO_C.",
+              "Camera SCCB clock signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO26",
+            "board_label": "SIO_D",
+            "main_functions": [
+              "GPIO26",
+              "CAM_SCCB_DAT"
+            ],
+            "notes": [
+              "JP4-4 Camera/JP4 pin, silkscreen label SIO_D.",
+              "Camera SCCB data signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "VSYNC",
+            "main_functions": [
+              "GPIO25",
+              "CAM_VSYNC"
+            ],
+            "notes": [
+              "JP4-5 Camera/JP4 pin, silkscreen label VSYNC.",
+              "Camera vertical sync signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "HREF",
+            "main_functions": [
+              "GPIO23",
+              "CAM_HREF"
+            ],
+            "notes": [
+              "JP4-6 Camera/JP4 pin, silkscreen label HREF.",
+              "Camera horizontal reference signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "PCLK",
+            "main_functions": [
+              "GPIO22",
+              "CAM_PCLK"
+            ],
+            "notes": [
+              "JP4-7 Camera/JP4 pin, silkscreen label PCLK.",
+              "Camera pixel clock signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "XCLK",
+            "main_functions": [
+              "GPIO21",
+              "CAM_XCLK"
+            ],
+            "notes": [
+              "JP4-8 Camera/JP4 pin, silkscreen label XCLK.",
+              "Camera system clock signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO35",
+            "board_label": "D7",
+            "main_functions": [
+              "GPIO35",
+              "CAM_D7"
+            ],
+            "notes": [
+              "JP4-9 Camera/JP4 pin, silkscreen label D7.",
+              "Camera pixel data bit 7.",
+              "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO34",
+            "board_label": "D6",
+            "main_functions": [
+              "GPIO34",
+              "CAM_D6"
+            ],
+            "notes": [
+              "JP4-10 Camera/JP4 pin, silkscreen label D6.",
+              "Camera pixel data bit 6.",
+              "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO39",
+            "board_label": "D5",
+            "main_functions": [
+              "GPIO39",
+              "CAM_D5"
+            ],
+            "notes": [
+              "JP4-11 Camera/JP4 pin, silkscreen label D5.",
+              "Camera pixel data bit 5.",
+              "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO36",
+            "board_label": "D4",
+            "main_functions": [
+              "GPIO36",
+              "CAM_D4"
+            ],
+            "notes": [
+              "JP4-12 Camera/JP4 pin, silkscreen label D4.",
+              "Camera pixel data bit 4.",
+              "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "D3",
+            "main_functions": [
+              "GPIO19",
+              "CAM_D3"
+            ],
+            "notes": [
+              "JP4-13 Camera/JP4 pin, silkscreen label D3.",
+              "Camera pixel data bit 3."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "D2",
+            "main_functions": [
+              "GPIO18",
+              "CAM_D2"
+            ],
+            "notes": [
+              "JP4-14 Camera/JP4 pin, silkscreen label D2.",
+              "Camera pixel data bit 2."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "D1",
+            "main_functions": [
+              "GPIO5",
+              "CAM_D1"
+            ],
+            "notes": [
+              "JP4-15 Camera/JP4 pin, silkscreen label D1.",
+              "Camera pixel data bit 1.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls SDIO slave timing at reset."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "D0",
+            "main_functions": [
+              "GPIO4",
+              "CAM_D0"
+            ],
+            "notes": [
+              "JP4-16 Camera/JP4 pin, silkscreen label D0.",
+              "Camera pixel data bit 0."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "RESET",
+            "main_functions": [
+              "GPIO0",
+              "CAM_RESET"
+            ],
+            "notes": [
+              "JP4-17 Camera/JP4 pin, silkscreen label RESET.",
+              "Camera reset signal.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO18",
+            "board_label": "RESET",
+            "main_functions": [
+              "GPIO18",
+              "LCD_RET"
+            ],
+            "notes": [
+              "U5-1 LCD/U5 pin, silkscreen label RESET.",
+              "Shared with the on-board LCD connector."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO19",
+            "board_label": "SCL",
+            "main_functions": [
+              "GPIO19",
+              "LCD_SCLK"
+            ],
+            "notes": [
+              "U5-2 LCD/U5 pin, silkscreen label SCL.",
+              "Shared with the on-board LCD connector."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO21",
+            "board_label": "D/C",
+            "main_functions": [
+              "GPIO21",
+              "LCD_DC"
+            ],
+            "notes": [
+              "U5-3 LCD/U5 pin, silkscreen label D/C.",
+              "Shared with the on-board LCD connector.",
+              "Shared with the microSD card detect line."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO22",
+            "board_label": "CS",
+            "main_functions": [
+              "GPIO22",
+              "LCD_CS"
+            ],
+            "notes": [
+              "U5-4 LCD/U5 pin, silkscreen label CS.",
+              "Shared with the on-board LCD connector."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO23",
+            "board_label": "SDA",
+            "main_functions": [
+              "GPIO23",
+              "LCD_SDA"
+            ],
+            "notes": [
+              "U5-5 LCD/U5 pin, silkscreen label SDA.",
+              "Shared with the on-board LCD connector."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO25",
+            "board_label": "SDO",
+            "main_functions": [
+              "GPIO25",
+              "LCD_SDO"
+            ],
+            "notes": [
+              "U5-6 LCD/U5 pin, silkscreen label SDO.",
+              "Shared with the on-board LCD connector."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO5",
+            "board_label": "Backlight",
+            "main_functions": [
+              "GPIO5",
+              "LCD_BL"
+            ],
+            "notes": [
+              "U5-7 LCD/U5 pin, silkscreen label Backlight.",
+              "Shared with the on-board LCD connector.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "Controls SDIO slave timing at reset."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping"
+            ]
+          }
+        ]
       }
     },
     {
@@ -24156,6 +28104,87 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Micro-USB port, 5V/GND header pins, or 3V3/GND header pins can power the board.",
+          "Keep external power inputs mutually exclusive; the official guide documents USB, 5V, and 3V3 power options."
+        ],
+        "programming": [
+          "Micro-USB USB-to-UART bridge is used for flashing, power, and serial communication."
+        ],
+        "onboard_hardware": [
+          "Boot and Reset buttons, 3.3 V power LED, USB-to-UART bridge, and Micro-USB connector."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO1",
+            "board_label": "TX",
+            "main_functions": [
+              "GPIO1",
+              "U0TXD"
+            ],
+            "notes": [
+              "J3-2 board header pin, silkscreen label TX. Official user-guide pin No. 33.",
+              "Connected to the board USB-to-UART bridge TX signal.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+              "ROM boot messages print to UART0 by default unless configured otherwise."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RX",
+            "main_functions": [
+              "GPIO3",
+              "U0RXD"
+            ],
+            "notes": [
+              "J3-3 board header pin, silkscreen label RX. Official user-guide pin No. 32.",
+              "Connected to the board USB-to-UART bridge RX signal.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "main_functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "CLK_OUT1",
+              "Boot"
+            ],
+            "notes": [
+              "J3-13 board header pin, silkscreen label IO0. Official user-guide pin No. 22.",
+              "Connected to the board Boot button. Holding Boot and pressing Reset enters firmware download mode.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          }
         ]
       }
     },
@@ -25730,6 +29759,91 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Micro-USB port, 5V/GND header pins, or 3V3/GND header pins can power the board.",
+          "The official guide warns to use one and only one power supply option at a time."
+        ],
+        "programming": [
+          "Micro-USB USB-to-UART bridge is used for flashing, power, and serial communication."
+        ],
+        "onboard_hardware": [
+          "Boot and EN buttons, 5 V power LED, USB-to-UART bridge, and Micro-B USB connector."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "EN"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO3",
+            "board_label": "RXD0",
+            "main_functions": [
+              "GPIO3",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "notes": [
+              "J2-10 board header pin, silkscreen label RXD0.",
+              "Connected to the USB-to-UART bridge chip on the board.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TXD0",
+            "main_functions": [
+              "GPIO1",
+              "U0TXD",
+              "CLK_OUT3",
+              "EMAC_RXD2"
+            ],
+            "notes": [
+              "J2-11 board header pin, silkscreen label TXD0.",
+              "Connected to the USB-to-UART bridge chip on the board.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+              "ROM boot messages print to UART0 by default unless configured otherwise."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "main_functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "RTC_GPIO11",
+              "CLK_OUT1",
+              "Boot"
+            ],
+            "notes": [
+              "J3-15 board header pin, silkscreen label IO0.",
+              "Connected to the board Boot button. Holding Boot and then pressing EN initiates firmware download mode.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          }
         ]
       }
     },
@@ -27797,6 +31911,207 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Micro-USB port, 5V/GND header pins, or 3V3/GND header pins can power the board.",
+          "Use only one power supply option at a time; the official guide warns that multiple sources can damage the board or power source."
+        ],
+        "programming": [
+          "USB-to-UART bridge (CP2102 in v4, CP2102N in v4.1) is used for flashing and serial debugging."
+        ],
+        "onboard_hardware": [
+          "Boot button, EN button, 5 V power LED, USB-to-UART bridge, LDO regulator, and Micro-USB connector."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "EN"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO8",
+            "board_label": "FSD1",
+            "main_functions": [
+              "GPIO8",
+              "SD_DATA1",
+              "SPID",
+              "HS1_DATA1",
+              "U2CTS"
+            ],
+            "notes": [
+              "J2-1 board pad, silkscreen label FSD1. The stock board does not populate a header here.",
+              "Connected to the embedded flash memory in the ESP32-PICO-D4 SiP module.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "FSD3",
+            "main_functions": [
+              "GPIO7",
+              "SD_DATA0",
+              "SPIQ",
+              "HS1_DATA0",
+              "U2RTS"
+            ],
+            "notes": [
+              "J2-2 board pad, silkscreen label FSD3. The stock board does not populate a header here.",
+              "Connected to the embedded flash memory in the ESP32-PICO-D4 SiP module.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "FCLK",
+            "main_functions": [
+              "GPIO6",
+              "SD_CLK",
+              "SPICLK",
+              "HS1_CLK",
+              "U1CTS"
+            ],
+            "notes": [
+              "J2-3 board pad, silkscreen label FCLK. The stock board does not populate a header here.",
+              "Connected to the embedded flash memory in the ESP32-PICO-D4 SiP module.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "RXD0",
+            "main_functions": [
+              "GPIO3",
+              "U0RXD",
+              "CLK_OUT2"
+            ],
+            "notes": [
+              "J2-12 board header pin, silkscreen label RXD0.",
+              "Connected to the pin of the USB bridge chip on the board.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO1",
+            "board_label": "TXD0",
+            "main_functions": [
+              "GPIO1",
+              "U0TXD",
+              "CLK_OUT3",
+              "EMAC_RXD2"
+            ],
+            "notes": [
+              "J2-13 board header pin, silkscreen label TXD0.",
+              "Connected to the pin of the USB bridge chip on the board.",
+              "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+              "ROM boot messages print to UART0 by default unless configured otherwise."
+            ],
+            "warnings": [
+              "Board hardware",
+              "UART0"
+            ]
+          },
+          {
+            "gpio": "GPIO16",
+            "board_label": "FCS",
+            "main_functions": [
+              "GPIO16",
+              "HS1_DATA4",
+              "U2RXD",
+              "EMAC_CLK_OUT"
+            ],
+            "notes": [
+              "J3-1 board pad, silkscreen label FCS. The stock board does not populate a header here.",
+              "Connected to the embedded flash memory in the ESP32-PICO-D4 SiP module."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO17",
+            "board_label": "FSD0",
+            "main_functions": [
+              "GPIO17",
+              "HS1_DATA5",
+              "U2TXD",
+              "EMAC_CLK_OUT_180"
+            ],
+            "notes": [
+              "J3-2 board pad, silkscreen label FSD0. The stock board does not populate a header here.",
+              "Connected to the embedded flash memory in the ESP32-PICO-D4 SiP module."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "FSD2",
+            "main_functions": [
+              "GPIO11",
+              "SD_CMD",
+              "SPICS0",
+              "HS1_CMD",
+              "U1RTS"
+            ],
+            "notes": [
+              "J3-3 board pad, silkscreen label FSD2. The stock board does not populate a header here.",
+              "Connected to the embedded flash memory in the ESP32-PICO-D4 SiP module.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "main_functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "RTC_GPIO11",
+              "CLK_OUT1",
+              "EMAC_TX_CLK"
+            ],
+            "notes": [
+              "J3-17 board header pin, silkscreen label IO0.",
+              "Connected to the board Boot button. Holding Boot and then pressing EN initiates firmware download mode.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          }
+        ]
       }
     },
     {
@@ -29604,6 +33919,148 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "Micro-USB port, 5V/GND header pins, or 3V3/GND header pins can power the board.",
+          "The official guide warns to use only one power supply option at a time."
+        ],
+        "programming": [
+          "Micro-USB USB-to-UART bridge is used for flashing, power, and serial communication."
+        ],
+        "onboard_hardware": [
+          "Boot and EN buttons, 5V power LED, USB-to-UART bridge, and Micro-USB connector."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "micro-usb"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "EN"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO9",
+            "board_label": "D2",
+            "main_functions": [
+              "GPIO9",
+              "D2"
+            ],
+            "notes": [
+              "J2-16 board header pin, silkscreen label D2.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "D3",
+            "main_functions": [
+              "GPIO10",
+              "D3"
+            ],
+            "notes": [
+              "J2-17 board header pin, silkscreen label D3.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO11",
+            "board_label": "CMD",
+            "main_functions": [
+              "GPIO11",
+              "CMD"
+            ],
+            "notes": [
+              "J2-18 board header pin, silkscreen label CMD.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "IO0",
+            "main_functions": [
+              "GPIO0",
+              "ADC2_CH1",
+              "TOUCH1",
+              "Boot"
+            ],
+            "notes": [
+              "J3-14 board header pin, silkscreen label IO0.",
+              "Connected to the board Boot button. Holding Boot and pressing EN initiates firmware download mode.",
+              "On some earlier ESP32-DevKitC V4 boards, C15 may cause the board to boot into Download mode or affect a GPIO0 clock output.",
+              "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+              "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Boot",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "D1",
+            "main_functions": [
+              "GPIO8",
+              "D1"
+            ],
+            "notes": [
+              "J3-17 board header pin, silkscreen label D1.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO7",
+            "board_label": "D0",
+            "main_functions": [
+              "GPIO7",
+              "D0"
+            ],
+            "notes": [
+              "J3-18 board header pin, silkscreen label D0.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO6",
+            "board_label": "CLK",
+            "main_functions": [
+              "GPIO6",
+              "CLK"
+            ],
+            "notes": [
+              "J3-19 board header pin, silkscreen label CLK.",
+              "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+            ],
+            "warnings": [
+              "Flash memory",
+              "Board hardware"
+            ]
+          }
         ]
       }
     },
@@ -31797,6 +36254,44 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive."
+        ],
+        "programming": [
+          "USB-to-UART bridge for flashing and serial logs; native USB port can be used for USB/JTAG workflows."
+        ],
+        "onboard_hardware": [
+          "Boot and Reset buttons, addressable RGB LED on GPIO38, USB-to-UART bridge, native USB port."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO38",
+            "board_label": "38",
+            "main_functions": [
+              "GPIO38",
+              "FSPIWP",
+              "SUBSPIWP",
+              "RGB LED"
+            ],
+            "notes": [
+              "J3-10 board header pin, silkscreen label 38.",
+              "Connected to the addressable RGB LED on ESP32-S3-DevKitC-1 v1.1."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          }
         ]
       }
     },
@@ -34158,6 +38653,47 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive."
+        ],
+        "programming": [
+          "USB-to-UART bridge for flashing and serial logs; native USB port can be used for USB/JTAG workflows."
+        ],
+        "onboard_hardware": [
+          "Boot and Reset buttons, addressable RGB LED on GPIO48, USB-to-UART bridge, native USB port."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": []
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO48",
+            "board_label": "48",
+            "main_functions": [
+              "GPIO48",
+              "SPICLK_N",
+              "SUBSPICLK_N_DIFF",
+              "RGB LED"
+            ],
+            "notes": [
+              "J3-21 board header pin, silkscreen label 48.",
+              "Connected to the addressable RGB LED on ESP32-S3-DevKitM-1.",
+              "Differential SPI/SUBSPI negative clock.",
+              "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Voltage"
+            ]
+          }
+        ]
       }
     },
     {
@@ -35428,6 +39964,50 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB-C ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive.",
+          "J5 jumper supports module current measurement."
+        ],
+        "programming": [
+          "USB-to-UART bridge for flashing and serial logs; native ESP32-C6 USB port supports USB/JTAG workflows."
+        ],
+        "onboard_hardware": [
+          "Boot and Reset buttons, addressable RGB LED on GPIO8, USB-to-UART bridge, native USB port, J5 jumper."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": [
+            "usb-c"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "main_functions": [
+              "GPIO8",
+              "RGB LED"
+            ],
+            "notes": [
+              "J1-9 board header pin, silkscreen label 8.",
+              "Connected to the addressable RGB LED on ESP32-C6-DevKitC-1.",
+              "Strapping pin with default floating state.",
+              "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+              "Also participates in UART0 ROM message printing control."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          }
+        ]
       }
     },
     {
@@ -36653,6 +41233,50 @@
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
         ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB-C ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive.",
+          "J5 jumper supports module current measurement."
+        ],
+        "programming": [
+          "USB-to-UART bridge for flashing and serial logs; native ESP32-C6 USB port supports USB/JTAG workflows."
+        ],
+        "onboard_hardware": [
+          "Boot and Reset buttons, addressable RGB LED on GPIO8, USB-to-UART bridge, native USB port, J5 jumper."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": [
+            "usb-c"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "main_functions": [
+              "GPIO8",
+              "RGB LED"
+            ],
+            "notes": [
+              "J1-9 board header pin, silkscreen label 8.",
+              "Connected to the addressable RGB LED on ESP32-C6-DevKitM-1.",
+              "Strapping pin with default floating state.",
+              "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+              "Also participates in UART0 ROM message printing control."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          }
+        ]
       }
     },
     {
@@ -37714,6 +42338,86 @@
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB Type-C to UART port, 5V/GND headers, or 3V3/GND headers; use only one power path at a time.",
+          "J5 jumper supports module current measurement and should be removed for 3V3 header current measurement."
+        ],
+        "programming": [
+          "USB-to-UART bridge for flashing and serial logs.",
+          "Native ESP32-H2 USB Type-C port supports USB 2.0 full-speed USB Serial/JTAG workflows."
+        ],
+        "onboard_hardware": [
+          "Boot and Reset buttons, addressable RGB LED on GPIO8, 32.768 kHz crystal on current hardware, USB-to-UART bridge, native USB port, and J5 current-measurement jumper."
+        ],
+        "usb_connectors": {
+          "count": 2,
+          "types": [
+            "usb-c"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "Reset"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO13",
+            "board_label": "13/N",
+            "main_functions": [
+              "GPIO13",
+              "XTAL_32K_P"
+            ],
+            "notes": [
+              "J1-7 board header pin, silkscreen label 13/N.",
+              "The user guide notes that when this pin is connected to XTAL_32K_P inside the module, it cannot be used for another purpose.",
+              "Boards with PW number on or after PW-2024-02-0362 populate the 32.768 kHz crystal by default.",
+              "Package pin name is XTAL_32K_P; GPIO identity is GPIO13."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO14",
+            "board_label": "14/N",
+            "main_functions": [
+              "GPIO14",
+              "XTAL_32K_N"
+            ],
+            "notes": [
+              "J1-8 board header pin, silkscreen label 14/N.",
+              "The user guide notes that when this pin is connected to XTAL_32K_N inside the module, it cannot be used for another purpose.",
+              "Boards with PW number on or after PW-2024-02-0362 populate the 32.768 kHz crystal by default.",
+              "Package pin name is XTAL_32K_N; GPIO identity is GPIO14."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO8",
+            "board_label": "8",
+            "main_functions": [
+              "GPIO8",
+              "ROM message control",
+              "RGB LED"
+            ],
+            "notes": [
+              "J3-8 board header pin, silkscreen label 8.",
+              "Connected to the addressable RGB LED on ESP32-H2-DevKitM-1. The official header table also labels this pin LOG.",
+              "Strapping pin with default floating state.",
+              "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+              "Also participates in UART0 ROM message printing control."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          }
         ]
       }
     }

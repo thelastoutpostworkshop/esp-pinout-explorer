@@ -50,6 +50,20 @@ export interface BoardDefinition {
     }>;
     general_warnings: string[];
   };
+  hardware_summary: {
+    power: string[];
+    programming: string[];
+    onboard_hardware: string[];
+    usb_connectors: { count: number | null; types: string[] };
+    buttons: string[];
+    documented_gpio_sharing: Array<{
+      gpio: string;
+      board_label: string | null;
+      main_functions: string[];
+      notes: string[];
+      warnings: string[];
+    }>;
+  };
 }
 
 function gpioName(pin: SocPin) {
@@ -126,6 +140,18 @@ function pinDetails(pins: SocPin[]) {
     }));
 }
 
+function documentedGpioSharing(pins: SocPin[]) {
+  return pins
+    .filter((pin) => pin.gpio !== undefined && (pin.warnings ?? []).includes('onboard'))
+    .map((pin) => ({
+      gpio: gpioName(pin),
+      board_label: pin.boardLabel ?? null,
+      main_functions: pin.mainFunctions,
+      notes: pin.notes ?? [],
+      warnings: (pin.warnings ?? []).map(getWarningLabel),
+    }));
+}
+
 function createBoardDefinition(
   metadata: (typeof boardRecognitionMetadata)[number],
   soc: SocDefinition,
@@ -177,6 +203,17 @@ function createBoardDefinition(
         'Confirm the exact module variant before using header GPIOs reserved for on-module memory.',
         ...(cautionPins.length ? ['Review each listed caution before wiring a board-header GPIO.'] : []),
       ]),
+    },
+    hardware_summary: {
+      power: profile.boardSpecs?.power ?? [],
+      programming: profile.boardSpecs?.programming ?? [],
+      onboard_hardware: profile.boardSpecs?.onBoardHardware ?? [],
+      usb_connectors: {
+        count: metadata.usbConnectorCount ?? null,
+        types: metadata.usbConnectorTypes,
+      },
+      buttons: metadata.buttonLabels,
+      documented_gpio_sharing: documentedGpioSharing(gpioPins),
     },
   };
 }
