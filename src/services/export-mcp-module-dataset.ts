@@ -26,7 +26,7 @@ export interface ModuleDefinition {
   caution_pins: Array<{ gpio: string; warning: string }>;
   peripheral_notes: Array<{ peripheral: string; summary: string; candidate_pins: string[] }>;
   general_warnings: string[];
-  sources: Array<{ title: string; url: string }>;
+  sources: Array<{ title: string; url: string; sections: string[] }>;
 }
 
 function unique<T>(values: T[]) {
@@ -89,7 +89,7 @@ function createModuleDefinition(chipFamily: string, profile: SocPackageVariant):
       'A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.',
       ...(profile.identificationNotes ?? []),
     ]),
-    sources: source ? [{ title: source.title, url: source.url }] : [],
+    sources: source ? [{ title: source.title, url: source.url, sections: source.sections }] : [],
   };
 }
 

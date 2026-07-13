@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-13T00:06:00.440Z",
+  "generated_at": "2026-07-13T10:12:55.726Z",
   "modules": [
     {
       "id": "esp32c6-mini-1",
@@ -100,7 +100,21 @@
       "sources": [
         {
           "title": "ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet",
-          "url": "https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf"
+          "url": "https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf",
+          "sections": [
+            "Table 1-1 ESP32-C6-MINI-1 (ANT) Series Comparison",
+            "Table 1-2 ESP32-C6-MINI-1U (CONN) Series Comparison",
+            "Figure 3-1 Pin Layout (Top View)",
+            "Table 3-1 Pin Definitions",
+            "Chapter 4 Boot Configurations",
+            "Figure 8-1 ESP32-C6-MINI-1 Schematics",
+            "Figure 8-2 ESP32-C6-MINI-1U Schematics",
+            "Figure 10-1 ESP32-C6-MINI-1 Physical Dimensions",
+            "Figure 10-2 ESP32-C6-MINI-1U Physical Dimensions",
+            "Figure 10-3 Dimensions of External Antenna Connector",
+            "Figure 11-1 ESP32-C6-MINI-1 Recommended PCB Land Pattern",
+            "Figure 11-2 ESP32-C6-MINI-1U Recommended PCB Land Pattern"
+          ]
         }
       ]
     },
@@ -202,7 +216,21 @@
       "sources": [
         {
           "title": "ESP32-C6-MINI-1 & ESP32-C6-MINI-1U Datasheet",
-          "url": "https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf"
+          "url": "https://documentation.espressif.com/esp32-c6-mini-1_mini-1u_datasheet_en.pdf",
+          "sections": [
+            "Table 1-1 ESP32-C6-MINI-1 (ANT) Series Comparison",
+            "Table 1-2 ESP32-C6-MINI-1U (CONN) Series Comparison",
+            "Figure 3-1 Pin Layout (Top View)",
+            "Table 3-1 Pin Definitions",
+            "Chapter 4 Boot Configurations",
+            "Figure 8-1 ESP32-C6-MINI-1 Schematics",
+            "Figure 8-2 ESP32-C6-MINI-1U Schematics",
+            "Figure 10-1 ESP32-C6-MINI-1 Physical Dimensions",
+            "Figure 10-2 ESP32-C6-MINI-1U Physical Dimensions",
+            "Figure 10-3 Dimensions of External Antenna Connector",
+            "Figure 11-1 ESP32-C6-MINI-1 Recommended PCB Land Pattern",
+            "Figure 11-2 ESP32-C6-MINI-1U Recommended PCB Land Pattern"
+          ]
         }
       ]
     },
@@ -291,7 +319,18 @@
       "sources": [
         {
           "title": "ESP32-C3-MINI-1 & MINI-1U Datasheet",
-          "url": "https://documentation.espressif.com/esp32-c3-mini-1_datasheet_en.pdf"
+          "url": "https://documentation.espressif.com/esp32-c3-mini-1_datasheet_en.pdf",
+          "sections": [
+            "Table 1-1 ESP32-C3-MINI-1 (ANT) Series Comparison",
+            "Table 1-2 ESP32-C3-MINI-1U (CONN) Series Comparison",
+            "Figure 3-1 Pin Layout (Top View)",
+            "Table 3-1 Pin Definitions",
+            "Chapter 4 Boot Configurations",
+            "Figure 8-1 ESP32-C3-MINI-1 Schematics",
+            "Figure 8-2 ESP32-C3-MINI-1U Schematics",
+            "Figure 10-1 ESP32-C3-MINI-1 Physical Dimensions",
+            "Figure 10-2 ESP32-C3-MINI-1U Physical Dimensions"
+          ]
         }
       ]
     },
@@ -380,7 +419,18 @@
       "sources": [
         {
           "title": "ESP32-C3-MINI-1 & MINI-1U Datasheet",
-          "url": "https://documentation.espressif.com/esp32-c3-mini-1_datasheet_en.pdf"
+          "url": "https://documentation.espressif.com/esp32-c3-mini-1_datasheet_en.pdf",
+          "sections": [
+            "Table 1-1 ESP32-C3-MINI-1 (ANT) Series Comparison",
+            "Table 1-2 ESP32-C3-MINI-1U (CONN) Series Comparison",
+            "Figure 3-1 Pin Layout (Top View)",
+            "Table 3-1 Pin Definitions",
+            "Chapter 4 Boot Configurations",
+            "Figure 8-1 ESP32-C3-MINI-1 Schematics",
+            "Figure 8-2 ESP32-C3-MINI-1U Schematics",
+            "Figure 10-1 ESP32-C3-MINI-1 Physical Dimensions",
+            "Figure 10-2 ESP32-C3-MINI-1U Physical Dimensions"
+          ]
         }
       ]
     },
@@ -469,7 +519,18 @@
       "sources": [
         {
           "title": "ESP32-C3-WROOM-02 & WROOM-02U Datasheet",
-          "url": "https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf"
+          "url": "https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf",
+          "sections": [
+            "Table 1-1 ESP32-C3-WROOM-02 (ANT) Series Comparison",
+            "Table 1-2 ESP32-C3-WROOM-02U (CONN) Series Comparison",
+            "Figure 3-1 Pin Layout (Top View)",
+            "Table 3-1 Pin Definitions",
+            "Chapter 4 Boot Configurations",
+            "Figure 8-1 ESP32-C3-WROOM-02 Schematics",
+            "Figure 8-2 ESP32-C3-WROOM-02U Schematics",
+            "Figure 10-1 ESP32-C3-WROOM-02 Physical Dimensions",
+            "Figure 10-2 ESP32-C3-WROOM-02U Physical Dimensions"
+          ]
         }
       ]
     },
@@ -558,7 +619,18 @@
       "sources": [
         {
           "title": "ESP32-C3-WROOM-02 & WROOM-02U Datasheet",
-          "url": "https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf"
+          "url": "https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf",
+          "sections": [
+            "Table 1-1 ESP32-C3-WROOM-02 (ANT) Series Comparison",
+            "Table 1-2 ESP32-C3-WROOM-02U (CONN) Series Comparison",
+            "Figure 3-1 Pin Layout (Top View)",
+            "Table 3-1 Pin Definitions",
+            "Chapter 4 Boot Configurations",
+            "Figure 8-1 ESP32-C3-WROOM-02 Schematics",
+            "Figure 8-2 ESP32-C3-WROOM-02U Schematics",
+            "Figure 10-1 ESP32-C3-WROOM-02 Physical Dimensions",
+            "Figure 10-2 ESP32-C3-WROOM-02U Physical Dimensions"
+          ]
         }
       ]
     },
@@ -629,7 +701,16 @@
       "sources": [
         {
           "title": "ESP-WROOM-02D & ESP-WROOM-02U Datasheet",
-          "url": "https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf"
+          "url": "https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf",
+          "sections": [
+            "Module Overview",
+            "Ordering Information",
+            "Figure 1 Pin Layout",
+            "Table 2 Pin Definitions",
+            "Table 3 Functional Description",
+            "Peripheral Schematics",
+            "Physical Dimensions and PCB Land Pattern"
+          ]
         }
       ]
     },
@@ -700,7 +781,16 @@
       "sources": [
         {
           "title": "ESP-WROOM-02D & ESP-WROOM-02U Datasheet",
-          "url": "https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf"
+          "url": "https://documentation.espressif.com/esp-wroom-02u_esp-wroom-02d_datasheet_en.pdf",
+          "sections": [
+            "Module Overview",
+            "Ordering Information",
+            "Figure 1 Pin Layout",
+            "Table 2 Pin Definitions",
+            "Table 3 Functional Description",
+            "Peripheral Schematics",
+            "Physical Dimensions and PCB Land Pattern"
+          ]
         }
       ]
     }
