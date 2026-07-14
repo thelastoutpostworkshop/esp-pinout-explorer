@@ -9,12 +9,13 @@ describe('board deep links', () => {
   });
 
   it('resolves a valid board route and validates optional query values', () => {
-    expect(resolveBoardDeepLink('/boards/esp32-s3-devkitc-1', '?mode=i2c&highlight=GPIO8%2CGPIO9%2Cbad')).toEqual({
+    expect(resolveBoardDeepLink('/boards/esp32-s3-devkitc-1', '?mode=i2c&highlight=GPIO8%2CGPIO9%2Cbad&search=I2C')).toEqual({
       apiBoardId: 'esp32-s3-devkitc-1',
       socId: 'esp32s3',
       profileId: 'esp32s3-devkitc-1-v1-1',
       mode: 'i2c',
       highlightGpios: ['GPIO8', 'GPIO9'],
+      searchQuery: 'I2C',
     });
   });
 
