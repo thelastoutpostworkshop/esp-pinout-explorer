@@ -96,6 +96,9 @@ describe('public module dataset', () => {
       route: '/modules/esp32c3-mini-1',
     });
     expect(mini1?.general_purpose_candidates).toContain('GPIO4');
+    expect(mini1?.pin_functions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ gpio: 'GPIO4', functions: expect.arrayContaining(['MTMS']), warnings: expect.arrayContaining(['JTAG']) }),
+    ]));
     expect(mini1?.caution_pins).toEqual(expect.arrayContaining([
       expect.objectContaining({ gpio: 'GPIO9', warning: expect.stringContaining('Boot') }),
       expect.objectContaining({ gpio: 'GPIO18', warning: expect.stringContaining('USB') }),

@@ -90,6 +90,14 @@ describe('module deep links', () => {
       apiModuleId: 'esp32c3-mini-1',
       socId: 'esp32c3',
       profileId: 'esp32c3-mini-1',
+      searchQuery: '',
+    });
+  });
+
+  it('preserves a module pin-function search query', () => {
+    expect(resolveModuleDeepLink('/modules/esp32c3-mini-1', '?search=JTAG')).toMatchObject({
+      profileId: 'esp32c3-mini-1',
+      searchQuery: 'JTAG',
     });
   });
 

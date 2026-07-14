@@ -14,6 +14,7 @@ export interface ModuleDeepLinkTarget {
   apiModuleId: string;
   socId: string;
   profileId: string;
+  searchQuery: string;
 }
 
 const boardRoutePattern = /^\/boards\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/;
@@ -43,14 +44,16 @@ export function resolveBoardDeepLink(pathname: string, search = ''): BoardDeepLi
   return { apiBoardId: metadata.apiId, socId: soc.id, profileId: metadata.profileId, mode, highlightGpios: [...new Set(highlightGpios)], searchQuery };
 }
 
-export function resolveModuleDeepLink(pathname: string): ModuleDeepLinkTarget | null {
+export function resolveModuleDeepLink(pathname: string, search = ''): ModuleDeepLinkTarget | null {
   const match = moduleRoutePattern.exec(pathname);
   if (!match) return null;
 
   const soc = socs.find((candidate) => candidate.packageVariants?.some((profile) => profile.id === match[1] && profile.kind === 'module'));
   if (!soc) return null;
 
-  return { apiModuleId: match[1], socId: soc.id, profileId: match[1] };
+  const requestedSearch = new URLSearchParams(search).get('search')?.trim() ?? '';
+  const searchQuery = /^[\w\s+.-]{1,120}$/.test(requestedSearch) ? requestedSearch : '';
+  return { apiModuleId: match[1], socId: soc.id, profileId: match[1], searchQuery };
 }
 
 /** Apply a valid board route to the existing store without changing normal selection behavior. */
@@ -70,7 +73,9 @@ export function applyModuleDeepLink(
   target: ModuleDeepLinkTarget,
   selectSoc: (socId: string) => void,
   selectPackage: (profileId: string) => void,
+  setSearchQuery: (query: string) => void,
 ) {
   selectSoc(target.socId);
   selectPackage(target.profileId);
+  setSearchQuery(target.searchQuery);
 }

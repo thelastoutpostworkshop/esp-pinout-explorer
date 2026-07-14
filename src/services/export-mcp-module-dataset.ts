@@ -24,6 +24,12 @@ export interface ModuleDefinition {
   route: string;
   general_purpose_candidates: string[];
   caution_pins: Array<{ gpio: string; warning: string }>;
+  pin_functions: Array<{
+    gpio: string;
+    functions: string[];
+    warnings: string[];
+    notes: string[];
+  }>;
   peripheral_notes: Array<{ peripheral: string; summary: string; candidate_pins: string[] }>;
   general_warnings: string[];
   sources: Array<{ title: string; url: string; sections: string[] }>;
@@ -83,6 +89,12 @@ function createModuleDefinition(chipFamily: string, profile: SocPackageVariant):
     route: `/modules/${profile.id}`,
     general_purpose_candidates: gpioPins.filter(isGeneralPurposeCandidate).map(gpioName),
     caution_pins: cautionPins,
+    pin_functions: gpioPins.map((pin) => ({
+      gpio: gpioName(pin),
+      functions: pin.mainFunctions,
+      warnings: (pin.warnings ?? []).map(getWarningLabel),
+      notes: pin.notes ?? [],
+    })),
     peripheral_notes: peripheralNotes(gpioPins),
     general_warnings: unique([
       'Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.',
