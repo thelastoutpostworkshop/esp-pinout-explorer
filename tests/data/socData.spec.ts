@@ -68,6 +68,8 @@ const expectedPinCounts: Record<string, number> = {
   'esp32c6:qfn32': 33,
   'esp32c6:esp32c6-mini-1': 53,
   'esp32c6:esp32c6-mini-1u': 53,
+  'esp32c6:esp32c6-wroom-1': 29,
+  'esp32c6:esp32c6-wroom-1u': 29,
   'esp32c6:esp32c6-devkitm-1': 30,
   'esp32c6:esp32c6-devkitc-1': 32,
   'esp32c3:esp32c3-qfn32-22-gpio': 33,
@@ -359,6 +361,8 @@ describe('SoC data invariants', () => {
       'esp32c3:esp32c3-wroom-02u',
       'esp32c6:esp32c6-mini-1',
       'esp32c6:esp32c6-mini-1u',
+      'esp32c6:esp32c6-wroom-1',
+      'esp32c6:esp32c6-wroom-1u',
       'esp8266ex:esp-wroom-02d',
       'esp8266ex:esp-wroom-02u',
     ]);

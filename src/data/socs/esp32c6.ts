@@ -1,4 +1,4 @@
-import { createEsp32c6BoardProfiles, mini1Source } from '@/data/boards/esp32c6';
+import { createEsp32c6BoardProfiles, mini1Source, wroom1Source } from '@/data/boards/esp32c6';
 import type {
   PinPosition,
   PinType,
@@ -893,5 +893,158 @@ const esp32c6Mini1UProfile: SocPackageVariant = {
   pins: esp32c6Mini1UPins,
 };
 
-esp32c6.packageVariants = [...(esp32c6.packageVariants ?? []), esp32c6Mini1Profile, esp32c6Mini1UProfile];
+const wroom1ModuleKeywords = ['module', 'wroom', 'wroom-1', 'esp32-c6-wroom-1', 'esp32c6 wroom', 'castellated pad'];
+
+function wroom1Pin(
+  number: number,
+  name: string,
+  type: PinType,
+  position: PinPosition,
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position'>> = {},
+): SocPin {
+  return {
+    id: `esp32c6-wroom-1-pin-${number}`,
+    number,
+    name,
+    type,
+    position,
+    mainFunctions: [],
+    ...details,
+    keywords: uniqueValues([...(details.keywords ?? []), ...wroom1ModuleKeywords, `pin ${number}`]),
+  };
+}
+
+function wroom1IoPin(number: number, name: string, gpio: number, position: PinPosition): SocPin {
+  const sourcePin = findC6PinByGpio(gpio);
+  return wroom1Pin(number, name, 'io', position, {
+    gpio,
+    mainFunctions: sourcePin?.mainFunctions ?? [`GPIO${gpio}`],
+    ioMux: sourcePin?.ioMux,
+    rtc: sourcePin?.rtc,
+    analog: sourcePin?.analog,
+    matrixSignals: sourcePin?.matrixSignals ?? gpioMatrixSignals,
+    notes: sourcePin?.notes,
+    warnings: sourcePin?.warnings,
+    keywords: uniqueValues([...(sourcePin?.keywords ?? []), name.toLowerCase(), `io${gpio}`, `gpio${gpio}`]),
+  });
+}
+
+function wroom1GroundPin(number: number, position: PinPosition, exposedPad = false): SocPin {
+  return wroom1Pin(number, exposedPad ? 'EPAD' : 'GND', 'ground', position, {
+    mainFunctions: [exposedPad ? 'Exposed ground pad' : 'Ground'],
+    notes: [exposedPad ? 'Exposed pad connected to ground; soldering it can improve thermal performance.' : 'Module ground pad.'],
+    warnings: warnings('power'),
+    keywords: ['ground', 'gnd', ...(exposedPad ? ['epad', 'thermal pad'] : [])],
+  });
+}
+
+function createWroom1Pins(profileId: string): SocPin[] {
+  const left = (number: number) => ({ side: 'left' as const, order: number });
+  const right = (number: number) => ({ side: 'right' as const, order: number - 15 });
+
+  return [
+    wroom1GroundPin(1, left(1)),
+    wroom1Pin(2, '3V3', 'power', left(2), {
+      mainFunctions: ['3.3 V module power supply'],
+      notes: ['Module power supply input. Espressif specifies a 3.0 V to 3.6 V operating range.'],
+      warnings: warnings('power', 'voltage'),
+      keywords: ['power', 'supply', '3v3', '3.3v'],
+    }),
+    wroom1Pin(3, 'EN', 'control', left(3), {
+      mainFunctions: ['Chip enable and reset'],
+      notes: ['High enables the chip; low powers it off or resets it.', 'Do not leave EN floating.'],
+      warnings: warnings('reset'),
+      keywords: ['enable', 'reset', 'chip en'],
+    }),
+    wroom1IoPin(4, 'IO4', 4, left(4)),
+    wroom1IoPin(5, 'IO5', 5, left(5)),
+    wroom1IoPin(6, 'IO6', 6, left(6)),
+    wroom1IoPin(7, 'IO7', 7, left(7)),
+    wroom1IoPin(8, 'IO0', 0, left(8)),
+    wroom1IoPin(9, 'IO1', 1, left(9)),
+    wroom1IoPin(10, 'IO8', 8, left(10)),
+    wroom1IoPin(11, 'IO10', 10, left(11)),
+    wroom1IoPin(12, 'IO11', 11, left(12)),
+    wroom1IoPin(13, 'IO12', 12, left(13)),
+    wroom1IoPin(14, 'IO13', 13, left(14)),
+    wroom1IoPin(15, 'IO9', 9, left(15)),
+    wroom1IoPin(16, 'IO18', 18, right(16)),
+    wroom1IoPin(17, 'IO19', 19, right(17)),
+    wroom1IoPin(18, 'IO20', 20, right(18)),
+    wroom1IoPin(19, 'IO21', 21, right(19)),
+    wroom1IoPin(20, 'IO22', 22, right(20)),
+    wroom1IoPin(21, 'IO23', 23, right(21)),
+    wroom1Pin(22, 'NC', 'control', right(22), {
+      mainFunctions: ['No connect'],
+      notes: ['Official module pad is not connected.'],
+      keywords: ['nc', 'no connect', 'not connected'],
+    }),
+    wroom1IoPin(23, 'IO15', 15, right(23)),
+    wroom1IoPin(24, 'RXD0', 17, right(24)),
+    wroom1IoPin(25, 'TXD0', 16, right(25)),
+    wroom1IoPin(26, 'IO3', 3, right(26)),
+    wroom1IoPin(27, 'IO2', 2, right(27)),
+    wroom1GroundPin(28, right(28)),
+    wroom1GroundPin(29, { side: 'center', order: 1 }, true),
+  ].map((pin) => ({ ...pin, id: pin.id.replace('esp32c6-wroom-1', profileId) }));
+}
+
+const esp32c6Wroom1Variant: SocModuleVariant = {
+  name: 'ESP32-C6-WROOM-1',
+  antenna: 'On-board PCB antenna',
+  flash: 'SPI flash up to 8 MB, depending on module variant',
+  psram: 'No PSRAM',
+  pinoutImpact: 'Same 29-pad module pinout as WROOM-1U; antenna implementation differs.',
+  source: wroom1Source,
+};
+
+const esp32c6Wroom1UVariant: SocModuleVariant = {
+  name: 'ESP32-C6-WROOM-1U',
+  antenna: 'External antenna connector',
+  flash: 'SPI flash up to 8 MB, depending on module variant',
+  psram: 'No PSRAM',
+  pinoutImpact: 'Same 29-pad module pinout as WROOM-1; antenna connector changes RF layout only.',
+  source: wroom1Source,
+};
+
+const esp32c6Wroom1Profile: SocPackageVariant = {
+  id: 'esp32c6-wroom-1',
+  name: 'WROOM-1',
+  packageName: 'ESP32-C6-WROOM-1 module, 29 pads, top view',
+  kind: 'module',
+  source: wroom1Source,
+  moduleNames: ['ESP32-C6-WROOM-1'],
+  moduleVariants: [esp32c6Wroom1Variant],
+  identificationNotes: [
+    'This profile is the 29-pad ESP32-C6-WROOM-1 module layout, not the bare ESP32-C6 package or a development-board header.',
+    'ESP32-C6-WROOM-1 uses an on-board PCB antenna; the related WROOM-1U uses an external antenna connector with the same pad pinout.',
+  ],
+  pins: createWroom1Pins('esp32c6-wroom-1'),
+};
+
+const esp32c6Wroom1UProfile: SocPackageVariant = {
+  id: 'esp32c6-wroom-1u',
+  name: 'WROOM-1U',
+  packageName: 'ESP32-C6-WROOM-1U module, 29 pads, top view',
+  kind: 'module',
+  source: wroom1Source,
+  moduleNames: ['ESP32-C6-WROOM-1U'],
+  moduleVariants: [esp32c6Wroom1UVariant],
+  identificationNotes: [
+    'This profile is the 29-pad ESP32-C6-WROOM-1U module layout, not the bare ESP32-C6 package or a development-board header.',
+    'ESP32-C6-WROOM-1U uses an external antenna connector and has no PCB-antenna keepout zone; its pad pinout matches ESP32-C6-WROOM-1.',
+  ],
+  pins: createWroom1Pins('esp32c6-wroom-1u').map((pin) => ({
+    ...pin,
+    keywords: uniqueValues([...(pin.keywords ?? []), 'wroom-1u', 'esp32-c6-wroom-1u', 'external antenna', 'antenna connector']),
+  })),
+};
+
+esp32c6.packageVariants = [
+  ...(esp32c6.packageVariants ?? []),
+  esp32c6Mini1Profile,
+  esp32c6Mini1UProfile,
+  esp32c6Wroom1Profile,
+  esp32c6Wroom1UProfile,
+];
 esp32c6.boardProfiles = createEsp32c6BoardProfiles(findC6PinByGpio);

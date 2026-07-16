@@ -116,4 +116,29 @@ describe('public module dataset', () => {
       expect.objectContaining({ id: 'esp32c3-wroom-02u', name: 'ESP32-C3-WROOM-02U' }),
     ]));
   });
+
+  it('exports C6 WROOM module profiles with their documented module pads', () => {
+    const wroom1 = dataset.modules.find((module) => module.id === 'esp32c6-wroom-1');
+    const wroom1u = dataset.modules.find((module) => module.id === 'esp32c6-wroom-1u');
+
+    expect(wroom1).toMatchObject({
+      name: 'ESP32-C6-WROOM-1',
+      chip_family: 'ESP32-C6',
+      module_markings: ['ESP32-C6-WROOM-1'],
+      route: '/modules/esp32c6-wroom-1',
+    });
+    expect(wroom1?.pin_functions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ gpio: 'GPIO4', functions: expect.arrayContaining(['MTMS']) }),
+      expect.objectContaining({ gpio: 'GPIO12', functions: expect.arrayContaining(['USB_D-']) }),
+      expect.objectContaining({ gpio: 'GPIO17', functions: expect.arrayContaining(['U0RXD']) }),
+    ]));
+    expect(wroom1?.sources).toEqual(expect.arrayContaining([
+      expect.objectContaining({ url: expect.stringContaining('esp32-c6-wroom-1_wroom-1u') }),
+    ]));
+    expect(wroom1u).toMatchObject({
+      name: 'ESP32-C6-WROOM-1U',
+      module_markings: ['ESP32-C6-WROOM-1U'],
+      route: '/modules/esp32c6-wroom-1u',
+    });
+  });
 });

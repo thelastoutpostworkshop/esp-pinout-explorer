@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T22:43:40.801Z",
+  "generated_at": "2026-07-16T22:50:54.247Z",
   "modules": [
     {
       "id": "esp32c6-mini-1",
@@ -869,6 +869,856 @@
             "Figure 10-3 Dimensions of External Antenna Connector",
             "Figure 11-1 ESP32-C6-MINI-1 Recommended PCB Land Pattern",
             "Figure 11-2 ESP32-C6-MINI-1U Recommended PCB Land Pattern"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32c6-wroom-1",
+      "name": "ESP32-C6-WROOM-1",
+      "chip_family": "ESP32-C6",
+      "module_markings": [
+        "ESP32-C6-WROOM-1"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-C6-WROOM-1",
+          "antenna": "On-board PCB antenna",
+          "flash": "SPI flash up to 8 MB, depending on module variant",
+          "psram": "No PSRAM",
+          "footprint": null,
+          "pinout_impact": "Same 29-pad module pinout as WROOM-1U; antenna implementation differs."
+        }
+      ],
+      "route": "/modules/esp32c6-wroom-1",
+      "general_purpose_candidates": [
+        "GPIO6",
+        "GPIO7",
+        "GPIO0",
+        "GPIO1",
+        "GPIO10",
+        "GPIO11",
+        "GPIO18",
+        "GPIO19",
+        "GPIO20",
+        "GPIO21",
+        "GPIO22",
+        "GPIO23",
+        "GPIO3",
+        "GPIO2"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO4",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "MTMS",
+            "LP_GPIO4",
+            "LP_UART_RXD",
+            "ADC1_CH4",
+            "FSPIHD"
+          ],
+          "warnings": [
+            "JTAG",
+            "Strapping"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Strapping pin for SDIO input sampling and output driving edge control; default is floating."
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "MTDI",
+            "LP_GPIO5",
+            "LP_UART_TXD",
+            "ADC1_CH5",
+            "FSPIWP"
+          ],
+          "warnings": [
+            "JTAG",
+            "Strapping"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Strapping pin for SDIO input sampling and output driving edge control; default is floating."
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "MTCK",
+            "LP_GPIO6",
+            "LP_I2C_SDA",
+            "ADC1_CH6",
+            "FSPICLK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Reset pull-up behavior depends on EFUSE_DIS_PAD_JTAG."
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "MTDO",
+            "LP_GPIO7",
+            "LP_I2C_SCL",
+            "FSPID"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "LP_GPIO0",
+            "LP_UART_DTRN",
+            "XTAL_32K_P",
+            "ADC1_CH0"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO0."
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "LP_GPIO1",
+            "LP_UART_DSRN",
+            "XTAL_32K_N",
+            "ADC1_CH1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO1."
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default floating state.",
+            "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "GPIO12 and GPIO13 have 40 mA default drive strength."
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "GPIO12 and GPIO13 have 40 mA default drive strength."
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO8; GPIO8=1 and GPIO9=0 selects joint download boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "SDIO_CMD",
+            "FSPICS2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave command signal through IO MUX. Joint download boot mode supports SDIO download."
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "SDIO_CLK",
+            "FSPICS3"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave clock signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "functions": [
+            "GPIO20",
+            "SDIO_DATA0",
+            "FSPICS4"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 0 signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "SDIO_DATA1",
+            "FSPICS5"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 1 signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22",
+            "SDIO_DATA2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 2 signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "SDIO_DATA3"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 3 signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "JTAG signal source strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO15 has no internal pull resistors and the external circuit must not be high impedance during strapping."
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "U0RXD",
+            "FSPICS1"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "U0TXD",
+            "FSPICS0"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "LP_GPIO3",
+            "LP_UART_CTSN",
+            "ADC1_CH3"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "LP_GPIO2",
+            "LP_UART_RTSN",
+            "ADC1_CH2",
+            "FSPIQ"
+          ],
+          "warnings": [],
+          "notes": []
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO12",
+            "GPIO13"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO17",
+            "GPIO16"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 29-pad ESP32-C6-WROOM-1 module layout, not the bare ESP32-C6 package or a development-board header.",
+        "ESP32-C6-WROOM-1 uses an on-board PCB antenna; the related WROOM-1U uses an external antenna connector with the same pad pinout."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C6-WROOM-1 & ESP32-C6-WROOM-1U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf",
+          "sections": [
+            "Series Comparison",
+            "Pin Definitions",
+            "Physical Dimensions",
+            "Dimensions of External Antenna Connector",
+            "PCB Land Pattern"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32c6-wroom-1u",
+      "name": "ESP32-C6-WROOM-1U",
+      "chip_family": "ESP32-C6",
+      "module_markings": [
+        "ESP32-C6-WROOM-1U"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-C6-WROOM-1U",
+          "antenna": "External antenna connector",
+          "flash": "SPI flash up to 8 MB, depending on module variant",
+          "psram": "No PSRAM",
+          "footprint": null,
+          "pinout_impact": "Same 29-pad module pinout as WROOM-1; antenna connector changes RF layout only."
+        }
+      ],
+      "route": "/modules/esp32c6-wroom-1u",
+      "general_purpose_candidates": [
+        "GPIO6",
+        "GPIO7",
+        "GPIO0",
+        "GPIO1",
+        "GPIO10",
+        "GPIO11",
+        "GPIO18",
+        "GPIO19",
+        "GPIO20",
+        "GPIO21",
+        "GPIO22",
+        "GPIO23",
+        "GPIO3",
+        "GPIO2"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO4",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "MTMS",
+            "LP_GPIO4",
+            "LP_UART_RXD",
+            "ADC1_CH4",
+            "FSPIHD"
+          ],
+          "warnings": [
+            "JTAG",
+            "Strapping"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Strapping pin for SDIO input sampling and output driving edge control; default is floating."
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "MTDI",
+            "LP_GPIO5",
+            "LP_UART_TXD",
+            "ADC1_CH5",
+            "FSPIWP"
+          ],
+          "warnings": [
+            "JTAG",
+            "Strapping"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Strapping pin for SDIO input sampling and output driving edge control; default is floating."
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "MTCK",
+            "LP_GPIO6",
+            "LP_I2C_SDA",
+            "ADC1_CH6",
+            "FSPICLK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Reset pull-up behavior depends on EFUSE_DIS_PAD_JTAG."
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "MTDO",
+            "LP_GPIO7",
+            "LP_I2C_SCL",
+            "FSPID"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "LP_GPIO0",
+            "LP_UART_DTRN",
+            "XTAL_32K_P",
+            "ADC1_CH0"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO0."
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "LP_GPIO1",
+            "LP_UART_DSRN",
+            "XTAL_32K_N",
+            "ADC1_CH1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO1."
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default floating state.",
+            "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "GPIO12 and GPIO13 have 40 mA default drive strength."
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "GPIO12 and GPIO13 have 40 mA default drive strength."
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO8; GPIO8=1 and GPIO9=0 selects joint download boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "SDIO_CMD",
+            "FSPICS2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave command signal through IO MUX. Joint download boot mode supports SDIO download."
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "SDIO_CLK",
+            "FSPICS3"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave clock signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "functions": [
+            "GPIO20",
+            "SDIO_DATA0",
+            "FSPICS4"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 0 signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "SDIO_DATA1",
+            "FSPICS5"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 1 signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22",
+            "SDIO_DATA2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 2 signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "SDIO_DATA3"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 3 signal through IO MUX."
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "JTAG signal source strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO15 has no internal pull resistors and the external circuit must not be high impedance during strapping."
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "U0RXD",
+            "FSPICS1"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "U0TXD",
+            "FSPICS0"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "LP_GPIO3",
+            "LP_UART_CTSN",
+            "ADC1_CH3"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "LP_GPIO2",
+            "LP_UART_RTSN",
+            "ADC1_CH2",
+            "FSPIQ"
+          ],
+          "warnings": [],
+          "notes": []
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO12",
+            "GPIO13"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO17",
+            "GPIO16"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 29-pad ESP32-C6-WROOM-1U module layout, not the bare ESP32-C6 package or a development-board header.",
+        "ESP32-C6-WROOM-1U uses an external antenna connector and has no PCB-antenna keepout zone; its pad pinout matches ESP32-C6-WROOM-1."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C6-WROOM-1 & ESP32-C6-WROOM-1U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c6-wroom-1_wroom-1u_datasheet_en.pdf",
+          "sections": [
+            "Series Comparison",
+            "Pin Definitions",
+            "Physical Dimensions",
+            "Dimensions of External Antenna Connector",
+            "PCB Land Pattern"
           ]
         }
       ]
