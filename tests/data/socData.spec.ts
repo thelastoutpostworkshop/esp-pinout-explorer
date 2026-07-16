@@ -56,6 +56,8 @@ const expectedPinCounts: Record<string, number> = {
   'esp32:esp32-pico-kit-1': 36,
   'esp32:esp32-lcdkit': 63,
   'esp32s3:esp32s3-qfn56': 57,
+  'esp32s3:esp32s3-wroom-1': 41,
+  'esp32s3:esp32s3-wroom-2': 41,
   'esp32s3:esp32s3-devkitc-1-v1-1': 44,
   'esp32s3:esp32s3-devkitm-1': 44,
   'esp32s3:esp32s3-thread-br-zigbee-gw-v1-2': 34,
@@ -363,6 +365,8 @@ describe('SoC data invariants', () => {
       'esp32c6:esp32c6-mini-1u',
       'esp32c6:esp32c6-wroom-1',
       'esp32c6:esp32c6-wroom-1u',
+      'esp32s3:esp32s3-wroom-1',
+      'esp32s3:esp32s3-wroom-2',
       'esp8266ex:esp-wroom-02d',
       'esp8266ex:esp-wroom-02u',
     ]);

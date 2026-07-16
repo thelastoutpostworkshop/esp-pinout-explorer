@@ -1,7 +1,1381 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T22:50:54.247Z",
+  "generated_at": "2026-07-16T22:55:01.303Z",
   "modules": [
+    {
+      "id": "esp32s3-wroom-1",
+      "name": "ESP32-S3-WROOM-1",
+      "chip_family": "ESP32-S3",
+      "module_markings": [
+        "ESP32-S3-WROOM-1",
+        "ESP32-S3-WROOM-1U",
+        "ESP32-S3-WROOM-1-N8R8",
+        "ESP32-S3-WROOM-1U-N8R8",
+        "ESP32-S3-WROOM-1-N16R16VA"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-S3-WROOM-1-N8R8",
+          "antenna": "On-board PCB antenna",
+          "flash": "8 MB Quad SPI",
+          "psram": "8 MB Octal SPI",
+          "footprint": null,
+          "pinout_impact": "GPIO35 and GPIO36 are unavailable on this variant."
+        },
+        {
+          "name": "ESP32-S3-WROOM-1U-N8R8",
+          "antenna": "External antenna connector",
+          "flash": "8 MB Quad SPI",
+          "psram": "8 MB Octal SPI",
+          "footprint": null,
+          "pinout_impact": "GPIO35 and GPIO36 are unavailable on this variant."
+        },
+        {
+          "name": "ESP32-S3-WROOM-1-N16R16VA",
+          "antenna": "On-board PCB antenna",
+          "flash": "16 MB Quad SPI",
+          "psram": "16 MB Octal SPI",
+          "footprint": null,
+          "pinout_impact": "GPIO47 and GPIO48 use 1.8 V VDD_SPI on this variant."
+        }
+      ],
+      "route": "/modules/esp32s3-wroom-1",
+      "general_purpose_candidates": [
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7",
+        "GPIO15",
+        "GPIO16",
+        "GPIO17",
+        "GPIO18",
+        "GPIO8",
+        "GPIO9",
+        "GPIO10",
+        "GPIO11",
+        "GPIO12",
+        "GPIO13",
+        "GPIO14",
+        "GPIO21",
+        "GPIO38",
+        "GPIO39",
+        "GPIO40",
+        "GPIO41",
+        "GPIO42",
+        "GPIO2",
+        "GPIO1"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO46",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO47",
+          "warning": "Voltage"
+        },
+        {
+          "gpio": "GPIO48",
+          "warning": "Voltage"
+        },
+        {
+          "gpio": "GPIO45",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO35",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO36",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO37",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO44",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO43",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "RTC_GPIO4",
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "RTC_GPIO5",
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "RTC_GPIO6",
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "RTC_GPIO7",
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "RTC_GPIO15",
+            "32 kHz crystal positive",
+            "ADC2_CH4",
+            "U0RTS"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "RTC_GPIO16",
+            "32 kHz crystal negative",
+            "ADC2_CH5",
+            "U0CTS"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "RTC_GPIO17",
+            "ADC2_CH6",
+            "U1TXD"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "RTC_GPIO18",
+            "ADC2_CH7",
+            "U1RXD",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "ADC1_CH7",
+            "SUBSPICS1"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "RTC_GPIO19",
+            "USB_D-",
+            "ADC2_CH8",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "functions": [
+            "GPIO20",
+            "RTC_GPIO20",
+            "USB_D+",
+            "ADC2_CH9",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "RTC_GPIO3",
+            "TOUCH3",
+            "ADC1_CH2",
+            "SAR I2C SDA1"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "functions": [
+            "GPIO46",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-down.",
+            "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+            "Also participates in ROM message printing control."
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "ADC1_CH8",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "RTC_GPIO10",
+            "TOUCH10",
+            "ADC1_CH9",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11",
+            "RTC_GPIO11",
+            "TOUCH11",
+            "ADC2_CH0",
+            "FSPIIO5",
+            "SUBSPID",
+            "FSPID"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "RTC_GPIO12",
+            "TOUCH12",
+            "ADC2_CH1",
+            "FSPIIO6",
+            "SUBSPICLK",
+            "FSPICLK"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "RTC_GPIO13",
+            "TOUCH13",
+            "ADC2_CH2",
+            "FSPIIO7",
+            "SUBSPIQ",
+            "FSPIQ"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "RTC_GPIO14",
+            "TOUCH14",
+            "ADC2_CH3",
+            "FSPIDQS",
+            "SUBSPIWP",
+            "FSPIWP"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "RTC_GPIO21"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO47",
+          "functions": [
+            "GPIO47",
+            "SPICLK_P_DIFF",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "warnings": [
+            "Voltage"
+          ],
+          "notes": [
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "functions": [
+            "GPIO48",
+            "SPICLK_N_DIFF",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "warnings": [
+            "Voltage"
+          ],
+          "notes": [
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "functions": [
+            "GPIO45",
+            "VDD_SPI voltage strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-down.",
+            "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "RTC_GPIO0",
+            "SAR I2C SCL0"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "functions": [
+            "GPIO35",
+            "FSPID",
+            "SUBSPID",
+            "SPIIO6",
+            "Octal SPI DQ6"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "functions": [
+            "GPIO36",
+            "FSPICLK",
+            "SUBSPICLK",
+            "SPIIO7",
+            "Octal SPI DQ7"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "functions": [
+            "GPIO37",
+            "FSPIQ",
+            "SUBSPIQ",
+            "SPIDQS",
+            "Octal SPI DQS/DM"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "functions": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "MTCK",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "functions": [
+            "GPIO40",
+            "MTDO",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "functions": [
+            "GPIO41",
+            "MTDI",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "functions": [
+            "GPIO42",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "functions": [
+            "GPIO44",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "functions": [
+            "GPIO43",
+            "U0TXD",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "RTC_GPIO2",
+            "TOUCH2",
+            "ADC1_CH1",
+            "SAR I2C SCL1"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "RTC_GPIO1",
+            "TOUCH1",
+            "ADC1_CH0",
+            "SAR I2C SDA0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO19",
+            "GPIO20"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO44",
+            "GPIO43"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 41-pad ESP32-S3-WROOM-1/1U module layout, not the bare ESP32-S3 package or a development-board header.",
+        "WROOM-1 uses a PCB antenna; WROOM-1U uses an external antenna connector with the same padout."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-S3-WROOM-1/1U Datasheet",
+          "url": "https://documentation.espressif.com/esp32-s3-wroom-1_wroom-1u_datasheet_en.pdf",
+          "sections": [
+            "Module Overview",
+            "Series Comparison",
+            "Pin Definitions",
+            "Module Dimensions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32s3-wroom-2",
+      "name": "ESP32-S3-WROOM-2",
+      "chip_family": "ESP32-S3",
+      "module_markings": [
+        "ESP32-S3-WROOM-2",
+        "ESP32-S3-WROOM-2-N32R16V"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-S3-WROOM-2-N32R16V",
+          "antenna": "On-board PCB antenna",
+          "flash": "32 MB Quad SPI",
+          "psram": "16 MB Octal SPI",
+          "footprint": null,
+          "pinout_impact": "GPIO47 and GPIO48 use 1.8 V VDD_SPI on R8V/R16V variants."
+        }
+      ],
+      "route": "/modules/esp32s3-wroom-2",
+      "general_purpose_candidates": [
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7",
+        "GPIO15",
+        "GPIO16",
+        "GPIO17",
+        "GPIO18",
+        "GPIO8",
+        "GPIO9",
+        "GPIO10",
+        "GPIO11",
+        "GPIO12",
+        "GPIO13",
+        "GPIO14",
+        "GPIO21",
+        "GPIO38",
+        "GPIO39",
+        "GPIO40",
+        "GPIO41",
+        "GPIO42",
+        "GPIO2",
+        "GPIO1"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO46",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO47",
+          "warning": "Voltage"
+        },
+        {
+          "gpio": "GPIO48",
+          "warning": "Voltage"
+        },
+        {
+          "gpio": "GPIO45",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO44",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO43",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "RTC_GPIO4",
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "RTC_GPIO5",
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "RTC_GPIO6",
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "RTC_GPIO7",
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "RTC_GPIO15",
+            "32 kHz crystal positive",
+            "ADC2_CH4",
+            "U0RTS"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "RTC_GPIO16",
+            "32 kHz crystal negative",
+            "ADC2_CH5",
+            "U0CTS"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "RTC_GPIO17",
+            "ADC2_CH6",
+            "U1TXD"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "RTC_GPIO18",
+            "ADC2_CH7",
+            "U1RXD",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "ADC1_CH7",
+            "SUBSPICS1"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "RTC_GPIO19",
+            "USB_D-",
+            "ADC2_CH8",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "functions": [
+            "GPIO20",
+            "RTC_GPIO20",
+            "USB_D+",
+            "ADC2_CH9",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "RTC_GPIO3",
+            "TOUCH3",
+            "ADC1_CH2",
+            "SAR I2C SDA1"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "functions": [
+            "GPIO46",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-down.",
+            "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+            "Also participates in ROM message printing control."
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "ADC1_CH8",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "RTC_GPIO10",
+            "TOUCH10",
+            "ADC1_CH9",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11",
+            "RTC_GPIO11",
+            "TOUCH11",
+            "ADC2_CH0",
+            "FSPIIO5",
+            "SUBSPID",
+            "FSPID"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "RTC_GPIO12",
+            "TOUCH12",
+            "ADC2_CH1",
+            "FSPIIO6",
+            "SUBSPICLK",
+            "FSPICLK"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "RTC_GPIO13",
+            "TOUCH13",
+            "ADC2_CH2",
+            "FSPIIO7",
+            "SUBSPIQ",
+            "FSPIQ"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "RTC_GPIO14",
+            "TOUCH14",
+            "ADC2_CH3",
+            "FSPIDQS",
+            "SUBSPIWP",
+            "FSPIWP"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "RTC_GPIO21"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO47",
+          "functions": [
+            "GPIO47",
+            "SPICLK_P_DIFF",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "warnings": [
+            "Voltage"
+          ],
+          "notes": [
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "functions": [
+            "GPIO48",
+            "SPICLK_N_DIFF",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "warnings": [
+            "Voltage"
+          ],
+          "notes": [
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "functions": [
+            "GPIO45",
+            "VDD_SPI voltage strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-down.",
+            "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "RTC_GPIO0",
+            "SAR I2C SCL0"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "functions": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "MTCK",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "functions": [
+            "GPIO40",
+            "MTDO",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "functions": [
+            "GPIO41",
+            "MTDI",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "functions": [
+            "GPIO42",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "functions": [
+            "GPIO44",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "functions": [
+            "GPIO43",
+            "U0TXD",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "RTC_GPIO2",
+            "TOUCH2",
+            "ADC1_CH1",
+            "SAR I2C SCL1"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "RTC_GPIO1",
+            "TOUCH1",
+            "ADC1_CH0",
+            "SAR I2C SDA0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO19",
+            "GPIO20"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO44",
+            "GPIO43"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 41-pad ESP32-S3-WROOM-2 module layout, not the bare ESP32-S3 package or a development-board header."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-S3-WROOM-2 Datasheet",
+          "url": "https://documentation.espressif.com/esp32-s3-wroom-2_datasheet_en.pdf",
+          "sections": [
+            "Module Overview",
+            "Series Comparison",
+            "Pin Definitions",
+            "Module Dimensions"
+          ]
+        }
+      ]
+    },
     {
       "id": "esp32c6-mini-1",
       "name": "ESP32-C6-MINI-1",
