@@ -30,7 +30,7 @@ describe('board deep links', () => {
   it('uses a mode as the Explorer search when no explicit search is supplied', () => {
     const target = resolveBoardDeepLink('/boards/esp32-s3-devkitc-1', '?mode=touch')!;
     const selected: string[] = [];
-    applyBoardDeepLink(target, (id) => selected.push(id), (id) => selected.push(id), (query) => selected.push(query));
+    applyBoardDeepLink(target, (id) => selected.push(id), (id) => selected.push(id), (query) => selected.push(query), () => {});
     expect(selected).toEqual(['esp32s3', 'esp32s3-devkitc-1-v1-1', 'Touch']);
   });
 

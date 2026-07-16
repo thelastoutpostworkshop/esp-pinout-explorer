@@ -15,7 +15,10 @@ const boardTarget = resolveBoardDeepLink(routeUrl.pathname, routeUrl.search);
 const moduleTarget = resolveModuleDeepLink(routeUrl.pathname, routeUrl.search);
 
 if (boardTarget) {
-  applyBoardDeepLink(boardTarget, store.selectSoc, store.selectPackage, store.setSearchQuery);
+  applyBoardDeepLink(boardTarget, store.selectSoc, store.selectPackage, store.setSearchQuery, (gpio) => {
+    const pin = store.selectedPins.find((candidate) => candidate.gpio === Number(gpio.replace('GPIO', '')));
+    if (pin) store.selectPin(pin.id);
+  });
 
   // GitHub Pages serves 404.html for direct nested routes. Restore the clean
   // permanent URL after that fallback has loaded the SPA at its base path.

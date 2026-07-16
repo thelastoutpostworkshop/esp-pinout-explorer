@@ -73,10 +73,12 @@ export function applyBoardDeepLink(
   selectSoc: (socId: string) => void,
   selectPackage: (profileId: string) => void,
   setSearchQuery: (query: string) => void,
+  selectGpio: (gpio: string) => void,
 ) {
   selectSoc(target.socId);
   selectPackage(target.profileId);
   setSearchQuery(target.searchQuery || (target.mode ? (modeSearchQuery[target.mode.toLowerCase()] ?? '') : ''));
+  if (target.highlightGpios.length === 1) selectGpio(target.highlightGpios[0]);
 }
 
 /** Apply a valid module route to the existing store without changing normal selection behavior. */
