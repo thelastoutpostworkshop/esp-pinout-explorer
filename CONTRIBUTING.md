@@ -20,13 +20,15 @@ npm run build
 
 ## Board-recognition API and permanent links
 
-The deployed explorer publishes a small, versioned static dataset at:
+The deployed explorer publishes versioned static board datasets at:
 
-`https://thelastoutpostworkshop.github.io/ESPSocsExplorer/api/v1/boards.json`
+`https://thelastoutpostworkshop.github.io/ESPSocsExplorer/api/v1/boards/index.json`
 
-The top-level `schema_version` is currently `1`. Consumers must treat this URL and its schema version as the contract; future incompatible changes will use a new versioned path. Generate the checked-in public dataset from the Explorer's board profiles with `npm run generate:board-api`. `npm run build` runs that command first and copies the result into the final site.
+`https://thelastoutpostworkshop.github.io/ESPSocsExplorer/api/v1/boards/{board-id}.json`
 
-An MCP Worker can configure `ESP_PINOUT_DATA_URL` to that JSON URL and `ESP_PINOUT_APP_BASE_URL` to `https://thelastoutpostworkshop.github.io/ESPSocsExplorer`. Board matches return permanent Explorer links such as:
+The top-level `schema_version` is currently `1`. Use the index for lightweight board identification, then request a board detail file for pin, function, and hardware data. Consumers must treat these paths and their schema version as the contract; future incompatible changes will use a new versioned path. Generate the checked-in public datasets from the Explorer's board profiles with `npm run generate:board-api`. `npm run build` runs that command first and copies the result into the final site.
+
+An MCP Worker can configure `ESP_PINOUT_DATA_URL` to the board index URL and `ESP_PINOUT_APP_BASE_URL` to `https://thelastoutpostworkshop.github.io/ESPSocsExplorer`. Board matches return permanent Explorer links such as:
 
 `https://thelastoutpostworkshop.github.io/ESPSocsExplorer/boards/esp32-s3-devkitc-1`
 
