@@ -1,0 +1,2711 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32s3-lcd-ev-board-v1-5",
+    "name": "ESP32-S3-LCD-EV-Board v1.5",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-S3",
+    "aliases": [
+      "ESP32-S3-LCD-EV-Board-MB v1.5"
+    ],
+    "module_variants": [
+      "ESP32-S3-WROOM-1-N16R16V"
+    ],
+    "route": "/boards/esp32s3-lcd-ev-board-v1-5",
+    "sources": [
+      {
+        "title": "ESP32-S3-LCD-EV-Board v1.5 User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-lcd-ev-board/user_guide.html",
+        "sections": [
+          "Board Overview",
+          "Description of Components",
+          "GPIO Allocation",
+          "Power Distribution",
+          "Hardware Setup Options",
+          "Hardware Revision Details",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-S3-LCD-EV-Board-MB"
+      ],
+      "module_markings": [
+        "ESP32-S3-WROOM-1-N16R16V"
+      ],
+      "memory_markings": [
+        "N16R16V"
+      ],
+      "visible_features": [
+        "LCD subboard connectors",
+        "dual microphones",
+        "MicroSD slot",
+        "ES7210 audio ADC",
+        "ES8311 audio codec",
+        "RGB LED"
+      ],
+      "button_labels": [
+        "Boot",
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "GND",
+        "3V3",
+        "EN",
+        "IO4",
+        "IO5",
+        "IO6",
+        "IO7",
+        "IO15",
+        "IO16",
+        "IO17",
+        "IO18",
+        "IO8",
+        "IO19",
+        "IO20",
+        "IO3",
+        "IO46",
+        "IO9",
+        "IO10",
+        "IO11",
+        "IO12",
+        "IO13",
+        "IO14",
+        "IO21",
+        "IO47",
+        "IO48",
+        "IO45",
+        "IO0",
+        "IO35",
+        "IO36",
+        "IO37",
+        "IO38",
+        "IO39",
+        "IO40",
+        "IO41",
+        "IO42",
+        "RXD0",
+        "TXD0",
+        "IO2",
+        "IO1",
+        "EPAD",
+        "A0",
+        "A1",
+        "A2",
+        "P0",
+        "P1",
+        "P2",
+        "P3",
+        "P4",
+        "P5",
+        "P6",
+        "P7",
+        "INT",
+        "SCL",
+        "SDA",
+        "VCC"
+      ],
+      "header_pin_counts": [
+        57
+      ],
+      "usb_connector_count": 2,
+      "usb_connector_types": []
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [],
+      "caution_pins": [
+        {
+          "gpio": "GPIO4",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO6",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO7",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO18",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Board hardware, Strapping"
+        },
+        {
+          "gpio": "GPIO46",
+          "warning": "Board hardware, Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO10",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO11",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO14",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO47",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO48",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO45",
+          "warning": "Board hardware, Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Boot, Strapping"
+        },
+        {
+          "gpio": "GPIO35",
+          "warning": "Board hardware, PSRAM"
+        },
+        {
+          "gpio": "GPIO36",
+          "warning": "Board hardware, PSRAM"
+        },
+        {
+          "gpio": "GPIO37",
+          "warning": "Board hardware, PSRAM"
+        },
+        {
+          "gpio": "GPIO38",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO39",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO40",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO41",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO42",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO44",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO43",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "Board hardware"
+        }
+      ],
+      "reserved_or_internal_pins": [
+        {
+          "gpio": "GPIO35",
+          "reason": "PSRAM"
+        },
+        {
+          "gpio": "GPIO36",
+          "reason": "PSRAM"
+        },
+        {
+          "gpio": "GPIO37",
+          "reason": "PSRAM"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Header pins with documented native USB data functions.",
+          "candidate_pins": [
+            "GPIO19",
+            "GPIO20"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO4",
+          "board_label": "IO4",
+          "functions": [
+            "GPIO4",
+            "LED"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "IO5",
+          "functions": [
+            "GPIO5",
+            "I2S_MCLK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "IO6",
+          "functions": [
+            "GPIO6",
+            "I2S_CODEC_DSDIN"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "IO7",
+          "functions": [
+            "GPIO7",
+            "I2S_LRCK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "IO15",
+          "functions": [
+            "GPIO15",
+            "I2S_ADC_SDOUT"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "IO16",
+          "functions": [
+            "GPIO16",
+            "I2S_SCLK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "IO17",
+          "functions": [
+            "GPIO17",
+            "LCD_DE"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "IO18",
+          "functions": [
+            "GPIO18",
+            "LCD_DATA7"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "IO8",
+          "functions": [
+            "GPIO8",
+            "LCD_DATA6"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "IO19",
+          "functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "IO20",
+          "functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "IO3",
+          "functions": [
+            "GPIO3",
+            "LCD_VSYNC"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "IO46",
+          "functions": [
+            "GPIO46",
+            "LCD_HSYNC"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "IO9",
+          "functions": [
+            "GPIO9",
+            "LCD_PCLK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "IO10",
+          "functions": [
+            "GPIO10",
+            "LCD_DATA0"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "IO11",
+          "functions": [
+            "GPIO11",
+            "LCD_DATA1"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "IO12",
+          "functions": [
+            "GPIO12",
+            "LCD_DATA2"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "IO13",
+          "functions": [
+            "GPIO13",
+            "LCD_DATA3"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "IO14",
+          "functions": [
+            "GPIO14",
+            "LCD_DATA4"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "IO21",
+          "functions": [
+            "GPIO21",
+            "LCD_DATA5"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "IO47",
+          "functions": [
+            "GPIO47",
+            "I2C_SDA"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "IO48",
+          "functions": [
+            "GPIO48",
+            "I2C_SCL"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "IO45",
+          "functions": [
+            "GPIO45",
+            "LCD_DATA8"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "IO0",
+          "functions": [
+            "GPIO0",
+            "BOOT"
+          ],
+          "warnings": [
+            "Boot",
+            "Strapping"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "IO35",
+          "functions": [
+            "GPIO35",
+            "NC"
+          ],
+          "warnings": [
+            "Board hardware",
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "IO36",
+          "functions": [
+            "GPIO36",
+            "NC"
+          ],
+          "warnings": [
+            "Board hardware",
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "IO37",
+          "functions": [
+            "GPIO37",
+            "NC"
+          ],
+          "warnings": [
+            "Board hardware",
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "IO38",
+          "functions": [
+            "GPIO38",
+            "LCD_DATA9"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "IO39",
+          "functions": [
+            "GPIO39",
+            "LCD_DATA10"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "IO40",
+          "functions": [
+            "GPIO40",
+            "LCD_DATA11"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "IO41",
+          "functions": [
+            "GPIO41",
+            "LCD_DATA12"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "IO42",
+          "functions": [
+            "GPIO42",
+            "LCD_DATA13"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "RXD0",
+          "functions": [
+            "GPIO44",
+            "UART_RXD0"
+          ],
+          "warnings": [
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "board_label": "TXD0",
+          "functions": [
+            "GPIO43",
+            "UART_TXD0"
+          ],
+          "warnings": [
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "IO2",
+          "functions": [
+            "GPIO2",
+            "LCD_DATA14"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "IO1",
+          "functions": [
+            "GPIO1",
+            "LCD_DATA15"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO4",
+          "board_label": "IO4",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO4",
+            "LED"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO4 in the official WROOM pin allocation for LED.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "IO5",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO5",
+            "I2S_MCLK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO5 in the official WROOM pin allocation for I2S_MCLK.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "GPIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "IO6",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO6",
+            "I2S_CODEC_DSDIN"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO6 in the official WROOM pin allocation for I2S_CODEC_DSDIN.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "io_mux": [
+            "GPIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "IO7",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO7",
+            "I2S_LRCK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO7 in the official WROOM pin allocation for I2S_LRCK.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "io_mux": [
+            "GPIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "IO15",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO15",
+            "I2S_ADC_SDOUT"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO15 in the official WROOM pin allocation for I2S_ADC_SDOUT.",
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "XTAL_32K_P",
+            "ADC2_CH4"
+          ],
+          "io_mux": [
+            "GPIO15",
+            "U0RTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "IO16",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO16",
+            "I2S_SCLK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO16 in the official WROOM pin allocation for I2S_SCLK.",
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "XTAL_32K_N",
+            "ADC2_CH5"
+          ],
+          "io_mux": [
+            "GPIO16",
+            "U0CTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "IO17",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO17",
+            "LCD_DE"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO17 in the official WROOM pin allocation for LCD_DE.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH6"
+          ],
+          "io_mux": [
+            "GPIO17",
+            "U1TXD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "IO18",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO18",
+            "LCD_DATA7"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO18 in the official WROOM pin allocation for LCD_DATA7.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH7"
+          ],
+          "io_mux": [
+            "GPIO18",
+            "U1RXD",
+            "CLK_OUT3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "IO8",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO8",
+            "LCD_DATA6"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO8 in the official WROOM pin allocation for LCD_DATA6.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH8",
+            "ADC1_CH7"
+          ],
+          "io_mux": [
+            "GPIO8",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "IO19",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO19 in the official WROOM pin allocation for USB_D-.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D-",
+            "ADC2_CH8"
+          ],
+          "io_mux": [
+            "GPIO19",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "IO20",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO20 in the official WROOM pin allocation for USB_D+.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D+",
+            "ADC2_CH9"
+          ],
+          "io_mux": [
+            "GPIO20",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "IO3",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO3",
+            "LCD_VSYNC"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO3 in the official WROOM pin allocation for LCD_VSYNC.",
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH3",
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "IO46",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO46",
+            "LCD_HSYNC"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO46 in the official WROOM pin allocation for LCD_HSYNC.",
+            "Strapping pin with default weak pull-down.",
+            "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+            "Also participates in ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO46"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "IO9",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO9",
+            "LCD_PCLK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO9 in the official WROOM pin allocation for LCD_PCLK.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH9",
+            "ADC1_CH8"
+          ],
+          "io_mux": [
+            "GPIO9",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "IO10",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO10",
+            "LCD_DATA0"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO10 in the official WROOM pin allocation for LCD_DATA0.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH10",
+            "ADC1_CH9"
+          ],
+          "io_mux": [
+            "GPIO10",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "IO11",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO11",
+            "LCD_DATA1"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO11 in the official WROOM pin allocation for LCD_DATA1.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH11",
+            "ADC2_CH0"
+          ],
+          "io_mux": [
+            "GPIO11",
+            "FSPIIO5",
+            "SUBSPID",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "IO12",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO12",
+            "LCD_DATA2"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO12 in the official WROOM pin allocation for LCD_DATA2.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH12",
+            "ADC2_CH1"
+          ],
+          "io_mux": [
+            "GPIO12",
+            "FSPIIO6",
+            "SUBSPICLK",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "IO13",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO13",
+            "LCD_DATA3"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO13 in the official WROOM pin allocation for LCD_DATA3.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH13",
+            "ADC2_CH2"
+          ],
+          "io_mux": [
+            "GPIO13",
+            "FSPIIO7",
+            "SUBSPIQ",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "IO14",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO14",
+            "LCD_DATA4"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO14 in the official WROOM pin allocation for LCD_DATA4.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH14",
+            "ADC2_CH3"
+          ],
+          "io_mux": [
+            "GPIO14",
+            "FSPIDQS",
+            "SUBSPIWP",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "IO21",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO21",
+            "LCD_DATA5"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO21 in the official WROOM pin allocation for LCD_DATA5."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO21"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "IO47",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO47",
+            "I2C_SDA"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO47 in the official WROOM pin allocation for I2C_SDA.",
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_P_DIFF",
+            "GPIO47",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "IO48",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO48",
+            "I2C_SCL"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO48 in the official WROOM pin allocation for I2C_SCL.",
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_N_DIFF",
+            "GPIO48",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "IO45",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO45",
+            "LCD_DATA8"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO45 in the official WROOM pin allocation for LCD_DATA8.",
+            "Strapping pin with default weak pull-down.",
+            "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO45"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "IO0",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO0",
+            "BOOT"
+          ],
+          "maker_warnings": [
+            "Boot",
+            "Strapping"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO0 in the official WROOM pin allocation for BOOT.",
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "IO35",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO35",
+            "NC"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO35 in the official WROOM pin allocation for No connection.",
+            "The official GPIO allocation table marks this pin as no connection.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO35",
+            "FSPID",
+            "SUBSPID",
+            "SPIIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "IO36",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO36",
+            "NC"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO36 in the official WROOM pin allocation for No connection.",
+            "The official GPIO allocation table marks this pin as no connection.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO36",
+            "FSPICLK",
+            "SUBSPICLK",
+            "SPIIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "IO37",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO37",
+            "NC"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO37 in the official WROOM pin allocation for No connection.",
+            "The official GPIO allocation table marks this pin as no connection.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO37",
+            "FSPIQ",
+            "SUBSPIQ",
+            "SPIDQS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "IO38",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO38",
+            "LCD_DATA9"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IO38 in the official WROOM pin allocation for LCD_DATA9."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "IO39",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO39",
+            "LCD_DATA10"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "IO39 in the official WROOM pin allocation for LCD_DATA10.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTCK",
+            "GPIO39",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "IO40",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO40",
+            "LCD_DATA11"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "IO40 in the official WROOM pin allocation for LCD_DATA11.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO40",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "IO41",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO41",
+            "LCD_DATA12"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "IO41 in the official WROOM pin allocation for LCD_DATA12.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDI",
+            "GPIO41",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "IO42",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO42",
+            "LCD_DATA13"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "IO42 in the official WROOM pin allocation for LCD_DATA13.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTMS",
+            "GPIO42"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "RXD0",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO44",
+            "UART_RXD0"
+          ],
+          "maker_warnings": [
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "RXD0 in the official WROOM pin allocation for UART_RXD0.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO44",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "board_label": "TXD0",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO43",
+            "UART_TXD0"
+          ],
+          "maker_warnings": [
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "TXD0 in the official WROOM pin allocation for UART_TXD0.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO43",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "IO2",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO2",
+            "LCD_DATA14"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO2 in the official WROOM pin allocation for LCD_DATA14.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "IO1",
+          "board_header": "WROOM pin",
+          "main_functions": [
+            "GPIO1",
+            "LCD_DATA15"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "IO1 in the official WROOM pin allocation for LCD_DATA15.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH1",
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "USB-to-USB or USB-to-UART can power the system; Espressif recommends at least a 5 V / 2 A supply.",
+        "The board separates audio and digital power rails to reduce audio noise."
+      ],
+      "programming": [
+        "Firmware can be uploaded through the USB-to-UART port or the native USB port.",
+        "Download mode is entered with Boot plus Reset, or automatically through DTR/RTS from the USB-to-UART bridge."
+      ],
+      "onboard_hardware": [
+        "LCD subboard connectors, RGB LED, ES7210 audio ADC, ES8311 audio codec, dual microphones, MicroSD slot, USB ports, buttons, and TCA9554 I/O expander."
+      ],
+      "usb_connectors": {
+        "count": 2,
+        "types": []
+      },
+      "buttons": [
+        "Boot",
+        "Reset"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO4",
+          "board_label": "IO4",
+          "main_functions": [
+            "GPIO4",
+            "LED"
+          ],
+          "notes": [
+            "IO4 in the official WROOM pin allocation for LED.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "IO5",
+          "main_functions": [
+            "GPIO5",
+            "I2S_MCLK"
+          ],
+          "notes": [
+            "IO5 in the official WROOM pin allocation for I2S_MCLK.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "IO6",
+          "main_functions": [
+            "GPIO6",
+            "I2S_CODEC_DSDIN"
+          ],
+          "notes": [
+            "IO6 in the official WROOM pin allocation for I2S_CODEC_DSDIN.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "IO7",
+          "main_functions": [
+            "GPIO7",
+            "I2S_LRCK"
+          ],
+          "notes": [
+            "IO7 in the official WROOM pin allocation for I2S_LRCK.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "IO15",
+          "main_functions": [
+            "GPIO15",
+            "I2S_ADC_SDOUT"
+          ],
+          "notes": [
+            "IO15 in the official WROOM pin allocation for I2S_ADC_SDOUT.",
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "IO16",
+          "main_functions": [
+            "GPIO16",
+            "I2S_SCLK"
+          ],
+          "notes": [
+            "IO16 in the official WROOM pin allocation for I2S_SCLK.",
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "IO17",
+          "main_functions": [
+            "GPIO17",
+            "LCD_DE"
+          ],
+          "notes": [
+            "IO17 in the official WROOM pin allocation for LCD_DE.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "IO18",
+          "main_functions": [
+            "GPIO18",
+            "LCD_DATA7"
+          ],
+          "notes": [
+            "IO18 in the official WROOM pin allocation for LCD_DATA7.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "IO8",
+          "main_functions": [
+            "GPIO8",
+            "LCD_DATA6"
+          ],
+          "notes": [
+            "IO8 in the official WROOM pin allocation for LCD_DATA6.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "IO3",
+          "main_functions": [
+            "GPIO3",
+            "LCD_VSYNC"
+          ],
+          "notes": [
+            "IO3 in the official WROOM pin allocation for LCD_VSYNC.",
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "IO46",
+          "main_functions": [
+            "GPIO46",
+            "LCD_HSYNC"
+          ],
+          "notes": [
+            "IO46 in the official WROOM pin allocation for LCD_HSYNC.",
+            "Strapping pin with default weak pull-down.",
+            "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+            "Also participates in ROM message printing control."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "IO9",
+          "main_functions": [
+            "GPIO9",
+            "LCD_PCLK"
+          ],
+          "notes": [
+            "IO9 in the official WROOM pin allocation for LCD_PCLK.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "IO10",
+          "main_functions": [
+            "GPIO10",
+            "LCD_DATA0"
+          ],
+          "notes": [
+            "IO10 in the official WROOM pin allocation for LCD_DATA0.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "IO11",
+          "main_functions": [
+            "GPIO11",
+            "LCD_DATA1"
+          ],
+          "notes": [
+            "IO11 in the official WROOM pin allocation for LCD_DATA1.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "IO12",
+          "main_functions": [
+            "GPIO12",
+            "LCD_DATA2"
+          ],
+          "notes": [
+            "IO12 in the official WROOM pin allocation for LCD_DATA2.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "IO13",
+          "main_functions": [
+            "GPIO13",
+            "LCD_DATA3"
+          ],
+          "notes": [
+            "IO13 in the official WROOM pin allocation for LCD_DATA3.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "IO14",
+          "main_functions": [
+            "GPIO14",
+            "LCD_DATA4"
+          ],
+          "notes": [
+            "IO14 in the official WROOM pin allocation for LCD_DATA4.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "IO21",
+          "main_functions": [
+            "GPIO21",
+            "LCD_DATA5"
+          ],
+          "notes": [
+            "IO21 in the official WROOM pin allocation for LCD_DATA5."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "IO47",
+          "main_functions": [
+            "GPIO47",
+            "I2C_SDA"
+          ],
+          "notes": [
+            "IO47 in the official WROOM pin allocation for I2C_SDA.",
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "IO48",
+          "main_functions": [
+            "GPIO48",
+            "I2C_SCL"
+          ],
+          "notes": [
+            "IO48 in the official WROOM pin allocation for I2C_SCL.",
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "IO45",
+          "main_functions": [
+            "GPIO45",
+            "LCD_DATA8"
+          ],
+          "notes": [
+            "IO45 in the official WROOM pin allocation for LCD_DATA8.",
+            "Strapping pin with default weak pull-down.",
+            "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "IO35",
+          "main_functions": [
+            "GPIO35",
+            "NC"
+          ],
+          "notes": [
+            "IO35 in the official WROOM pin allocation for No connection.",
+            "The official GPIO allocation table marks this pin as no connection.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "warnings": [
+            "Board hardware",
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "IO36",
+          "main_functions": [
+            "GPIO36",
+            "NC"
+          ],
+          "notes": [
+            "IO36 in the official WROOM pin allocation for No connection.",
+            "The official GPIO allocation table marks this pin as no connection.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "warnings": [
+            "Board hardware",
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "IO37",
+          "main_functions": [
+            "GPIO37",
+            "NC"
+          ],
+          "notes": [
+            "IO37 in the official WROOM pin allocation for No connection.",
+            "The official GPIO allocation table marks this pin as no connection.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "warnings": [
+            "Board hardware",
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "IO38",
+          "main_functions": [
+            "GPIO38",
+            "LCD_DATA9"
+          ],
+          "notes": [
+            "IO38 in the official WROOM pin allocation for LCD_DATA9."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "IO39",
+          "main_functions": [
+            "GPIO39",
+            "LCD_DATA10"
+          ],
+          "notes": [
+            "IO39 in the official WROOM pin allocation for LCD_DATA10.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "IO40",
+          "main_functions": [
+            "GPIO40",
+            "LCD_DATA11"
+          ],
+          "notes": [
+            "IO40 in the official WROOM pin allocation for LCD_DATA11.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "IO41",
+          "main_functions": [
+            "GPIO41",
+            "LCD_DATA12"
+          ],
+          "notes": [
+            "IO41 in the official WROOM pin allocation for LCD_DATA12.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "IO42",
+          "main_functions": [
+            "GPIO42",
+            "LCD_DATA13"
+          ],
+          "notes": [
+            "IO42 in the official WROOM pin allocation for LCD_DATA13.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "IO2",
+          "main_functions": [
+            "GPIO2",
+            "LCD_DATA14"
+          ],
+          "notes": [
+            "IO2 in the official WROOM pin allocation for LCD_DATA14.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "IO1",
+          "main_functions": [
+            "GPIO1",
+            "LCD_DATA15"
+          ],
+          "notes": [
+            "IO1 in the official WROOM pin allocation for LCD_DATA15.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        }
+      ]
+    }
+  }
+}

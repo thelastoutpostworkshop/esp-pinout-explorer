@@ -10,6 +10,12 @@ export interface BoardDataset {
   boards: BoardDefinition[];
 }
 
+export interface BoardIndexDataset {
+  schema_version: 1;
+  generated_at: string;
+  boards: Array<Pick<BoardDefinition, 'id' | 'name' | 'manufacturer' | 'chip_family' | 'aliases' | 'module_variants' | 'route' | 'sources' | 'recognition'> & { pinout_summary: Pick<BoardDefinition['pinout_summary'], 'safe_general_purpose_pins' | 'caution_pins' | 'reserved_or_internal_pins' | 'peripheral_notes' | 'general_warnings'> }>;
+}
+
 export interface BoardDefinition {
   id: string;
   name: string;
@@ -226,4 +232,23 @@ export function createBoardDataset(generatedAt = new Date().toISOString()): Boar
   });
 
   return { schema_version: 1, generated_at: generatedAt, boards };
+}
+
+/** Lightweight discovery dataset for MCP board identification. */
+export function createBoardIndexDataset(generatedAt = new Date().toISOString()): BoardIndexDataset {
+  const { boards } = createBoardDataset(generatedAt);
+  return {
+    schema_version: 1,
+    generated_at: generatedAt,
+    boards: boards.map(({ pinout_summary, ...board }) => ({
+      ...board,
+      pinout_summary: {
+        safe_general_purpose_pins: pinout_summary.safe_general_purpose_pins,
+        caution_pins: pinout_summary.caution_pins,
+        reserved_or_internal_pins: pinout_summary.reserved_or_internal_pins,
+        peripheral_notes: pinout_summary.peripheral_notes,
+        general_warnings: pinout_summary.general_warnings,
+      },
+    })),
+  };
 }

@@ -1,0 +1,1285 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp-dualkey",
+    "name": "ESP-DualKey",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-S3",
+    "aliases": [
+      "ESP-DualKey"
+    ],
+    "module_variants": [
+      "ESP32-S3FN8"
+    ],
+    "route": "/boards/esp-dualkey",
+    "sources": [
+      {
+        "title": "ESP-DualKey User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-dualkey/user_guide.html",
+        "sections": [
+          "Board Overview",
+          "Description of Components",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP-DualKey"
+      ],
+      "module_markings": [
+        "ESP32-S3FN8"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "two keys",
+        "three-position mode switch",
+        "two WS2812 RGB LEDs",
+        "HY2.0-4P ports",
+        "USB-C"
+      ],
+      "button_labels": [],
+      "visible_pin_labels": [
+        "KEY_1",
+        "KEY_2",
+        "SWITCH_1",
+        "SWITCH_2",
+        "ADC_BAT",
+        "ADC_VBUS",
+        "ADC_CHRG",
+        "WS2812_IN",
+        "PWR_2812",
+        "USB_DN",
+        "USB_DP",
+        "U0RXD",
+        "U0TXD",
+        "GPIO5",
+        "GPIO6",
+        "GPIO47",
+        "GPIO48"
+      ],
+      "header_pin_counts": [
+        17
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": [
+        "usb-c"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [],
+      "caution_pins": [
+        {
+          "gpio": "GPIO0",
+          "warning": "Board hardware, Boot, Strapping"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO7",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO10",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO40",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO44",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO43",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO6",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO47",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO48",
+          "warning": "Board hardware, Voltage"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Header pins with documented native USB data functions.",
+          "candidate_pins": [
+            "GPIO19",
+            "GPIO20"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO44",
+            "GPIO43"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "KEY_1",
+          "functions": [
+            "GPIO0",
+            "KEY_1"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "KEY_2",
+          "functions": [
+            "GPIO17",
+            "KEY_2"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "SWITCH_1",
+          "functions": [
+            "GPIO8",
+            "SWITCH_1"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "SWITCH_2",
+          "functions": [
+            "GPIO7",
+            "SWITCH_2"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "ADC_BAT",
+          "functions": [
+            "GPIO10",
+            "ADC_BAT"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "ADC_VBUS",
+          "functions": [
+            "GPIO2",
+            "ADC_VBUS"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "ADC_CHRG",
+          "functions": [
+            "GPIO9",
+            "ADC_CHRG"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "WS2812_IN",
+          "functions": [
+            "GPIO21",
+            "WS2812_IN"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "PWR_2812",
+          "functions": [
+            "GPIO40",
+            "PWR_2812"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_DN",
+          "functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_DP",
+          "functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "U0RXD",
+          "functions": [
+            "GPIO44",
+            "U0RXD"
+          ],
+          "warnings": [
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "board_label": "U0TXD",
+          "functions": [
+            "GPIO43",
+            "U0TXD"
+          ],
+          "warnings": [
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "UART1_RX"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "GPIO6",
+          "functions": [
+            "GPIO6"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "GPIO47",
+          "functions": [
+            "GPIO47"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "GPIO48",
+          "functions": [
+            "GPIO48"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "KEY_1",
+          "board_header": "Keys",
+          "main_functions": [
+            "GPIO0",
+            "KEY_1"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "KEY_1 in the official Keys allocation for Keys.",
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "KEY_2",
+          "board_header": "Keys",
+          "main_functions": [
+            "GPIO17",
+            "KEY_2"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "KEY_2 in the official Keys allocation for Keys.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH6"
+          ],
+          "io_mux": [
+            "GPIO17",
+            "U1TXD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "SWITCH_1",
+          "board_header": "Mode switch",
+          "main_functions": [
+            "GPIO8",
+            "SWITCH_1"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "SWITCH_1 in the official Mode switch allocation for Mode switch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH8",
+            "ADC1_CH7"
+          ],
+          "io_mux": [
+            "GPIO8",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "SWITCH_2",
+          "board_header": "Mode switch",
+          "main_functions": [
+            "GPIO7",
+            "SWITCH_2"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "SWITCH_2 in the official Mode switch allocation for Mode switch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "io_mux": [
+            "GPIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "ADC_BAT",
+          "board_header": "Power monitor",
+          "main_functions": [
+            "GPIO10",
+            "ADC_BAT"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "ADC_BAT in the official Power monitor allocation for Power monitor.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH10",
+            "ADC1_CH9"
+          ],
+          "io_mux": [
+            "GPIO10",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "ADC_VBUS",
+          "board_header": "Power monitor",
+          "main_functions": [
+            "GPIO2",
+            "ADC_VBUS"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "ADC_VBUS in the official Power monitor allocation for Power monitor.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "ADC_CHRG",
+          "board_header": "Power monitor",
+          "main_functions": [
+            "GPIO9",
+            "ADC_CHRG"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "ADC_CHRG in the official Power monitor allocation for Power monitor.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH9",
+            "ADC1_CH8"
+          ],
+          "io_mux": [
+            "GPIO9",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "WS2812_IN",
+          "board_header": "RGB LEDs",
+          "main_functions": [
+            "GPIO21",
+            "WS2812_IN"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "WS2812_IN in the official RGB LEDs allocation for RGB LEDs."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO21"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "PWR_2812",
+          "board_header": "RGB LEDs",
+          "main_functions": [
+            "GPIO40",
+            "PWR_2812"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power domain",
+            "JTAG"
+          ],
+          "notes": [
+            "PWR_2812 in the official RGB LEDs allocation for RGB LEDs.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO40",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_DN",
+          "board_header": "USB-C",
+          "main_functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_DN in the official USB-C allocation for USB-C.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D-",
+            "ADC2_CH8"
+          ],
+          "io_mux": [
+            "GPIO19",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_DP",
+          "board_header": "USB-C",
+          "main_functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_DP in the official USB-C allocation for USB-C.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D+",
+            "ADC2_CH9"
+          ],
+          "io_mux": [
+            "GPIO20",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "U0RXD",
+          "board_header": "USB serial",
+          "main_functions": [
+            "GPIO44",
+            "U0RXD"
+          ],
+          "maker_warnings": [
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "U0RXD in the official USB serial allocation for USB serial.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO44",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "board_label": "U0TXD",
+          "board_header": "USB serial",
+          "main_functions": [
+            "GPIO43",
+            "U0TXD"
+          ],
+          "maker_warnings": [
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "U0TXD in the official USB serial allocation for USB serial.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO43",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "GPIO5",
+          "board_header": "HY2.0 ports",
+          "main_functions": [
+            "GPIO5",
+            "UART1_RX"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "GPIO5 in the official HY2.0 ports allocation for HY2.0 ports.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "GPIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "GPIO6",
+          "board_header": "HY2.0 ports",
+          "main_functions": [
+            "GPIO6"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "GPIO6 in the official HY2.0 ports allocation for HY2.0 ports.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "io_mux": [
+            "GPIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "GPIO47",
+          "board_header": "HY2.0 ports",
+          "main_functions": [
+            "GPIO47"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO47 in the official HY2.0 ports allocation for HY2.0 ports.",
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_P_DIFF",
+            "GPIO47",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "GPIO48",
+          "board_header": "HY2.0 ports",
+          "main_functions": [
+            "GPIO48"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO48 in the official HY2.0 ports allocation for HY2.0 ports.",
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_N_DIFF",
+            "GPIO48",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "USB-C powers the board and charges the 3.7 V battery through the charging circuit.",
+        "The schematic includes VBUS, battery-voltage, charge-status, boost, and WS2812 power-control paths."
+      ],
+      "programming": [
+        "USB-C is used for power, programming/download, debugging, and battery charging."
+      ],
+      "onboard_hardware": [
+        "Two keys, three-position mode switch, two WS2812 RGB LEDs, battery charger, VBUS monitor, and HY2.0-4P ports."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": [
+          "usb-c"
+        ]
+      },
+      "buttons": [],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "KEY_1",
+          "main_functions": [
+            "GPIO0",
+            "KEY_1"
+          ],
+          "notes": [
+            "KEY_1 in the official Keys allocation for Keys.",
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "KEY_2",
+          "main_functions": [
+            "GPIO17",
+            "KEY_2"
+          ],
+          "notes": [
+            "KEY_2 in the official Keys allocation for Keys.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "SWITCH_1",
+          "main_functions": [
+            "GPIO8",
+            "SWITCH_1"
+          ],
+          "notes": [
+            "SWITCH_1 in the official Mode switch allocation for Mode switch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "SWITCH_2",
+          "main_functions": [
+            "GPIO7",
+            "SWITCH_2"
+          ],
+          "notes": [
+            "SWITCH_2 in the official Mode switch allocation for Mode switch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "ADC_BAT",
+          "main_functions": [
+            "GPIO10",
+            "ADC_BAT"
+          ],
+          "notes": [
+            "ADC_BAT in the official Power monitor allocation for Power monitor.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "ADC_VBUS",
+          "main_functions": [
+            "GPIO2",
+            "ADC_VBUS"
+          ],
+          "notes": [
+            "ADC_VBUS in the official Power monitor allocation for Power monitor.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "ADC_CHRG",
+          "main_functions": [
+            "GPIO9",
+            "ADC_CHRG"
+          ],
+          "notes": [
+            "ADC_CHRG in the official Power monitor allocation for Power monitor.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "WS2812_IN",
+          "main_functions": [
+            "GPIO21",
+            "WS2812_IN"
+          ],
+          "notes": [
+            "WS2812_IN in the official RGB LEDs allocation for RGB LEDs."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "PWR_2812",
+          "main_functions": [
+            "GPIO40",
+            "PWR_2812"
+          ],
+          "notes": [
+            "PWR_2812 in the official RGB LEDs allocation for RGB LEDs.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "GPIO5",
+          "main_functions": [
+            "GPIO5",
+            "UART1_RX"
+          ],
+          "notes": [
+            "GPIO5 in the official HY2.0 ports allocation for HY2.0 ports.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "GPIO6",
+          "main_functions": [
+            "GPIO6"
+          ],
+          "notes": [
+            "GPIO6 in the official HY2.0 ports allocation for HY2.0 ports.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "GPIO47",
+          "main_functions": [
+            "GPIO47"
+          ],
+          "notes": [
+            "GPIO47 in the official HY2.0 ports allocation for HY2.0 ports.",
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "GPIO48",
+          "main_functions": [
+            "GPIO48"
+          ],
+          "notes": [
+            "GPIO48 in the official HY2.0 ports allocation for HY2.0 ports.",
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        }
+      ]
+    }
+  }
+}

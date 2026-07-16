@@ -1,0 +1,1362 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp-launcher",
+    "name": "ESP-Launcher",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP8266EX",
+    "aliases": [
+      "ESP-LAUNCHER"
+    ],
+    "module_variants": [
+      "ESP8266EX"
+    ],
+    "route": "/boards/esp-launcher",
+    "sources": [
+      {
+        "title": "ESP8266 Hardware Design Guidelines",
+        "url": "https://documentation.espressif.com/esp8266_hardware_design_guidelines_en.pdf",
+        "sections": [
+          "ESP-LAUNCHER development board",
+          "ESP-Test Board",
+          "USB-UART",
+          "Boot Mode Select",
+          "Reset Key",
+          "LED Indicators",
+          "Infrared Remote Control",
+          "HSPI",
+          "SDIO/SPI",
+          "Wake Up for deep sleep",
+          "ADC",
+          "I2C"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP-LAUNCHER"
+      ],
+      "module_markings": [
+        "ESP8266EX"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "Micro-USB connector",
+        "FT232RL USB-UART bridge",
+        "Boot Mode select toggle",
+        "reset keys",
+        "infrared remote-control circuit",
+        "two 12-pin headers"
+      ],
+      "button_labels": [
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "TOUT",
+        "GPIO14",
+        "GPIO12",
+        "GPIO13",
+        "GPIO15",
+        "SD_D2",
+        "SD_D3",
+        "SD_CMD",
+        "SD_CLK",
+        "SD_D0",
+        "SD_D1",
+        "GND",
+        "CH_PD",
+        "VDD33",
+        "RST",
+        "GPIO16",
+        "GPIO5",
+        "GPIO4",
+        "U0TXD",
+        "U0RXD",
+        "GPIO0",
+        "GPIO2"
+      ],
+      "header_pin_counts": [
+        24
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": [
+        "micro-usb"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO4"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO14",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "UART0, Board hardware"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping, Boot, UART0, Board hardware"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO10",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO11",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO6",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO7",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0, Board hardware, Boot"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0, Board hardware"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot, Board hardware"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        }
+      ],
+      "reserved_or_internal_pins": [
+        {
+          "gpio": "GPIO9",
+          "reason": "Flash memory"
+        },
+        {
+          "gpio": "GPIO10",
+          "reason": "Flash memory"
+        },
+        {
+          "gpio": "GPIO11",
+          "reason": "Flash memory"
+        },
+        {
+          "gpio": "GPIO6",
+          "reason": "Flash memory"
+        },
+        {
+          "gpio": "GPIO7",
+          "reason": "Flash memory"
+        },
+        {
+          "gpio": "GPIO8",
+          "reason": "Flash memory"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO1",
+            "GPIO3"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO14",
+          "board_label": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "UART0",
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "SD_D2",
+          "functions": [
+            "GPIO9",
+            "SDIO_DATA_2",
+            "SPIHD",
+            "HSPIHD"
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "SD_D3",
+          "functions": [
+            "GPIO10",
+            "SDIO_DATA_3",
+            "SPIWP",
+            "HSPIWP"
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "SD_CMD",
+          "functions": [
+            "GPIO11",
+            "SDIO_CMD",
+            "SPI_CS0"
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "SD_CLK",
+          "functions": [
+            "GPIO6",
+            "SDIO_CLK",
+            "SPI_CLK"
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "SD_D0",
+          "functions": [
+            "GPIO7",
+            "SDIO_DATA_0",
+            "SPI_MISO"
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "SD_D1",
+          "functions": [
+            "GPIO8",
+            "SDIO_DATA_1",
+            "SPI_MOSI",
+            "U1RXD"
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "XPD_DCDC",
+            "Deep-sleep wakeup"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "U0TXD",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "U0RXD",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "UART1_TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO14",
+          "board_label": "GPIO14",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J4-2 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO14.",
+            "Used by the on-board infrared remote-control circuit.",
+            "Package pin name is MTMS; common maker use is GPIO14 or HSPI clock."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "GPIO12",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J4-3 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO12.",
+            "Connected to the on-board link LED.",
+            "Package pin name is MTDI; common maker use is GPIO12 or HSPI MISO."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "GPIO13",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J4-4 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO13.",
+            "Connected to the UART0 CTS flow-control jumper path on the board.",
+            "Package pin name is MTCK; common maker use is GPIO13 or HSPI MOSI."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "U0CTS",
+            "I2SI_BCK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "GPIO15",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot",
+            "UART0",
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J4-5 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO15.",
+            "Connected to the on-board relay LED and the UART0 RTS flow-control jumper path.",
+            "ESP8266 boot mode uses this pin as a strap input, so keep the documented level when powering up.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Package pin name is MTDO; common maker use is GPIO15 or HSPI chip select."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO15",
+            "MTDO",
+            "HSPI_CS",
+            "U0RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "SD_D2",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO9",
+            "SDIO_DATA_2",
+            "SPIHD",
+            "HSPIHD"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "J4-6 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D2.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D2 through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9",
+            "SDIO_DATA_2",
+            "SPIHD",
+            "HSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "SD_D3",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO10",
+            "SDIO_DATA_3",
+            "SPIWP",
+            "HSPIWP"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "J4-7 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D3.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D3 through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO10",
+            "SDIO_DATA_3",
+            "SPIWP",
+            "HSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "SD_CMD",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO11",
+            "SDIO_CMD",
+            "SPI_CS0"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "J4-8 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_CMD.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_CMD through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO11",
+            "SDIO_CMD",
+            "SPI_CS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "SD_CLK",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO6",
+            "SDIO_CLK",
+            "SPI_CLK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "J4-9 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_CLK.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_CLK through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO6",
+            "SDIO_CLK",
+            "SPI_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "SD_D0",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO7",
+            "SDIO_DATA_0",
+            "SPI_MISO"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "J4-10 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D0.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D0 through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO7",
+            "SDIO_DATA_0",
+            "SPI_MISO"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "SD_D1",
+          "board_header": "J4",
+          "main_functions": [
+            "GPIO8",
+            "SDIO_DATA_1",
+            "SPI_MOSI",
+            "U1RXD"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "J4-11 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D1.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D1 through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO8",
+            "SDIO_DATA_1",
+            "SPI_MOSI",
+            "U1RXD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "GPIO16",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO16",
+            "XPD_DCDC",
+            "Deep-sleep wakeup"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-5 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO16.",
+            "This pin can be jumpered to RST for deep-sleep wake-up on the board.",
+            "Connect XPD_DCDC to EXT_RSTB when GPIO16 is used for deep-sleep wakeup.",
+            "GPIO16 can only be configured with an internal pull-down."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO16",
+            "XPD_DCDC"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "GPIO5",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-6 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO5.",
+            "Used by the board infrared remote-control circuit."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "GPIO4",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-7 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO4."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "U0TXD",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Board hardware",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-8 on the ESP-LAUNCHER J4/J2 header block, silkscreen label U0TXD.",
+            "Connected to the FT232RL USB-UART bridge transmit path.",
+            "UART0 is used for flash programming and boot/debug serial output.",
+            "U0TXD should not be pulled externally low during powering-up."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO1",
+            "U0TXD",
+            "SPI_CS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "U0RXD",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-9 on the ESP-LAUNCHER J4/J2 header block, silkscreen label U0RXD.",
+            "Connected to the FT232RL USB-UART bridge receive path.",
+            "UART0 is used for flash programming and boot/debug serial output."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO3",
+            "U0RXD",
+            "I2SO_DATA"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "GPIO0",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-11 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO0.",
+            "Connected to the boot-mode toggle and the WiFi LED.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0",
+            "SPI_CS2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "GPIO2",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO2",
+            "UART1_TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-12 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO2.",
+            "Boot strap pin on the board header.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Used as UART TX during flash programming."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO2",
+            "U1TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "Power comes from the Micro USB / USB-UART section, and the J2 3V3 pin exposes the board 3.3 V rail for external use.",
+        "Follow the hardware design guide before mixing USB power with an external 3.3 V supply."
+      ],
+      "programming": [
+        "The FT232RL USB-UART bridge supports flashing and serial logging through Micro USB.",
+        "Use the J66 boot-mode toggle for UART download versus flash boot, and the J14/J67 jumper path when you need UART flow control."
+      ],
+      "onboard_hardware": [
+        "FT232RL USB-UART bridge, boot-mode select toggle, reset keys, relay/WiFi/link LEDs, infrared remote-control circuit, wake-up jumper, external SPI flash, and UART flow-control jumpers."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": [
+          "micro-usb"
+        ]
+      },
+      "buttons": [
+        "Reset"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO14",
+          "board_label": "GPIO14",
+          "main_functions": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "notes": [
+            "J4-2 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO14.",
+            "Used by the on-board infrared remote-control circuit.",
+            "Package pin name is MTMS; common maker use is GPIO14 or HSPI clock."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "GPIO12",
+          "main_functions": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "notes": [
+            "J4-3 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO12.",
+            "Connected to the on-board link LED.",
+            "Package pin name is MTDI; common maker use is GPIO12 or HSPI MISO."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "GPIO13",
+          "main_functions": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "notes": [
+            "J4-4 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO13.",
+            "Connected to the UART0 CTS flow-control jumper path on the board.",
+            "Package pin name is MTCK; common maker use is GPIO13 or HSPI MOSI."
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "GPIO15",
+          "main_functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "notes": [
+            "J4-5 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO15.",
+            "Connected to the on-board relay LED and the UART0 RTS flow-control jumper path.",
+            "ESP8266 boot mode uses this pin as a strap input, so keep the documented level when powering up.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Package pin name is MTDO; common maker use is GPIO15 or HSPI chip select."
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "UART0",
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "SD_D2",
+          "main_functions": [
+            "GPIO9",
+            "SDIO_DATA_2",
+            "SPIHD",
+            "HSPIHD"
+          ],
+          "notes": [
+            "J4-6 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D2.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D2 through the datasheet series resistor."
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "SD_D3",
+          "main_functions": [
+            "GPIO10",
+            "SDIO_DATA_3",
+            "SPIWP",
+            "HSPIWP"
+          ],
+          "notes": [
+            "J4-7 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D3.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D3 through the datasheet series resistor."
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "SD_CMD",
+          "main_functions": [
+            "GPIO11",
+            "SDIO_CMD",
+            "SPI_CS0"
+          ],
+          "notes": [
+            "J4-8 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_CMD.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_CMD through the datasheet series resistor."
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "SD_CLK",
+          "main_functions": [
+            "GPIO6",
+            "SDIO_CLK",
+            "SPI_CLK"
+          ],
+          "notes": [
+            "J4-9 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_CLK.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_CLK through the datasheet series resistor."
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "SD_D0",
+          "main_functions": [
+            "GPIO7",
+            "SDIO_DATA_0",
+            "SPI_MISO"
+          ],
+          "notes": [
+            "J4-10 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D0.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D0 through the datasheet series resistor."
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "SD_D1",
+          "main_functions": [
+            "GPIO8",
+            "SDIO_DATA_1",
+            "SPI_MOSI",
+            "U1RXD"
+          ],
+          "notes": [
+            "J4-11 on the ESP-LAUNCHER J4/J2 header block, silkscreen label SD_D1.",
+            "Connected to the on-board SPI flash U4. Treat this pin as reserved on the launcher board.",
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D1 through the datasheet series resistor."
+          ],
+          "warnings": [
+            "Flash memory",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "GPIO16",
+          "main_functions": [
+            "GPIO16",
+            "XPD_DCDC",
+            "Deep-sleep wakeup"
+          ],
+          "notes": [
+            "J2-5 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO16.",
+            "This pin can be jumpered to RST for deep-sleep wake-up on the board.",
+            "Connect XPD_DCDC to EXT_RSTB when GPIO16 is used for deep-sleep wakeup.",
+            "GPIO16 can only be configured with an internal pull-down."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "GPIO5",
+          "main_functions": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "notes": [
+            "J2-6 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO5.",
+            "Used by the board infrared remote-control circuit."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "U0TXD",
+          "main_functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "notes": [
+            "J2-8 on the ESP-LAUNCHER J4/J2 header block, silkscreen label U0TXD.",
+            "Connected to the FT232RL USB-UART bridge transmit path.",
+            "UART0 is used for flash programming and boot/debug serial output.",
+            "U0TXD should not be pulled externally low during powering-up."
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "U0RXD",
+          "main_functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "notes": [
+            "J2-9 on the ESP-LAUNCHER J4/J2 header block, silkscreen label U0RXD.",
+            "Connected to the FT232RL USB-UART bridge receive path.",
+            "UART0 is used for flash programming and boot/debug serial output."
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "GPIO0",
+          "main_functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "notes": [
+            "J2-11 on the ESP-LAUNCHER J4/J2 header block, silkscreen label GPIO0.",
+            "Connected to the boot-mode toggle and the WiFi LED.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ]
+        }
+      ]
+    }
+  }
+}

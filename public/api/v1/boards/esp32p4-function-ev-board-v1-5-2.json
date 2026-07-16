@@ -1,0 +1,928 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32p4-function-ev-board-v1-5-2",
+    "name": "ESP32-P4-Function-EV-Board v1.5.2",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-P4",
+    "aliases": [
+      "ESP32-P4-Function-EV-Board v1.5.2"
+    ],
+    "module_variants": [
+      "ESP32-C6-MINI-1"
+    ],
+    "route": "/boards/esp32p4-function-ev-board-v1-5-2",
+    "sources": [
+      {
+        "title": "ESP32-P4-Function-EV-Board v1.5.2 User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4-function-ev-board/user_guide.html",
+        "sections": [
+          "Getting Started",
+          "Description of Components",
+          "Application Examples",
+          "Start Application Development",
+          "Hardware Reference",
+          "Power Supply Options",
+          "Header Block",
+          "Hardware Revision Details",
+          "Related Documents",
+          "Accessories"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-P4-Function-EV-Board"
+      ],
+      "module_markings": [
+        "ESP32-C6-MINI-1"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "RJ45 Ethernet port",
+        "USB Type-C port",
+        "USB Type-A port",
+        "MicroSD slot",
+        "MIPI CSI connector",
+        "MIPI DSI connector",
+        "Boot button",
+        "Reset button"
+      ],
+      "button_labels": [
+        "Boot",
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "3V3",
+        "5V",
+        "7",
+        "8",
+        "GND",
+        "23",
+        "37",
+        "38",
+        "21",
+        "22",
+        "20",
+        "6",
+        "5",
+        "4",
+        "3",
+        "2",
+        "NC(1)",
+        "NC(0)",
+        "36",
+        "32",
+        "NC",
+        "33",
+        "26",
+        "54",
+        "48",
+        "53",
+        "46",
+        "47",
+        "27",
+        "NC(45)"
+      ],
+      "header_pin_counts": [
+        40
+      ],
+      "usb_connector_count": 4,
+      "usb_connector_types": [
+        "usb-c",
+        "usb-a"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO7",
+        "GPIO8",
+        "GPIO23",
+        "GPIO37",
+        "GPIO38",
+        "GPIO21",
+        "GPIO22",
+        "GPIO20",
+        "GPIO6",
+        "GPIO5",
+        "GPIO4",
+        "GPIO3",
+        "GPIO2",
+        "GPIO36",
+        "GPIO32",
+        "GPIO33",
+        "GPIO54",
+        "GPIO48",
+        "GPIO53",
+        "GPIO46",
+        "GPIO47"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO1",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot, Board hardware"
+        },
+        {
+          "gpio": "GPIO26",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO27",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO45",
+          "warning": "Board hardware"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO37",
+            "GPIO38"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO7",
+          "board_label": "7",
+          "functions": [
+            "GPIO7"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "8",
+          "functions": [
+            "GPIO8"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO23",
+          "board_label": "23",
+          "functions": [
+            "GPIO23"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "37",
+          "functions": [
+            "GPIO37",
+            "U0TXD"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "38",
+          "functions": [
+            "GPIO38",
+            "U0RXD"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "21",
+          "functions": [
+            "GPIO21"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO22",
+          "board_label": "22",
+          "functions": [
+            "GPIO22"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "20",
+          "functions": [
+            "GPIO20"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "6",
+          "functions": [
+            "GPIO6"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "functions": [
+            "GPIO5"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "functions": [
+            "GPIO4"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "3",
+          "functions": [
+            "GPIO3"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "functions": [
+            "GPIO2"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "NC(1)",
+          "functions": [
+            "GPIO1"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "NC(0)",
+          "functions": [
+            "GPIO0"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "36",
+          "functions": [
+            "GPIO36"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO32",
+          "board_label": "32",
+          "functions": [
+            "GPIO32"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "33",
+          "functions": [
+            "GPIO33"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "26",
+          "functions": [
+            "GPIO26"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO54",
+          "board_label": "54",
+          "functions": [
+            "GPIO54"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "48",
+          "functions": [
+            "GPIO48"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO53",
+          "board_label": "53",
+          "functions": [
+            "GPIO53"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "46",
+          "functions": [
+            "GPIO46"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "47",
+          "functions": [
+            "GPIO47"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO27",
+          "board_label": "27",
+          "functions": [
+            "GPIO27"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "NC(45)",
+          "functions": [
+            "GPIO45"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO7",
+          "board_label": "7",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO7"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-3 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 7."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "8",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO8"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-5 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 8."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO23",
+          "board_label": "23",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO23"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-7 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 23."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "37",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO37",
+            "U0TXD"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-8 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 37.",
+            "Header access to UART0 TX for serial communication and debugging."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "38",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO38",
+            "U0RXD"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-10 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 38.",
+            "Header access to UART0 RX for serial communication and debugging."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "21",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO21"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-11 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 21."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO22",
+          "board_label": "22",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO22"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-12 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 22."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "20",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO20"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-13 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 20."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "6",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO6"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-15 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 6."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO5"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-16 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 5."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO4"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-18 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 4."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "3",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO3"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-19 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 3."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO2"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-21 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 2."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "NC(1)",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO1"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-22 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(1).",
+            "GPIO1 can be enabled by disabling the XTAL_32K function; the board guide documents moving R59 to R197."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "NC(0)",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO0"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-23 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(0).",
+            "GPIO0 can be enabled by disabling the XTAL_32K function; the board guide documents moving R61 to R199.",
+            "Keep the boot strap level correct at reset."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "36",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO36"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-24 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 36."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO32",
+          "board_label": "32",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO32"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-26 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 32."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "33",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO33"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-29 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 33."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "26",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO26"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-31 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 26.",
+            "GPIO26 is wired to the LCD adapter board PWM pin in the fully assembled setup."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO54",
+          "board_label": "54",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO54"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-32 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 54."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "48",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO48"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-33 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 48."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO53",
+          "board_label": "53",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO53"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-35 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 53."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "46",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO46"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-36 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 46."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "47",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO47"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-37 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 47."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO27",
+          "board_label": "27",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO27"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-38 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 27.",
+            "GPIO27 is wired to the LCD adapter board RST_LCD pin in the fully assembled setup."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "NC(45)",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO45"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power domain"
+          ],
+          "notes": [
+            "J1-40 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(45).",
+            "GPIO45 can be enabled by disabling the SD_PWRn function; the board guide documents moving R231 to R100."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "Power can be supplied through any USB 2.0 Type-C Port, USB Full-speed Port, or USB Serial/JTAG Port, depending on the attached cable and accessory setup.",
+        "The board uses a 5 V to 3.3 V LDO plus a buck converter; the J1 header exposes 3V3 and 5V rails for accessory wiring."
+      ],
+      "programming": [
+        "Use the USB Serial/JTAG Port to flash firmware to the ESP32-P4 chip and perform JTAG debugging.",
+        "Use the ESP32-C6 Module Programming Connector with ESP-Prog or another UART tool when you need to flash the wireless module separately.",
+        "Press Boot while resetting the board to enter firmware download mode."
+      ],
+      "onboard_hardware": [
+        "ESP32-C6-MINI-1 wireless module, ESP32-C6 module programming connector, microphone, ES8311 audio codec, speaker output port, NS4150B audio PA chip, Ethernet PHY IC, RJ45 Ethernet port, USB Full-speed Port, USB Serial/JTAG Port, USB 2.0 Type-C Port, USB 2.0 Type-A Port, power switch, BOOT button, Reset button, 5 V power-on LED, MIPI CSI connector, MIPI DSI connector, SPI flash, MicroSD card slot, and the LCD and camera accessory boards."
+      ],
+      "usb_connectors": {
+        "count": 4,
+        "types": [
+          "usb-c",
+          "usb-a"
+        ]
+      },
+      "buttons": [
+        "Boot",
+        "Reset"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO1",
+          "board_label": "NC(1)",
+          "main_functions": [
+            "GPIO1"
+          ],
+          "notes": [
+            "J1-22 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(1).",
+            "GPIO1 can be enabled by disabling the XTAL_32K function; the board guide documents moving R59 to R197."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "NC(0)",
+          "main_functions": [
+            "GPIO0"
+          ],
+          "notes": [
+            "J1-23 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(0).",
+            "GPIO0 can be enabled by disabling the XTAL_32K function; the board guide documents moving R61 to R199.",
+            "Keep the boot strap level correct at reset."
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "26",
+          "main_functions": [
+            "GPIO26"
+          ],
+          "notes": [
+            "J1-31 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 26.",
+            "GPIO26 is wired to the LCD adapter board PWM pin in the fully assembled setup."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "board_label": "27",
+          "main_functions": [
+            "GPIO27"
+          ],
+          "notes": [
+            "J1-38 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label 27.",
+            "GPIO27 is wired to the LCD adapter board RST_LCD pin in the fully assembled setup."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "NC(45)",
+          "main_functions": [
+            "GPIO45"
+          ],
+          "notes": [
+            "J1-40 on the ESP32-P4-Function-EV-Board v1.5.2 J1 header block, silkscreen label NC(45).",
+            "GPIO45 can be enabled by disabling the SD_PWRn function; the board guide documents moving R231 to R100."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        }
+      ]
+    }
+  }
+}

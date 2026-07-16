@@ -1,0 +1,783 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp8266-devkitc",
+    "name": "ESP8266-DevKitC",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP8266EX",
+    "aliases": [
+      "ESP8266-DevKitC"
+    ],
+    "module_variants": [
+      "ESP-WROOM-02D",
+      "ESP-WROOM-02U"
+    ],
+    "route": "/boards/esp8266-devkitc",
+    "sources": [
+      {
+        "title": "ESP8266-DevKitC Getting Started Guide",
+        "url": "https://docs.espressif.com/projects/esp8266-rtos-sdk/en/latest/get-started/get-started-devkitc.html",
+        "sections": [
+          "Overview",
+          "Functional Description",
+          "Power Supply Options",
+          "Board Dimensions",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP8266-DevKitC"
+      ],
+      "module_markings": [
+        "ESP-WROOM-02D",
+        "ESP-WROOM-02U"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "Micro-USB connector",
+        "Boot button",
+        "EN button",
+        "dial switch",
+        "USB-to-UART bridge",
+        "two 15-pin headers"
+      ],
+      "button_labels": [
+        "Boot",
+        "EN"
+      ],
+      "visible_pin_labels": [
+        "GND",
+        "16",
+        "TX",
+        "RX",
+        "4",
+        "RST",
+        "5",
+        "ADC",
+        "3V3",
+        "EN",
+        "14",
+        "12",
+        "13",
+        "15",
+        "2",
+        "0",
+        "5V"
+      ],
+      "header_pin_counts": [
+        30
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": [
+        "micro-usb"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO16",
+        "GPIO4",
+        "GPIO5",
+        "GPIO14",
+        "GPIO12"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0, Board hardware, Boot"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0, Board hardware"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping, Boot, Board hardware"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot, Board hardware"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO1",
+            "GPIO3"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO16",
+          "board_label": "16",
+          "functions": [
+            "GPIO16",
+            "XPD_DCDC",
+            "Deep-sleep wakeup"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "functions": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "functions": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "14",
+          "functions": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "12",
+          "functions": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13",
+          "functions": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "15",
+          "functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "functions": [
+            "GPIO2",
+            "UART1_TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO16",
+          "board_label": "16",
+          "board_header": "Top header",
+          "main_functions": [
+            "GPIO16",
+            "XPD_DCDC",
+            "Deep-sleep wakeup"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Top header-2 on the ESP8266-DevKitC I/O connector, silkscreen label 16.",
+            "GPIO16 can be connected to reset for timed deep-sleep wake-up designs.",
+            "Connect XPD_DCDC to EXT_RSTB when GPIO16 is used for deep-sleep wakeup.",
+            "GPIO16 can only be configured with an internal pull-down."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO16",
+            "XPD_DCDC"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "board_header": "Top header",
+          "main_functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Board hardware",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Top header-4 on the ESP8266-DevKitC I/O connector, silkscreen label TX.",
+            "Connected to the USB-UART bridge transmit path for flashing and serial logs.",
+            "UART0 is used for flash programming and boot/debug serial output.",
+            "U0TXD should not be pulled externally low during powering-up."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO1",
+            "U0TXD",
+            "SPI_CS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "board_header": "Top header",
+          "main_functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Top header-5 on the ESP8266-DevKitC I/O connector, silkscreen label RX.",
+            "Connected to the USB-UART bridge receive path for flashing and serial logs.",
+            "UART0 is used for flash programming and boot/debug serial output."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO3",
+            "U0RXD",
+            "I2SO_DATA"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "board_header": "Top header",
+          "main_functions": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Top header-7 on the ESP8266-DevKitC I/O connector, silkscreen label 4."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "board_header": "Top header",
+          "main_functions": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Top header-9 on the ESP8266-DevKitC I/O connector, silkscreen label 5."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "14",
+          "board_header": "Bottom header",
+          "main_functions": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Bottom header-6 on the ESP8266-DevKitC I/O connector, silkscreen label 14.",
+            "Package pin name is MTMS; common maker use is GPIO14 or HSPI clock."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "12",
+          "board_header": "Bottom header",
+          "main_functions": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Bottom header-7 on the ESP8266-DevKitC I/O connector, silkscreen label 12.",
+            "Package pin name is MTDI; common maker use is GPIO12 or HSPI MISO."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13",
+          "board_header": "Bottom header",
+          "main_functions": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Bottom header-8 on the ESP8266-DevKitC I/O connector, silkscreen label 13.",
+            "The board dial switch can place the USB-UART bridge in Flow Control mode, involving UART0 CTS.",
+            "Package pin name is MTCK; common maker use is GPIO13 or HSPI MOSI."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "U0CTS",
+            "I2SI_BCK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "15",
+          "board_header": "Bottom header",
+          "main_functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Bottom header-9 on the ESP8266-DevKitC I/O connector, silkscreen label 15.",
+            "ESP-WROOM-02D/U requires IO15 to be pulled down for boot.",
+            "The board dial switch can place the USB-UART bridge in Flow Control mode, involving UART0 RTS.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Package pin name is MTDO; common maker use is GPIO15 or HSPI chip select."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO15",
+            "MTDO",
+            "HSPI_CS",
+            "U0RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "board_header": "Bottom header",
+          "main_functions": [
+            "GPIO2",
+            "UART1_TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Bottom header-10 on the ESP8266-DevKitC I/O connector, silkscreen label 2.",
+            "ESP-WROOM-02D/U requires IO2 to float, use its internal pull-up, or be pulled up for boot.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Used as UART TX during flash programming."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO2",
+            "U1TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "board_header": "Bottom header",
+          "main_functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Bottom header-11 on the ESP8266-DevKitC I/O connector, silkscreen label 0.",
+            "Connected to the Boot button. Holding Boot and pressing EN initiates firmware download mode.",
+            "ESP-WROOM-02D/U uses IO0 low for UART download and floating or pulled up for flash boot.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0",
+            "SPI_CS2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "Power can come from Micro USB, 5V/GND header pins, or 3V3/GND header pins; the official guide says these options are mutually exclusive.",
+        "The on-board 5V to 3.3V LDO is rated up to 800 mA for the module and user peripherals."
+      ],
+      "programming": [
+        "The USB-UART bridge supports flashing and serial communication through the Micro USB port.",
+        "Hold Boot and press EN to enter firmware download mode; the dial switch selects Auto Download or Flow Control."
+      ],
+      "onboard_hardware": [
+        "ESP-WROOM-02D/U module, 5V to 3.3V LDO, dial switch, USB-UART bridge, Boot button, Micro USB port, EN button, and I/O connector headers."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": [
+          "micro-usb"
+        ]
+      },
+      "buttons": [
+        "Boot",
+        "EN"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "main_functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "notes": [
+            "Top header-4 on the ESP8266-DevKitC I/O connector, silkscreen label TX.",
+            "Connected to the USB-UART bridge transmit path for flashing and serial logs.",
+            "UART0 is used for flash programming and boot/debug serial output.",
+            "U0TXD should not be pulled externally low during powering-up."
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "main_functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "notes": [
+            "Top header-5 on the ESP8266-DevKitC I/O connector, silkscreen label RX.",
+            "Connected to the USB-UART bridge receive path for flashing and serial logs.",
+            "UART0 is used for flash programming and boot/debug serial output."
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13",
+          "main_functions": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "notes": [
+            "Bottom header-8 on the ESP8266-DevKitC I/O connector, silkscreen label 13.",
+            "The board dial switch can place the USB-UART bridge in Flow Control mode, involving UART0 CTS.",
+            "Package pin name is MTCK; common maker use is GPIO13 or HSPI MOSI."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "15",
+          "main_functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "notes": [
+            "Bottom header-9 on the ESP8266-DevKitC I/O connector, silkscreen label 15.",
+            "ESP-WROOM-02D/U requires IO15 to be pulled down for boot.",
+            "The board dial switch can place the USB-UART bridge in Flow Control mode, involving UART0 RTS.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Package pin name is MTDO; common maker use is GPIO15 or HSPI chip select."
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "main_functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "notes": [
+            "Bottom header-11 on the ESP8266-DevKitC I/O connector, silkscreen label 0.",
+            "Connected to the Boot button. Holding Boot and pressing EN initiates firmware download mode.",
+            "ESP-WROOM-02D/U uses IO0 low for UART download and floating or pulled up for flash boot.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,427 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32p4x-eye",
+    "name": "ESP32-P4X-EYE",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-P4",
+    "aliases": [
+      "ESP32-P4X-EYE"
+    ],
+    "module_variants": [
+      "ESP32-C6-MINI-1U"
+    ],
+    "route": "/boards/esp32p4x-eye",
+    "sources": [
+      {
+        "title": "ESP32-P4X-EYE User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32p4/esp32-p4x-eye/user_guide.html",
+        "sections": [
+          "Getting Started",
+          "Description of Components",
+          "Application Examples",
+          "Application Development",
+          "Hardware Reference",
+          "Functional Block Diagram",
+          "Power Supply Options",
+          "Female Header",
+          "USB 2.0 Device Port Circuit",
+          "LCD Circuit",
+          "MicroSD Card Slot Interface Circuit",
+          "Charging Circuit",
+          "Microphone Circuit",
+          "Camera Circuit",
+          "Rotary Encoder Circuit",
+          "ESP32-C6-MINI-1U Module Circuit",
+          "Hardware Revision Details",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-P4X-EYE"
+      ],
+      "module_markings": [
+        "ESP32-C6-MINI-1U"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "1.54-inch LCD",
+        "MIPI CSI camera",
+        "MicroSD card slot",
+        "digital microphone",
+        "rotary encoder",
+        "fill light",
+        "2 x 10 female header",
+        "Boot button",
+        "Reset button"
+      ],
+      "button_labels": [
+        "Boot",
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "VCC_5V",
+        "NC",
+        "GPIO10",
+        "GPIO8",
+        "GPIO6",
+        "GND",
+        "GPIO54",
+        "GPIO53",
+        "GPIO51",
+        "GPIO38",
+        "GPIO34",
+        "GPIO7",
+        "I2C_SDA",
+        "I2C_SCL",
+        "GPIO52",
+        "GPIO50",
+        "GPIO37"
+      ],
+      "header_pin_counts": [
+        20
+      ],
+      "usb_connector_count": 2,
+      "usb_connector_types": []
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO10",
+        "GPIO8",
+        "GPIO6",
+        "GPIO54",
+        "GPIO53",
+        "GPIO51",
+        "GPIO38",
+        "GPIO34",
+        "GPIO7",
+        "GPIO52",
+        "GPIO50",
+        "GPIO37"
+      ],
+      "caution_pins": [],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [],
+      "pin_functions": [
+        {
+          "gpio": "GPIO10",
+          "board_label": "GPIO10",
+          "functions": [
+            "GPIO10"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "GPIO8",
+          "functions": [
+            "GPIO8"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "GPIO6",
+          "functions": [
+            "GPIO6"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO54",
+          "board_label": "GPIO54",
+          "functions": [
+            "GPIO54"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO53",
+          "board_label": "GPIO53",
+          "functions": [
+            "GPIO53"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO51",
+          "board_label": "GPIO51",
+          "functions": [
+            "GPIO51"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "GPIO38",
+          "functions": [
+            "GPIO38"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "GPIO34",
+          "functions": [
+            "GPIO34"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "GPIO7",
+          "functions": [
+            "GPIO7"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO52",
+          "board_label": "GPIO52",
+          "functions": [
+            "GPIO52"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO50",
+          "board_label": "GPIO50",
+          "functions": [
+            "GPIO50"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "GPIO37",
+          "functions": [
+            "GPIO37"
+          ],
+          "warnings": []
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO10",
+          "board_label": "GPIO10",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO10"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 3 on the ESP32-P4X-EYE female header, silkscreen label GPIO10."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "GPIO8",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO8"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 4 on the ESP32-P4X-EYE female header, silkscreen label GPIO8."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "GPIO6",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO6"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 5 on the ESP32-P4X-EYE female header, silkscreen label GPIO6."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO54",
+          "board_label": "GPIO54",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO54"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 7 on the ESP32-P4X-EYE female header, silkscreen label GPIO54."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO53",
+          "board_label": "GPIO53",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO53"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 8 on the ESP32-P4X-EYE female header, silkscreen label GPIO53."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO51",
+          "board_label": "GPIO51",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO51"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 9 on the ESP32-P4X-EYE female header, silkscreen label GPIO51."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "GPIO38",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO38"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 10 on the ESP32-P4X-EYE female header, silkscreen label GPIO38."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "GPIO34",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO34"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 13 on the ESP32-P4X-EYE female header, silkscreen label GPIO34."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "GPIO7",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO7"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 14 on the ESP32-P4X-EYE female header, silkscreen label GPIO7."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO52",
+          "board_label": "GPIO52",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO52"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 18 on the ESP32-P4X-EYE female header, silkscreen label GPIO52."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO50",
+          "board_label": "GPIO50",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO50"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 19 on the ESP32-P4X-EYE female header, silkscreen label GPIO50."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "GPIO37",
+          "board_header": "Female Header",
+          "main_functions": [
+            "GPIO37"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Female Header 20 on the ESP32-P4X-EYE female header, silkscreen label GPIO37."
+          ],
+          "analog": [],
+          "io_mux": [],
+          "matrix_signals": []
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "Power can be supplied through the USB 2.0 Device Port or USB Debug Port.",
+        "The Battery Connector accepts a 1.25 mm pitch lithium battery plug and can charge while the board is powered over USB."
+      ],
+      "programming": [
+        "Use the USB Debug Port for flashing firmware and USB-Serial-JTAG debugging.",
+        "The ESP32-C6-MINI-1U test points support module programming and testing with jumper wires."
+      ],
+      "onboard_hardware": [
+        "ESP32-C6-MINI-1U wireless module, 1.54-inch LCD, MIPI CSI camera, MicroSD card slot, digital microphone, rotary encoder, fill light, battery connector, USB 2.0 Device Port, USB Debug Port, Boot button, Reset button, and SPI flash."
+      ],
+      "usb_connectors": {
+        "count": 2,
+        "types": []
+      },
+      "buttons": [
+        "Boot",
+        "Reset"
+      ],
+      "documented_gpio_sharing": []
+    }
+  }
+}

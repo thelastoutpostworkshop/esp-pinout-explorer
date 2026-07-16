@@ -1,0 +1,725 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp8266-devkits",
+    "name": "ESP8266-DevKitS",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP8266EX",
+    "aliases": [
+      "ESP8266-DevKitS"
+    ],
+    "module_variants": [
+      "ESP-WROOM-02",
+      "ESP-WROOM-02D",
+      "ESP-WROOM-02U"
+    ],
+    "route": "/boards/esp8266-devkits",
+    "sources": [
+      {
+        "title": "ESP8266-DevKitS User Guide",
+        "url": "https://documentation.espressif.com/ESP8266-DevKitS_user_guide__EN.pdf",
+        "sections": [
+          "Overview",
+          "Functional Description",
+          "How to Flash a Board",
+          "Board Dimensions",
+          "Hardware Reference",
+          "Block Diagram",
+          "Power Supply Options",
+          "Header Blocks",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP8266-DevKitS"
+      ],
+      "module_markings": [
+        "ESP-WROOM-02",
+        "ESP-WROOM-02D",
+        "ESP-WROOM-02U"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "spring-pin module socket",
+        "Micro-USB connector",
+        "Boot button",
+        "EN button",
+        "USB-to-UART bridge",
+        "two 15-pin female headers"
+      ],
+      "button_labels": [
+        "Boot",
+        "EN"
+      ],
+      "visible_pin_labels": [
+        "G",
+        "3V3",
+        "EN",
+        "14",
+        "12",
+        "13",
+        "15",
+        "2",
+        "0",
+        "5V",
+        "16",
+        "TX",
+        "RX",
+        "4",
+        "RST",
+        "5",
+        "ADC"
+      ],
+      "header_pin_counts": [
+        30
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": [
+        "micro-usb"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO14",
+        "GPIO12",
+        "GPIO13",
+        "GPIO16",
+        "GPIO4",
+        "GPIO5"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot, Board hardware"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0, Boot, Board hardware"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0, Board hardware"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO1",
+            "GPIO3"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO14",
+          "board_label": "14",
+          "functions": [
+            "GPIO14",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "12",
+          "functions": [
+            "GPIO12",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13",
+          "functions": [
+            "GPIO13",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "15",
+          "functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "functions": [
+            "GPIO2",
+            "UART1_TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "16",
+          "functions": [
+            "GPIO16",
+            "XPD_DCDC",
+            "Deep-sleep wakeup"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Boot",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "functions": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "functions": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "warnings": []
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO14",
+          "board_label": "14",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO14",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-6 board header pin (official table label L6), silkscreen label 14.",
+            "Package pin name is MTMS; common maker use is GPIO14 or HSPI clock."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "12",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO12",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-7 board header pin (official table label L7), silkscreen label 12.",
+            "Package pin name is MTDI; common maker use is GPIO12 or HSPI MISO."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO13",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-8 board header pin (official table label L8), silkscreen label 13.",
+            "Package pin name is MTCK; common maker use is GPIO13 or HSPI MOSI."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "U0CTS",
+            "I2SI_BCK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "15",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-9 board header pin (official table label L9), silkscreen label 15.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Package pin name is MTDO; common maker use is GPIO15 or HSPI chip select."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO15",
+            "MTDO",
+            "HSPI_CS",
+            "U0RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO2",
+            "UART1_TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-10 board header pin (official table label L10), silkscreen label 2.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Used as UART TX during flash programming."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO2",
+            "U1TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-11 board header pin (official table label L11), silkscreen label 0.",
+            "Connected to the Boot button. Holding Boot and pressing EN enters firmware download mode.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0",
+            "SPI_CS2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "16",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO16",
+            "XPD_DCDC",
+            "Deep-sleep wakeup"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-2 board header pin (official table label R2), silkscreen label 16.",
+            "GPIO16 can be connected to RST for timed deep-sleep wake-up designs.",
+            "Connect XPD_DCDC to EXT_RSTB when GPIO16 is used for deep-sleep wakeup.",
+            "GPIO16 can only be configured with an internal pull-down."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO16",
+            "XPD_DCDC"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Boot",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-4 board header pin (official table label R4), silkscreen label TX.",
+            "UART0 transmit pin on the board USB-to-UART bridge path.",
+            "UART0 is used for flash programming and boot/debug serial output.",
+            "U0TXD should not be pulled externally low during powering-up."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO1",
+            "U0TXD",
+            "SPI_CS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-5 board header pin (official table label R5), silkscreen label RX.",
+            "UART0 receive pin on the board USB-to-UART bridge path.",
+            "UART0 is used for flash programming and boot/debug serial output."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO3",
+            "U0RXD",
+            "I2SO_DATA"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-7 board header pin (official table label R7), silkscreen label 4."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "board_header": "J2",
+          "main_functions": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J2-9 board header pin (official table label R9), silkscreen label 5."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "Power can come from the Micro USB port, 5V/GND header pins, or 3V3/GND header pins.",
+        "These three power options are mutually exclusive; the official guide advises using Micro USB as the default supply."
+      ],
+      "programming": [
+        "The USB-to-UART bridge supports flashing and serial communication through the Micro USB port.",
+        "Hold Boot and press EN to enter firmware download mode."
+      ],
+      "onboard_hardware": [
+        "Spring pins for mounting an ESP-WROOM-02/02D/02U module and two 2.54 mm female header rows.",
+        "USB-to-UART bridge, 5V-to-3.3V LDO, Boot button, EN button, Micro USB connector, and power-on LED."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": [
+          "micro-usb"
+        ]
+      },
+      "buttons": [
+        "Boot",
+        "EN"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "main_functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "notes": [
+            "J1-11 board header pin (official table label L11), silkscreen label 0.",
+            "Connected to the Boot button. Holding Boot and pressing EN enters firmware download mode.",
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "main_functions": [
+            "GPIO1",
+            "U0TXD",
+            "UART0_TXD"
+          ],
+          "notes": [
+            "J2-4 board header pin (official table label R4), silkscreen label TX.",
+            "UART0 transmit pin on the board USB-to-UART bridge path.",
+            "UART0 is used for flash programming and boot/debug serial output.",
+            "U0TXD should not be pulled externally low during powering-up."
+          ],
+          "warnings": [
+            "UART0",
+            "Boot",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "main_functions": [
+            "GPIO3",
+            "U0RXD",
+            "UART0_RXD"
+          ],
+          "notes": [
+            "J2-5 board header pin (official table label R5), silkscreen label RX.",
+            "UART0 receive pin on the board USB-to-UART bridge path.",
+            "UART0 is used for flash programming and boot/debug serial output."
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware"
+          ]
+        }
+      ]
+    }
+  }
+}

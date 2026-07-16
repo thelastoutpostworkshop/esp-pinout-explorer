@@ -1,0 +1,1600 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32-devkitm-1",
+    "name": "ESP32-DevKitM-1",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32",
+    "aliases": [
+      "ESP32-DevKitM-1"
+    ],
+    "module_variants": [
+      "ESP32-MINI-1",
+      "ESP32-MINI-1U"
+    ],
+    "route": "/boards/esp32-devkitm-1",
+    "sources": [
+      {
+        "title": "ESP32-DevKitM-1 User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-devkitm-1/user_guide.html",
+        "sections": [
+          "Overview",
+          "Description of Components",
+          "Block Diagram",
+          "Power Source Select",
+          "Pin Descriptions",
+          "Pin Layout",
+          "Hardware Revision Details",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-DevKitM-1"
+      ],
+      "module_markings": [
+        "ESP32-MINI-1",
+        "ESP32-MINI-1U"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "Micro-USB connector",
+        "Boot button",
+        "Reset button",
+        "USB-to-UART bridge"
+      ],
+      "button_labels": [
+        "Boot",
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "GND",
+        "3V3",
+        "IO36",
+        "IO37",
+        "IO38",
+        "IO39",
+        "RST",
+        "IO34",
+        "IO35",
+        "IO32",
+        "IO33",
+        "IO25",
+        "IO26",
+        "IO27",
+        "IO14",
+        "5V",
+        "TX",
+        "RX",
+        "IO21",
+        "IO22",
+        "IO19",
+        "IO23",
+        "IO18",
+        "IO5",
+        "IO10",
+        "IO9",
+        "IO4",
+        "IO0",
+        "IO2",
+        "IO15",
+        "IO13",
+        "IO12"
+      ],
+      "header_pin_counts": [
+        34
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": [
+        "micro-usb"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO36",
+        "GPIO37",
+        "GPIO38",
+        "GPIO39",
+        "GPIO34",
+        "GPIO35",
+        "GPIO32",
+        "GPIO33",
+        "GPIO25",
+        "GPIO26",
+        "GPIO27",
+        "GPIO14",
+        "GPIO21",
+        "GPIO22",
+        "GPIO19",
+        "GPIO23",
+        "GPIO18",
+        "GPIO10",
+        "GPIO9",
+        "GPIO4",
+        "GPIO13"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO1",
+          "warning": "Board hardware, UART0"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Board hardware, UART0"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Board hardware, Boot, Strapping"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "Strapping, Voltage"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO1",
+            "GPIO3"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO36",
+          "board_label": "IO36",
+          "functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "S_VP"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "IO37",
+          "functions": [
+            "GPIO37",
+            "ADC1_CH1",
+            "SENSOR_CAPP"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "IO38",
+          "functions": [
+            "GPIO38",
+            "ADC1_CH2",
+            "SENSOR_CAPN"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "IO39",
+          "functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "S_VN"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "IO34",
+          "functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "VDET_1"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "IO35",
+          "functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "VDET_2"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO32",
+          "board_label": "IO32",
+          "functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "TOUCH9",
+            "XTAL_32K_P"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "IO33",
+          "functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "TOUCH8",
+            "XTAL_32K_N"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO25",
+          "board_label": "IO25",
+          "functions": [
+            "GPIO25",
+            "ADC2_CH8",
+            "DAC_1"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "IO26",
+          "functions": [
+            "GPIO26",
+            "ADC2_CH9",
+            "DAC_2"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO27",
+          "board_label": "IO27",
+          "functions": [
+            "GPIO27",
+            "ADC2_CH7",
+            "TOUCH7"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "IO14",
+          "functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "functions": [
+            "GPIO1",
+            "U0TXD"
+          ],
+          "warnings": [
+            "Board hardware",
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "functions": [
+            "GPIO3",
+            "U0RXD"
+          ],
+          "warnings": [
+            "Board hardware",
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "IO21",
+          "functions": [
+            "GPIO21"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO22",
+          "board_label": "IO22",
+          "functions": [
+            "GPIO22"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "IO19",
+          "functions": [
+            "GPIO19"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO23",
+          "board_label": "IO23",
+          "functions": [
+            "GPIO23"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "IO18",
+          "functions": [
+            "GPIO18"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "IO5",
+          "functions": [
+            "GPIO5"
+          ],
+          "warnings": [
+            "Strapping"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "IO10",
+          "functions": [
+            "GPIO10"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "IO9",
+          "functions": [
+            "GPIO9"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "IO4",
+          "functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "TOUCH0"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "IO0",
+          "functions": [
+            "GPIO0",
+            "ADC2_CH1",
+            "TOUCH1",
+            "CLK_OUT1",
+            "Boot"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "IO2",
+          "functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "TOUCH2"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "IO15",
+          "functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "IO13",
+          "functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "IO12",
+          "functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage",
+            "JTAG"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO36",
+          "board_label": "IO36",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "S_VP"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-3 board header pin, silkscreen label IO36. Official user-guide pin No. 3.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH0",
+            "S_VP"
+          ],
+          "io_mux": [
+            "GPIO36"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "IO37",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO37",
+            "ADC1_CH1",
+            "SENSOR_CAPP"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-4 board header pin, silkscreen label IO37. Official user-guide pin No. 4.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH1",
+            "SENSOR_CAPP"
+          ],
+          "io_mux": [
+            "GPIO37"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "IO38",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO38",
+            "ADC1_CH2",
+            "SENSOR_CAPN"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-5 board header pin, silkscreen label IO38. Official user-guide pin No. 5.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH2",
+            "SENSOR_CAPN"
+          ],
+          "io_mux": [
+            "GPIO38"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "IO39",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "S_VN"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-6 board header pin, silkscreen label IO39. Official user-guide pin No. 6.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH3",
+            "S_VN"
+          ],
+          "io_mux": [
+            "GPIO39"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "IO34",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "VDET_1"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-8 board header pin, silkscreen label IO34. Official user-guide pin No. 8.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH6",
+            "VDET_1"
+          ],
+          "io_mux": [
+            "GPIO34"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "IO35",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "VDET_2"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-9 board header pin, silkscreen label IO35. Official user-guide pin No. 9.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH7",
+            "VDET_2"
+          ],
+          "io_mux": [
+            "GPIO35"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO32",
+          "board_label": "IO32",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "TOUCH9",
+            "XTAL_32K_P"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-10 board header pin, silkscreen label IO32. Official user-guide pin No. 10."
+          ],
+          "analog": [
+            "ADC1_CH4",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "io_mux": [
+            "GPIO32"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "IO33",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "TOUCH8",
+            "XTAL_32K_N"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-11 board header pin, silkscreen label IO33. Official user-guide pin No. 11."
+          ],
+          "analog": [
+            "ADC1_CH5",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "io_mux": [
+            "GPIO33"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO25",
+          "board_label": "IO25",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO25",
+            "ADC2_CH8",
+            "DAC_1"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-12 board header pin, silkscreen label IO25. Official user-guide pin No. 12."
+          ],
+          "analog": [
+            "ADC2_CH8",
+            "DAC_1"
+          ],
+          "io_mux": [
+            "GPIO25",
+            "EMAC_RXD0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "IO26",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO26",
+            "ADC2_CH9",
+            "DAC_2"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-13 board header pin, silkscreen label IO26. Official user-guide pin No. 13."
+          ],
+          "analog": [
+            "ADC2_CH9",
+            "DAC_2"
+          ],
+          "io_mux": [
+            "GPIO26",
+            "EMAC_RXD1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "board_label": "IO27",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO27",
+            "ADC2_CH7",
+            "TOUCH7"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-14 board header pin, silkscreen label IO27. Official user-guide pin No. 14."
+          ],
+          "analog": [
+            "ADC2_CH7",
+            "TOUCH7"
+          ],
+          "io_mux": [
+            "GPIO27",
+            "EMAC_RX_DV"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "IO14",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-15 board header pin, silkscreen label IO14. Official user-guide pin No. 15.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH6",
+            "TOUCH6"
+          ],
+          "io_mux": [
+            "GPIO14",
+            "MTMS",
+            "HSPICLK",
+            "HS2_CLK",
+            "SD_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO1",
+            "U0TXD"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-2 board header pin, silkscreen label TX. Official user-guide pin No. 33.",
+            "Connected to the board USB-to-UART bridge TX signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO1",
+            "U0TXD",
+            "CLK_OUT3",
+            "EMAC_RXD2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO3",
+            "U0RXD"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-3 board header pin, silkscreen label RX. Official user-guide pin No. 32.",
+            "Connected to the board USB-to-UART bridge RX signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO3",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "IO21",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO21"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-4 board header pin, silkscreen label IO21. Official user-guide pin No. 31."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "board_label": "IO22",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO22"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-5 board header pin, silkscreen label IO22. Official user-guide pin No. 30."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO22",
+            "U0RTS",
+            "VSPIWP",
+            "EMAC_TXD1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "IO19",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO19"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-6 board header pin, silkscreen label IO19. Official user-guide pin No. 29."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO19",
+            "U0CTS",
+            "VSPIQ",
+            "EMAC_TXD0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "board_label": "IO23",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO23"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-7 board header pin, silkscreen label IO23. Official user-guide pin No. 28."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO23",
+            "HS1_STROBE",
+            "VSPID"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "IO18",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO18"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-8 board header pin, silkscreen label IO18. Official user-guide pin No. 27."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO18",
+            "HS1_DATA7",
+            "VSPICLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "IO5",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO5"
+          ],
+          "maker_warnings": [
+            "Strapping"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-9 board header pin, silkscreen label IO5. Official user-guide pin No. 26.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls SDIO slave timing at reset."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO5",
+            "HS1_DATA6",
+            "VSPICS0",
+            "EMAC_RX_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "IO10",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO10"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-10 board header pin, silkscreen label IO10. Official user-guide pin No. 25.",
+            "ESP32-MINI-1 exposes GPIO10 on the board header; the module flash uses other internal GPIOs."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO10",
+            "HS1_DATA3",
+            "U1TXD",
+            "SD_DATA3",
+            "SPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "IO9",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO9"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-11 board header pin, silkscreen label IO9. Official user-guide pin No. 24.",
+            "ESP32-MINI-1 exposes GPIO9 on the board header; the module flash uses other internal GPIOs."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9",
+            "HS1_DATA2",
+            "U1RXD",
+            "SD_DATA2",
+            "SPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "IO4",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "TOUCH0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-12 board header pin, silkscreen label IO4. Official user-guide pin No. 23."
+          ],
+          "analog": [
+            "ADC2_CH0",
+            "TOUCH0"
+          ],
+          "io_mux": [
+            "GPIO4",
+            "HSPIHD",
+            "HS2_DATA1",
+            "SD_DATA1",
+            "EMAC_TX_ER"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "IO0",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO0",
+            "ADC2_CH1",
+            "TOUCH1",
+            "CLK_OUT1",
+            "Boot"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-13 board header pin, silkscreen label IO0. Official user-guide pin No. 22.",
+            "Connected to the board Boot button. Holding Boot and pressing Reset enters firmware download mode.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+          ],
+          "analog": [
+            "ADC2_CH1",
+            "TOUCH1"
+          ],
+          "io_mux": [
+            "GPIO0",
+            "CLK_OUT1",
+            "EMAC_TX_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "IO2",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "TOUCH2"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-14 board header pin, silkscreen label IO2. Official user-guide pin No. 21.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls boot mode with GPIO0."
+          ],
+          "analog": [
+            "ADC2_CH2",
+            "TOUCH2"
+          ],
+          "io_mux": [
+            "GPIO2",
+            "HSPIWP",
+            "HS2_DATA0",
+            "SD_DATA0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "IO15",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "maker_warnings": [
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-15 board header pin, silkscreen label IO15. Official user-guide pin No. 20.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls U0TXD printing and SDIO slave timing at reset.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH3",
+            "TOUCH3"
+          ],
+          "io_mux": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS0",
+            "HS2_CMD",
+            "SD_CMD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "IO13",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-16 board header pin, silkscreen label IO13. Official user-guide pin No. 19.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH4",
+            "TOUCH4"
+          ],
+          "io_mux": [
+            "GPIO13",
+            "MTCK",
+            "HSPID",
+            "HS2_DATA3",
+            "SD_DATA3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "IO12",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Voltage"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-17 board header pin, silkscreen label IO12. Official user-guide pin No. 18.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH5",
+            "TOUCH5"
+          ],
+          "io_mux": [
+            "GPIO12",
+            "MTDI",
+            "HSPIQ",
+            "HS2_DATA2",
+            "SD_DATA2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "Micro-USB port, 5V/GND header pins, or 3V3/GND header pins can power the board.",
+        "Keep external power inputs mutually exclusive; the official guide documents USB, 5V, and 3V3 power options."
+      ],
+      "programming": [
+        "Micro-USB USB-to-UART bridge is used for flashing, power, and serial communication."
+      ],
+      "onboard_hardware": [
+        "Boot and Reset buttons, 3.3 V power LED, USB-to-UART bridge, and Micro-USB connector."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": [
+          "micro-usb"
+        ]
+      },
+      "buttons": [
+        "Boot",
+        "Reset"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO1",
+          "board_label": "TX",
+          "main_functions": [
+            "GPIO1",
+            "U0TXD"
+          ],
+          "notes": [
+            "J3-2 board header pin, silkscreen label TX. Official user-guide pin No. 33.",
+            "Connected to the board USB-to-UART bridge TX signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "warnings": [
+            "Board hardware",
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "RX",
+          "main_functions": [
+            "GPIO3",
+            "U0RXD"
+          ],
+          "notes": [
+            "J3-3 board header pin, silkscreen label RX. Official user-guide pin No. 32.",
+            "Connected to the board USB-to-UART bridge RX signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "warnings": [
+            "Board hardware",
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "IO0",
+          "main_functions": [
+            "GPIO0",
+            "ADC2_CH1",
+            "TOUCH1",
+            "CLK_OUT1",
+            "Boot"
+          ],
+          "notes": [
+            "J3-13 board header pin, silkscreen label IO0. Official user-guide pin No. 22.",
+            "Connected to the board Boot button. Holding Boot and pressing Reset enters firmware download mode.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ]
+        }
+      ]
+    }
+  }
+}

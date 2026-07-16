@@ -1,0 +1,1004 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32-ethernet-kit-v1-2",
+    "name": "ESP32-Ethernet-Kit v1.2",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32",
+    "aliases": [
+      "ESP32-Ethernet-Kit v1.2"
+    ],
+    "module_variants": [
+      "ESP32-WROVER-E"
+    ],
+    "route": "/boards/esp32-ethernet-kit-v1-2",
+    "sources": [
+      {
+        "title": "ESP32-Ethernet-Kit v1.2 User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32/esp32-ethernet-kit/user_guide.html",
+        "sections": [
+          "What You Need",
+          "Overview",
+          "Functionality Overview",
+          "Functional Description",
+          "Setup Options",
+          "GPIO Allocation",
+          "Start Application Development",
+          "Summary of Changes from ESP32-Ethernet-Kit v1.1",
+          "Other Versions of ESP32-Ethernet-Kit",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-Ethernet-Kit"
+      ],
+      "module_markings": [
+        "ESP32-WROVER-E"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "RJ45 Ethernet port",
+        "IP101GRI Ethernet PHY",
+        "FT2232H USB bridge",
+        "Boot button",
+        "EN button",
+        "Function Switch"
+      ],
+      "button_labels": [
+        "Boot",
+        "EN"
+      ],
+      "visible_pin_labels": [
+        "GPIO32",
+        "GPIO33",
+        "GPIO34",
+        "GPIO35",
+        "GPIO36",
+        "GPIO39",
+        "GPIO17",
+        "GPIO16",
+        "GPIO4",
+        "GPIO2",
+        "GPIO13",
+        "GPIO12",
+        "GPIO15",
+        "GPIO14",
+        "GND",
+        "3V3"
+      ],
+      "header_pin_counts": [
+        16
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": []
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO32",
+        "GPIO33",
+        "GPIO34",
+        "GPIO35",
+        "GPIO36",
+        "GPIO39",
+        "GPIO4"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO17",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "Board hardware, Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Board hardware, Strapping"
+        },
+        {
+          "gpio": "GPIO14",
+          "warning": "Board hardware"
+        }
+      ],
+      "reserved_or_internal_pins": [
+        {
+          "gpio": "GPIO17",
+          "reason": "PSRAM"
+        },
+        {
+          "gpio": "GPIO16",
+          "reason": "PSRAM"
+        }
+      ],
+      "peripheral_notes": [],
+      "pin_functions": [
+        {
+          "gpio": "GPIO32",
+          "board_label": "GPIO32",
+          "functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "GPIO33",
+          "functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "GPIO34",
+          "functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "RTC_GPIO4",
+            "VDET_1"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "GPIO35",
+          "functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "RTC_GPIO5",
+            "VDET_2"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "GPIO36",
+          "functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "RTC_GPIO0",
+            "S_VP"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "RTC_GPIO3",
+            "S_VN"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "GPIO17",
+          "functions": [
+            "GPIO17"
+          ],
+          "warnings": [
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "GPIO16",
+          "functions": [
+            "GPIO16"
+          ],
+          "warnings": [
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "RTC_GPIO10",
+            "TOUCH0"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "RTC_GPIO12",
+            "TOUCH2"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "RTC_GPIO14",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "RTC_GPIO15",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "RTC_GPIO13",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "RTC_GPIO16",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO32",
+          "board_label": "GPIO32",
+          "board_header": "GPIO Header 1",
+          "main_functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 1-1 board header pin, silkscreen label GPIO32."
+          ],
+          "analog": [
+            "ADC1_CH4",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "io_mux": [
+            "GPIO32"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "GPIO33",
+          "board_header": "GPIO Header 1",
+          "main_functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 1-2 board header pin, silkscreen label GPIO33."
+          ],
+          "analog": [
+            "ADC1_CH5",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "io_mux": [
+            "GPIO33"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "GPIO34",
+          "board_header": "GPIO Header 1",
+          "main_functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "RTC_GPIO4",
+            "VDET_1"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 1-3 board header pin, silkscreen label GPIO34.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH6",
+            "VDET_1"
+          ],
+          "io_mux": [
+            "GPIO34"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "GPIO35",
+          "board_header": "GPIO Header 1",
+          "main_functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "RTC_GPIO5",
+            "VDET_2"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 1-4 board header pin, silkscreen label GPIO35.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH7",
+            "VDET_2"
+          ],
+          "io_mux": [
+            "GPIO35"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "GPIO36",
+          "board_header": "GPIO Header 1",
+          "main_functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "RTC_GPIO0",
+            "S_VP"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 1-5 board header pin, silkscreen label GPIO36.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH0",
+            "S_VP"
+          ],
+          "io_mux": [
+            "GPIO36"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "GPIO39",
+          "board_header": "GPIO Header 1",
+          "main_functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "RTC_GPIO3",
+            "S_VN"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 1-6 board header pin, silkscreen label GPIO39.",
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH3",
+            "S_VN"
+          ],
+          "io_mux": [
+            "GPIO39"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "GPIO17",
+          "board_header": "GPIO Header 2",
+          "main_functions": [
+            "GPIO17"
+          ],
+          "maker_warnings": [
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 2-1 board header pin, silkscreen label GPIO17.",
+            "The official guide says this pin is not broken out to the ESP32-WROVER-E module and is unavailable on the stock board.",
+            "If you need this signal, replace the module with one that does not include PSRAM memory and exposes GPIO16/GPIO17."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO17",
+            "HS1_DATA5",
+            "U2TXD",
+            "EMAC_CLK_OUT_180"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "GPIO16",
+          "board_header": "GPIO Header 2",
+          "main_functions": [
+            "GPIO16"
+          ],
+          "maker_warnings": [
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 2-2 board header pin, silkscreen label GPIO16.",
+            "The official guide says this pin is not broken out to the ESP32-WROVER-E module and is unavailable on the stock board.",
+            "If you need this signal, replace the module with one that does not include PSRAM memory and exposes GPIO16/GPIO17."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO16",
+            "HS1_DATA4",
+            "U2RXD",
+            "EMAC_CLK_OUT"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "GPIO4",
+          "board_header": "GPIO Header 2",
+          "main_functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "RTC_GPIO10",
+            "TOUCH0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 2-3 board header pin, silkscreen label GPIO4."
+          ],
+          "analog": [
+            "ADC2_CH0",
+            "TOUCH0"
+          ],
+          "io_mux": [
+            "GPIO4",
+            "HSPIHD",
+            "HS2_DATA1",
+            "SD_DATA1",
+            "EMAC_TX_ER"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "GPIO2",
+          "board_header": "GPIO Header 2",
+          "main_functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "RTC_GPIO12",
+            "TOUCH2"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "GPIO Header 2-4 board header pin, silkscreen label GPIO2.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls boot mode with GPIO0."
+          ],
+          "analog": [
+            "ADC2_CH2",
+            "TOUCH2"
+          ],
+          "io_mux": [
+            "GPIO2",
+            "HSPIWP",
+            "HS2_DATA0",
+            "SD_DATA0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "GPIO13",
+          "board_header": "GPIO Header 2",
+          "main_functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "RTC_GPIO14",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "GPIO Header 2-5 board header pin, silkscreen label GPIO13.",
+            "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH4",
+            "TOUCH4"
+          ],
+          "io_mux": [
+            "GPIO13",
+            "MTCK",
+            "HSPID",
+            "HS2_DATA3",
+            "SD_DATA3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "GPIO12",
+          "board_header": "GPIO Header 2",
+          "main_functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "RTC_GPIO15",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "GPIO Header 2-6 board header pin, silkscreen label GPIO12.",
+            "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH5",
+            "TOUCH5"
+          ],
+          "io_mux": [
+            "GPIO12",
+            "MTDI",
+            "HSPIQ",
+            "HS2_DATA2",
+            "SD_DATA2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "GPIO15",
+          "board_header": "GPIO Header 2",
+          "main_functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "RTC_GPIO13",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "GPIO Header 2-7 board header pin, silkscreen label GPIO15.",
+            "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls U0TXD printing and SDIO slave timing at reset.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH3",
+            "TOUCH3"
+          ],
+          "io_mux": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS0",
+            "HS2_CMD",
+            "SD_CMD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "GPIO14",
+          "board_header": "GPIO Header 2",
+          "main_functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "RTC_GPIO16",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "GPIO Header 2-8 board header pin, silkscreen label GPIO14.",
+            "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH6",
+            "TOUCH6"
+          ],
+          "io_mux": [
+            "GPIO14",
+            "MTMS",
+            "HSPICLK",
+            "HS2_CLK",
+            "SD_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "USB port or 5 V Input can power the Ethernet board A.",
+        "The PoE board B can also supply 5 V to board A; use only one active power path at a time."
+      ],
+      "programming": [
+        "FT2232H USB bridge provides USB-to-serial and USB-to-JTAG access; automatic firmware download is supported."
+      ],
+      "onboard_hardware": [
+        "ESP32-WROVER-E module, IP101GRI Ethernet PHY, RJ45 port, magnetics, and link/activity LEDs.",
+        "FT2232H USB bridge, USB port, power switch, 5 V input, 5V power LED, and DC/DC converter.",
+        "GPIO Header 1, GPIO Header 2, Function Switch, BOOT button, EN button, Tx/Rx LEDs, and optional PoE board B connectors.",
+        "Internal RMII wiring uses GPIO0 for REF_CLK and GPIO5 for PHY Reset_N."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": []
+      },
+      "buttons": [
+        "Boot",
+        "EN"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO13",
+          "board_label": "GPIO13",
+          "main_functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "RTC_GPIO14",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "notes": [
+            "GPIO Header 2-5 board header pin, silkscreen label GPIO13.",
+            "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "GPIO12",
+          "main_functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "RTC_GPIO15",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "notes": [
+            "GPIO Header 2-6 board header pin, silkscreen label GPIO12.",
+            "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "GPIO15",
+          "main_functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "RTC_GPIO13",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "notes": [
+            "GPIO Header 2-7 board header pin, silkscreen label GPIO15.",
+            "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls U0TXD printing and SDIO slave timing at reset.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "GPIO14",
+          "main_functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "RTC_GPIO16",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "notes": [
+            "GPIO Header 2-8 board header pin, silkscreen label GPIO14.",
+            "When the Function Switch is ON, this pin is routed to the FT2232H JTAG interface; when OFF, it is available on the GPIO header.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1146 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32-h2-devkitm-1",
+    "name": "ESP32-H2-DevKitM-1",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-H2",
+    "aliases": [
+      "ESP32-H2-DevKitM-1"
+    ],
+    "module_variants": [
+      "ESP32-H2-MINI-1",
+      "ESP32-H2-MINI-1U"
+    ],
+    "route": "/boards/esp32-h2-devkitm-1",
+    "sources": [
+      {
+        "title": "ESP32-H2-DevKitM-1 User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32h2/esp32-h2-devkitm-1/user_guide.html",
+        "sections": [
+          "Description of Components",
+          "Block Diagram",
+          "Power Supply Options",
+          "Current Measurement",
+          "Header Block",
+          "Pin Layout",
+          "Hardware Revision Details"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-H2-DevKitM-1"
+      ],
+      "module_markings": [
+        "ESP32-H2-MINI-1",
+        "ESP32-H2-MINI-1U"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "Boot button",
+        "Reset button",
+        "addressable RGB LED",
+        "USB-to-UART bridge",
+        "native USB port",
+        "J5 current measurement jumper"
+      ],
+      "button_labels": [
+        "Boot",
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "3V3",
+        "RST",
+        "0",
+        "1",
+        "2",
+        "3",
+        "13/N",
+        "14/N",
+        "4",
+        "5",
+        "NC",
+        "VBAT",
+        "G",
+        "5V",
+        "TX",
+        "RX",
+        "10",
+        "11",
+        "25",
+        "12",
+        "8",
+        "22",
+        "9",
+        "27",
+        "26"
+      ],
+      "header_pin_counts": [
+        30
+      ],
+      "usb_connector_count": 2,
+      "usb_connector_types": [
+        "usb-c"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO0",
+        "GPIO1",
+        "GPIO2",
+        "GPIO3",
+        "GPIO4",
+        "GPIO5",
+        "GPIO10",
+        "GPIO11",
+        "GPIO12",
+        "GPIO22"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO13",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO14",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO24",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO23",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO25",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Board hardware, Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO27",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO26",
+          "warning": "USB"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Header pins with documented native USB data functions.",
+          "candidate_pins": [
+            "GPIO27",
+            "GPIO26"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO24",
+            "GPIO23"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "functions": [
+            "GPIO0",
+            "FSPIQ"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "1",
+          "functions": [
+            "GPIO1",
+            "FSPICS0",
+            "ADC1_CH0"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "functions": [
+            "GPIO2",
+            "FSPIWP",
+            "ADC1_CH1",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "3",
+          "functions": [
+            "GPIO3",
+            "FSPIHD",
+            "ADC1_CH2",
+            "MTDO"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13/N",
+          "functions": [
+            "GPIO13",
+            "XTAL_32K_P"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "14/N",
+          "functions": [
+            "GPIO14",
+            "XTAL_32K_N"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "functions": [
+            "GPIO4",
+            "FSPICLK",
+            "ADC1_CH3",
+            "MTCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "functions": [
+            "GPIO5",
+            "FSPID",
+            "ADC1_CH4",
+            "MTDI"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO24",
+          "board_label": "TX",
+          "functions": [
+            "GPIO24",
+            "FSPICS2",
+            "U0TXD"
+          ],
+          "warnings": [
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "board_label": "RX",
+          "functions": [
+            "GPIO23",
+            "FSPICS1",
+            "U0RXD"
+          ],
+          "warnings": [
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "10",
+          "functions": [
+            "GPIO10",
+            "ZCD0"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "11",
+          "functions": [
+            "GPIO11",
+            "ZCD1"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO25",
+          "board_label": "25",
+          "functions": [
+            "GPIO25",
+            "FSPICS3",
+            "JTAG signal source strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "12",
+          "functions": [
+            "GPIO12"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "8",
+          "functions": [
+            "GPIO8",
+            "ROM message control",
+            "RGB LED"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "board_label": "22",
+          "functions": [
+            "GPIO22"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "9",
+          "functions": [
+            "GPIO9",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "board_label": "27",
+          "functions": [
+            "GPIO27",
+            "FSPICS5",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "26",
+          "functions": [
+            "GPIO26",
+            "FSPICS4",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO0",
+            "FSPIQ"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-3 board header pin, silkscreen label 0."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "1",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO1",
+            "FSPICS0",
+            "ADC1_CH0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-4 board header pin, silkscreen label 1."
+          ],
+          "analog": [
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO1",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO2",
+            "FSPIWP",
+            "ADC1_CH1",
+            "MTMS"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-5 board header pin, silkscreen label 2.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "MTMS",
+            "GPIO2",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "3",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO3",
+            "FSPIHD",
+            "ADC1_CH2",
+            "MTDO"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-6 board header pin, silkscreen label 3.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "MTDO",
+            "GPIO3",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13/N",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO13",
+            "XTAL_32K_P"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-7 board header pin, silkscreen label 13/N.",
+            "The user guide notes that when this pin is connected to XTAL_32K_P inside the module, it cannot be used for another purpose.",
+            "Boards with PW number on or after PW-2024-02-0362 populate the 32.768 kHz crystal by default.",
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO13."
+          ],
+          "analog": [
+            "XTAL_32K_P"
+          ],
+          "io_mux": [
+            "GPIO13"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "14/N",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO14",
+            "XTAL_32K_N"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-8 board header pin, silkscreen label 14/N.",
+            "The user guide notes that when this pin is connected to XTAL_32K_N inside the module, it cannot be used for another purpose.",
+            "Boards with PW number on or after PW-2024-02-0362 populate the 32.768 kHz crystal by default.",
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO14."
+          ],
+          "analog": [
+            "XTAL_32K_N"
+          ],
+          "io_mux": [
+            "GPIO14"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO4",
+            "FSPICLK",
+            "ADC1_CH3",
+            "MTCK"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-9 board header pin, silkscreen label 4.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Reset pull-up behavior depends on EFUSE_DIS_PAD_JTAG."
+          ],
+          "analog": [
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "MTCK",
+            "GPIO4",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO5",
+            "FSPID",
+            "ADC1_CH4",
+            "MTDI"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J1-10 board header pin, silkscreen label 5.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "MTDI",
+            "GPIO5",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO24",
+          "board_label": "TX",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO24",
+            "FSPICS2",
+            "U0TXD"
+          ],
+          "maker_warnings": [
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-2 board header pin, silkscreen label TX.",
+            "Connected to the board USB-to-UART bridge transmit path.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO24",
+            "FSPICS2"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "board_label": "RX",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO23",
+            "FSPICS1",
+            "U0RXD"
+          ],
+          "maker_warnings": [
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-3 board header pin, silkscreen label RX.",
+            "Connected to the board USB-to-UART bridge receive path.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO23",
+            "FSPICS1"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "10",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO10",
+            "ZCD0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-4 board header pin, silkscreen label 10."
+          ],
+          "analog": [
+            "ZCD0"
+          ],
+          "io_mux": [
+            "GPIO10"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "11",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO11",
+            "ZCD1"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-5 board header pin, silkscreen label 11."
+          ],
+          "analog": [
+            "ZCD1"
+          ],
+          "io_mux": [
+            "GPIO11"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO25",
+          "board_label": "25",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO25",
+            "FSPICS3",
+            "JTAG signal source strapping"
+          ],
+          "maker_warnings": [
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-6 board header pin, silkscreen label 25.",
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO25 has no internal pull resistors and the external circuit must not be high impedance during strapping."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO25",
+            "FSPICS3"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "12",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO12"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-7 board header pin, silkscreen label 12."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO12"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "8",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO8",
+            "ROM message control",
+            "RGB LED"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-8 board header pin, silkscreen label 8.",
+            "Connected to the addressable RGB LED on ESP32-H2-DevKitM-1. The official header table also labels this pin LOG.",
+            "Strapping pin with default floating state.",
+            "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO8"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "board_label": "22",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO22"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-9 board header pin, silkscreen label 22."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO22"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "9",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO9",
+            "Boot mode strapping"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-11 board header pin, silkscreen label 9.",
+            "Official header table labels this pin BOOT. It controls boot mode with GPIO8.",
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO8; GPIO8=1 and GPIO9=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "board_label": "27",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO27",
+            "FSPICS5",
+            "USB_D+"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-13 board header pin, silkscreen label 27.",
+            "Native USB D+ signal on the ESP32-H2 module and ESP32-H2 USB Type-C port.",
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "Default drive strength for GPIO27 is 40 mA."
+          ],
+          "analog": [
+            "USB_D+"
+          ],
+          "io_mux": [
+            "GPIO27",
+            "FSPICS5"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "26",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO26",
+            "FSPICS4",
+            "USB_D-"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-14 board header pin, silkscreen label 26.",
+            "Native USB D- signal on the ESP32-H2 module and ESP32-H2 USB Type-C port.",
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "Default drive strength for GPIO26 is 40 mA."
+          ],
+          "analog": [
+            "USB_D-"
+          ],
+          "io_mux": [
+            "GPIO26",
+            "FSPICS4"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "USB Type-C to UART port, 5V/GND headers, or 3V3/GND headers; use only one power path at a time.",
+        "J5 jumper supports module current measurement and should be removed for 3V3 header current measurement."
+      ],
+      "programming": [
+        "USB-to-UART bridge for flashing and serial logs.",
+        "Native ESP32-H2 USB Type-C port supports USB 2.0 full-speed USB Serial/JTAG workflows."
+      ],
+      "onboard_hardware": [
+        "Boot and Reset buttons, addressable RGB LED on GPIO8, 32.768 kHz crystal on current hardware, USB-to-UART bridge, native USB port, and J5 current-measurement jumper."
+      ],
+      "usb_connectors": {
+        "count": 2,
+        "types": [
+          "usb-c"
+        ]
+      },
+      "buttons": [
+        "Boot",
+        "Reset"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO13",
+          "board_label": "13/N",
+          "main_functions": [
+            "GPIO13",
+            "XTAL_32K_P"
+          ],
+          "notes": [
+            "J1-7 board header pin, silkscreen label 13/N.",
+            "The user guide notes that when this pin is connected to XTAL_32K_P inside the module, it cannot be used for another purpose.",
+            "Boards with PW number on or after PW-2024-02-0362 populate the 32.768 kHz crystal by default.",
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO13."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "14/N",
+          "main_functions": [
+            "GPIO14",
+            "XTAL_32K_N"
+          ],
+          "notes": [
+            "J1-8 board header pin, silkscreen label 14/N.",
+            "The user guide notes that when this pin is connected to XTAL_32K_N inside the module, it cannot be used for another purpose.",
+            "Boards with PW number on or after PW-2024-02-0362 populate the 32.768 kHz crystal by default.",
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO14."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "8",
+          "main_functions": [
+            "GPIO8",
+            "ROM message control",
+            "RGB LED"
+          ],
+          "notes": [
+            "J3-8 board header pin, silkscreen label 8.",
+            "Connected to the addressable RGB LED on ESP32-H2-DevKitM-1. The official header table also labels this pin LOG.",
+            "Strapping pin with default floating state.",
+            "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        }
+      ]
+    }
+  }
+}

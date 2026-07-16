@@ -1,0 +1,2228 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32s3-usb-otg",
+    "name": "ESP32-S3-USB-OTG",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-S3",
+    "aliases": [
+      "ESP32-S3-USB-OTG"
+    ],
+    "module_variants": [
+      "ESP32-S3-MINI-1-N8"
+    ],
+    "route": "/boards/esp32s3-usb-otg",
+    "sources": [
+      {
+        "title": "ESP32-S3-USB-OTG User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-otg/user_guide.html",
+        "sections": [
+          "Description of Components",
+          "Block Diagram",
+          "Power Supply Options",
+          "USB Interface Switch Circuit",
+          "LCD Interface",
+          "SD Card Interface",
+          "Pin Layout - Function pin",
+          "Pin Layout - Extended pin",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-S3-USB-OTG"
+      ],
+      "module_markings": [
+        "ESP32-S3-MINI-1-N8"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "USB_HOST connector",
+        "USB_DEV connector",
+        "Micro-USB connector",
+        "LCD connector",
+        "MicroSD slot",
+        "battery charger"
+      ],
+      "button_labels": [],
+      "visible_pin_labels": [
+        "USB_SEL",
+        "USB_D-",
+        "USB_D+",
+        "LED_GREEN",
+        "LED_YELLOW",
+        "BUTTON_OK",
+        "BUTTON_DW",
+        "BUTTON_UP",
+        "BUTTON_MENU",
+        "LCD_RET",
+        "LCD_EN",
+        "LCD_DC",
+        "LCD_SCLK",
+        "LCD_SDA",
+        "LCD_BL",
+        "SD_SCK",
+        "SD_DO",
+        "SD_D1",
+        "SD_D2",
+        "SD_D3",
+        "HOST_VOL",
+        "BAT_VOL",
+        "LIMIT_EN",
+        "0VER_CURRENT",
+        "DEV_VBUS_EN",
+        "BOOST_EN",
+        "FREE_1",
+        "FREE_2",
+        "FREE_3",
+        "FREE_4",
+        "FREE_5",
+        "FREE_6"
+      ],
+      "header_pin_counts": [
+        32
+      ],
+      "usb_connector_count": 3,
+      "usb_connector_types": [
+        "micro-usb"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO48",
+        "GPIO26",
+        "GPIO47"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO18",
+          "warning": "USB, Board hardware"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Board hardware, Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO11",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO10",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO14",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO4",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO6",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO7",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO36",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO37",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO38",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO33",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO34",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO45",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO46",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Strapping"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Header pins with documented native USB data functions.",
+          "candidate_pins": [
+            "GPIO19",
+            "GPIO20"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO18",
+          "board_label": "USB_SEL",
+          "functions": [
+            "GPIO18",
+            "USB_SEL"
+          ],
+          "warnings": [
+            "USB",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_D-",
+          "functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_D+",
+          "functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "LED_GREEN",
+          "functions": [
+            "GPIO15",
+            "LED_GREEN"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "LED_YELLOW",
+          "functions": [
+            "GPIO16",
+            "LED_YELLOW"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "BUTTON_OK",
+          "functions": [
+            "GPIO0",
+            "BUTTON_OK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "BUTTON_DW",
+          "functions": [
+            "GPIO11",
+            "BUTTON_DW"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "BUTTON_UP",
+          "functions": [
+            "GPIO10",
+            "BUTTON_UP"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "BUTTON_MENU",
+          "functions": [
+            "GPIO14",
+            "BUTTON_MENU"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "LCD_RET",
+          "functions": [
+            "GPIO8",
+            "LCD_RET"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "LCD_EN",
+          "functions": [
+            "GPIO5",
+            "LCD_EN"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "LCD_DC",
+          "functions": [
+            "GPIO4",
+            "LCD_DC"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "LCD_SCLK",
+          "functions": [
+            "GPIO6",
+            "LCD_SCLK"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "LCD_SDA",
+          "functions": [
+            "GPIO7",
+            "LCD_SDA"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "LCD_BL",
+          "functions": [
+            "GPIO9",
+            "LCD_BL"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "SD_SCK",
+          "functions": [
+            "GPIO36",
+            "SD_SCK"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "SD_DO",
+          "functions": [
+            "GPIO37",
+            "SD_DO"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "SD_D1",
+          "functions": [
+            "GPIO38",
+            "SD_D1"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "SD_D2",
+          "functions": [
+            "GPIO33",
+            "SD_D2"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "SD_D3",
+          "functions": [
+            "GPIO34",
+            "SD_D3"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "HOST_VOL",
+          "functions": [
+            "GPIO1",
+            "HOST_VOL",
+            "ADC1_CH0"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "BAT_VOL",
+          "functions": [
+            "GPIO2",
+            "BAT_VOL",
+            "ADC1_CH1"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "LIMIT_EN",
+          "functions": [
+            "GPIO17",
+            "LIMIT_EN"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "0VER_CURRENT",
+          "functions": [
+            "GPIO21",
+            "0VER_CURRENT"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "DEV_VBUS_EN",
+          "functions": [
+            "GPIO12",
+            "DEV_VBUS_EN"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "BOOST_EN",
+          "functions": [
+            "GPIO13",
+            "BOOST_EN"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "FREE_1",
+          "functions": [
+            "GPIO45",
+            "FREE_1"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "FREE_2",
+          "functions": [
+            "GPIO46",
+            "FREE_2"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "FREE_3",
+          "functions": [
+            "GPIO48",
+            "FREE_3"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "FREE_4",
+          "functions": [
+            "GPIO26",
+            "FREE_4"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "FREE_5",
+          "functions": [
+            "GPIO47",
+            "FREE_5"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "FREE_6",
+          "functions": [
+            "GPIO3",
+            "FREE_6"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO18",
+          "board_label": "USB_SEL",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO18",
+            "USB_SEL"
+          ],
+          "maker_warnings": [
+            "USB",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-1 on the ESP32-S3-USB-OTG Function pin table, label USB_SEL.",
+            "USB interface switch signal. High enables the USB_HOST interface; low default enables the USB_DEV interface.",
+            "The official guide says USB_SEL is pulled low by default."
+          ],
+          "analog": [
+            "ADC2_CH7"
+          ],
+          "io_mux": [
+            "GPIO18",
+            "U1RXD",
+            "CLK_OUT3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_D-",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-2 on the ESP32-S3-USB-OTG Function pin table, label USB_D-.",
+            "Connected to USB D- through the board USB interface switch circuit."
+          ],
+          "analog": [
+            "USB_D-",
+            "ADC2_CH8"
+          ],
+          "io_mux": [
+            "GPIO19",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_D+",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-3 on the ESP32-S3-USB-OTG Function pin table, label USB_D+.",
+            "Connected to USB D+ through the board USB interface switch circuit."
+          ],
+          "analog": [
+            "USB_D+",
+            "ADC2_CH9"
+          ],
+          "io_mux": [
+            "GPIO20",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "LED_GREEN",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO15",
+            "LED_GREEN"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-4 on the ESP32-S3-USB-OTG Function pin table, label LED_GREEN.",
+            "On-board green LED. The official guide says the LED is lit when this signal is high."
+          ],
+          "analog": [
+            "XTAL_32K_P",
+            "ADC2_CH4"
+          ],
+          "io_mux": [
+            "GPIO15",
+            "U0RTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "LED_YELLOW",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO16",
+            "LED_YELLOW"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-5 on the ESP32-S3-USB-OTG Function pin table, label LED_YELLOW.",
+            "On-board yellow LED. The official guide says the LED is lit when this signal is high."
+          ],
+          "analog": [
+            "XTAL_32K_N",
+            "ADC2_CH5"
+          ],
+          "io_mux": [
+            "GPIO16",
+            "U0CTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "BUTTON_OK",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO0",
+            "BUTTON_OK"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-6 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_OK.",
+            "OK button. The official guide says this signal is low when pressed."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "BUTTON_DW",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO11",
+            "BUTTON_DW"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-7 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_DW.",
+            "Down button. The official guide says this signal is low when pressed."
+          ],
+          "analog": [
+            "TOUCH11",
+            "ADC2_CH0"
+          ],
+          "io_mux": [
+            "GPIO11",
+            "FSPIIO5",
+            "SUBSPID",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "BUTTON_UP",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO10",
+            "BUTTON_UP"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-8 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_UP.",
+            "UP button. The official guide says this signal is low when pressed."
+          ],
+          "analog": [
+            "TOUCH10",
+            "ADC1_CH9"
+          ],
+          "io_mux": [
+            "GPIO10",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "BUTTON_MENU",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO14",
+            "BUTTON_MENU"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-9 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_MENU.",
+            "MENU button. The official guide says this signal is low when pressed."
+          ],
+          "analog": [
+            "TOUCH14",
+            "ADC2_CH3"
+          ],
+          "io_mux": [
+            "GPIO14",
+            "FSPIDQS",
+            "SUBSPIWP",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "LCD_RET",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO8",
+            "LCD_RET"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-10 on the ESP32-S3-USB-OTG Function pin table, label LCD_RET.",
+            "LCD reset signal. The official guide says low resets the LCD."
+          ],
+          "analog": [
+            "TOUCH8",
+            "ADC1_CH7"
+          ],
+          "io_mux": [
+            "GPIO8",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "LCD_EN",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO5",
+            "LCD_EN"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-11 on the ESP32-S3-USB-OTG Function pin table, label LCD_EN.",
+            "LCD enable signal. The official guide says low enables the LCD."
+          ],
+          "analog": [
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "GPIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "LCD_DC",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO4",
+            "LCD_DC"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-12 on the ESP32-S3-USB-OTG Function pin table, label LCD_DC.",
+            "LCD data/command select signal."
+          ],
+          "analog": [
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "LCD_SCLK",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO6",
+            "LCD_SCLK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-13 on the ESP32-S3-USB-OTG Function pin table, label LCD_SCLK.",
+            "LCD SPI clock signal."
+          ],
+          "analog": [
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "io_mux": [
+            "GPIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "LCD_SDA",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO7",
+            "LCD_SDA"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-14 on the ESP32-S3-USB-OTG Function pin table, label LCD_SDA.",
+            "LCD SPI MOSI signal."
+          ],
+          "analog": [
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "io_mux": [
+            "GPIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "LCD_BL",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO9",
+            "LCD_BL"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-15 on the ESP32-S3-USB-OTG Function pin table, label LCD_BL.",
+            "LCD backlight control signal."
+          ],
+          "analog": [
+            "TOUCH9",
+            "ADC1_CH8"
+          ],
+          "io_mux": [
+            "GPIO9",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "SD_SCK",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO36",
+            "SD_SCK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-16 on the ESP32-S3-USB-OTG Function pin table, label SD_SCK.",
+            "MicroSD clock signal. The official guide lists SD SPI CLK / SDIO CLK."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO36",
+            "FSPICLK",
+            "SUBSPICLK",
+            "SPIIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "SD_DO",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO37",
+            "SD_DO"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-17 on the ESP32-S3-USB-OTG Function pin table, label SD_DO.",
+            "MicroSD data output. The official guide lists SD SPI MISO / SDIO Data0."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO37",
+            "FSPIQ",
+            "SUBSPIQ",
+            "SPIDQS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "SD_D1",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO38",
+            "SD_D1"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-18 on the ESP32-S3-USB-OTG Function pin table, label SD_D1.",
+            "MicroSD SDIO Data1 signal."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "SD_D2",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO33",
+            "SD_D2"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-19 on the ESP32-S3-USB-OTG Function pin table, label SD_D2.",
+            "MicroSD SDIO Data2 signal."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO33",
+            "FSPIHD",
+            "SUBSPIHD",
+            "SPIIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "SD_D3",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO34",
+            "SD_D3"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-20 on the ESP32-S3-USB-OTG Function pin table, label SD_D3.",
+            "MicroSD chip select / Data3. The official guide lists SD SPI CS / SDIO Data3."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO34",
+            "FSPICS0",
+            "SUBSPICS0",
+            "SPIIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "HOST_VOL",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO1",
+            "HOST_VOL",
+            "ADC1_CH0"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-21 on the ESP32-S3-USB-OTG Function pin table, label HOST_VOL.",
+            "USB_DEV voltage monitoring signal, ADC1 channel 0."
+          ],
+          "analog": [
+            "TOUCH1",
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "BAT_VOL",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO2",
+            "BAT_VOL",
+            "ADC1_CH1"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Function pin-22 on the ESP32-S3-USB-OTG Function pin table, label BAT_VOL.",
+            "Battery voltage monitoring signal, ADC1 channel 1."
+          ],
+          "analog": [
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "LIMIT_EN",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO17",
+            "LIMIT_EN"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power domain"
+          ],
+          "notes": [
+            "Function pin-23 on the ESP32-S3-USB-OTG Function pin table, label LIMIT_EN.",
+            "Current limiting IC enable signal. The official guide says high enables current limiting."
+          ],
+          "analog": [
+            "ADC2_CH6"
+          ],
+          "io_mux": [
+            "GPIO17",
+            "U1TXD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "0VER_CURRENT",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO21",
+            "0VER_CURRENT"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power domain"
+          ],
+          "notes": [
+            "Function pin-24 on the ESP32-S3-USB-OTG Function pin table, label 0VER_CURRENT.",
+            "Current overrun signal. The official guide says high level means overrun."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO21"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "DEV_VBUS_EN",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO12",
+            "DEV_VBUS_EN"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power domain"
+          ],
+          "notes": [
+            "Function pin-25 on the ESP32-S3-USB-OTG Function pin table, label DEV_VBUS_EN.",
+            "Device VBUS power enable signal. The official guide says high enables DEV_VBUS power supply."
+          ],
+          "analog": [
+            "TOUCH12",
+            "ADC2_CH1"
+          ],
+          "io_mux": [
+            "GPIO12",
+            "FSPIIO6",
+            "SUBSPICLK",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "BOOST_EN",
+          "board_header": "Function pin",
+          "main_functions": [
+            "GPIO13",
+            "BOOST_EN"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power domain"
+          ],
+          "notes": [
+            "Function pin-26 on the ESP32-S3-USB-OTG Function pin table, label BOOST_EN.",
+            "Boost circuit enable signal. The official guide says high enables the boost circuit."
+          ],
+          "analog": [
+            "TOUCH13",
+            "ADC2_CH2"
+          ],
+          "io_mux": [
+            "GPIO13",
+            "FSPIIO7",
+            "SUBSPIQ",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "FREE_1",
+          "board_header": "Extended pin",
+          "main_functions": [
+            "GPIO45",
+            "FREE_1"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Extended pin-1 on the ESP32-S3-USB-OTG Extended pin table, label FREE_1.",
+            "Official guide lists this extended pin as idle and customizable."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO45"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "FREE_2",
+          "board_header": "Extended pin",
+          "main_functions": [
+            "GPIO46",
+            "FREE_2"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Extended pin-2 on the ESP32-S3-USB-OTG Extended pin table, label FREE_2.",
+            "Official guide lists this extended pin as idle and customizable."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO46"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "FREE_3",
+          "board_header": "Extended pin",
+          "main_functions": [
+            "GPIO48",
+            "FREE_3"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Extended pin-3 on the ESP32-S3-USB-OTG Extended pin table, label FREE_3.",
+            "Official guide lists this extended pin as idle and customizable."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_N_DIFF",
+            "GPIO48",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "FREE_4",
+          "board_header": "Extended pin",
+          "main_functions": [
+            "GPIO26",
+            "FREE_4"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Extended pin-4 on the ESP32-S3-USB-OTG Extended pin table, label FREE_4.",
+            "Official guide lists this extended pin as idle and customizable."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICS1",
+            "GPIO26"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "FREE_5",
+          "board_header": "Extended pin",
+          "main_functions": [
+            "GPIO47",
+            "FREE_5"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "Extended pin-5 on the ESP32-S3-USB-OTG Extended pin table, label FREE_5.",
+            "Official guide lists this extended pin as idle and customizable."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_P_DIFF",
+            "GPIO47",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "FREE_6",
+          "board_header": "Extended pin",
+          "main_functions": [
+            "GPIO3",
+            "FREE_6"
+          ],
+          "maker_warnings": [
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Extended pin-6 on the ESP32-S3-USB-OTG Extended pin table, label FREE_6.",
+            "Official guide lists this extended pin as idle and customizable."
+          ],
+          "analog": [
+            "TOUCH3",
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "Micro-USB powers the motherboard and display.",
+        "USB_DEV or battery mode can supply USB_HOST; battery mode uses BOOST_EN."
+      ],
+      "programming": [
+        "Micro-USB USB-to-UART port is used for flashing, power, and serial communication."
+      ],
+      "onboard_hardware": [
+        "USB_HOST, USB_DEV, USB switch, LCD connector, MicroSD slot, battery charger, buttons, and green/yellow LEDs."
+      ],
+      "usb_connectors": {
+        "count": 3,
+        "types": [
+          "micro-usb"
+        ]
+      },
+      "buttons": [],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO18",
+          "board_label": "USB_SEL",
+          "main_functions": [
+            "GPIO18",
+            "USB_SEL"
+          ],
+          "notes": [
+            "Function pin-1 on the ESP32-S3-USB-OTG Function pin table, label USB_SEL.",
+            "USB interface switch signal. High enables the USB_HOST interface; low default enables the USB_DEV interface.",
+            "The official guide says USB_SEL is pulled low by default."
+          ],
+          "warnings": [
+            "USB",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "LED_GREEN",
+          "main_functions": [
+            "GPIO15",
+            "LED_GREEN"
+          ],
+          "notes": [
+            "Function pin-4 on the ESP32-S3-USB-OTG Function pin table, label LED_GREEN.",
+            "On-board green LED. The official guide says the LED is lit when this signal is high."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "LED_YELLOW",
+          "main_functions": [
+            "GPIO16",
+            "LED_YELLOW"
+          ],
+          "notes": [
+            "Function pin-5 on the ESP32-S3-USB-OTG Function pin table, label LED_YELLOW.",
+            "On-board yellow LED. The official guide says the LED is lit when this signal is high."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "BUTTON_OK",
+          "main_functions": [
+            "GPIO0",
+            "BUTTON_OK"
+          ],
+          "notes": [
+            "Function pin-6 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_OK.",
+            "OK button. The official guide says this signal is low when pressed."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "BUTTON_DW",
+          "main_functions": [
+            "GPIO11",
+            "BUTTON_DW"
+          ],
+          "notes": [
+            "Function pin-7 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_DW.",
+            "Down button. The official guide says this signal is low when pressed."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "BUTTON_UP",
+          "main_functions": [
+            "GPIO10",
+            "BUTTON_UP"
+          ],
+          "notes": [
+            "Function pin-8 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_UP.",
+            "UP button. The official guide says this signal is low when pressed."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "BUTTON_MENU",
+          "main_functions": [
+            "GPIO14",
+            "BUTTON_MENU"
+          ],
+          "notes": [
+            "Function pin-9 on the ESP32-S3-USB-OTG Function pin table, label BUTTON_MENU.",
+            "MENU button. The official guide says this signal is low when pressed."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "LCD_RET",
+          "main_functions": [
+            "GPIO8",
+            "LCD_RET"
+          ],
+          "notes": [
+            "Function pin-10 on the ESP32-S3-USB-OTG Function pin table, label LCD_RET.",
+            "LCD reset signal. The official guide says low resets the LCD."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "LCD_EN",
+          "main_functions": [
+            "GPIO5",
+            "LCD_EN"
+          ],
+          "notes": [
+            "Function pin-11 on the ESP32-S3-USB-OTG Function pin table, label LCD_EN.",
+            "LCD enable signal. The official guide says low enables the LCD."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "LCD_DC",
+          "main_functions": [
+            "GPIO4",
+            "LCD_DC"
+          ],
+          "notes": [
+            "Function pin-12 on the ESP32-S3-USB-OTG Function pin table, label LCD_DC.",
+            "LCD data/command select signal."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "LCD_SCLK",
+          "main_functions": [
+            "GPIO6",
+            "LCD_SCLK"
+          ],
+          "notes": [
+            "Function pin-13 on the ESP32-S3-USB-OTG Function pin table, label LCD_SCLK.",
+            "LCD SPI clock signal."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "LCD_SDA",
+          "main_functions": [
+            "GPIO7",
+            "LCD_SDA"
+          ],
+          "notes": [
+            "Function pin-14 on the ESP32-S3-USB-OTG Function pin table, label LCD_SDA.",
+            "LCD SPI MOSI signal."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "LCD_BL",
+          "main_functions": [
+            "GPIO9",
+            "LCD_BL"
+          ],
+          "notes": [
+            "Function pin-15 on the ESP32-S3-USB-OTG Function pin table, label LCD_BL.",
+            "LCD backlight control signal."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "SD_SCK",
+          "main_functions": [
+            "GPIO36",
+            "SD_SCK"
+          ],
+          "notes": [
+            "Function pin-16 on the ESP32-S3-USB-OTG Function pin table, label SD_SCK.",
+            "MicroSD clock signal. The official guide lists SD SPI CLK / SDIO CLK."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "SD_DO",
+          "main_functions": [
+            "GPIO37",
+            "SD_DO"
+          ],
+          "notes": [
+            "Function pin-17 on the ESP32-S3-USB-OTG Function pin table, label SD_DO.",
+            "MicroSD data output. The official guide lists SD SPI MISO / SDIO Data0."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "SD_D1",
+          "main_functions": [
+            "GPIO38",
+            "SD_D1"
+          ],
+          "notes": [
+            "Function pin-18 on the ESP32-S3-USB-OTG Function pin table, label SD_D1.",
+            "MicroSD SDIO Data1 signal."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "SD_D2",
+          "main_functions": [
+            "GPIO33",
+            "SD_D2"
+          ],
+          "notes": [
+            "Function pin-19 on the ESP32-S3-USB-OTG Function pin table, label SD_D2.",
+            "MicroSD SDIO Data2 signal."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "SD_D3",
+          "main_functions": [
+            "GPIO34",
+            "SD_D3"
+          ],
+          "notes": [
+            "Function pin-20 on the ESP32-S3-USB-OTG Function pin table, label SD_D3.",
+            "MicroSD chip select / Data3. The official guide lists SD SPI CS / SDIO Data3."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "HOST_VOL",
+          "main_functions": [
+            "GPIO1",
+            "HOST_VOL",
+            "ADC1_CH0"
+          ],
+          "notes": [
+            "Function pin-21 on the ESP32-S3-USB-OTG Function pin table, label HOST_VOL.",
+            "USB_DEV voltage monitoring signal, ADC1 channel 0."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "BAT_VOL",
+          "main_functions": [
+            "GPIO2",
+            "BAT_VOL",
+            "ADC1_CH1"
+          ],
+          "notes": [
+            "Function pin-22 on the ESP32-S3-USB-OTG Function pin table, label BAT_VOL.",
+            "Battery voltage monitoring signal, ADC1 channel 1."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "LIMIT_EN",
+          "main_functions": [
+            "GPIO17",
+            "LIMIT_EN"
+          ],
+          "notes": [
+            "Function pin-23 on the ESP32-S3-USB-OTG Function pin table, label LIMIT_EN.",
+            "Current limiting IC enable signal. The official guide says high enables current limiting."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "0VER_CURRENT",
+          "main_functions": [
+            "GPIO21",
+            "0VER_CURRENT"
+          ],
+          "notes": [
+            "Function pin-24 on the ESP32-S3-USB-OTG Function pin table, label 0VER_CURRENT.",
+            "Current overrun signal. The official guide says high level means overrun."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "DEV_VBUS_EN",
+          "main_functions": [
+            "GPIO12",
+            "DEV_VBUS_EN"
+          ],
+          "notes": [
+            "Function pin-25 on the ESP32-S3-USB-OTG Function pin table, label DEV_VBUS_EN.",
+            "Device VBUS power enable signal. The official guide says high enables DEV_VBUS power supply."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "BOOST_EN",
+          "main_functions": [
+            "GPIO13",
+            "BOOST_EN"
+          ],
+          "notes": [
+            "Function pin-26 on the ESP32-S3-USB-OTG Function pin table, label BOOST_EN.",
+            "Boost circuit enable signal. The official guide says high enables the boost circuit."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain"
+          ]
+        }
+      ]
+    }
+  }
+}

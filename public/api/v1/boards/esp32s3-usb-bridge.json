@@ -1,0 +1,1052 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32s3-usb-bridge",
+    "name": "ESP32-S3-USB-Bridge",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-S3",
+    "aliases": [
+      "ESP32-S3-USB-Bridge"
+    ],
+    "module_variants": [
+      "ESP32-S3-MINI-1-N4R2"
+    ],
+    "route": "/boards/esp32s3-usb-bridge",
+    "sources": [
+      {
+        "title": "ESP32-S3-USB-Bridge User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-usb-bridge/user_guide.html",
+        "sections": [
+          "Board Overview",
+          "Feature List",
+          "Block Diagram",
+          "Description of Components",
+          "GPIO Allocation",
+          "Hardware Revision Details",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-S3-USB-Bridge"
+      ],
+      "module_markings": [
+        "ESP32-S3-MINI-1-N4R2"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "USB-to-USB port",
+        "target Boot button",
+        "target Reset button",
+        "module Boot button",
+        "TX/RX indicators",
+        "WS2812 LED"
+      ],
+      "button_labels": [
+        "Boot",
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "GND",
+        "3V3",
+        "MODULE_BOOT",
+        "TDO",
+        "TDI",
+        "TCK",
+        "TMS",
+        "RESET",
+        "BOOT",
+        "USB_D-",
+        "USB_D+",
+        "RX",
+        "TX",
+        "WS2812"
+      ],
+      "header_pin_counts": [
+        14
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": []
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [],
+      "caution_pins": [
+        {
+          "gpio": "GPIO0",
+          "warning": "Board hardware, Boot, Strapping"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Board hardware, Strapping"
+        },
+        {
+          "gpio": "GPIO4",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Board hardware, Reset"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Board hardware, Boot"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "Board hardware, USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "Board hardware, USB"
+        },
+        {
+          "gpio": "GPIO40",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO41",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO42",
+          "warning": "Board hardware"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Header pins with documented native USB data functions.",
+          "candidate_pins": [
+            "GPIO19",
+            "GPIO20"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "MODULE_BOOT",
+          "functions": [
+            "GPIO0",
+            "MODULE_BOOT"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "TDO",
+          "functions": [
+            "GPIO2",
+            "TDO"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "TDI",
+          "functions": [
+            "GPIO3",
+            "TDI"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG",
+            "Strapping",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "TCK",
+          "functions": [
+            "GPIO4",
+            "TCK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "TMS",
+          "functions": [
+            "GPIO5",
+            "TMS"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "RESET",
+          "functions": [
+            "GPIO8",
+            "RESET_TO_TARGET"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Reset",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "BOOT",
+          "functions": [
+            "GPIO9",
+            "BOOT_TO_TARGET"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Boot",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_D-",
+          "functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "warnings": [
+            "Board hardware",
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_D+",
+          "functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "warnings": [
+            "Board hardware",
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "RX",
+          "functions": [
+            "GPIO40",
+            "BRIDGE_RX"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "TX",
+          "functions": [
+            "GPIO41",
+            "BRIDGE_TX"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "WS2812",
+          "functions": [
+            "GPIO42",
+            "WS2812"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "MODULE_BOOT",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO0",
+            "MODULE_BOOT"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "Pin 3 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label MODULE_BOOT.",
+            "Module Boot button signal. Holding the module Boot button while powering the board enters module download mode.",
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "TDO",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO2",
+            "TDO"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Pin 4 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TDO.",
+            "JTAG TDO signal for test data output to the externally connected target chip.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "TDI",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO3",
+            "TDI"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Pin 5 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TDI.",
+            "JTAG TDI signal for test data input from the externally connected target chip.",
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH3",
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "TCK",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO4",
+            "TCK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Pin 6 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TCK.",
+            "JTAG TCK signal for synchronized test data transfer to the externally connected target chip.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "TMS",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO5",
+            "TMS"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Pin 7 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TMS.",
+            "JTAG TMS signal for test mode configuration on the externally connected target chip.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "GPIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "RESET",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO8",
+            "RESET_TO_TARGET"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Reset"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Pin 8 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label RESET.",
+            "Reset signal connected to the target chip; pressing Reset sets the target chip to low level.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH8",
+            "ADC1_CH7"
+          ],
+          "io_mux": [
+            "GPIO8",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "BOOT",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO9",
+            "BOOT_TO_TARGET"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Boot"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Pin 9 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label BOOT.",
+            "Boot signal connected to the target chip; pressing Boot sets the target chip to low level.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH9",
+            "ADC1_CH8"
+          ],
+          "io_mux": [
+            "GPIO9",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_D-",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Pin 10 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label USB_D-.",
+            "Native USB D- signal used by the bridge board USB workflow.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D-",
+            "ADC2_CH8"
+          ],
+          "io_mux": [
+            "GPIO19",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_D+",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Pin 11 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label USB_D+.",
+            "Native USB D+ signal used by the bridge board USB workflow.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D+",
+            "ADC2_CH9"
+          ],
+          "io_mux": [
+            "GPIO20",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "RX",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO40",
+            "BRIDGE_RX"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Pin 12 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label RX.",
+            "UART RX bridge signal connected to the UART TX pin of the target chip.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO40",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "TX",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO41",
+            "BRIDGE_TX"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Pin 13 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TX.",
+            "UART TX bridge signal connected to the UART RX pin of the target chip.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDI",
+            "GPIO41",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "WS2812",
+          "board_header": "GPIO allocation",
+          "main_functions": [
+            "GPIO42",
+            "WS2812"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Pin 14 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label WS2812.",
+            "On-board WS2812 LED control pin that indicates the current state of the development board.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTMS",
+            "GPIO42"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "USB-to-USB port powers the board.",
+        "On-board regulator converts USB voltage to 3.3 V for the ESP32-S3-MINI-1 module."
+      ],
+      "programming": [
+        "Default firmware acts as a USB-to-UART bridge, JTAG adapter, MSC storage device, and wireless bridge.",
+        "Avoid holding the module Boot button during power-up unless you intend to enter module download mode."
+      ],
+      "onboard_hardware": [
+        "ESP32-S3-MINI-1-N4R2 module, USB-to-USB port, expansion connector, target Boot/Reset buttons, module Boot button, TX/RX indicators, and WS2812 LED."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": []
+      },
+      "buttons": [
+        "Boot",
+        "Reset"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "MODULE_BOOT",
+          "main_functions": [
+            "GPIO0",
+            "MODULE_BOOT"
+          ],
+          "notes": [
+            "Pin 3 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label MODULE_BOOT.",
+            "Module Boot button signal. Holding the module Boot button while powering the board enters module download mode.",
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Boot",
+            "Strapping"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "TDO",
+          "main_functions": [
+            "GPIO2",
+            "TDO"
+          ],
+          "notes": [
+            "Pin 4 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TDO.",
+            "JTAG TDO signal for test data output to the externally connected target chip.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "TDI",
+          "main_functions": [
+            "GPIO3",
+            "TDI"
+          ],
+          "notes": [
+            "Pin 5 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TDI.",
+            "JTAG TDI signal for test data input from the externally connected target chip.",
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG",
+            "Strapping",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "TCK",
+          "main_functions": [
+            "GPIO4",
+            "TCK"
+          ],
+          "notes": [
+            "Pin 6 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TCK.",
+            "JTAG TCK signal for synchronized test data transfer to the externally connected target chip.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "TMS",
+          "main_functions": [
+            "GPIO5",
+            "TMS"
+          ],
+          "notes": [
+            "Pin 7 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TMS.",
+            "JTAG TMS signal for test mode configuration on the externally connected target chip.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "RESET",
+          "main_functions": [
+            "GPIO8",
+            "RESET_TO_TARGET"
+          ],
+          "notes": [
+            "Pin 8 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label RESET.",
+            "Reset signal connected to the target chip; pressing Reset sets the target chip to low level.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Reset",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "BOOT",
+          "main_functions": [
+            "GPIO9",
+            "BOOT_TO_TARGET"
+          ],
+          "notes": [
+            "Pin 9 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label BOOT.",
+            "Boot signal connected to the target chip; pressing Boot sets the target chip to low level.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Boot",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_D-",
+          "main_functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "notes": [
+            "Pin 10 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label USB_D-.",
+            "Native USB D- signal used by the bridge board USB workflow.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "warnings": [
+            "Board hardware",
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_D+",
+          "main_functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "notes": [
+            "Pin 11 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label USB_D+.",
+            "Native USB D+ signal used by the bridge board USB workflow.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "warnings": [
+            "Board hardware",
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "RX",
+          "main_functions": [
+            "GPIO40",
+            "BRIDGE_RX"
+          ],
+          "notes": [
+            "Pin 12 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label RX.",
+            "UART RX bridge signal connected to the UART TX pin of the target chip.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "TX",
+          "main_functions": [
+            "GPIO41",
+            "BRIDGE_TX"
+          ],
+          "notes": [
+            "Pin 13 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label TX.",
+            "UART TX bridge signal connected to the UART RX pin of the target chip.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "WS2812",
+          "main_functions": [
+            "GPIO42",
+            "WS2812"
+          ],
+          "notes": [
+            "Pin 14 in the official ESP32-S3-USB-Bridge GPIO Allocation table, label WS2812.",
+            "On-board WS2812 LED control pin that indicates the current state of the development board.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        }
+      ]
+    }
+  }
+}

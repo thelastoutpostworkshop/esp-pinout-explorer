@@ -1,0 +1,2422 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp-vocat-v1-2",
+    "name": "ESP-VoCat v1.2",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-S3",
+    "aliases": [
+      "ESP-VoCat v1.2"
+    ],
+    "module_variants": [
+      "ESP32-S3-WROOM-1-N16R16VA"
+    ],
+    "route": "/boards/esp-vocat-v1-2",
+    "sources": [
+      {
+        "title": "ESP-VoCat v1.2 User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp-vocat/user_guide_v1.2.html",
+        "sections": [
+          "Board Overview",
+          "Description of Components",
+          "Hardware Revision Details",
+          "Related Documents"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP-VoCat"
+      ],
+      "module_markings": [
+        "ESP32-S3-WROOM-1-N16R16VA"
+      ],
+      "memory_markings": [
+        "N16R16VA"
+      ],
+      "visible_features": [
+        "circular LCD",
+        "dual microphones",
+        "MicroSD slot",
+        "touch pads",
+        "magnetic connector",
+        "USB-C"
+      ],
+      "button_labels": [],
+      "visible_pin_labels": [
+        "ESP_BOOT",
+        "USB_DN",
+        "USB_DP",
+        "POWER_CTRL",
+        "CODEC_PWR_CTRL",
+        "I2C_SCL",
+        "I2C_SDA",
+        "LCD_SDA0",
+        "LCD_SDA1",
+        "LCD_SDA2",
+        "LCD_SDA3",
+        "LCD_SCL",
+        "LCD_DC",
+        "LCD_BLK",
+        "LCD_CS",
+        "LCD_RST_CTRL",
+        "LCD_TE",
+        "TP_INT",
+        "TOUCH_PAD1",
+        "TOUCH_PAD2",
+        "I2S_MCLK",
+        "I2S_DI",
+        "I2S_WS",
+        "I2S_BCK",
+        "I2S_DO",
+        "PA_CTRL",
+        "SD_DA0",
+        "SD_CLK",
+        "SD_CMD",
+        "IMU_INT1",
+        "U1RXD",
+        "U1TXD"
+      ],
+      "header_pin_counts": [
+        32
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": [
+        "usb-c"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [],
+      "caution_pins": [
+        {
+          "gpio": "GPIO0",
+          "warning": "Boot, Strapping"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO48",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO46",
+          "warning": "Board hardware, Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO11",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO18",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO45",
+          "warning": "Board hardware, Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO44",
+          "warning": "Board hardware, UART0"
+        },
+        {
+          "gpio": "GPIO14",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO47",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO10",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO6",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO7",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO42",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Board hardware, Strapping"
+        },
+        {
+          "gpio": "GPIO39",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO40",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO41",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO38",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO4",
+          "warning": "Board hardware"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Board hardware"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Header pins with documented native USB data functions.",
+          "candidate_pins": [
+            "GPIO19",
+            "GPIO20"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "ESP_BOOT",
+          "functions": [
+            "GPIO0",
+            "ESP_BOOT"
+          ],
+          "warnings": [
+            "Boot",
+            "Strapping"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_DN",
+          "functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_DP",
+          "functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "POWER_CTRL",
+          "functions": [
+            "GPIO9",
+            "POWER_CTRL"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "CODEC_PWR_CTRL",
+          "functions": [
+            "GPIO48",
+            "CODEC_PWR_CTRL"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "I2C_SCL",
+          "functions": [
+            "GPIO1",
+            "I2C_SCL"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "I2C_SDA",
+          "functions": [
+            "GPIO2",
+            "I2C_SDA"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "LCD_SDA0",
+          "functions": [
+            "GPIO46",
+            "LCD_SDA0"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "LCD_SDA1",
+          "functions": [
+            "GPIO13",
+            "LCD_SDA1"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "LCD_SDA2",
+          "functions": [
+            "GPIO11",
+            "LCD_SDA2"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "LCD_SDA3",
+          "functions": [
+            "GPIO12",
+            "LCD_SDA3"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "LCD_SCL",
+          "functions": [
+            "GPIO18",
+            "LCD_SCL"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "LCD_DC",
+          "functions": [
+            "GPIO45",
+            "LCD_DC"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "LCD_BLK",
+          "functions": [
+            "GPIO44",
+            "LCD_BLK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "LCD_CS",
+          "functions": [
+            "GPIO14",
+            "LCD_CS"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "LCD_RST_CTRL",
+          "functions": [
+            "GPIO47",
+            "LCD_RST_CTRL"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "LCD_TE",
+          "functions": [
+            "GPIO8",
+            "LCD_TE"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "TP_INT",
+          "functions": [
+            "GPIO10",
+            "TP_INT"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "TOUCH_PAD1",
+          "functions": [
+            "GPIO6",
+            "TOUCH_PAD1"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "TOUCH_PAD2",
+          "functions": [
+            "GPIO7",
+            "TOUCH_PAD2"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "I2S_MCLK",
+          "functions": [
+            "GPIO42",
+            "I2S_MCLK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "I2S_DI",
+          "functions": [
+            "GPIO3",
+            "I2S_DI"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "I2S_WS",
+          "functions": [
+            "GPIO39",
+            "I2S_WS"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "I2S_BCK",
+          "functions": [
+            "GPIO40",
+            "I2S_BCK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "I2S_DO",
+          "functions": [
+            "GPIO41",
+            "I2S_DO"
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "PA_CTRL",
+          "functions": [
+            "GPIO15",
+            "PA_CTRL"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "SD_DA0",
+          "functions": [
+            "GPIO17",
+            "SD_DA0"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "SD_CLK",
+          "functions": [
+            "GPIO16",
+            "SD_CLK"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "SD_CMD",
+          "functions": [
+            "GPIO38",
+            "SD_CMD"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "IMU_INT1",
+          "functions": [
+            "GPIO21",
+            "IMU_INT1"
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "U1RXD",
+          "functions": [
+            "GPIO4",
+            "U1RXD"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "U1TXD",
+          "functions": [
+            "GPIO5",
+            "U1TXD"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "ESP_BOOT",
+          "board_header": "Boot button",
+          "main_functions": [
+            "GPIO0",
+            "ESP_BOOT"
+          ],
+          "maker_warnings": [
+            "Boot",
+            "Strapping"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "ESP_BOOT in the official Boot button allocation for Boot button.",
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "USB_DN",
+          "board_header": "USB-C",
+          "main_functions": [
+            "GPIO19",
+            "USB_D-"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_DN in the official USB-C allocation for USB-C.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D-",
+            "ADC2_CH8"
+          ],
+          "io_mux": [
+            "GPIO19",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "USB_DP",
+          "board_header": "USB-C",
+          "main_functions": [
+            "GPIO20",
+            "USB_D+"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_DP in the official USB-C allocation for USB-C.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D+",
+            "ADC2_CH9"
+          ],
+          "io_mux": [
+            "GPIO20",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "POWER_CTRL",
+          "board_header": "Power",
+          "main_functions": [
+            "GPIO9",
+            "POWER_CTRL"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power domain",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "POWER_CTRL in the official Power allocation for Power.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH9",
+            "ADC1_CH8"
+          ],
+          "io_mux": [
+            "GPIO9",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "CODEC_PWR_CTRL",
+          "board_header": "Audio power",
+          "main_functions": [
+            "GPIO48",
+            "CODEC_PWR_CTRL"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "CODEC_PWR_CTRL in the official Audio power allocation for Audio power.",
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_N_DIFF",
+            "GPIO48",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "I2C_SCL",
+          "board_header": "Shared I2C",
+          "main_functions": [
+            "GPIO1",
+            "I2C_SCL"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "I2C_SCL in the official Shared I2C allocation for Shared I2C.",
+            "Shared clock for IMU, touch, battery, audio, and expansion I2C paths.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH1",
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "I2C_SDA",
+          "board_header": "Shared I2C",
+          "main_functions": [
+            "GPIO2",
+            "I2C_SDA"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "I2C_SDA in the official Shared I2C allocation for Shared I2C.",
+            "Shared data for IMU, touch, battery, audio, and expansion I2C paths.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "LCD_SDA0",
+          "board_header": "LCD QSPI",
+          "main_functions": [
+            "GPIO46",
+            "LCD_SDA0"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "LCD_SDA0 in the official LCD QSPI allocation for LCD QSPI.",
+            "Strapping pin with default weak pull-down.",
+            "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+            "Also participates in ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO46"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "LCD_SDA1",
+          "board_header": "LCD QSPI",
+          "main_functions": [
+            "GPIO13",
+            "LCD_SDA1"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "LCD_SDA1 in the official LCD QSPI allocation for LCD QSPI.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH13",
+            "ADC2_CH2"
+          ],
+          "io_mux": [
+            "GPIO13",
+            "FSPIIO7",
+            "SUBSPIQ",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "LCD_SDA2",
+          "board_header": "LCD QSPI",
+          "main_functions": [
+            "GPIO11",
+            "LCD_SDA2"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "LCD_SDA2 in the official LCD QSPI allocation for LCD QSPI.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH11",
+            "ADC2_CH0"
+          ],
+          "io_mux": [
+            "GPIO11",
+            "FSPIIO5",
+            "SUBSPID",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "LCD_SDA3",
+          "board_header": "LCD QSPI",
+          "main_functions": [
+            "GPIO12",
+            "LCD_SDA3"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "LCD_SDA3 in the official LCD QSPI allocation for LCD QSPI.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH12",
+            "ADC2_CH1"
+          ],
+          "io_mux": [
+            "GPIO12",
+            "FSPIIO6",
+            "SUBSPICLK",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "LCD_SCL",
+          "board_header": "LCD QSPI",
+          "main_functions": [
+            "GPIO18",
+            "LCD_SCL"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "LCD_SCL in the official LCD QSPI allocation for LCD QSPI.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH7"
+          ],
+          "io_mux": [
+            "GPIO18",
+            "U1RXD",
+            "CLK_OUT3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "LCD_DC",
+          "board_header": "LCD control",
+          "main_functions": [
+            "GPIO45",
+            "LCD_DC"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "LCD_DC in the official LCD control allocation for LCD control.",
+            "Strapping pin with default weak pull-down.",
+            "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO45"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "LCD_BLK",
+          "board_header": "LCD control",
+          "main_functions": [
+            "GPIO44",
+            "LCD_BLK"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "LCD_BLK in the official LCD control allocation for LCD control.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO44",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "LCD_CS",
+          "board_header": "LCD control",
+          "main_functions": [
+            "GPIO14",
+            "LCD_CS"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "LCD_CS in the official LCD control allocation for LCD control.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH14",
+            "ADC2_CH3"
+          ],
+          "io_mux": [
+            "GPIO14",
+            "FSPIDQS",
+            "SUBSPIWP",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "LCD_RST_CTRL",
+          "board_header": "LCD control",
+          "main_functions": [
+            "GPIO47",
+            "LCD_RST_CTRL"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "LCD_RST_CTRL in the official LCD control allocation for LCD control.",
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_P_DIFF",
+            "GPIO47",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "LCD_TE",
+          "board_header": "LCD control",
+          "main_functions": [
+            "GPIO8",
+            "LCD_TE"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "LCD_TE in the official LCD control allocation for LCD control.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH8",
+            "ADC1_CH7"
+          ],
+          "io_mux": [
+            "GPIO8",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "TP_INT",
+          "board_header": "Touch",
+          "main_functions": [
+            "GPIO10",
+            "TP_INT"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "TP_INT in the official Touch allocation for Touch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH10",
+            "ADC1_CH9"
+          ],
+          "io_mux": [
+            "GPIO10",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "TOUCH_PAD1",
+          "board_header": "Touch",
+          "main_functions": [
+            "GPIO6",
+            "TOUCH_PAD1"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "TOUCH_PAD1 in the official Touch allocation for Touch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "io_mux": [
+            "GPIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "TOUCH_PAD2",
+          "board_header": "Touch",
+          "main_functions": [
+            "GPIO7",
+            "TOUCH_PAD2"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "TOUCH_PAD2 in the official Touch allocation for Touch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "io_mux": [
+            "GPIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "I2S_MCLK",
+          "board_header": "Audio I2S",
+          "main_functions": [
+            "GPIO42",
+            "I2S_MCLK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "I2S_MCLK in the official Audio I2S allocation for Audio I2S.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTMS",
+            "GPIO42"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "I2S_DI",
+          "board_header": "Audio I2S",
+          "main_functions": [
+            "GPIO3",
+            "I2S_DI"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "I2S_DI in the official Audio I2S allocation for Audio I2S.",
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH3",
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "I2S_WS",
+          "board_header": "Audio I2S",
+          "main_functions": [
+            "GPIO39",
+            "I2S_WS"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "I2S_WS in the official Audio I2S allocation for Audio I2S.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTCK",
+            "GPIO39",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "I2S_BCK",
+          "board_header": "Audio I2S",
+          "main_functions": [
+            "GPIO40",
+            "I2S_BCK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "I2S_BCK in the official Audio I2S allocation for Audio I2S.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO40",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "I2S_DO",
+          "board_header": "Audio I2S",
+          "main_functions": [
+            "GPIO41",
+            "I2S_DO"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "I2S_DO in the official Audio I2S allocation for Audio I2S.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDI",
+            "GPIO41",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "PA_CTRL",
+          "board_header": "Speaker amplifier",
+          "main_functions": [
+            "GPIO15",
+            "PA_CTRL"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "PA_CTRL in the official Speaker amplifier allocation for Speaker amplifier.",
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "XTAL_32K_P",
+            "ADC2_CH4"
+          ],
+          "io_mux": [
+            "GPIO15",
+            "U0RTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "SD_DA0",
+          "board_header": "MicroSD",
+          "main_functions": [
+            "GPIO17",
+            "SD_DA0"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "SD_DA0 in the official MicroSD allocation for MicroSD.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH6"
+          ],
+          "io_mux": [
+            "GPIO17",
+            "U1TXD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "SD_CLK",
+          "board_header": "MicroSD",
+          "main_functions": [
+            "GPIO16",
+            "SD_CLK"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "SD_CLK in the official MicroSD allocation for MicroSD.",
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "XTAL_32K_N",
+            "ADC2_CH5"
+          ],
+          "io_mux": [
+            "GPIO16",
+            "U0CTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "SD_CMD",
+          "board_header": "MicroSD",
+          "main_functions": [
+            "GPIO38",
+            "SD_CMD"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "SD_CMD in the official MicroSD allocation for MicroSD."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "IMU_INT1",
+          "board_header": "IMU",
+          "main_functions": [
+            "GPIO21",
+            "IMU_INT1"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "IMU_INT1 in the official IMU allocation for IMU."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO21"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "U1RXD",
+          "board_header": "Magnetic connector",
+          "main_functions": [
+            "GPIO4",
+            "U1RXD"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "U1RXD in the official Magnetic connector allocation for Magnetic connector.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "U1TXD",
+          "board_header": "Magnetic connector",
+          "main_functions": [
+            "GPIO5",
+            "U1TXD"
+          ],
+          "maker_warnings": [
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "U1TXD in the official Magnetic connector allocation for Magnetic connector.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "GPIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "USB-C and the 3.7 V lithium battery path feed the board power system.",
+        "The schematic includes power-control, battery-management, and codec power-control circuits."
+      ],
+      "programming": [
+        "USB-C is used for power, programming download, and debugging. GPIO0 is tied to the boot function."
+      ],
+      "onboard_hardware": [
+        "Circular LCD, dual microphones, ES7210 audio ADC, ES8311 codec, NS4150B amplifier, BMI270 IMU, MicroSD slot, touch pads, green LED, battery gauge, and magnetic connector."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": [
+          "usb-c"
+        ]
+      },
+      "buttons": [],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO9",
+          "board_label": "POWER_CTRL",
+          "main_functions": [
+            "GPIO9",
+            "POWER_CTRL"
+          ],
+          "notes": [
+            "POWER_CTRL in the official Power allocation for Power.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power domain",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "CODEC_PWR_CTRL",
+          "main_functions": [
+            "GPIO48",
+            "CODEC_PWR_CTRL"
+          ],
+          "notes": [
+            "CODEC_PWR_CTRL in the official Audio power allocation for Audio power.",
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "I2C_SCL",
+          "main_functions": [
+            "GPIO1",
+            "I2C_SCL"
+          ],
+          "notes": [
+            "I2C_SCL in the official Shared I2C allocation for Shared I2C.",
+            "Shared clock for IMU, touch, battery, audio, and expansion I2C paths.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "I2C_SDA",
+          "main_functions": [
+            "GPIO2",
+            "I2C_SDA"
+          ],
+          "notes": [
+            "I2C_SDA in the official Shared I2C allocation for Shared I2C.",
+            "Shared data for IMU, touch, battery, audio, and expansion I2C paths.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "LCD_SDA0",
+          "main_functions": [
+            "GPIO46",
+            "LCD_SDA0"
+          ],
+          "notes": [
+            "LCD_SDA0 in the official LCD QSPI allocation for LCD QSPI.",
+            "Strapping pin with default weak pull-down.",
+            "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+            "Also participates in ROM message printing control."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "LCD_SDA1",
+          "main_functions": [
+            "GPIO13",
+            "LCD_SDA1"
+          ],
+          "notes": [
+            "LCD_SDA1 in the official LCD QSPI allocation for LCD QSPI.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "LCD_SDA2",
+          "main_functions": [
+            "GPIO11",
+            "LCD_SDA2"
+          ],
+          "notes": [
+            "LCD_SDA2 in the official LCD QSPI allocation for LCD QSPI.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "LCD_SDA3",
+          "main_functions": [
+            "GPIO12",
+            "LCD_SDA3"
+          ],
+          "notes": [
+            "LCD_SDA3 in the official LCD QSPI allocation for LCD QSPI.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "LCD_SCL",
+          "main_functions": [
+            "GPIO18",
+            "LCD_SCL"
+          ],
+          "notes": [
+            "LCD_SCL in the official LCD QSPI allocation for LCD QSPI.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "LCD_DC",
+          "main_functions": [
+            "GPIO45",
+            "LCD_DC"
+          ],
+          "notes": [
+            "LCD_DC in the official LCD control allocation for LCD control.",
+            "Strapping pin with default weak pull-down.",
+            "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "LCD_BLK",
+          "main_functions": [
+            "GPIO44",
+            "LCD_BLK"
+          ],
+          "notes": [
+            "LCD_BLK in the official LCD control allocation for LCD control.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "warnings": [
+            "Board hardware",
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "LCD_CS",
+          "main_functions": [
+            "GPIO14",
+            "LCD_CS"
+          ],
+          "notes": [
+            "LCD_CS in the official LCD control allocation for LCD control.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "LCD_RST_CTRL",
+          "main_functions": [
+            "GPIO47",
+            "LCD_RST_CTRL"
+          ],
+          "notes": [
+            "LCD_RST_CTRL in the official LCD control allocation for LCD control.",
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "LCD_TE",
+          "main_functions": [
+            "GPIO8",
+            "LCD_TE"
+          ],
+          "notes": [
+            "LCD_TE in the official LCD control allocation for LCD control.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "TP_INT",
+          "main_functions": [
+            "GPIO10",
+            "TP_INT"
+          ],
+          "notes": [
+            "TP_INT in the official Touch allocation for Touch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "TOUCH_PAD1",
+          "main_functions": [
+            "GPIO6",
+            "TOUCH_PAD1"
+          ],
+          "notes": [
+            "TOUCH_PAD1 in the official Touch allocation for Touch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "TOUCH_PAD2",
+          "main_functions": [
+            "GPIO7",
+            "TOUCH_PAD2"
+          ],
+          "notes": [
+            "TOUCH_PAD2 in the official Touch allocation for Touch.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "I2S_MCLK",
+          "main_functions": [
+            "GPIO42",
+            "I2S_MCLK"
+          ],
+          "notes": [
+            "I2S_MCLK in the official Audio I2S allocation for Audio I2S.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "I2S_DI",
+          "main_functions": [
+            "GPIO3",
+            "I2S_DI"
+          ],
+          "notes": [
+            "I2S_DI in the official Audio I2S allocation for Audio I2S.",
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "I2S_WS",
+          "main_functions": [
+            "GPIO39",
+            "I2S_WS"
+          ],
+          "notes": [
+            "I2S_WS in the official Audio I2S allocation for Audio I2S.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "I2S_BCK",
+          "main_functions": [
+            "GPIO40",
+            "I2S_BCK"
+          ],
+          "notes": [
+            "I2S_BCK in the official Audio I2S allocation for Audio I2S.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "I2S_DO",
+          "main_functions": [
+            "GPIO41",
+            "I2S_DO"
+          ],
+          "notes": [
+            "I2S_DO in the official Audio I2S allocation for Audio I2S.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "warnings": [
+            "Board hardware",
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "PA_CTRL",
+          "main_functions": [
+            "GPIO15",
+            "PA_CTRL"
+          ],
+          "notes": [
+            "PA_CTRL in the official Speaker amplifier allocation for Speaker amplifier.",
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "SD_DA0",
+          "main_functions": [
+            "GPIO17",
+            "SD_DA0"
+          ],
+          "notes": [
+            "SD_DA0 in the official MicroSD allocation for MicroSD.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "SD_CLK",
+          "main_functions": [
+            "GPIO16",
+            "SD_CLK"
+          ],
+          "notes": [
+            "SD_CLK in the official MicroSD allocation for MicroSD.",
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "SD_CMD",
+          "main_functions": [
+            "GPIO38",
+            "SD_CMD"
+          ],
+          "notes": [
+            "SD_CMD in the official MicroSD allocation for MicroSD."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "IMU_INT1",
+          "main_functions": [
+            "GPIO21",
+            "IMU_INT1"
+          ],
+          "notes": [
+            "IMU_INT1 in the official IMU allocation for IMU."
+          ],
+          "warnings": [
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "U1RXD",
+          "main_functions": [
+            "GPIO4",
+            "U1RXD"
+          ],
+          "notes": [
+            "U1RXD in the official Magnetic connector allocation for Magnetic connector.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "U1TXD",
+          "main_functions": [
+            "GPIO5",
+            "U1TXD"
+          ],
+          "notes": [
+            "U1TXD in the official Magnetic connector allocation for Magnetic connector.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        }
+      ]
+    }
+  }
+}

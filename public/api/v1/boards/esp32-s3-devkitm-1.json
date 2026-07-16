@@ -1,0 +1,2405 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-16T09:52:48.917Z",
+  "board": {
+    "id": "esp32-s3-devkitm-1",
+    "name": "ESP32-S3-DevKitM-1",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-S3",
+    "aliases": [
+      "ESP32-S3-DevKitM-1"
+    ],
+    "module_variants": [
+      "ESP32-S3-MINI-1",
+      "ESP32-S3-MINI-1U",
+      "ESP32-S3-MINI-1-N8",
+      "ESP32-S3-MINI-1U-N8"
+    ],
+    "route": "/boards/esp32-s3-devkitm-1",
+    "sources": [
+      {
+        "title": "ESP32-S3-DevKitM-1 User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s3/esp32-s3-devkitm-1/user_guide.html",
+        "sections": [
+          "Description of Components",
+          "Block Diagram",
+          "Power Supply Options",
+          "Header Block J1",
+          "Header Block J3",
+          "Pin Layout",
+          "Hardware Revision Details"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-S3-DevKitM-1"
+      ],
+      "module_markings": [
+        "ESP32-S3-MINI-1",
+        "ESP32-S3-MINI-1U",
+        "ESP32-S3-MINI-1-N8",
+        "ESP32-S3-MINI-1U-N8"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "Boot button",
+        "Reset button",
+        "addressable RGB LED",
+        "USB-to-UART bridge",
+        "native USB port"
+      ],
+      "button_labels": [
+        "Boot",
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "3V3",
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+        "12",
+        "13",
+        "14",
+        "15",
+        "16",
+        "17",
+        "18",
+        "5V",
+        "G",
+        "RST",
+        "46",
+        "45",
+        "RX",
+        "TX",
+        "42",
+        "41",
+        "40",
+        "39",
+        "38",
+        "37",
+        "36",
+        "35",
+        "34",
+        "33",
+        "26",
+        "21",
+        "20",
+        "19",
+        "48",
+        "47"
+      ],
+      "header_pin_counts": [
+        44
+      ],
+      "usb_connector_count": 2,
+      "usb_connector_types": []
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO1",
+        "GPIO2",
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7",
+        "GPIO8",
+        "GPIO9",
+        "GPIO10",
+        "GPIO11",
+        "GPIO12",
+        "GPIO13",
+        "GPIO14",
+        "GPIO15",
+        "GPIO16",
+        "GPIO17",
+        "GPIO18",
+        "GPIO42",
+        "GPIO41",
+        "GPIO40",
+        "GPIO39",
+        "GPIO38",
+        "GPIO21"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO46",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO45",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO44",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO43",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO37",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO36",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO35",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO34",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO33",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO26",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO48",
+          "warning": "Board hardware, Voltage"
+        },
+        {
+          "gpio": "GPIO47",
+          "warning": "Voltage"
+        }
+      ],
+      "reserved_or_internal_pins": [
+        {
+          "gpio": "GPIO37",
+          "reason": "PSRAM"
+        },
+        {
+          "gpio": "GPIO36",
+          "reason": "PSRAM"
+        },
+        {
+          "gpio": "GPIO35",
+          "reason": "PSRAM"
+        },
+        {
+          "gpio": "GPIO34",
+          "reason": "PSRAM"
+        },
+        {
+          "gpio": "GPIO33",
+          "reason": "PSRAM"
+        },
+        {
+          "gpio": "GPIO26",
+          "reason": "PSRAM"
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Header pins with documented native USB data functions.",
+          "candidate_pins": [
+            "GPIO20",
+            "GPIO19"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO44",
+            "GPIO43"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "functions": [
+            "GPIO0",
+            "RTC_GPIO0"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "1",
+          "functions": [
+            "GPIO1",
+            "RTC_GPIO1",
+            "TOUCH1",
+            "ADC1_CH0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "functions": [
+            "GPIO2",
+            "RTC_GPIO2",
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "3",
+          "functions": [
+            "GPIO3",
+            "RTC_GPIO3",
+            "TOUCH3",
+            "ADC1_CH2"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "functions": [
+            "GPIO4",
+            "RTC_GPIO4",
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "functions": [
+            "GPIO5",
+            "RTC_GPIO5",
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "6",
+          "functions": [
+            "GPIO6",
+            "RTC_GPIO6",
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "7",
+          "functions": [
+            "GPIO7",
+            "RTC_GPIO7",
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "8",
+          "functions": [
+            "GPIO8",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "ADC1_CH7",
+            "SUBSPICS1"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "9",
+          "functions": [
+            "GPIO9",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "ADC1_CH8",
+            "FSPIHD",
+            "SUBSPIHD"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "10",
+          "functions": [
+            "GPIO10",
+            "RTC_GPIO10",
+            "TOUCH10",
+            "ADC1_CH9",
+            "FSPICS0",
+            "FSPIIO4",
+            "SUBSPICS0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "11",
+          "functions": [
+            "GPIO11",
+            "RTC_GPIO11",
+            "TOUCH11",
+            "ADC2_CH0",
+            "FSPID",
+            "FSPIIO5",
+            "SUBSPID"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "12",
+          "functions": [
+            "GPIO12",
+            "RTC_GPIO12",
+            "TOUCH12",
+            "ADC2_CH1",
+            "FSPICLK",
+            "FSPIIO6",
+            "SUBSPICLK"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13",
+          "functions": [
+            "GPIO13",
+            "RTC_GPIO13",
+            "TOUCH13",
+            "ADC2_CH2",
+            "FSPIQ",
+            "FSPIIO7",
+            "SUBSPIQ"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "14",
+          "functions": [
+            "GPIO14",
+            "RTC_GPIO14",
+            "TOUCH14",
+            "ADC2_CH3",
+            "FSPIWP",
+            "FSPIDQS",
+            "SUBSPIWP"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "15",
+          "functions": [
+            "GPIO15",
+            "RTC_GPIO15",
+            "U0RTS",
+            "ADC2_CH4",
+            "XTAL_32K_P"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "16",
+          "functions": [
+            "GPIO16",
+            "RTC_GPIO16",
+            "U0CTS",
+            "ADC2_CH5",
+            "XTAL_32K_N"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "17",
+          "functions": [
+            "GPIO17",
+            "RTC_GPIO17",
+            "U1TXD",
+            "ADC2_CH6"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "18",
+          "functions": [
+            "GPIO18",
+            "RTC_GPIO18",
+            "U1RXD",
+            "ADC2_CH7",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "46",
+          "functions": [
+            "GPIO46"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "45",
+          "functions": [
+            "GPIO45"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "RX",
+          "functions": [
+            "GPIO44",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "board_label": "TX",
+          "functions": [
+            "GPIO43",
+            "U0TXD",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "UART0"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "42",
+          "functions": [
+            "GPIO42",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "41",
+          "functions": [
+            "GPIO41",
+            "MTDI",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "40",
+          "functions": [
+            "GPIO40",
+            "MTDO",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "39",
+          "functions": [
+            "GPIO39",
+            "MTCK",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "38",
+          "functions": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "37",
+          "functions": [
+            "GPIO37",
+            "SPIDQS",
+            "FSPIQ",
+            "SUBSPIQ"
+          ],
+          "warnings": [
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "36",
+          "functions": [
+            "GPIO36",
+            "SPIIO7",
+            "FSPICLK",
+            "SUBSPICLK"
+          ],
+          "warnings": [
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "35",
+          "functions": [
+            "GPIO35",
+            "SPIIO6",
+            "FSPID",
+            "SUBSPID"
+          ],
+          "warnings": [
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "34",
+          "functions": [
+            "GPIO34",
+            "SPIIO5",
+            "FSPICS0",
+            "SUBSPICS0"
+          ],
+          "warnings": [
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "33",
+          "functions": [
+            "GPIO33",
+            "SPIIO4",
+            "FSPIHD",
+            "SUBSPIHD"
+          ],
+          "warnings": [
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "26",
+          "functions": [
+            "GPIO26",
+            "SPICS1"
+          ],
+          "warnings": [
+            "PSRAM"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "21",
+          "functions": [
+            "GPIO21",
+            "RTC_GPIO21"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "20",
+          "functions": [
+            "GPIO20",
+            "RTC_GPIO20",
+            "U1CTS",
+            "ADC2_CH9",
+            "CLK_OUT1",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "19",
+          "functions": [
+            "GPIO19",
+            "RTC_GPIO19",
+            "U1RTS",
+            "ADC2_CH8",
+            "CLK_OUT2",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "48",
+          "functions": [
+            "GPIO48",
+            "SPICLK_N",
+            "SUBSPICLK_N_DIFF",
+            "RGB LED"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "47",
+          "functions": [
+            "GPIO47",
+            "SPICLK_P",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "warnings": [
+            "Voltage"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO0",
+          "board_label": "0",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO0",
+            "RTC_GPIO0"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-2 board header pin, silkscreen label 0.",
+            "Connected to the board Boot button. Holding Boot and pressing Reset enters firmware download mode.",
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "1",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO1",
+            "RTC_GPIO1",
+            "TOUCH1",
+            "ADC1_CH0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-3 board header pin, silkscreen label 1.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH1",
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "board_label": "2",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO2",
+            "RTC_GPIO2",
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-4 board header pin, silkscreen label 2.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "3",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO3",
+            "RTC_GPIO3",
+            "TOUCH3",
+            "ADC1_CH2"
+          ],
+          "maker_warnings": [
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-5 board header pin, silkscreen label 3.",
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH3",
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "4",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO4",
+            "RTC_GPIO4",
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-6 board header pin, silkscreen label 4.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "5",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO5",
+            "RTC_GPIO5",
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-7 board header pin, silkscreen label 5.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "GPIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "6",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO6",
+            "RTC_GPIO6",
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-8 board header pin, silkscreen label 6.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "io_mux": [
+            "GPIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "7",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO7",
+            "RTC_GPIO7",
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-9 board header pin, silkscreen label 7.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "io_mux": [
+            "GPIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "8",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO8",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "ADC1_CH7",
+            "SUBSPICS1"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-10 board header pin, silkscreen label 8.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH8",
+            "ADC1_CH7"
+          ],
+          "io_mux": [
+            "GPIO8",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "9",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO9",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "ADC1_CH8",
+            "FSPIHD",
+            "SUBSPIHD"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-11 board header pin, silkscreen label 9.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH9",
+            "ADC1_CH8"
+          ],
+          "io_mux": [
+            "GPIO9",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "10",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO10",
+            "RTC_GPIO10",
+            "TOUCH10",
+            "ADC1_CH9",
+            "FSPICS0",
+            "FSPIIO4",
+            "SUBSPICS0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-12 board header pin, silkscreen label 10.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH10",
+            "ADC1_CH9"
+          ],
+          "io_mux": [
+            "GPIO10",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "board_label": "11",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO11",
+            "RTC_GPIO11",
+            "TOUCH11",
+            "ADC2_CH0",
+            "FSPID",
+            "FSPIIO5",
+            "SUBSPID"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-13 board header pin, silkscreen label 11.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH11",
+            "ADC2_CH0"
+          ],
+          "io_mux": [
+            "GPIO11",
+            "FSPIIO5",
+            "SUBSPID",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "board_label": "12",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO12",
+            "RTC_GPIO12",
+            "TOUCH12",
+            "ADC2_CH1",
+            "FSPICLK",
+            "FSPIIO6",
+            "SUBSPICLK"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-14 board header pin, silkscreen label 12.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH12",
+            "ADC2_CH1"
+          ],
+          "io_mux": [
+            "GPIO12",
+            "FSPIIO6",
+            "SUBSPICLK",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "board_label": "13",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO13",
+            "RTC_GPIO13",
+            "TOUCH13",
+            "ADC2_CH2",
+            "FSPIQ",
+            "FSPIIO7",
+            "SUBSPIQ"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-15 board header pin, silkscreen label 13.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH13",
+            "ADC2_CH2"
+          ],
+          "io_mux": [
+            "GPIO13",
+            "FSPIIO7",
+            "SUBSPIQ",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "board_label": "14",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO14",
+            "RTC_GPIO14",
+            "TOUCH14",
+            "ADC2_CH3",
+            "FSPIWP",
+            "FSPIDQS",
+            "SUBSPIWP"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-16 board header pin, silkscreen label 14.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH14",
+            "ADC2_CH3"
+          ],
+          "io_mux": [
+            "GPIO14",
+            "FSPIDQS",
+            "SUBSPIWP",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "board_label": "15",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO15",
+            "RTC_GPIO15",
+            "U0RTS",
+            "ADC2_CH4",
+            "XTAL_32K_P"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-17 board header pin, silkscreen label 15.",
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "XTAL_32K_P",
+            "ADC2_CH4"
+          ],
+          "io_mux": [
+            "GPIO15",
+            "U0RTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "board_label": "16",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO16",
+            "RTC_GPIO16",
+            "U0CTS",
+            "ADC2_CH5",
+            "XTAL_32K_N"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-18 board header pin, silkscreen label 16.",
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "XTAL_32K_N",
+            "ADC2_CH5"
+          ],
+          "io_mux": [
+            "GPIO16",
+            "U0CTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "board_label": "17",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO17",
+            "RTC_GPIO17",
+            "U1TXD",
+            "ADC2_CH6"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-19 board header pin, silkscreen label 17.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH6"
+          ],
+          "io_mux": [
+            "GPIO17",
+            "U1TXD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "18",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO18",
+            "RTC_GPIO18",
+            "U1RXD",
+            "ADC2_CH7",
+            "CLK_OUT3"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-20 board header pin, silkscreen label 18.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH7"
+          ],
+          "io_mux": [
+            "GPIO18",
+            "U1RXD",
+            "CLK_OUT3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "board_label": "46",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO46"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-3 board header pin, silkscreen label 46.",
+            "Strapping pin with default weak pull-down.",
+            "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+            "Also participates in ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO46"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "board_label": "45",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO45"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-4 board header pin, silkscreen label 45.",
+            "Strapping pin with default weak pull-down.",
+            "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO45"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "board_label": "RX",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO44",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "maker_warnings": [
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-5 board header pin, silkscreen label RX.",
+            "Connected to the on-board USB-to-UART bridge as the default serial receive signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO44",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "board_label": "TX",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO43",
+            "U0TXD",
+            "CLK_OUT1"
+          ],
+          "maker_warnings": [
+            "UART0"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-6 board header pin, silkscreen label TX.",
+            "Connected to the on-board USB-to-UART bridge as the default serial transmit signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO43",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "board_label": "42",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO42",
+            "MTMS"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-7 board header pin, silkscreen label 42.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTMS",
+            "GPIO42"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "board_label": "41",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO41",
+            "MTDI",
+            "CLK_OUT1"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-8 board header pin, silkscreen label 41.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDI",
+            "GPIO41",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "board_label": "40",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO40",
+            "MTDO",
+            "CLK_OUT2"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-9 board header pin, silkscreen label 40.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO40",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "board_label": "39",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO39",
+            "MTCK",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-10 board header pin, silkscreen label 39.",
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTCK",
+            "GPIO39",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "board_label": "38",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-11 board header pin, silkscreen label 38."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "board_label": "37",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO37",
+            "SPIDQS",
+            "FSPIQ",
+            "SUBSPIQ"
+          ],
+          "maker_warnings": [
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-12 board header pin, silkscreen label 37.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO37",
+            "FSPIQ",
+            "SUBSPIQ",
+            "SPIDQS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "board_label": "36",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO36",
+            "SPIIO7",
+            "FSPICLK",
+            "SUBSPICLK"
+          ],
+          "maker_warnings": [
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-13 board header pin, silkscreen label 36.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO36",
+            "FSPICLK",
+            "SUBSPICLK",
+            "SPIIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "board_label": "35",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO35",
+            "SPIIO6",
+            "FSPID",
+            "SUBSPID"
+          ],
+          "maker_warnings": [
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-14 board header pin, silkscreen label 35.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO35",
+            "FSPID",
+            "SUBSPID",
+            "SPIIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "board_label": "34",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO34",
+            "SPIIO5",
+            "FSPICS0",
+            "SUBSPICS0"
+          ],
+          "maker_warnings": [
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-15 board header pin, silkscreen label 34.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO34",
+            "FSPICS0",
+            "SUBSPICS0",
+            "SPIIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "board_label": "33",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO33",
+            "SPIIO4",
+            "FSPIHD",
+            "SUBSPIHD"
+          ],
+          "maker_warnings": [
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-16 board header pin, silkscreen label 33.",
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO33",
+            "FSPIHD",
+            "SUBSPIHD",
+            "SPIIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "board_label": "26",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO26",
+            "SPICS1"
+          ],
+          "maker_warnings": [
+            "PSRAM"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-17 board header pin, silkscreen label 26.",
+            "Allocated or recommended for SPI0/1 flash/PSRAM. Do not reuse if connected to in-package flash/PSRAM.",
+            "CS1 is for in-package PSRAM."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICS1",
+            "GPIO26"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "21",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO21",
+            "RTC_GPIO21"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-18 board header pin, silkscreen label 21."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO21"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "20",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO20",
+            "RTC_GPIO20",
+            "U1CTS",
+            "ADC2_CH9",
+            "CLK_OUT1",
+            "USB_D+"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J3-19 board header pin, silkscreen label 20.",
+            "Also routed to the native ESP32-S3 USB port on the DevKitM-1 board.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D+",
+            "ADC2_CH9"
+          ],
+          "io_mux": [
+            "GPIO20",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "19",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO19",
+            "RTC_GPIO19",
+            "U1RTS",
+            "ADC2_CH8",
+            "CLK_OUT2",
+            "USB_D-"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J3-20 board header pin, silkscreen label 19.",
+            "Also routed to the native ESP32-S3 USB port on the DevKitM-1 board.",
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D-",
+            "ADC2_CH8"
+          ],
+          "io_mux": [
+            "GPIO19",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "board_label": "48",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO48",
+            "SPICLK_N",
+            "SUBSPICLK_N_DIFF",
+            "RGB LED"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-21 board header pin, silkscreen label 48.",
+            "Connected to the addressable RGB LED on ESP32-S3-DevKitM-1.",
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_N_DIFF",
+            "GPIO48",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "board_label": "47",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO47",
+            "SPICLK_P",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "maker_warnings": [
+            "Voltage"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-22 board header pin, silkscreen label 47.",
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_P_DIFF",
+            "GPIO47",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "USB ports, 5V/GND headers, or 3V3/GND headers; keep external power paths mutually exclusive."
+      ],
+      "programming": [
+        "USB-to-UART bridge for flashing and serial logs; native USB port can be used for USB/JTAG workflows."
+      ],
+      "onboard_hardware": [
+        "Boot and Reset buttons, addressable RGB LED on GPIO48, USB-to-UART bridge, native USB port."
+      ],
+      "usb_connectors": {
+        "count": 2,
+        "types": []
+      },
+      "buttons": [
+        "Boot",
+        "Reset"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO48",
+          "board_label": "48",
+          "main_functions": [
+            "GPIO48",
+            "SPICLK_N",
+            "SUBSPICLK_N_DIFF",
+            "RGB LED"
+          ],
+          "notes": [
+            "J3-21 board header pin, silkscreen label 48.",
+            "Connected to the addressable RGB LED on ESP32-S3-DevKitM-1.",
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Voltage"
+          ]
+        }
+      ]
+    }
+  }
+}
