@@ -20,6 +20,17 @@ export interface ModuleDeepLinkTarget {
 const boardRoutePattern = /^\/boards\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/;
 const moduleRoutePattern = /^\/modules\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/;
 const gpioPattern = /^GPIO(?:[0-9]|[1-9][0-9]{1,2})$/;
+const modeSearchQuery: Record<string, string> = {
+  gpio: 'type:io',
+  i2c: 'I2C',
+  spi: 'SPI',
+  uart: 'UART',
+  adc: 'ADC',
+  pwm: 'PWM',
+  touch: 'Touch',
+  usb: 'USB',
+  jtag: 'JTAG',
+};
 
 export function resolveBoardDeepLink(pathname: string, search = ''): BoardDeepLinkTarget | null {
   const match = boardRoutePattern.exec(pathname);
@@ -65,7 +76,7 @@ export function applyBoardDeepLink(
 ) {
   selectSoc(target.socId);
   selectPackage(target.profileId);
-  setSearchQuery(target.searchQuery);
+  setSearchQuery(target.searchQuery || (target.mode ? (modeSearchQuery[target.mode.toLowerCase()] ?? '') : ''));
 }
 
 /** Apply a valid module route to the existing store without changing normal selection behavior. */

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { resolveBoardDeepLink, resolveModuleDeepLink } from '@/services/boardDeepLinks';
+import { applyBoardDeepLink, resolveBoardDeepLink, resolveModuleDeepLink } from '@/services/boardDeepLinks';
 
 describe('board deep links', () => {
   it('safely ignores unknown or malformed board routes', () => {
@@ -25,6 +25,13 @@ describe('board deep links', () => {
       socId: 'esp32c6',
       profileId: 'esp32c6-devkitc-1',
     });
+  });
+
+  it('uses a mode as the Explorer search when no explicit search is supplied', () => {
+    const target = resolveBoardDeepLink('/boards/esp32-s3-devkitc-1', '?mode=touch')!;
+    const selected: string[] = [];
+    applyBoardDeepLink(target, (id) => selected.push(id), (id) => selected.push(id), (query) => selected.push(query));
+    expect(selected).toEqual(['esp32s3', 'esp32s3-devkitc-1-v1-1', 'Touch']);
   });
 
   it('resolves the classic DevKitC V4 compatibility profile', () => {
