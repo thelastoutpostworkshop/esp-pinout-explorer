@@ -1,4 +1,4 @@
-import { createEsp8266BoardProfiles, wroom02DuSource } from '@/data/boards/esp8266';
+import { createEsp8266BoardProfiles, wroom02DuSource, wroom02Source } from '@/data/boards/esp8266';
 import type {
   PinPosition,
   PinType,
@@ -507,6 +507,16 @@ const espWroom02DModuleVariant: SocModuleVariant = {
   source: wroom02DuSource,
 };
 
+const espWroom02ModuleVariant: SocModuleVariant = {
+  name: 'ESP-WROOM-02',
+  antenna: 'PCB antenna',
+  flash: '2 MB SPI flash',
+  psram: 'No PSRAM',
+  footprint: '18.0 x 20.0 x 2.8 mm',
+  pinoutImpact: 'Same 19-pad module layout as ESP-WROOM-02D; the original module has an earlier RF design and is not recommended for new designs.',
+  source: wroom02Source,
+};
+
 const espWroom02UModuleVariant: SocModuleVariant = {
   name: 'ESP-WROOM-02U',
   antenna: 'U.FL/IPEX external antenna connector',
@@ -519,15 +529,15 @@ const espWroom02UModuleVariant: SocModuleVariant = {
 
 const espWroom02DProfile: SocPackageVariant = {
   id: 'esp-wroom-02d',
-  name: 'WROOM-02D',
-  packageName: 'ESP-WROOM-02D module, 19 pads, top view',
+  name: 'WROOM-02 / 02D',
+  packageName: 'ESP-WROOM-02/02D module, 19 pads, top view',
   kind: 'module',
   source: wroom02DuSource,
-  moduleNames: ['ESP-WROOM-02D'],
-  moduleVariants: [espWroom02DModuleVariant],
+  moduleNames: ['ESP-WROOM-02', 'ESP-WROOM-02D'],
+  moduleVariants: [espWroom02ModuleVariant, espWroom02DModuleVariant],
   identificationNotes: [
-    'This profile is the 19-pad ESP-WROOM-02D module layout, not the bare ESP8266EX QFN package.',
-    'ESP-WROOM-02D uses a PCB antenna; the related ESP-WROOM-02U uses an external antenna connector with the same pad pinout.',
+    'This profile is the shared 19-pad ESP-WROOM-02/02D module layout, not the bare ESP8266EX QFN package.',
+    'ESP-WROOM-02 and ESP-WROOM-02D have the same documented padout; ESP-WROOM-02D has optimized RF performance. Both use a PCB antenna.',
   ],
   pins: espWroom02DPins,
 };

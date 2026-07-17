@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-17T18:25:30.360Z",
+  "generated_at": "2026-07-17T18:28:21.943Z",
   "modules": [
     {
       "id": "esp32s3-wroom-1",
@@ -7372,12 +7372,21 @@
     },
     {
       "id": "esp-wroom-02d",
-      "name": "ESP-WROOM-02D",
+      "name": "ESP-WROOM-02",
       "chip_family": "ESP8266EX",
       "module_markings": [
+        "ESP-WROOM-02",
         "ESP-WROOM-02D"
       ],
       "module_variant_details": [
+        {
+          "name": "ESP-WROOM-02",
+          "antenna": "PCB antenna",
+          "flash": "2 MB SPI flash",
+          "psram": "No PSRAM",
+          "footprint": "18.0 x 20.0 x 2.8 mm",
+          "pinout_impact": "Same 19-pad module layout as ESP-WROOM-02D; the original module has an earlier RF design and is not recommended for new designs."
+        },
         {
           "name": "ESP-WROOM-02D",
           "antenna": "PCB antenna",
@@ -7598,8 +7607,8 @@
       "general_warnings": [
         "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
         "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
-        "This profile is the 19-pad ESP-WROOM-02D module layout, not the bare ESP8266EX QFN package.",
-        "ESP-WROOM-02D uses a PCB antenna; the related ESP-WROOM-02U uses an external antenna connector with the same pad pinout."
+        "This profile is the shared 19-pad ESP-WROOM-02/02D module layout, not the bare ESP8266EX QFN package.",
+        "ESP-WROOM-02 and ESP-WROOM-02D have the same documented padout; ESP-WROOM-02D has optimized RF performance. Both use a PCB antenna."
       ],
       "sources": [
         {

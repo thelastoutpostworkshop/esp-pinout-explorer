@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-17T18:25:30.360Z",
+  "generated_at": "2026-07-17T18:28:21.943Z",
   "board": {
     "id": "esp32s3-thread-br-zigbee-gw-v1-2",
     "name": "ESP Thread Border Router / Zigbee Gateway v1.2",

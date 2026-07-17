@@ -364,15 +364,15 @@ describe('soc store', () => {
     ]);
   });
 
-  it('can select ESP-WROOM-02D and ESP-WROOM-02U module profiles', () => {
+  it('can select ESP-WROOM-02/02D and ESP-WROOM-02U module profiles', () => {
     const store = useSocStore();
 
     store.selectSoc('esp8266ex');
     store.selectPackage('esp-wroom-02d');
 
-    expect(store.selectedPackage.name).toBe('WROOM-02D');
+    expect(store.selectedPackage.name).toBe('WROOM-02 / 02D');
     expect(store.selectedPackage.kind).toBe('module');
-    expect(store.selectedPackage.moduleNames).toEqual(['ESP-WROOM-02D']);
+    expect(store.selectedPackage.moduleNames).toEqual(['ESP-WROOM-02', 'ESP-WROOM-02D']);
     expect(store.selectedPins).toHaveLength(19);
 
     store.setSearchQuery('io15 pull down');
