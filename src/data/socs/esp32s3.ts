@@ -1,5 +1,5 @@
 import { createEsp32s3BoardProfiles } from '@/data/boards/esp32s3';
-import { esp32s3Wroom1ModuleSource, esp32s3Wroom2ModuleSource } from '@/data/boards/esp32s3/moduleSources';
+import { esp32s3Mini1ModuleSource, esp32s3Wroom1ModuleSource, esp32s3Wroom2ModuleSource } from '@/data/boards/esp32s3/moduleSources';
 import type { PinPosition, PinType, PinWarning, SocDefinition, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
@@ -680,5 +680,59 @@ const wroom2Profile: SocPackageVariant = {
   pins: createWroomPins('esp32s3-wroom-2', wroom2Pads, [28, 29, 30]),
 };
 
-esp32s3.packageVariants = [wroom1Profile, wroom2Profile];
+const mini1GndPads = new Set([1, 2, 42, 43, ...Array.from({ length: 20 }, (_, index) => index + 46)]);
+const mini1GpioByPad: Record<number, number> = {
+  4: 0, 5: 1, 6: 2, 7: 3, 8: 4, 9: 5, 10: 6, 11: 7, 12: 8, 13: 9, 14: 10, 15: 11,
+  16: 12, 17: 13, 18: 14, 19: 15, 20: 16, 21: 17, 22: 18, 23: 19, 24: 20, 25: 21,
+  26: 26, 27: 47, 28: 33, 29: 34, 30: 48, 31: 35, 32: 36, 33: 37, 34: 38, 35: 39,
+  36: 40, 37: 41, 38: 42, 39: 43, 40: 44, 41: 45, 44: 46,
+};
+
+function createMini1Pins(profileId: string): SocPin[] {
+  return Array.from({ length: 65 }, (_, index) => {
+    const number = index + 1;
+    const position = number <= 15
+      ? { side: 'left' as const, order: number }
+      : number <= 40
+        ? { side: 'bottom' as const, order: number - 15 }
+        : { side: 'right' as const, order: number - 40 };
+
+    if (mini1GndPads.has(number)) {
+      return modulePin(profileId, number, 'GND', 'ground', position, {
+        mainFunctions: ['Ground'], notes: ['Module ground pad.'], warnings: warnings('power'), keywords: ['ground', 'gnd'],
+      });
+    }
+    if (number === 3) {
+      return modulePin(profileId, number, '3V3', 'power', position, {
+        mainFunctions: ['3.3 V module power supply'], notes: ['Module power supply input. Espressif specifies a 3.0 V to 3.6 V operating range.'], warnings: warnings('power', 'voltage'), keywords: ['power', 'supply', '3v3'],
+      });
+    }
+    if (number === 45) {
+      return modulePin(profileId, number, 'EN', 'control', position, {
+        mainFunctions: ['Chip enable and reset'], notes: ['High enables the chip; low powers it off or resets it. Do not leave EN floating.'], warnings: warnings('reset'), keywords: ['enable', 'reset', 'chip en'],
+      });
+    }
+    const gpio = mini1GpioByPad[number];
+    if (gpio !== undefined) {
+      return moduleIoPin(profileId, number, gpio, position, number === 39 ? 'TXD0' : number === 40 ? 'RXD0' : undefined);
+    }
+    return modulePin(profileId, number, 'NC', 'control', position, {
+      mainFunctions: ['No connect'], notes: ['Official module pad is not connected.'], keywords: ['nc', 'no connect'],
+    });
+  });
+}
+
+const mini1Profile: SocPackageVariant = {
+  id: 'esp32s3-mini-1', name: 'MINI-1', packageName: 'ESP32-S3-MINI-1 module, 65 pads, top view', kind: 'module',
+  source: esp32s3Mini1ModuleSource, moduleNames: ['ESP32-S3-MINI-1', 'ESP32-S3-MINI-1U'],
+  moduleVariants: [
+    { name: 'ESP32-S3-MINI-1-N8', antenna: 'On-board PCB antenna', flash: '8 MB Quad SPI', psram: 'No PSRAM', pinoutImpact: 'Standard MINI-1 GPIO pad availability.', source: esp32s3Mini1ModuleSource },
+    { name: 'ESP32-S3-MINI-1-N4R2', antenna: 'On-board PCB antenna', flash: '4 MB Quad SPI', psram: '2 MB Quad SPI', pinoutImpact: 'GPIO26 is connected to embedded PSRAM and is unavailable for other uses.', source: esp32s3Mini1ModuleSource },
+    { name: 'ESP32-S3-MINI-1U-N8', antenna: 'External antenna connector', flash: '8 MB Quad SPI', psram: 'No PSRAM', pinoutImpact: 'Same module padout as MINI-1; antenna implementation differs.', source: esp32s3Mini1ModuleSource },
+  ],
+  identificationNotes: ['This profile is the 65-pad ESP32-S3-MINI-1/1U module layout, not the bare ESP32-S3 package or a development-board header.', 'MINI-1 uses a PCB antenna; MINI-1U uses an external antenna connector with the same padout.'],
+  pins: createMini1Pins('esp32s3-mini-1'),
+};
+
+esp32s3.packageVariants = [wroom1Profile, wroom2Profile, mini1Profile];
 esp32s3.boardProfiles = createEsp32s3BoardProfiles(findQfnPinByGpio);
