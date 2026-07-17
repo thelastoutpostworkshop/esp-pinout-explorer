@@ -1,5 +1,6 @@
 import { createEsp32h2BoardProfiles } from '@/data/boards/esp32h2';
-import type { PinPosition, PinType, PinWarning, SocDefinition, SocPin, SocSource } from '@/types/soc';
+import { mini1Source } from '@/data/boards/esp32h2';
+import type { PinPosition, PinType, PinWarning, SocDefinition, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
   title: 'ESP32-H2 Series Datasheet',
@@ -328,4 +329,103 @@ function findH2PinByGpio(gpio: number | undefined) {
   return esp32h2.pins.find((pin) => pin.gpio === gpio);
 }
 
+function uniqueValues<T>(values: T[]): T[] {
+  return [...new Set(values)];
+}
+
+function modulePin(
+  profileId: string,
+  number: number,
+  name: string,
+  type: PinType,
+  position: PinPosition,
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position'>> = {},
+): SocPin {
+  return {
+    id: `${profileId}-pin-${number}`,
+    number,
+    name,
+    type,
+    position,
+    mainFunctions: [],
+    ...details,
+    keywords: uniqueValues([...(details.keywords ?? []), 'module', 'mini-1', 'esp32-h2-mini-1', `pin ${number}`]),
+  };
+}
+
+function moduleIoPin(profileId: string, number: number, gpio: number, position: PinPosition, name = `IO${gpio}`): SocPin {
+  const sourcePin = findH2PinByGpio(gpio);
+  return modulePin(profileId, number, name, 'io', position, {
+    gpio,
+    mainFunctions: sourcePin?.mainFunctions ?? [`GPIO${gpio}`],
+    ioMux: sourcePin?.ioMux,
+    rtc: sourcePin?.rtc,
+    analog: sourcePin?.analog,
+    matrixSignals: sourcePin?.matrixSignals,
+    notes: sourcePin?.notes,
+    warnings: sourcePin?.warnings,
+    keywords: uniqueValues([...(sourcePin?.keywords ?? []), name.toLowerCase(), `gpio${gpio}`, `io${gpio}`]),
+  });
+}
+
+const mini1GndPads = new Set([1, 2, 11, 14, ...Array.from({ length: 18 }, (_, index) => index + 36)]);
+const mini1NoConnectPads = new Set([4, 7, 17, 28, 29, 32, 33, 34, 35]);
+const mini1GpioByPad: Record<number, number> = {
+  5: 2, 6: 3, 9: 0, 10: 1, 12: 13, 13: 14, 16: 12, 18: 4, 19: 5, 20: 10,
+  21: 11, 22: 8, 23: 9, 24: 22, 25: 25, 26: 26, 27: 27, 30: 23, 31: 24,
+};
+
+function createMini1Pins(profileId: string): SocPin[] {
+  return Array.from({ length: 53 }, (_, index) => {
+    const number = index + 1;
+    const position = number <= 15
+      ? { side: 'left' as const, order: number }
+      : number <= 35
+        ? { side: 'bottom' as const, order: number - 15 }
+        : { side: 'right' as const, order: number - 35 };
+
+    if (mini1GndPads.has(number)) {
+      return modulePin(profileId, number, 'GND', 'ground', position, {
+        mainFunctions: ['Ground'], notes: ['Module ground pad.'], warnings: warnings('power'), keywords: ['ground', 'gnd'],
+      });
+    }
+    if (number === 3) {
+      return modulePin(profileId, number, '3V3', 'power', position, {
+        mainFunctions: ['3.3 V module power supply'], notes: ['Module power supply input. Espressif specifies a 3.0 V to 3.6 V operating range.'], warnings: warnings('power', 'voltage'), keywords: ['power', 'supply', '3v3'],
+      });
+    }
+    if (number === 8) {
+      return modulePin(profileId, number, 'EN', 'control', position, {
+        mainFunctions: ['Chip enable and reset'], notes: ['High enables the chip; low powers it off or resets it. Do not leave EN floating.'], warnings: warnings('reset'), keywords: ['enable', 'reset', 'chip en'],
+      });
+    }
+    if (number === 15) {
+      return modulePin(profileId, number, 'VBAT', 'power', position, {
+        mainFunctions: ['Internal 3.3 V supply or external battery power input'], notes: ['Connected to the internal 3.3 V supply by default; supports external battery power from 3.0 V to 3.6 V.'], warnings: warnings('power', 'voltage'), keywords: ['vbat', 'battery', 'power', '3v3'],
+      });
+    }
+    if (mini1NoConnectPads.has(number)) {
+      return modulePin(profileId, number, 'NC', 'control', position, {
+        mainFunctions: ['No connect'], notes: ['Official module pad is not connected.'], keywords: ['nc', 'no connect'],
+      });
+    }
+    const gpio = mini1GpioByPad[number];
+    return moduleIoPin(profileId, number, gpio, position, number === 30 ? 'RXD0' : number === 31 ? 'TXD0' : undefined);
+  });
+}
+
+const mini1Profile: SocPackageVariant = {
+  id: 'esp32h2-mini-1', name: 'MINI-1', packageName: 'ESP32-H2-MINI-1/1U module, 53 pads, top view', kind: 'module',
+  source: mini1Source, moduleNames: ['ESP32-H2-MINI-1', 'ESP32-H2-MINI-1U'],
+  moduleVariants: [
+    { name: 'ESP32-H2-MINI-1-H2S', antenna: 'On-board PCB antenna', flash: '2 MB Quad SPI in chip package', psram: 'No PSRAM', footprint: '13.2 x 16.6 x 2.4 mm', pinoutImpact: 'Same 53-pad module pinout as MINI-1U; antenna implementation differs.', source: mini1Source },
+    { name: 'ESP32-H2-MINI-1-H4S', antenna: 'On-board PCB antenna', flash: '4 MB Quad SPI in chip package', psram: 'No PSRAM', footprint: '13.2 x 16.6 x 2.4 mm', pinoutImpact: 'Same 53-pad module pinout as MINI-1U; antenna implementation differs.', source: mini1Source },
+    { name: 'ESP32-H2-MINI-1U-H2S', antenna: 'External antenna connector', flash: '2 MB Quad SPI in chip package', psram: 'No PSRAM', footprint: '13.2 x 12.5 x 2.4 mm', pinoutImpact: 'Same 53-pad module pinout as MINI-1; antenna connector changes RF layout only.', source: mini1Source },
+    { name: 'ESP32-H2-MINI-1U-H4S', antenna: 'External antenna connector', flash: '4 MB Quad SPI in chip package', psram: 'No PSRAM', footprint: '13.2 x 12.5 x 2.4 mm', pinoutImpact: 'Same 53-pad module pinout as MINI-1; antenna connector changes RF layout only.', source: mini1Source },
+  ],
+  identificationNotes: ['This profile is the 53-pad ESP32-H2-MINI-1/1U module layout, not the bare ESP32-H2 package or a development-board header.', 'MINI-1 uses a PCB antenna; MINI-1U uses an external antenna connector with the same padout.'],
+  pins: createMini1Pins('esp32h2-mini-1'),
+};
+
+esp32h2.packageVariants = [mini1Profile];
 esp32h2.boardProfiles = createEsp32h2BoardProfiles(findH2PinByGpio);

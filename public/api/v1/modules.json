@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T22:58:23.076Z",
+  "generated_at": "2026-07-17T10:08:38.577Z",
   "modules": [
     {
       "id": "esp32s3-wroom-1",
@@ -5139,6 +5139,385 @@
             "Figure 8-2 ESP32-C3-WROOM-02U Schematics",
             "Figure 10-1 ESP32-C3-WROOM-02 Physical Dimensions",
             "Figure 10-2 ESP32-C3-WROOM-02U Physical Dimensions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32h2-mini-1",
+      "name": "ESP32-H2-MINI-1",
+      "chip_family": "ESP32-H2",
+      "module_markings": [
+        "ESP32-H2-MINI-1",
+        "ESP32-H2-MINI-1U",
+        "ESP32-H2-MINI-1-H2S",
+        "ESP32-H2-MINI-1-H4S",
+        "ESP32-H2-MINI-1U-H2S",
+        "ESP32-H2-MINI-1U-H4S"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-H2-MINI-1-H2S",
+          "antenna": "On-board PCB antenna",
+          "flash": "2 MB Quad SPI in chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 16.6 x 2.4 mm",
+          "pinout_impact": "Same 53-pad module pinout as MINI-1U; antenna implementation differs."
+        },
+        {
+          "name": "ESP32-H2-MINI-1-H4S",
+          "antenna": "On-board PCB antenna",
+          "flash": "4 MB Quad SPI in chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 16.6 x 2.4 mm",
+          "pinout_impact": "Same 53-pad module pinout as MINI-1U; antenna implementation differs."
+        },
+        {
+          "name": "ESP32-H2-MINI-1U-H2S",
+          "antenna": "External antenna connector",
+          "flash": "2 MB Quad SPI in chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 12.5 x 2.4 mm",
+          "pinout_impact": "Same 53-pad module pinout as MINI-1; antenna connector changes RF layout only."
+        },
+        {
+          "name": "ESP32-H2-MINI-1U-H4S",
+          "antenna": "External antenna connector",
+          "flash": "4 MB Quad SPI in chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 12.5 x 2.4 mm",
+          "pinout_impact": "Same 53-pad module pinout as MINI-1; antenna connector changes RF layout only."
+        }
+      ],
+      "route": "/modules/esp32h2-mini-1",
+      "general_purpose_candidates": [
+        "GPIO2",
+        "GPIO3",
+        "GPIO0",
+        "GPIO1",
+        "GPIO13",
+        "GPIO14",
+        "GPIO12",
+        "GPIO4",
+        "GPIO5",
+        "GPIO10",
+        "GPIO11",
+        "GPIO22"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO25",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO26",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO27",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO23",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO24",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "MTMS",
+            "FSPIWP",
+            "ADC1_CH1"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "MTDO",
+            "FSPIHD",
+            "ADC1_CH2"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "FSPIQ"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "FSPICS0",
+            "ADC1_CH0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "XTAL_32K_P"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO13."
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "XTAL_32K_N"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO14."
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "MTCK",
+            "FSPICLK",
+            "ADC1_CH3"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Reset pull-up behavior depends on EFUSE_DIS_PAD_JTAG."
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "MTDI",
+            "FSPID",
+            "ADC1_CH4"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "ZCD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11",
+            "ZCD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default floating state.",
+            "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO8; GPIO8=1 and GPIO9=0 selects joint download boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO25",
+          "functions": [
+            "GPIO25",
+            "FSPICS3",
+            "JTAG signal source strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO25 has no internal pull resistors and the external circuit must not be high impedance during strapping."
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "FSPICS4",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "Default drive strength for GPIO26 is 40 mA."
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "FSPICS5",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "Default drive strength for GPIO27 is 40 mA."
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "U0RXD",
+            "FSPICS1"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO24",
+          "functions": [
+            "GPIO24",
+            "U0TXD",
+            "FSPICS2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented module pads with native USB data functions.",
+          "candidate_pins": [
+            "GPIO26",
+            "GPIO27"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO23",
+            "GPIO24"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 53-pad ESP32-H2-MINI-1/1U module layout, not the bare ESP32-H2 package or a development-board header.",
+        "MINI-1 uses a PCB antenna; MINI-1U uses an external antenna connector with the same padout."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-H2-MINI-1 & ESP32-H2-MINI-1U Datasheet",
+          "url": "https://www.espressif.com/sites/default/files/documentation/esp32-h2-mini-1_mini-1u_datasheet_en.pdf",
+          "sections": [
+            "ESP32-H2-MINI-1 Series Comparison",
+            "ESP32-H2-MINI-1U Series Comparison",
+            "Figure 3 Pin Layout (Top View)",
+            "Table 3 Pin Definitions",
+            "Chapter 4 Boot Configurations",
+            "Figure 5 ESP32-H2-MINI-1 Schematics",
+            "Figure 6 ESP32-H2-MINI-1U Schematics",
+            "Figure 8 ESP32-H2-MINI-1 Physical Dimensions",
+            "Figure 9 ESP32-H2-MINI-1U Physical Dimensions",
+            "Figure 10 Dimensions of External Antenna Connector"
           ]
         }
       ]

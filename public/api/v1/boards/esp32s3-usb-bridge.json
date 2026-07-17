@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-16T22:58:23.076Z",
+  "generated_at": "2026-07-17T10:08:38.577Z",
   "board": {
     "id": "esp32s3-usb-bridge",
     "name": "ESP32-S3-USB-Bridge",

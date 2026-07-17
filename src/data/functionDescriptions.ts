@@ -75,6 +75,7 @@ const exactDescriptions: Record<string, string> = {
   HREF: 'Camera horizontal reference signal.',
   IMU_INT1: 'Interrupt signal from the inertial measurement unit on the development board.',
   'Internal 1.1 V RTC power': 'Internal RTC-domain supply or no-connect style pin. Follow the official reference design instead of using it as GPIO.',
+  'Internal 3.3 V supply or external battery power input': 'VBAT module power pin. It is connected to the internal 3.3 V supply by default and can accept an external 3.0 V to 3.6 V battery supply.',
   'Deep-sleep wakeup': 'Wake-up signal used to bring the ESP8266 out of deep sleep, usually by wiring GPIO16 / XPD_DCDC to reset.',
   KEY_1: 'User key 1 signal on the development board.',
   KEY_2: 'User key 2 signal on the development board.',
