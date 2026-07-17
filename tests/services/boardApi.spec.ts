@@ -141,4 +141,23 @@ describe('public module dataset', () => {
       route: '/modules/esp32c6-wroom-1u',
     });
   });
+
+  it('keeps carrier boards and bare chip or SiP markings out of module guidance', () => {
+    const forbiddenModuleMarkings = [
+      'ESP32-DevKitC V4',
+      'ESP32-S3FN8',
+      'ESP32-SOLO-1',
+      'ESP32-PICO-V3',
+      'ESP32-PICO-D4',
+    ];
+    const exportedModuleNames = dataset.modules.flatMap((module) => [
+      module.id,
+      module.name,
+      ...module.module_markings,
+    ]);
+
+    for (const marking of forbiddenModuleMarkings) {
+      expect(exportedModuleNames).not.toContain(marking);
+    }
+  });
 });
