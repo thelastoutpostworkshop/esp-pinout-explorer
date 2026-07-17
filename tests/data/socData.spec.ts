@@ -47,6 +47,10 @@ const officialEspressifHosts = new Set([
 
 const expectedPinCounts: Record<string, number> = {
   'esp32:esp32-qfn48-6x6': 49,
+  'esp32:esp32-wroom-32e': 38,
+  'esp32:esp32-wrover-e': 38,
+  'esp32:esp32-mini-1': 55,
+  'esp32:esp32-pico-mini-02': 53,
   'esp32:esp32-devkitc-v4': 38,
   'esp32:esp32-devkitm-1': 34,
   'esp32:esp32-ethernet-kit-v1-2': 16,
@@ -316,7 +320,7 @@ describe('SoC data invariants', () => {
           if (!hasPackageSourcePins) {
             expect(sourcePin).toBeUndefined();
           } else if (isAllowedModuleOnlyBoardGpio(profile, pin)) {
-            expect(sourcePin).toBeUndefined();
+            expect(sourcePin).toBeDefined();
           } else {
             expect(sourcePin, `${profile.id} ${pin.displayNumber} GPIO${pin.gpio} should map to a package pin`).toBeDefined();
           }
@@ -359,6 +363,10 @@ describe('SoC data invariants', () => {
     const moduleProfiles = allProfiles().filter((item) => item.kind === 'module');
 
     expect(moduleProfiles.map((profile) => `${profile.soc.id}:${profile.id}`).sort()).toEqual([
+      'esp32:esp32-mini-1',
+      'esp32:esp32-pico-mini-02',
+      'esp32:esp32-wroom-32e',
+      'esp32:esp32-wrover-e',
       'esp32c3:esp32c3-mini-1',
       'esp32c3:esp32c3-mini-1u',
       'esp32c3:esp32c3-wroom-02',

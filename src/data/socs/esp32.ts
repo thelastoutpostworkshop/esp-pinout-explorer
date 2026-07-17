@@ -1,5 +1,11 @@
-import { createEsp32BoardProfiles } from '@/data/boards/esp32';
-import type { PinPosition, PinType, PinWarning, SocDefinition, SocPin, SocSource } from '@/types/soc';
+import {
+  createEsp32BoardProfiles,
+  mini1Source,
+  picoMini02Source,
+  wroom32ESource,
+  wroverESource,
+} from '@/data/boards/esp32';
+import type { PinPosition, PinType, PinWarning, SocDefinition, SocPackageVariant, SocPin, SocSource } from '@/types/soc';
 
 const source: SocSource = {
   title: 'ESP32 Series Datasheet',
@@ -451,4 +457,239 @@ function findQfnPinByGpio(gpio: number | undefined) {
   return esp32.pins.find((candidate) => candidate.gpio === gpio);
 }
 
+function modulePosition(number: number, total: number): PinPosition {
+  const leftCount = Math.ceil(total / 3);
+  const bottomCount = Math.floor(total / 3);
+
+  if (number <= leftCount) {
+    return { side: 'left', order: number };
+  }
+  if (number <= leftCount + bottomCount) {
+    return { side: 'bottom', order: number - leftCount };
+  }
+  return { side: 'right', order: number - leftCount - bottomCount };
+}
+
+function modulePin(
+  profileId: string,
+  number: number,
+  name: string,
+  type: PinType,
+  position: PinPosition,
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position'>> = {},
+): SocPin {
+  return {
+    id: `${profileId}-pin-${number}`,
+    number,
+    name,
+    type,
+    position,
+    mainFunctions: [],
+    ...details,
+    keywords: uniqueValues([...(details.keywords ?? []), 'module', `pin ${number}`]),
+  };
+}
+
+function moduleIoPin(
+  profileId: string,
+  number: number,
+  gpio: number,
+  position: PinPosition,
+  name = `IO${gpio}`,
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position' | 'gpio'>> = {},
+): SocPin {
+  const sourcePin = findQfnPinByGpio(gpio);
+
+  return modulePin(profileId, number, name, 'io', position, {
+    gpio,
+    mainFunctions: details.mainFunctions ?? sourcePin?.mainFunctions ?? [`GPIO${gpio}`],
+    ioMux: details.ioMux ?? sourcePin?.ioMux ?? [`GPIO${gpio}`],
+    rtc: details.rtc ?? sourcePin?.rtc,
+    analog: details.analog ?? sourcePin?.analog,
+    matrixSignals: details.matrixSignals ?? sourcePin?.matrixSignals,
+    notes: details.notes ?? sourcePin?.notes,
+    warnings: details.warnings ?? sourcePin?.warnings,
+    ...details,
+    keywords: uniqueValues([...(sourcePin?.keywords ?? []), ...(details.keywords ?? []), `gpio${gpio}`, `io${gpio}`, name.toLowerCase()]),
+  });
+}
+
+interface ClassicModulePadLayout {
+  padCount: number;
+  gpioByPad: Record<number, number>;
+  groundPads: number[];
+  noConnectPads: number[];
+  controlPads: Record<number, string>;
+  powerPads: Record<number, string>;
+  gpioNames?: Record<number, string>;
+  gpioDetails?: Record<number, Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position' | 'gpio'>>>;
+}
+
+function createClassicModulePins(profileId: string, layout: ClassicModulePadLayout): SocPin[] {
+  const grounds = new Set(layout.groundPads);
+  const noConnects = new Set(layout.noConnectPads);
+
+  return Array.from({ length: layout.padCount }, (_, index) => {
+    const number = index + 1;
+    const position = modulePosition(number, layout.padCount);
+
+    if (grounds.has(number)) {
+      return modulePin(profileId, number, 'GND', 'ground', position, {
+        mainFunctions: ['Ground'],
+        notes: ['Module ground pad.'],
+        warnings: warnings('power'),
+        keywords: ['ground', 'gnd'],
+      });
+    }
+    if (layout.powerPads[number]) {
+      return modulePin(profileId, number, layout.powerPads[number], 'power', position, {
+        mainFunctions: ['3.3 V module power supply'],
+        notes: ['Module power supply input.'],
+        warnings: warnings('power', 'voltage'),
+        keywords: ['power', 'supply', '3v3'],
+      });
+    }
+    if (layout.controlPads[number]) {
+      return modulePin(profileId, number, layout.controlPads[number], 'control', position, {
+        mainFunctions: ['Chip enable and reset'],
+        notes: ['High enables the chip; low shuts it down or resets it. Do not leave EN floating.'],
+        warnings: warnings('reset'),
+        keywords: ['enable', 'reset', 'chip en'],
+      });
+    }
+    if (noConnects.has(number)) {
+      return modulePin(profileId, number, 'NC', 'control', position, {
+        mainFunctions: ['No connect'],
+        notes: ['Official module pad is not connected.'],
+        keywords: ['nc', 'no connect'],
+      });
+    }
+
+    const gpio = layout.gpioByPad[number];
+    return moduleIoPin(profileId, number, gpio, position, layout.gpioNames?.[number], layout.gpioDetails?.[number]);
+  });
+}
+
+const wroom32Layout: ClassicModulePadLayout = {
+  padCount: 38,
+  groundPads: [1, 15, 38],
+  noConnectPads: [17, 18, 19, 20, 21, 22, 32],
+  powerPads: { 2: '3V3' },
+  controlPads: { 3: 'EN' },
+  gpioByPad: {
+    4: 36, 5: 39, 6: 34, 7: 35, 8: 32, 9: 33, 10: 25, 11: 26, 12: 27, 13: 14, 14: 12,
+    16: 13, 23: 15, 24: 2, 25: 0, 26: 4, 27: 16, 28: 17, 29: 5, 30: 18, 31: 19,
+    33: 21, 34: 3, 35: 1, 36: 22, 37: 23,
+  },
+  gpioNames: { 4: 'SENSOR_VP', 5: 'SENSOR_VN', 34: 'RXD0', 35: 'TXD0' },
+};
+
+const wroverELayout: ClassicModulePadLayout = {
+  ...wroom32Layout,
+  noConnectPads: [17, 18, 19, 20, 21, 22, 27, 28, 32],
+  gpioByPad: {
+    4: 36, 5: 39, 6: 34, 7: 35, 8: 32, 9: 33, 10: 25, 11: 26, 12: 27, 13: 14, 14: 12,
+    16: 13, 23: 15, 24: 2, 25: 0, 26: 4, 29: 5, 30: 18, 31: 19, 33: 21, 34: 3,
+    35: 1, 36: 22, 37: 23,
+  },
+};
+
+const mini1Layout: ClassicModulePadLayout = {
+  padCount: 55,
+  groundPads: [1, 2, 27, ...Array.from({ length: 18 }, (_, index) => index + 38)],
+  noConnectPads: [23, 24, 28, 37],
+  powerPads: { 3: '3V3' },
+  controlPads: { 8: 'EN' },
+  gpioByPad: {
+    4: 36, 5: 37, 6: 38, 7: 39, 9: 34, 10: 35, 11: 32, 12: 33, 13: 25, 14: 26, 15: 27,
+    16: 14, 17: 12, 18: 13, 19: 15, 20: 2, 21: 0, 22: 4, 25: 9, 26: 10, 29: 5, 30: 18,
+    31: 23, 32: 19, 33: 22, 34: 21, 35: 3, 36: 1,
+  },
+  gpioNames: { 4: 'I36', 5: 'I37', 6: 'I38', 7: 'I39', 9: 'I34', 10: 'I35', 35: 'RXD0', 36: 'TXD0' },
+  gpioDetails: {
+    25: { warnings: [], notes: ['GPIO9 is available on this module pad.'] },
+    26: { warnings: [], notes: ['GPIO10 is available on this module pad.'] },
+  },
+};
+
+const picoMini02Layout: ClassicModulePadLayout = {
+  padCount: 53,
+  groundPads: [1, 2, 11, 14, ...Array.from({ length: 18 }, (_, index) => index + 36)],
+  noConnectPads: [25, 32],
+  powerPads: { 3: '3V3' },
+  controlPads: { 8: 'EN' },
+  gpioByPad: {
+    4: 36, 5: 37, 6: 38, 7: 39, 9: 34, 10: 35, 12: 32, 13: 33, 15: 25, 16: 26, 17: 27,
+    18: 14, 19: 12, 20: 13, 21: 15, 22: 2, 23: 0, 24: 4, 26: 20, 27: 7, 28: 8, 29: 5,
+    30: 3, 31: 1, 33: 19, 34: 22, 35: 21,
+  },
+  gpioNames: { 4: 'I36', 5: 'I37', 6: 'I38', 7: 'I39', 9: 'I34', 10: 'I35', 30: 'RXD0', 31: 'TXD0' },
+  gpioDetails: {
+    26: { notes: ['GPIO20 is exposed only by the ESP32-PICO-MINI-02 module.'] },
+    27: { warnings: [], notes: ['GPIO7 is exposed by this module.'], keywords: ['gpio7', 'sd data0', 'uart2'] },
+    28: { warnings: [], notes: ['GPIO8 is exposed by this module.'], keywords: ['gpio8', 'sd data1', 'uart2'] },
+  },
+};
+
+const wroom32Profile: SocPackageVariant = {
+  id: 'esp32-wroom-32e',
+  name: 'WROOM-32E / WROOM-32UE',
+  packageName: 'ESP32-WROOM-32E/32UE module, 38 pads, top view',
+  kind: 'module',
+  source: wroom32ESource,
+  moduleNames: ['ESP32-WROOM-32E', 'ESP32-WROOM-32UE'],
+  moduleVariants: [
+    { name: 'ESP32-WROOM-32E', antenna: 'On-board PCB antenna', flash: '4 MB / 8 MB / 16 MB SPI flash variants', psram: 'No PSRAM or optional embedded QSPI PSRAM depending on variant', footprint: '18.0 x 25.5 x 3.1 mm', pinoutImpact: 'The 38-pad layout is shared; GPIO16 is unavailable in variants with embedded QSPI PSRAM.', source: wroom32ESource },
+    { name: 'ESP32-WROOM-32UE', antenna: 'External antenna connector', flash: '4 MB / 8 MB / 16 MB SPI flash variants', psram: 'No PSRAM or optional embedded QSPI PSRAM depending on variant', footprint: '18.0 x 25.5 x 3.1 mm', pinoutImpact: 'Same 38-pad layout as WROOM-32E; the RF connector replaces the PCB antenna and GPIO16 availability still depends on the selected module variant.', source: wroom32ESource },
+  ],
+  identificationNotes: ['This profile is the 38-pad ESP32-WROOM-32E/32UE module layout, not the bare ESP32 package or a development-board header.', 'WROOM-32E has a PCB antenna; WROOM-32UE uses an external antenna connector with the same padout.'],
+  pins: createClassicModulePins('esp32-wroom-32e', wroom32Layout),
+};
+
+const wroverEProfile: SocPackageVariant = {
+  id: 'esp32-wrover-e',
+  name: 'WROVER-E / WROVER-IE',
+  packageName: 'ESP32-WROVER-E/IE module, 38 pads, top view',
+  kind: 'module',
+  source: wroverESource,
+  moduleNames: ['ESP32-WROVER-E', 'ESP32-WROVER-IE'],
+  moduleVariants: [
+    { name: 'ESP32-WROVER-E', antenna: 'On-board PCB antenna', flash: '4 MB / 8 MB / 16 MB SPI flash variants', psram: 'Embedded QSPI PSRAM', footprint: '18.0 x 31.4 x 3.3 mm', pinoutImpact: 'GPIO16 and GPIO17 are not led out; memory interface pins are internal to the module.', source: wroverESource },
+    { name: 'ESP32-WROVER-IE', antenna: 'External antenna connector', flash: '4 MB / 8 MB / 16 MB SPI flash variants', psram: 'Embedded QSPI PSRAM', footprint: '18.0 x 31.4 x 3.3 mm', pinoutImpact: 'Same 38-pad layout as WROVER-E; GPIO16 and GPIO17 remain unavailable and the RF connector changes the antenna arrangement only.', source: wroverESource },
+  ],
+  identificationNotes: ['This profile is the 38-pad ESP32-WROVER-E/IE module layout, not the bare ESP32 package or a development-board header.', 'WROVER-IE has an external antenna connector, while WROVER-E uses a PCB antenna.'],
+  pins: createClassicModulePins('esp32-wrover-e', wroverELayout),
+};
+
+const mini1Profile: SocPackageVariant = {
+  id: 'esp32-mini-1',
+  name: 'MINI-1 / MINI-1U',
+  packageName: 'ESP32-MINI-1/1U module, 55 pads, top view',
+  kind: 'module',
+  source: mini1Source,
+  moduleNames: ['ESP32-MINI-1', 'ESP32-MINI-1U'],
+  moduleVariants: [
+    { name: 'ESP32-MINI-1', antenna: 'On-board PCB antenna', flash: '4 MB SPI flash in chip package', psram: 'No PSRAM', footprint: '13.2 x 16.6 x 2.4 mm', pinoutImpact: 'Same 55-pad layout as MINI-1U; GPIO6, GPIO7, GPIO8, GPIO11, GPIO16, and GPIO17 are internally used by flash.', source: mini1Source },
+    { name: 'ESP32-MINI-1U', antenna: 'External antenna connector', flash: '4 MB SPI flash in chip package', psram: 'No PSRAM', footprint: '13.2 x 12.5 x 2.4 mm', pinoutImpact: 'Same 55-pad layout as MINI-1; the antenna connector changes RF layout only.', source: mini1Source },
+  ],
+  identificationNotes: ['This profile is the 55-pad ESP32-MINI-1/1U module layout, not the bare ESP32 package or a development-board header.', 'MINI-1 uses a PCB antenna; MINI-1U uses an external antenna connector with the same padout.'],
+  pins: createClassicModulePins('esp32-mini-1', mini1Layout),
+};
+
+const picoMini02Profile: SocPackageVariant = {
+  id: 'esp32-pico-mini-02',
+  name: 'PICO-MINI-02 / 02U',
+  packageName: 'ESP32-PICO-MINI-02/02U module, 53 pads, top view',
+  kind: 'module',
+  source: picoMini02Source,
+  moduleNames: ['ESP32-PICO-MINI-02', 'ESP32-PICO-MINI-02U'],
+  moduleVariants: [
+    { name: 'ESP32-PICO-MINI-02', antenna: 'On-board PCB antenna', flash: '8 MB SPI flash in package', psram: '2 MB PSRAM in package', footprint: '13.2 x 16.6 x 2.4 mm', pinoutImpact: 'Same 53-pad layout as PICO-MINI-02U; GPIO6/GPIO11 are flash-connected and GPIO9/GPIO10 are PSRAM-connected internally.', source: picoMini02Source },
+    { name: 'ESP32-PICO-MINI-02U', antenna: 'External antenna connector', flash: '8 MB SPI flash in package', psram: '2 MB PSRAM in package', footprint: '13.2 x 12.5 x 2.4 mm', pinoutImpact: 'Same 53-pad layout as PICO-MINI-02; the antenna connector changes RF layout only.', source: picoMini02Source },
+  ],
+  identificationNotes: ['This profile is the 53-pad ESP32-PICO-MINI-02/02U module layout, not the bare ESP32 package or a development-board header.', 'PICO-MINI-02 uses a PCB antenna; PICO-MINI-02U uses an external antenna connector with the same padout.'],
+  pins: createClassicModulePins('esp32-pico-mini-02', picoMini02Layout),
+};
+
+esp32.packageVariants = [wroom32Profile, wroverEProfile, mini1Profile, picoMini02Profile];
 esp32.boardProfiles = createEsp32BoardProfiles(findQfnPinByGpio);

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-17T10:08:38.577Z",
+  "generated_at": "2026-07-17T18:25:30.360Z",
   "modules": [
     {
       "id": "esp32s3-wroom-1",
@@ -5518,6 +5518,1854 @@
             "Figure 8 ESP32-H2-MINI-1 Physical Dimensions",
             "Figure 9 ESP32-H2-MINI-1U Physical Dimensions",
             "Figure 10 Dimensions of External Antenna Connector"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32-wroom-32e",
+      "name": "ESP32-WROOM-32E",
+      "chip_family": "ESP32",
+      "module_markings": [
+        "ESP32-WROOM-32E",
+        "ESP32-WROOM-32UE"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-WROOM-32E",
+          "antenna": "On-board PCB antenna",
+          "flash": "4 MB / 8 MB / 16 MB SPI flash variants",
+          "psram": "No PSRAM or optional embedded QSPI PSRAM depending on variant",
+          "footprint": "18.0 x 25.5 x 3.1 mm",
+          "pinout_impact": "The 38-pad layout is shared; GPIO16 is unavailable in variants with embedded QSPI PSRAM."
+        },
+        {
+          "name": "ESP32-WROOM-32UE",
+          "antenna": "External antenna connector",
+          "flash": "4 MB / 8 MB / 16 MB SPI flash variants",
+          "psram": "No PSRAM or optional embedded QSPI PSRAM depending on variant",
+          "footprint": "18.0 x 25.5 x 3.1 mm",
+          "pinout_impact": "Same 38-pad layout as WROOM-32E; the RF connector replaces the PCB antenna and GPIO16 availability still depends on the selected module variant."
+        }
+      ],
+      "route": "/modules/esp32-wroom-32e",
+      "general_purpose_candidates": [
+        "GPIO36",
+        "GPIO39",
+        "GPIO34",
+        "GPIO35",
+        "GPIO32",
+        "GPIO33",
+        "GPIO25",
+        "GPIO26",
+        "GPIO27",
+        "GPIO14",
+        "GPIO13",
+        "GPIO4",
+        "GPIO16",
+        "GPIO17",
+        "GPIO18",
+        "GPIO19",
+        "GPIO21",
+        "GPIO22",
+        "GPIO23"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO12",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO36",
+          "functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "RTC_GPIO0",
+            "S_VP"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "RTC_GPIO3",
+            "S_VN"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "RTC_GPIO4",
+            "VDET_1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "RTC_GPIO5",
+            "VDET_2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO32",
+          "functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO33",
+          "functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO25",
+          "functions": [
+            "GPIO25",
+            "ADC2_CH8",
+            "RTC_GPIO6",
+            "DAC_1",
+            "EMAC_RXD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "ADC2_CH9",
+            "RTC_GPIO7",
+            "DAC_2",
+            "EMAC_RXD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "ADC2_CH7",
+            "RTC_GPIO17",
+            "TOUCH7",
+            "EMAC_RX_DV"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "RTC_GPIO16",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "RTC_GPIO15",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "RTC_GPIO14",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "RTC_GPIO13",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls U0TXD printing and SDIO slave timing at reset.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "RTC_GPIO12",
+            "TOUCH2"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls boot mode with GPIO0."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "ADC2_CH1",
+            "RTC_GPIO11",
+            "TOUCH1",
+            "Boot"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "RTC_GPIO10",
+            "TOUCH0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "HS1_DATA4",
+            "U2RXD",
+            "EMAC_CLK_OUT"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "HS1_DATA5",
+            "U2TXD",
+            "EMAC_CLK_OUT_180"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "VSPICS0",
+            "EMAC_RX_CLK"
+          ],
+          "warnings": [
+            "Strapping"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls SDIO slave timing at reset."
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "VSPICLK"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "U0CTS",
+            "VSPIQ",
+            "EMAC_TXD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22",
+            "U0RTS",
+            "VSPIWP",
+            "EMAC_TXD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "VSPID"
+          ],
+          "warnings": [],
+          "notes": []
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO3",
+            "GPIO1"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 38-pad ESP32-WROOM-32E/32UE module layout, not the bare ESP32 package or a development-board header.",
+        "WROOM-32E has a PCB antenna; WROOM-32UE uses an external antenna connector with the same padout."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-WROOM-32E & ESP32-WROOM-32UE Datasheet",
+          "url": "https://www.espressif.com/sites/default/files/documentation/esp32-wroom-32e_esp32-wroom-32ue_datasheet_en.pdf",
+          "sections": [
+            "Module Overview",
+            "Series Comparison",
+            "Pin Definitions",
+            "Module Dimensions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32-wrover-e",
+      "name": "ESP32-WROVER-E",
+      "chip_family": "ESP32",
+      "module_markings": [
+        "ESP32-WROVER-E",
+        "ESP32-WROVER-IE"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-WROVER-E",
+          "antenna": "On-board PCB antenna",
+          "flash": "4 MB / 8 MB / 16 MB SPI flash variants",
+          "psram": "Embedded QSPI PSRAM",
+          "footprint": "18.0 x 31.4 x 3.3 mm",
+          "pinout_impact": "GPIO16 and GPIO17 are not led out; memory interface pins are internal to the module."
+        },
+        {
+          "name": "ESP32-WROVER-IE",
+          "antenna": "External antenna connector",
+          "flash": "4 MB / 8 MB / 16 MB SPI flash variants",
+          "psram": "Embedded QSPI PSRAM",
+          "footprint": "18.0 x 31.4 x 3.3 mm",
+          "pinout_impact": "Same 38-pad layout as WROVER-E; GPIO16 and GPIO17 remain unavailable and the RF connector changes the antenna arrangement only."
+        }
+      ],
+      "route": "/modules/esp32-wrover-e",
+      "general_purpose_candidates": [
+        "GPIO36",
+        "GPIO39",
+        "GPIO34",
+        "GPIO35",
+        "GPIO32",
+        "GPIO33",
+        "GPIO25",
+        "GPIO26",
+        "GPIO27",
+        "GPIO14",
+        "GPIO13",
+        "GPIO4",
+        "GPIO18",
+        "GPIO19",
+        "GPIO21",
+        "GPIO22",
+        "GPIO23"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO12",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO36",
+          "functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "RTC_GPIO0",
+            "S_VP"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "RTC_GPIO3",
+            "S_VN"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "RTC_GPIO4",
+            "VDET_1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "RTC_GPIO5",
+            "VDET_2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO32",
+          "functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO33",
+          "functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO25",
+          "functions": [
+            "GPIO25",
+            "ADC2_CH8",
+            "RTC_GPIO6",
+            "DAC_1",
+            "EMAC_RXD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "ADC2_CH9",
+            "RTC_GPIO7",
+            "DAC_2",
+            "EMAC_RXD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "ADC2_CH7",
+            "RTC_GPIO17",
+            "TOUCH7",
+            "EMAC_RX_DV"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "RTC_GPIO16",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "RTC_GPIO15",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "RTC_GPIO14",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "RTC_GPIO13",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls U0TXD printing and SDIO slave timing at reset.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "RTC_GPIO12",
+            "TOUCH2"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls boot mode with GPIO0."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "ADC2_CH1",
+            "RTC_GPIO11",
+            "TOUCH1",
+            "Boot"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "RTC_GPIO10",
+            "TOUCH0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "VSPICS0",
+            "EMAC_RX_CLK"
+          ],
+          "warnings": [
+            "Strapping"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls SDIO slave timing at reset."
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "VSPICLK"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "U0CTS",
+            "VSPIQ",
+            "EMAC_TXD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22",
+            "U0RTS",
+            "VSPIWP",
+            "EMAC_TXD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "VSPID"
+          ],
+          "warnings": [],
+          "notes": []
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO3",
+            "GPIO1"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 38-pad ESP32-WROVER-E/IE module layout, not the bare ESP32 package or a development-board header.",
+        "WROVER-IE has an external antenna connector, while WROVER-E uses a PCB antenna."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-WROVER-E & ESP32-WROVER-IE Datasheet",
+          "url": "https://www.espressif.com/sites/default/files/documentation/esp32-wrover-e_esp32-wrover-ie_datasheet_en.pdf",
+          "sections": [
+            "Module Overview",
+            "Series Comparison",
+            "Pin Definitions",
+            "Module Dimensions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32-mini-1",
+      "name": "ESP32-MINI-1",
+      "chip_family": "ESP32",
+      "module_markings": [
+        "ESP32-MINI-1",
+        "ESP32-MINI-1U"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-MINI-1",
+          "antenna": "On-board PCB antenna",
+          "flash": "4 MB SPI flash in chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 16.6 x 2.4 mm",
+          "pinout_impact": "Same 55-pad layout as MINI-1U; GPIO6, GPIO7, GPIO8, GPIO11, GPIO16, and GPIO17 are internally used by flash."
+        },
+        {
+          "name": "ESP32-MINI-1U",
+          "antenna": "External antenna connector",
+          "flash": "4 MB SPI flash in chip package",
+          "psram": "No PSRAM",
+          "footprint": "13.2 x 12.5 x 2.4 mm",
+          "pinout_impact": "Same 55-pad layout as MINI-1; the antenna connector changes RF layout only."
+        }
+      ],
+      "route": "/modules/esp32-mini-1",
+      "general_purpose_candidates": [
+        "GPIO36",
+        "GPIO37",
+        "GPIO38",
+        "GPIO39",
+        "GPIO34",
+        "GPIO35",
+        "GPIO32",
+        "GPIO33",
+        "GPIO25",
+        "GPIO26",
+        "GPIO27",
+        "GPIO14",
+        "GPIO13",
+        "GPIO4",
+        "GPIO9",
+        "GPIO10",
+        "GPIO18",
+        "GPIO23",
+        "GPIO19",
+        "GPIO22",
+        "GPIO21"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO12",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO36",
+          "functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "RTC_GPIO0",
+            "S_VP"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "functions": [
+            "GPIO37",
+            "ADC1_CH1",
+            "RTC_GPIO1",
+            "SENSOR_CAPP"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "functions": [
+            "GPIO38",
+            "ADC1_CH2",
+            "RTC_GPIO2",
+            "SENSOR_CAPN"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "RTC_GPIO3",
+            "S_VN"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "RTC_GPIO4",
+            "VDET_1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "RTC_GPIO5",
+            "VDET_2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO32",
+          "functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO33",
+          "functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO25",
+          "functions": [
+            "GPIO25",
+            "ADC2_CH8",
+            "RTC_GPIO6",
+            "DAC_1",
+            "EMAC_RXD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "ADC2_CH9",
+            "RTC_GPIO7",
+            "DAC_2",
+            "EMAC_RXD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "ADC2_CH7",
+            "RTC_GPIO17",
+            "TOUCH7",
+            "EMAC_RX_DV"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "RTC_GPIO16",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "RTC_GPIO15",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "RTC_GPIO14",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "RTC_GPIO13",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls U0TXD printing and SDIO slave timing at reset.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "RTC_GPIO12",
+            "TOUCH2"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls boot mode with GPIO0."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "ADC2_CH1",
+            "RTC_GPIO11",
+            "TOUCH1",
+            "Boot"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "RTC_GPIO10",
+            "TOUCH0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "SD_DATA2",
+            "SPIHD"
+          ],
+          "warnings": [],
+          "notes": [
+            "GPIO9 is available on this module pad."
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "SD_DATA3",
+            "SPIWP"
+          ],
+          "warnings": [],
+          "notes": [
+            "GPIO10 is available on this module pad."
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "VSPICS0",
+            "EMAC_RX_CLK"
+          ],
+          "warnings": [
+            "Strapping"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls SDIO slave timing at reset."
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "VSPICLK"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "VSPID"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "U0CTS",
+            "VSPIQ",
+            "EMAC_TXD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22",
+            "U0RTS",
+            "VSPIWP",
+            "EMAC_TXD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO3",
+            "GPIO1"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 55-pad ESP32-MINI-1/1U module layout, not the bare ESP32 package or a development-board header.",
+        "MINI-1 uses a PCB antenna; MINI-1U uses an external antenna connector with the same padout."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-MINI-1 & ESP32-MINI-1U Datasheet",
+          "url": "https://www.espressif.com/sites/default/files/documentation/esp32-mini-1_datasheet_en.pdf",
+          "sections": [
+            "Module Overview",
+            "Series Comparison",
+            "Pin Layout",
+            "Pin Description",
+            "Boot Configurations",
+            "Module Schematics",
+            "Physical Dimensions"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32-pico-mini-02",
+      "name": "ESP32-PICO-MINI-02",
+      "chip_family": "ESP32",
+      "module_markings": [
+        "ESP32-PICO-MINI-02",
+        "ESP32-PICO-MINI-02U"
+      ],
+      "module_variant_details": [
+        {
+          "name": "ESP32-PICO-MINI-02",
+          "antenna": "On-board PCB antenna",
+          "flash": "8 MB SPI flash in package",
+          "psram": "2 MB PSRAM in package",
+          "footprint": "13.2 x 16.6 x 2.4 mm",
+          "pinout_impact": "Same 53-pad layout as PICO-MINI-02U; GPIO6/GPIO11 are flash-connected and GPIO9/GPIO10 are PSRAM-connected internally."
+        },
+        {
+          "name": "ESP32-PICO-MINI-02U",
+          "antenna": "External antenna connector",
+          "flash": "8 MB SPI flash in package",
+          "psram": "2 MB PSRAM in package",
+          "footprint": "13.2 x 12.5 x 2.4 mm",
+          "pinout_impact": "Same 53-pad layout as PICO-MINI-02; the antenna connector changes RF layout only."
+        }
+      ],
+      "route": "/modules/esp32-pico-mini-02",
+      "general_purpose_candidates": [
+        "GPIO36",
+        "GPIO37",
+        "GPIO38",
+        "GPIO39",
+        "GPIO34",
+        "GPIO35",
+        "GPIO32",
+        "GPIO33",
+        "GPIO25",
+        "GPIO26",
+        "GPIO27",
+        "GPIO14",
+        "GPIO13",
+        "GPIO4",
+        "GPIO20",
+        "GPIO7",
+        "GPIO8",
+        "GPIO19",
+        "GPIO22",
+        "GPIO21"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO12",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO36",
+          "functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "RTC_GPIO0",
+            "S_VP"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "functions": [
+            "GPIO37",
+            "ADC1_CH1",
+            "RTC_GPIO1",
+            "SENSOR_CAPP"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "functions": [
+            "GPIO38",
+            "ADC1_CH2",
+            "RTC_GPIO2",
+            "SENSOR_CAPN"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "RTC_GPIO3",
+            "S_VN"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "RTC_GPIO4",
+            "VDET_1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "RTC_GPIO5",
+            "VDET_2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ]
+        },
+        {
+          "gpio": "GPIO32",
+          "functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO33",
+          "functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO25",
+          "functions": [
+            "GPIO25",
+            "ADC2_CH8",
+            "RTC_GPIO6",
+            "DAC_1",
+            "EMAC_RXD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "ADC2_CH9",
+            "RTC_GPIO7",
+            "DAC_2",
+            "EMAC_RXD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "ADC2_CH7",
+            "RTC_GPIO17",
+            "TOUCH7",
+            "EMAC_RX_DV"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "RTC_GPIO16",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "RTC_GPIO15",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "RTC_GPIO14",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "RTC_GPIO13",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls U0TXD printing and SDIO slave timing at reset.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "RTC_GPIO12",
+            "TOUCH2"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls boot mode with GPIO0."
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "ADC2_CH1",
+            "RTC_GPIO11",
+            "TOUCH1",
+            "Boot"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "RTC_GPIO10",
+            "TOUCH0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO20",
+          "functions": [
+            "GPIO20"
+          ],
+          "warnings": [],
+          "notes": [
+            "GPIO20 is exposed only by the ESP32-PICO-MINI-02 module."
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "SD_DATA0",
+            "SPIQ"
+          ],
+          "warnings": [],
+          "notes": [
+            "GPIO7 is exposed by this module."
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "SD_DATA1",
+            "SPID"
+          ],
+          "warnings": [],
+          "notes": [
+            "GPIO8 is exposed by this module."
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "VSPICS0",
+            "EMAC_RX_CLK"
+          ],
+          "warnings": [
+            "Strapping"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls SDIO slave timing at reset."
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "U0CTS",
+            "VSPIQ",
+            "EMAC_TXD0"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22",
+            "U0RTS",
+            "VSPIWP",
+            "EMAC_TXD1"
+          ],
+          "warnings": [],
+          "notes": []
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "warnings": [],
+          "notes": []
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Documented module pads with UART0 data functions; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO3",
+            "GPIO1"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Module-level guidance only: this does not identify a carrier board or guarantee that a header pin is unused.",
+        "A carrier board can connect exposed GPIOs to LEDs, USB bridges, buttons, power circuitry, or other peripherals.",
+        "This profile is the 53-pad ESP32-PICO-MINI-02/02U module layout, not the bare ESP32 package or a development-board header.",
+        "PICO-MINI-02 uses a PCB antenna; PICO-MINI-02U uses an external antenna connector with the same padout."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-PICO-MINI-02 & ESP32-PICO-MINI-02U Datasheet",
+          "url": "https://www.espressif.com/sites/default/files/documentation/esp32-pico-mini-02_datasheet_en.pdf",
+          "sections": [
+            "Module Overview",
+            "Series Comparison",
+            "Pin Layout",
+            "Pin Description",
+            "Module Schematics",
+            "Physical Dimensions"
           ]
         }
       ]
