@@ -1,0 +1,6157 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-17T18:40:43.638Z",
+  "chips": [
+    {
+      "id": "esp32s3",
+      "name": "ESP32-S3",
+      "chip_family": "ESP32-S3",
+      "package_name": "QFN56 (7 x 7 mm), top view",
+      "route": "/chips/esp32s3",
+      "raw_pin_data_available": true,
+      "chip_specs": {
+        "cpu": "Dual-core 32-bit Xtensa LX7, up to 240 MHz",
+        "wireless": "2.4 GHz Wi-Fi 802.11 b/g/n and Bluetooth 5 LE.",
+        "sram": "512 KB SRAM and 16 KB RTC SRAM.",
+        "rom": "384 KB ROM."
+      },
+      "general_purpose_candidates": [
+        "GPIO1",
+        "GPIO2",
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7",
+        "GPIO8",
+        "GPIO9",
+        "GPIO10",
+        "GPIO11",
+        "GPIO12",
+        "GPIO13",
+        "GPIO14",
+        "GPIO15",
+        "GPIO16",
+        "GPIO17",
+        "GPIO18",
+        "GPIO21",
+        "GPIO38",
+        "GPIO39",
+        "GPIO40",
+        "GPIO41",
+        "GPIO42"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO26",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO48",
+          "warning": "Voltage"
+        },
+        {
+          "gpio": "GPIO47",
+          "warning": "Voltage"
+        },
+        {
+          "gpio": "GPIO33",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO34",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO35",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO36",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO37",
+          "warning": "PSRAM"
+        },
+        {
+          "gpio": "GPIO43",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO44",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO45",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO46",
+          "warning": "Strapping, Boot"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "RTC_GPIO0",
+            "SAR I2C SCL0"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO46; GPIO0=0 and GPIO46=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "RTC_GPIO1",
+            "TOUCH1",
+            "ADC1_CH0",
+            "SAR I2C SDA0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH1",
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "RTC_GPIO2",
+            "TOUCH2",
+            "ADC1_CH1",
+            "SAR I2C SCL1"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH2",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "RTC_GPIO3",
+            "TOUCH3",
+            "ADC1_CH2",
+            "SAR I2C SDA1"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO3 has no internal pull resistors and the external circuit must not be high impedance during strapping.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH3",
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "RTC_GPIO4",
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH4",
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "RTC_GPIO5",
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH5",
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "GPIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "RTC_GPIO6",
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH6",
+            "ADC1_CH5"
+          ],
+          "io_mux": [
+            "GPIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "RTC_GPIO7",
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH7",
+            "ADC1_CH6"
+          ],
+          "io_mux": [
+            "GPIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "ADC1_CH7",
+            "SUBSPICS1"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH8",
+            "ADC1_CH7"
+          ],
+          "io_mux": [
+            "GPIO8",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "ADC1_CH8",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH9",
+            "ADC1_CH8"
+          ],
+          "io_mux": [
+            "GPIO9",
+            "SUBSPIHD",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "RTC_GPIO10",
+            "TOUCH10",
+            "ADC1_CH9",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH10",
+            "ADC1_CH9"
+          ],
+          "io_mux": [
+            "GPIO10",
+            "FSPIIO4",
+            "SUBSPICS0",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11",
+            "RTC_GPIO11",
+            "TOUCH11",
+            "ADC2_CH0",
+            "FSPIIO5",
+            "SUBSPID",
+            "FSPID"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH11",
+            "ADC2_CH0"
+          ],
+          "io_mux": [
+            "GPIO11",
+            "FSPIIO5",
+            "SUBSPID",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "RTC_GPIO12",
+            "TOUCH12",
+            "ADC2_CH1",
+            "FSPIIO6",
+            "SUBSPICLK",
+            "FSPICLK"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH12",
+            "ADC2_CH1"
+          ],
+          "io_mux": [
+            "GPIO12",
+            "FSPIIO6",
+            "SUBSPICLK",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "RTC_GPIO13",
+            "TOUCH13",
+            "ADC2_CH2",
+            "FSPIIO7",
+            "SUBSPIQ",
+            "FSPIQ"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH13",
+            "ADC2_CH2"
+          ],
+          "io_mux": [
+            "GPIO13",
+            "FSPIIO7",
+            "SUBSPIQ",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "RTC_GPIO14",
+            "TOUCH14",
+            "ADC2_CH3",
+            "FSPIDQS",
+            "SUBSPIWP",
+            "FSPIWP"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "TOUCH14",
+            "ADC2_CH3"
+          ],
+          "io_mux": [
+            "GPIO14",
+            "FSPIDQS",
+            "SUBSPIWP",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "RTC_GPIO15",
+            "32 kHz crystal positive",
+            "ADC2_CH4",
+            "U0RTS"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO15.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "XTAL_32K_P",
+            "ADC2_CH4"
+          ],
+          "io_mux": [
+            "GPIO15",
+            "U0RTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "RTC_GPIO16",
+            "32 kHz crystal negative",
+            "ADC2_CH5",
+            "U0CTS"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO16.",
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "XTAL_32K_N",
+            "ADC2_CH5"
+          ],
+          "io_mux": [
+            "GPIO16",
+            "U0CTS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "RTC_GPIO17",
+            "ADC2_CH6",
+            "U1TXD"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH6"
+          ],
+          "io_mux": [
+            "GPIO17",
+            "U1TXD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "RTC_GPIO18",
+            "ADC2_CH7",
+            "U1RXD",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitch for about 60 us."
+          ],
+          "analog": [
+            "ADC2_CH7"
+          ],
+          "io_mux": [
+            "GPIO18",
+            "U1RXD",
+            "CLK_OUT3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "RTC_GPIO19",
+            "USB_D-",
+            "ADC2_CH8",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up low-level glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D-",
+            "ADC2_CH8"
+          ],
+          "io_mux": [
+            "GPIO19",
+            "U1RTS",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "functions": [
+            "GPIO20",
+            "RTC_GPIO20",
+            "USB_D+",
+            "ADC2_CH9",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_D pins are connected to USB Serial/JTAG by default and need IO MUX reconfiguration before regular GPIO use.",
+            "Power-up pull-down glitch for about 60 us.",
+            "Power-up high-level glitches occur twice; Espressif lists about 3.2 ms total duration and about 2 ms delay."
+          ],
+          "analog": [
+            "USB_D+",
+            "ADC2_CH9"
+          ],
+          "io_mux": [
+            "GPIO20",
+            "U1CTS",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "RTC_GPIO21"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO21"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "SPICS1",
+            "Flash/PSRAM CS1"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Allocated or recommended for SPI0/1 flash/PSRAM. Do not reuse if connected to in-package flash/PSRAM.",
+            "CS1 is for in-package PSRAM."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICS1",
+            "GPIO26"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "SPIHD",
+            "Flash HOLD#/DQ3"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Allocated or recommended for SPI0/1 flash/PSRAM. Do not reuse if connected to in-package flash/PSRAM."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIHD",
+            "GPIO27"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO28",
+          "functions": [
+            "GPIO28",
+            "SPIWP",
+            "Flash WP#/DQ2"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Allocated or recommended for SPI0/1 flash/PSRAM. Do not reuse if connected to in-package flash/PSRAM."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIWP",
+            "GPIO28"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO29",
+          "functions": [
+            "GPIO29",
+            "SPICS0",
+            "Flash CS0"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Allocated or recommended for SPI0/1 flash/PSRAM. Do not reuse if connected to in-package flash/PSRAM.",
+            "CS0 is for in-package flash."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICS0",
+            "GPIO29"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO30",
+          "functions": [
+            "GPIO30",
+            "SPICLK",
+            "Flash/PSRAM clock"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Allocated or recommended for SPI0/1 flash/PSRAM. Do not reuse if connected to in-package flash/PSRAM."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK",
+            "GPIO30"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO31",
+          "functions": [
+            "GPIO31",
+            "SPIQ",
+            "Flash DO/DQ1"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Allocated or recommended for SPI0/1 flash/PSRAM. Do not reuse if connected to in-package flash/PSRAM."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIQ",
+            "GPIO31"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO32",
+          "functions": [
+            "GPIO32",
+            "SPID",
+            "Flash DI/DQ0"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Allocated or recommended for SPI0/1 flash/PSRAM. Do not reuse if connected to in-package flash/PSRAM."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPID",
+            "GPIO32"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO48",
+          "functions": [
+            "GPIO48",
+            "SPICLK_N_DIFF",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "warnings": [
+            "Voltage"
+          ],
+          "notes": [
+            "Differential SPI/SUBSPI negative clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_N_DIFF",
+            "GPIO48",
+            "SUBSPICLK_N_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO47",
+          "functions": [
+            "GPIO47",
+            "SPICLK_P_DIFF",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "warnings": [
+            "Voltage"
+          ],
+          "notes": [
+            "Differential SPI/SUBSPI positive clock.",
+            "On ESP32-S3R8V and ESP32-S3R16V, this pin can operate at 1.8 V."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK_P_DIFF",
+            "GPIO47",
+            "SUBSPICLK_P_DIFF"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "functions": [
+            "GPIO33",
+            "FSPIHD",
+            "SUBSPIHD",
+            "SPIIO4",
+            "Octal SPI DQ4"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO33",
+            "FSPIHD",
+            "SUBSPIHD",
+            "SPIIO4"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "functions": [
+            "GPIO34",
+            "FSPICS0",
+            "SUBSPICS0",
+            "SPIIO5",
+            "Octal SPI DQ5"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO34",
+            "FSPICS0",
+            "SUBSPICS0",
+            "SPIIO5"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "functions": [
+            "GPIO35",
+            "FSPID",
+            "SUBSPID",
+            "SPIIO6",
+            "Octal SPI DQ6"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO35",
+            "FSPID",
+            "SUBSPID",
+            "SPIIO6"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO36",
+          "functions": [
+            "GPIO36",
+            "FSPICLK",
+            "SUBSPICLK",
+            "SPIIO7",
+            "Octal SPI DQ7"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO36",
+            "FSPICLK",
+            "SUBSPICLK",
+            "SPIIO7"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "functions": [
+            "GPIO37",
+            "FSPIQ",
+            "SUBSPIQ",
+            "SPIDQS",
+            "Octal SPI DQS/DM"
+          ],
+          "warnings": [
+            "PSRAM"
+          ],
+          "notes": [
+            "Used by SPI0/1 as higher data or DQS in 8-line flash/PSRAM mode; usable as GPIO only when that memory mode is not used."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO37",
+            "FSPIQ",
+            "SUBSPIQ",
+            "SPIDQS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "functions": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO38",
+            "FSPIWP",
+            "SUBSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "MTCK",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTCK",
+            "GPIO39",
+            "CLK_OUT3",
+            "SUBSPICS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO40",
+          "functions": [
+            "GPIO40",
+            "MTDO",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO40",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO41",
+          "functions": [
+            "GPIO41",
+            "MTDI",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDI",
+            "GPIO41",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO42",
+          "functions": [
+            "GPIO42",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTMS",
+            "GPIO42"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO43",
+          "functions": [
+            "GPIO43",
+            "U0TXD",
+            "CLK_OUT1"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO43",
+            "CLK_OUT1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO44",
+          "functions": [
+            "GPIO44",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO44",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO45",
+          "functions": [
+            "GPIO45",
+            "VDD_SPI voltage strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-down.",
+            "Participates in VDD_SPI voltage selection: default GPIO45=0 selects 3.3 V when eFuse does not force another value."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO45"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO46",
+          "functions": [
+            "GPIO46",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-down.",
+            "Controls boot mode with GPIO0; GPIO0=0 and GPIO46=0 selects joint download boot mode.",
+            "Also participates in ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO46"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART2",
+            "TWAI",
+            "LED PWM",
+            "I2S",
+            "LCD",
+            "Camera",
+            "SPI3",
+            "SD/MMC",
+            "MCPWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented raw-chip USB data GPIOs.",
+          "candidate_pins": [
+            "GPIO19",
+            "GPIO20"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented raw-chip UART0 data GPIOs; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO43",
+            "GPIO44"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Raw-chip guidance only: this does not identify a module or carrier board, verify header exposure, or guarantee that a GPIO is unused by carrier hardware."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-S3 Series Datasheet",
+          "url": "https://documentation.espressif.com/esp32-s3_datasheet_en.pdf",
+          "sections": [
+            "Figure 2-1 ESP32-S3 Pin Layout (Top View)",
+            "Table 2-1 Pin Overview",
+            "Table 2-2 Power-Up Glitches on Pins",
+            "Table 2-4 IO MUX Functions",
+            "Table 2-6 RTC Functions",
+            "Table 2-8 Analog Functions",
+            "Section 2.3.4 Restrictions for GPIOs and RTC_GPIOs",
+            "Table 2-14 Pin Mapping Between Chip and Flash or PSRAM",
+            "Table 3-1 Default Configuration of Strapping Pins",
+            "Table 3-3 Chip Boot Mode Control",
+            "Table 3-4 VDD_SPI Voltage Control",
+            "Table 3-5 JTAG Signal Source Control",
+            "Features"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32c6",
+      "name": "ESP32-C6",
+      "chip_family": "ESP32-C6",
+      "package_name": "QFN40 (5 x 5 mm), top view",
+      "route": "/chips/esp32c6",
+      "raw_pin_data_available": true,
+      "chip_specs": {
+        "cpu": "Single-core 32-bit RISC-V HP CPU up to 160 MHz, plus low-power RISC-V core",
+        "wireless": "2.4 GHz Wi-Fi 6 802.11 b/g/n/ax, Bluetooth 5 LE, and IEEE 802.15.4.",
+        "sram": "512 KB HP SRAM and 16 KB LP SRAM.",
+        "rom": "320 KB ROM."
+      },
+      "general_purpose_candidates": [
+        "GPIO0",
+        "GPIO1",
+        "GPIO2",
+        "GPIO3",
+        "GPIO6",
+        "GPIO7",
+        "GPIO10",
+        "GPIO11",
+        "GPIO18",
+        "GPIO19",
+        "GPIO20",
+        "GPIO21",
+        "GPIO22",
+        "GPIO23"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO4",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO12",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO13",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO27",
+          "warning": "Voltage"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO16",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO17",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "LP_GPIO0",
+            "LP_UART_DTRN",
+            "XTAL_32K_P",
+            "ADC1_CH0"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO0."
+          ],
+          "analog": [
+            "XTAL_32K_P",
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "LP_GPIO1",
+            "LP_UART_DSRN",
+            "XTAL_32K_N",
+            "ADC1_CH1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO1."
+          ],
+          "analog": [
+            "XTAL_32K_N",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO1"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "LP_GPIO2",
+            "LP_UART_RTSN",
+            "ADC1_CH2",
+            "FSPIQ"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO2",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "LP_GPIO3",
+            "LP_UART_CTSN",
+            "ADC1_CH3"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "MTMS",
+            "LP_GPIO4",
+            "LP_UART_RXD",
+            "ADC1_CH4",
+            "FSPIHD"
+          ],
+          "warnings": [
+            "JTAG",
+            "Strapping"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Strapping pin for SDIO input sampling and output driving edge control; default is floating."
+          ],
+          "analog": [
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "MTMS",
+            "GPIO4",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "MTDI",
+            "LP_GPIO5",
+            "LP_UART_TXD",
+            "ADC1_CH5",
+            "FSPIWP"
+          ],
+          "warnings": [
+            "JTAG",
+            "Strapping"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Strapping pin for SDIO input sampling and output driving edge control; default is floating."
+          ],
+          "analog": [
+            "ADC1_CH5"
+          ],
+          "io_mux": [
+            "MTDI",
+            "GPIO5",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "MTCK",
+            "LP_GPIO6",
+            "LP_I2C_SDA",
+            "ADC1_CH6",
+            "FSPICLK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Reset pull-up behavior depends on EFUSE_DIS_PAD_JTAG."
+          ],
+          "analog": [
+            "ADC1_CH6"
+          ],
+          "io_mux": [
+            "MTCK",
+            "GPIO6",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "MTDO",
+            "LP_GPIO7",
+            "LP_I2C_SCL",
+            "FSPID"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO7",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default floating state.",
+            "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO8"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO8; GPIO8=1 and GPIO9=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO10"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO11"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "GPIO12 and GPIO13 have 40 mA default drive strength."
+          ],
+          "analog": [
+            "USB_D-"
+          ],
+          "io_mux": [
+            "GPIO12"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "GPIO12 and GPIO13 have 40 mA default drive strength."
+          ],
+          "analog": [
+            "USB_D+"
+          ],
+          "io_mux": [
+            "GPIO13"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO24",
+          "functions": [
+            "GPIO24",
+            "SPICS0",
+            "Flash CS#"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Recommended for the off-package SPI0/1 flash interface. Do not use flash-connected pins for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICS0",
+            "GPIO24"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO25",
+          "functions": [
+            "GPIO25",
+            "SPIQ",
+            "Flash MISO/SIO1"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Recommended for the off-package SPI0/1 flash interface. Do not use flash-connected pins for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIQ",
+            "GPIO25"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "SPIWP",
+            "Flash WP#/SIO2"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Recommended for the off-package SPI0/1 flash interface. Do not use flash-connected pins for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIWP",
+            "GPIO26"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "VDD_SPI flash power"
+          ],
+          "warnings": [
+            "Power domain",
+            "Flash memory",
+            "Voltage"
+          ],
+          "notes": [
+            "Power supply pin for off-package flash by default.",
+            "Can be reconfigured as GPIO27 only if flash is powered by an external power supply."
+          ],
+          "analog": [
+            "VDD_SPI"
+          ],
+          "io_mux": [
+            "GPIO27"
+          ],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO28",
+          "functions": [
+            "GPIO28",
+            "SPIHD",
+            "Flash HOLD#/SIO3"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Recommended for the off-package SPI0/1 flash interface. Do not use flash-connected pins for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIHD",
+            "GPIO28"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO29",
+          "functions": [
+            "GPIO29",
+            "SPICLK",
+            "Flash clock"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Recommended for the off-package SPI0/1 flash interface. Do not use flash-connected pins for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK",
+            "GPIO29"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO30",
+          "functions": [
+            "GPIO30",
+            "SPID",
+            "Flash MOSI/SIO0"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Recommended for the off-package SPI0/1 flash interface. Do not use flash-connected pins for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPID",
+            "GPIO30"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "JTAG signal source strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO15 has no internal pull resistors and the external circuit must not be high impedance during strapping."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO15"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "U0TXD",
+            "FSPICS0"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO16",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "U0RXD",
+            "FSPICS1"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO17",
+            "FSPICS1"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "SDIO_CMD",
+            "FSPICS2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave command signal through IO MUX. Joint download boot mode supports SDIO download."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SDIO_CMD",
+            "GPIO18",
+            "FSPICS2"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "SDIO_CLK",
+            "FSPICS3"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave clock signal through IO MUX."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SDIO_CLK",
+            "GPIO19",
+            "FSPICS3"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "functions": [
+            "GPIO20",
+            "SDIO_DATA0",
+            "FSPICS4"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 0 signal through IO MUX."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SDIO_DATA0",
+            "GPIO20",
+            "FSPICS4"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "SDIO_DATA1",
+            "FSPICS5"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 1 signal through IO MUX."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SDIO_DATA1",
+            "GPIO21",
+            "FSPICS5"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22",
+            "SDIO_DATA2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 2 signal through IO MUX."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SDIO_DATA2",
+            "GPIO22"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "SDIO_DATA3"
+          ],
+          "warnings": [],
+          "notes": [
+            "Fixed SDIO Slave data 3 signal through IO MUX."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SDIO_DATA3",
+            "GPIO23"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented raw-chip USB data GPIOs.",
+          "candidate_pins": [
+            "GPIO12",
+            "GPIO13"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented raw-chip UART0 data GPIOs; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO16",
+            "GPIO17"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Raw-chip guidance only: this does not identify a module or carrier board, verify header exposure, or guarantee that a GPIO is unused by carrier hardware."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C6 Series Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c6_datasheet_en.pdf",
+          "sections": [
+            "Figure 2-1 ESP32-C6 Pin Layout (QFN40, Top View)",
+            "Figure 2-2 ESP32-C6 Pin Layout (QFN32, Top View)",
+            "Table 2-1 QFN40 Pin Overview",
+            "Table 2-2 QFN32 Pin Overview",
+            "Table 2-4 QFN40 IO MUX Pin Functions",
+            "Table 2-5 QFN32 IO MUX Pin Functions",
+            "Table 2-7 LP IO MUX Functions",
+            "Table 2-9 Analog Functions",
+            "Section 2.3.4 Restrictions for GPIOs and LP GPIOs",
+            "Table 2-10 QFN40 Peripheral Pin Assignment",
+            "Table 2-11 QFN32 Peripheral Pin Assignment",
+            "Table 2-16 Pin Mapping Between QFN40 Chip and Flash",
+            "Table 3-1 Default Configuration of Strapping Pins",
+            "Table 3-3 Chip Boot Mode Control",
+            "Table 3-4 SDIO Input Sampling Edge/Output Driving Edge Control",
+            "Table 3-5 UART0 ROM Message Printing Control",
+            "Table 3-7 JTAG Signal Source Control",
+            "Features"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32c3",
+      "name": "ESP32-C3",
+      "chip_family": "ESP32-C3",
+      "package_name": "QFN32 (5 x 5 mm), 22 GPIO, top view",
+      "route": "/chips/esp32c3",
+      "raw_pin_data_available": true,
+      "chip_specs": {
+        "cpu": "Single-core 32-bit RISC-V CPU up to 160 MHz",
+        "wireless": "2.4 GHz Wi-Fi and Bluetooth LE 5.",
+        "sram": "400 KB SRAM.",
+        "rom": "384 KB ROM."
+      },
+      "general_purpose_candidates": [
+        "GPIO0",
+        "GPIO1",
+        "GPIO3",
+        "GPIO4",
+        "GPIO5",
+        "GPIO6",
+        "GPIO7",
+        "GPIO10"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO11",
+          "warning": "Voltage"
+        },
+        {
+          "gpio": "GPIO18",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "XTAL_32K_P",
+            "ADC1_CH0"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO0."
+          ],
+          "analog": [
+            "XTAL_32K_P",
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "XTAL_32K_N",
+            "ADC1_CH1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO1."
+          ],
+          "analog": [
+            "XTAL_32K_N",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO1"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "ADC1_CH2",
+            "FSPIQ"
+          ],
+          "warnings": [
+            "Strapping",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Strapping pin. Espressif recommends pulling GPIO2 high because of power-up glitches."
+          ],
+          "analog": [
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO2",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "ADC1_CH3"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "MTMS",
+            "ADC1_CH4",
+            "FSPIHD"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; USB Serial/JTAG can be used when these default JTAG pins need to be freed."
+          ],
+          "analog": [
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "MTMS",
+            "GPIO4",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "MTDI",
+            "ADC2_CH0",
+            "FSPIWP"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; USB Serial/JTAG can be used when these default JTAG pins need to be freed.",
+            "ADC2 may not be operable on some ESP32-C3 chip revisions."
+          ],
+          "analog": [
+            "ADC2_CH0"
+          ],
+          "io_mux": [
+            "MTDI",
+            "GPIO5",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "MTCK",
+            "FSPICLK"
+          ],
+          "warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "JTAG debug signal; USB Serial/JTAG can be used when these default JTAG pins need to be freed.",
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTCK",
+            "GPIO6",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "MTDO",
+            "FSPID"
+          ],
+          "warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "JTAG debug signal; USB Serial/JTAG can be used when these default JTAG pins need to be freed.",
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO7",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default floating state.",
+            "GPIO8=1 with GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO8"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "GPIO8=1 with GPIO9=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "FSPICS0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO10",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11",
+            "VDD_SPI flash power"
+          ],
+          "warnings": [
+            "Power domain",
+            "Flash memory",
+            "Voltage"
+          ],
+          "notes": [
+            "Flash power supply pin by default. It can be reconfigured as GPIO11 only when external flash has an external power supply."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO11"
+          ],
+          "matrix_signals": []
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "SPIHD",
+            "Flash HOLD#/SIO3"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Connected to in-package flash or recommended for flash; do not use this pin for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIHD",
+            "GPIO12"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "SPIWP",
+            "Flash WP#/SIO2"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Connected to in-package flash or recommended for flash; do not use this pin for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIWP",
+            "GPIO13"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "SPICS0",
+            "Flash CS#"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Connected to in-package flash or recommended for flash; do not use this pin for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICS0",
+            "GPIO14"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "SPICLK",
+            "Flash clock"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Connected to in-package flash or recommended for flash; do not use this pin for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPICLK",
+            "GPIO15"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "SPID",
+            "Flash MOSI/SIO0"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Connected to in-package flash or recommended for flash; do not use this pin for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPID",
+            "GPIO16"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "SPIQ",
+            "Flash MISO/SIO1"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Connected to in-package flash or recommended for flash; do not use this pin for other purposes."
+          ],
+          "analog": [],
+          "io_mux": [
+            "SPIQ",
+            "GPIO17"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "Espressif documents a high-level power-up glitch on this pin."
+          ],
+          "analog": [
+            "USB_D-"
+          ],
+          "io_mux": [
+            "GPIO18"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use."
+          ],
+          "analog": [
+            "USB_D+"
+          ],
+          "io_mux": [
+            "GPIO19"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "functions": [
+            "GPIO20",
+            "U0RXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO20"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "U0TXD"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO21"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented raw-chip USB data GPIOs.",
+          "candidate_pins": [
+            "GPIO18",
+            "GPIO19"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented raw-chip UART0 data GPIOs; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO20",
+            "GPIO21"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Raw-chip guidance only: this does not identify a module or carrier board, verify header exposure, or guarantee that a GPIO is unused by carrier hardware."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-C3 Series Datasheet",
+          "url": "https://documentation.espressif.com/esp32-c3_datasheet_en.pdf",
+          "sections": [
+            "Figure 2-1 Pin Layout (Top View) for ESP32-C3, ESP32-C3FH4, ESP32-C3FN4, and ESP32-C3FH8X",
+            "Figure 2-2 Pin Layout (Top View) for ESP32-C3FH4X and ESP32-C3FH4AZ",
+            "Table 2-1 Pin Overview",
+            "Table 2-4 IO MUX Pin Functions",
+            "Table 2-6 Analog Functions",
+            "Section 2.3.3 Restrictions for GPIOs",
+            "Table 2-7 Peripheral Pin Assignment",
+            "Table 2-9 Power Pins",
+            "Table 2-12 Pin Mapping Between Chip and In-package Flash",
+            "Table 3-1 Default Configuration of Strapping Pins",
+            "Table 3-3 Chip Boot Mode Control",
+            "Table 3-4 UART0 ROM Message Printing Control"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32h2",
+      "name": "ESP32-H2",
+      "chip_family": "ESP32-H2",
+      "package_name": "QFN32 (4 x 4 mm), top view",
+      "route": "/chips/esp32h2",
+      "raw_pin_data_available": true,
+      "chip_specs": {
+        "cpu": "Single-core 32-bit RISC-V CPU up to 96 MHz",
+        "wireless": "Bluetooth 5 LE and IEEE 802.15.4 for Thread, Zigbee, and Matter.",
+        "sram": "320 KB SRAM and 4 KB LP memory.",
+        "rom": "128 KB ROM."
+      },
+      "general_purpose_candidates": [
+        "GPIO0",
+        "GPIO1",
+        "GPIO2",
+        "GPIO3",
+        "GPIO4",
+        "GPIO5",
+        "GPIO10",
+        "GPIO11",
+        "GPIO12",
+        "GPIO13",
+        "GPIO14",
+        "GPIO22"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO8",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO23",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO24",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO25",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO26",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO27",
+          "warning": "USB"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "FSPIQ"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO0",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "FSPICS0",
+            "ADC1_CH0"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO1",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "MTMS",
+            "FSPIWP",
+            "ADC1_CH1"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "MTMS",
+            "GPIO2",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "MTDO",
+            "FSPIHD",
+            "ADC1_CH2"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "MTDO",
+            "GPIO3",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "MTCK",
+            "FSPICLK",
+            "ADC1_CH3"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead.",
+            "Reset pull-up behavior depends on EFUSE_DIS_PAD_JTAG."
+          ],
+          "analog": [
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "MTCK",
+            "GPIO4",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "MTDI",
+            "FSPID",
+            "ADC1_CH4"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; freeing these pins may require using USB Serial/JTAG instead."
+          ],
+          "analog": [
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "MTDI",
+            "GPIO5",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "Boot mode strapping",
+            "ROM message control"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default floating state.",
+            "Controls boot mode with GPIO9; GPIO8=1 and GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO8"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin with default weak pull-up.",
+            "Controls boot mode with GPIO8; GPIO8=1 and GPIO9=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "ZCD0"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ZCD0"
+          ],
+          "io_mux": [
+            "GPIO10"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11",
+            "ZCD1"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ZCD1"
+          ],
+          "io_mux": [
+            "GPIO11"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO12"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "XTAL_32K_P"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO13."
+          ],
+          "analog": [
+            "XTAL_32K_P"
+          ],
+          "io_mux": [
+            "GPIO13"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "XTAL_32K_N"
+          ],
+          "warnings": [],
+          "notes": [
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO14."
+          ],
+          "analog": [
+            "XTAL_32K_N"
+          ],
+          "io_mux": [
+            "GPIO14"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO22"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "U0RXD",
+            "FSPICS1"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO23",
+            "FSPICS1"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO24",
+          "functions": [
+            "GPIO24",
+            "U0TXD",
+            "FSPICS2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO24",
+            "FSPICS2"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO25",
+          "functions": [
+            "GPIO25",
+            "FSPICS3",
+            "JTAG signal source strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin for JTAG signal source selection; default is floating.",
+            "Espressif notes GPIO25 has no internal pull resistors and the external circuit must not be high impedance during strapping."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO25",
+            "FSPICS3"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "FSPICS4",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "Default drive strength for GPIO26 is 40 mA."
+          ],
+          "analog": [
+            "USB_D-"
+          ],
+          "io_mux": [
+            "GPIO26",
+            "FSPICS4"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "FSPICS5",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ],
+          "notes": [
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "Default drive strength for GPIO27 is 40 mA."
+          ],
+          "analog": [
+            "USB_D+"
+          ],
+          "io_mux": [
+            "GPIO27",
+            "FSPICS5"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "PCNT",
+            "TWAI",
+            "LED PWM",
+            "MCPWM",
+            "RMT",
+            "PARLIO"
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Documented raw-chip USB data GPIOs.",
+          "candidate_pins": [
+            "GPIO26",
+            "GPIO27"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Documented raw-chip UART0 data GPIOs; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO23",
+            "GPIO24"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Raw-chip guidance only: this does not identify a module or carrier board, verify header exposure, or guarantee that a GPIO is unused by carrier hardware."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-H2 Series Datasheet",
+          "url": "https://documentation.espressif.com/esp32-h2_datasheet_en.pdf",
+          "sections": [
+            "Figure 2-1 ESP32-H2 Pin Layout (Top View)",
+            "Table 2-1 Pin Overview",
+            "Table 2-3 IO MUX Pin Functions",
+            "Table 2-5 Analog Functions",
+            "Section 2.3.3 Restrictions for GPIOs",
+            "Table 2-6 Analog Pins",
+            "Table 2-7 Power Pins",
+            "Table 3-1 Default Configuration of Strapping Pins",
+            "Table 3-3 Chip Boot Mode Control",
+            "Table 3-4 UART0 ROM Message Printing Control",
+            "Table 3-6 JTAG Signal Source Control",
+            "Appendix A ESP32-H2 Consolidated Pin Overview"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32p4",
+      "name": "ESP32-P4",
+      "chip_family": "ESP32-P4",
+      "package_name": "QFN104 package placeholder",
+      "route": null,
+      "raw_pin_data_available": false,
+      "chip_specs": {
+        "cpu": "Dual-core 32-bit RISC-V high-performance CPU plus single-core low-power RISC-V CPU",
+        "wireless": null,
+        "sram": "Large internal memory with package PSRAM options on selected variants.",
+        "rom": "Boot ROM and low-power subsystem ROM."
+      },
+      "general_purpose_candidates": [],
+      "caution_pins": [],
+      "pin_functions": [],
+      "peripheral_notes": [],
+      "general_warnings": [
+        "Raw-chip guidance only: this does not identify a module or carrier board, verify header exposure, or guarantee that a GPIO is unused by carrier hardware.",
+        "Explorer does not yet export a source-backed raw package pin map for this chip family; do not infer GPIO assignments from board profiles."
+      ],
+      "sources": [
+        {
+          "title": "ESP32-P4 Series Datasheet",
+          "url": "https://documentation.espressif.com/esp32-p4_datasheet_en.pdf",
+          "sections": [
+            "Figure 2-1 Pin Layout (Top View)",
+            "Table 2-1 ESP32-P4 Pin Definitions",
+            "Chapter 3 Power Domains",
+            "Chapter 4 Strapping Pins",
+            "Chapter 5 Peripheral Overview",
+            "Chapter 6 Electrical Characteristics"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp32",
+      "name": "ESP32",
+      "chip_family": "ESP32",
+      "package_name": "ESP32 QFN48, 6 x 6 mm",
+      "route": "/chips/esp32",
+      "raw_pin_data_available": true,
+      "chip_specs": {
+        "cpu": "Dual-core 32-bit Xtensa LX6 CPU up to 240 MHz; ESP32-SOLO-1 module variants use a single-core LX6 CPU.",
+        "wireless": "2.4 GHz Wi-Fi 802.11 b/g/n plus Bluetooth v4.2 BR/EDR and Bluetooth LE.",
+        "sram": "520 KB SRAM, including 8 KB RTC FAST SRAM and 8 KB RTC SLOW SRAM.",
+        "rom": "448 KB ROM."
+      },
+      "general_purpose_candidates": [
+        "GPIO36",
+        "GPIO37",
+        "GPIO38",
+        "GPIO39",
+        "GPIO34",
+        "GPIO35",
+        "GPIO32",
+        "GPIO33",
+        "GPIO25",
+        "GPIO26",
+        "GPIO27",
+        "GPIO14",
+        "GPIO13",
+        "GPIO4",
+        "GPIO16",
+        "GPIO17",
+        "GPIO18",
+        "GPIO23",
+        "GPIO19",
+        "GPIO22",
+        "GPIO21"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO12",
+          "warning": "Strapping, Voltage"
+        },
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO5",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO36",
+          "functions": [
+            "GPIO36",
+            "ADC1_CH0",
+            "RTC_GPIO0",
+            "S_VP"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH0",
+            "S_VP"
+          ],
+          "io_mux": [
+            "GPIO36"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO37",
+          "functions": [
+            "GPIO37",
+            "ADC1_CH1",
+            "RTC_GPIO1",
+            "SENSOR_CAPP"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH1",
+            "SENSOR_CAPP"
+          ],
+          "io_mux": [
+            "GPIO37"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO38",
+          "functions": [
+            "GPIO38",
+            "ADC1_CH2",
+            "RTC_GPIO2",
+            "SENSOR_CAPN"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH2",
+            "SENSOR_CAPN"
+          ],
+          "io_mux": [
+            "GPIO38"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO39",
+          "functions": [
+            "GPIO39",
+            "ADC1_CH3",
+            "RTC_GPIO3",
+            "S_VN"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH3",
+            "S_VN"
+          ],
+          "io_mux": [
+            "GPIO39"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO34",
+          "functions": [
+            "GPIO34",
+            "ADC1_CH6",
+            "RTC_GPIO4",
+            "VDET_1"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH6",
+            "VDET_1"
+          ],
+          "io_mux": [
+            "GPIO34"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO35",
+          "functions": [
+            "GPIO35",
+            "ADC1_CH7",
+            "RTC_GPIO5",
+            "VDET_2"
+          ],
+          "warnings": [],
+          "notes": [
+            "Input-only GPIO. This pin does not support digital output or internal pull-up/pull-down resistors."
+          ],
+          "analog": [
+            "ADC1_CH7",
+            "VDET_2"
+          ],
+          "io_mux": [
+            "GPIO35"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO32",
+          "functions": [
+            "GPIO32",
+            "ADC1_CH4",
+            "RTC_GPIO9",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC1_CH4",
+            "TOUCH9",
+            "32K_XP"
+          ],
+          "io_mux": [
+            "GPIO32"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO33",
+          "functions": [
+            "GPIO33",
+            "ADC1_CH5",
+            "RTC_GPIO8",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC1_CH5",
+            "TOUCH8",
+            "32K_XN"
+          ],
+          "io_mux": [
+            "GPIO33"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO25",
+          "functions": [
+            "GPIO25",
+            "ADC2_CH8",
+            "RTC_GPIO6",
+            "DAC_1",
+            "EMAC_RXD0"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC2_CH8",
+            "DAC_1"
+          ],
+          "io_mux": [
+            "GPIO25",
+            "EMAC_RXD0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO26",
+          "functions": [
+            "GPIO26",
+            "ADC2_CH9",
+            "RTC_GPIO7",
+            "DAC_2",
+            "EMAC_RXD1"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC2_CH9",
+            "DAC_2"
+          ],
+          "io_mux": [
+            "GPIO26",
+            "EMAC_RXD1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO27",
+          "functions": [
+            "GPIO27",
+            "ADC2_CH7",
+            "RTC_GPIO17",
+            "TOUCH7",
+            "EMAC_RX_DV"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC2_CH7",
+            "TOUCH7"
+          ],
+          "io_mux": [
+            "GPIO27",
+            "EMAC_RX_DV"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "ADC2_CH6",
+            "RTC_GPIO16",
+            "TOUCH6",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH6",
+            "TOUCH6"
+          ],
+          "io_mux": [
+            "GPIO14",
+            "MTMS",
+            "HSPICLK",
+            "HS2_CLK",
+            "SD_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "ADC2_CH5",
+            "RTC_GPIO15",
+            "TOUCH5",
+            "MTDI"
+          ],
+          "warnings": [
+            "Strapping",
+            "Voltage",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "MTDI/GPIO12 controls VDD_SDIO voltage at reset unless overridden by eFuse settings.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH5",
+            "TOUCH5"
+          ],
+          "io_mux": [
+            "GPIO12",
+            "MTDI",
+            "HSPIQ",
+            "HS2_DATA2",
+            "SD_DATA2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "ADC2_CH4",
+            "RTC_GPIO14",
+            "TOUCH4",
+            "MTCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH4",
+            "TOUCH4"
+          ],
+          "io_mux": [
+            "GPIO13",
+            "MTCK",
+            "HSPID",
+            "HS2_DATA3",
+            "SD_DATA3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "ADC2_CH3",
+            "RTC_GPIO13",
+            "TOUCH3",
+            "MTDO"
+          ],
+          "warnings": [
+            "Strapping",
+            "JTAG"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls U0TXD printing and SDIO slave timing at reset.",
+            "JTAG debug signal; using it as regular GPIO can interfere with JTAG workflows."
+          ],
+          "analog": [
+            "ADC2_CH3",
+            "TOUCH3"
+          ],
+          "io_mux": [
+            "GPIO15",
+            "MTDO",
+            "HSPICS0",
+            "HS2_CMD",
+            "SD_CMD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "ADC2_CH2",
+            "RTC_GPIO12",
+            "TOUCH2"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls boot mode with GPIO0."
+          ],
+          "analog": [
+            "ADC2_CH2",
+            "TOUCH2"
+          ],
+          "io_mux": [
+            "GPIO2",
+            "HSPIWP",
+            "HS2_DATA0",
+            "SD_DATA0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "ADC2_CH1",
+            "RTC_GPIO11",
+            "TOUCH1",
+            "Boot"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "GPIO0=0 and GPIO2=0 selects Joint Download Boot mode."
+          ],
+          "analog": [
+            "ADC2_CH1",
+            "TOUCH1"
+          ],
+          "io_mux": [
+            "GPIO0",
+            "CLK_OUT1",
+            "EMAC_TX_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "ADC2_CH0",
+            "RTC_GPIO10",
+            "TOUCH0"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [
+            "ADC2_CH0",
+            "TOUCH0"
+          ],
+          "io_mux": [
+            "GPIO4",
+            "HSPIHD",
+            "HS2_DATA1",
+            "SD_DATA1",
+            "EMAC_TX_ER"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "HS1_DATA4",
+            "U2RXD",
+            "EMAC_CLK_OUT"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO16",
+            "HS1_DATA4",
+            "U2RXD",
+            "EMAC_CLK_OUT"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO17",
+          "functions": [
+            "GPIO17",
+            "HS1_DATA5",
+            "U2TXD",
+            "EMAC_CLK_OUT_180"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO17",
+            "HS1_DATA5",
+            "U2TXD",
+            "EMAC_CLK_OUT_180"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "SD_DATA2",
+            "SPIHD"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9",
+            "HS1_DATA2",
+            "U1RXD",
+            "SD_DATA2",
+            "SPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "SD_DATA3",
+            "SPIWP"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO10",
+            "HS1_DATA3",
+            "U1TXD",
+            "SD_DATA3",
+            "SPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11",
+            "SD_CMD",
+            "SPICS0"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO11",
+            "HS1_CMD",
+            "U1RTS",
+            "SD_CMD",
+            "SPICS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "SD_CLK",
+            "SPICLK"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO6",
+            "HS1_CLK",
+            "U1CTS",
+            "SD_CLK",
+            "SPICLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "SD_DATA0",
+            "SPIQ"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO7",
+            "HS1_DATA0",
+            "U2RTS",
+            "SD_DATA0",
+            "SPIQ"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "SD_DATA1",
+            "SPID"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "Used internally for communication between ESP32 and SPI flash memory. Avoid using this pin, as it may disrupt flash access."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO8",
+            "HS1_DATA1",
+            "U2CTS",
+            "SD_DATA1",
+            "SPID"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "VSPICS0",
+            "EMAC_RX_CLK"
+          ],
+          "warnings": [
+            "Strapping"
+          ],
+          "notes": [
+            "Strapping pin sampled during reset. External circuits must not force the wrong boot-time level.",
+            "Controls SDIO slave timing at reset."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO5",
+            "HS1_DATA6",
+            "VSPICS0",
+            "EMAC_RX_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "functions": [
+            "GPIO18",
+            "VSPICLK"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO18",
+            "HS1_DATA7",
+            "VSPICLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO23",
+          "functions": [
+            "GPIO23",
+            "VSPID"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO23",
+            "HS1_STROBE",
+            "VSPID"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "functions": [
+            "GPIO19",
+            "U0CTS",
+            "VSPIQ",
+            "EMAC_TXD0"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO19",
+            "U0CTS",
+            "VSPIQ",
+            "EMAC_TXD0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO22",
+          "functions": [
+            "GPIO22",
+            "U0RTS",
+            "VSPIWP",
+            "EMAC_TXD1"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO22",
+            "U0RTS",
+            "VSPIWP",
+            "EMAC_TXD1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO3",
+            "U0RXD",
+            "CLK_OUT2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "CLK_OUT3"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default unless configured otherwise."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO1",
+            "U0TXD",
+            "CLK_OUT3",
+            "EMAC_RXD2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "functions": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO21",
+            "VSPIHD",
+            "EMAC_TX_EN"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "UART",
+            "SPI",
+            "I2S",
+            "LED PWM",
+            "RMT",
+            "MCPWM",
+            "PCNT",
+            "TWAI",
+            "SDIO",
+            "Ethernet"
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Documented raw-chip UART0 data GPIOs; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO3",
+            "GPIO1"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Raw-chip guidance only: this does not identify a module or carrier board, verify header exposure, or guarantee that a GPIO is unused by carrier hardware."
+      ],
+      "sources": [
+        {
+          "title": "ESP32 Series Datasheet",
+          "url": "https://documentation.espressif.com/esp32_datasheet_en.pdf",
+          "sections": [
+            "Figure 2-1 ESP32 Pin Layout (QFN 6 x 6, Top View)",
+            "Table 2-1 Pin Overview",
+            "Section 2.3.1 Restrictions for GPIOs and RTC_GPIOs",
+            "Table 2-2 Analog Pins",
+            "Table 2-3 Power Pins",
+            "Table 2-5 Pin-to-Pin Mapping Between Chip and In-Package Flash/PSRAM",
+            "Table 2-6 Pin-to-Pin Mapping Between Chip and Off-Package Flash/PSRAM",
+            "Table 3-1 Default Configuration of Strapping Pins",
+            "Table 3-3 Chip Boot Mode Control",
+            "Table 3-4 U0TXD Printing Control",
+            "Table 3-5 Timing Control of SDIO Slave",
+            "Table 4-6 Peripheral Pin Configurations"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "esp8266ex",
+      "name": "ESP8266EX",
+      "chip_family": "ESP8266EX",
+      "package_name": "QFN32 (5 x 5 mm), top view",
+      "route": "/chips/esp8266ex",
+      "raw_pin_data_available": true,
+      "chip_specs": {
+        "cpu": "Single-core Tensilica L106 32-bit processor up to 160 MHz",
+        "wireless": "2.4 GHz Wi-Fi 802.11 b/g/n.",
+        "sram": "Around 50 KB heap plus data memory available to applications.",
+        "rom": "Boot ROM plus external SPI flash for user programs."
+      },
+      "general_purpose_candidates": [
+        "GPIO16",
+        "GPIO14",
+        "GPIO12",
+        "GPIO13",
+        "GPIO4",
+        "GPIO5"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO15",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO0",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO3",
+          "warning": "UART0"
+        },
+        {
+          "gpio": "GPIO1",
+          "warning": "UART0, Boot"
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO16",
+          "functions": [
+            "GPIO16",
+            "XPD_DCDC",
+            "Deep-sleep wakeup"
+          ],
+          "warnings": [],
+          "notes": [
+            "Connect XPD_DCDC to EXT_RSTB when GPIO16 is used for deep-sleep wakeup.",
+            "GPIO16 can only be configured with an internal pull-down."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO16",
+            "XPD_DCDC"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO14",
+          "functions": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Package pin name is MTMS; common maker use is GPIO14 or HSPI clock."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO14",
+            "MTMS",
+            "HSPI_CLK",
+            "I2C_SCL",
+            "I2SI_WS",
+            "PWM2",
+            "IR TX"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO12",
+          "functions": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Package pin name is MTDI; common maker use is GPIO12 or HSPI MISO."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO12",
+            "MTDI",
+            "HSPI_MISO",
+            "I2SI_DATA",
+            "PWM0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO13",
+          "functions": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "UART0_CTS",
+            "I2SI_BCK"
+          ],
+          "warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "Package pin name is MTCK; common maker use is GPIO13 or HSPI MOSI."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO13",
+            "MTCK",
+            "HSPI_MOSI",
+            "U0CTS",
+            "I2SI_BCK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO15",
+          "functions": [
+            "GPIO15",
+            "MTDO",
+            "HSPI_CS",
+            "UART0_RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot",
+            "JTAG"
+          ],
+          "notes": [
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Package pin name is MTDO; common maker use is GPIO15 or HSPI chip select."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO15",
+            "MTDO",
+            "HSPI_CS",
+            "U0RTS",
+            "I2SO_BCK",
+            "PWM1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO2",
+          "functions": [
+            "GPIO2",
+            "UART flash TX",
+            "U1TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset.",
+            "Used as UART TX during flash programming."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO2",
+            "U1TXD",
+            "I2C_SDA",
+            "I2SO_WS"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "functions": [
+            "GPIO0",
+            "SPI_CS2",
+            "Boot mode strapping"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "notes": [
+            "GPIO2, GPIO0, and MTDO are strapping pins used to select boot mode and SDIO mode at reset."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO0",
+            "SPI_CS2"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "functions": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO4",
+            "PWM3"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "functions": [
+            "GPIO9",
+            "SDIO_DATA_2",
+            "SPIHD",
+            "HSPIHD"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D2 through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9",
+            "SDIO_DATA_2",
+            "SPIHD",
+            "HSPIHD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "functions": [
+            "GPIO10",
+            "SDIO_DATA_3",
+            "SPIWP",
+            "HSPIWP"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D3 through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO10",
+            "SDIO_DATA_3",
+            "SPIWP",
+            "HSPIWP"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO11",
+          "functions": [
+            "GPIO11",
+            "SDIO_CMD",
+            "SPI_CS0"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_CMD through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO11",
+            "SDIO_CMD",
+            "SPI_CS0"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "functions": [
+            "GPIO6",
+            "SDIO_CLK",
+            "SPI_CLK"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_CLK through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO6",
+            "SDIO_CLK",
+            "SPI_CLK"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "functions": [
+            "GPIO7",
+            "SDIO_DATA_0",
+            "SPI_MISO"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D0 through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO7",
+            "SDIO_DATA_0",
+            "SPI_MISO"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "functions": [
+            "GPIO8",
+            "SDIO_DATA_1",
+            "SPI_MOSI",
+            "U1RXD"
+          ],
+          "warnings": [
+            "Flash memory"
+          ],
+          "notes": [
+            "ESP8266EX stores user programs in external SPI flash. Avoid reusing flash-connected SDIO/SPI pins in normal designs.",
+            "Connect to external flash SD_D1 through the datasheet series resistor."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO8",
+            "SDIO_DATA_1",
+            "SPI_MOSI",
+            "U1RXD"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "functions": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "warnings": [],
+          "notes": [],
+          "analog": [],
+          "io_mux": [
+            "GPIO5",
+            "IR Rx"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "functions": [
+            "GPIO3",
+            "U0RXD",
+            "I2SO_DATA"
+          ],
+          "warnings": [
+            "UART0"
+          ],
+          "notes": [
+            "UART0 is used for flash programming and boot/debug serial output."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO3",
+            "U0RXD",
+            "I2SO_DATA"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "functions": [
+            "GPIO1",
+            "U0TXD",
+            "SPI_CS1"
+          ],
+          "warnings": [
+            "UART0",
+            "Boot"
+          ],
+          "notes": [
+            "UART0 is used for flash programming and boot/debug serial output.",
+            "U0TXD should not be pulled externally low during powering-up."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO1",
+            "U0TXD",
+            "SPI_CS1"
+          ],
+          "matrix_signals": [
+            "I2C",
+            "I2S",
+            "UART",
+            "PWM",
+            "IR Remote Control"
+          ]
+        }
+      ],
+      "peripheral_notes": [
+        {
+          "peripheral": "UART0",
+          "summary": "Documented raw-chip UART0 data GPIOs; reserve them when serial flashing or boot logs are required.",
+          "candidate_pins": [
+            "GPIO3",
+            "GPIO1"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Raw-chip guidance only: this does not identify a module or carrier board, verify header exposure, or guarantee that a GPIO is unused by carrier hardware."
+      ],
+      "sources": [
+        {
+          "title": "ESP8266EX Datasheet",
+          "url": "https://documentation.espressif.com/0a-esp8266ex_datasheet_en.pdf",
+          "sections": [
+            "Figure 2-1 Pin Layout (Top View)",
+            "Table 2-1 ESP8266EX Pin Definitions",
+            "Section 3.1.3 External Flash",
+            "Section 4.1 General Purpose Input/Output Interface (GPIO)",
+            "Table 4-1 Pin Definitions of SDIOs",
+            "Table 4-2 Pin Definitions of SPIs",
+            "Table 4-3 Pin Definitions of HSPI",
+            "Table 4-4 Pin Definitions of I2C",
+            "Table 4-5 Pin Definitions of I2S",
+            "Table 4-6 Pin Definitions of UART",
+            "Table 4-7 Pin Definitions of PWM",
+            "Table 4-8 Pin Definitions of IR Remote Control",
+            "Table 4-9 Pin Definition of ADC",
+            "Section 5.1 Electrical Characteristics"
+          ]
+        }
+      ]
+    }
+  ]
+}

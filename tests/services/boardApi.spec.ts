@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { createBoardDataset } from '@/services/export-mcp-board-dataset';
+import { createChipDataset } from '@/services/export-mcp-chip-dataset';
 import { createModuleDataset } from '@/services/export-mcp-module-dataset';
 
 describe('public board dataset', () => {
@@ -159,5 +160,56 @@ describe('public module dataset', () => {
     for (const marking of forbiddenModuleMarkings) {
       expect(exportedModuleNames).not.toContain(marking);
     }
+  });
+});
+
+describe('public raw-chip dataset', () => {
+  const dataset = createChipDataset('2026-01-01T00:00:00.000Z');
+
+  it('exports one source-backed fallback record for every implemented Explorer family', () => {
+    expect(dataset).toMatchObject({ schema_version: 1, generated_at: '2026-01-01T00:00:00.000Z' });
+    expect(dataset.chips.map((chip) => chip.id).sort()).toEqual([
+      'esp32',
+      'esp32c3',
+      'esp32c6',
+      'esp32h2',
+      'esp32p4',
+      'esp32s3',
+      'esp8266ex',
+    ]);
+
+    for (const chip of dataset.chips) {
+      expect(chip.sources).toHaveLength(1);
+      expect(chip.sources[0].url).toMatch(/^https:\/\/documentation\.espressif\.com\//);
+      expect(chip.general_warnings[0]).toContain('Raw-chip guidance only');
+    }
+  });
+
+  it('exports raw ESP32-C6 functions without carrier-board claims', () => {
+    const c6 = dataset.chips.find((chip) => chip.id === 'esp32c6');
+
+    expect(c6).toMatchObject({
+      name: 'ESP32-C6',
+      route: '/chips/esp32c6',
+      raw_pin_data_available: true,
+    });
+    expect(c6?.pin_functions).toEqual(expect.arrayContaining([
+      expect.objectContaining({ gpio: 'GPIO4', functions: expect.arrayContaining(['MTMS']) }),
+      expect.objectContaining({ gpio: 'GPIO12', functions: expect.arrayContaining(['USB_D-']) }),
+    ]));
+  });
+
+  it('exports an explicit no-pin-data fallback for ESP32-P4 instead of inferring a chip pinout from boards', () => {
+    const p4 = dataset.chips.find((chip) => chip.id === 'esp32p4');
+
+    expect(p4).toMatchObject({
+      name: 'ESP32-P4',
+      route: null,
+      raw_pin_data_available: false,
+      pin_functions: [],
+      general_warnings: expect.arrayContaining([
+        expect.stringContaining('does not yet export a source-backed raw package pin map'),
+      ]),
+    });
   });
 });

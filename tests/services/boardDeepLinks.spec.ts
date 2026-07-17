@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { applyBoardDeepLink, resolveBoardDeepLink, resolveModuleDeepLink } from '@/services/boardDeepLinks';
+import { applyBoardDeepLink, resolveBoardDeepLink, resolveChipDeepLink, resolveModuleDeepLink } from '@/services/boardDeepLinks';
 
 describe('board deep links', () => {
   it('safely ignores unknown or malformed board routes', () => {
@@ -110,5 +110,20 @@ describe('module deep links', () => {
 
   it('rejects unknown module routes', () => {
     expect(resolveModuleDeepLink('/modules/unknown-module')).toBeNull();
+  });
+});
+
+describe('raw-chip deep links', () => {
+  it('resolves a raw ESP32-C6 chip route without selecting a carrier board', () => {
+    expect(resolveChipDeepLink('/chips/esp32c6', '?search=JTAG')).toEqual({
+      apiChipId: 'esp32c6',
+      socId: 'esp32c6',
+      profileId: 'qfn40',
+      searchQuery: 'JTAG',
+    });
+  });
+
+  it('does not create a raw-chip route for ESP32-P4 until its raw package pin map is exported', () => {
+    expect(resolveChipDeepLink('/chips/esp32p4')).toBeNull();
   });
 });

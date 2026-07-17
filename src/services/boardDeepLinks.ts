@@ -17,8 +17,16 @@ export interface ModuleDeepLinkTarget {
   searchQuery: string;
 }
 
+export interface ChipDeepLinkTarget {
+  apiChipId: string;
+  socId: string;
+  profileId: string;
+  searchQuery: string;
+}
+
 const boardRoutePattern = /^\/boards\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/;
 const moduleRoutePattern = /^\/modules\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/;
+const chipRoutePattern = /^\/chips\/([a-z0-9]+(?:-[a-z0-9]+)*)\/?$/;
 const gpioPattern = /^GPIO(?:[0-9]|[1-9][0-9]{1,2})$/;
 const modeSearchQuery: Record<string, string> = {
   gpio: 'type:io',
@@ -67,6 +75,18 @@ export function resolveModuleDeepLink(pathname: string, search = ''): ModuleDeep
   return { apiModuleId: match[1], socId: soc.id, profileId: match[1], searchQuery };
 }
 
+export function resolveChipDeepLink(pathname: string, search = ''): ChipDeepLinkTarget | null {
+  const match = chipRoutePattern.exec(pathname);
+  if (!match) return null;
+
+  const soc = socs.find((candidate) => candidate.id === match[1] && candidate.pins.length > 0);
+  if (!soc) return null;
+
+  const requestedSearch = new URLSearchParams(search).get('search')?.trim() ?? '';
+  const searchQuery = /^[\w\s+.-]{1,120}$/.test(requestedSearch) ? requestedSearch : '';
+  return { apiChipId: soc.id, socId: soc.id, profileId: soc.defaultPackageId ?? 'default', searchQuery };
+}
+
 /** Apply a valid board route to the existing store without changing normal selection behavior. */
 export function applyBoardDeepLink(
   target: BoardDeepLinkTarget,
@@ -84,6 +104,18 @@ export function applyBoardDeepLink(
 /** Apply a valid module route to the existing store without changing normal selection behavior. */
 export function applyModuleDeepLink(
   target: ModuleDeepLinkTarget,
+  selectSoc: (socId: string) => void,
+  selectPackage: (profileId: string) => void,
+  setSearchQuery: (query: string) => void,
+) {
+  selectSoc(target.socId);
+  selectPackage(target.profileId);
+  setSearchQuery(target.searchQuery);
+}
+
+/** Apply a raw-chip route without selecting a carrier board or module profile. */
+export function applyChipDeepLink(
+  target: ChipDeepLinkTarget,
   selectSoc: (socId: string) => void,
   selectPackage: (profileId: string) => void,
   setSearchQuery: (query: string) => void,
