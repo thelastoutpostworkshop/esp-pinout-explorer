@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { applyBoardDeepLink, resolveBoardDeepLink, resolveChipDeepLink, resolveModuleDeepLink } from '@/services/boardDeepLinks';
 
@@ -125,5 +127,11 @@ describe('raw-chip deep links', () => {
 
   it('does not create a raw-chip route for ESP32-P4 until its raw package pin map is exported', () => {
     expect(resolveChipDeepLink('/chips/esp32p4')).toBeNull();
+  });
+
+  it('forwards raw-chip routes through the GitHub Pages 404 fallback', async () => {
+    const fallback = await readFile(resolve(process.cwd(), 'public/404.html'), 'utf8');
+    expect(fallback).toContain("'/chips/'");
+    expect(fallback).toContain('(boards|modules|chips)');
   });
 });
