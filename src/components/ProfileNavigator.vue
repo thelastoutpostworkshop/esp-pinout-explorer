@@ -297,8 +297,7 @@ function moduleMarkingMatchesQuery(option: ModuleMarkingOption, query: string) {
     return true;
   }
 
-  const searchableText = shouldSearchExactMarking(query, tokens) ? option.markingSearchText : option.searchText;
-  return tokens.every((token) => searchTextMatchesToken(searchableText, token));
+  return tokens.every((token) => searchTextMatchesToken(option.markingSearchText, token));
 }
 
 function moduleMarkingItemProps(option: ModuleMarkingOption) {
@@ -363,10 +362,6 @@ function digitTokenMatches(candidate: string, token: string) {
 
 function tokenHasDigit(token: string) {
   return /\d/.test(token);
-}
-
-function shouldSearchExactMarking(query: string, tokens: string[]) {
-  return /[_/+-]/.test(query) || tokens.some((token) => tokenHasDigit(token) || token.length === 1);
 }
 
 function compactVariantName(name: string) {
