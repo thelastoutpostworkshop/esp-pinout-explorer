@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-07-18T11:06:10.797Z",
+  "generated_at": "2026-07-19T10:38:44.097Z",
   "board": {
     "id": "esp32s3-usb-otg",
     "name": "ESP32-S3-USB-OTG",

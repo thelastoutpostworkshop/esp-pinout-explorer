@@ -58,11 +58,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed, defineAsyncComponent } from 'vue';
+import { computed, defineAsyncComponent, h } from 'vue';
 import { useSocStore } from '@/stores/socStore';
 
 const PinoutLoading = {
-  template: '<div class="soc-view__loading" role="status" aria-label="Loading pinout">Loading pinout</div>',
+  render: () => h('div', {
+    class: 'soc-view__loading',
+    role: 'status',
+    'aria-label': 'Loading pinout',
+  }, 'Loading pinout'),
 };
 
 const BoardSvg = defineAsyncComponent({
