@@ -781,7 +781,7 @@ describe('ExplorerSidebar', () => {
     expect(espWroom02?.chipGroupLabel).toBe('ESP8266EX');
     expect(wrapper.findAll('.module-marking-select__item small')).toHaveLength(0);
     expect(filterModuleMarking('', 'n32r16v', { raw: s3WroomVariant! })).toBe(true);
-    expect(filterModuleMarking('', 'module pads mini', { raw: c6MiniModule! })).toBe(true);
+    expect(filterModuleMarking('', 'module pads mini', { raw: c6MiniModule! })).toBe(false);
     expect(filterModuleMarking('', 'wroom-1', { raw: c6Wroom1! })).toBe(true);
     expect(filterModuleMarking('', 'wroom-1', { raw: s3WroomVariant! })).toBe(false);
     expect(filterModuleMarking('', 'wroom-1', { raw: espWroom02! })).toBe(false);
@@ -789,6 +789,8 @@ describe('ExplorerSidebar', () => {
     expect(filterModuleMarking('', 'wrover-e', { raw: esp32WroverE! })).toBe(true);
     expect(filterModuleMarking('', 'wrover-e', { raw: esp32Wroom32e! })).toBe(false);
     expect(filterModuleMarking('', 'wrover-e', { raw: esp32WroverIe! })).toBe(false);
+    expect(filterModuleMarking('', 'wroom', { raw: esp32Wroom32e! })).toBe(true);
+    expect(filterModuleMarking('', 'wroom', { raw: esp32WroverE! })).toBe(false);
     expect(filterModuleMarking('', 'wrover', { raw: s3WroomVariant! })).toBe(false);
 
     await findButton(wrapper, 'Profile info & Variants').trigger('click');
