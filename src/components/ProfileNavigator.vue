@@ -50,6 +50,7 @@
       density="compact"
       hide-details
       :item-props="moduleMarkingItemProps"
+      :menu-props="moduleMarkingMenuProps"
       item-title="marking"
       item-value="id"
       label="Module marking"
@@ -114,6 +115,9 @@ const emit = defineEmits<{
 
 const store = useSocStore();
 const moduleMarkingSearch = ref('');
+const moduleMarkingMenuProps = {
+  width: 'min(460px, calc(100vw - 32px))',
+};
 const selectableProfileOptions = computed(() => store.packageOptions);
 const profileSelectItems = computed(() =>
   [...selectableProfileOptions.value]
