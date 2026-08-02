@@ -34,12 +34,13 @@
           <path d="M188 320C260 288 333 304 426 278C535 248 608 274 672 332C732 386 830 376 898 312C960 254 1031 264 1080 312" />
           <path d="M92 126C153 111 198 150 247 150C320 150 353 84 426 72C495 61 552 126 626 124C709 122 754 50 836 58C920 66 951 144 1031 148C1088 151 1132 124 1180 92" />
         </g>
-        <path class="about-page__route" d="M150 342C246 242 336 384 428 286C520 188 626 346 724 236C829 118 900 330 1030 162" />
+        <path
+          ref="routePath"
+          class="about-page__route"
+          d="M150 342C246 242 336 384 428 286C520 188 626 346 724 236C829 118 900 330 1030 162"
+        />
         <g class="about-page__route-pins" aria-hidden="true">
-          <circle cx="150" cy="342" r="8" />
-          <circle cx="428" cy="286" r="8" />
-          <circle cx="724" cy="236" r="8" />
-          <circle cx="1030" cy="162" r="8" />
+          <circle v-for="marker in routeMarkers" :key="marker" ref="routePins" cx="150" cy="342" r="8" />
         </g>
         <g class="about-page__compass" aria-hidden="true">
           <circle cx="972" cy="342" r="54" />
@@ -122,11 +123,47 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { AlertTriangle, ArrowLeft, BookOpenCheck, Cpu, ExternalLink, Play } from '@lucide/vue';
 import { useSocStore } from '@/stores/socStore';
 
 const store = useSocStore();
+const routePath = ref<SVGPathElement | null>(null);
+const routePins = ref<SVGCircleElement[]>([]);
+const routeMarkers = [0, 0.25, 0.5, 0.75] as const;
+let routeAnimationFrame: number | null = null;
+
+function animateRouteMarkers(startTime: number) {
+  const path = routePath.value;
+  const pins = routePins.value;
+
+  if (!path || pins.length !== routeMarkers.length) return;
+
+  const pathLength = path.getTotalLength();
+  const updateMarkers = (timestamp: number) => {
+    const progress = ((timestamp - startTime) % 12000) / 12000;
+
+    pins.forEach((pin, index) => {
+      const point = path.getPointAtLength(((progress + routeMarkers[index]) % 1) * pathLength);
+      pin.setAttribute('cx', String(point.x));
+      pin.setAttribute('cy', String(point.y));
+    });
+
+    routeAnimationFrame = window.requestAnimationFrame(updateMarkers);
+  };
+
+  routeAnimationFrame = window.requestAnimationFrame(updateMarkers);
+}
+
+onMounted(() => {
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    animateRouteMarkers(performance.now());
+  }
+});
+
+onBeforeUnmount(() => {
+  if (routeAnimationFrame !== null) window.cancelAnimationFrame(routeAnimationFrame);
+});
 
 const stats = computed(() => {
   const socCount = store.socs.length;
@@ -255,19 +292,7 @@ const fieldNotes = [
   fill: #f8fafc;
   stroke: #f59e0b;
   stroke-width: 4;
-  animation: atlas-pin 2200ms ease-in-out infinite;
-}
-
-.about-page__route-pins circle:nth-child(2) {
-  animation-delay: 180ms;
-}
-
-.about-page__route-pins circle:nth-child(3) {
-  animation-delay: 360ms;
-}
-
-.about-page__route-pins circle:nth-child(4) {
-  animation-delay: 540ms;
+  filter: drop-shadow(0 0 5px rgba(245, 158, 11, 0.58));
 }
 
 .about-page__compass {
@@ -564,19 +589,6 @@ const fieldNotes = [
   }
 }
 
-@keyframes atlas-pin {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.86;
-  }
-
-  50% {
-    transform: scale(1.32);
-    opacity: 1;
-  }
-}
-
 @keyframes atlas-compass {
   0%,
   100% {
@@ -590,7 +602,6 @@ const fieldNotes = [
 
 @media (prefers-reduced-motion: reduce) {
   .about-page__route,
-  .about-page__route-pins circle,
   .about-page__compass {
     animation: none;
   }
