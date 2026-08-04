@@ -24,7 +24,10 @@
       item-value="id"
       label="Board / module / chip profile"
       :items="profileSelectItems"
+      :menu-props="profileMenuProps"
+      ref="profileSelect"
       variant="outlined"
+      @update:menu="setProfileMenuOpen"
       @update:model-value="selectPackage"
     >
       <template #item="{ props, item }">
@@ -115,6 +118,17 @@ const emit = defineEmits<{
 
 const store = useSocStore();
 const moduleMarkingSearch = ref('');
+const profileSelect = ref<{ $el?: Element } | null>(null);
+const profileMenuWidth = ref<number>();
+const profileMenuProps = computed(() =>
+  profileMenuWidth.value
+    ? {
+        width: `${profileMenuWidth.value}px`,
+        minWidth: `${profileMenuWidth.value}px`,
+        maxWidth: `${profileMenuWidth.value}px`,
+      }
+    : {},
+);
 const moduleMarkingMenuProps = {
   width: 'min(460px, calc(100vw - 32px))',
 };
@@ -184,6 +198,16 @@ type VuetifySlotItem<T> = T & {
 function selectSoc(socId: string) {
   store.selectSoc(socId);
   emit('changed');
+}
+
+function setProfileMenuOpen(isOpen: boolean) {
+  if (!isOpen) {
+    profileMenuWidth.value = undefined;
+    return;
+  }
+
+  const triggerWidth = profileSelect.value?.$el?.getBoundingClientRect().width;
+  profileMenuWidth.value = triggerWidth ? Math.round(triggerWidth) : undefined;
 }
 
 function selectPackage(packageId: string | null) {
