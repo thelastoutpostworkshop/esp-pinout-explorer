@@ -78,7 +78,19 @@
         </dl>
 
         <div v-if="moduleVariants.length" class="profile-info__table-wrap">
-          <h4>Module variants</h4>
+          <div class="profile-info__table-heading">
+            <h4>Module variants</h4>
+            <button
+              class="profile-info__table-expand"
+              type="button"
+              aria-haspopup="dialog"
+              aria-label="Expand module variants table"
+              @click="moduleVariantsDialogOpen = true"
+            >
+              <Maximize2 :size="15" aria-hidden="true" />
+              <span>Expand</span>
+            </button>
+          </div>
           <table>
             <thead>
               <tr>
@@ -183,15 +195,70 @@
       </section>
     </v-card>
   </v-navigation-drawer>
+
+  <v-dialog
+    v-model="moduleVariantsDialogOpen"
+    class="module-variants-dialog"
+    max-width="1180"
+    scrollable
+    width="1120"
+  >
+    <v-card class="module-variants-dialog__card">
+      <header class="module-variants-dialog__header">
+        <div>
+          <h2>Module variants</h2>
+          <p>{{ selectedSoc.name }} / {{ selectedPackage.name }}</p>
+        </div>
+        <button
+          class="module-variants-dialog__close"
+          type="button"
+          aria-label="Close enlarged module variants table"
+          @click="moduleVariantsDialogOpen = false"
+        >
+          <X :size="18" aria-hidden="true" />
+        </button>
+      </header>
+      <div class="module-variants-dialog__table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Module</th>
+              <th scope="col">Antenna</th>
+              <th scope="col">Flash</th>
+              <th scope="col">PSRAM</th>
+              <th scope="col">Footprint</th>
+              <th scope="col">Pinout impact</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="variant in moduleVariants" :key="variant.name">
+              <th scope="row">
+                <a v-if="variant.source" :href="variant.source.url" rel="noreferrer" target="_blank">
+                  {{ variant.name }}
+                </a>
+                <span v-else>{{ variant.name }}</span>
+              </th>
+              <td>{{ valueOrDash(variant.antenna) }}</td>
+              <td>{{ valueOrDash(variant.flash) }}</td>
+              <td>{{ valueOrDash(variant.psram) }}</td>
+              <td>{{ valueOrDash(variant.footprint) }}</td>
+              <td>{{ valueOrDash(variant.pinoutImpact) }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </v-card>
+  </v-dialog>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import { ExternalLink, FileText, X } from '@lucide/vue';
+import { ExternalLink, FileText, Maximize2, X } from '@lucide/vue';
 import { useSocStore } from '@/stores/socStore';
 import type { PinProfileKind, SocPackageVariant } from '@/types/soc';
 
 const store = useSocStore();
+const moduleVariantsDialogOpen = ref(false);
 
 const selectedSoc = computed(() => store.selectedSoc);
 const selectedPackage = computed(() => store.selectedPackage);
@@ -265,6 +332,7 @@ watch(
       initializeReferenceImageLoading();
     } else {
       clearReferenceImageState();
+      moduleVariantsDialogOpen.value = false;
     }
   },
 );
@@ -320,6 +388,7 @@ function uniqueValues<T>(values: T[]): T[] {
 function closeProfileInfo() {
   store.closeProfileInfo();
   clearReferenceImageState();
+  moduleVariantsDialogOpen.value = false;
 }
 
 function onDrawerUpdate(value: boolean) {
@@ -526,17 +595,48 @@ function documentFigureLabel(url: string) {
 
 .profile-info__table-wrap {
   overflow-x: auto;
-  border: 1px solid var(--app-border);
+  border: 1px solid color-mix(in srgb, var(--app-link) 46%, var(--app-border));
   border-radius: 8px;
+  background: var(--app-surface-muted);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.28);
 }
 
-.profile-info__table-wrap h4 {
-  margin: 0;
-  padding: 9px 10px;
-  color: var(--app-text);
+.profile-info__table-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-width: max-content;
+  padding: 7px 8px 7px 10px;
   background: var(--app-surface-muted);
+}
+
+.profile-info__table-heading h4 {
+  margin: 0;
+  color: var(--app-text);
   font-size: 0.78rem;
   font-weight: 850;
+}
+
+.profile-info__table-expand {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  border: 1px solid var(--app-border);
+  border-radius: 5px;
+  padding: 4px 7px;
+  color: var(--app-link);
+  background: var(--app-surface-bg);
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 850;
+  cursor: pointer;
+}
+
+.profile-info__table-expand:hover,
+.profile-info__table-expand:focus-visible {
+  border-color: var(--app-link);
+  background: var(--app-active-bg);
 }
 
 .profile-info__table-wrap table {
@@ -558,7 +658,7 @@ function documentFigureLabel(url: string) {
 
 .profile-info__table-wrap thead th {
   color: var(--app-text);
-  background: var(--app-surface-subtle);
+  background: color-mix(in srgb, var(--app-link) 18%, var(--app-surface-subtle));
   font-size: 0.72rem;
   font-weight: 850;
   letter-spacing: 0;
@@ -570,9 +670,124 @@ function documentFigureLabel(url: string) {
   font-weight: 850;
 }
 
+.profile-info__table-wrap tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--app-surface-subtle) 70%, var(--app-surface-bg));
+}
+
 .profile-info__table-wrap tbody tr:last-child th,
 .profile-info__table-wrap tbody tr:last-child td {
   border-bottom: 0;
+}
+
+:global(.module-variants-dialog__card) {
+  max-height: min(760px, calc(100vh - 32px));
+  border: 1px solid color-mix(in srgb, var(--app-link) 42%, var(--app-border));
+  color: var(--app-text);
+  background: var(--app-surface-bg);
+  box-shadow: 0 24px 64px rgba(2, 6, 23, 0.54);
+}
+
+:global(.module-variants-dialog__header) {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--app-border);
+  padding: 18px 20px;
+}
+
+:global(.module-variants-dialog__header h2) {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 900;
+}
+
+:global(.module-variants-dialog__header p) {
+  margin: 3px 0 0;
+  color: var(--app-muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+:global(.module-variants-dialog__close) {
+  display: grid;
+  flex: 0 0 auto;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--app-border);
+  border-radius: 6px;
+  color: var(--app-text);
+  background: var(--app-surface-muted);
+  cursor: pointer;
+}
+
+:global(.module-variants-dialog__close:hover),
+:global(.module-variants-dialog__close:focus-visible) {
+  border-color: var(--app-muted);
+  background: var(--app-hover-bg);
+}
+
+:global(.module-variants-dialog__table-wrap) {
+  overflow: auto;
+  padding: 20px;
+}
+
+:global(.module-variants-dialog__table-wrap table) {
+  width: 100%;
+  min-width: 900px;
+  border: 1px solid color-mix(in srgb, var(--app-link) 50%, var(--app-border));
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 8px;
+  color: var(--app-text);
+  font-size: 0.88rem;
+  line-height: 1.4;
+  overflow: hidden;
+  box-shadow: 0 10px 24px rgba(2, 6, 23, 0.26);
+}
+
+:global(.module-variants-dialog__table-wrap th),
+:global(.module-variants-dialog__table-wrap td) {
+  border-bottom: 1px solid var(--app-border);
+  padding: 12px 14px;
+  text-align: left;
+  vertical-align: top;
+}
+
+:global(.module-variants-dialog__table-wrap thead th) {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: color-mix(in srgb, var(--app-link) 22%, var(--app-surface-subtle));
+  font-size: 0.74rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+:global(.module-variants-dialog__table-wrap tbody th) {
+  font-weight: 900;
+}
+
+:global(.module-variants-dialog__table-wrap tbody tr:nth-child(even)) {
+  background: color-mix(in srgb, var(--app-surface-subtle) 72%, var(--app-surface-bg));
+}
+
+:global(.module-variants-dialog__table-wrap tbody tr:last-child th),
+:global(.module-variants-dialog__table-wrap tbody tr:last-child td) {
+  border-bottom: 0;
+}
+
+:global(.module-variants-dialog__table-wrap a) {
+  color: var(--app-link);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+:global(.module-variants-dialog__table-wrap a:hover),
+:global(.module-variants-dialog__table-wrap a:focus-visible) {
+  color: var(--app-link-hover);
+  text-decoration: underline;
 }
 
 .profile-info__image-grid {
