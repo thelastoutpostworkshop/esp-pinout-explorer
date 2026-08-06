@@ -172,6 +172,9 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - [x] Board profile: ESP32-C5-DevKitC-1 v1.2
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/esp32-c5-devkitc-1/user_guide.html
     - Note: implemented from the official v1.2 J1/J3 Header Block tables. GPIO15 is marked unavailable because the DevKitC-1's WROOM module has SPI PSRAM; bare package and module-pad views remain separate TODO items.
+  - [x] Board profile: ESP-SensairShuttle v1.0
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/esp-sensairshuttle/user_guide_v1.0.html
+    - Note: implemented from the official component overview and mainboard schematic; the connector-group view covers documented external, I2C, RGB, and Shuttle Board signals.
 - [ ] ESP32-C5 module profiles
   - Source: https://www.espressif.com/en/products/modules
   - [ ] Module profile: ESP32-C5-WROOM-1

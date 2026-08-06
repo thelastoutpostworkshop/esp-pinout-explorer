@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-06T11:08:01.202Z",
+  "generated_at": "2026-08-06T11:16:01.493Z",
   "boards": [
     {
       "id": "esp32-lcdkit",
@@ -9662,6 +9662,313 @@
             ]
           }
         ],
+        "general_warnings": [
+          "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+          "Review each listed caution before wiring a board-header GPIO."
+        ]
+      }
+    },
+    {
+      "id": "esp-sensairshuttle",
+      "name": "ESP-SensairShuttle v1.0",
+      "manufacturer": "Espressif",
+      "chip_family": "ESP32-C5",
+      "aliases": [
+        "ESP-SensairShuttle",
+        "SensairShuttle"
+      ],
+      "module_variants": [
+        "ESP32-C5-WROOM-1-N16R8"
+      ],
+      "route": "/boards/esp-sensairshuttle",
+      "sources": [
+        {
+          "title": "ESP-SensairShuttle v1.0 User Guide",
+          "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/esp-sensairshuttle/user_guide_v1.0.html",
+          "sections": [
+            "Component Overview",
+            "Power Options",
+            "I2C/RGB/External Pin Interface",
+            "Shuttle Board Interface Circuit",
+            "Hardware Revision History"
+          ]
+        }
+      ],
+      "recognition": {
+        "board_markings": [
+          "ESP-SensairShuttle"
+        ],
+        "module_markings": [
+          "ESP32-C5-WROOM-1-N16R8"
+        ],
+        "memory_markings": [
+          "N16R8"
+        ],
+        "visible_features": [
+          "USB-C connector",
+          "1.83-inch LCD connector",
+          "Shuttle Board sensor connector",
+          "external I2C connector",
+          "external RGB strip connector",
+          "battery connector",
+          "Boot button"
+        ],
+        "button_labels": [
+          "Boot",
+          "Power"
+        ],
+        "visible_pin_labels": [
+          "GPIO5",
+          "GPIO4",
+          "VDD",
+          "GND",
+          "SCL",
+          "SDA",
+          "DIN",
+          "CS",
+          "SDO",
+          "G1",
+          "G2"
+        ],
+        "header_pin_counts": [
+          0
+        ],
+        "usb_connector_count": 1,
+        "usb_connector_types": [
+          "usb-c"
+        ]
+      },
+      "hardware_summary": {
+        "power": [
+          "USB-C power or an external 3.7 V lithium battery through the battery connector."
+        ],
+        "programming": [
+          "USB-C port supplies power, flashing, and debugging."
+        ],
+        "onboard_hardware": [
+          "ESP32-C5-WROOM-1-N16R8, LCD connector, Shuttle Board sensor connector, BMM350 magnetometer, battery charger, microphone and speaker connectors, Boot button, and external RGB-strip interface."
+        ],
+        "usb_connectors": {
+          "count": 1,
+          "types": [
+            "usb-c"
+          ]
+        },
+        "buttons": [
+          "Boot",
+          "Power"
+        ],
+        "documented_gpio_sharing": [
+          {
+            "gpio": "GPIO5",
+            "board_label": "GPIO5",
+            "main_functions": [
+              "GPIO5",
+              "PWR_CTRL"
+            ],
+            "notes": [
+              "External pins connector pin EXT-1.",
+              "GPIO5 is not available by default. Install R14 to use it through the external pin interface; it also controls LCD power."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO4",
+            "board_label": "GPIO4",
+            "main_functions": [
+              "GPIO4",
+              "EXT_IO1",
+              "PA_CTL"
+            ],
+            "notes": [
+              "External pins connector pin EXT-2.",
+              "Exposed on the external pin interface and connected to the speaker-amplifier control signal."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "SCL",
+            "main_functions": [
+              "GPIO3",
+              "BM_SCK/SCL",
+              "LCD_TP_SCL"
+            ],
+            "notes": [
+              "External I2C connector pin I2C-1.",
+              "Shared by the external I2C interface, Shuttle Board connector, and LCD touch interface."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "SDA",
+            "main_functions": [
+              "GPIO2",
+              "BM_SDI/SDA",
+              "LCD_TP_SDA"
+            ],
+            "notes": [
+              "External I2C connector pin I2C-2.",
+              "Shared by the external I2C interface, Shuttle Board connector, and LCD touch interface."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping"
+            ]
+          },
+          {
+            "gpio": "GPIO10",
+            "board_label": "CS",
+            "main_functions": [
+              "GPIO10",
+              "BM_CS"
+            ],
+            "notes": [
+              "Shuttle Board connector pin SHUTTLE-1.",
+              "Connected to the Shuttle Board sensor interface."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO9",
+            "board_label": "SDO",
+            "main_functions": [
+              "GPIO9",
+              "BM_SDO"
+            ],
+            "notes": [
+              "Shuttle Board connector pin SHUTTLE-2.",
+              "Connected to the Shuttle Board sensor interface."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO28",
+            "board_label": "G1",
+            "main_functions": [
+              "GPIO28",
+              "BM_G1",
+              "ESP_BOOT"
+            ],
+            "notes": [
+              "Shuttle Board connector pin SHUTTLE-3.",
+              "Connected to the Shuttle Board sensor interface and the Boot button."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping",
+              "Boot"
+            ]
+          },
+          {
+            "gpio": "GPIO0",
+            "board_label": "G2",
+            "main_functions": [
+              "GPIO0",
+              "BM_G2"
+            ],
+            "notes": [
+              "Shuttle Board connector pin SHUTTLE-4.",
+              "Connected to the Shuttle Board sensor interface."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO3",
+            "board_label": "SCL",
+            "main_functions": [
+              "GPIO3",
+              "BM_SCK/SCL"
+            ],
+            "notes": [
+              "Shuttle Board connector pin SHUTTLE-5.",
+              "Shared I2C clock for Shuttle Board sensors."
+            ],
+            "warnings": [
+              "Board hardware"
+            ]
+          },
+          {
+            "gpio": "GPIO2",
+            "board_label": "SDA",
+            "main_functions": [
+              "GPIO2",
+              "BM_SDI/SDA"
+            ],
+            "notes": [
+              "Shuttle Board connector pin SHUTTLE-6.",
+              "Shared I2C data for Shuttle Board sensors."
+            ],
+            "warnings": [
+              "Board hardware",
+              "Strapping"
+            ]
+          }
+        ]
+      },
+      "pinout_summary": {
+        "safe_general_purpose_pins": [],
+        "caution_pins": [
+          {
+            "gpio": "GPIO5",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO4",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Board hardware, Strapping"
+          },
+          {
+            "gpio": "GPIO27",
+            "warning": "Strapping"
+          },
+          {
+            "gpio": "GPIO10",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO9",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO28",
+            "warning": "Board hardware, Strapping, Boot"
+          },
+          {
+            "gpio": "GPIO0",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO3",
+            "warning": "Board hardware"
+          },
+          {
+            "gpio": "GPIO2",
+            "warning": "Board hardware, Strapping"
+          }
+        ],
+        "reserved_or_internal_pins": [],
+        "peripheral_notes": [],
         "general_warnings": [
           "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
           "Review each listed caution before wiring a board-header GPIO."

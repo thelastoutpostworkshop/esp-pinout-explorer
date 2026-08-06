@@ -165,6 +165,90 @@ const devKitProfile: SocPackageVariant = {
   pins: devKitPins,
 };
 
+const sensairSource: SocSource = {
+  title: 'ESP-SensairShuttle v1.0 User Guide',
+  version: 'v1.0',
+  publisher: 'Espressif',
+  documentType: 'user-guide',
+  url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/esp-sensairshuttle/user_guide_v1.0.html',
+  sections: ['Component Overview', 'Power Options', 'I2C/RGB/External Pin Interface', 'Shuttle Board Interface Circuit', 'Hardware Revision History'],
+  figures: [
+    { title: 'Mainboard front', kind: 'board-photo', url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/_images/esp-sensairshuttle-mainboard-front.png', alt: 'ESP-SensairShuttle mainboard front', sourceSection: 'Component Overview' },
+    { title: 'Mainboard back', kind: 'component-layout', url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/_images/esp-sensairshuttle-mainboard-back.png', alt: 'ESP-SensairShuttle mainboard back', sourceSection: 'Component Overview' },
+    { title: 'Function block diagram', kind: 'block-diagram', url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/_images/esp-sensairshuttle-sch-function-block_v1_0.png', alt: 'ESP-SensairShuttle function block diagram', sourceSection: 'Function Block Diagram' },
+    { title: 'External-interface circuit', kind: 'schematic-excerpt', url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/_images/esp-sensairshuttle-mainboard-sch-external-interface-v1_0.png', alt: 'ESP-SensairShuttle external pin, I2C, and RGB interface circuit', sourceSection: 'I2C/RGB/External Pin Interface' },
+  ],
+};
+
+function sensairPin(
+  id: string,
+  displayNumber: string,
+  label: string,
+  type: PinType,
+  group: string,
+  side: 'left' | 'right' | 'top' | 'bottom',
+  order: number,
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'displayNumber' | 'name' | 'type' | 'position' | 'boardGroup' | 'boardLabel'>> = {},
+): SocPin {
+  return makeBoardPin({
+    id,
+    number: order,
+    displayNumber,
+    label,
+    type,
+    gpio: details.gpio,
+    boardGroup: group,
+    position: { side, order },
+    mainFunctions: details.mainFunctions ?? [],
+    note: `${group} connector pin ${displayNumber}.`,
+    notes: details.notes,
+    warnings: details.warnings,
+    baseKeywords: ['board', 'esp-sensairshuttle', 'sensair', 'connector', group.toLowerCase()],
+    keywords: details.keywords,
+  });
+}
+
+const sensairPins: SocPin[] = [
+  sensairPin('esp-sensair-ext-1', 'EXT-1', 'GPIO5', 'io', 'External pins', 'top', 1, { gpio: 5, mainFunctions: ['PWR_CTRL'], notes: ['GPIO5 is not available by default. Install R14 to use it through the external pin interface; it also controls LCD power.'], warnings: ['onboard'], keywords: ['external io', 'r14', 'lcd power', 'power control'] }),
+  sensairPin('esp-sensair-ext-2', 'EXT-2', 'GPIO4', 'io', 'External pins', 'top', 2, { gpio: 4, mainFunctions: ['EXT_IO1', 'PA_CTL'], notes: ['Exposed on the external pin interface and connected to the speaker-amplifier control signal.'], warnings: ['onboard'], keywords: ['external io', 'speaker', 'amplifier'] }),
+  sensairPin('esp-sensair-ext-3', 'EXT-3', 'VDD', 'power', 'External pins', 'top', 3, { mainFunctions: ['3.3 V supply'], warnings: ['power', 'voltage'], keywords: ['3v3', 'power', 'supply'] }),
+  sensairPin('esp-sensair-ext-4', 'EXT-4', 'GND', 'ground', 'External pins', 'top', 4, { mainFunctions: ['Ground'], keywords: ['ground', 'gnd'] }),
+  sensairPin('esp-sensair-i2c-1', 'I2C-1', 'SCL', 'io', 'External I2C', 'left', 1, { gpio: 3, mainFunctions: ['BM_SCK/SCL', 'LCD_TP_SCL'], notes: ['Shared by the external I2C interface, Shuttle Board connector, and LCD touch interface.'], warnings: ['onboard'], keywords: ['i2c', 'scl', 'sensor', 'touch'] }),
+  sensairPin('esp-sensair-i2c-2', 'I2C-2', 'SDA', 'io', 'External I2C', 'left', 2, { gpio: 2, mainFunctions: ['BM_SDI/SDA', 'LCD_TP_SDA'], notes: ['Shared by the external I2C interface, Shuttle Board connector, and LCD touch interface.'], warnings: ['onboard', 'strapping'], keywords: ['i2c', 'sda', 'sensor', 'touch', 'strap', 'strapping'] }),
+  sensairPin('esp-sensair-i2c-3', 'I2C-3', 'VDD', 'power', 'External I2C', 'left', 3, { mainFunctions: ['3.3 V supply'], warnings: ['power', 'voltage'], keywords: ['3v3', 'power', 'supply'] }),
+  sensairPin('esp-sensair-i2c-4', 'I2C-4', 'GND', 'ground', 'External I2C', 'left', 4, { mainFunctions: ['Ground'], keywords: ['ground', 'gnd'] }),
+  sensairPin('esp-sensair-rgb-1', 'RGB-1', 'DIN', 'io', 'External RGB', 'right', 1, { gpio: 27, mainFunctions: ['WS2812_CTRL'], notes: ['Data output for the external RGB-strip interface. GPIO27 is also an ESP32-C5 strapping pin.'], warnings: ['strapping'], keywords: ['rgb', 'ws2812', 'led strip', 'strap', 'strapping'] }),
+  sensairPin('esp-sensair-rgb-2', 'RGB-2', 'VDD', 'power', 'External RGB', 'right', 2, { mainFunctions: ['3.3 V supply'], warnings: ['power', 'voltage'], keywords: ['3v3', 'power', 'supply'] }),
+  sensairPin('esp-sensair-rgb-3', 'RGB-3', 'GND', 'ground', 'External RGB', 'right', 3, { mainFunctions: ['Ground'], keywords: ['ground', 'gnd'] }),
+  sensairPin('esp-sensair-shuttle-1', 'SHUTTLE-1', 'CS', 'io', 'Shuttle Board', 'bottom', 1, { gpio: 10, mainFunctions: ['BM_CS'], notes: ['Connected to the Shuttle Board sensor interface.'], warnings: ['onboard'], keywords: ['shuttle', 'sensor', 'chip select'] }),
+  sensairPin('esp-sensair-shuttle-2', 'SHUTTLE-2', 'SDO', 'io', 'Shuttle Board', 'bottom', 2, { gpio: 9, mainFunctions: ['BM_SDO'], notes: ['Connected to the Shuttle Board sensor interface.'], warnings: ['onboard'], keywords: ['shuttle', 'sensor', 'spi'] }),
+  sensairPin('esp-sensair-shuttle-3', 'SHUTTLE-3', 'G1', 'io', 'Shuttle Board', 'bottom', 3, { gpio: 28, mainFunctions: ['BM_G1', 'ESP_BOOT'], notes: ['Connected to the Shuttle Board sensor interface and the Boot button.'], warnings: ['onboard', 'strapping', 'boot'], keywords: ['shuttle', 'sensor', 'boot', 'strap', 'strapping'] }),
+  sensairPin('esp-sensair-shuttle-4', 'SHUTTLE-4', 'G2', 'io', 'Shuttle Board', 'bottom', 4, { gpio: 0, mainFunctions: ['BM_G2'], notes: ['Connected to the Shuttle Board sensor interface.'], warnings: ['onboard'], keywords: ['shuttle', 'sensor'] }),
+  sensairPin('esp-sensair-shuttle-5', 'SHUTTLE-5', 'SCL', 'io', 'Shuttle Board', 'bottom', 5, { gpio: 3, mainFunctions: ['BM_SCK/SCL'], notes: ['Shared I2C clock for Shuttle Board sensors.'], warnings: ['onboard'], keywords: ['shuttle', 'i2c', 'scl', 'sensor'] }),
+  sensairPin('esp-sensair-shuttle-6', 'SHUTTLE-6', 'SDA', 'io', 'Shuttle Board', 'bottom', 6, { gpio: 2, mainFunctions: ['BM_SDI/SDA'], notes: ['Shared I2C data for Shuttle Board sensors.'], warnings: ['onboard', 'strapping'], keywords: ['shuttle', 'i2c', 'sda', 'sensor', 'strap', 'strapping'] }),
+  sensairPin('esp-sensair-shuttle-7', 'SHUTTLE-7', 'VDD', 'power', 'Shuttle Board', 'bottom', 7, { mainFunctions: ['Sensor supply'], warnings: ['power', 'voltage'], keywords: ['power', 'sensor supply'] }),
+  sensairPin('esp-sensair-shuttle-8', 'SHUTTLE-8', 'GND', 'ground', 'Shuttle Board', 'bottom', 8, { mainFunctions: ['Ground'], keywords: ['ground', 'gnd'] }),
+];
+
+const sensairProfile: SocPackageVariant = {
+  id: 'esp-sensairshuttle-v1-0',
+  name: 'SensairShuttle v1.0',
+  packageName: 'ESP-SensairShuttle v1.0 connector interfaces',
+  description: 'ESP32-C5 sensor and AI-interaction development board jointly launched by Espressif and Bosch Sensortec.',
+  kind: 'board',
+  boardLayout: 'connector-groups',
+  source: sensairSource,
+  boardSpecs: {
+    power: ['USB-C power or an external 3.7 V lithium battery through the battery connector.'],
+    programming: ['USB-C port supplies power, flashing, and debugging.'],
+    onBoardHardware: ['ESP32-C5-WROOM-1-N16R8, LCD connector, Shuttle Board sensor connector, BMM350 magnetometer, battery charger, microphone and speaker connectors, Boot button, and external RGB-strip interface.'],
+  },
+  moduleNames: ['ESP32-C5-WROOM-1-N16R8'],
+  moduleVariants: [{ name: 'ESP32-C5-WROOM-1-N16R8', antenna: 'PCB antenna', flash: '16 MB SPI flash', psram: '8 MB octal PSRAM', pinoutImpact: 'This SensairShuttle board profile represents connector signals and on-board sharing, not bare module pads.', source: wroomSource }],
+  identificationNotes: ['Confirm the v1.0 silkscreen in the white circle at the top right of the mainboard front or back.', 'This profile represents documented connector interfaces; it is not a complete module-pad view.'],
+  pins: sensairPins,
+};
+
 export const esp32c5: SocDefinition = {
   id: 'esp32c5',
   name: 'ESP32-C5',
@@ -180,5 +264,5 @@ export const esp32c5: SocDefinition = {
   },
   source,
   pins: devKitPins,
-  boardProfiles: [devKitProfile],
+  boardProfiles: [devKitProfile, sensairProfile],
 };

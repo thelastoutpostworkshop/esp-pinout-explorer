@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-06T11:08:01.202Z",
+  "generated_at": "2026-08-06T11:16:01.493Z",
   "board": {
     "id": "esp32-h2-devkitm-1",
     "name": "ESP32-H2-DevKitM-1",
