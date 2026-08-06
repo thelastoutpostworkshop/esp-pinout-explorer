@@ -17,6 +17,36 @@ const devKitSource: SocSource = {
   documentType: 'user-guide',
   url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/esp32-c5-devkitc-1/user_guide.html',
   sections: ['Description of Components', 'Power Supply Options', 'Header Block J1', 'Header Block J3', 'Hardware Revision Details'],
+  figures: [
+    {
+      title: 'Board overview',
+      kind: 'board-photo',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/_images/esp32-c5-devkitc-1-isometric_v1.1.png',
+      alt: 'ESP32-C5-DevKitC-1 development board',
+      sourceSection: 'Overview',
+    },
+    {
+      title: 'Component layout',
+      kind: 'component-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/_images/ESP32-C5-DevKitC-1_callouts.png',
+      alt: 'ESP32-C5-DevKitC-1 front component layout',
+      sourceSection: 'Description of Components',
+    },
+    {
+      title: 'System block diagram',
+      kind: 'block-diagram',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/_images/ESP32-C5-DevKitC-1-block-diagram.png',
+      alt: 'ESP32-C5-DevKitC-1 system block diagram',
+      sourceSection: 'Block Diagram',
+    },
+    {
+      title: 'Pin layout',
+      kind: 'pin-layout',
+      url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/_images/esp32-c5-devkitc-1-pin-layout_v1.2.png',
+      alt: 'ESP32-C5-DevKitC-1 v1.2 pin layout',
+      sourceSection: 'Pin Layout',
+    },
+  ],
 };
 
 const wroomSource: SocSource = {
