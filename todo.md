@@ -168,6 +168,10 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - Note: new/early module family; verify latest module datasheets and dev-kit user guides before implementation.
 - [ ] ESP32-C5 chip package profiles
   - [ ] Chip package profile: QFN, 6 x 6 mm
+- [x] ESP32-C5 board profiles
+  - [x] Board profile: ESP32-C5-DevKitC-1 v1.2
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/esp32-c5-devkitc-1/user_guide.html
+    - Note: implemented from the official v1.2 J1/J3 Header Block tables. GPIO15 is marked unavailable because the DevKitC-1's WROOM module has SPI PSRAM; bare package and module-pad views remain separate TODO items.
 - [ ] ESP32-C5 module profiles
   - Source: https://www.espressif.com/en/products/modules
   - [ ] Module profile: ESP32-C5-WROOM-1
