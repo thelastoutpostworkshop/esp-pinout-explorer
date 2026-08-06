@@ -380,7 +380,8 @@ function packageProfileDisplayName(soc: SocDefinition, packageName: string) {
     const trailingVariant = packageName
       .slice((packageMatch.index ?? 0) + packageMatch[0].length)
       .match(/^\s*(\([^)]*\))/)?.[1];
-    const variantLabel = trailingVariant && /\bH[FR]\d+\b/i.test(trailingVariant) ? ` ${trailingVariant}` : '';
+    const isPhysicalDimensions = /^\(\s*\d+(?:\.\d+)?\s*x\s*\d+(?:\.\d+)?\s*mm\s*\)$/i.test(trailingVariant ?? '');
+    const variantLabel = trailingVariant && !isPhysicalDimensions ? ` ${trailingVariant}` : '';
     return `${soc.name} ${packageMatch[0].toUpperCase()}${variantLabel}`;
   }
 

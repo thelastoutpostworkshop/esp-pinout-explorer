@@ -372,7 +372,7 @@ export const esp32c3: SocDefinition = {
     sram: '400 KB SRAM.',
     rom: '384 KB ROM.',
   },
-  packageName: 'QFN32 (5 x 5 mm), 22 GPIO, top view',
+  packageName: 'QFN32 (22 GPIO; 5 x 5 mm), top view',
   description: 'ESP32-C3 Wi-Fi and Bluetooth LE SoC pinout.',
   source,
   pins: qfn32Pins,
@@ -547,7 +547,7 @@ function createWroom02Pins(profileId: string): SocPin[] {
 const qfn32SixteenGpioProfile: SocPackageVariant = {
   id: 'esp32c3-qfn32-16-gpio',
   name: 'QFN32, 16 GPIO',
-  packageName: 'ESP32-C3 QFN32 (5 x 5 mm), 16 GPIO, top view',
+  packageName: 'ESP32-C3 QFN32 (16 GPIO; 5 x 5 mm), top view',
   kind: 'package',
   source,
   identificationNotes: [
