@@ -6,7 +6,7 @@ const source: SocSource = {
   version: 'v1.3',
   publisher: 'Espressif',
   documentType: 'datasheet',
-  url: 'https://www.espressif.com/sites/default/files/documentation/esp32-c5_datasheet_en.pdf',
+  url: 'https://documentation.espressif.com/esp32-c5_datasheet_en.pdf',
   sections: ['Features', 'Section 2 Pins', 'Section 3 Boot Configurations'],
 };
 
@@ -161,7 +161,7 @@ const devKitProfile: SocPackageVariant = {
   },
   moduleNames: ['ESP32-C5-WROOM-1', 'ESP32-C5-WROOM-1U'],
   moduleVariants: devKitVariants,
-  identificationNotes: ['Choose this profile by the ESP32-C5-DevKitC-1 carrier board and its J1/J3 header layout. The WROOM module marking alone does not identify the carrier board.'],
+  identificationNotes: ['Choose this profile by the ESP32-C5-DevKitC-1 carrier PCB and its J1/J3 header layout. The WROOM module marking alone does not identify the carrier PCB.'],
   pins: devKitPins,
 };
 
@@ -245,7 +245,7 @@ const sensairProfile: SocPackageVariant = {
   },
   moduleNames: ['ESP32-C5-WROOM-1-N16R8'],
   moduleVariants: [{ name: 'ESP32-C5-WROOM-1-N16R8', antenna: 'PCB antenna', flash: '16 MB SPI flash', psram: '8 MB octal PSRAM', pinoutImpact: 'This SensairShuttle board profile represents connector signals and on-board sharing, not bare module pads.', source: wroomSource }],
-  identificationNotes: ['Confirm the v1.0 silkscreen in the white circle at the top right of the mainboard front or back.', 'This profile represents documented connector interfaces; it is not a complete module-pad view.'],
+  identificationNotes: ['Confirm the v1.0 silkscreen in the white circle at the top right of the mainboard front or back.', 'Choose this profile by the ESP-SensairShuttle carrier PCB and its documented connector interfaces; it is not a complete module-pad view.'],
   pins: sensairPins,
 };
 
@@ -263,6 +263,6 @@ export const esp32c5: SocDefinition = {
     rom: '320 KB',
   },
   source,
-  pins: devKitPins,
+  pins: [],
   boardProfiles: [devKitProfile, sensairProfile],
 };

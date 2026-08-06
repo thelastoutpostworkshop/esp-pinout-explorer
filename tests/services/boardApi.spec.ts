@@ -354,6 +354,7 @@ describe("public raw-chip dataset", () => {
     expect(dataset.chips.map((chip) => chip.id).sort()).toEqual([
       "esp32",
       "esp32c3",
+      "esp32c5",
       "esp32c6",
       "esp32h2",
       "esp32p4",

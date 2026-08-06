@@ -58,6 +58,24 @@ const devKitM1Source: SocSource = {
   ],
 };
 
+const wroom02Source: SocSource = {
+  title: 'ESP32-C3-WROOM-02 & WROOM-02U Datasheet',
+  version: 'v1.7',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
+  url: 'https://documentation.espressif.com/esp32-c3-wroom-02_datasheet_en.pdf',
+  sections: ['Table 1-1 ESP32-C3-WROOM-02 (ANT) Series Comparison', 'Table 1-2 ESP32-C3-WROOM-02U (CONN) Series Comparison', 'Figure 3-1 Pin Layout (Top View)', 'Table 3-1 Pin Definitions'],
+};
+
+const mini1Source: SocSource = {
+  title: 'ESP32-C3-MINI-1 & MINI-1U Datasheet',
+  version: 'v2.2',
+  publisher: 'Espressif',
+  documentType: 'datasheet',
+  url: 'https://documentation.espressif.com/esp32-c3-mini-1_datasheet_en.pdf',
+  sections: ['Table 1-1 ESP32-C3-MINI-1 (ANT) Series Comparison', 'Table 1-2 ESP32-C3-MINI-1U (CONN) Series Comparison', 'Figure 3-1 Pin Layout (Top View)', 'Table 3-1 Pin Definitions'],
+};
+
 function createBoardPin(input: HeaderPinInput, resolveSourcePinByGpio: BoardSourcePinResolver, profileId: string): SocPin {
   const displayNumber = `${input.header}-${input.number}`;
   return makeBoardPin({
@@ -103,13 +121,13 @@ const ground = (header: 'J1' | 'J3', number: number, label = 'G'): HeaderPinInpu
 const power = (header: 'J1' | 'J3', number: number, label: '3V3' | '5V'): HeaderPinInput => ({ header, number, label, type: 'power', mainFunctions: [`${label === '3V3' ? '3.3' : '5'} V power supply`], notes: [`${label === '3V3' ? '3.3' : '5'} V board power rail.`], warnings: ['power', 'voltage'], keywords: [label.toLowerCase(), 'power', 'supply'] });
 
 const devKitC02Variants: SocModuleVariant[] = [
-  { name: 'ESP32-C3-WROOM-02', antenna: 'PCB antenna', flash: '4 MB SPI flash', psram: 'No PSRAM', footprint: '18.0 x 20.0 mm module', pinoutImpact: 'Same DevKitC-02 header profile; antenna implementation differs from WROOM-02U.' },
-  { name: 'ESP32-C3-WROOM-02U', antenna: 'External antenna connector', flash: '4 MB SPI flash', psram: 'No PSRAM', footprint: '18.0 x 14.3 mm module', pinoutImpact: 'Same DevKitC-02 header profile; antenna connector changes RF layout only.' },
+  { name: 'ESP32-C3-WROOM-02', antenna: 'PCB antenna', flash: '4 MB SPI flash', psram: 'No PSRAM', footprint: '18.0 x 20.0 mm module', pinoutImpact: 'Same DevKitC-02 header profile; antenna implementation differs from WROOM-02U.', source: wroom02Source },
+  { name: 'ESP32-C3-WROOM-02U', antenna: 'External antenna connector', flash: '4 MB SPI flash', psram: 'No PSRAM', footprint: '18.0 x 14.3 mm module', pinoutImpact: 'Same DevKitC-02 header profile; antenna connector changes RF layout only.', source: wroom02Source },
 ];
 
 const devKitM1Variants: SocModuleVariant[] = [
-  { name: 'ESP32-C3-MINI-1', antenna: 'PCB antenna', flash: '4 MB SPI flash', psram: 'No PSRAM', footprint: '13.2 x 16.6 mm module', pinoutImpact: 'Same DevKitM-1 header profile; antenna implementation differs from MINI-1U.' },
-  { name: 'ESP32-C3-MINI-1U', antenna: 'External antenna connector', flash: '4 MB SPI flash', psram: 'No PSRAM', footprint: '13.2 x 12.5 mm module', pinoutImpact: 'Same DevKitM-1 header profile; antenna connector changes RF layout only.' },
+  { name: 'ESP32-C3-MINI-1', antenna: 'PCB antenna', flash: '4 MB SPI flash', psram: 'No PSRAM', footprint: '13.2 x 16.6 mm module', pinoutImpact: 'Same DevKitM-1 header profile; antenna implementation differs from MINI-1U.', source: mini1Source },
+  { name: 'ESP32-C3-MINI-1U', antenna: 'External antenna connector', flash: '4 MB SPI flash', psram: 'No PSRAM', footprint: '13.2 x 12.5 mm module', pinoutImpact: 'Same DevKitM-1 header profile; antenna connector changes RF layout only.', source: mini1Source },
 ];
 
 const devKitC02Pins: HeaderPinInput[] = [
@@ -174,14 +192,14 @@ export function createEsp32c3BoardProfiles(resolveSourcePinByGpio: BoardSourcePi
       id: 'esp32c3-devkitc-02', name: 'DevKitC-02 (WROOM-02)', packageName: 'ESP32-C3-DevKitC-02 board headers',
       description: 'Entry-level ESP32-C3-WROOM-02 development board for Wi-Fi and Bluetooth LE applications.', source: devKitC02Source,
       moduleNames: ['ESP32-C3-WROOM-02', 'ESP32-C3-WROOM-02U'], moduleVariants: devKitC02Variants,
-      identificationNotes: ['Choose this profile by the ESP32-C3-DevKitC-02 carrier board and J1/J3 header layout; the metal shield may show the WROOM-02 or WROOM-02U module marking.'],
+      identificationNotes: ['Choose this profile by the ESP32-C3-DevKitC-02 carrier PCB and J1/J3 header layout; the metal shield may show the WROOM-02 or WROOM-02U module marking.'],
       onBoardHardware: ['Boot and Reset buttons, addressable RGB LED on GPIO8, Micro-USB port, and USB-to-UART bridge.'], pins: devKitC02Pins,
     }, resolveSourcePinByGpio),
     createBoardProfile({
       id: 'esp32c3-devkitm-1', name: 'DevKitM-1 (MINI-1)', packageName: 'ESP32-C3-DevKitM-1 board headers',
       description: 'Entry-level ESP32-C3-MINI-1 development board for Wi-Fi and Bluetooth LE applications.', source: devKitM1Source,
       moduleNames: ['ESP32-C3-MINI-1', 'ESP32-C3-MINI-1U'], moduleVariants: devKitM1Variants,
-      identificationNotes: ['Choose this profile by the ESP32-C3-DevKitM-1 carrier board and J1/J3 header layout; the metal shield may show the MINI-1 or MINI-1U module marking.'],
+      identificationNotes: ['Choose this profile by the ESP32-C3-DevKitM-1 carrier PCB and J1/J3 header layout; the metal shield may show the MINI-1 or MINI-1U module marking.'],
       onBoardHardware: ['Boot and Reset buttons, addressable RGB LED on GPIO8, Micro-USB port, and USB-to-UART bridge.'], pins: devKitM1Pins,
     }, resolveSourcePinByGpio),
   ];
