@@ -51,7 +51,7 @@ The explorer currently covers these official Espressif board, module, and packag
 | **ESP32** | ESP32-DevKitC V4; ESP32-DevKitM-1; ESP32-Ethernet-Kit v1.2; ESP32-LCDKit; ESP-WROVER-KIT v4.1; ESP32-PICO-KIT v4/v4.1; ESP32-PICO-KIT-1; ESP32-PICO-DevKitM-2 | ESP32 QFN48, 6 x 6 mm |
 | **ESP32-S3** | ESP32-S3-DevKitC-1 v1.1; ESP32-S3-DevKitM-1; ESP32-S3-USB-OTG; ESP32-S3-USB-Bridge; ESP Thread Border Router / Zigbee Gateway v1.2; ESP32-S3-LCD-EV-Board v1.5; ESP-VoCat v1.2; ESP-DualKey | ESP32-S3 QFN56 |
 | **ESP32-C6** | ESP32-C6-DevKitM-1; ESP32-C6-DevKitC-1 v1.2 | ESP32-C6-MINI-1 and MINI-1U module pads; ESP32-C6 QFN40 and QFN32 |
-| **ESP32-C5** | ESP32-C5-DevKitC-1 v1.2; ESP-SensairShuttle v1.0 | Board connector/header views only; bare package and module-pad profiles are not yet included. |
+| **ESP32-C5** | QFN48 (HR2/HR8); QFN48 (HF4); ESP32-C5-DevKitC-1 v1.2; ESP-SensairShuttle v1.0 | Raw chip-package views and board connector/header views; module-pad profiles are not yet included. |
 | **ESP32-C3** | ESP32-C3-DevKitC-02; ESP32-C3-DevKitM-1 | ESP32-C3 QFN32 (22-GPIO and 16-GPIO bonding variants); ESP32-C3-MINI-1/-1U and WROOM-02/-02U module pads |
 | **ESP32-H2** | ESP32-H2-DevKitM-1 | ESP32-H2 QFN32, 4 x 4 mm |
 | **ESP32-P4** | ESP32-P4X-Function-EV-Board; ESP32-P4X-EYE; ESP32-P4-Function-EV-Board v1.5.2; ESP32-P4-EYE | Board allocation views only; a complete bare ESP32-P4 package view is not yet included. |

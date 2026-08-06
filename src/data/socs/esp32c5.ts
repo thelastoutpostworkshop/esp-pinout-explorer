@@ -7,7 +7,7 @@ const source: SocSource = {
   publisher: 'Espressif',
   documentType: 'datasheet',
   url: 'https://documentation.espressif.com/esp32-c5_datasheet_en.pdf',
-  sections: ['Features', 'Section 2 Pins', 'Section 3 Boot Configurations'],
+  sections: ['Figure 2-1 ESP32-C5HR2 & ESP32-C5HR8 Pin Layout (Top View)', 'Figure 2-2 ESP32-C5HF4 Pin Layout (Top View)', 'Table 2-1 Pin Overview', 'Section 2.3.4 Restrictions for GPIOs and LP GPIOs', 'Table 2-13 Pin Mapping Between Chip and Off-Package Flash', 'Table 2-14 Pin Mapping Between Chip and Off-Package PSRAM', 'Table 3-1 Default Configuration of Strapping Pins', 'Table 3-3 Chip Boot Mode Control'],
 };
 
 const devKitSource: SocSource = {
@@ -77,6 +77,115 @@ const devKitVariants: SocModuleVariant[] = [
   },
 ];
 
+const c5MatrixSignals = ['SPI2', 'UART1', 'I2C', 'I2S', 'TWAI', 'LED PWM', 'MCPWM', 'RMT', 'PCNT', 'PARLIO'];
+const c5StrappingNote = 'ESP32-C5 strapping pin; its voltage at power-up or reset controls chip configuration.';
+const c5FlashNote = 'Allocated to the off-package flash or PSRAM interface; Espressif does not recommend using it for other purposes.';
+
+function c5Pin(
+  number: number,
+  name: string,
+  type: PinType,
+  position: SocPin['position'],
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position'>> = {},
+): SocPin {
+  return { id: `esp32c5-pin-${number}`, number, name, type, position, mainFunctions: [], ...details };
+}
+
+function c5Io(
+  number: number,
+  name: string,
+  gpio: number,
+  position: SocPin['position'],
+  details: Partial<Omit<SocPin, 'id' | 'number' | 'name' | 'type' | 'position' | 'gpio'>> = {},
+): SocPin {
+  return c5Pin(number, name, 'io', position, {
+    gpio,
+    mainFunctions: [`GPIO${gpio}`],
+    matrixSignals: c5MatrixSignals,
+    ...details,
+  });
+}
+
+const qfn48HrPins: SocPin[] = [
+  c5Pin(1, 'VDDA6', 'power', { side: 'left', order: 12 }, { mainFunctions: ['3.3 V analog power input'], notes: ['Analog power-domain supply.'], warnings: ['power', 'voltage'], keywords: ['power', '3v3', 'analog', 'vdda6'] }),
+  c5Pin(2, 'GND', 'ground', { side: 'left', order: 11 }, { mainFunctions: ['Ground'], notes: ['External ground connection.'], keywords: ['ground', 'gnd'] }),
+  c5Pin(3, 'VDDA7', 'power', { side: 'left', order: 10 }, { mainFunctions: ['3.3 V analog power input'], notes: ['Analog power-domain supply.'], warnings: ['power', 'voltage'], keywords: ['power', '3v3', 'analog', 'vdda7'] }),
+  c5Pin(4, 'XTAL_N', 'analog', { side: 'left', order: 9 }, { mainFunctions: ['XTAL_N'], analog: ['XTAL_N'], notes: ['Dedicated main-crystal negative pin, not a GPIO.'], keywords: ['xtal', 'crystal', 'clock'] }),
+  c5Pin(5, 'XTAL_P', 'analog', { side: 'left', order: 8 }, { mainFunctions: ['XTAL_P'], analog: ['XTAL_P'], notes: ['Dedicated main-crystal positive pin, not a GPIO.'], keywords: ['xtal', 'crystal', 'clock'] }),
+  c5Pin(6, 'VDDA8', 'power', { side: 'left', order: 7 }, { mainFunctions: ['3.3 V analog power input'], notes: ['Analog power-domain supply.'], warnings: ['power', 'voltage'], keywords: ['power', '3v3', 'analog', 'vdda8'] }),
+  c5Pin(7, 'CHIP_PU', 'control', { side: 'left', order: 6 }, { mainFunctions: ['CHIP_PU'], notes: ['High enables the chip; low disables or resets it. Do not leave this pin floating.'], warnings: ['reset'], keywords: ['enable', 'reset', 'chip pu'] }),
+  c5Pin(8, 'VDDPST1', 'power', { side: 'left', order: 5 }, { mainFunctions: ['LP digital power input'], notes: ['Supplies the low-power digital domain.'], warnings: ['power', 'voltage'], keywords: ['power', 'lp', 'vddpst1'] }),
+  c5Io(9, 'XTAL_32K_P', 0, { side: 'left', order: 4 }, { mainFunctions: ['GPIO0', 'XTAL_32K_P', 'LP_GPIO0', 'LP_UART_DTRN'], ioMux: ['GPIO0'], rtc: ['LP_GPIO0', 'LP_UART_DTRN'], analog: ['XTAL_32K_P'], keywords: ['gpio0', 'xtal', '32k', 'lp uart'] }),
+  c5Io(10, 'XTAL_32K_N', 1, { side: 'left', order: 3 }, { mainFunctions: ['GPIO1', 'XTAL_32K_N', 'LP_GPIO1', 'LP_UART_DSRN'], ioMux: ['GPIO1'], rtc: ['LP_GPIO1', 'LP_UART_DSRN'], analog: ['XTAL_32K_N', 'ADC1_CH0'], keywords: ['gpio1', 'xtal', '32k', 'adc', 'lp uart'] }),
+  c5Io(11, 'MTMS', 2, { side: 'left', order: 2 }, { mainFunctions: ['GPIO2', 'MTMS', 'LP_GPIO2', 'LP_UART_RTSN', 'LP_I2C_SDA', 'ADC1_CH1', 'FSPIQ'], ioMux: ['GPIO2', 'MTMS', 'FSPIQ'], rtc: ['LP_GPIO2', 'LP_UART_RTSN', 'LP_I2C_SDA'], analog: ['ADC1_CH1'], notes: [c5StrappingNote], warnings: ['strapping', 'jtag'], keywords: ['gpio2', 'jtag', 'strap', 'adc', 'fspi'] }),
+  c5Io(12, 'MTDI', 3, { side: 'left', order: 1 }, { mainFunctions: ['GPIO3', 'MTDI', 'LP_GPIO3', 'LP_UART_CTSN', 'LP_I2C_SCL', 'ADC1_CH2'], ioMux: ['GPIO3', 'MTDI'], rtc: ['LP_GPIO3', 'LP_UART_CTSN', 'LP_I2C_SCL'], analog: ['ADC1_CH2'], notes: [c5StrappingNote], warnings: ['strapping', 'jtag'], keywords: ['gpio3', 'jtag', 'strap', 'adc'] }),
+  c5Io(13, 'MTCK', 4, { side: 'top', order: 1 }, { mainFunctions: ['GPIO4', 'MTCK', 'LP_GPIO4', 'LP_UART_RXD', 'ADC1_CH3', 'FSPIHD'], ioMux: ['GPIO4', 'MTCK', 'FSPIHD'], rtc: ['LP_GPIO4', 'LP_UART_RXD'], analog: ['ADC1_CH3'], warnings: ['jtag'], keywords: ['gpio4', 'jtag', 'adc', 'fspi'] }),
+  c5Io(14, 'MTDO', 5, { side: 'top', order: 2 }, { mainFunctions: ['GPIO5', 'MTDO', 'LP_GPIO5', 'LP_UART_TXD', 'ADC1_CH4', 'FSPIWP'], ioMux: ['GPIO5', 'MTDO', 'FSPIWP'], rtc: ['LP_GPIO5', 'LP_UART_TXD'], analog: ['ADC1_CH4'], warnings: ['jtag'], keywords: ['gpio5', 'jtag', 'adc', 'fspi'] }),
+  c5Io(15, 'GPIO6', 6, { side: 'top', order: 3 }, { mainFunctions: ['GPIO6', 'LP_GPIO6', 'ADC1_CH5', 'FSPICLK'], ioMux: ['GPIO6', 'FSPICLK'], rtc: ['LP_GPIO6'], analog: ['ADC1_CH5'], keywords: ['gpio6', 'adc', 'fspi'] }),
+  c5Io(16, 'GPIO7', 7, { side: 'top', order: 4 }, { mainFunctions: ['GPIO7', 'SDIO_DATA1'], ioMux: ['GPIO7', 'SDIO_DATA1'], notes: [c5StrappingNote], warnings: ['strapping'], keywords: ['gpio7', 'strap', 'sdio'] }),
+  c5Io(17, 'GPIO8', 8, { side: 'top', order: 5 }, { mainFunctions: ['GPIO8', 'PAD_COMP0', 'SDIO_DATA0'], ioMux: ['GPIO8', 'SDIO_DATA0'], analog: ['PAD_COMP0'], keywords: ['gpio8', 'comparator', 'sdio'] }),
+  c5Io(18, 'GPIO9', 9, { side: 'top', order: 6 }, { mainFunctions: ['GPIO9', 'PAD_COMP1', 'SDIO_CLK'], ioMux: ['GPIO9', 'SDIO_CLK'], analog: ['PAD_COMP1'], keywords: ['gpio9', 'comparator', 'sdio'] }),
+  c5Io(19, 'GPIO10', 10, { side: 'top', order: 7 }, { mainFunctions: ['GPIO10', 'FSPICS0', 'SDIO_CMD'], ioMux: ['GPIO10', 'FSPICS0', 'SDIO_CMD'], keywords: ['gpio10', 'fspi', 'sdio'] }),
+  c5Io(20, 'U0TXD', 11, { side: 'top', order: 8 }, { mainFunctions: ['GPIO11', 'U0TXD'], ioMux: ['GPIO11', 'U0TXD'], notes: ['UART0 is commonly used for boot messages, flashing, and serial debugging.'], warnings: ['uart0'], keywords: ['gpio11', 'uart0', 'tx', 'serial'] }),
+  c5Io(21, 'U0RXD', 12, { side: 'top', order: 9 }, { mainFunctions: ['GPIO12', 'U0RXD'], ioMux: ['GPIO12', 'U0RXD'], notes: ['UART0 is commonly used for boot messages, flashing, and serial debugging.'], warnings: ['uart0'], keywords: ['gpio12', 'uart0', 'rx', 'serial'] }),
+  c5Io(22, 'GPIO13', 13, { side: 'top', order: 10 }, { mainFunctions: ['GPIO13', 'USB_D-'], ioMux: ['GPIO13', 'USB_D-'], notes: ['Connected to USB Serial/JTAG by default; reconfigure before normal GPIO use.'], warnings: ['usb'], keywords: ['gpio13', 'usb', 'serial jtag'] }),
+  c5Io(23, 'GPIO14', 14, { side: 'top', order: 11 }, { mainFunctions: ['GPIO14', 'USB_D+'], ioMux: ['GPIO14', 'USB_D+'], notes: ['Connected to USB Serial/JTAG by default; reconfigure before normal GPIO use.'], warnings: ['usb'], keywords: ['gpio14', 'usb', 'serial jtag'] }),
+  c5Pin(24, 'VDDPST2', 'power', { side: 'top', order: 12 }, { mainFunctions: ['HP digital power input'], notes: ['Supplies the high-performance digital and part of the analog pin domains.'], warnings: ['power', 'voltage'], keywords: ['power', 'hp', 'vddpst2'] }),
+  c5Io(25, 'SPICS1', 15, { side: 'right', order: 1 }, { mainFunctions: ['GPIO15', 'SPICS1'], ioMux: ['GPIO15', 'SPICS1'], notes: [c5FlashNote], warnings: ['flash', 'psram'], keywords: ['gpio15', 'flash', 'psram', 'spi'] }),
+  c5Io(26, 'SPICS0', 16, { side: 'right', order: 2 }, { mainFunctions: ['GPIO16', 'SPICS0'], ioMux: ['GPIO16', 'SPICS0'], notes: [c5FlashNote], warnings: ['flash'], keywords: ['gpio16', 'flash', 'spi'] }),
+  c5Io(27, 'SPIQ', 17, { side: 'right', order: 3 }, { mainFunctions: ['GPIO17', 'SPIQ'], ioMux: ['GPIO17', 'SPIQ'], notes: [c5FlashNote], warnings: ['flash'], keywords: ['gpio17', 'flash', 'spi'] }),
+  c5Io(28, 'SPIWP', 18, { side: 'right', order: 4 }, { mainFunctions: ['GPIO18', 'SPIWP'], ioMux: ['GPIO18', 'SPIWP'], notes: [c5FlashNote], warnings: ['flash'], keywords: ['gpio18', 'flash', 'spi'] }),
+  c5Io(29, 'VDD_SPI', 19, { side: 'right', order: 5 }, { mainFunctions: ['GPIO19', 'VDD_SPI'], ioMux: ['GPIO19'], analog: ['VDD_SPI'], notes: ['Flash/PSRAM power-supply pin by default; it can only be used as GPIO when flash uses an external supply.'], warnings: ['flash', 'power', 'voltage'], keywords: ['gpio19', 'flash', 'psram', 'power', 'vdd spi'] }),
+  c5Io(30, 'SPIHD', 20, { side: 'right', order: 6 }, { mainFunctions: ['GPIO20', 'SPIHD'], ioMux: ['GPIO20', 'SPIHD'], notes: [c5FlashNote], warnings: ['flash'], keywords: ['gpio20', 'flash', 'spi'] }),
+  c5Io(31, 'SPICLK', 21, { side: 'right', order: 7 }, { mainFunctions: ['GPIO21', 'SPICLK'], ioMux: ['GPIO21', 'SPICLK'], notes: [c5FlashNote], warnings: ['flash'], keywords: ['gpio21', 'flash', 'spi'] }),
+  c5Io(32, 'SPID', 22, { side: 'right', order: 8 }, { mainFunctions: ['GPIO22', 'SPID'], ioMux: ['GPIO22', 'SPID'], notes: [c5FlashNote], warnings: ['flash'], keywords: ['gpio22', 'flash', 'spi'] }),
+  c5Io(33, 'GPIO23', 23, { side: 'right', order: 9 }, { keywords: ['gpio23'] }),
+  c5Io(34, 'GPIO24', 24, { side: 'right', order: 10 }, { keywords: ['gpio24'] }),
+  c5Io(35, 'GPIO25', 25, { side: 'right', order: 11 }, { notes: [c5StrappingNote], warnings: ['strapping'], keywords: ['gpio25', 'strap', 'boot'] }),
+  c5Io(36, 'GPIO26', 26, { side: 'right', order: 12 }, { notes: [c5StrappingNote], warnings: ['strapping', 'boot'], keywords: ['gpio26', 'strap', 'boot'] }),
+  c5Io(37, 'GPIO27', 27, { side: 'bottom', order: 12 }, { notes: [c5StrappingNote], warnings: ['strapping', 'boot'], keywords: ['gpio27', 'strap', 'boot'] }),
+  c5Io(38, 'GPIO28', 28, { side: 'bottom', order: 11 }, { notes: [c5StrappingNote], warnings: ['strapping', 'boot'], keywords: ['gpio28', 'strap', 'boot'] }),
+  c5Pin(39, 'VDDPST3', 'power', { side: 'bottom', order: 10 }, { mainFunctions: ['HP digital power input'], notes: ['Supplies a high-performance digital pin power domain.'], warnings: ['power', 'voltage'], keywords: ['power', 'hp', 'vddpst3'] }),
+  c5Pin(40, 'VDDA1', 'power', { side: 'bottom', order: 9 }, { mainFunctions: ['3.3 V analog power input'], notes: ['Analog power-domain supply.'], warnings: ['power', 'voltage'], keywords: ['power', '3v3', 'analog', 'vdda1'] }),
+  c5Pin(41, 'VDDA2', 'power', { side: 'bottom', order: 8 }, { mainFunctions: ['3.3 V analog power input'], notes: ['Analog power-domain supply.'], warnings: ['power', 'voltage'], keywords: ['power', '3v3', 'analog', 'vdda2'] }),
+  c5Pin(42, 'ANT_2G', 'analog', { side: 'bottom', order: 7 }, { mainFunctions: ['ANT'], analog: ['2.4 GHz RF antenna input/output'], notes: ['Dedicated 2.4 GHz RF connection, not a GPIO.'], keywords: ['antenna', 'rf', '2.4 ghz'] }),
+  c5Pin(43, 'GND', 'ground', { side: 'bottom', order: 6 }, { mainFunctions: ['Ground'], notes: ['External ground connection.'], keywords: ['ground', 'gnd'] }),
+  c5Pin(44, 'VDDA3', 'power', { side: 'bottom', order: 5 }, { mainFunctions: ['3.3 V analog power input'], notes: ['Analog power-domain supply.'], warnings: ['power', 'voltage'], keywords: ['power', '3v3', 'analog', 'vdda3'] }),
+  c5Pin(45, 'VDDA4', 'power', { side: 'bottom', order: 4 }, { mainFunctions: ['3.3 V analog power input'], notes: ['Analog power-domain supply.'], warnings: ['power', 'voltage'], keywords: ['power', '3v3', 'analog', 'vdda4'] }),
+  c5Pin(46, 'VDDA5', 'power', { side: 'bottom', order: 3 }, { mainFunctions: ['3.3 V analog power input'], notes: ['Analog power-domain supply.'], warnings: ['power', 'voltage'], keywords: ['power', '3v3', 'analog', 'vdda5'] }),
+  c5Pin(47, 'GND', 'ground', { side: 'bottom', order: 2 }, { mainFunctions: ['Ground'], notes: ['External ground connection.'], keywords: ['ground', 'gnd'] }),
+  c5Pin(48, 'ANT_5G', 'analog', { side: 'bottom', order: 1 }, { mainFunctions: ['ANT'], analog: ['5 GHz RF antenna input/output'], notes: ['Dedicated 5 GHz RF connection, not a GPIO.'], keywords: ['antenna', 'rf', '5 ghz'] }),
+  c5Pin(49, 'GND', 'ground', { side: 'center', order: 1 }, { mainFunctions: ['Exposed ground pad'], notes: ['Exposed thermal ground pad; connect to ground.'], warnings: ['power'], keywords: ['ground', 'gnd', 'epad', 'thermal'] }),
+];
+
+const qfn48Hf4Pins: SocPin[] = qfn48HrPins.map((pin) => {
+  if (pin.number < 26 || pin.number > 32) return { ...pin, id: `esp32c5hf4-pin-${pin.number}` };
+  return {
+    ...pin,
+    id: `esp32c5hf4-pin-${pin.number}`,
+    name: 'NC',
+    type: 'control',
+    gpio: undefined,
+    mainFunctions: ['No connect'],
+    ioMux: undefined,
+    rtc: undefined,
+    analog: undefined,
+    matrixSignals: undefined,
+    notes: ['Not connected on ESP32-C5HF4, which has in-package flash.'],
+    warnings: undefined,
+    keywords: ['nc', 'no connect', 'in-package flash'],
+  };
+});
+
+const qfn48Hf4Profile: SocPackageVariant = {
+  id: 'qfn48-hf4',
+  name: 'QFN48 (HF4)',
+  packageName: 'ESP32-C5HF4 QFN48, 6 x 6 mm',
+  description: 'ESP32-C5HF4 raw chip package with 4 MB in-package flash; pins 26 to 32 are not connected.',
+  source,
+  pins: qfn48Hf4Pins,
+};
+
 interface HeaderPinInput {
   header: 'J1' | 'J3';
   number: number;
@@ -91,6 +200,7 @@ interface HeaderPinInput {
 
 function boardPin(input: HeaderPinInput): SocPin {
   const displayNumber = `${input.header}-${input.number}`;
+  const sourcePin = input.gpio === undefined ? undefined : qfn48HrPins.find((pin) => pin.gpio === input.gpio);
 
   return makeBoardPin({
     id: `esp32c5-devkitc1-${input.header.toLowerCase()}-${input.number}`,
@@ -102,6 +212,7 @@ function boardPin(input: HeaderPinInput): SocPin {
     boardHeader: input.header,
     position: { side: input.header === 'J1' ? 'left' : 'right', order: input.number },
     mainFunctions: input.mainFunctions,
+    sourcePin,
     note: `${displayNumber} board header pin, silkscreen label ${input.label}.`,
     notes: input.notes,
     warnings: input.warnings,
@@ -254,7 +365,8 @@ export const esp32c5: SocDefinition = {
   name: 'ESP32-C5',
   family: 'ESP32-C5',
   defaultProfileId: devKitProfile.id,
-  packageName: 'ESP32-C5 QFN48, 6 x 6 mm',
+  defaultPackageId: 'qfn48-hr2-hr8',
+  packageName: 'ESP32-C5HR2/HR8 QFN48, 6 x 6 mm',
   description: 'Dual-band Wi-Fi 6 ESP32 family with Bluetooth LE, Zigbee, and Thread support.',
   chipSpecs: {
     wireless: '2.4 and 5 GHz Wi-Fi 6, Bluetooth LE, Zigbee, Thread',
@@ -263,6 +375,7 @@ export const esp32c5: SocDefinition = {
     rom: '320 KB',
   },
   source,
-  pins: [],
+  pins: qfn48HrPins,
+  packageVariants: [qfn48Hf4Profile],
   boardProfiles: [devKitProfile, sensairProfile],
 };

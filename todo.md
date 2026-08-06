@@ -166,8 +166,9 @@ Priority order is based on maker value: helping someone identify the exact hardw
   - [ ] Module profile: ESP32-C61-MINI-1
   - [ ] Module profile: ESP32-C61-MINI-1U
   - Note: new/early module family; verify latest module datasheets and dev-kit user guides before implementation.
-- [ ] ESP32-C5 chip package profiles
-  - [ ] Chip package profile: QFN, 6 x 6 mm
+- [x] ESP32-C5 chip package profiles
+  - [x] QFN48: ESP32-C5HR2 / ESP32-C5HR8
+  - [x] QFN48: ESP32-C5HF4
 - [x] ESP32-C5 board profiles
   - [x] Board profile: ESP32-C5-DevKitC-1 v1.2
     - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c5/esp32-c5-devkitc-1/user_guide.html
