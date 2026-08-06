@@ -185,7 +185,12 @@ Priority order is based on maker value: helping someone identify the exact hardw
     - Note: covers ESP32-C3, ESP32-C3FH4, ESP32-C3FN4, and ESP32-C3FH8X pin bonding. Pins GPIO12 through GPIO17 are flash-connected and have maker-visible cautions.
   - [x] Chip package profile: QFN32, 5 x 5 mm, 16 GPIO
     - Source: https://documentation.espressif.com/esp32-c3_datasheet_en.pdf
-    - Note: ESP32-C3FH4X and ESP32-C3FH4AZ have the same QFN32 footprint, but physical pads 19 through 24 are NC; keep this separate from the 22-GPIO package view.
+  - Note: ESP32-C3FH4X and ESP32-C3FH4AZ have the same QFN32 footprint, but physical pads 19 through 24 are NC; keep this separate from the 22-GPIO package view.
+- [x] ESP32-C3 board profiles
+  - [x] Board profile: ESP32-C3-DevKitC-02
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c3/esp32-c3-devkitc-02/user_guide.html
+  - [x] Board profile: ESP32-C3-DevKitM-1
+    - Source: https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c3/esp32-c3-devkitm-1/user_guide.html
 - [x] ESP32-C3 module profiles
   - Source: https://www.espressif.com/en/products/modules
   - [x] Module profile: ESP32-C3-MINI-1

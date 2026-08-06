@@ -1,3 +1,4 @@
+import { createEsp32c3BoardProfiles } from '@/data/boards/esp32c3';
 import type {
   PinPosition,
   PinType,
@@ -662,3 +663,4 @@ const wroom02UProfile: SocPackageVariant = {
 };
 
 esp32c3.packageVariants = [qfn32SixteenGpioProfile, mini1Profile, mini1UProfile, wroom02Profile, wroom02UProfile];
+esp32c3.boardProfiles = createEsp32c3BoardProfiles(findC3PinByGpio);

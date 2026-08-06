@@ -1,0 +1,931 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-06T11:08:01.202Z",
+  "board": {
+    "id": "esp32-c3-devkitm-1",
+    "name": "ESP32-C3-DevKitM-1",
+    "manufacturer": "Espressif",
+    "chip_family": "ESP32-C3",
+    "aliases": [
+      "ESP32-C3-DevKitM-1"
+    ],
+    "module_variants": [
+      "ESP32-C3-MINI-1",
+      "ESP32-C3-MINI-1U"
+    ],
+    "route": "/boards/esp32-c3-devkitm-1",
+    "sources": [
+      {
+        "title": "ESP32-C3-DevKitM-1 User Guide",
+        "url": "https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32c3/esp32-c3-devkitm-1/user_guide.html",
+        "sections": [
+          "Description of Components",
+          "Power Supply Options",
+          "Header Block J1",
+          "Header Block J3",
+          "Pin Layout"
+        ]
+      }
+    ],
+    "recognition": {
+      "board_markings": [
+        "ESP32-C3-DevKitM-1"
+      ],
+      "module_markings": [
+        "ESP32-C3-MINI-1",
+        "ESP32-C3-MINI-1U"
+      ],
+      "memory_markings": [],
+      "visible_features": [
+        "Micro-USB connector",
+        "Boot button",
+        "Reset button",
+        "addressable RGB LED",
+        "USB-to-UART bridge"
+      ],
+      "button_labels": [
+        "Boot",
+        "Reset"
+      ],
+      "visible_pin_labels": [
+        "GND",
+        "3V3",
+        "IO2",
+        "IO3",
+        "RST",
+        "IO0",
+        "IO1",
+        "IO10",
+        "5V",
+        "TX",
+        "RX",
+        "IO9",
+        "IO8",
+        "IO7",
+        "IO6",
+        "IO5",
+        "IO4",
+        "IO18",
+        "IO19"
+      ],
+      "header_pin_counts": [
+        30
+      ],
+      "usb_connector_count": 1,
+      "usb_connector_types": [
+        "micro-usb"
+      ]
+    },
+    "pinout_summary": {
+      "safe_general_purpose_pins": [
+        "GPIO3",
+        "GPIO0",
+        "GPIO1",
+        "GPIO10",
+        "GPIO7",
+        "GPIO6",
+        "GPIO5",
+        "GPIO4"
+      ],
+      "caution_pins": [
+        {
+          "gpio": "GPIO2",
+          "warning": "Strapping"
+        },
+        {
+          "gpio": "GPIO21",
+          "warning": "UART0, Board hardware"
+        },
+        {
+          "gpio": "GPIO20",
+          "warning": "UART0, Board hardware"
+        },
+        {
+          "gpio": "GPIO9",
+          "warning": "Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO8",
+          "warning": "Board hardware, Strapping, Boot"
+        },
+        {
+          "gpio": "GPIO18",
+          "warning": "USB"
+        },
+        {
+          "gpio": "GPIO19",
+          "warning": "USB"
+        }
+      ],
+      "reserved_or_internal_pins": [],
+      "peripheral_notes": [
+        {
+          "peripheral": "Native USB",
+          "summary": "Header pins with documented native USB data functions.",
+          "candidate_pins": [
+            "GPIO18",
+            "GPIO19"
+          ]
+        },
+        {
+          "peripheral": "UART0",
+          "summary": "Header pins with documented UART0 data functions; check the pin cautions before use.",
+          "candidate_pins": [
+            "GPIO21",
+            "GPIO20"
+          ]
+        }
+      ],
+      "pin_functions": [
+        {
+          "gpio": "GPIO2",
+          "board_label": "IO2",
+          "functions": [
+            "GPIO2",
+            "ADC1_CH2",
+            "FSPIQ"
+          ],
+          "warnings": [
+            "Strapping",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "IO3",
+          "functions": [
+            "GPIO3",
+            "ADC1_CH3"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "IO0",
+          "functions": [
+            "GPIO0",
+            "ADC1_CH0",
+            "XTAL_32K_P"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "IO1",
+          "functions": [
+            "GPIO1",
+            "ADC1_CH1",
+            "XTAL_32K_N"
+          ],
+          "warnings": []
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "IO10",
+          "functions": [
+            "GPIO10",
+            "FSPICS0"
+          ],
+          "warnings": [
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "TX",
+          "functions": [
+            "GPIO21",
+            "U0TXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "RX",
+          "functions": [
+            "GPIO20",
+            "U0RXD"
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "IO9",
+          "functions": [
+            "GPIO9"
+          ],
+          "warnings": [
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "IO8",
+          "functions": [
+            "GPIO8",
+            "RGB LED"
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "IO7",
+          "functions": [
+            "GPIO7",
+            "FSPID",
+            "MTDO"
+          ],
+          "warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "IO6",
+          "functions": [
+            "GPIO6",
+            "FSPICLK",
+            "MTCK"
+          ],
+          "warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "IO5",
+          "functions": [
+            "GPIO5",
+            "ADC2_CH0",
+            "FSPIWP",
+            "MTDI"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "IO4",
+          "functions": [
+            "GPIO4",
+            "ADC1_CH4",
+            "FSPIHD",
+            "MTMS"
+          ],
+          "warnings": [
+            "JTAG"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "IO18",
+          "functions": [
+            "GPIO18",
+            "USB_D-"
+          ],
+          "warnings": [
+            "USB",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "IO19",
+          "functions": [
+            "GPIO19",
+            "USB_D+"
+          ],
+          "warnings": [
+            "USB"
+          ]
+        }
+      ],
+      "pin_details": [
+        {
+          "gpio": "GPIO2",
+          "board_label": "IO2",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO2",
+            "ADC1_CH2",
+            "FSPIQ"
+          ],
+          "maker_warnings": [
+            "Strapping"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-4 board header pin, silkscreen label IO2.",
+            "ESP32-C3 strapping pin; its voltage at power-up or reset controls chip configuration.",
+            "Strapping pin. Espressif recommends pulling GPIO2 high because of power-up glitches."
+          ],
+          "analog": [
+            "ADC1_CH2"
+          ],
+          "io_mux": [
+            "GPIO2",
+            "FSPIQ"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO3",
+          "board_label": "IO3",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO3",
+            "ADC1_CH3"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-5 board header pin, silkscreen label IO3."
+          ],
+          "analog": [
+            "ADC1_CH3"
+          ],
+          "io_mux": [
+            "GPIO3"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO0",
+          "board_label": "IO0",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO0",
+            "ADC1_CH0",
+            "XTAL_32K_P"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-9 board header pin, silkscreen label IO0.",
+            "Package pin name is XTAL_32K_P; GPIO identity is GPIO0."
+          ],
+          "analog": [
+            "XTAL_32K_P",
+            "ADC1_CH0"
+          ],
+          "io_mux": [
+            "GPIO0"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO1",
+          "board_label": "IO1",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO1",
+            "ADC1_CH1",
+            "XTAL_32K_N"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [],
+          "notes": [
+            "J1-10 board header pin, silkscreen label IO1.",
+            "Package pin name is XTAL_32K_N; GPIO identity is GPIO1."
+          ],
+          "analog": [
+            "XTAL_32K_N",
+            "ADC1_CH1"
+          ],
+          "io_mux": [
+            "GPIO1"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO10",
+          "board_label": "IO10",
+          "board_header": "J1",
+          "main_functions": [
+            "GPIO10",
+            "FSPICS0"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J1-11 board header pin, silkscreen label IO10.",
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO10",
+            "FSPICS0"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO21",
+          "board_label": "TX",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO21",
+            "U0TXD"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Board hardware"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-2 board header pin, silkscreen label TX.",
+            "Connected to the on-board USB-to-UART bridge TX signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0TXD",
+            "GPIO21"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "RX",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO20",
+            "U0RXD"
+          ],
+          "maker_warnings": [
+            "UART0",
+            "Board hardware"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J3-3 board header pin, silkscreen label RX.",
+            "Connected to the on-board USB-to-UART bridge RX signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "analog": [],
+          "io_mux": [
+            "U0RXD",
+            "GPIO20"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO9",
+          "board_label": "IO9",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO9"
+          ],
+          "maker_warnings": [
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-5 board header pin, silkscreen label IO9.",
+            "ESP32-C3 strapping pin; its voltage at power-up or reset controls chip configuration.",
+            "Strapping pin with default weak pull-up.",
+            "GPIO8=1 with GPIO9=0 selects joint download boot mode."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO9"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "IO8",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO8",
+            "RGB LED"
+          ],
+          "maker_warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-6 board header pin, silkscreen label IO8.",
+            "Drives the addressable RGB LED on the board.",
+            "ESP32-C3 strapping pin; its voltage at power-up or reset controls chip configuration.",
+            "Strapping pin with default floating state.",
+            "GPIO8=1 with GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ],
+          "analog": [],
+          "io_mux": [
+            "GPIO8"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO7",
+          "board_label": "IO7",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO7",
+            "FSPID",
+            "MTDO"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J3-8 board header pin, silkscreen label IO7.",
+            "JTAG debug signal; USB Serial/JTAG can be used when these default JTAG pins need to be freed.",
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTDO",
+            "GPIO7",
+            "FSPID"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO6",
+          "board_label": "IO6",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO6",
+            "FSPICLK",
+            "MTCK"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG",
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J3-9 board header pin, silkscreen label IO6.",
+            "JTAG debug signal; USB Serial/JTAG can be used when these default JTAG pins need to be freed.",
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "analog": [],
+          "io_mux": [
+            "MTCK",
+            "GPIO6",
+            "FSPICLK"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO5",
+          "board_label": "IO5",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO5",
+            "ADC2_CH0",
+            "FSPIWP",
+            "MTDI"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-10 board header pin, silkscreen label IO5.",
+            "JTAG debug signal; USB Serial/JTAG can be used when these default JTAG pins need to be freed.",
+            "ADC2 may not be operable on some ESP32-C3 chip revisions."
+          ],
+          "analog": [
+            "ADC2_CH0"
+          ],
+          "io_mux": [
+            "MTDI",
+            "GPIO5",
+            "FSPIWP"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO4",
+          "board_label": "IO4",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO4",
+            "ADC1_CH4",
+            "FSPIHD",
+            "MTMS"
+          ],
+          "maker_warnings": [],
+          "board_design_warnings": [
+            "JTAG"
+          ],
+          "notes": [
+            "J3-11 board header pin, silkscreen label IO4.",
+            "JTAG debug signal; USB Serial/JTAG can be used when these default JTAG pins need to be freed."
+          ],
+          "analog": [
+            "ADC1_CH4"
+          ],
+          "io_mux": [
+            "MTMS",
+            "GPIO4",
+            "FSPIHD"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO18",
+          "board_label": "IO18",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO18",
+            "USB_D-"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [
+            "Power-up glitch"
+          ],
+          "notes": [
+            "J3-13 board header pin, silkscreen label IO18.",
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use.",
+            "Espressif documents a high-level power-up glitch on this pin."
+          ],
+          "analog": [
+            "USB_D-"
+          ],
+          "io_mux": [
+            "GPIO18"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        },
+        {
+          "gpio": "GPIO19",
+          "board_label": "IO19",
+          "board_header": "J3",
+          "main_functions": [
+            "GPIO19",
+            "USB_D+"
+          ],
+          "maker_warnings": [
+            "USB"
+          ],
+          "board_design_warnings": [],
+          "notes": [
+            "J3-14 board header pin, silkscreen label IO19.",
+            "USB_D pins are connected to the USB Serial/JTAG controller by default and need reconfiguration before regular GPIO use."
+          ],
+          "analog": [
+            "USB_D+"
+          ],
+          "io_mux": [
+            "GPIO19"
+          ],
+          "matrix_signals": [
+            "SPI2",
+            "UART1",
+            "I2C",
+            "I2S",
+            "TWAI",
+            "LED PWM",
+            "RMT",
+            "PCNT"
+          ]
+        }
+      ],
+      "general_warnings": [
+        "Confirm the exact module variant before using header GPIOs reserved for on-module memory.",
+        "Review each listed caution before wiring a board-header GPIO."
+      ]
+    },
+    "hardware_summary": {
+      "power": [
+        "Micro-USB port, 5V/GND headers, or 3V3/GND headers are documented power options; use only mutually compatible power paths."
+      ],
+      "programming": [
+        "On-board USB-to-UART bridge for flashing and serial logs."
+      ],
+      "onboard_hardware": [
+        "Boot and Reset buttons, addressable RGB LED on GPIO8, Micro-USB port, and USB-to-UART bridge."
+      ],
+      "usb_connectors": {
+        "count": 1,
+        "types": [
+          "micro-usb"
+        ]
+      },
+      "buttons": [
+        "Boot",
+        "Reset"
+      ],
+      "documented_gpio_sharing": [
+        {
+          "gpio": "GPIO21",
+          "board_label": "TX",
+          "main_functions": [
+            "GPIO21",
+            "U0TXD"
+          ],
+          "notes": [
+            "J3-2 board header pin, silkscreen label TX.",
+            "Connected to the on-board USB-to-UART bridge TX signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "ROM boot messages print to UART0 by default."
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware"
+          ]
+        },
+        {
+          "gpio": "GPIO20",
+          "board_label": "RX",
+          "main_functions": [
+            "GPIO20",
+            "U0RXD"
+          ],
+          "notes": [
+            "J3-3 board header pin, silkscreen label RX.",
+            "Connected to the on-board USB-to-UART bridge RX signal.",
+            "UART0 is commonly used for boot messages, flashing, and serial debugging.",
+            "Espressif documents a low-level power-up glitch on this pin."
+          ],
+          "warnings": [
+            "UART0",
+            "Board hardware",
+            "Power-up glitch"
+          ]
+        },
+        {
+          "gpio": "GPIO8",
+          "board_label": "IO8",
+          "main_functions": [
+            "GPIO8",
+            "RGB LED"
+          ],
+          "notes": [
+            "J3-6 board header pin, silkscreen label IO8.",
+            "Drives the addressable RGB LED on the board.",
+            "ESP32-C3 strapping pin; its voltage at power-up or reset controls chip configuration.",
+            "Strapping pin with default floating state.",
+            "GPIO8=1 with GPIO9=0 selects joint download boot mode.",
+            "Also participates in UART0 ROM message printing control."
+          ],
+          "warnings": [
+            "Board hardware",
+            "Strapping",
+            "Boot"
+          ]
+        }
+      ]
+    }
+  }
+}
