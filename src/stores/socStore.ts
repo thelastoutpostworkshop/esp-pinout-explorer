@@ -377,7 +377,11 @@ function packageProfileDisplayName(soc: SocDefinition, packageName: string) {
   const packageMatch = packageName.match(/\b(?:QFN|LGA|BGA|WLCSP)\d+\b/i);
 
   if (packageMatch) {
-    return `${soc.name} ${packageMatch[0].toUpperCase()}`;
+    const trailingVariant = packageName
+      .slice((packageMatch.index ?? 0) + packageMatch[0].length)
+      .match(/^\s*(\([^)]*\))/)?.[1];
+    const variantLabel = trailingVariant && /\bH[FR]\d+\b/i.test(trailingVariant) ? ` ${trailingVariant}` : '';
+    return `${soc.name} ${packageMatch[0].toUpperCase()}${variantLabel}`;
   }
 
   return `${soc.name} ${packageName.split(/[,(]/)[0].trim()}`;

@@ -180,7 +180,7 @@ const qfn48Hf4Pins: SocPin[] = qfn48HrPins.map((pin) => {
 const qfn48Hf4Profile: SocPackageVariant = {
   id: 'qfn48-hf4',
   name: 'QFN48 (HF4)',
-  packageName: 'ESP32-C5HF4 QFN48, 6 x 6 mm',
+  packageName: 'ESP32-C5 QFN48 (HF4), 6 x 6 mm',
   description: 'ESP32-C5HF4 raw chip package with 4 MB in-package flash; pins 26 to 32 are not connected.',
   source,
   pins: qfn48Hf4Pins,
@@ -366,7 +366,7 @@ export const esp32c5: SocDefinition = {
   family: 'ESP32-C5',
   defaultProfileId: devKitProfile.id,
   defaultPackageId: 'qfn48-hr2-hr8',
-  packageName: 'ESP32-C5HR2/HR8 QFN48, 6 x 6 mm',
+  packageName: 'ESP32-C5 QFN48 (HR2/HR8), 6 x 6 mm',
   description: 'Dual-band Wi-Fi 6 ESP32 family with Bluetooth LE, Zigbee, and Thread support.',
   chipSpecs: {
     wireless: '2.4 and 5 GHz Wi-Fi 6, Bluetooth LE, Zigbee, Thread',
