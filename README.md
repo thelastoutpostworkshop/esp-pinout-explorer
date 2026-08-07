@@ -1,6 +1,6 @@
 # ESP Pinout Explorer
 
-[![ESP Board Vault banner](https://github.com/thelastoutpostworkshop/images/blob/main/ESP%20Pinout%20Explorer%20banner.png)](https://www.youtube.com/channel/UCnnU_HGvTr8ewpqvHe2llDw)
+[![ESP Board Vault banner](https://github.com/thelastoutpostworkshop/images/blob/main/ESP%20Pinout%20Explorer%20banner.png)](https://youtu.be/l357x8bTJg0)
 
 <a href="https://www.buymeacoffee.com/thelastoutpostworkshop" target="_blank">
 <img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee">
@@ -60,11 +60,3 @@ The explorer currently covers these official Espressif board, module, and packag
 ## Data sources and limits
 
 Accuracy is more important than coverage. Pin and board data is based on official Espressif datasheets, board user guides, schematics, and documentation. Each profile and selected pin links back to its source.
-
-The SVG diagrams are interactive reference maps, not schematics or mechanically exact board layouts. The explorer does not infer a profile from a product photo, third-party pinout graphic, or a related board. If your exact hardware is not listed, check the official documentation rather than treating a close match as interchangeable. Planned coverage is tracked in [todo.md](todo.md).
-
-## Run locally or contribute
-
-For setup details, the data model, and contribution conventions, see [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Support
