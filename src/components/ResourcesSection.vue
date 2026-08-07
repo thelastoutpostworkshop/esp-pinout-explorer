@@ -51,7 +51,7 @@ const store = useSocStore();
 const resourceLinks = [
   {
     label: 'Tutorial',
-    href: 'https://youtu.be/-nhDKzBxHiI',
+    href: 'https://youtu.be/l357x8bTJg0',
     icon: Play,
   },
   {

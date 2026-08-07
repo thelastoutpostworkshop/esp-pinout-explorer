@@ -968,7 +968,7 @@ describe('ExplorerSidebar', () => {
     });
 
     expect(wrapper.text()).toContain('Resources');
-    expect(wrapper.find('a[href="https://youtu.be/-nhDKzBxHiI"]').exists()).toBe(true);
+    expect(wrapper.find('a[href="https://youtu.be/l357x8bTJg0"]').exists()).toBe(true);
     expect(wrapper.find('a[href="https://buymeacoffee.com/thelastoutpostworkshop"]').exists()).toBe(true);
     expect(wrapper.find('a[href="https://github.com/thelastoutpostworkshop/ESPSocsExplorer"]').exists()).toBe(true);
 
