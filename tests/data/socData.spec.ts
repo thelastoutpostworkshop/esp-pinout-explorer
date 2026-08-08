@@ -101,6 +101,8 @@ const expectedPinCounts: Record<string, number> = {
   'esp32p4:esp32p4-eye': 20,
   'esp32s2:esp32s2-qfn56': 57,
   'esp32s2:esp32s2-devkitc-1': 44,
+  'esp32c2:default': 0,
+  'esp32c2:esp8684-devkitm-1-v1-1': 30,
   'esp8266ex:esp8266ex-qfn32': 33,
   'esp8266ex:esp-wroom-02d': 19,
   'esp8266ex:esp-wroom-02u': 19,
