@@ -101,7 +101,7 @@ jobs:
           notes_file="$RUNNER_TEMP/release-notes.md"
 
           awk -v version="$version" '
-            index($0, "## [" version "]") == 1 { include = 1; next }
+            $0 == "## " version || $0 == "## [" version "]" { include = 1; next }
             include && /^## / { exit }
             include { print }
           ' CHANGELOG.md > "$notes_file"
