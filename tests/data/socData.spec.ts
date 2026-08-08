@@ -415,6 +415,19 @@ describe('SoC data invariants', () => {
     expect(bottomPins.map((pin) => pin.position.order).sort((a, b) => a - b)).toEqual(range(1, 15));
   });
 
+  it('keeps ESP8266EX QFN32 pins in the official top-view perimeter order', () => {
+    const profile = allProfiles().find((item) => item.id === 'esp8266ex-qfn32');
+    const perimeterPins = profile?.pins.filter((pin) => pin.position.side !== 'center') ?? [];
+
+    expect(perimeterPins).toHaveLength(32);
+    expect(perimeterPins.map((pin) => [pin.number, pin.position.side, pin.position.order])).toEqual([
+      ...range(1, 8).map((number) => [number, 'left', number]),
+      ...range(9, 16).map((number) => [number, 'bottom', number - 8]),
+      ...range(17, 24).map((number) => [number, 'right', 25 - number]),
+      ...range(25, 32).map((number) => [number, 'top', 33 - number]),
+    ]);
+  });
+
   it('keeps ESP8266-DevKitS as two 15-pin side headers', () => {
     const profile = allProfiles().find((item) => item.id === 'esp8266-devkits');
     const leftPins = profile?.pins.filter((pin) => pin.boardHeader === 'J1') ?? [];
