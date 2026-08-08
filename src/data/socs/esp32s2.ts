@@ -10,7 +10,7 @@ const boardSource: SocSource = {
   title: 'ESP32-S2-DevKitC-1 User Guide', version: 'latest', publisher: 'Espressif', documentType: 'user-guide',
   url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s2/esp32-s2-devkitc-1/user_guide.html',
   sections: ['Description of Components', 'Ordering Information', 'Header Block J1', 'Header Block J3', 'Pin Layout'],
-  figures: [{ title: 'ESP32-S2-DevKitC-1 pin layout', kind: 'pin-layout', url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s2/_images/esp32-s2-devkitc-1-pinout.png', alt: 'ESP32-S2-DevKitC-1 pin layout', sourceSection: 'Pin Layout' }],
+  figures: [{ title: 'ESP32-S2-DevKitC-1 pin layout', kind: 'pin-layout', url: 'https://docs.espressif.com/projects/esp-dev-kits/en/latest/esp32s2/_images/esp32-s2-devkitc-1-v1-pinout.png', alt: 'ESP32-S2-DevKitC-1 pin layout', sourceSection: 'Pin Layout' }],
 };
 const moduleSource: SocSource = { title: 'ESP32-S2-SOLO-2 & ESP32-S2-SOLO-2U Datasheet', version: 'v1.4', publisher: 'Espressif', documentType: 'datasheet', url: 'https://documentation.espressif.com/esp32-s2-solo-2_esp32-s2-solo-2u_datasheet_en.pdf', sections: ['Ordering Information', 'Pin Definitions'] };
 const names = ['VDDA','LNA_IN','VDD3P3','VDD3P3','GPIO0','GPIO1','GPIO2','GPIO3','GPIO4','GPIO5','GPIO6','GPIO7','GPIO8','GPIO9','GPIO10','GPIO11','GPIO12','GPIO13','GPIO14','VDD3P3_RTC','XTAL_32K_P','XTAL_32K_N','DAC_1','DAC_2','GPIO19','GPIO20','VDD3P3_RTC_IO','GPIO21','SPICS1','VDD_SPI','SPIHD','SPIWP','SPICS0','SPICLK','SPIQ','SPID','GPIO33','GPIO34','GPIO35','GPIO36','GPIO37','GPIO38','MTCK','MTDO','VDD3P3_CPU','MTDI','MTMS','U0TXD','U0RXD','GPIO45','VDDA','XTAL_N','XTAL_P','VDDA','GPIO46','CHIP_PU'];
