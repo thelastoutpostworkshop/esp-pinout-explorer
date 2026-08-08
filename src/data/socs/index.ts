@@ -10,8 +10,9 @@ import { esp32p4 } from './esp32p4';
 import { esp32s3 } from './esp32s3';
 import { esp32s2 } from './esp32s2';
 import { esp32s31 } from './esp32s31';
+import { esp8285 } from './esp8285';
 import { esp8266ex } from './esp8266';
 
-export const socs: SocDefinition[] = [esp32s3, esp32s31, esp32s2, esp32c61, esp32c6, esp32c5, esp32c3, esp32c2, esp32h2, esp32p4, esp32, esp8266ex];
+export const socs: SocDefinition[] = [esp32s3, esp32s31, esp32s2, esp32c61, esp32c6, esp32c5, esp32c3, esp32c2, esp32h2, esp32p4, esp32, esp8266ex, esp8285];
 
 export const futureSocPlaceholders = [] as const;

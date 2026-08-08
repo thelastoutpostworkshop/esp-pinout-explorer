@@ -364,6 +364,7 @@ describe("public raw-chip dataset", () => {
       "esp32s3",
       "esp32s31",
       "esp8266ex",
+      "esp8285",
     ]);
 
     for (const chip of dataset.chips) {

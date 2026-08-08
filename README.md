@@ -58,6 +58,7 @@ The explorer currently covers these official Espressif board, module, and packag
 | **ESP32-H2** | ESP32-H2-DevKitM-1 | ESP32-H2 QFN32, 4 x 4 mm |
 | **ESP32-P4** | ESP32-P4X-Function-EV-Board; ESP32-P4X-EYE; ESP32-P4-Function-EV-Board v1.5.2; ESP32-P4-EYE | Board allocation views only; a complete bare ESP32-P4 package view is not yet included. |
 | **ESP8266EX** | ESP8266-DevKitC; ESP8266-DevKitS; ESP-Launcher | ESP-WROOM-02D and ESP-WROOM-02U module pads; ESP8266EX QFN32, 5 x 5 mm |
+| **ESP8285** | — | ESP8285 QFN32, 5 x 5 mm (embedded flash; NRND) |
 
 ## Data sources and limits
 

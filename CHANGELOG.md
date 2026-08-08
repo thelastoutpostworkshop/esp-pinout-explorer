@@ -2,6 +2,12 @@
 
 All notable changes to ESP Pinout Explorer are documented here.
 
+## 0.5.8
+
+### Added
+
+- Added the ESP8285 QFN32 chip profile with embedded-flash and NRND guidance from Espressif's v2.7 datasheet.
+
 ## 0.5.7
 
 ### Added
