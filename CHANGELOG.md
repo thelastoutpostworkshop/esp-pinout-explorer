@@ -2,7 +2,13 @@
 
 All notable changes to ESP Pinout Explorer are documented here.
 
-## [0.5.5] - 2026-08-07
+## 0.5.6 
+
+### Fixed
+
+- Corrected the ESP8266EX QFN32 top-view pin order to match the official datasheet. ([#3](https://github.com/thelastoutpostworkshop/esp-pinout-explorer/issues/3))
+
+## 0.5.5 
 
 ### Initial public release
 
