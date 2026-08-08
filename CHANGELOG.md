@@ -6,13 +6,16 @@ All notable changes to ESP Pinout Explorer are documented here.
 
 ### Added
 
-- Added the ESP8285 QFN32 chip profile with embedded-flash and NRND guidance from Espressif's v2.7 datasheet.
+- Added the ESP32-S2 QFN56 package and ESP32-S2-DevKitC-1 board profile. ([#4](https://github.com/thelastoutpostworkshop/esp-pinout-explorer/issues/4))
+- Added the ESP8684-DevKitM-1 v1.1 board-only profile for ESP32-C2; a raw ESP32-C2 package profile remains unavailable because Espressif has not published its datasheet. ([#4](https://github.com/thelastoutpostworkshop/esp-pinout-explorer/issues/4))
+- Added ESP32-C61 QFN40 and LGA40 package variants plus the ESP32-C61-DevKitC-1 v2.0 board profile. ([#4](https://github.com/thelastoutpostworkshop/esp-pinout-explorer/issues/4))
+- Added the ESP8285 QFN32 chip profile with embedded-flash and NRND guidance from Espressif's v2.7 datasheet. ([#4](https://github.com/thelastoutpostworkshop/esp-pinout-explorer/issues/4))
 
 ## 0.5.7
 
 ### Added
 
-- Added the ESP32-S31 QFN80 package and ESP32-S31-Function-CoreBoard-1 J2 header profile from Espressif's preliminary v0.5 documentation.
+- Added the ESP32-S31 QFN80 package and ESP32-S31-Function-CoreBoard-1 J2 header profile from Espressif's preliminary v0.5 documentation. ([#4](https://github.com/thelastoutpostworkshop/esp-pinout-explorer/issues/4))
 
 ## 0.5.6 
 
