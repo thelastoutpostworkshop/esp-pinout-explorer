@@ -2,6 +2,12 @@
 
 All notable changes to ESP Pinout Explorer are documented here.
 
+## 0.5.7
+
+### Added
+
+- Added the ESP32-S31 QFN80 package and ESP32-S31-Function-CoreBoard-1 J2 header profile from Espressif's preliminary v0.5 documentation.
+
 ## 0.5.6 
 
 ### Fixed

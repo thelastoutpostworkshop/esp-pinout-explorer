@@ -362,6 +362,7 @@ describe("public raw-chip dataset", () => {
       "esp32p4",
       "esp32s2",
       "esp32s3",
+      "esp32s31",
       "esp8266ex",
     ]);
 

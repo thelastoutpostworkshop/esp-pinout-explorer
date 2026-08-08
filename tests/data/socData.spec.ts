@@ -107,6 +107,8 @@ const expectedPinCounts: Record<string, number> = {
   'esp32c61:esp32c61-qfn40-hf4': 41,
   'esp32c61:esp32c61-lga40-nf8r8la': 41,
   'esp32c61:esp32c61-devkitc-1-v2-0': 32,
+  'esp32s31:esp32s31-qfn80': 81,
+  'esp32s31:esp32s31-function-coreboard-1': 40,
   'esp8266ex:esp8266ex-qfn32': 33,
   'esp8266ex:esp-wroom-02d': 19,
   'esp8266ex:esp-wroom-02u': 19,
