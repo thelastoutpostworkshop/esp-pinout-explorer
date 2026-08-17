@@ -2,6 +2,12 @@
 
 All notable changes to ESP Pinout Explorer are documented here.
 
+## 0.5.9
+
+### Added
+
+- Added a PayPal donation link to the Resources section.
+
 ## 0.5.8
 
 ### Added

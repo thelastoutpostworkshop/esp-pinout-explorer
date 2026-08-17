@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { Coffee, Compass, ExternalLink, LifeBuoy, Play, Wrench } from '@lucide/vue';
+import { CircleDollarSign, Coffee, Compass, ExternalLink, LifeBuoy, Play, Wrench } from '@lucide/vue';
 import { useSocStore } from '@/stores/socStore';
 
 const emit = defineEmits<{
@@ -58,6 +58,11 @@ const resourceLinks = [
     label: 'Buy Me a Coffee',
     href: 'https://buymeacoffee.com/thelastoutpostworkshop',
     icon: Coffee,
+  },
+  {
+    label: 'Donate via PayPal',
+    href: 'https://www.paypal.com/donate/?hosted_button_id=GF3QFYJ2BX9SA',
+    icon: CircleDollarSign,
   },
   {
     label: 'Get Help',
