@@ -4,6 +4,10 @@ All notable changes to ESP Pinout Explorer are documented here.
 
 ## 0.6.0
 
+### Added
+
+- Added ESPImageServer to Maker Tools, with links to the tutorial and source code. The desktop app generates AI images and videos locally for playback on supported ESP32 displays.
+
 ### Changed
 
 - Updated Vue, Vuetify, Pinia, Lucide, and Vite.

@@ -91,6 +91,7 @@ import { ArrowLeft, Coffee, ExternalLink, Play, Wrench } from '@lucide/vue';
 import arduinoMakerWorkshopThumbnail from '@/assets/tool-thumbnails/arduino-maker-workshop.jpg';
 import espBoardVaultThumbnail from '@/assets/tool-thumbnails/esp-board-vault.jpg';
 import espConnectThumbnail from '@/assets/tool-thumbnails/espconnect.jpg';
+import espImageServerThumbnail from '@/assets/tool-thumbnails/esp-image-server.jpg';
 import gpioViewerThumbnail from '@/assets/tool-thumbnails/gpio-viewer.jpg';
 import partitionBuilderThumbnail from '@/assets/tool-thumbnails/partition-builder.jpg';
 import videoConversionThumbnail from '@/assets/tool-thumbnails/video-conversion.jpg';
@@ -110,6 +111,16 @@ interface ToolItem {
 const store = useSocStore();
 
 const tools: ToolItem[] = [
+  {
+    title: 'ESPImageServer',
+    description:
+      'Free desktop app for generating AI images and videos locally, animating saved images, and playing creations on supported ESP32 displays over Wi-Fi. Generation requires an NVIDIA GPU with CUDA.',
+    thumbnailSrc: espImageServerThumbnail,
+    sourceUrl: 'https://github.com/thelastoutpostworkshop/ESPImageServer',
+    sourceLabel: 'thelastoutpostworkshop/ESPImageServer',
+    tutorialUrl: 'https://youtu.be/4_eT38NmxBw',
+    actionLabel: 'Open source',
+  },
   {
     title: 'ESPConnect',
     description:

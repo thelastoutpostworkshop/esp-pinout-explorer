@@ -1019,8 +1019,13 @@ describe('MakerToolsPage', () => {
     expect(wrapper.text()).toContain('GPIOViewer');
     expect(wrapper.find('a[href="https://thelastoutpostworkshop.github.io/ESPConnect/"]').exists()).toBe(true);
     expect(wrapper.find('a[href="https://github.com/thelastoutpostworkshop/ESPConnect"]').exists()).toBe(true);
-    expect(wrapper.findAll('.maker-tools-page__card')).toHaveLength(6);
-    expect(wrapper.findAll('.maker-tools-page__thumbnail img')).toHaveLength(6);
+    const cards = wrapper.findAll('.maker-tools-page__card');
+    expect(cards).toHaveLength(7);
+    expect(wrapper.findAll('.maker-tools-page__thumbnail img')).toHaveLength(7);
+
+    const espImageServer = cards.find((card) => card.get('h2').text() === 'ESPImageServer');
+    expect(espImageServer?.get('.maker-tools-page__thumbnail').attributes('href')).toBe('https://youtu.be/4_eT38NmxBw');
+    expect(espImageServer?.get('.maker-tools-page__source').attributes('href')).toBe('https://github.com/thelastoutpostworkshop/ESPImageServer');
 
     await findButton(wrapper, 'Back to pinout').trigger('click');
 
