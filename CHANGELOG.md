@@ -2,6 +2,13 @@
 
 All notable changes to ESP Pinout Explorer are documented here.
 
+## 0.6.0
+
+### Changed
+
+- Updated Vue, Vuetify, Pinia, Lucide, and Vite.
+- Upgraded Vitest to 5 and jsdom to 31. Kept TypeScript at 6.0.3.
+
 ## 0.5.9
 
 ### Added
